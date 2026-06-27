@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ArmyList, ArmyUnit, Faction, Unit } from '../types/index'
+import type { ArmyList, ArmyUnit, Faction, Generator, Unit } from '../types/index'
 import { loadSavedLists, saveList, deleteList as deleteSavedList } from '../utils/localStorage'
 import { uuid } from '../utils/uuid'
 
@@ -7,6 +7,7 @@ interface AppStore {
     factions: Faction[]
     units: Unit[]
     glossary: Record<string, Record<string, string>> | null
+    generators: Record<string, Generator[]>
     dataLoaded: boolean
     loadData: () => Promise<void>
 
@@ -45,20 +46,23 @@ export const useAppStore = create<AppStore>((set, get) => ({
     factions: [],
     units: [],
     glossary: null,
+    generators: {},
     dataLoaded: false,
     loadData: async () => {
         try {
-            const [factionsRes, glossaryRes, unitsRes] = await Promise.all([
+            const [factionsRes, glossaryRes, generatorsRes, unitsRes] = await Promise.all([
                 fetch('/data/factions.json'),
                 fetch('/data/glossary.json'),
+                fetch('/data/generators.json'),
                 fetch('/data/units-index.json'),
             ])
-            const [factions, glossary, units] = await Promise.all([
+            const [factions, glossary, generators, units] = await Promise.all([
                 factionsRes.json(),
                 glossaryRes.json(),
+                generatorsRes.json(),
                 unitsRes.json(),
             ])
-            set({ factions, glossary, units, dataLoaded: true, savedLists: loadSavedLists() })
+            set({ factions, glossary, generators, units, dataLoaded: true, savedLists: loadSavedLists() })
         } catch {
             set({ dataLoaded: true, savedLists: loadSavedLists() })
         }

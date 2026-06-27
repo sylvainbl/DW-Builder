@@ -1,4 +1,8 @@
-import type { ArmyList, ArmyUnit, Glossary, Unit } from '../types/index'
+import type { ArmyList, ArmyUnit, Generator, Glossary, Unit } from '../types/index'
+
+export function getGeneratorsForFaction(generators: Record<string, Generator[]>, factionId: string): Generator[] {
+    return generators[factionId] ?? []
+}
 
 export function getFilteredUnits(
     store: {

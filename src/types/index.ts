@@ -45,6 +45,11 @@ export interface OptionUpgrade {
     tag: string
 }
 
+export interface Generator {
+    name: string
+    point_cost: number
+}
+
 export interface Unit {
     id: string
     faction_id: string
