@@ -20,8 +20,8 @@ export default function ArmyListPanel() {
     }
 
     return (
-        <div className="space-y-6">
-            <section className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/20">
+        <div className="space-y-4">
+            <section className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Liste</p>
@@ -47,8 +47,8 @@ export default function ArmyListPanel() {
                 </div>
             </section>
 
-            <section className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/20">
-                <h3 className="text-xl font-semibold text-white">Unités</h3>
+            <section className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
+                <h3 className="text-lg font-semibold text-neutral-900">Unités</h3>
                 <div className="mt-4 space-y-3">
                     {currentList.units.length === 0 ? (
                         <p className="text-slate-400">Aucune unité ajoutée pour le moment.</p>

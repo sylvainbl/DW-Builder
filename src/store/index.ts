@@ -1,12 +1,12 @@
 import { create } from 'zustand'
-import type { ArmyList, ArmyUnit, Faction, Glossary, Unit } from '../types/index'
+import type { ArmyList, ArmyUnit, Faction, Unit } from '../types/index'
 import { loadSavedLists, saveList, deleteList as deleteSavedList } from '../utils/localStorage'
 import { uuid } from '../utils/uuid'
 
 interface AppStore {
     factions: Faction[]
     units: Unit[]
-    glossary: Glossary | null
+    glossary: Record<string, Record<string, string>> | null
     dataLoaded: boolean
     loadData: () => Promise<void>
 

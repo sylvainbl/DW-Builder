@@ -72,8 +72,8 @@ export function getActiveRules(
     currentList: ArmyList,
     units: Unit[],
     glossary: Glossary,
-): { category: 'properties' | 'systems' | 'qualities'; name: string; entry: { summary: string; full: string } }[] {
-    const rulesMap = new Map<string, { category: 'properties' | 'systems' | 'qualities'; name: string; entry: { summary: string; full: string } }>()
+): { category: 'properties' | 'systems' | 'qualities'; name: string; entry: string }[] {
+    const rulesMap = new Map<string, { category: 'properties' | 'systems' | 'qualities'; name: string; entry: string }>()
 
     currentList.units.forEach((armyUnit) => {
         const unit = units.find((item) => item.id === armyUnit.unitId)

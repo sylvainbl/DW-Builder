@@ -7,51 +7,51 @@
         "accentColor": "#c8aa6e"
     },
     {
-        "id": "empire_of_the_blazing_sun",
-        "name": "Empire of the Blazing Sun",
+        "id": "Empire",
+        "name": "Empire",
         "description": "Fiers guerriers techno-spirites du Pacifique.",
         "color": "#8a0f0f",
         "accentColor": "#e0b35f"
     },
     {
-        "id": "pan_asian_cooperative",
-        "name": "Pan-Asian Cooperative",
-        "description": "Black ops et machines de guerre furtives.",
+        "id": "Union",
+        "name": "Union",
+        "description": "Hmm oui burger",
         "color": "#134021",
         "accentColor": "#8edecb"
     },
     {
-        "id": "union_of_londinium",
-        "name": "Union of Londinium",
-        "description": "Empire Atlantique industrialisé et puissant.",
+        "id": "Sultanat",
+        "name": "Sultanat",
+        "description": "Portail ziouuuuu",
         "color": "#1f3b62",
         "accentColor": "#9fb8dc"
     },
     {
-        "id": "peoples_republic_of_depths",
-        "name": "People's Republic of Depths",
-        "description": "Ecosystems abyssaux et cuirassés sous-marins.",
+        "id": "Crown",
+        "name": "Crown",
+        "description": "Dla merde",
         "color": "#113a4e",
         "accentColor": "#50b5d8"
     },
     {
-        "id": "north_american_protectorate",
-        "name": "North American Protectorate",
-        "description": "Technologie expérimentale et blindés lourds.",
+        "id": "Imperium",
+        "name": "Imperium",
+        "description": "C'est les pas gentils",
         "color": "#4d3a18",
         "accentColor": "#f2c96f"
     },
     {
-        "id": "the_new_german_reich",
-        "name": "The New German Reich",
-        "description": "Precision mécanique et génie industriel.",
+        "id": "Enlighted",
+        "name": "Enlighted",
+        "description": "un jour on jouera ça",
         "color": "#2e2c2b",
         "accentColor": "#c9c5b8"
     },
     {
-        "id": "alliance_of_terra",
-        "name": "Alliance of Terra",
-        "description": "Coalition interplanétaire de marine lourde.",
+        "id": "Alliance",
+        "name": "Alliance",
+        "description": "Triched",
         "color": "#0e2737",
         "accentColor": "#7aa8c1"
     }

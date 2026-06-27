@@ -94,13 +94,4 @@ export interface ArmyList {
     updatedAt: string
 }
 
-export interface GlossaryEntry {
-    summary: string
-    full: string
-}
-
-export interface Glossary {
-    properties: Record<string, GlossaryEntry>
-    systems: Record<string, GlossaryEntry>
-    qualities: Record<string, GlossaryEntry>
-}
+export type Glossary = Record<string, Record<string, string>>

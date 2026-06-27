@@ -14,10 +14,10 @@ export default function ListManager() {
     const totalVPR = useMemo(() => getTotalVPR({ currentList: selected, units }), [selected, units])
 
     return (
-        <div className="space-y-6">
-            <section className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/20">
-                <h2 className="text-2xl font-semibold text-white">Gestion des listes</h2>
-                <p className="mt-2 text-slate-400">Chargez, supprimez et inspectez vos listes sauvegardées.</p>
+        <div className="space-y-4">
+            <section className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
+                <h2 className="text-xl font-semibold text-neutral-900">Gestion des listes</h2>
+                <p className="mt-2 text-sm text-neutral-600">Chargez, supprimez et inspectez vos listes sauvegardées.</p>
             </section>
 
             <section className="grid gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
