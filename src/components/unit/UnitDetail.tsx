@@ -39,18 +39,44 @@ export default function UnitDetail() {
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorCost = generatorSelection?.generator.point_cost ?? 0
-    const totalCost = unit.point_cost_per_model + generatorCost
+    const optionCostTotal = unit.options_and_upgrades.reduce((sum, option) => {
+        const qty = selectedOptions[option.tag] ?? 0
+        return sum + (option.cost_per_unit != null ? qty * option.cost_per_unit : 0)
+    }, 0)
+    const totalCost = unit.point_cost_per_model + generatorCost + optionCostTotal
+    const costBreakdown = [
+        ...(generatorSelection ? [`Generator (${generatorSelection.generator.name}): +${generatorSelection.generator.point_cost} pts`] : []),
+        ...unit.options_and_upgrades.flatMap((option) => {
+            const qty = selectedOptions[option.tag] ?? 0
+            if (qty <= 0 || option.cost_per_unit == null) {
+                return []
+            }
+            return [`${option.tag} ×${qty}: +${qty * option.cost_per_unit} pts`]
+        }),
+    ]
 
     return (
         <div className="space-y-4">
             <section className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-start justify-between gap-4">
                     <div>
                         <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Détail</div>
                         <h2 className="mt-1 text-lg font-semibold text-neutral-900">{unit.name}</h2>
                         <p className="text-sm text-neutral-600">{unit.sub_name}</p>
                     </div>
-                    <span className="rounded-full bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white">{unit.point_cost_per_model} pts</span>
+                    <div className="flex flex-col items-end text-right">
+                        <div className="text-sm text-neutral-700">{unit.point_cost_per_model} pts</div>
+                        <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-neutral-500">
+                            {costBreakdown.length > 0 ? (
+                                <>
+                                    {costBreakdown.map((line) => (
+                                        <div key={line}>{line}</div>
+                                    ))}
+                                </>
+                            ) : null}
+                            <div className="rounded-full bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white">Total: {totalCost} pts</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-neutral-600">
@@ -58,8 +84,6 @@ export default function UnitDetail() {
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.models} modèle(s)</span>
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.faction}</span>
                 </div>
-
-                <p className="mt-3 text-sm leading-6 text-neutral-600">{unit.lore}</p>
             </section>
 
             <section className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm">
@@ -294,71 +318,50 @@ export default function UnitDetail() {
             </section>
 
             <section className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm">
-                <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Weapons Cost</div>
-                    <div className="text-[11px] text-neutral-500">
-                        <span className="font-semibold text-neutral-900">{totalCost} pts</span>
-                    </div>
-                </div>
-                <div className="mt-2 text-sm text-neutral-600">
-                    <div>Base cost: {unit.point_cost_per_model} pts</div>
-                    {generatorSelection ? (
-                        <div>Generator ({generatorSelection.generator.name}): +{generatorSelection.generator.point_cost} pts</div>
-                    ) : null}
-                </div>
-            </section>
-
-            <section className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm">
-                <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Options & Upgrades</div>
-                    <div className="text-[11px] text-neutral-500">
-                        Total: <span className="font-semibold text-neutral-900">{unit.options_and_upgrades.reduce((sum, option) => {
-                            const qty = selectedOptions[option.tag] ?? 0
-                            return sum + (option.cost_per_unit != null ? qty * option.cost_per_unit : 0)
-                        }, 0)} pts</span>
-                    </div>
-                </div>
-                <div className="mt-3 space-y-2">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Options & Upgrades</div>
+                <div className="mt-2 divide-y divide-neutral-100">
                     {unit.options_and_upgrades.map((option) => {
                         const qty = selectedOptions[option.tag] ?? 0
                         const max = option.max
                         const canIncrease = max == null || qty < max
+                        const isGeneratorOption = option.tag === 'GENERATOR'
 
                         return (
-                            <div key={option.tag} className="rounded-lg border border-neutral-200 bg-neutral-50 p-3">
-                                <div className="flex items-start justify-between gap-3">
-                                    <div>
-                                        <div className="font-medium text-neutral-900">{option.tag}</div>
-                                        <div className="mt-1 text-xs text-neutral-500">{option.description}</div>
-                                    </div>
-                                    <div className="text-right text-[11px] text-neutral-600">
-                                        <div>{option.cost_per_unit == null ? 'See rules' : `${option.cost_per_unit} pts each`}</div>
-                                        <div className="mt-1 font-medium text-neutral-900">{option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}</div>
-                                    </div>
+                            <div key={option.tag} className="flex items-center justify-between gap-3 py-2">
+                                <div className="min-w-0">
+                                    <div className="text-sm font-medium text-neutral-900">{option.tag}</div>
+                                    <div className="text-[11px] text-neutral-500">{option.description}</div>
                                 </div>
-                                <div className="mt-3 flex items-center gap-2">
-                                    <button
-                                        type="button"
-                                        className="h-7 w-7 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
-                                        onClick={() => setSelectedOptions((current) => ({ ...current, [option.tag]: Math.max(0, (current[option.tag] ?? 0) - 1) }))}
-                                        disabled={qty === 0}
-                                    >
-                                        −
-                                    </button>
-                                    <div className="min-w-8 text-center text-sm font-medium text-neutral-900">{qty}</div>
-                                    <button
-                                        type="button"
-                                        className="h-7 w-7 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
-                                        onClick={() => {
-                                            if (canIncrease) {
-                                                setSelectedOptions((current) => ({ ...current, [option.tag]: (current[option.tag] ?? 0) + 1 }))
-                                            }
-                                        }}
-                                        disabled={!canIncrease}
-                                    >
-                                        +
-                                    </button>
-                                    <div className="ml-2 text-[11px] text-neutral-500">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                {isGeneratorOption ? (
+                                    <div className="text-[11px] text-neutral-400">—</div>
+                                ) : (
+                                    <div className="flex items-center gap-2">
+                                        <button
+                                            type="button"
+                                            className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                            onClick={() => setSelectedOptions((current) => ({ ...current, [option.tag]: Math.max(0, (current[option.tag] ?? 0) - 1) }))}
+                                            disabled={qty === 0}
+                                        >
+                                            −
+                                        </button>
+                                        <div className="min-w-6 text-center text-sm font-medium text-neutral-900">{qty}</div>
+                                        <button
+                                            type="button"
+                                            className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                            onClick={() => {
+                                                if (canIncrease) {
+                                                    setSelectedOptions((current) => ({ ...current, [option.tag]: (current[option.tag] ?? 0) + 1 }))
+                                                }
+                                            }}
+                                            disabled={!canIncrease}
+                                        >
+                                            +
+                                        </button>
+                                        <div className="text-[11px] text-neutral-500">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                    </div>
+                                )}
+                                <div className="text-right text-[11px] text-neutral-600">
+                                    {option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}
                                 </div>
                             </div>
                         )
