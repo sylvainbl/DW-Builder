@@ -1,0 +1,165 @@
+[
+  {
+    "name": "Borodino",
+    "sub_name": "Battleship",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": 220,
+    "vpr": 6,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 5
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 5
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Cryo Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 2
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FP",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade this model with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Well designed so that a Borodino can be repaired and maintained by her own crew, even after sustaining considerable damage, these battleships are the rugged mainstay of the White Navy.",
+    "version": "4.00",
+    "date": "2024-06-05",
+    "id": "commonwealth_borodino",
+    "faction_id": "commonwealth"
+  }
+]
