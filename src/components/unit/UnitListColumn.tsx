@@ -2,49 +2,45 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getFilteredUnits } from '../../store/selectors'
 import type { Unit } from '../../types/index'
+import ActiveListPanel from '../lists/ActiveListPanel'
+import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
 
-export default function UnitListColumn() {
+function UnitCardList() {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
+    const setSelectedListInstanceId = useAppStore((state) => state.setSelectedListInstanceId)
     const units = useAppStore((state) => state.units)
     const searchQuery = useAppStore((state) => state.searchQuery)
     const selectedRoles = useAppStore((state) => state.selectedRoles)
     const factions = useAppStore((state) => state.factions)
+    const currentList = useAppStore((state) => state.currentList)
+    const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
     const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
 
+    const factionId = currentList?.faction_id ?? selectedFactionId
     const filteredUnits = useMemo(() => {
-        const filtered = getFilteredUnits({ units, selectedFactionId, searchQuery, selectedRoles })
+        const filtered = getFilteredUnits({ units, selectedFactionId: factionId, searchQuery, selectedRoles })
         return [...filtered].sort((a, b) => {
             if (sortMode === 'points-asc') return a.point_cost_per_model - b.point_cost_per_model
             if (sortMode === 'points-desc') return b.point_cost_per_model - a.point_cost_per_model
             return a.name.localeCompare(b.name)
         })
-    }, [selectedFactionId, searchQuery, selectedRoles, sortMode, units])
+    }, [factionId, searchQuery, selectedRoles, sortMode, units])
 
-    const faction = factions.find((item) => item.id === selectedFactionId)
+    const faction = factions.find((item) => item.id === factionId)
 
     return (
-        <aside className="flex h-full flex-col border-r border-neutral-200 bg-white">
-            <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
-                <div>
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Unités</div>
-                    <div className="text-[11px] text-neutral-500">{filteredUnits.length} visible{filteredUnits.length > 1 ? 's' : ''}</div>
-                </div>
-                <select
-                    value={sortMode}
-                    onChange={(event) => setSortMode(event.target.value as 'name' | 'points-asc' | 'points-desc')}
-                    className="rounded border border-neutral-200 bg-white px-2.5 py-1.5 text-[11px] text-neutral-600 outline-none"
-                >
-                    <option value="name">Nom A→Z</option>
-                    <option value="points-asc">Points ↑</option>
-                    <option value="points-desc">Points ↓</option>
-                </select>
-            </div>
-
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+            <FactionAndSearchHeader
+                compact={Boolean(currentList)}
+                sortMode={sortMode}
+                onSortModeChange={setSortMode}
+                visibleCount={filteredUnits.length}
+            />
             <div className="flex-1 overflow-y-auto p-3">
-                {!selectedFactionId ? (
+                {!factionId ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-4 text-sm text-neutral-500">
                         Sélectionnez une faction pour voir les unités.
                     </div>
@@ -60,11 +56,38 @@ export default function UnitListColumn() {
                                 unit={unit}
                                 faction={faction}
                                 active={selectedUnitId === unit.id}
-                                onSelect={() => setSelectedUnitId(unit.id)}
+                                onSelect={() => {
+                                    setSelectedListInstanceId(null)
+                                    setSelectedUnitId(unit.id)
+                                }}
+                                onAdd={currentList ? () => addUnitToCurrentList(unit.id) : undefined}
                             />
                         ))}
                     </div>
                 )}
+            </div>
+        </div>
+    )
+}
+
+export default function UnitListColumn() {
+    const currentList = useAppStore((state) => state.currentList)
+
+    if (!currentList) {
+        return (
+            <aside className="flex h-full flex-col overflow-hidden bg-white">
+                <UnitCardList />
+            </aside>
+        )
+    }
+
+    return (
+        <aside className="flex h-full flex-col overflow-hidden bg-white">
+            <div className="h-[45%] flex-none overflow-y-auto border-b border-neutral-200">
+                <ActiveListPanel />
+            </div>
+            <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+                <UnitCardList />
             </div>
         </aside>
     )

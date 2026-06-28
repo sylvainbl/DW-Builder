@@ -1,58 +1,58 @@
 [
-    {
-        "id": "commonwealth",
-        "name": "Commonwealth",
-        "description": "L'Empire Russe et ses alliés.",
-        "color": "#1a3a5c",
-        "accentColor": "#c8aa6e"
-    },
-    {
-        "id": "Empire",
-        "name": "Empire",
-        "description": "Fiers guerriers techno-spirites du Pacifique.",
-        "color": "#8a0f0f",
-        "accentColor": "#e0b35f"
-    },
-    {
-        "id": "Union",
-        "name": "Union",
-        "description": "Hmm oui burger",
-        "color": "#134021",
-        "accentColor": "#8edecb"
-    },
-    {
-        "id": "Sultanat",
-        "name": "Sultanat",
-        "description": "Portail ziouuuuu",
-        "color": "#1f3b62",
-        "accentColor": "#9fb8dc"
-    },
-    {
-        "id": "Crown",
-        "name": "Crown",
-        "description": "Dla merde",
-        "color": "#113a4e",
-        "accentColor": "#50b5d8"
-    },
-    {
-        "id": "Imperium",
-        "name": "Imperium",
-        "description": "C'est les pas gentils",
-        "color": "#4d3a18",
-        "accentColor": "#f2c96f"
-    },
-    {
-        "id": "Enlighted",
-        "name": "Enlighted",
-        "description": "un jour on jouera ça",
-        "color": "#2e2c2b",
-        "accentColor": "#c9c5b8"
-    },
-    {
-        "id": "Alliance",
-        "name": "Alliance",
-        "description": "Triched",
-        "color": "#0e2737",
-        "accentColor": "#7aa8c1"
-    }
+  {
+    "id": "commonwealth",
+    "name": "Commonwealth",
+    "description": "L'Empire Russe et ses alliés.",
+    "color": "#1a3a5c",
+    "accentColor": "#c8aa6e"
+  },
+  {
+    "id": "Empire",
+    "name": "Empire",
+    "description": "Fiers guerriers techno-spirites du Pacifique.",
+    "color": "#8a0f0f",
+    "accentColor": "#e0b35f"
+  },
+  {
+    "id": "Union",
+    "name": "Union",
+    "description": "Hmm oui burger",
+    "color": "#134021",
+    "accentColor": "#8edecb"
+  },
+  {
+    "id": "Sultanat",
+    "name": "Sultanat",
+    "description": "Portail ziouuuuu",
+    "color": "#1f3b62",
+    "accentColor": "#9fb8dc"
+  },
+  {
+    "id": "Crown",
+    "name": "Crown",
+    "description": "Dla merde",
+    "color": "#113a4e",
+    "accentColor": "#50b5d8"
+  },
+  {
+    "id": "Imperium",
+    "name": "Imperium",
+    "description": "C'est les pas gentils",
+    "color": "#4d3a18",
+    "accentColor": "#f2c96f"
+  },
+  {
+    "id": "Enlighted",
+    "name": "Enlighted",
+    "description": "un jour on jouera ça",
+    "color": "#2e2c2b",
+    "accentColor": "#c9c5b8"
+  },
+  {
+    "id": "Alliance",
+    "name": "Alliance",
+    "description": "Triched",
+    "color": "#0e2737",
+    "accentColor": "#7aa8c1"
+  }
 ]

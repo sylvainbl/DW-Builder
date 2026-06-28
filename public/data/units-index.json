@@ -1,5 +1,222 @@
 [
   {
+    "id": "commonwealth_alexeyev",
+    "faction_id": "commonwealth",
+    "name": "Alexeyev",
+    "sub_name": "Ekranoplan Heavy Transport",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ekranoplan",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-10\"",
+      "TRN": 1,
+      "DEF": 5,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": null,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Heavy Transport",
+        "value": null,
+        "detail": "Ekranoplan, Hovercraft"
+      },
+      {
+        "name": "Ekranoplan",
+        "value": null
+      },
+      {
+        "name": "Elevated",
+        "value": null
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Aerial, Surface"
+      },
+      {
+        "name": "Landing Party Support",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 6
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 6
+      },
+      {
+        "name": "Overthrusters",
+        "value": null
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Super-Heavy Katyusha Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": null,
+          "S": 16,
+          "E": 24
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 4
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Intensive",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Largest Ekranoplan in the world, the Alexeyev is tasked with rapidly deploying small squadrons of hovercraft, or even other Ekranoplans, to key locations as part of a rapid reaction force. Named after Evgenievich Alexayev, the brilliant engineer who won the Tsar's wager by proving his proposed design for the Ekranoplan was possible.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
     "name": "Borodino",
     "sub_name": "Battleship",
     "faction": "Commonwealth",
@@ -161,5 +378,306 @@
     "date": "2024-06-05",
     "id": "commonwealth_borodino",
     "faction_id": "commonwealth"
+  },
+  {
+    "id": "commonwealth_tobolsk",
+    "faction_id": "commonwealth",
+    "name": "Tobolsk",
+    "sub_name": "Mobile Stronghold",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 12,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 7,
+      "SPD": "0\"-6\"",
+      "TRN": 0,
+      "DEF": 5,
+      "ARM": 18,
+      "HUL": 3,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 11,
+      "CRW": null
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 7
+      },
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "Encompassing Broadsides",
+        "value": null
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Kometa Interceptors"
+      },
+      {
+        "name": "Unexpected Arrival",
+        "value": null
+      },
+      {
+        "name": "Very Large",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Cryo Generator",
+        "value": null
+      },
+      {
+        "name": "Flight Command",
+        "value": 2
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Magnetic Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FP",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "SA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "A development on the Murmansk, the Tobolsk Mobile Stronghold is often deployed in the far northern waters where it provides a tactical advantage to the Commonwealth in those isolated freezing seas. Though the Void Engines still require many hours to recharge, the element of surprise makes this a uniquely viable technology for these mobile strongholds.",
+    "version": "4.00",
+    "date": "2026-06-28"
   }
 ]

@@ -72,22 +72,21 @@ export interface Unit {
     date: string
 }
 
-export interface HardpointSelection {
-    slot: string
-    weaponName: string
-}
-
-export interface OptionSelection {
-    tag: string
-    quantity: number
+export interface UnitConfig {
+    hardpointSelections: Record<number, string>
+    generatorSelection: {
+        weaponIndex: number
+        generatorName: string
+        generatorCost: number
+    } | null
+    optionQuantities: Record<string, number>
 }
 
 export interface ArmyUnit {
     instanceId: string
     unitId: string
-    quantity: number
-    hardpoints: HardpointSelection[]
-    options: OptionSelection[]
+    config: UnitConfig
+    totalPoints: number
 }
 
 export interface ArmyList {

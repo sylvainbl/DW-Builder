@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import type { Faction, Unit } from '../../types/index'
 import TagChip from '../ui/TagChip'
 
@@ -17,19 +18,39 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Pro
             className={`w-full rounded-xl border p-3 text-left transition ${active ? 'border-blue-300 bg-blue-50 shadow-sm' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
             style={{ borderLeft: `3px solid ${faction?.color ?? 'var(--navy)'}` }}
         >
-            <div className="text-sm font-medium text-neutral-900">{unit.name}</div>
-            <div className="text-[11px] text-neutral-500">{unit.sub_name}</div>
+            <div className="flex items-start gap-2">
+                <div className="min-w-0 flex-1">
+                    <div className="truncate text-sm font-medium text-neutral-900">{unit.name}</div>
+                    <div className="text-[11px] text-neutral-500">{unit.sub_name}</div>
+                </div>
+                {onAdd ? (
+                    <span
+                        role="button"
+                        tabIndex={0}
+                        title="Ajouter à la liste"
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            onAdd()
+                        }}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                onAdd()
+                            }
+                        }}
+                        className="rounded-md px-1.5 py-1 text-[var(--navy)] hover:bg-blue-50"
+                    >
+                        <Plus size={15} />
+                    </span>
+                ) : null}
+            </div>
             <div className="mt-2.5 flex flex-wrap items-center gap-1">
                 {unit.tags.slice(0, 2).map((tag) => (
                     <TagChip key={tag} label={tag} />
                 ))}
                 <span className="ml-auto text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model} pts</span>
             </div>
-            {onAdd ? (
-                <div className="mt-2 text-right">
-                    <span className="text-[11px] text-neutral-500">Ajouter à la liste</span>
-                </div>
-            ) : null}
         </button>
     )
 }

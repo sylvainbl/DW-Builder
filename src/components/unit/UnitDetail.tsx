@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
-import type { Generator } from '../../types/index'
+import { computeTotalPoints } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 
 function formatValue(value: number | string | null | undefined) {
@@ -13,19 +13,13 @@ export default function UnitDetail() {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
-    const [selectedHardpoints, setSelectedHardpoints] = useState<Record<string, string>>({})
+    const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
+    const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
+    const setGeneratorSelection = useAppStore((state) => state.setGeneratorSelection)
+    const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const [openHardpointKey, setOpenHardpointKey] = useState<string | null>(null)
-    const [selectedOptions, setSelectedOptions] = useState<Record<string, number>>({})
-    const [generatorSelection, setGeneratorSelection] = useState<{ weaponIndex: number; generator: Generator } | null>(null)
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
-
-    useEffect(() => {
-        setSelectedHardpoints({})
-        setOpenHardpointKey(null)
-        setSelectedOptions({})
-        setGeneratorSelection(null)
-    }, [selectedUnitId])
 
     if (!unit) {
         return (
@@ -38,16 +32,12 @@ export default function UnitDetail() {
     const statEntries = Object.entries(unit.stats)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const canTakeGenerator = unitCanTakeGenerator(unit)
-    const generatorCost = generatorSelection?.generator.point_cost ?? 0
-    const optionCostTotal = unit.options_and_upgrades.reduce((sum, option) => {
-        const qty = selectedOptions[option.tag] ?? 0
-        return sum + (option.cost_per_unit != null ? qty * option.cost_per_unit : 0)
-    }, 0)
-    const totalCost = unit.point_cost_per_model + generatorCost + optionCostTotal
+    const generatorSelection = activeUnitConfig.generatorSelection
+    const totalCost = computeTotalPoints(unit, activeUnitConfig)
     const costBreakdown = [
-        ...(generatorSelection ? [`Generator (${generatorSelection.generator.name}): +${generatorSelection.generator.point_cost} pts`] : []),
+        ...(generatorSelection ? [`Generator (${generatorSelection.generatorName}): +${generatorSelection.generatorCost} pts`] : []),
         ...unit.options_and_upgrades.flatMap((option) => {
-            const qty = selectedOptions[option.tag] ?? 0
+            const qty = activeUnitConfig.optionQuantities[option.tag] ?? 0
             if (qty <= 0 || option.cost_per_unit == null) {
                 return []
             }
@@ -165,7 +155,7 @@ export default function UnitDetail() {
                         <tbody>
                             {unit.weapons.map((weapon, index) => {
                                 const weaponKey = `${unit.id}-${index}-${weapon.slot ?? 'base'}`
-                                const selectedName = selectedHardpoints[weaponKey] ?? weapon.name
+                                const selectedName = activeUnitConfig.hardpointSelections[index] ?? weapon.name
                                 const options = weapon.slot ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
                                 const displayWeapon = options.find((option) => option.name === selectedName) ?? weapon
                                 const isOpen = openHardpointKey === weaponKey
@@ -179,8 +169,8 @@ export default function UnitDetail() {
                                         <tr key={weaponKey} className="bg-amber-50 align-top">
                                             <td className="rounded-l-lg px-2 py-2">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-medium text-neutral-900">{generatorSelection.generator.name}</span>
-                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">+{generatorSelection.generator.point_cost} pts</span>
+                                                    <span className="font-medium text-neutral-900">{generatorSelection.generatorName}</span>
+                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">+{generatorSelection.generatorCost} pts</span>
                                                     <button
                                                         type="button"
                                                         className="text-[10px] font-medium text-neutral-500 underline-offset-2 hover:underline"
@@ -223,11 +213,7 @@ export default function UnitDetail() {
                                                                     name={`slot-${index}`}
                                                                     checked={selectedName === weapon.name}
                                                                     onChange={() => {
-                                                                        setSelectedHardpoints((current) => {
-                                                                            const next = { ...current }
-                                                                            delete next[weaponKey]
-                                                                            return next
-                                                                        })
+                                                                        setHardpointSelection(index, weapon.name)
                                                                         setOpenHardpointKey(null)
                                                                         if (generatorSelection?.weaponIndex === index) {
                                                                             setGeneratorSelection(null)
@@ -246,7 +232,7 @@ export default function UnitDetail() {
                                                                                 name={`slot-${index}`}
                                                                                 checked={selectedName === option.name}
                                                                                 onChange={() => {
-                                                                                    setSelectedHardpoints((current) => ({ ...current, [weaponKey]: option.name }))
+                                                                                    setHardpointSelection(index, option.name)
                                                                                     setOpenHardpointKey(null)
                                                                                     if (generatorSelection?.weaponIndex === index) {
                                                                                         setGeneratorSelection(null)
@@ -267,14 +253,9 @@ export default function UnitDetail() {
                                                                                 <input
                                                                                     type="radio"
                                                                                     name={`slot-${index}`}
-                                                                                    checked={generatorSelection?.weaponIndex === index && generatorSelection?.generator.name === generator.name}
+                                                                                    checked={generatorSelection?.weaponIndex === index && generatorSelection?.generatorName === generator.name}
                                                                                     onChange={() => {
-                                                                                        setGeneratorSelection({ weaponIndex: index, generator })
-                                                                                        setSelectedHardpoints((current) => {
-                                                                                            const next = { ...current }
-                                                                                            delete next[weaponKey]
-                                                                                            return next
-                                                                                        })
+                                                                                        setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
                                                                                         setOpenHardpointKey(null)
                                                                                     }}
                                                                                 />
@@ -321,7 +302,7 @@ export default function UnitDetail() {
                 <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Options & Upgrades</div>
                 <div className="mt-2 divide-y divide-neutral-100">
                     {unit.options_and_upgrades.map((option) => {
-                        const qty = selectedOptions[option.tag] ?? 0
+                        const qty = activeUnitConfig.optionQuantities[option.tag] ?? 0
                         const max = option.max
                         const canIncrease = max == null || qty < max
                         const isGeneratorOption = option.tag === 'GENERATOR'
@@ -339,7 +320,7 @@ export default function UnitDetail() {
                                         <button
                                             type="button"
                                             className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
-                                            onClick={() => setSelectedOptions((current) => ({ ...current, [option.tag]: Math.max(0, (current[option.tag] ?? 0) - 1) }))}
+                                            onClick={() => setOptionQuantity(option.tag, qty - 1)}
                                             disabled={qty === 0}
                                         >
                                             −
@@ -350,7 +331,7 @@ export default function UnitDetail() {
                                             className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
                                             onClick={() => {
                                                 if (canIncrease) {
-                                                    setSelectedOptions((current) => ({ ...current, [option.tag]: (current[option.tag] ?? 0) + 1 }))
+                                                    setOptionQuantity(option.tag, qty + 1)
                                                 }
                                             }}
                                             disabled={!canIncrease}

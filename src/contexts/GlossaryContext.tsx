@@ -1,14 +1,7 @@
-import { createContext, useContext, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import GlossaryModal from '../components/glossary/GlossaryModal'
-
-interface GlossaryContextValue {
-    open: (category: 'properties' | 'systems' | 'qualities', name: string) => void
-    close: () => void
-    current: { category: 'properties' | 'systems' | 'qualities'; name: string } | null
-}
-
-const GlossaryContext = createContext<GlossaryContextValue | null>(null)
+import { GlossaryContext, type GlossaryContextValue } from './glossaryContextValue'
 
 interface Props {
     children: ReactNode
@@ -32,12 +25,4 @@ export function GlossaryProvider({ children }: Props) {
             {current ? <GlossaryModal category={current.category} name={current.name} onClose={() => setCurrent(null)} /> : null}
         </GlossaryContext.Provider>
     )
-}
-
-export function useGlossary() {
-    const context = useContext(GlossaryContext)
-    if (!context) {
-        throw new Error('useGlossary must be used within a GlossaryProvider')
-    }
-    return context
 }

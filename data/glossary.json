@@ -1,48 +1,18 @@
 {
-    "properties": {
-        "Ablative Armour": {
-            "summary": "Réduit les dégâts des premières touches.",
-            "full": "Lorsque cette unité subit des dégâts, ignorez les X premières touches par tour. X est la valeur de cette propriété."
-        },
-        "Heavy Prow": {
-            "summary": "Augmente les chances de percer les défenses ennemies.",
-            "full": "Cette unité reçoit un bonus de pénétration contre les cibles en face pendant la phase d'attaque."
-        }
-    },
-    "systems": {
-        "Boosted Propulsion": {
-            "summary": "Augmente la vitesse maximale.",
-            "full": "Cette unité peut augmenter sa SPD maximale de X\" une fois par activation."
-        },
-        "Cryo Generator": {
-            "summary": "Améliore la défense contre les dégâts fixes.",
-            "full": "Tant que ce système est actif, ignorez le premier niveau de dégâts de chaque attaque ennemie."
-        }
-    },
-    "qualities": {
-        "Submerged": {
-            "summary": "Protection accrue sous l'eau.",
-            "full": "Cette arme inflige des dégâts normaux aux cibles amphibies et navales, et ne peut pas attaquer les cibles aériennes."
-        },
-        "Breach": {
-            "summary": "Pénètre l'armure ennemie.",
-            "full": "Quand cette arme touche, son jet de dégâts ignore X points d'ARM."
-        },
-        "Torpedo": {
-            "summary": "Attaque lourde sous la ligne de flottaison.",
-            "full": "Peut attaquer uniquement les unités navales et ignore certains bonus de couverture."
-        },
-        "Rail": {
-            "summary": "Tir longue portée et très précis.",
-            "full": "Augmente la portée et ignore la plupart des modificateurs de couverture."
-        },
-        "All Around": {
-            "summary": "Couverture complète.",
-            "full": "Cette arme peut tirer dans n'importe quelle direction sans pénalité d'arc."
-        },
-        "Barrage": {
-            "summary": "Tir en salve étendue.",
-            "full": "Cette arme touche plusieurs cibles potentielles dans la même zone."
-        }
-    }
+  "properties": {
+    "Ablative Armour": "When this model is the Initial Target of an Attack action, convert X Exploding Strikes in the Action Roll to Heavy Strikes immediately after rolling the dice, before beginning the Resolve Exploding Strikes step. Sometimes this Property will be listed for a specific Arc, e.g. Ablative Armour: Fore (3). In this case, the Property only applies if at least half of the models Participating in the Attack action are within the listed Arc of the Target Model.",
+    "Heavy Prow": "When building the Action Pool for a Ram performed by this model, add X Bonus Dice. In addition, when this model Collides with or Rams another model, or is itself the Target of a Ram and the point of contact is in this model's Fore Arc, the amount of Damage it suffers is reduced by X, to a minimum of 0."
+  },
+  "systems": {
+    "Boosted Propulsion": "Before moving this model, its Admiral can declare that they will Boost its Propulsion. If they do so, then for the duration of the current Movement Step, the model's Minimum Speed is increased to its unmodified Maximum Speed, its Maximum Speed by X\", and its Turn Limit reduced to 0.",
+    "Cryo Generator": "This is a Generator. This model's unit can make a Cryogenic Blast Special Action, as described in the Commonwealth ORBAT."
+  },
+  "qualities": {
+    "Submerged": "Weapons with this Special Attack Quality are Submerged Weapons, and can only Contribute to an Attack action if all Contributing weapons are also Submerged Weapons.",
+    "Breach": "If the Initial Target of this Attack action suffers at least 1 Damage, the active Admiral rolls X Critical Damage Dice for each Contributing weapon with this Quality. If one or more dice show a Breach result, the Initial Target suffers one Critical Damage Effect of that type. This is a Critical Damage Quality. If multiple different Critical Damage Qualities apply to an Attack, the Admiral makes a separate roll for each one.",
+    "Torpedo": "This weapon cannot Contribute to an Attack action if the Initial Target is within 5\" of this model.",
+    "Rail": "In the Resolve Exploding Strikes step of the Action Roll for this Attack action, the first X Exploding Strikes cause two additional Action Dice to be rolled, instead of one. If multiple Contributing weapons have this Quality, their X values are combined.",
+    "All Around": "When Declaring Contributing Weapons for an Attack action, this weapon can Contribute regardless of which Targeting Arc the Initial Target is in.",
+    "Barrage": "If at least one weapon Contributing to an Attack action has this Quality, the Target's Mass rating is treated as being one point lower when resolving the Under Fire rule. In addition, if all weapons Contributing to an Attack action have this Quality and the Target is an Airborne model, only Standard Strikes in the Resistance Roll are converted to Standard Counters by the Unconventional Target rule."
+  }
 }
