@@ -9,6 +9,20 @@ function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
 }
 
+function formatModelRange(unit: { min?: number; max?: number; models: number | string }) {
+    if (typeof unit.min === 'number' && typeof unit.max === 'number') {
+        return unit.min === unit.max ? `${unit.min}` : `${unit.min}-${unit.max}`
+    }
+    return String(unit.models)
+}
+
+function modelLabel(unit: { min?: number; max?: number; models: number | string }) {
+    if (typeof unit.min === 'number' && typeof unit.max === 'number') {
+        return unit.min === 1 && unit.max === 1 ? 'model' : 'models'
+    }
+    return typeof unit.models === 'number' && unit.models === 1 ? 'model' : 'models'
+}
+
 export default function UnitDetail() {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
@@ -73,7 +87,7 @@ export default function UnitDetail() {
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-neutral-600">
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.role}</span>
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">
-                        {unit.models} {typeof unit.models === 'number' && unit.models === 1 ? 'model' : 'models'}
+                        {formatModelRange(unit)} {modelLabel(unit)}
                     </span>
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.faction}</span>
                 </div>

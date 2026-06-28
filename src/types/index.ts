@@ -63,6 +63,8 @@ export interface Unit {
     point_cost_per_model: number | null
     vpr: number
     models: number | string
+    min?: number
+    max?: number
     tags: string[]
     stats: Stat
     properties: NamedValue[]
