@@ -27,7 +27,7 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Pro
                     <span
                         role="button"
                         tabIndex={0}
-                        title="Ajouter à la liste"
+                        title="Add to list"
                         onClick={(event) => {
                             event.stopPropagation()
                             onAdd()

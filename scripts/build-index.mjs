@@ -23,6 +23,7 @@ async function build() {
 
     const factions = await loadJson('factions.json')
     const glossary = await loadJson('glossary.json')
+    const generators = await loadJson('generators.json')
 
     const units = []
 
@@ -44,6 +45,7 @@ async function build() {
 
     await writeJson('factions.json', factions)
     await writeJson('glossary.json', glossary)
+    await writeJson('generators.json', generators)
     await writeJson('units-index.json', units)
 
     console.log(`Generated ${units.length} units across ${factions.length} factions.`)

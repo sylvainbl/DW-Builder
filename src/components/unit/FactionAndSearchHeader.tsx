@@ -34,15 +34,15 @@ export default function FactionAndSearchHeader({ compact = false, sortMode, onSo
         <div className={`border-b border-neutral-200 ${compact ? 'space-y-2 p-3' : 'space-y-3 p-4'}`}>
             <div className="flex items-center justify-between gap-2">
                 <div>
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Unités</div>
-                    <div className="text-[11px] text-neutral-500">{visibleCount} visible{visibleCount > 1 ? 's' : ''}</div>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Units</div>
+                    <div className="text-[11px] text-neutral-500">{visibleCount} visible</div>
                 </div>
                 <select
                     value={sortMode}
                     onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc')}
                     className="rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
                 >
-                    <option value="name">Nom A-Z</option>
+                    <option value="name">Name A-Z</option>
                     <option value="points-asc">Points ↑</option>
                     <option value="points-desc">Points ↓</option>
                 </select>
@@ -57,7 +57,7 @@ export default function FactionAndSearchHeader({ compact = false, sortMode, onSo
                 }}
                 className="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-700 outline-none disabled:bg-neutral-100 disabled:text-neutral-500"
             >
-                <option value="">Sélectionnez une faction</option>
+                <option value="">Select a faction</option>
                 {availableFactions.map((faction) => (
                     <option key={faction.id} value={faction.id}>{faction.name}</option>
                 ))}
@@ -68,7 +68,7 @@ export default function FactionAndSearchHeader({ compact = false, sortMode, onSo
                 <input
                     value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)}
-                    placeholder="Rechercher"
+                    placeholder="Search"
                     className="w-full bg-transparent outline-none"
                 />
             </label>

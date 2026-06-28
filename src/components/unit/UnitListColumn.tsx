@@ -42,11 +42,11 @@ function UnitCardList() {
             <div className="flex-1 overflow-y-auto p-3">
                 {!factionId ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-4 text-sm text-neutral-500">
-                        Sélectionnez une faction pour voir les unités.
+                        Select a faction to see units.
                     </div>
                 ) : filteredUnits.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-4 text-sm text-neutral-500">
-                        Aucune unité ne correspond aux filtres actuels.
+                        No units match the current filters.
                     </div>
                 ) : (
                     <div className="space-y-2">
@@ -83,7 +83,7 @@ export default function UnitListColumn() {
 
     return (
         <aside className="flex h-full flex-col overflow-hidden bg-white">
-            <div className="h-[45%] flex-none overflow-y-auto border-b border-neutral-200">
+            <div className="max-h-[45%] flex-none overflow-y-auto border-b border-neutral-200">
                 <ActiveListPanel />
             </div>
             <div className="flex min-h-0 flex-1 flex-col overflow-hidden">

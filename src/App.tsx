@@ -18,7 +18,7 @@ function App() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[var(--navy)] p-6 text-white">
         <div className="rounded-3xl border border-white/10 bg-white/10 p-8 text-center shadow-xl backdrop-blur">
-          <p className="text-lg font-semibold">Chargement des données...</p>
+          <p className="text-lg font-semibold">Loading data...</p>
         </div>
       </div>
     )

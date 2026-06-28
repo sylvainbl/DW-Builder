@@ -23,7 +23,7 @@ export default function ListsPanel() {
                 className="flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--navy)] px-3 py-2.5 text-sm font-medium text-white transition hover:bg-[var(--navy-light)]"
             >
                 <Plus size={15} />
-                Nouvelle liste
+                New list
             </button>
 
             {showForm ? (
@@ -41,7 +41,7 @@ export default function ListsPanel() {
                     <input
                         value={name}
                         onChange={(event) => setName(event.target.value)}
-                        placeholder="Nom de la liste"
+                        placeholder="List name"
                         className="w-full rounded border border-neutral-200 px-2.5 py-2 text-sm outline-none"
                     />
                     <select
@@ -56,24 +56,24 @@ export default function ListsPanel() {
                     </select>
                     <div className="flex gap-2">
                         <button type="submit" className="flex-1 rounded bg-[var(--navy)] px-2 py-1.5 text-xs font-medium text-white">
-                            Créer
+                            Create
                         </button>
                         <button
                             type="button"
                             onClick={() => setShowForm(false)}
                             className="flex-1 rounded border border-neutral-200 px-2 py-1.5 text-xs text-neutral-600"
                         >
-                            Annuler
+                            Cancel
                         </button>
                     </div>
                 </form>
             ) : null}
 
-            <div className="mt-5 px-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Mes listes</div>
+            <div className="mt-5 px-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">My lists</div>
             <div className="mt-2 min-h-0 flex-1 space-y-2 overflow-y-auto">
                 {savedLists.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-white/70 p-3 text-sm text-neutral-500">
-                        Aucune liste sauvegardée.
+                        No saved lists yet.
                     </div>
                 ) : (
                     savedLists.map((list) => {
@@ -97,16 +97,16 @@ export default function ListsPanel() {
                                     <span
                                         role="button"
                                         tabIndex={0}
-                                        title="Supprimer"
+                                        title="Delete"
                                         onClick={(event) => {
                                             event.stopPropagation()
-                                            if (window.confirm(`Supprimer "${list.name}" ?`)) deleteList(list.id)
+                                            if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
                                         }}
                                         onKeyDown={(event) => {
                                             if (event.key === 'Enter' || event.key === ' ') {
                                                 event.preventDefault()
                                                 event.stopPropagation()
-                                                if (window.confirm(`Supprimer "${list.name}" ?`)) deleteList(list.id)
+                                                if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
                                             }
                                         }}
                                         className="rounded p-1 text-neutral-400 hover:bg-rose-50 hover:text-rose-600"

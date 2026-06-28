@@ -23,7 +23,7 @@ export default function GlossaryModal({ category, name, onClose }: Props) {
                         className="rounded-full border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 transition hover:border-slate-500 hover:bg-slate-700"
                         onClick={onClose}
                     >
-                        Fermer
+                        Close
                     </button>
                 </div>
 
@@ -32,7 +32,7 @@ export default function GlossaryModal({ category, name, onClose }: Props) {
                         <p className="text-sm leading-7">{entry}</p>
                     </div>
                 ) : (
-                    <p className="mt-6 text-sm text-slate-400">Aucune entrée de glossaire trouvée pour cette règle.</p>
+                    <p className="mt-6 text-sm text-slate-400">No glossary entry found for this rule.</p>
                 )}
             </div>
         </div>

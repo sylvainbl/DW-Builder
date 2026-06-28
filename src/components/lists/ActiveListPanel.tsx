@@ -63,7 +63,7 @@ export default function ActiveListPanel() {
                 <div className="flex items-center gap-1">
                     <button
                         type="button"
-                        title="Télécharger"
+                        title="Download"
                         onClick={() => downloadList(currentList, units)}
                         className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                     >
@@ -71,7 +71,7 @@ export default function ActiveListPanel() {
                     </button>
                     <button
                         type="button"
-                        title="Fermer"
+                        title="Close"
                         onClick={closeList}
                         className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                     >
@@ -83,7 +83,7 @@ export default function ActiveListPanel() {
             <div className="mt-3 space-y-1.5">
                 {currentList.units.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-3 text-sm text-neutral-500">
-                        Aucune unité ajoutée.
+                        No units added.
                     </div>
                 ) : (
                     currentList.units.map((entry) => {
@@ -99,14 +99,14 @@ export default function ActiveListPanel() {
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0">
                                         <div className="truncate text-sm font-medium text-neutral-900">{unit?.name ?? entry.unitId}</div>
-                                        <div className="text-[11px] text-neutral-500">{unit?.role ?? 'Unité'}</div>
+                                        <div className="text-[11px] text-neutral-500">{unit?.role ?? 'Unit'}</div>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className="whitespace-nowrap text-[11px] font-medium text-[var(--navy)]">{entry.totalPoints} pts</span>
                                         <span
                                             role="button"
                                             tabIndex={0}
-                                            title="Retirer"
+                                            title="Remove"
                                             onClick={(event) => {
                                                 event.stopPropagation()
                                                 removeUnitFromList(entry.instanceId)
