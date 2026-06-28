@@ -1,7 +1,59 @@
 import { Download, Minus, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
+import type { ArmyUnit, Unit } from '../../types/index'
 import { downloadList } from '../../utils/localStorage'
+
+interface UnitRowProps {
+    entry: ArmyUnit
+    unit?: Unit
+    active: boolean
+    nested?: boolean
+    onSelect: () => void
+    onRemove: () => void
+}
+
+function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: UnitRowProps) {
+    return (
+        <button
+            type="button"
+            onClick={onSelect}
+            className={`w-full rounded-lg border p-2 text-left transition ${nested ? 'ml-4 w-[calc(100%-1rem)] border-blue-100 bg-blue-50/50' : ''} ${active ? 'border-blue-200 bg-blue-50' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
+        >
+            <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                        {nested ? <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-blue-500">Attachment</span> : null}
+                        <div className="truncate text-sm font-medium text-neutral-900">{unit?.name ?? entry.unitId}</div>
+                    </div>
+                    <div className="text-[11px] text-neutral-500">{unit?.role ?? 'Unit'}</div>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="whitespace-nowrap text-[11px] font-medium text-[var(--navy)]">{entry.totalPoints} pts</span>
+                    <span
+                        role="button"
+                        tabIndex={0}
+                        title="Remove"
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            onRemove()
+                        }}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                onRemove()
+                            }
+                        }}
+                        className="rounded p-1 text-neutral-400 hover:bg-rose-50 hover:text-rose-600"
+                    >
+                        <Minus size={13} />
+                    </span>
+                </div>
+            </div>
+        </button>
+    )
+}
 
 export default function ActiveListPanel() {
     const currentList = useAppStore((state) => state.currentList)
@@ -90,41 +142,26 @@ export default function ActiveListPanel() {
                         const unit = unitById.get(entry.unitId)
                         const active = selectedListInstanceId === entry.instanceId
                         return (
-                            <button
-                                key={entry.instanceId}
-                                type="button"
-                                onClick={() => selectListUnit(entry.instanceId)}
-                                className={`w-full rounded-lg border p-2 text-left transition ${active ? 'border-blue-200 bg-blue-50' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
-                            >
-                                <div className="flex items-start justify-between gap-2">
-                                    <div className="min-w-0">
-                                        <div className="truncate text-sm font-medium text-neutral-900">{unit?.name ?? entry.unitId}</div>
-                                        <div className="text-[11px] text-neutral-500">{unit?.role ?? 'Unit'}</div>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="whitespace-nowrap text-[11px] font-medium text-[var(--navy)]">{entry.totalPoints} pts</span>
-                                        <span
-                                            role="button"
-                                            tabIndex={0}
-                                            title="Remove"
-                                            onClick={(event) => {
-                                                event.stopPropagation()
-                                                removeUnitFromList(entry.instanceId)
-                                            }}
-                                            onKeyDown={(event) => {
-                                                if (event.key === 'Enter' || event.key === ' ') {
-                                                    event.preventDefault()
-                                                    event.stopPropagation()
-                                                    removeUnitFromList(entry.instanceId)
-                                                }
-                                            }}
-                                            className="rounded p-1 text-neutral-400 hover:bg-rose-50 hover:text-rose-600"
-                                        >
-                                            <Minus size={13} />
-                                        </span>
-                                    </div>
-                                </div>
-                            </button>
+                            <div key={entry.instanceId} className="space-y-1">
+                                <UnitRow
+                                    entry={entry}
+                                    unit={unit}
+                                    active={active}
+                                    onSelect={() => selectListUnit(entry.instanceId)}
+                                    onRemove={() => removeUnitFromList(entry.instanceId)}
+                                />
+                                {(entry.attachedUnits ?? []).map((attachment) => (
+                                    <UnitRow
+                                        key={attachment.instanceId}
+                                        entry={attachment}
+                                        unit={unitById.get(attachment.unitId)}
+                                        active={selectedListInstanceId === attachment.instanceId}
+                                        nested
+                                        onSelect={() => selectListUnit(attachment.instanceId)}
+                                        onRemove={() => removeUnitFromList(attachment.instanceId)}
+                                    />
+                                ))}
+                            </div>
                         )
                     })
                 )}

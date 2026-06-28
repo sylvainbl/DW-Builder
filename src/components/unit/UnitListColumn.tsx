@@ -6,6 +6,18 @@ import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
 
+function unitTraits(unit: Unit): string[] {
+    return [unit.name, unit.sub_name, unit.role, ...unit.tags].map((trait) => trait.toLowerCase())
+}
+
+function canAttachToParent(attachment: Unit, parent: Unit): boolean {
+    if (!attachment.attachment || attachment.faction_id !== parent.faction_id) return false
+    const parentTraits = unitTraits(parent)
+    return attachment.attachment.parent_traits.every((requiredTrait) =>
+        parentTraits.includes(requiredTrait.toLowerCase()),
+    )
+}
+
 function UnitCardList() {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
@@ -17,19 +29,31 @@ function UnitCardList() {
     const factions = useAppStore((state) => state.factions)
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
+    const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
 
     const factionId = currentList?.faction_id ?? selectedFactionId
     const filteredUnits = useMemo(() => {
         const filtered = getFilteredUnits({ units, selectedFactionId: factionId, searchQuery, selectedRoles })
         return [...filtered].sort((a, b) => {
-            if (sortMode === 'points-asc') return a.point_cost_per_model - b.point_cost_per_model
-            if (sortMode === 'points-desc') return b.point_cost_per_model - a.point_cost_per_model
+            if (sortMode === 'points-asc') return (a.point_cost_per_model ?? 0) - (b.point_cost_per_model ?? 0)
+            if (sortMode === 'points-desc') return (b.point_cost_per_model ?? 0) - (a.point_cost_per_model ?? 0)
             return a.name.localeCompare(b.name)
         })
     }, [factionId, searchQuery, selectedRoles, sortMode, units])
 
     const faction = factions.find((item) => item.id === factionId)
+    const attachmentTargetsByUnitId = useMemo(() => {
+        if (!currentList) return new Map<string, { instanceId: string; label: string }[]>()
+        return new Map(filteredUnits.map((unit) => {
+            const targets = currentList.units.flatMap((entry) => {
+                const parent = units.find((item) => item.id === entry.unitId)
+                if (!parent || !canAttachToParent(unit, parent)) return []
+                return [{ instanceId: entry.instanceId, label: parent.name }]
+            })
+            return [unit.id, targets]
+        }))
+    }, [currentList, filteredUnits, units])
 
     return (
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
@@ -61,6 +85,8 @@ function UnitCardList() {
                                     setSelectedUnitId(unit.id)
                                 }}
                                 onAdd={currentList ? () => addUnitToCurrentList(unit.id) : undefined}
+                                attachmentTargets={attachmentTargetsByUnitId.get(unit.id)}
+                                onAttach={currentList ? (parentInstanceId) => addAttachmentToListUnit(parentInstanceId, unit.id) : undefined}
                             />
                         ))}
                     </div>

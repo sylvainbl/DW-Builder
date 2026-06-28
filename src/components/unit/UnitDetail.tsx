@@ -56,7 +56,7 @@ export default function UnitDetail() {
                         <p className="text-sm text-neutral-600">{unit.sub_name}</p>
                     </div>
                     <div className="flex flex-col items-end text-right">
-                        <div className="text-sm text-neutral-700">{unit.point_cost_per_model} pts</div>
+                        <div className="text-sm text-neutral-700">{unit.point_cost_per_model ?? 0} pts</div>
                         <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-neutral-500">
                             {costBreakdown.length > 0 ? (
                                 <>
@@ -72,7 +72,9 @@ export default function UnitDetail() {
 
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-neutral-600">
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.role}</span>
-                    <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.models} model{unit.models > 1 ? 's' : ''}</span>
+                    <span className="rounded-full bg-neutral-100 px-2.5 py-1">
+                        {unit.models} {typeof unit.models === 'number' && unit.models === 1 ? 'model' : 'models'}
+                    </span>
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.faction}</span>
                 </div>
             </section>

@@ -22,6 +22,7 @@ export interface Stat {
 export interface NamedValue {
     name: string
     value: number | null
+    detail?: string
 }
 
 export interface Firepower {
@@ -41,8 +42,10 @@ export interface Weapon {
 export interface OptionUpgrade {
     description: string
     cost_per_unit: number | null
-    max: number
+    max: number | null
     tag: string
+    restrictions?: string[]
+    choices?: unknown[]
 }
 
 export interface Generator {
@@ -57,9 +60,9 @@ export interface Unit {
     sub_name: string
     faction: string
     role: string
-    point_cost_per_model: number
+    point_cost_per_model: number | null
     vpr: number
-    models: number
+    models: number | string
     tags: string[]
     stats: Stat
     properties: NamedValue[]
@@ -70,6 +73,10 @@ export interface Unit {
     lore: string
     version: string
     date: string
+    attachment?: {
+        parent_traits: string[]
+        max_models?: number | null
+    }
 }
 
 export interface UnitConfig {
@@ -87,6 +94,7 @@ export interface ArmyUnit {
     unitId: string
     config: UnitConfig
     totalPoints: number
+    attachedUnits?: ArmyUnit[]
 }
 
 export interface ArmyList {

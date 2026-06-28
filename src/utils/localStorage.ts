@@ -83,18 +83,24 @@ function isArmyListLike(value: unknown): value is ArmyList {
     )
 }
 
-function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {
-    const now = new Date().toISOString()
-    const entries: ArmyUnit[] = list.units.flatMap((entry) => {
+function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
         const unit = units.find((item) => item.id === entry.unitId)
         if (!unit || !isUnitConfig(entry.config)) return []
-        return [{
+        const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
             config: structuredClone(entry.config),
-            totalPoints: computeTotalPoints(unit, entry.config),
-        }]
-    })
+            totalPoints: 0,
+            attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
+        }
+        normalized.totalPoints = computeTotalPoints(unit, normalized.config) +
+            (normalized.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
+        return [normalized]
+}
+
+function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {
+    const now = new Date().toISOString()
+    const entries = list.units.flatMap((entry) => normalizeImportedEntry(entry, units))
 
     return {
         id: uuid(),

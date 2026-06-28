@@ -8,9 +8,11 @@ interface Props {
     active: boolean
     onSelect: () => void
     onAdd?: () => void
+    attachmentTargets?: { instanceId: string; label: string }[]
+    onAttach?: (parentInstanceId: string) => void
 }
 
-export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Props) {
+export default function UnitCard({ unit, faction, active, onSelect, onAdd, attachmentTargets = [], onAttach }: Props) {
     return (
         <button
             type="button"
@@ -49,8 +51,34 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Pro
                 {unit.tags.slice(0, 2).map((tag) => (
                     <TagChip key={tag} label={tag} />
                 ))}
-                <span className="ml-auto text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model} pts</span>
+                <span className="ml-auto text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model ?? 0} pts</span>
             </div>
+            {attachmentTargets.length > 0 && onAttach ? (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                    {attachmentTargets.map((target) => (
+                        <span
+                            key={target.instanceId}
+                            role="button"
+                            tabIndex={0}
+                            title={`Attach to ${target.label}`}
+                            onClick={(event) => {
+                                event.stopPropagation()
+                                onAttach(target.instanceId)
+                            }}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter' || event.key === ' ') {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    onAttach(target.instanceId)
+                                }
+                            }}
+                            className="rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-700 hover:bg-blue-100"
+                        >
+                            Attach to {target.label}
+                        </span>
+                    ))}
+                </div>
+            ) : null}
         </button>
     )
 }

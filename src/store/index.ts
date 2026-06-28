@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { ArmyList, ArmyUnit, Faction, Generator, Unit, UnitConfig } from '../types/index'
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
-import { computeTotalPoints, updateListUnit } from '../utils/pointsCalc'
+import { computeArmyUnitTotal, computeTotalPoints, updateListUnit } from '../utils/pointsCalc'
 import { uuid } from '../utils/uuid'
 
 const emptyUnitConfig: UnitConfig = {
@@ -44,6 +44,7 @@ interface AppStore {
     persistLists: () => void
 
     addUnitToCurrentList: (unitId: string) => void
+    addAttachmentToListUnit: (parentInstanceId: string, unitId: string) => void
     removeUnitFromList: (instanceId: string) => void
     selectListUnit: (instanceId: string) => void
 
@@ -57,31 +58,100 @@ function cloneConfig(config: UnitConfig): UnitConfig {
     return structuredClone(config)
 }
 
+function makeArmyUnit(unit: Unit, config: UnitConfig = emptyUnitConfig): ArmyUnit {
+    const entry: ArmyUnit = {
+        instanceId: uuid(),
+        unitId: unit.id,
+        config: cloneConfig(config),
+        totalPoints: computeTotalPoints(unit, config),
+    }
+    return entry
+}
+
+function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
+    const unit = units.find((item) => item.id === entry.unitId)
+    if (!unit) return null
+    const legacy = entry as ArmyUnit & {
+        hardpoints?: { slot: string; weaponName: string }[]
+        options?: { tag: string; quantity: number }[]
+        generator?: Generator | null
+    }
+    const config: UnitConfig = entry.config ?? {
+        hardpointSelections: {},
+        generatorSelection: legacy.generator
+            ? { weaponIndex: 0, generatorName: legacy.generator.name, generatorCost: legacy.generator.point_cost }
+            : null,
+        optionQuantities: Object.fromEntries((legacy.options ?? []).map((option) => [option.tag, option.quantity])),
+    }
+    const normalized: ArmyUnit = {
+        instanceId: entry.instanceId,
+        unitId: entry.unitId,
+        config,
+        totalPoints: 0,
+        attachedUnits: entry.attachedUnits?.flatMap((attachment) => {
+            const normalizedAttachment = normalizeArmyUnit(attachment, units)
+            return normalizedAttachment ? [normalizedAttachment] : []
+        }),
+    }
+    normalized.totalPoints = computeArmyUnitTotal(normalized, units)
+    return normalized
+}
+
 function normalizeLists(lists: ArmyList[], units: Unit[]): ArmyList[] {
     return lists.map((list) => ({
         ...list,
-        units: list.units.map((entry) => {
-            const unit = units.find((item) => item.id === entry.unitId)
-            const legacy = entry as ArmyUnit & {
-                hardpoints?: { slot: string; weaponName: string }[]
-                options?: { tag: string; quantity: number }[]
-                generator?: Generator | null
-            }
-            const config: UnitConfig = entry.config ?? {
-                hardpointSelections: {},
-                generatorSelection: legacy.generator
-                    ? { weaponIndex: 0, generatorName: legacy.generator.name, generatorCost: legacy.generator.point_cost }
-                    : null,
-                optionQuantities: Object.fromEntries((legacy.options ?? []).map((option) => [option.tag, option.quantity])),
-            }
-            return {
-                instanceId: entry.instanceId,
-                unitId: entry.unitId,
-                config,
-                totalPoints: unit ? computeTotalPoints(unit, config) : entry.totalPoints ?? 0,
-            }
+        units: list.units.flatMap((entry) => {
+            const normalizedEntry = normalizeArmyUnit(entry, units)
+            return normalizedEntry ? [normalizedEntry] : []
         }),
     }))
+}
+
+function findArmyUnit(entries: ArmyUnit[], instanceId: string): ArmyUnit | null {
+    for (const entry of entries) {
+        if (entry.instanceId === instanceId) return entry
+        const nested = findArmyUnit(entry.attachedUnits ?? [], instanceId)
+        if (nested) return nested
+    }
+    return null
+}
+
+function removeArmyUnit(entries: ArmyUnit[], instanceId: string, units: Unit[]): ArmyUnit[] {
+    return entries
+        .filter((entry) => entry.instanceId !== instanceId)
+        .map((entry) => {
+            const updated = {
+                ...entry,
+                attachedUnits: removeArmyUnit(entry.attachedUnits ?? [], instanceId, units),
+            }
+            return {
+                ...updated,
+                totalPoints: computeArmyUnitTotal(updated, units),
+            }
+        })
+}
+
+function attachArmyUnit(entries: ArmyUnit[], parentInstanceId: string, attachment: ArmyUnit, units: Unit[]): ArmyUnit[] {
+    return entries.map((entry) => {
+        if (entry.instanceId === parentInstanceId) {
+            const updated = {
+                ...entry,
+                attachedUnits: [...(entry.attachedUnits ?? []), attachment],
+            }
+            return {
+                ...updated,
+                totalPoints: computeArmyUnitTotal(updated, units),
+            }
+        }
+        const updated = {
+            ...entry,
+            attachedUnits: attachArmyUnit(entry.attachedUnits ?? [], parentInstanceId, attachment, units),
+        }
+        return {
+            ...updated,
+            totalPoints: computeArmyUnitTotal(updated, units),
+        }
+    })
 }
 
 export const useAppStore = create<AppStore>((set, get) => ({
@@ -220,16 +290,27 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const unit = state.units.find((item) => item.id === unitId)
         if (!unit) return
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
-        const newEntry: ArmyUnit = {
-            instanceId: uuid(),
-            unitId,
-            config: cloneConfig(config),
-            totalPoints: computeTotalPoints(unit, config),
-        }
+        const newEntry = makeArmyUnit(unit, config)
         set({
             currentList: {
                 ...state.currentList,
                 units: [...state.currentList.units, newEntry],
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    addAttachmentToListUnit: (parentInstanceId, unitId) => {
+        const state = get()
+        if (!state.currentList) return
+        const unit = state.units.find((item) => item.id === unitId)
+        if (!unit) return
+        const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
+        const attachment = makeArmyUnit(unit, config)
+        set({
+            currentList: {
+                ...state.currentList,
+                units: attachArmyUnit(state.currentList.units, parentInstanceId, attachment, state.units),
                 updatedAt: new Date().toISOString(),
             },
         })
@@ -241,7 +322,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
         set({
             currentList: {
                 ...currentList,
-                units: currentList.units.filter((unit) => unit.instanceId !== instanceId),
+                units: removeArmyUnit(currentList.units, instanceId, get().units),
                 updatedAt: new Date().toISOString(),
             },
             selectedListInstanceId: get().selectedListInstanceId === instanceId ? null : get().selectedListInstanceId,
@@ -250,7 +331,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
     },
     selectListUnit: (instanceId) => {
         const state = get()
-        const entry = state.currentList?.units.find((unit) => unit.instanceId === instanceId)
+        const entry = state.currentList ? findArmyUnit(state.currentList.units, instanceId) : null
         if (!entry) return
         set({
             selectedUnitId: entry.unitId,
