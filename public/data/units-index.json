@@ -6,7 +6,7 @@
     "sub_name": "Ekranoplan Heavy Transport",
     "faction": "Commonwealth",
     "role": "Flagship",
-    "point_cost_per_model": null,
+    "point_cost_per_model": 260,
     "vpr": 9,
     "models": 1,
     "tags": [
@@ -217,6 +217,201 @@
     "date": "2026-06-28"
   },
   {
+    "id": "commonwealth_anastasia",
+    "faction_id": "commonwealth",
+    "name": "Anastasia",
+    "sub_name": "Legendary Mobile Stronghold",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 13,
+    "models": 1,
+    "tags": [
+      "Black Wolf",
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Repair",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 7,
+      "SPD": "0\"-6\"",
+      "TRN": 0,
+      "DEF": 10,
+      "ARM": 5,
+      "HUL": 18,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 4,
+      "CRW": 11
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 7
+      },
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "Encompassing Broadsides",
+        "value": null
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Kometa Interceptors"
+      },
+      {
+        "name": "Unexpected Arrival",
+        "value": null
+      },
+      {
+        "name": "Very Large",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Cryo Generator",
+        "value": null
+      },
+      {
+        "name": "Flight Command",
+        "value": 2
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Magnetic Generator",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Tri-Railgun",
+        "arc": "FP",
+        "firepower": {
+          "C": 6,
+          "S": 6,
+          "E": 6
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Tri-Railgun",
+        "arc": "FS",
+        "firepower": {
+          "C": 6,
+          "S": 6,
+          "E": 6
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Tri-Railgun",
+        "arc": "PA",
+        "firepower": {
+          "C": 6,
+          "S": 6,
+          "E": 6
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Tri-Railgun",
+        "arc": "SA",
+        "firepower": {
+          "C": 6,
+          "S": 6,
+          "E": 6
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FP",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FS",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "Volodymyr Nikonov was gifted this modified mobile stronghold by the Tsar and in gratitude he named it after his love, the Tsar's eldest daughter. Based near Novo-Arkhangelsk in Alaska, this vessel is the home base for Nikonov and his Black Wolf Mercenaries.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
     "name": "Borodino",
     "sub_name": "Battleship",
     "faction": "Commonwealth",
@@ -378,6 +573,1639 @@
     "date": "2024-06-05",
     "id": "commonwealth_borodino",
     "faction_id": "commonwealth"
+  },
+  {
+    "id": "commonwealth_death_bringer",
+    "faction_id": "commonwealth",
+    "name": "Death Bringer",
+    "sub_name": "Prototype Grand Submarine",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Black Wolf",
+      "Underwater",
+      "Flagship",
+      "Submarine",
+      "Capital",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 11
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Combat Divers",
+        "value": null
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 10
+      },
+      {
+        "name": "Mine Layer",
+        "value": 1
+      },
+      {
+        "name": "Raking Strike",
+        "value": 12
+      },
+      {
+        "name": "Terrifying",
+        "value": null,
+        "detail": "Commonwealth"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Super-Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 14,
+          "S": 14,
+          "E": 14
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Torpedo Salvo",
+        "arc": "A",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "PSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": 2
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "PSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": 2
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Flagship of the Black Wolf Mercenary Fleet and commanded by the charismatic Volodymyr Nikonov, the Death Bringer is feared around the globe. Stolen from the Enlightened during a presentation to the Tsar, Nikonov ensured the Death Bringer was an utterly unique masterpiece by destroying the blueprints and setting the shipyards ablaze.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_khodynka",
+    "faction_id": "commonwealth",
+    "name": "Khodynka",
+    "sub_name": "Heavy Skycruiser",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 6,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 4,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 5
+      },
+      {
+        "name": "Descend",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 10
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 2
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Tracer Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Tracer",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Tracer Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Tracer",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Tracer Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Tracer",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tracer Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            },
+            {
+              "name": "Tracer",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade this model with a single Generator Hardpoint. A Repulsion Field Generator cannot be chosen for this model.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "restrictions": [
+          "Repulsion Field Generator"
+        ]
+      }
+    ],
+    "lore": "Classified as a heavy skycruiser, the Khodynka-class are deployed as command vessels where enemy airpower is expected, or Commonwealth airpower would give a decisive advantage. These powerful vessels offer an unparalleled view of the engagement zone and are highly prized by the White Navy Admiralty.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_krasnaya",
+    "faction_id": "commonwealth",
+    "name": "Krasnaya",
+    "sub_name": "Heavy Skydrill",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 3,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 4,
+      "BRD": null,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 5
+      },
+      {
+        "name": "Azhdaya Berserkers",
+        "value": null
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 12
+      },
+      {
+        "name": "Breaching Drill",
+        "value": 20
+      },
+      {
+        "name": "Cloud Dive",
+        "value": null
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Descend",
+        "value": null
+      },
+      {
+        "name": "Lightning Raid",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Furnace Cascade",
+        "arc": "A",
+        "firepower": {
+          "C": 8,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Torrent",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade this model with a single Generator Hardpoint. A Repulsion Field Generator cannot be chosen for this model.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "restrictions": [
+          "Repulsion Field Generator"
+        ]
+      }
+    ],
+    "lore": "The Krasnaya was built at the behest of the Baltic Fleet command. A monstrous icebreaker designed to tear through the weaponized ice floes plaguing the north. With a terrifying symphony of overcharged field generators whining and its Semyenov assault bore, the Krasnaya strikes fear into the hearts of the Tsar's enemies.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_moskva",
+    "faction_id": "commonwealth",
+    "name": "Moskva",
+    "sub_name": "Heavy Battleship",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 15,
+      "ACT": 4,
+      "BRD": 3,
+      "REP": 4,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 6
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 6
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Shockwave Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Super-Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 12,
+          "S": 12,
+          "E": 12
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FP",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade this model with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Pride of the White Navy, the Moskva-class Heavy Battleships are a potent combination of heavy firepower and crews that exalt the finest traditions of the Commonwealth.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_mozhayski",
+    "faction_id": "commonwealth",
+    "name": "Mozhayski",
+    "sub_name": "Fleet Carrier",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 5
+      },
+      {
+        "name": "Carrier",
+        "value": 8
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Kometa Interceptors"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flight Command",
+        "value": 1
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Though the Commonwealth places less emphasis on air support than the other Great Powers, they still appreciate its uses in achieving victory. The Mozhayski are integral to this combined arms doctrine and the expansive internal spaces for officers make them preferred command ships for commodores.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_murmansk",
+    "faction_id": "commonwealth",
+    "name": "Murmansk",
+    "sub_name": "Mobile Stronghold",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 12,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 7,
+      "SPD": "0\"-6\"",
+      "TRN": 0,
+      "DEF": 10,
+      "ARM": 5,
+      "HUL": 18,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 4,
+      "CRW": 11
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 7
+      },
+      {
+        "name": "Encompassing Broadsides",
+        "value": null
+      },
+      {
+        "name": "Inspirational",
+        "value": 7
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "Unexpected Arrival",
+        "value": null
+      },
+      {
+        "name": "Very Large",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Cryo Generator",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 5
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FP",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "SA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Part firebase and part repair yard, a Murmansk allows the Commonwealth to expand its theatres of operation around the globe. Utilising integrated Void Engine technology acquired by Helsinki Markov, the Murmansk can appear unexpectedly, rising from beneath the waves in a matter of minutes.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_prezidium",
+    "faction_id": "commonwealth",
+    "name": "Prezidium",
+    "sub_name": "Command Ship",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 15,
+      "ACT": 4,
+      "BRD": 3,
+      "REP": 4,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 6
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 6
+      },
+      {
+        "name": "Inspirational",
+        "value": 7
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Super-Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 12,
+          "S": 12,
+          "E": 12
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FP",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "With enviable state rooms and extensive supply facilities, the Prezidium is a vital command ship. With these well-armed vessels as flagships, the admiralty of the White Navy can conduct operations anywhere across the globe with the surety that they are well resourced.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_rikhter",
+    "faction_id": "commonwealth",
+    "name": "Rikhter",
+    "sub_name": "Artillery Dreadnought",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Russian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 15,
+      "ACT": 3,
+      "BRD": 5,
+      "REP": 5,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 6
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 6
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Magnetic Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Mega Apokalyps Cannon",
+        "arc": "F",
+        "firepower": {
+          "C": null,
+          "S": 25,
+          "E": 40
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 10
+          },
+          {
+            "name": "Hazard",
+            "value": 6
+          },
+          {
+            "name": "Intensive",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Super-Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 12,
+          "S": 12,
+          "E": 12
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Mounting the largest naval cannon in the world, the Rikhter-class relies on kinetic dampers to absorb the massive recoil from the weapon. A Void Engine is used to translocate the colossal atomic munitions from a fortified stronghold deep in Siberia. The shockwave alone will utterly pulverise any crewmember foolish enough to be on deck when fired.",
+    "version": "4.00",
+    "date": "2026-06-28"
   },
   {
     "id": "commonwealth_tobolsk",
@@ -677,6 +2505,2566 @@
       }
     ],
     "lore": "A development on the Murmansk, the Tobolsk Mobile Stronghold is often deployed in the far northern waters where it provides a tactical advantage to the Commonwealth in those isolated freezing seas. Though the Void Engines still require many hours to recharge, the element of surprise makes this a uniquely viable technology for these mobile strongholds.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_zamiec",
+    "faction_id": "commonwealth",
+    "name": "Zamiec",
+    "sub_name": "Skyfortress",
+    "faction": "Commonwealth",
+    "role": "Flagship",
+    "point_cost_per_model": null,
+    "vpr": 10,
+    "models": 1,
+    "tags": [
+      "Polish-Lithuanian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-8\"",
+      "TRN": 2,
+      "DEF": 8,
+      "ARM": 5,
+      "HUL": 13,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 4,
+      "CRW": 10
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 9
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Szpada Fighters"
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      },
+      {
+        "name": "Flight Command",
+        "value": 1
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "The Zamiec Skyfortress allows fighters to strike from the skies wherever the Commonwealth needs, Szpada fighters racing towards their target using speed to close range before the enemy can lock on. It is considered a great privilege to be the first to fall into battle.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_khyzhak",
+    "faction_id": "commonwealth",
+    "name": "Khyzhak",
+    "sub_name": "Attack Submarine",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Ukrainian",
+      "Underwater",
+      "Line",
+      "Submarine"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 10,
+      "ACT": 2,
+      "BRD": null,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 3
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Mine Sweeper",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Torpedo Salvo",
+        "arc": "A",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 3,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Based in Odessa, Ukrainian Submarine Command (UPK) has the lead in subnautical warfare and exploration for the Commonwealth. With an impressive training academy in nearby Zatoka, the UPK provides a steady supply of skilled submariners and vessels like the lethally fast Khyzhak-class.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_kutsov",
+    "faction_id": "commonwealth",
+    "name": "Kutsov",
+    "sub_name": "Cruiser",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 3,
+    "models": "2-4",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade any number of models with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": null,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "The iconic ship of the White Navy, the Kutsov is on the recruitment posters throughout the Commonwealth. For many sailors their first posting is to a Kutsov, where the cramped confines and deafening roar of the guns make the glamorous poster image a bitter irony.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_morozko",
+    "faction_id": "commonwealth",
+    "name": "Morozko",
+    "sub_name": "Heavy Cryo Cruiser",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 4,
+    "models": "1-4",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Cryo Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": 1
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 3,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade any number of models with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": null,
+        "tag": "GENERATOR"
+      },
+      {
+        "description": "Upgrade any number of models with a Khatanga Breaching Drill. Each model with this upgrade loses the Heavy Prow (3) property, but gains the Breaching Drill (10) property.",
+        "cost_per_unit": 15,
+        "max": null,
+        "tag": "KHATANGA_BREACHING_DRILL",
+        "modifies_properties": {
+          "removes": [
+            {
+              "name": "Heavy Prow",
+              "value": 3
+            }
+          ],
+          "adds": [
+            {
+              "name": "Breaching Drill",
+              "value": 10
+            }
+          ]
+        }
+      }
+    ],
+    "lore": "Developed from the redoubtable Norilsk, the Morozko incorporates a Cryo generator, enabling it to create hazardous icebergs to great effect in the path of their enemies. A brutal addition to the White Navy and favoured by northern Captains, the Khatanga combines a ferocious Semyenov pattern assault bore in the prow with the dreaded Cryo generator.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_norilsk",
+    "faction_id": "commonwealth",
+    "name": "Norilsk",
+    "sub_name": "Heavy Cruiser",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 3,
+    "models": "1-4",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Focused Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Focused Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": 1
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Focused Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Focused Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 5,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Focused Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade any number of models with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": null,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Powerful and dependable, Norilsk-class Heavy Cruisers have been present at almost every major victory for the Commonwealth since they first entered service over two decades ago. Named for the region that provides huge mineral wealth to the Commonwealth decades ahead of schedule, thanks to the Troika's advanced detection and extraction advances.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_tunguska",
+    "faction_id": "commonwealth",
+    "name": "Tunguska",
+    "sub_name": "Skycruiser",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Russian",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Russian Flagship"
+      },
+      {
+        "name": "Descend",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade any number of models with a single Generator Hardpoint. A Repulsion Field Generator cannot be chosen for a model in this unit.",
+        "cost_per_unit": null,
+        "max": null,
+        "tag": "GENERATOR",
+        "restrictions": [
+          "Repulsion Field Generator"
+        ]
+      }
+    ],
+    "attachment": {
+      "parent_traits": [
+        "Russian",
+        "Flagship"
+      ],
+      "max_models": 1
+    },
+    "lore": "A bruiser of the skies, the Tunguska-class skycruiser boasts a thick, slab-like hull of sturginium steel wrapped around powerful engines. This workhorse of the White Navy surprises enemies with sudden bursts of speed, closing the distance to unleash a fury of firepower from its heavy batteries.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_voivode",
+    "faction_id": "commonwealth",
+    "name": "Voivode",
+    "sub_name": "Heavy Airship",
+    "faction": "Commonwealth",
+    "role": "Line",
+    "point_cost_per_model": null,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Polish-Lithuanian",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Descend",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Focused Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Focused Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Focused Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 3,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Voivode Heavy Airships unleash withering volleys of rockets towards the foe, punching through all but the heaviest of aerial defence.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_dragunov",
+    "faction_id": "commonwealth",
+    "name": "Dragunov",
+    "sub_name": "Ekranoplan Brawler",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 2,
+    "models": "1-4",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Patrol",
+      "Ekranoplan",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-10\"",
+      "TRN": 2,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 6,
+      "ACT": 3,
+      "BRD": null,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ekranoplan",
+        "value": null
+      },
+      {
+        "name": "Elevated",
+        "value": null
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Surface"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 6
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 2
+      },
+      {
+        "name": "Overthrusters",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 2,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 2,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Usually assigned to the fleet base in Astrakhan, the Dragunov Ekranoplan Brawlers are often deployed far beyond the confines of the Caspian Sea itself through the Eurasia Canal.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_jadwiga",
+    "faction_id": "commonwealth",
+    "name": "Jadwiga",
+    "sub_name": "Aerial Monitor",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Polish-Lithuanian",
+      "Airborne",
+      "Patrol",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 6,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Descend",
+        "value": null
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 6
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 3,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Jadwiga Light Airships make up the bulk of the Polish-Lithuanian airforce and are seen in fleets of almost any size. True workhorses, they can pound any enemy into submission with enough rockets.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_oleg",
+    "faction_id": "commonwealth",
+    "name": "Oleg",
+    "sub_name": "Monitor",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 2,
+    "models": "1-4",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 6,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 3
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": []
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Tri-Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Yastreb Missile Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade this model with a single Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "The Commonwealth is famed for refusing to give ground once it has been taken in the name of the Tsar. Oleg-class Monitors are ideally suited to this mentality, offering unglamorous but determined resistance that deters all but the most persistent of foes.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_piranya",
+    "faction_id": "commonwealth",
+    "name": "Piranya",
+    "sub_name": "Hunter Submarine",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Ukrainian",
+      "Underwater",
+      "Patrol",
+      "Submarine"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 2,
+      "BRD": null,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Ukrainian"
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Capital"
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "attachment": {
+      "parent_traits": [
+        "Ukrainian"
+      ],
+      "max_models": 2
+    },
+    "lore": "Fast and deadly, the Piranya Hunter Submarines patrol in packs along the Black Sea and the Bering Strait. With a complement of twelve, the Piranya make for a close-knit boat crew, ideal for such vessels with sparse living comforts on month-long duty beneath the waves.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_rurik",
+    "faction_id": "commonwealth",
+    "name": "Rurik",
+    "sub_name": "Frigate",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Russian",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 3,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 1
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Russian"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Defensive",
+        "value": 1
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Seismic Mortar",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 2,
+          "E": 1
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 2,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade any number of models with one of the following (mutually exclusive per model): a Tsiolkovsky-pattern rocket launcher for +5 pts, granting the Flak Barrage (3) system; or a Kosolov Shockwave Generator for +5 pts, granting the Shockwave Generator system.",
+        "cost_per_unit": 5,
+        "max": null,
+        "tag": "WEAPON_UPGRADE",
+        "choices": [
+          {
+            "name": "Tsiolkovsky-pattern rocket launcher",
+            "adds_systems": [
+              {
+                "name": "Flak Barrage",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "name": "Kosolov Shockwave Generator",
+            "adds_systems": [
+              {
+                "name": "Shockwave Generator",
+                "value": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attachment": {
+      "parent_traits": [
+        "Russian"
+      ],
+      "max_models": 2
+    },
+    "lore": "The influence of Admiral Andrei Popov's design philosophy can be seen in the wide body of the Rurik Frigates. This broader beam allows for a shallower draught enabling squadrons to unexpectedly come inland by using rivers and other waterways.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_smok",
+    "faction_id": "commonwealth",
+    "name": "Smok",
+    "sub_name": "Aerial Destroyer",
+    "faction": "Commonwealth",
+    "role": "Patrol",
+    "point_cost_per_model": null,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Polish-Lithuanian",
+      "Airborne",
+      "Patrol",
+      "Airship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-9\"",
+      "TRN": 4,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Polish-Lithuanian, Carrier"
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Descend",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 6
+      },
+      {
+        "name": "Shockwave Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Zhalo Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "All Around",
+            "value": null
+          },
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 2,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 2,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Smok Aerial Destroyers can manoeuvre into almost any position, ready to unleash hell against the enemies of the Commonwealth.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_akula",
+    "faction_id": "commonwealth",
+    "name": "Akula",
+    "sub_name": "Grand Submarine",
+    "faction": "Commonwealth",
+    "role": "Support",
+    "point_cost_per_model": null,
+    "vpr": 5,
+    "models": "1-2",
+    "tags": [
+      "Ukrainian",
+      "Underwater",
+      "Support",
+      "Submarine",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 5
+      },
+      {
+        "name": "Mine Layer",
+        "value": 1
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      },
+      {
+        "name": "Terrifying",
+        "value": null,
+        "detail": "Commonwealth"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Mine Sweeper",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Super-Heavy Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 14,
+          "S": 14,
+          "E": 14
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Torpedo Salvo",
+        "arc": "A",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "PSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": 2
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Seismic Mortar",
+        "arc": "PSA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": 2
+        },
+        "qualities": [
+          {
+            "name": "Depth Charge",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Railgun",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
+          },
+          "qualities": [
+            {
+              "name": "Rail",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Extrapolated by Ukrainian engineers from charred blueprints of the stolen Death Bringer, the Akula is still the most powerful in the Ukrainian Submarine Command. One element that was successfully replicated was the magnetohydrodynamic drive, enabling the boat to approach virtually undetected before striking.",
+    "version": "4.00",
+    "date": "2026-06-28"
+  },
+  {
+    "id": "commonwealth_kostroma",
+    "faction_id": "commonwealth",
+    "name": "Kostroma",
+    "sub_name": "Vitruvian Colossus",
+    "faction": "Commonwealth",
+    "role": "Support",
+    "point_cost_per_model": null,
+    "vpr": 5,
+    "models": "1-3",
+    "tags": [
+      "Russian",
+      "Underwater",
+      "Support",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "0\"-6\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": null,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 5
+      },
+      {
+        "name": "Amphibious",
+        "value": null
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Capital"
+      },
+      {
+        "name": "Submarauder",
+        "value": null
+      },
+      {
+        "name": "Vitruvian Form",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Cryo Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Mag-Rail Axe (Melee)",
+        "arc": "FS",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          },
+          {
+            "name": "Aquatic",
+            "value": null
+          },
+          {
+            "name": "Structural Failure",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Mag-Rail Axe (Ranged)",
+        "arc": "FS",
+        "firepower": {
+          "C": null,
+          "S": 7,
+          "E": 12
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Intensive",
+            "value": null
+          },
+          {
+            "name": "Rail",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Claw Arc Projector",
+        "arc": "FP",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Piercing",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Razrez",
+        "arc": "FP",
+        "firepower": {
+          "C": 8,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Torrent",
+            "value": 2
+          },
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Piercing",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Railgun",
+        "arc": "FPA",
+        "slot": "L",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Railgun",
+        "arc": "FSA",
+        "slot": "L",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Seismic Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 2
+          },
+          "qualities": [
+            {
+              "name": "Depth Charge",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Zhalo Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "The Kostroma-class Vitruvian Colossus wields a powerful Mag-rail Axe and Claw Arc Projector to deliver punishing blows to enemy vessels at close range. What is surprising is that it is capable of engaging targets at a distance, using Commonwealth railgun expertise to surprising effect as a two-hundred-metre-tall sniper.",
     "version": "4.00",
     "date": "2026-06-28"
   }
