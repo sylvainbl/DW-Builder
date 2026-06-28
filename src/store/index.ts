@@ -55,7 +55,6 @@ interface AppStore {
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
     setGeneratorSelection: (selection: UnitConfig['generatorSelection']) => void
     setOptionQuantity: (tag: string, quantity: number) => void
-    resetActiveUnitConfig: () => void
 }
 
 function cloneConfig(config: UnitConfig): UnitConfig {
@@ -314,15 +313,24 @@ export const useAppStore = create<AppStore>((set, get) => ({
     },
     closeList: () => {
         get().persistLists()
-        set({ currentList: null, selectedListInstanceId: null, selectedModelId: null })
+        set({
+            currentList: null,
+            selectedUnitId: null,
+            selectedListInstanceId: null,
+            selectedModelId: null,
+            activeUnitConfig: cloneConfig(emptyUnitConfig),
+        })
     },
     deleteList: (listId) => {
         const currentList = get().currentList
+        const deletingCurrentList = currentList?.id === listId
         set((state) => ({
             savedLists: state.savedLists.filter((list) => list.id !== listId),
-            currentList: currentList?.id === listId ? null : currentList,
-            selectedListInstanceId: currentList?.id === listId ? null : state.selectedListInstanceId,
-            selectedModelId: currentList?.id === listId ? null : state.selectedModelId,
+            currentList: deletingCurrentList ? null : currentList,
+            selectedUnitId: deletingCurrentList ? null : state.selectedUnitId,
+            selectedListInstanceId: deletingCurrentList ? null : state.selectedListInstanceId,
+            selectedModelId: deletingCurrentList ? null : state.selectedModelId,
+            activeUnitConfig: deletingCurrentList ? cloneConfig(emptyUnitConfig) : state.activeUnitConfig,
         }))
         get().persistLists()
     },
@@ -560,5 +568,4 @@ export const useAppStore = create<AppStore>((set, get) => ({
         })
         get().persistLists()
     },
-    resetActiveUnitConfig: () => set({ activeUnitConfig: cloneConfig(emptyUnitConfig) }),
 }))
