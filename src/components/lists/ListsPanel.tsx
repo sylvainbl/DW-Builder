@@ -1,6 +1,7 @@
-import { Plus, X } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { FolderOpen, Plus, X } from 'lucide-react'
+import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../../store'
+import { parseImportedList } from '../../utils/localStorage'
 
 export default function ListsPanel() {
     const factions = useAppStore((state) => state.factions)
@@ -9,9 +10,12 @@ export default function ListsPanel() {
     const createList = useAppStore((state) => state.createList)
     const openList = useAppStore((state) => state.openList)
     const deleteList = useAppStore((state) => state.deleteList)
+    const importList = useAppStore((state) => state.importList)
+    const units = useAppStore((state) => state.units)
     const [showForm, setShowForm] = useState(false)
     const [name, setName] = useState('')
     const [factionId, setFactionId] = useState('')
+    const fileInputRef = useRef<HTMLInputElement | null>(null)
 
     const factionNames = useMemo(() => new Map(factions.map((faction) => [faction.id, faction.name])), [factions])
 
@@ -25,6 +29,37 @@ export default function ListsPanel() {
                 <Plus size={15} />
                 New list
             </button>
+            <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2.5 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50"
+            >
+                <FolderOpen size={15} />
+                Load list
+            </button>
+            <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={async (event) => {
+                    const file = event.target.files?.[0]
+                    event.target.value = ''
+                    if (!file) return
+
+                    try {
+                        const data = JSON.parse(await file.text())
+                        const importedList = parseImportedList(data, units)
+                        if (!importedList) {
+                            window.alert('This file is not a valid Dystopian Wars list.')
+                            return
+                        }
+                        importList(importedList)
+                    } catch {
+                        window.alert('Could not read this list file.')
+                    }
+                }}
+            />
 
             {showForm ? (
                 <form

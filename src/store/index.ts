@@ -39,6 +39,7 @@ interface AppStore {
     openList: (listId: string) => void
     closeList: () => void
     deleteList: (listId: string) => void
+    importList: (list: ArmyList) => void
     renameList: (listId: string, newName: string) => void
     persistLists: () => void
 
@@ -173,6 +174,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
             savedLists: state.savedLists.filter((list) => list.id !== listId),
             currentList: currentList?.id === listId ? null : currentList,
             selectedListInstanceId: currentList?.id === listId ? null : state.selectedListInstanceId,
+        }))
+        get().persistLists()
+    },
+    importList: (list) => {
+        set((state) => ({
+            savedLists: [...state.savedLists.filter((item) => item.id !== list.id), list],
+            currentList: list,
+            selectedFactionId: list.faction_id,
+            selectedUnitId: null,
+            selectedListInstanceId: null,
+            activeUnitConfig: cloneConfig(emptyUnitConfig),
         }))
         get().persistLists()
     },
