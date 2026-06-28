@@ -7,4 +7,57 @@
     --panel-border: #e5e7eb;
     --text: #111827;
     --muted: #6b7280;
+    --detail-hero: var(--navy);
+    --detail-hero-soft: var(--navy-light);
+    --detail-stat: #dbe7f3;
+    --detail-panel: #eef4fa;
+    --detail-panel-strong: #e7f0f8;
+    --detail-row: #ffffff;
+    --detail-ink: var(--text);
+}
+
+.unit-detail-section {
+    border: 1px solid rgba(27, 58, 92, 0.14);
+    box-shadow: 0 2px 7px rgba(27, 58, 92, 0.08);
+}
+
+.unit-detail-hero {
+    border-color: var(--navy);
+    background: linear-gradient(135deg, var(--detail-hero), var(--detail-hero-soft));
+    color: white;
+    box-shadow: 0 0 0 2px rgba(200, 170, 110, 0.18), 0 2px 8px rgba(27, 58, 92, 0.16);
+}
+
+.unit-detail-stat {
+    border-color: rgba(27, 58, 92, 0.22);
+    background: var(--detail-stat);
+}
+
+.unit-detail-panel {
+    border-color: rgba(42, 82, 128, 0.18);
+    background: var(--detail-panel);
+}
+
+.unit-detail-panel-alt {
+    border-color: rgba(42, 82, 128, 0.2);
+    background: var(--detail-panel-strong);
+}
+
+.unit-detail-title {
+    color: rgba(255, 255, 255, 0.78);
+    text-shadow: 0 1px 0 rgba(17, 24, 39, 0.24);
+}
+
+.unit-detail-dark-title {
+    color: var(--navy);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.unit-detail-line {
+    border-color: rgba(27, 58, 92, 0.12);
+}
+
+.unit-detail-weapon-row {
+    background: var(--detail-row);
+    box-shadow: inset 3px 0 0 rgba(200, 170, 110, 0.72);
 }

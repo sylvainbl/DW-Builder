@@ -1,3 +1,5 @@
+import { MarkdownText } from './MarkdownText'
+
 export function RuleModal({
     name,
     value,
@@ -33,6 +35,8 @@ export function RuleModal({
                     borderRadius: '12px',
                     padding: '24px',
                     maxWidth: '480px',
+                    maxHeight: '80vh',
+                    overflowY: 'auto',
                     width: '90%',
                     boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
                 }}
@@ -43,9 +47,10 @@ export function RuleModal({
                 <h2 style={{ fontSize: '18px', fontWeight: 500, marginBottom: '12px' }}>
                     {label}
                 </h2>
-                <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#444' }}>
-                    {text}
-                </p>
+                <MarkdownText
+                    text={text}
+                    style={{ fontSize: '14px', lineHeight: 1.6, color: '#444' }}
+                />
                 <button
                     onClick={onClose}
                     style={{ marginTop: '20px', padding: '6px 16px', cursor: 'pointer' }}

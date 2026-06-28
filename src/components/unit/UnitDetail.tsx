@@ -95,6 +95,12 @@ export default function UnitDetail() {
     const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
+    const attachmentPoints = selectedEntry
+        ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
+        : 0
+    const modelInfo = selectedEntry
+        ? `${selectedEntry.models.length}/${maxModels} ${selectedEntry.models.length === 1 ? 'model' : 'models'}`
+        : `${formatModelRange(unit)} ${modelLabel(unit)}`
     const costBreakdown = [
         ...(selectedEntry ? [`Selected model: ${selectedModelCost} pts`] : []),
         ...(generatorSelection ? [`Generator (${generatorSelection.generatorName}): +${generatorSelection.generatorCost} pts`] : []),
@@ -106,20 +112,22 @@ export default function UnitDetail() {
             }
             return [`${option.tag} ×${qty}: +${qty * option.cost_per_unit} pts`]
         }),
+        ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
 
     return (
         <div className="space-y-2">
-            <section className="rounded-xl border border-neutral-200 bg-white p-3 shadow-sm">
+            <section className="unit-detail-section unit-detail-hero rounded-xl p-3 shadow-sm">
                 <div className="flex items-start justify-between gap-4">
                     <div>
-                        <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Detail</div>
-                        <h2 className="mt-1 text-lg font-semibold text-neutral-900">{unit.name}</h2>
-                        <p className="text-sm text-neutral-600">{unit.sub_name}</p>
+                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">Detail</div>
+                        <h2 className="mt-1 text-lg font-semibold text-white">{unit.name}</h2>
+                        <p className="text-sm text-white/78">{unit.sub_name}</p>
+                        <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo}</p>
                     </div>
                     <div className="flex flex-col items-end text-right">
-                        <div className="text-sm text-neutral-700">{unit.point_cost_per_model ?? 0} pts</div>
-                        <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-neutral-500">
+                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? 0} pts</div>
+                        <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-white/75">
                             {costBreakdown.length > 0 ? (
                                 <>
                                     {costBreakdown.map((line) => (
@@ -127,38 +135,35 @@ export default function UnitDetail() {
                                     ))}
                                 </>
                             ) : null}
-                            <div className="rounded-full bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white">Total: {totalCost} pts</div>
+                            <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-neutral-600">
-                    <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.role}</span>
-                    <span className="rounded-full bg-neutral-100 px-2.5 py-1">
-                        {formatModelRange(unit)} {modelLabel(unit)}
-                    </span>
-                    <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.faction}</span>
+                <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-[var(--navy)]">
+                    <span className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{unit.role}</span>
+                    <span className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{unit.faction}</span>
                 </div>
                 {selectedEntry ? (
-                    <div className="mt-3 rounded-lg border border-neutral-200 bg-neutral-50 p-2">
+                    <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
                         <div className="flex items-center justify-between gap-2">
-                            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">Models</div>
+                            <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
                             <div className="flex items-center gap-1">
                                 <button
                                     type="button"
-                                    className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                    className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
                                     onClick={() => removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')}
                                     disabled={!canRemoveModel || !selectedModelId}
                                     title="Remove selected model"
                                 >
                                     −
                                 </button>
-                                <span className="min-w-12 text-center text-[11px] text-neutral-600">
+                                <span className="min-w-12 text-center text-[11px] font-medium text-white">
                                     {selectedEntry.models.length}/{maxModels}
                                 </span>
                                 <button
                                     type="button"
-                                    className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                    className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
                                     onClick={() => addModelToListUnit(selectedEntry.instanceId)}
                                     disabled={!canAddModel}
                                     title="Add model"
@@ -174,7 +179,7 @@ export default function UnitDetail() {
                                     <button
                                         key={model.modelId}
                                         type="button"
-                                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${active ? 'border-[var(--navy)] bg-[var(--navy)] text-white' : 'border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-100'}`}
+                                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium shadow-sm ${active ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]' : 'border-white/40 bg-white text-[var(--navy)] hover:bg-[var(--gold-light)]'}`}
                                         onClick={() => selectModel(model.modelId)}
                                     >
                                         Model {index + 1}
@@ -186,10 +191,10 @@ export default function UnitDetail() {
                 ) : null}
             </section>
 
-            <section className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Stats</div>
+            <section className="unit-detail-section unit-detail-stat rounded-xl p-2.5 shadow-sm">
+                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Stats</div>
                 <div className="mt-1.5 overflow-x-auto">
-                    <table className="min-w-full border border-neutral-200 text-center">
+                    <table className="min-w-full border border-white/40 bg-white text-center shadow-sm">
                         <tbody>
                             <tr>
                                 {statEntries.map(([key, value]) => (
@@ -211,49 +216,49 @@ export default function UnitDetail() {
             </section>
 
             <section className="grid items-start gap-2 md:grid-cols-2">
-                <div className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Properties</div>
-                    <div className="mt-1.5 divide-y divide-neutral-100">
+                <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Properties</div>
+                    <div className="unit-detail-line mt-1.5 divide-y">
                         {unit.properties.length > 0 ? (
                             unit.properties.map((property) => (
-                                <div key={property.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-neutral-700">
+                                <div key={property.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-[var(--detail-ink)]">
                                     <span className="font-medium text-neutral-900">
                                         <RuleWord category="properties" name={property.name} value={property.value} />
                                     </span>
-                                    {property.value != null ? <span className="text-[11px] text-neutral-500">{property.value}</span> : null}
+                                    {property.value != null ? <span className="text-[11px] font-medium text-[var(--navy)]">{property.value}</span> : null}
                                 </div>
                             ))
                         ) : (
-                            <div className="py-1 text-sm text-neutral-500">None</div>
+                            <div className="py-1 text-sm text-[var(--detail-ink)]/70">None</div>
                         )}
                     </div>
                 </div>
 
-                <div className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Systems</div>
-                    <div className="mt-1.5 divide-y divide-neutral-100">
+                <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Systems</div>
+                    <div className="unit-detail-line mt-1.5 divide-y">
                         {unit.systems.length > 0 ? (
                             unit.systems.map((system) => (
-                                <div key={system.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-neutral-700">
+                                <div key={system.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-[var(--detail-ink)]">
                                     <span className="font-medium text-neutral-900">
                                         <RuleWord category="systems" name={system.name} value={system.value} />
                                     </span>
-                                    {system.value != null ? <span className="text-[11px] text-neutral-500">{system.value}</span> : null}
+                                    {system.value != null ? <span className="text-[11px] font-medium text-[var(--navy)]">{system.value}</span> : null}
                                 </div>
                             ))
                         ) : (
-                            <div className="py-1 text-sm text-neutral-500">None</div>
+                            <div className="py-1 text-sm text-[var(--detail-ink)]/70">None</div>
                         )}
                     </div>
                 </div>
             </section>
 
-            <section className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Weapons</div>
+            <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Weapons</div>
                 <div className="mt-2 overflow-x-auto">
                     <table className="min-w-full border-separate border-spacing-y-1.5 text-sm">
                         <thead>
-                            <tr className="text-left text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+                            <tr className="text-left text-[11px] uppercase tracking-[0.2em] text-[var(--detail-ink)]/75">
                                 <th className="px-2 py-1">Name</th>
                                 <th className="px-2 py-1">Arc</th>
                                 <th className="px-2 py-1">C</th>
@@ -276,7 +281,7 @@ export default function UnitDetail() {
 
                                 if (showGeneratorRow && generatorSelection) {
                                     return (
-                                        <tr key={weaponKey} className="bg-amber-50 align-top">
+                                        <tr key={weaponKey} className="align-top unit-detail-weapon-row">
                                             <td className="rounded-l-lg px-2 py-2">
                                                 <div className="flex items-center gap-2">
                                                     <span className="font-medium text-neutral-900">{generatorSelection.generatorName}</span>
@@ -302,7 +307,7 @@ export default function UnitDetail() {
                                 }
 
                                 return (
-                                    <tr key={weaponKey} className="bg-neutral-50 align-top">
+                                    <tr key={weaponKey} className="align-top unit-detail-weapon-row">
                                         <td className="rounded-l-lg px-2 py-2">
                                             {options.length > 0 ? (
                                                 <div className="space-y-1">
@@ -409,9 +414,9 @@ export default function UnitDetail() {
             </section>
 
             {hasOptions ? (
-                <section className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Options & Upgrades</div>
-                    <div className="mt-1.5 divide-y divide-neutral-100">
+                <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
+                    <div className="unit-detail-line mt-1.5 divide-y">
                         {unit.options_and_upgrades.map((option) => {
                             const unitLevel = isUnitLevelOption(option.tag)
                             const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
@@ -421,27 +426,27 @@ export default function UnitDetail() {
                             const isGeneratorOption = option.tag === 'GENERATOR'
 
                             return (
-                                <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5">
+                                <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">
                                     <div className="min-w-0">
-                                        <div className="text-sm font-medium text-neutral-900">{option.tag}</div>
-                                        <div className="text-[11px] text-neutral-500">{option.description}</div>
+                                        <div className="text-sm font-semibold text-neutral-900">{option.tag}</div>
+                                        <div className="text-[11px] text-[var(--detail-ink)]">{option.description}</div>
                                     </div>
                                     {isGeneratorOption ? (
-                                        <div className="text-[11px] text-neutral-400">—</div>
+                                        <div className="text-[11px] text-[var(--detail-ink)]/70">—</div>
                                     ) : (
                                         <div className="flex items-center gap-2">
                                             <button
                                                 type="button"
-                                                className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                                className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
                                                 onClick={() => setOptionQuantity(option.tag, qty - 1)}
                                                 disabled={qty === 0}
                                             >
                                                 −
                                             </button>
-                                            <div className="min-w-6 text-center text-sm font-medium text-neutral-900">{qty}</div>
+                                            <div className="min-w-6 text-center text-sm font-semibold text-neutral-900">{qty}</div>
                                             <button
                                                 type="button"
-                                                className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                                className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
                                                 onClick={() => {
                                                     if (canIncrease) {
                                                         setOptionQuantity(option.tag, qty + 1)
@@ -451,10 +456,10 @@ export default function UnitDetail() {
                                             >
                                                 +
                                             </button>
-                                            <div className="text-[11px] text-neutral-500">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                            <div className="text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
                                         </div>
                                     )}
-                                    <div className="text-right text-[11px] text-neutral-600">
+                                    <div className="text-right text-[11px] font-medium text-[var(--navy)]">
                                         {option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}
                                     </div>
                                 </div>

@@ -1,4 +1,5 @@
 import { useAppStore } from '../../store'
+import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
     category: 'properties' | 'systems' | 'qualities'
@@ -28,9 +29,10 @@ export default function GlossaryModal({ category, name, onClose }: Props) {
                 </div>
 
                 {entry ? (
-                    <div className="mt-6 text-slate-300">
-                        <p className="text-sm leading-7">{entry}</p>
-                    </div>
+                    <MarkdownText
+                        text={entry}
+                        className="mt-6 text-sm leading-7 text-slate-300 [&_p+p]:mt-4 [&_strong]:font-semibold [&_strong]:text-white [&_em]:italic"
+                    />
                 ) : (
                     <p className="mt-6 text-sm text-slate-400">No glossary entry found for this rule.</p>
                 )}
