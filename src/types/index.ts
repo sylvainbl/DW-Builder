@@ -91,10 +91,16 @@ export interface UnitConfig {
     optionQuantities: Record<string, number>
 }
 
+export interface ArmyModel {
+    modelId: string
+    config: UnitConfig
+}
+
 export interface ArmyUnit {
     instanceId: string
     unitId: string
     config: UnitConfig
+    models: ArmyModel[]
     totalPoints: number
     attachedUnits?: ArmyUnit[]
 }

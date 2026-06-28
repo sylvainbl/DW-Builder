@@ -12,10 +12,16 @@ function unitTraits(unit: Unit): string[] {
 
 function canAttachToParent(attachment: Unit, parent: Unit): boolean {
     if (!attachment.attachment || attachment.faction_id !== parent.faction_id) return false
+    if (attachment.id === parent.id) return false
     const parentTraits = unitTraits(parent)
     return attachment.attachment.parent_traits.every((requiredTrait) =>
         parentTraits.includes(requiredTrait.toLowerCase()),
     )
+}
+
+function attachmentModelLimit(unit: Unit): number {
+    const fallback = unit.max ?? (typeof unit.models === 'number' ? unit.models : 1)
+    return unit.attachment?.max_models ?? fallback
 }
 
 function UnitCardList() {
@@ -49,6 +55,11 @@ function UnitCardList() {
             const targets = currentList.units.flatMap((entry) => {
                 const parent = units.find((item) => item.id === entry.unitId)
                 if (!parent || !canAttachToParent(unit, parent)) return []
+                const usedModels = (entry.attachedUnits ?? [])
+                    .filter((attachment) => attachment.unitId === unit.id)
+                    .reduce((sum, attachment) => sum + attachment.models.length, 0)
+                const minimum = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
+                if (usedModels + minimum > attachmentModelLimit(unit)) return []
                 return [{ instanceId: entry.instanceId, label: parent.name }]
             })
             return [unit.id, targets]

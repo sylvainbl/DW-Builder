@@ -1,5 +1,5 @@
-import type { ArmyList, ArmyUnit, Unit, UnitConfig } from '../types/index'
-import { computeTotalPoints } from './pointsCalc'
+import type { ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
+import { computeArmyUnitTotal } from './pointsCalc'
 import { uuid } from './uuid'
 
 const STORAGE_KEY = 'dw-builder-lists-v1'
@@ -71,6 +71,30 @@ function isUnitConfig(value: unknown): value is UnitConfig {
     )
 }
 
+function minimumModels(unit: Unit): number {
+    return Math.max(1, unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
+}
+
+function maximumModels(unit: Unit): number {
+    return Math.max(minimumModels(unit), unit.max ?? (typeof unit.models === 'number' ? unit.models : minimumModels(unit)))
+}
+
+function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): ArmyModel[] {
+    const importedModels = Array.isArray(models)
+        ? models.flatMap((model) => (
+            isObject(model) && isUnitConfig(model.config)
+                ? [{ modelId: uuid(), config: structuredClone(model.config) }]
+                : []
+        ))
+        : []
+    const normalized = (importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: structuredClone(config) }])
+        .slice(0, maximumModels(unit))
+    while (normalized.length < minimumModels(unit)) {
+        normalized.push({ modelId: uuid(), config: { hardpointSelections: {}, generatorSelection: null, optionQuantities: {} } })
+    }
+    return normalized
+}
+
 function isArmyListLike(value: unknown): value is ArmyList {
     return (
         isObject(value) &&
@@ -90,11 +114,11 @@ function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
             instanceId: uuid(),
             unitId: unit.id,
             config: structuredClone(entry.config),
+            models: makeImportedModels(unit, entry.config, entry.models),
             totalPoints: 0,
             attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
         }
-        normalized.totalPoints = computeTotalPoints(unit, normalized.config) +
-            (normalized.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
+        normalized.totalPoints = computeArmyUnitTotal(normalized, units)
         return [normalized]
 }
 
@@ -129,12 +153,15 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
         if (!isObject(entry) || typeof entry.name !== 'string' || !isUnitConfig(entry.config)) return []
         const unit = units.find((item) => item.faction_id === data.faction && item.name === entry.name)
         if (!unit) return []
-        return [{
+        const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
             config: structuredClone(entry.config),
-            totalPoints: computeTotalPoints(unit, entry.config),
-        }]
+            models: makeImportedModels(unit, entry.config, null),
+            totalPoints: 0,
+        }
+        normalized.totalPoints = computeArmyUnitTotal(normalized, units)
+        return [normalized]
     })
 
     return {

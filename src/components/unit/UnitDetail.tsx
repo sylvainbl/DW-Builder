@@ -2,8 +2,9 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
-import { computeTotalPoints } from '../../utils/pointsCalc'
+import { computeModelPoints, computeTotalPoints, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
+import type { ArmyUnit } from '../../types/index'
 
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
@@ -23,17 +24,51 @@ function modelLabel(unit: { min?: number; max?: number; models: number | string 
     return typeof unit.models === 'number' && unit.models === 1 ? 'model' : 'models'
 }
 
+function findEntry(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | null {
+    if (!instanceId) return null
+    for (const entry of entries) {
+        if (entry.instanceId === instanceId) return entry
+        const nested = findEntry(entry.attachedUnits ?? [], instanceId)
+        if (nested) return nested
+    }
+    return null
+}
+
+function findParent(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | null {
+    if (!instanceId) return null
+    for (const entry of entries) {
+        if ((entry.attachedUnits ?? []).some((attachment) => attachment.instanceId === instanceId)) return entry
+        const nested = findParent(entry.attachedUnits ?? [], instanceId)
+        if (nested) return nested
+    }
+    return null
+}
+
 export default function UnitDetail() {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
+    const currentList = useAppStore((state) => state.currentList)
+    const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
+    const selectedModelId = useAppStore((state) => state.selectedModelId)
     const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
     const setGeneratorSelection = useAppStore((state) => state.setGeneratorSelection)
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
+    const selectModel = useAppStore((state) => state.selectModel)
+    const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
+    const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const [openHardpointKey, setOpenHardpointKey] = useState<string | null>(null)
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
+    const selectedEntry = useMemo(
+        () => currentList ? findEntry(currentList.units, selectedListInstanceId) : null,
+        [currentList, selectedListInstanceId],
+    )
+    const selectedEntryParent = useMemo(
+        () => currentList ? findParent(currentList.units, selectedListInstanceId) : null,
+        [currentList, selectedListInstanceId],
+    )
 
     if (!unit) {
         return (
@@ -47,12 +82,25 @@ export default function UnitDetail() {
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorSelection = activeUnitConfig.generatorSelection
-    const totalCost = computeTotalPoints(unit, activeUnitConfig)
+    const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
+    const selectedModelCost = computeModelPoints(unit, activeUnitConfig)
+    const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
+    const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
+    const siblingAttachmentModels = selectedEntryParent && selectedEntry
+        ? (selectedEntryParent.attachedUnits ?? [])
+            .filter((attachment) => attachment.unitId === unit.id && attachment.instanceId !== selectedEntry.instanceId)
+            .reduce((sum, attachment) => sum + attachment.models.length, 0)
+        : 0
+    const maxModels = selectedEntryParent ? (unit.attachment?.max_models ?? normalMaxModels) - siblingAttachmentModels : normalMaxModels
+    const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
+    const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
     const costBreakdown = [
+        ...(selectedEntry ? [`Selected model: ${selectedModelCost} pts`] : []),
         ...(generatorSelection ? [`Generator (${generatorSelection.generatorName}): +${generatorSelection.generatorCost} pts`] : []),
         ...unit.options_and_upgrades.flatMap((option) => {
-            const qty = activeUnitConfig.optionQuantities[option.tag] ?? 0
+            const config = isUnitLevelOption(option.tag) && selectedEntry ? selectedEntry.config : activeUnitConfig
+            const qty = config.optionQuantities[option.tag] ?? 0
             if (qty <= 0 || option.cost_per_unit == null) {
                 return []
             }
@@ -91,6 +139,51 @@ export default function UnitDetail() {
                     </span>
                     <span className="rounded-full bg-neutral-100 px-2.5 py-1">{unit.faction}</span>
                 </div>
+                {selectedEntry ? (
+                    <div className="mt-3 rounded-lg border border-neutral-200 bg-neutral-50 p-2">
+                        <div className="flex items-center justify-between gap-2">
+                            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">Models</div>
+                            <div className="flex items-center gap-1">
+                                <button
+                                    type="button"
+                                    className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                    onClick={() => removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')}
+                                    disabled={!canRemoveModel || !selectedModelId}
+                                    title="Remove selected model"
+                                >
+                                    −
+                                </button>
+                                <span className="min-w-12 text-center text-[11px] text-neutral-600">
+                                    {selectedEntry.models.length}/{maxModels}
+                                </span>
+                                <button
+                                    type="button"
+                                    className="h-6 w-6 rounded-full border border-neutral-200 bg-white text-sm text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40"
+                                    onClick={() => addModelToListUnit(selectedEntry.instanceId)}
+                                    disabled={!canAddModel}
+                                    title="Add model"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                            {selectedEntry.models.map((model, index) => {
+                                const active = selectedModelId === model.modelId
+                                return (
+                                    <button
+                                        key={model.modelId}
+                                        type="button"
+                                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${active ? 'border-[var(--navy)] bg-[var(--navy)] text-white' : 'border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-100'}`}
+                                        onClick={() => selectModel(model.modelId)}
+                                    >
+                                        Model {index + 1}
+                                    </button>
+                                )
+                            })}
+                        </div>
+                    </div>
+                ) : null}
             </section>
 
             <section className="rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
@@ -227,7 +320,7 @@ export default function UnitDetail() {
                                                             <label className="mt-1 flex items-center gap-2">
                                                                 <input
                                                                     type="radio"
-                                                                    name={`slot-${index}`}
+                                                                    name={`slot-${selectedModelId ?? 'preview'}-${index}`}
                                                                     checked={selectedName === weapon.name}
                                                                     onChange={() => {
                                                                         setHardpointSelection(index, weapon.name)
@@ -246,7 +339,7 @@ export default function UnitDetail() {
                                                                         <label key={option.name} className="mt-1 flex items-center gap-2">
                                                                             <input
                                                                                 type="radio"
-                                                                                name={`slot-${index}`}
+                                                                                name={`slot-${selectedModelId ?? 'preview'}-${index}`}
                                                                                 checked={selectedName === option.name}
                                                                                 onChange={() => {
                                                                                     setHardpointSelection(index, option.name)
@@ -269,7 +362,7 @@ export default function UnitDetail() {
                                                                             <span className="flex items-center gap-2">
                                                                                 <input
                                                                                     type="radio"
-                                                                                    name={`slot-${index}`}
+                                                                                    name={`slot-${selectedModelId ?? 'preview'}-${index}`}
                                                                                     checked={generatorSelection?.weaponIndex === index && generatorSelection?.generatorName === generator.name}
                                                                                     onChange={() => {
                                                                                         setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
@@ -320,8 +413,10 @@ export default function UnitDetail() {
                     <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Options & Upgrades</div>
                     <div className="mt-1.5 divide-y divide-neutral-100">
                         {unit.options_and_upgrades.map((option) => {
-                            const qty = activeUnitConfig.optionQuantities[option.tag] ?? 0
-                            const max = option.max
+                            const unitLevel = isUnitLevelOption(option.tag)
+                            const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
+                            const qty = config.optionQuantities[option.tag] ?? 0
+                            const max = unitLevel ? option.max : option.max ?? 1
                             const canIncrease = max == null || qty < max
                             const isGeneratorOption = option.tag === 'GENERATOR'
 
