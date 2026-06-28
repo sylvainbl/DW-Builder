@@ -6,16 +6,18 @@ export function RuleWord({
     category,
     name,
     value,
+    showValue = true,
 }: {
     category: 'properties' | 'systems' | 'qualities'
     name: string
     value?: number | null
+    showValue?: boolean
 }) {
     const glossary = useAppStore((state) => state.glossary)
     const [modalOpen, setModalOpen] = useState(false)
 
     const ruleText = glossary?.[category]?.[name] ?? null
-    const label = value != null ? `${name} ${value}` : name
+    const label = showValue && value != null ? `${name} ${value}` : name
 
     if (!ruleText) {
         return <span>{label}</span>

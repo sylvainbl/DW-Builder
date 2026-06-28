@@ -57,6 +57,52 @@
     border-color: rgba(27, 58, 92, 0.12);
 }
 
+.unit-detail-rule-row {
+    display: inline-flex;
+    max-width: 100%;
+    min-height: 1.75rem;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgba(27, 58, 92, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    padding: 0.25rem 0.4rem 0.25rem 0.65rem;
+    font-size: 0.875rem;
+    color: var(--detail-ink);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.unit-detail-rule-row:hover {
+    border-color: rgba(27, 58, 92, 0.24);
+    background: rgba(255, 255, 255, 0.84);
+}
+
+.unit-detail-rule-value {
+    display: inline-flex;
+    min-width: 1.3rem;
+    height: 1.2rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(27, 58, 92, 0.18);
+    border-radius: 999px;
+    background: #ffffff;
+    padding: 0 0.35rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--navy);
+}
+
+.unit-detail-empty {
+    display: inline-flex;
+    border: 1px dashed rgba(27, 58, 92, 0.16);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.875rem;
+    color: rgba(17, 24, 39, 0.56);
+}
+
 .unit-detail-weapon-row {
     background: var(--detail-row);
     box-shadow: inset 3px 0 0 rgba(200, 170, 110, 0.72);

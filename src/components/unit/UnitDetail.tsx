@@ -218,36 +218,36 @@ export default function UnitDetail() {
             <section className="grid items-start gap-2 md:grid-cols-2">
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Properties</div>
-                    <div className="unit-detail-line mt-1.5 divide-y">
+                    <div className="mt-2 flex flex-wrap gap-1.5">
                         {unit.properties.length > 0 ? (
                             unit.properties.map((property) => (
-                                <div key={property.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-[var(--detail-ink)]">
-                                    <span className="font-medium text-neutral-900">
-                                        <RuleWord category="properties" name={property.name} value={property.value} />
+                                <div key={property.name} className="unit-detail-rule-row">
+                                    <span className="min-w-0 font-medium text-neutral-900">
+                                        <RuleWord category="properties" name={property.name} value={property.value} showValue={false} />
                                     </span>
-                                    {property.value != null ? <span className="text-[11px] font-medium text-[var(--navy)]">{property.value}</span> : null}
+                                    {property.value != null ? <span className="unit-detail-rule-value">{property.value}</span> : null}
                                 </div>
                             ))
                         ) : (
-                            <div className="py-1 text-sm text-[var(--detail-ink)]/70">None</div>
+                            <div className="unit-detail-empty">None</div>
                         )}
                     </div>
                 </div>
 
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Systems</div>
-                    <div className="unit-detail-line mt-1.5 divide-y">
+                    <div className="mt-2 flex flex-wrap gap-1.5">
                         {unit.systems.length > 0 ? (
                             unit.systems.map((system) => (
-                                <div key={system.name} className="flex min-h-7 items-center justify-between gap-2 py-1 text-sm text-[var(--detail-ink)]">
-                                    <span className="font-medium text-neutral-900">
-                                        <RuleWord category="systems" name={system.name} value={system.value} />
+                                <div key={system.name} className="unit-detail-rule-row">
+                                    <span className="min-w-0 font-medium text-neutral-900">
+                                        <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
                                     </span>
-                                    {system.value != null ? <span className="text-[11px] font-medium text-[var(--navy)]">{system.value}</span> : null}
+                                    {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
                                 </div>
                             ))
                         ) : (
-                            <div className="py-1 text-sm text-[var(--detail-ink)]/70">None</div>
+                            <div className="unit-detail-empty">None</div>
                         )}
                     </div>
                 </div>
