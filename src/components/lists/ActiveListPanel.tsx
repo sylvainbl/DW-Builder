@@ -14,22 +14,30 @@ interface UnitRowProps {
 }
 
 function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: UnitRowProps) {
+    const rowClasses = nested
+        ? active
+            ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
+            : 'ml-4 w-[calc(100%-1rem)] border-amber-200 bg-amber-50 hover:bg-amber-100'
+        : active
+            ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm ring-2 ring-[var(--gold)]/40'
+            : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
+
     return (
         <button
             type="button"
             onClick={onSelect}
-            className={`w-full rounded-lg border p-2 text-left transition ${nested ? 'ml-4 w-[calc(100%-1rem)] border-blue-100 bg-blue-50/50' : ''} ${active ? 'border-blue-200 bg-blue-50' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
+            className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}
         >
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                        {nested ? <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-blue-500">Attachment</span> : null}
-                        <div className="truncate text-sm font-medium text-neutral-900">{unit?.name ?? entry.unitId}</div>
+                        {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>Attachment</span> : null}
+                        <div className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</div>
                     </div>
-                    <div className="text-[11px] text-neutral-500">{unit?.role ?? 'Unit'}</div>
+                    <div className={`text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>{unit?.role ?? 'Unit'}</div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="whitespace-nowrap text-[11px] font-medium text-[var(--navy)]">{entry.totalPoints} pts</span>
+                    <span className={`whitespace-nowrap text-[11px] font-medium ${active && !nested ? 'text-white' : 'text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
                     <span
                         role="button"
                         tabIndex={0}
@@ -45,7 +53,7 @@ function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: Un
                                 onRemove()
                             }
                         }}
-                        className="rounded p-1 text-neutral-400 hover:bg-rose-50 hover:text-rose-600"
+                        className={`rounded p-1 ${active && !nested ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
                     >
                         <Minus size={13} />
                     </span>
@@ -82,8 +90,9 @@ export default function ActiveListPanel() {
     }
 
     return (
-        <div className="p-3">
-            <div className="flex items-start justify-between gap-2">
+        <div className="border-b border-neutral-200 bg-neutral-100 p-3">
+            <div className="rounded-lg border border-neutral-200 bg-white p-2.5 shadow-sm">
+                <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                     {editingName ? (
                         <input
@@ -130,6 +139,7 @@ export default function ActiveListPanel() {
                         <X size={14} />
                     </button>
                 </div>
+            </div>
             </div>
 
             <div className="mt-3 space-y-1.5">

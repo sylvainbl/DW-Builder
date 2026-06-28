@@ -119,13 +119,13 @@ export default function ListsPanel() {
                                 key={list.id}
                                 type="button"
                                 onClick={() => openList(list.id)}
-                                className={`w-full rounded-lg border p-3 text-left transition ${active ? 'border-blue-200 bg-blue-50' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
-                                style={{ borderLeftWidth: active ? 4 : 1 }}
+                                className={`w-full rounded-lg border p-3 text-left transition ${active ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
+                                style={{ borderLeftWidth: active ? 5 : 1, borderLeftColor: active ? 'var(--gold)' : undefined }}
                             >
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0">
-                                        <div className="truncate text-sm font-medium text-neutral-900">▶ {list.name}</div>
-                                        <div className="mt-1 text-[11px] text-neutral-500">
+                                        <div className={`truncate text-sm font-medium ${active ? 'text-white' : 'text-neutral-900'}`}>▶ {list.name}</div>
+                                        <div className={`mt-1 text-[11px] ${active ? 'text-white/70' : 'text-neutral-500'}`}>
                                             {factionNames.get(list.faction_id) ?? list.faction_id} · {list.units.length} u.
                                         </div>
                                     </div>
@@ -144,12 +144,12 @@ export default function ListsPanel() {
                                                 if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
                                             }
                                         }}
-                                        className="rounded p-1 text-neutral-400 hover:bg-rose-50 hover:text-rose-600"
+                                        className={`rounded p-1 ${active ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
                                     >
                                         <X size={14} />
                                     </span>
                                 </div>
-                                <div className="mt-2 text-[12px] font-medium text-[var(--navy)]">{total.toLocaleString('fr-FR')} pts</div>
+                                <div className={`mt-2 text-[12px] font-medium ${active ? 'text-white' : 'text-[var(--navy)]'}`}>{total.toLocaleString('fr-FR')} pts</div>
                             </button>
                         )
                     })

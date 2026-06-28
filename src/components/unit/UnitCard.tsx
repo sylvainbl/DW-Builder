@@ -17,7 +17,7 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd, attac
         <button
             type="button"
             onClick={onSelect}
-            className={`w-full rounded-xl border p-3 text-left transition ${active ? 'border-blue-300 bg-blue-50 shadow-sm' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
+            className={`w-full rounded-xl border p-3 text-left transition ${active ? 'border-sky-500 bg-sky-50 shadow-sm ring-1 ring-sky-200' : 'border-neutral-200 bg-white hover:border-sky-200 hover:bg-sky-50/40'}`}
             style={{ borderLeft: `3px solid ${faction?.color ?? 'var(--navy)'}` }}
         >
             <div className="flex items-start gap-2">
@@ -72,7 +72,7 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd, attac
                                     onAttach(target.instanceId)
                                 }
                             }}
-                            className="rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-700 hover:bg-blue-100"
+                            className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[10px] font-medium text-amber-800 hover:bg-amber-100"
                         >
                             Attach to {target.label}
                         </span>
