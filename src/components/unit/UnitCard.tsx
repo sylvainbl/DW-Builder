@@ -47,11 +47,13 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd, attac
                     </span>
                 ) : null}
             </div>
-            <div className="mt-2.5 flex flex-wrap items-center gap-1">
-                {unit.tags.slice(0, 2).map((tag) => (
+            <div className="mt-2 flex items-center justify-between gap-2">
+                <span className="text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model ?? '—'} pts</span>
+            </div>
+            <div className="mt-2 flex flex-wrap items-center gap-1">
+                {unit.tags.map((tag) => (
                     <TagChip key={tag} label={tag} />
                 ))}
-                <span className="ml-auto text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model ?? '—'} pts</span>
             </div>
             {attachmentTargets.length > 0 && onAttach ? (
                 <div className="mt-2 flex flex-wrap gap-1.5">

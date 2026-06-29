@@ -29,7 +29,7 @@ export default function AppShell() {
     return (
         <div className="flex min-h-screen flex-col bg-[var(--panel)] text-[var(--text)]">
             <AppHeader />
-            <div className="grid flex-1 grid-cols-[220px_280px_minmax(0,1fr)] overflow-hidden">
+            <div className="grid flex-1 grid-cols-[15%_20%_65%] overflow-hidden">
                 <div className="min-h-0 overflow-y-auto border-r border-neutral-200">
                     <ListsPanel />
                 </div>
