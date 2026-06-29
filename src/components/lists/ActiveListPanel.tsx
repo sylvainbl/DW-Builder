@@ -380,6 +380,22 @@ export default function ActiveListPanel() {
         () => battlefleetIssues.filter((issue) => !issue.battlefleetInstanceId && !issue.unitInstanceId),
         [battlefleetIssues],
     )
+    const regularBattlefleetDefinitions = useMemo(
+        () => availableBattlefleetDefinitions.filter((definition) => !isMercenaryInForce(definition, currentList?.faction_id)),
+        [availableBattlefleetDefinitions, currentList?.faction_id],
+    )
+    const mainBattlefleetDefinitions = useMemo(
+        () => regularBattlefleetDefinitions.filter((definition) => definition.type === 'main'),
+        [regularBattlefleetDefinitions],
+    )
+    const specialistBattlefleetDefinitions = useMemo(
+        () => regularBattlefleetDefinitions.filter((definition) => definition.type === 'specialist'),
+        [regularBattlefleetDefinitions],
+    )
+    const mercenaryBattlefleetDefinitions = useMemo(
+        () => availableBattlefleetDefinitions.filter((definition) => isMercenaryInForce(definition, currentList?.faction_id)),
+        [availableBattlefleetDefinitions, currentList?.faction_id],
+    )
 
     if (!currentList) return null
 
@@ -475,11 +491,33 @@ export default function ActiveListPanel() {
                                 className="h-7 w-28 appearance-none rounded-md border border-neutral-300 bg-white pl-7 pr-6 text-[11px] font-semibold text-neutral-800 shadow-sm outline-none transition hover:border-neutral-400 hover:bg-neutral-50 focus:border-[var(--navy)] focus:ring-2 focus:ring-[var(--navy)]/10"
                             >
                                 <option value="">Add</option>
-                                {availableBattlefleetDefinitions.map((definition) => (
-                                    <option key={definition.id} value={definition.id}>
-                                        {definition.name}
-                                    </option>
-                                ))}
+                                {mainBattlefleetDefinitions.length > 0 ? (
+                                    <optgroup label="Main">
+                                        {mainBattlefleetDefinitions.map((definition) => (
+                                            <option key={definition.id} value={definition.id}>
+                                                {definition.name}
+                                            </option>
+                                        ))}
+                                    </optgroup>
+                                ) : null}
+                                {specialistBattlefleetDefinitions.length > 0 ? (
+                                    <optgroup label="Specialist">
+                                        {specialistBattlefleetDefinitions.map((definition) => (
+                                            <option key={definition.id} value={definition.id}>
+                                                {definition.name}
+                                            </option>
+                                        ))}
+                                    </optgroup>
+                                ) : null}
+                                {mercenaryBattlefleetDefinitions.length > 0 ? (
+                                    <optgroup label="Mercenary">
+                                        {mercenaryBattlefleetDefinitions.map((definition) => (
+                                            <option key={definition.id} value={definition.id}>
+                                                {definition.name}
+                                            </option>
+                                        ))}
+                                    </optgroup>
+                                ) : null}
                             </select>
                             <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-neutral-500">▾</span>
                         </div>

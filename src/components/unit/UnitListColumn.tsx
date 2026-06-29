@@ -38,11 +38,13 @@ function UnitCardList() {
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
     const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
+    const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
+    const [selectedDomains, setSelectedDomains] = useState<string[]>([])
+    const [selectedKeywords, setSelectedKeywords] = useState<string[]>([])
 
     const factionId = currentList?.faction_id ?? selectedFactionId
-    const visibleFactionIds = useMemo(() => {
+    const mercenaryFactionIds = useMemo(() => {
         const ids = new Set<string>()
-        if (factionId) ids.add(factionId)
         for (const battlefleet of currentList?.battlefleets ?? []) {
             const definition = battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
             if (definition && isMercenaryInForce(definition, currentList?.faction_id)) {
@@ -50,11 +52,25 @@ function UnitCardList() {
             }
         }
         return ids
-    }, [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id, factionId])
+    }, [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id])
+    const effectiveSourceMode = mercenaryFactionIds.size === 0 ? 'force' : sourceMode
+    const visibleFactionIds = useMemo(() => {
+        const ids = new Set<string>()
+        if (effectiveSourceMode !== 'mercenary' && factionId) ids.add(factionId)
+        if (effectiveSourceMode !== 'force') {
+            mercenaryFactionIds.forEach((id) => ids.add(id))
+        }
+        return ids
+    }, [effectiveSourceMode, factionId, mercenaryFactionIds])
+    const filterSourceUnits = useMemo(
+        () => units.filter((unit) => visibleFactionIds.size === 0 || visibleFactionIds.has(unit.faction_id)),
+        [units, visibleFactionIds],
+    )
     const filteredUnits = useMemo(() => {
         const query = searchQuery.trim().toLowerCase()
-        const filtered = units.filter((unit) => {
-            if (visibleFactionIds.size > 0 && !visibleFactionIds.has(unit.faction_id)) return false
+        const filtered = filterSourceUnits.filter((unit) => {
+            if (selectedDomains.length > 0 && !selectedDomains.some((tag) => unit.tags.includes(tag))) return false
+            if (selectedKeywords.length > 0 && !selectedKeywords.some((tag) => unit.tags.includes(tag))) return false
 
             const textMatch = [unit.name, unit.sub_name, ...unit.tags]
                 .filter((part): part is string => typeof part === 'string')
@@ -69,9 +85,33 @@ function UnitCardList() {
             if (sortMode === 'points-desc') return (b.point_cost_per_model ?? 0) - (a.point_cost_per_model ?? 0)
             return a.name.localeCompare(b.name)
         })
-    }, [searchQuery, selectedRoles, sortMode, units, visibleFactionIds])
+    }, [filterSourceUnits, searchQuery, selectedDomains, selectedKeywords, selectedRoles, sortMode])
 
     const factionById = useMemo(() => new Map(factions.map((faction) => [faction.id, faction])), [factions])
+    const sourceOptions = useMemo(() => {
+        const forceFactionName = factionById.get(factionId ?? '')?.name ?? 'Current faction'
+        const mercenaryNames = Array.from(mercenaryFactionIds)
+            .map((id) => factionById.get(id)?.name ?? id)
+            .join(', ')
+        if (!currentList || mercenaryFactionIds.size === 0) {
+            return [{ value: 'force' as const, label: forceFactionName }]
+        }
+        return [
+            { value: 'both' as const, label: `${forceFactionName} + ${mercenaryNames}` },
+            { value: 'force' as const, label: forceFactionName },
+            { value: 'mercenary' as const, label: mercenaryNames },
+        ]
+    }, [currentList, factionById, factionId, mercenaryFactionIds])
+    const toggleDomain = (tag: string) => {
+        setSelectedDomains((selected) => (
+            selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag]
+        ))
+    }
+    const toggleKeyword = (tag: string) => {
+        setSelectedKeywords((selected) => (
+            selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag]
+        ))
+    }
     const attachmentTargetsByUnitId = useMemo(() => {
         if (!currentList) return new Map<string, { instanceId: string; label: string }[]>()
         return new Map(filteredUnits.map((unit) => {
@@ -96,6 +136,14 @@ function UnitCardList() {
                 sortMode={sortMode}
                 onSortModeChange={setSortMode}
                 visibleCount={filteredUnits.length}
+                filterUnits={filterSourceUnits}
+                sourceMode={effectiveSourceMode}
+                sourceOptions={sourceOptions}
+                onSourceModeChange={setSourceMode}
+                selectedDomains={selectedDomains}
+                selectedKeywords={selectedKeywords}
+                onToggleDomain={toggleDomain}
+                onToggleKeyword={toggleKeyword}
             />
             <div className="flex-1 overflow-y-auto p-3">
                 {!factionId ? (
