@@ -1,10 +1,12 @@
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, Unit } from '../../types/index'
+import { getBattlefleetForceType, isMercenaryInForce } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
     battlefleet: ArmyBattlefleet
     definition: BattlefleetDefinition
+    forceFactionId: string
     entries: ArmyUnit[]
     units: Unit[]
 }
@@ -23,13 +25,16 @@ function textList(items: string[]): string {
     return items.length > 0 ? items.join(', ') : 'None'
 }
 
-export default function BattlefleetDetail({ battlefleet, definition, entries, units }: Props) {
+export default function BattlefleetDetail({ battlefleet, definition, forceFactionId, entries, units }: Props) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const displayInfo = getBattlefleetDisplayInfo(definition.id)
     const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
     const battlefleetBonus = definition.battlefleetBonus ?? displayInfo.battlefleetBonus ?? null
+    const forceType = getBattlefleetForceType(definition, forceFactionId)
+    const mercenary = isMercenaryInForce(definition, forceFactionId)
     const titleParts = [
-        definition.type === 'main' ? 'Main' : 'Specialist',
+        forceType === 'main' ? 'Main' : 'Specialist',
+        mercenary ? 'Mercenary' : null,
         definition.legendary ? 'Legendary' : null,
     ].filter(Boolean)
 

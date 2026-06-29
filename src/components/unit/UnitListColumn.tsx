@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
-import { getFilteredUnits } from '../../store/selectors'
 import type { Unit } from '../../types/index'
+import { isMercenaryInForce } from '../../utils/battlefleets'
 import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
@@ -33,22 +33,45 @@ function UnitCardList() {
     const searchQuery = useAppStore((state) => state.searchQuery)
     const selectedRoles = useAppStore((state) => state.selectedRoles)
     const factions = useAppStore((state) => state.factions)
+    const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
     const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
 
     const factionId = currentList?.faction_id ?? selectedFactionId
+    const visibleFactionIds = useMemo(() => {
+        const ids = new Set<string>()
+        if (factionId) ids.add(factionId)
+        for (const battlefleet of currentList?.battlefleets ?? []) {
+            const definition = battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
+            if (definition && isMercenaryInForce(definition, currentList?.faction_id)) {
+                ids.add(definition.faction_id)
+            }
+        }
+        return ids
+    }, [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id, factionId])
     const filteredUnits = useMemo(() => {
-        const filtered = getFilteredUnits({ units, selectedFactionId: factionId, searchQuery, selectedRoles })
+        const query = searchQuery.trim().toLowerCase()
+        const filtered = units.filter((unit) => {
+            if (visibleFactionIds.size > 0 && !visibleFactionIds.has(unit.faction_id)) return false
+
+            const textMatch = [unit.name, unit.sub_name, ...unit.tags]
+                .filter((part): part is string => typeof part === 'string')
+                .some((part) => part.toLowerCase().includes(query))
+
+            const roleMatch = selectedRoles.length === 0 || selectedRoles.includes(unit.role)
+
+            return query.length === 0 ? roleMatch : textMatch && roleMatch
+        })
         return [...filtered].sort((a, b) => {
             if (sortMode === 'points-asc') return (a.point_cost_per_model ?? 0) - (b.point_cost_per_model ?? 0)
             if (sortMode === 'points-desc') return (b.point_cost_per_model ?? 0) - (a.point_cost_per_model ?? 0)
             return a.name.localeCompare(b.name)
         })
-    }, [factionId, searchQuery, selectedRoles, sortMode, units])
+    }, [searchQuery, selectedRoles, sortMode, units, visibleFactionIds])
 
-    const faction = factions.find((item) => item.id === factionId)
+    const factionById = useMemo(() => new Map(factions.map((faction) => [faction.id, faction])), [factions])
     const attachmentTargetsByUnitId = useMemo(() => {
         if (!currentList) return new Map<string, { instanceId: string; label: string }[]>()
         return new Map(filteredUnits.map((unit) => {
@@ -89,7 +112,7 @@ function UnitCardList() {
                             <UnitCard
                                 key={unit.id}
                                 unit={unit}
-                                faction={faction}
+                                faction={factionById.get(unit.faction_id)}
                                 active={selectedUnitId === unit.id}
                                 onSelect={() => {
                                     setSelectedListInstanceId(null)

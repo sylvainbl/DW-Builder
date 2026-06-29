@@ -103,6 +103,7 @@ export interface BattlefleetDefinition {
     name: string
     type: BattlefleetType
     legendary?: boolean
+    mercenary?: boolean
     elements: BattlefleetElement[]
     mainstayClassNames?: string[]
     additionalMainstays?: BattlefleetAdditionalMainstay[]

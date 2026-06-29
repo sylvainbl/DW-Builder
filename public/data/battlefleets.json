@@ -285,6 +285,7 @@
     "name": "Black Wolf Hunting Pack",
     "type": "main",
     "legendary": true,
+    "mercenary": true,
     "elements": [
       {
         "id": "black-wolf-flagship",
@@ -1169,6 +1170,7 @@
     "name": "The Nautilus",
     "type": "specialist",
     "legendary": true,
+    "mercenary": true,
     "elements": [
       {
         "id": "nautilus",
@@ -1564,6 +1566,7 @@
     "faction_id": "imperium",
     "name": "Scions of Jutland Mercenary Battlefleet",
     "type": "main",
+    "mercenary": true,
     "elements": [
       {
         "id": "scions-flagship",

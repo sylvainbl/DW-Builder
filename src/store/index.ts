@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Faction, FleetDoctrine, Generator, Unit, UnitConfig } from '../types/index'
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
+import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/battlefleets'
 import { computeArmyUnitTotal, isUnitLevelOption, updateListUnit } from '../utils/pointsCalc'
 import { uuid } from '../utils/uuid'
 
@@ -198,7 +199,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
 
 function normalizeBattlefleets(list: ArmyList, definitions: BattlefleetDefinition[]): ArmyBattlefleet[] {
     const factionId = normalizeFactionId(list.faction_id)
-    const validDefinitionIds = new Set(definitions.filter((definition) => definition.faction_id === factionId).map((definition) => definition.id))
+    const validDefinitionIds = new Set(definitions.filter((definition) => isBattlefleetAvailableForFaction(definition, factionId)).map((definition) => definition.id))
     return (list.battlefleets ?? []).flatMap((battlefleet) => {
         if (!validDefinitionIds.has(battlefleet.definitionId)) return []
         return [{
@@ -525,10 +526,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
     addBattlefleetToCurrentList: (definitionId) => {
         const state = get()
         if (!state.currentList) return
-        const definition = state.battlefleetDefinitions.find((item) => item.id === definitionId && item.faction_id === state.currentList?.faction_id)
+        const definition = state.battlefleetDefinitions.find((item) => item.id === definitionId && isBattlefleetAvailableForFaction(item, state.currentList?.faction_id))
         if (!definition) return
         const battlefleets = [...(state.currentList.battlefleets ?? [])]
         if (definition.legendary && battlefleets.some((battlefleet) => battlefleet.definitionId === definition.id)) return
+        if (isMercenaryInForce(definition, state.currentList.faction_id)) {
+            const alreadyHasMercenary = battlefleets.some((battlefleet) => {
+                const existingDefinition = state.battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
+                return existingDefinition ? isMercenaryInForce(existingDefinition, state.currentList?.faction_id) : false
+            })
+            if (alreadyHasMercenary) return
+        }
         const newBattlefleet = makeBattlefleet(definition, battlefleets)
         set({
             currentList: {

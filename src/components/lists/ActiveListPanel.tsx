@@ -2,7 +2,7 @@ import { AlertTriangle, Download, Minus, Plus, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
-import { getBattlefleetDefinitionsForFaction, validateBattlefleetOrganisation } from '../../utils/battlefleets'
+import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { downloadList } from '../../utils/localStorage'
 
 interface UnitRowProps {
@@ -20,6 +20,7 @@ interface UnitRowProps {
 interface BattlefleetSectionProps {
     battlefleet: ArmyBattlefleet
     definition?: BattlefleetDefinition
+    forceFactionId: string
     entries: ArmyUnit[]
     issues: BattlefleetIssue[]
     unitById: Map<string, Unit>
@@ -189,6 +190,7 @@ function renderUnitRows({
 function BattlefleetSection({
     battlefleet,
     definition,
+    forceFactionId,
     entries,
     issues,
     unitById,
@@ -204,6 +206,8 @@ function BattlefleetSection({
 }: BattlefleetSectionProps) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const hasIssues = issues.length > 0
+    const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
+    const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
 
     return (
         <section className={`rounded-lg border bg-white shadow-sm ${active ? 'border-[var(--navy)] ring-2 ring-[var(--gold)]/40' : hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
@@ -216,7 +220,8 @@ function BattlefleetSection({
                     >
                         <div className="truncate text-[13px] font-semibold text-neutral-900">{battlefleet.name}</div>
                         <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                            <span>{definition?.type ?? 'Unknown'}</span>
+                            <span>{forceType ?? 'Unknown'}</span>
+                            {mercenary ? <span>Mercenary</span> : null}
                             {definition?.legendary ? <span>Legendary</span> : null}
                             <span>{entries.length} {entries.length === 1 ? 'unit' : 'units'}</span>
                             <span>{points} pts</span>
@@ -339,8 +344,17 @@ export default function ActiveListPanel() {
     const unitById = useMemo(() => new Map(units.map((unit) => [unit.id, unit])), [units])
     const definitionById = useMemo(() => new Map(battlefleetDefinitions.map((definition) => [definition.id, definition])), [battlefleetDefinitions])
     const availableBattlefleetDefinitions = useMemo(
-        () => getBattlefleetDefinitionsForFaction(battlefleetDefinitions, currentList?.faction_id),
-        [battlefleetDefinitions, currentList?.faction_id],
+        () => {
+            const definitions = getBattlefleetDefinitionsForFaction(battlefleetDefinitions, currentList?.faction_id)
+            const hasMercenary = (currentList?.battlefleets ?? []).some((battlefleet) => {
+                const definition = battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
+                return definition ? isMercenaryInForce(definition, currentList?.faction_id) : false
+            })
+            return definitions.filter((definition) => (
+                !hasMercenary || !isMercenaryInForce(definition, currentList?.faction_id)
+            ))
+        },
+        [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id],
     )
     const battlefleetIssues = useMemo(
         () => validateBattlefleetOrganisation(currentList, units, battlefleetDefinitions),
@@ -500,6 +514,7 @@ export default function ActiveListPanel() {
                                 key={battlefleet.instanceId}
                                 battlefleet={battlefleet}
                                 definition={definitionById.get(battlefleet.definitionId)}
+                                forceFactionId={currentList.faction_id}
                                 entries={entriesByBattlefleetId.get(battlefleet.instanceId) ?? []}
                                 issues={battlefleetIssuesByInstanceId.get(battlefleet.instanceId) ?? []}
                                 unitById={unitById}

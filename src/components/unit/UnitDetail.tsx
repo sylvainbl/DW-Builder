@@ -126,11 +126,12 @@ export default function UnitDetail() {
     )
 
     if (!unit) {
-        if (selectedBattlefleet && selectedBattlefleetDefinition) {
+        if (currentList && selectedBattlefleet && selectedBattlefleetDefinition) {
             return (
                 <BattlefleetDetail
                     battlefleet={selectedBattlefleet}
                     definition={selectedBattlefleetDefinition}
+                    forceFactionId={currentList.faction_id}
                     entries={selectedBattlefleetEntries}
                     units={units}
                 />

@@ -3,6 +3,7 @@ import type {
     ArmyList,
     ArmyUnit,
     BattlefleetDefinition,
+    BattlefleetType,
     BattlefleetElement,
     BattlefleetIssue,
     BattlefleetRequirement,
@@ -53,6 +54,19 @@ function unitLabel(units: Unit[], entry: ArmyUnit): string {
 
 function battlefleetLabel(battlefleet: ArmyBattlefleet, definition?: BattlefleetDefinition): string {
     return battlefleet.name || definition?.name || battlefleet.definitionId
+}
+
+export function isBattlefleetAvailableForFaction(definition: BattlefleetDefinition, factionId: string | null | undefined): boolean {
+    if (!factionId) return false
+    return definition.faction_id === factionId || definition.mercenary === true
+}
+
+export function isMercenaryInForce(definition: BattlefleetDefinition, forceFactionId: string | null | undefined): boolean {
+    return Boolean(forceFactionId && definition.mercenary && definition.faction_id !== forceFactionId)
+}
+
+export function getBattlefleetForceType(definition: BattlefleetDefinition, forceFactionId: string | null | undefined): BattlefleetType {
+    return isMercenaryInForce(definition, forceFactionId) ? 'specialist' : definition.type
 }
 
 function getMainstayClasses(definition: BattlefleetDefinition, entries: ArmyUnit[]): Set<string> {
@@ -617,7 +631,7 @@ export function validateBattlefleetOrganisation(
     if (!list) return []
 
     const issues: BattlefleetIssue[] = []
-    const availableDefinitions = definitions.filter((definition) => definition.faction_id === list.faction_id)
+    const availableDefinitions = definitions.filter((definition) => isBattlefleetAvailableForFaction(definition, list.faction_id))
     const definitionById = new Map(availableDefinitions.map((definition) => [definition.id, definition]))
     const battlefleets = list.battlefleets ?? []
 
@@ -643,13 +657,20 @@ export function validateBattlefleetOrganisation(
         return [{ battlefleet, definition }]
     })
 
-    const mainCount = knownBattlefleets.filter(({ definition }) => definition.type === 'main').length
+    const mainCount = knownBattlefleets.filter(({ definition }) => getBattlefleetForceType(definition, list.faction_id) === 'main').length
     const specialistCount = knownBattlefleets.filter(({ definition }) => (
-        definition.type === 'specialist'
-        && !definition.specialRules?.includes('mercenary-does-not-count')
+        getBattlefleetForceType(definition, list.faction_id) === 'specialist'
+        && !(definition.specialRules?.includes('mercenary-does-not-count') && !isMercenaryInForce(definition, list.faction_id))
     )).length
+    const mercenaryCount = knownBattlefleets.filter(({ definition }) => isMercenaryInForce(definition, list.faction_id)).length
     if (knownBattlefleets.length > 0 && mainCount === 0) {
         issues.push({ severity: 'error', message: 'A Force must contain at least one Main Battlefleet.' })
+    }
+    if (mercenaryCount > 1) {
+        issues.push({
+            severity: 'error',
+            message: `A Force can contain only one Mercenary Battlefleet (${mercenaryCount} selected).`,
+        })
     }
     if (specialistCount > mainCount) {
         issues.push({
@@ -695,5 +716,5 @@ export function getBattlefleetDefinitionsForFaction(
     definitions: BattlefleetDefinition[],
     factionId: string | null | undefined,
 ): BattlefleetDefinition[] {
-    return factionId ? definitions.filter((definition) => definition.faction_id === factionId) : []
+    return factionId ? definitions.filter((definition) => isBattlefleetAvailableForFaction(definition, factionId)) : []
 }
