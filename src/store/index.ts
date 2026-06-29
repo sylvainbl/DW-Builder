@@ -33,6 +33,8 @@ interface AppStore {
     setSelectedUnitId: (id: string | null) => void
     selectedListInstanceId: string | null
     setSelectedListInstanceId: (id: string | null) => void
+    selectedBattlefleetInstanceId: string | null
+    selectBattlefleet: (instanceId: string | null) => void
     selectedModelId: string | null
 
     currentList: ArmyList | null
@@ -348,7 +350,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
     },
 
     selectedFactionId: null,
-    setSelectedFactionId: (id) => set({ selectedFactionId: id, searchQuery: '', selectedRoles: [], selectedUnitId: null, selectedListInstanceId: null, selectedModelId: null }),
+    setSelectedFactionId: (id) => set({ selectedFactionId: id, searchQuery: '', selectedRoles: [], selectedUnitId: null, selectedListInstanceId: null, selectedBattlefleetInstanceId: null, selectedModelId: null }),
 
     searchQuery: '',
     setSearchQuery: (q) => set({ searchQuery: q }),
@@ -361,9 +363,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
         })),
 
     selectedUnitId: null,
-    setSelectedUnitId: (id) => set({ selectedUnitId: id, selectedListInstanceId: null, selectedModelId: null, activeUnitConfig: cloneConfig(emptyUnitConfig) }),
+    setSelectedUnitId: (id) => set({ selectedUnitId: id, selectedListInstanceId: null, selectedBattlefleetInstanceId: null, selectedModelId: null, activeUnitConfig: cloneConfig(emptyUnitConfig) }),
     selectedListInstanceId: null,
     setSelectedListInstanceId: (id) => set({ selectedListInstanceId: id }),
+    selectedBattlefleetInstanceId: null,
+    selectBattlefleet: (instanceId) => set({
+        selectedBattlefleetInstanceId: instanceId,
+        selectedUnitId: null,
+        selectedListInstanceId: null,
+        selectedModelId: null,
+        activeUnitConfig: cloneConfig(emptyUnitConfig),
+    }),
     selectedModelId: null,
 
     currentList: null,
@@ -388,6 +398,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             selectedFactionId: factionId,
             selectedUnitId: null,
             selectedListInstanceId: null,
+            selectedBattlefleetInstanceId: null,
             selectedModelId: null,
             activeUnitConfig: cloneConfig(emptyUnitConfig),
         }))
@@ -401,6 +412,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             selectedFactionId: target.faction_id,
             selectedUnitId: null,
             selectedListInstanceId: null,
+            selectedBattlefleetInstanceId: null,
             selectedModelId: null,
             activeUnitConfig: cloneConfig(emptyUnitConfig),
         })
@@ -411,6 +423,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             currentList: null,
             selectedUnitId: null,
             selectedListInstanceId: null,
+            selectedBattlefleetInstanceId: null,
             selectedModelId: null,
             activeUnitConfig: cloneConfig(emptyUnitConfig),
         })
@@ -423,6 +436,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             currentList: deletingCurrentList ? null : currentList,
             selectedUnitId: deletingCurrentList ? null : state.selectedUnitId,
             selectedListInstanceId: deletingCurrentList ? null : state.selectedListInstanceId,
+            selectedBattlefleetInstanceId: deletingCurrentList ? null : state.selectedBattlefleetInstanceId,
             selectedModelId: deletingCurrentList ? null : state.selectedModelId,
             activeUnitConfig: deletingCurrentList ? cloneConfig(emptyUnitConfig) : state.activeUnitConfig,
         }))
@@ -435,6 +449,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             selectedFactionId: list.faction_id,
             selectedUnitId: null,
             selectedListInstanceId: null,
+            selectedBattlefleetInstanceId: null,
             selectedModelId: null,
             activeUnitConfig: cloneConfig(emptyUnitConfig),
         }))
@@ -541,6 +556,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 })),
                 updatedAt: new Date().toISOString(),
             },
+            selectedBattlefleetInstanceId: state.selectedBattlefleetInstanceId === battlefleetInstanceId ? null : state.selectedBattlefleetInstanceId,
         })
         get().persistLists()
     },
@@ -575,6 +591,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 updatedAt: new Date().toISOString(),
             },
             selectedListInstanceId: get().selectedListInstanceId === instanceId ? null : get().selectedListInstanceId,
+            selectedBattlefleetInstanceId: get().selectedListInstanceId === instanceId ? null : get().selectedBattlefleetInstanceId,
             selectedModelId: get().selectedListInstanceId === instanceId ? null : get().selectedModelId,
         })
         get().persistLists()
@@ -587,6 +604,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
         set({
             selectedUnitId: entry.unitId,
             selectedListInstanceId: instanceId,
+            selectedBattlefleetInstanceId: null,
             selectedModelId: selectedModel.modelId,
             activeUnitConfig: cloneConfig(selectedModel.config),
         })

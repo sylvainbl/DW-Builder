@@ -92,6 +92,11 @@ export interface BattlefleetAdditionalMainstay {
     classNames: string[]
 }
 
+export interface BattlefleetBonus {
+    name: string
+    text: string
+}
+
 export interface BattlefleetDefinition {
     id: string
     faction_id: string
@@ -102,6 +107,8 @@ export interface BattlefleetDefinition {
     mainstayClassNames?: string[]
     additionalMainstays?: BattlefleetAdditionalMainstay[]
     specialRules?: string[]
+    specialRuleText?: string[]
+    battlefleetBonus?: BattlefleetBonus
 }
 
 export interface Unit {

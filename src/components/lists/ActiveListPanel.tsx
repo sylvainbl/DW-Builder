@@ -25,7 +25,9 @@ interface BattlefleetSectionProps {
     unitById: Map<string, Unit>
     battlefleets: ArmyBattlefleet[]
     selectedListInstanceId: string | null
+    active: boolean
     onRemoveBattlefleet: () => void
+    onSelectBattlefleet: () => void
     onSelectUnit: (instanceId: string) => void
     onRemoveUnit: (instanceId: string) => void
     onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
@@ -192,7 +194,9 @@ function BattlefleetSection({
     unitById,
     battlefleets,
     selectedListInstanceId,
+    active,
     onRemoveBattlefleet,
+    onSelectBattlefleet,
     onSelectUnit,
     onRemoveUnit,
     onMoveUnit,
@@ -202,10 +206,14 @@ function BattlefleetSection({
     const hasIssues = issues.length > 0
 
     return (
-        <section className={`rounded-lg border bg-white shadow-sm ${hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
+        <section className={`rounded-lg border bg-white shadow-sm ${active ? 'border-[var(--navy)] ring-2 ring-[var(--gold)]/40' : hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
             <div className={`border-b px-2.5 py-2 ${hasIssues ? 'border-rose-100 bg-rose-50/70' : 'border-neutral-200 bg-neutral-50'}`}>
                 <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
+                    <button
+                        type="button"
+                        onClick={onSelectBattlefleet}
+                        className="min-w-0 text-left"
+                    >
                         <div className="truncate text-[13px] font-semibold text-neutral-900">{battlefleet.name}</div>
                         <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                             <span>{definition?.type ?? 'Unknown'}</span>
@@ -213,7 +221,7 @@ function BattlefleetSection({
                             <span>{entries.length} {entries.length === 1 ? 'unit' : 'units'}</span>
                             <span>{points} pts</span>
                         </div>
-                    </div>
+                    </button>
                     <button
                         type="button"
                         title="Remove Battlefleet"
@@ -318,7 +326,9 @@ export default function ActiveListPanel() {
     const removeBattlefleetFromCurrentList = useAppStore((state) => state.removeBattlefleetFromCurrentList)
     const setUnitBattlefleet = useAppStore((state) => state.setUnitBattlefleet)
     const selectListUnit = useAppStore((state) => state.selectListUnit)
+    const selectBattlefleet = useAppStore((state) => state.selectBattlefleet)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
+    const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
     const [editingName, setEditingName] = useState(false)
     const [draftName, setDraftName] = useState('')
 
@@ -495,7 +505,9 @@ export default function ActiveListPanel() {
                                 unitById={unitById}
                                 battlefleets={battlefleets}
                                 selectedListInstanceId={selectedListInstanceId}
+                                active={selectedBattlefleetInstanceId === battlefleet.instanceId}
                                 onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
+                                onSelectBattlefleet={() => selectBattlefleet(battlefleet.instanceId)}
                                 onSelectUnit={selectListUnit}
                                 onRemoveUnit={removeUnitFromList}
                                 onMoveUnit={setUnitBattlefleet}

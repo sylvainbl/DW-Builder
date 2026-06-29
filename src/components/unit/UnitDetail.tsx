@@ -8,6 +8,7 @@ import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
+import BattlefleetDetail from '../lists/BattlefleetDetail'
 
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
@@ -85,7 +86,9 @@ export default function UnitDetail() {
     const generators = useAppStore((state) => state.generators)
     const fleetDoctrines = useAppStore((state) => state.fleetDoctrines)
     const currentList = useAppStore((state) => state.currentList)
+    const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
+    const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
     const selectedModelId = useAppStore((state) => state.selectedModelId)
     const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
@@ -99,6 +102,20 @@ export default function UnitDetail() {
     const [openDoctrine, setOpenDoctrine] = useState<FleetDoctrine | null>(null)
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
+    const selectedBattlefleet = useMemo(
+        () => currentList?.battlefleets?.find((battlefleet) => battlefleet.instanceId === selectedBattlefleetInstanceId) ?? null,
+        [currentList?.battlefleets, selectedBattlefleetInstanceId],
+    )
+    const selectedBattlefleetDefinition = useMemo(
+        () => battlefleetDefinitions.find((definition) => definition.id === selectedBattlefleet?.definitionId) ?? null,
+        [battlefleetDefinitions, selectedBattlefleet],
+    )
+    const selectedBattlefleetEntries = useMemo(
+        () => currentList && selectedBattlefleet
+            ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedBattlefleet.instanceId)
+            : [],
+        [currentList, selectedBattlefleet],
+    )
     const selectedEntry = useMemo(
         () => currentList ? findEntry(currentList.units, selectedListInstanceId) : null,
         [currentList, selectedListInstanceId],
@@ -109,9 +126,20 @@ export default function UnitDetail() {
     )
 
     if (!unit) {
+        if (selectedBattlefleet && selectedBattlefleetDefinition) {
+            return (
+                <BattlefleetDetail
+                    battlefleet={selectedBattlefleet}
+                    definition={selectedBattlefleetDefinition}
+                    entries={selectedBattlefleetEntries}
+                    units={units}
+                />
+            )
+        }
+
         return (
             <div className="rounded-xl border border-dashed border-neutral-300 bg-white/70 p-4 text-sm text-neutral-500">
-                Select a unit to view its details.
+                Select a unit or Battlefleet to view its details.
             </div>
         )
     }
