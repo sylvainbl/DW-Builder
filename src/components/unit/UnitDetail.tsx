@@ -5,7 +5,9 @@ import { RuleWord } from '../ui/RuleWord'
 import { computeModelPoints, computeTotalPoints, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
-import type { ArmyUnit } from '../../types/index'
+import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
+import { RuleModal } from '../ui/RuleModal'
+import type { ArmyUnit, FleetDoctrine } from '../../types/index'
 
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
@@ -49,17 +51,20 @@ export default function UnitDetail() {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
+    const fleetDoctrines = useAppStore((state) => state.fleetDoctrines)
     const currentList = useAppStore((state) => state.currentList)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
     const selectedModelId = useAppStore((state) => state.selectedModelId)
     const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
     const setGeneratorSelection = useAppStore((state) => state.setGeneratorSelection)
+    const setFleetDoctrineSelection = useAppStore((state) => state.setFleetDoctrineSelection)
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const selectModel = useAppStore((state) => state.selectModel)
     const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const [openHardpointKey, setOpenHardpointKey] = useState<string | null>(null)
+    const [openDoctrine, setOpenDoctrine] = useState<FleetDoctrine | null>(null)
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
     const selectedEntry = useMemo(
@@ -81,9 +86,12 @@ export default function UnitDetail() {
 
     const statEntries = Object.entries(unit.stats)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
+    const availableFleetDoctrines = getAvailableFleetDoctrines(unit, fleetDoctrines)
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorSelection = activeUnitConfig.generatorSelection
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
+    const fleetDoctrineSelection = selectedEntry?.config.fleetDoctrineSelection ?? null
+    const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
     const selectedModelCost = computeModelPoints(unit, activeUnitConfig)
     const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
@@ -114,6 +122,7 @@ export default function UnitDetail() {
         : `${formatModelRange(unit)} ${modelLabel(unit)}`
     const costBreakdown = [
         ...(selectedEntry ? [`Selected model: ${selectedModelCost} pts`] : []),
+        ...(fleetDoctrineSelection ? [`Doctrine (${fleetDoctrineSelection.doctrineName}): +${fleetDoctrineSelection.doctrineCost} pts`] : []),
         ...(generatorSelection ? [`Generator (${generatorSelection.generatorName}): +${generatorSelection.generatorCost} pts`] : []),
         ...unit.options_and_upgrades.flatMap((option) => {
             const config = isUnitLevelOption(option.tag) && selectedEntry ? selectedEntry.config : activeUnitConfig
@@ -435,59 +444,102 @@ export default function UnitDetail() {
                 </div>
             </section>
 
-            {hasOptions ? (
-                <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
-                    <div className="unit-detail-line mt-1.5 divide-y">
-                        {unit.options_and_upgrades.map((option) => {
-                            const unitLevel = isUnitLevelOption(option.tag)
-                            const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
-                            const qty = config.optionQuantities[option.tag] ?? 0
-                            const max = unitLevel ? option.max : option.max ?? 1
-                            const canIncrease = max == null || qty < max
-                            const isGeneratorOption = option.tag === 'GENERATOR'
+            {hasOptions || (selectedEntry && availableFleetDoctrines.length > 0) ? (
+                <section className="grid items-start gap-2 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.55fr)]">
+                    {hasOptions ? (
+                        <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                            <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
+                            <div className="unit-detail-line mt-1.5 divide-y">
+                                {unit.options_and_upgrades.map((option) => {
+                                    const unitLevel = isUnitLevelOption(option.tag)
+                                    const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
+                                    const qty = config.optionQuantities[option.tag] ?? 0
+                                    const max = unitLevel ? option.max : option.max ?? 1
+                                    const canIncrease = max == null || qty < max
+                                    const isGeneratorOption = option.tag === 'GENERATOR'
 
-                            return (
-                                <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">
-                                    <div className="min-w-0">
-                                        <div className="text-sm font-semibold text-neutral-900">{option.tag}</div>
-                                        <div className="text-[11px] text-[var(--detail-ink)]">{option.description}</div>
-                                    </div>
-                                    {isGeneratorOption ? (
-                                        <div className="text-[11px] text-[var(--detail-ink)]/70">—</div>
-                                    ) : (
-                                        <div className="flex items-center gap-2">
-                                            <button
-                                                type="button"
-                                                className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                                onClick={() => setOptionQuantity(option.tag, qty - 1)}
-                                                disabled={qty === 0}
-                                            >
-                                                −
-                                            </button>
-                                            <div className="min-w-6 text-center text-sm font-semibold text-neutral-900">{qty}</div>
-                                            <button
-                                                type="button"
-                                                className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                                onClick={() => {
-                                                    if (canIncrease) {
-                                                        setOptionQuantity(option.tag, qty + 1)
-                                                    }
-                                                }}
-                                                disabled={!canIncrease}
-                                            >
-                                                +
-                                            </button>
-                                            <div className="text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                    return (
+                                        <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">
+                                            <div className="min-w-0">
+                                                <div className="text-[12px] font-semibold text-neutral-900">{option.tag}</div>
+                                                <div className="text-[11px] leading-tight text-[var(--detail-ink)]">{option.description}</div>
+                                            </div>
+                                            {isGeneratorOption ? (
+                                                <div className="text-[11px] text-[var(--detail-ink)]/70">—</div>
+                                            ) : (
+                                                <div className="flex items-center gap-2">
+                                                    <button
+                                                        type="button"
+                                                        className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                        onClick={() => setOptionQuantity(option.tag, qty - 1)}
+                                                        disabled={qty === 0}
+                                                    >
+                                                        −
+                                                    </button>
+                                                    <div className="min-w-6 text-center text-sm font-semibold text-neutral-900">{qty}</div>
+                                                    <button
+                                                        type="button"
+                                                        className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                        onClick={() => {
+                                                            if (canIncrease) {
+                                                                setOptionQuantity(option.tag, qty + 1)
+                                                            }
+                                                        }}
+                                                        disabled={!canIncrease}
+                                                    >
+                                                        +
+                                                    </button>
+                                                    <div className="text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                                </div>
+                                            )}
+                                            <div className="text-right text-[11px] font-medium text-[var(--navy)]">
+                                                {option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}
+                                            </div>
                                         </div>
-                                    )}
-                                    <div className="text-right text-[11px] font-medium text-[var(--navy)]">
-                                        {option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    ) : null}
+
+                    {selectedEntry && availableFleetDoctrines.length > 0 ? (
+                        <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                            <div className="flex items-center justify-between gap-2">
+                                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Fleet Doctrine</div>
+                                {fleetDoctrineSelection ? (
+                                    <span className="rounded-full border border-white/70 bg-white px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
+                                        +{fleetDoctrineSelection.doctrineCost}
+                                    </span>
+                                ) : null}
+                            </div>
+                            <select
+                                className="mt-2 w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)]"
+                                value={fleetDoctrineSelection?.doctrineName ?? ''}
+                                onChange={(event) => {
+                                    const doctrine = availableFleetDoctrines.find((item) => item.name === event.target.value)
+                                    setFleetDoctrineSelection(doctrine ? { doctrineName: doctrine.name, doctrineCost: doctrine.point_cost } : null)
+                                }}
+                            >
+                                <option value="">None</option>
+                                {availableFleetDoctrines.map((doctrine) => (
+                                    <option key={doctrine.name} value={doctrine.name}>
+                                        {doctrine.name} (+{doctrine.point_cost})
+                                    </option>
+                                ))}
+                            </select>
+                            {selectedDoctrine ? (
+                                <button
+                                    type="button"
+                                    className="mt-2 max-w-full truncate text-left text-[11px] font-semibold text-[var(--navy)] underline-offset-2 hover:underline"
+                                    onClick={() => setOpenDoctrine(selectedDoctrine)}
+                                >
+                                    {selectedDoctrine.name}
+                                </button>
+                            ) : (
+                                <div className="mt-2 text-[11px] text-[var(--detail-ink)]/60">No doctrine selected.</div>
+                            )}
+                        </div>
+                    ) : null}
                 </section>
             ) : null}
 
@@ -533,6 +585,16 @@ export default function UnitDetail() {
                         </table>
                     </div>
                 </section>
+            ) : null}
+
+            {openDoctrine ? (
+                <RuleModal
+                    name={openDoctrine.name}
+                    value={openDoctrine.point_cost}
+                    category="Fleet Doctrine"
+                    text={openDoctrine.text}
+                    onClose={() => setOpenDoctrine(null)}
+                />
             ) : null}
         </div>
     )

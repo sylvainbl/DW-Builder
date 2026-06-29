@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ArmyList, ArmyModel, ArmyUnit, Faction, Generator, Unit, UnitConfig } from '../types/index'
+import type { ArmyList, ArmyModel, ArmyUnit, Faction, FleetDoctrine, Generator, Unit, UnitConfig } from '../types/index'
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
 import { computeArmyUnitTotal, isUnitLevelOption, updateListUnit } from '../utils/pointsCalc'
 import { uuid } from '../utils/uuid'
@@ -7,6 +7,7 @@ import { uuid } from '../utils/uuid'
 const emptyUnitConfig: UnitConfig = {
     hardpointSelections: {},
     generatorSelection: null,
+    fleetDoctrineSelection: null,
     optionQuantities: {},
 }
 
@@ -15,6 +16,7 @@ interface AppStore {
     units: Unit[]
     glossary: Record<string, Record<string, string>> | null
     generators: Record<string, Generator[]>
+    fleetDoctrines: Record<string, FleetDoctrine[]>
     dataLoaded: boolean
     loadData: () => Promise<void>
 
@@ -54,11 +56,23 @@ interface AppStore {
 
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
     setGeneratorSelection: (selection: UnitConfig['generatorSelection']) => void
+    setFleetDoctrineSelection: (selection: UnitConfig['fleetDoctrineSelection']) => void
     setOptionQuantity: (tag: string, quantity: number) => void
 }
 
 function cloneConfig(config: UnitConfig): UnitConfig {
     return structuredClone(config)
+}
+
+function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitConfig {
+    return {
+        ...cloneConfig(emptyUnitConfig),
+        ...config,
+        hardpointSelections: config?.hardpointSelections ?? {},
+        generatorSelection: config?.generatorSelection ?? null,
+        fleetDoctrineSelection: config?.fleetDoctrineSelection ?? null,
+        optionQuantities: config?.optionQuantities ?? {},
+    }
 }
 
 function getMinimumModels(unit: Unit): number {
@@ -109,18 +123,19 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
         options?: { tag: string; quantity: number }[]
         generator?: Generator | null
     }
-    const config: UnitConfig = entry.config ?? {
+    const config = normalizeConfig(entry.config ?? {
         hardpointSelections: {},
         generatorSelection: legacy.generator
             ? { weaponIndex: 0, generatorName: legacy.generator.name, generatorCost: legacy.generator.point_cost }
             : null,
+        fleetDoctrineSelection: null,
         optionQuantities: Object.fromEntries((legacy.options ?? []).map((option) => [option.tag, option.quantity])),
-    }
+    })
     const legacyModels = (entry as ArmyUnit & { models?: ArmyModel[] }).models
     const models = Array.isArray(legacyModels) && legacyModels.length > 0
         ? legacyModels.map((model) => ({
             modelId: model.modelId ?? uuid(),
-            config: model.config ?? cloneConfig(emptyUnitConfig),
+            config: normalizeConfig(model.config),
         })).slice(0, getMaximumModels(unit))
         : makeModels(unit, config)
     while (models.length < getMinimumModels(unit)) {
@@ -233,23 +248,26 @@ export const useAppStore = create<AppStore>((set, get) => ({
     units: [],
     glossary: null,
     generators: {},
+    fleetDoctrines: {},
     dataLoaded: false,
     loadData: async () => {
         try {
-            const [factionsRes, glossaryRes, generatorsRes, unitsRes] = await Promise.all([
+            const [factionsRes, glossaryRes, generatorsRes, fleetDoctrinesRes, unitsRes] = await Promise.all([
                 fetch('/data/factions.json'),
                 fetch('/data/glossary.json'),
                 fetch('/data/generators.json'),
+                fetch('/data/fleet-doctrines.json'),
                 fetch('/data/units-index.json'),
             ])
-            const [factions, glossary, generators, units] = await Promise.all([
+            const [factions, glossary, generators, fleetDoctrines, units] = await Promise.all([
                 factionsRes.json(),
                 glossaryRes.json(),
                 generatorsRes.json(),
+                fleetDoctrinesRes.json(),
                 unitsRes.json(),
             ])
             const savedLists = normalizeLists(loadListsFromStorage(), units)
-            set({ factions, glossary, generators, units, dataLoaded: true, savedLists })
+            set({ factions, glossary, generators, fleetDoctrines, units, dataLoaded: true, savedLists })
         } catch {
             set({ dataLoaded: true, savedLists: loadListsFromStorage() })
         }
@@ -532,6 +550,21 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 currentList: state.selectedListInstanceId && state.currentList
                     ? updateListUnit(state.currentList, state.selectedListInstanceId, newConfig, state.units, state.selectedModelId ?? undefined)
                     : state.currentList,
+            }
+        })
+        get().persistLists()
+    },
+    setFleetDoctrineSelection: (selection) => {
+        set((state) => {
+            if (!state.selectedListInstanceId || !state.currentList) return state
+            const entry = findArmyUnit(state.currentList.units, state.selectedListInstanceId)
+            if (!entry) return state
+            const unitConfig = {
+                ...entry.config,
+                fleetDoctrineSelection: selection,
+            }
+            return {
+                currentList: updateListUnit(state.currentList, state.selectedListInstanceId, unitConfig, state.units),
             }
         })
         get().persistLists()

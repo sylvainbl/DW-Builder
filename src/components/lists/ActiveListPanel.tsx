@@ -37,6 +37,11 @@ function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: Un
                     <div className={`text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>
                         {unit?.role ?? 'Unit'} · {entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}
                     </div>
+                    {entry.config.fleetDoctrineSelection ? (
+                        <div className={`mt-0.5 text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}>
+                            {entry.config.fleetDoctrineSelection.doctrineName}
+                        </div>
+                    ) : null}
                 </div>
                 <div className="flex items-center gap-2">
                     <span className={`whitespace-nowrap text-[11px] font-medium ${active && !nested ? 'text-white' : 'text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>

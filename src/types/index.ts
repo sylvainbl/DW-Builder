@@ -62,6 +62,14 @@ export interface Generator {
     point_cost: number
 }
 
+export interface FleetDoctrine {
+    name: string
+    point_cost: number
+    text: string
+    required_tags?: string[]
+    required_role?: string
+}
+
 export interface Unit {
     id: string
     faction_id: string
@@ -97,6 +105,10 @@ export interface UnitConfig {
         weaponIndex: number
         generatorName: string
         generatorCost: number
+    } | null
+    fleetDoctrineSelection: {
+        doctrineName: string
+        doctrineCost: number
     } | null
     optionQuantities: Record<string, number>
 }

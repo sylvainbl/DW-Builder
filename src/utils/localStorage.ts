@@ -4,6 +4,12 @@ import { uuid } from './uuid'
 
 const STORAGE_KEY = 'dw-builder-lists-v1'
 const LEGACY_STORAGE_KEY = 'dw-builder-lists'
+const emptyUnitConfig: UnitConfig = {
+    hardpointSelections: {},
+    generatorSelection: null,
+    fleetDoctrineSelection: null,
+    optionQuantities: {},
+}
 
 function safeParseLists(raw: string | null): ArmyList[] {
     if (!raw) return []
@@ -64,11 +70,21 @@ function isObject(value: unknown): value is Record<string, unknown> {
 function isUnitConfig(value: unknown): value is UnitConfig {
     if (!isObject(value)) return false
     const generatorSelection = value.generatorSelection
+    const fleetDoctrineSelection = value.fleetDoctrineSelection
     return (
         isObject(value.hardpointSelections) &&
         (generatorSelection === null || isObject(generatorSelection)) &&
+        (fleetDoctrineSelection === undefined || fleetDoctrineSelection === null || isObject(fleetDoctrineSelection)) &&
         isObject(value.optionQuantities)
     )
+}
+
+function normalizeUnitConfig(config: UnitConfig): UnitConfig {
+    return {
+        ...structuredClone(emptyUnitConfig),
+        ...config,
+        fleetDoctrineSelection: config.fleetDoctrineSelection ?? null,
+    }
 }
 
 function minimumModels(unit: Unit): number {
@@ -83,14 +99,14 @@ function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): Ar
     const importedModels = Array.isArray(models)
         ? models.flatMap((model) => (
             isObject(model) && isUnitConfig(model.config)
-                ? [{ modelId: uuid(), config: structuredClone(model.config) }]
+                ? [{ modelId: uuid(), config: normalizeUnitConfig(model.config) }]
                 : []
         ))
         : []
-    const normalized = (importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: structuredClone(config) }])
+    const normalized = (importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: normalizeUnitConfig(config) }])
         .slice(0, maximumModels(unit))
     while (normalized.length < minimumModels(unit)) {
-        normalized.push({ modelId: uuid(), config: { hardpointSelections: {}, generatorSelection: null, optionQuantities: {} } })
+        normalized.push({ modelId: uuid(), config: structuredClone(emptyUnitConfig) })
     }
     return normalized
 }
@@ -113,7 +129,7 @@ function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
         const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
-            config: structuredClone(entry.config),
+            config: normalizeUnitConfig(entry.config),
             models: makeImportedModels(unit, entry.config, entry.models),
             totalPoints: 0,
             attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
@@ -156,7 +172,7 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
         const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
-            config: structuredClone(entry.config),
+            config: normalizeUnitConfig(entry.config),
             models: makeImportedModels(unit, entry.config, null),
             totalPoints: 0,
         }

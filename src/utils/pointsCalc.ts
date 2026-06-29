@@ -39,6 +39,10 @@ export function computeModelPoints(unit: Unit, config: UnitConfig): number {
 function computeUnitLevelPoints(unit: Unit, config: UnitConfig): number {
     let total = 0
 
+    if (config.fleetDoctrineSelection) {
+        total += config.fleetDoctrineSelection.doctrineCost
+    }
+
     for (const option of unit.options_and_upgrades) {
         if (option.cost_per_unit === null || !isUnitLevelOption(option.tag)) continue
         const quantity = config.optionQuantities[option.tag] ?? 0
