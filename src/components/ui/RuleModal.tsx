@@ -49,6 +49,7 @@ export function RuleModal({
                 </h2>
                 <MarkdownText
                     text={text}
+                    className="rule-modal-body"
                     style={{ fontSize: '14px', lineHeight: 1.6, color: '#444' }}
                 />
                 <button

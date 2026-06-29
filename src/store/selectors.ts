@@ -19,6 +19,7 @@ export function getFilteredUnits(
         }
 
         const textMatch = [unit.name, unit.sub_name, ...unit.tags]
+            .filter((part): part is string => typeof part === 'string')
             .some((part) => part.toLowerCase().includes(query))
 
         const roleMatch =

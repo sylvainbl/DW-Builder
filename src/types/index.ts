@@ -39,6 +39,15 @@ export interface Weapon {
     qualities: NamedValue[]
 }
 
+export interface ShortRangeSquadron {
+    name: string
+    attack: number
+    intercept: number
+    support: number
+    resilience: number
+    properties: NamedValue[]
+}
+
 export interface OptionUpgrade {
     description: string
     cost_per_unit: number | null
@@ -70,6 +79,7 @@ export interface Unit {
     properties: NamedValue[]
     systems: NamedValue[]
     weapons: Weapon[]
+    short_range_squadrons?: ShortRangeSquadron[]
     hardpoint_options: Record<string, Weapon[]>
     options_and_upgrades: OptionUpgrade[]
     lore: string

@@ -4,6 +4,7 @@ import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
 import { computeModelPoints, computeTotalPoints, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
+import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import type { ArmyUnit } from '../../types/index'
 
 function formatValue(value: number | string | null | undefined) {
@@ -82,6 +83,7 @@ export default function UnitDetail() {
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorSelection = activeUnitConfig.generatorSelection
+    const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
     const selectedModelCost = computeModelPoints(unit, activeUnitConfig)
     const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
@@ -95,6 +97,15 @@ export default function UnitDetail() {
     const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
+    const srsProperty = unit.properties.find((property) => property.name === 'SRS')
+    const srsTypeNames = srsProperty?.detail
+        ?.split(/[,/]/)
+        .map((name) => name.trim())
+        .filter(Boolean) ?? []
+    const visibleSquadrons = unit.short_range_squadrons?.filter((squadron) => (
+        srsTypeNames.length === 0 || srsTypeNames.includes(squadron.name)
+    )) ?? []
+    const hasCarrierSrs = unit.properties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry
         ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
         : 0
@@ -225,6 +236,7 @@ export default function UnitDetail() {
                                     <span className="min-w-0 font-medium text-neutral-900">
                                         <RuleWord category="properties" name={property.name} value={property.value} showValue={false} />
                                     </span>
+                                    {property.detail ? <span className="unit-detail-rule-detail">{property.detail}</span> : null}
                                     {property.value != null ? <span className="unit-detail-rule-value">{property.value}</span> : null}
                                 </div>
                             ))
@@ -237,15 +249,25 @@ export default function UnitDetail() {
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Systems</div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
-                        {unit.systems.length > 0 ? (
-                            unit.systems.map((system) => (
-                                <div key={system.name} className="unit-detail-rule-row">
-                                    <span className="min-w-0 font-medium text-neutral-900">
-                                        <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
-                                    </span>
-                                    {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
-                                </div>
-                            ))
+                        {unit.systems.length > 0 || factionSpecialRules.length > 0 ? (
+                            <>
+                                {unit.systems.map((system) => (
+                                    <div key={system.name} className="unit-detail-rule-row">
+                                        <span className="min-w-0 font-medium text-neutral-900">
+                                            <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
+                                        </span>
+                                        {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
+                                    </div>
+                                ))}
+                                {factionSpecialRules.map((rule) => (
+                                    <div key={rule.name} className="unit-detail-rule-row">
+                                        <span className="min-w-0 font-medium text-neutral-900">
+                                            <RuleWord category="systems" name={rule.name} value={rule.value} showValue={false} />
+                                        </span>
+                                        {rule.detail ? <span className="unit-detail-rule-detail">{rule.detail}</span> : null}
+                                    </div>
+                                ))}
+                            </>
                         ) : (
                             <div className="unit-detail-empty">None</div>
                         )}
@@ -465,6 +487,50 @@ export default function UnitDetail() {
                                 </div>
                             )
                         })}
+                    </div>
+                </section>
+            ) : null}
+
+            {hasCarrierSrs ? (
+                <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Short Range Squadrons</div>
+                    <div className="mt-2 overflow-x-auto">
+                        <table className="unit-detail-srs-table min-w-full text-sm">
+                            <thead>
+                                <tr className="text-left text-[10px] uppercase tracking-[0.16em]">
+                                    <th className="px-2 py-1.5">Squadron Type</th>
+                                    <th className="px-2 py-1.5 text-center">Atk</th>
+                                    <th className="px-2 py-1.5 text-center">Int</th>
+                                    <th className="px-2 py-1.5 text-center">Spt</th>
+                                    <th className="px-2 py-1.5 text-center">Res</th>
+                                    <th className="px-2 py-1.5">SRS Properties</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {visibleSquadrons.map((squadron) => (
+                                    <tr key={squadron.name}>
+                                        <td className="px-2 py-2 font-semibold text-neutral-900">{squadron.name}</td>
+                                        <td className="px-2 py-2 text-center font-semibold">{squadron.attack}</td>
+                                        <td className="px-2 py-2 text-center font-semibold">{squadron.intercept}</td>
+                                        <td className="px-2 py-2 text-center font-semibold">{squadron.support}</td>
+                                        <td className="px-2 py-2 text-center font-semibold">{squadron.resilience}</td>
+                                        <td className="px-2 py-2">
+                                            {squadron.properties.length > 0 ? (
+                                                <div className="flex flex-wrap gap-1">
+                                                    {squadron.properties.map((property) => (
+                                                        <span key={`${squadron.name}-${property.name}`} className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600">
+                                                            <RuleWord category="properties" name={property.name} value={property.value} />
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <span className="text-neutral-500">—</span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </section>
             ) : null}

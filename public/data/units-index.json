@@ -413,7 +413,17 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Kometa Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
   },
   {
     "name": "Borodino",
@@ -1585,7 +1595,17 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Kometa Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
   },
   {
     "id": "commonwealth_murmansk",
@@ -2530,7 +2550,17 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Kometa Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
   },
   {
     "id": "commonwealth_zamiec",
@@ -2768,7 +2798,26 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Szpada Fighters",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 4,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike (Shredded Defences)",
+            "value": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "commonwealth_khyzhak",
@@ -5762,7 +5811,17 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Kometa Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
   },
   {
     "id": "commonwealth_saransk",
@@ -6198,7 +6257,26 @@
     "version": "4.00",
     "date": "2026-06-28",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Szpada Fighters",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 4,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike (Shredded Defences)",
+            "value": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "commonwealth_stanislaw",

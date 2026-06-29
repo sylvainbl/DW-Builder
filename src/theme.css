@@ -94,6 +94,19 @@
     color: var(--navy);
 }
 
+.unit-detail-rule-detail {
+    display: inline-flex;
+    max-width: 12rem;
+    min-height: 1.2rem;
+    align-items: center;
+    border-left: 1px solid rgba(27, 58, 92, 0.12);
+    padding-left: 0.45rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: rgba(17, 24, 39, 0.62);
+}
+
 .unit-detail-empty {
     display: inline-flex;
     border: 1px dashed rgba(27, 58, 92, 0.16);
@@ -106,4 +119,47 @@
 .unit-detail-weapon-row {
     background: var(--detail-row);
     box-shadow: inset 3px 0 0 rgba(200, 170, 110, 0.72);
+}
+
+.unit-detail-srs-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--detail-ink);
+}
+
+.unit-detail-srs-table th {
+    border-right: 2px solid rgba(255, 255, 255, 0.86);
+    background: #7a2d16;
+    color: #ffffff;
+}
+
+.unit-detail-srs-table th:last-child,
+.unit-detail-srs-table td:last-child {
+    border-right: 0;
+}
+
+.unit-detail-srs-table td {
+    border-top: 2px solid rgba(255, 255, 255, 0.86);
+    border-right: 2px solid rgba(255, 255, 255, 0.86);
+    background: #d9c3b4;
+}
+
+.unit-detail-srs-table tbody tr:nth-child(odd) td {
+    background: #c7aa98;
+}
+
+.rule-modal-body p {
+    margin: 0;
+}
+
+.rule-modal-body p + p {
+    margin-top: 0.85rem;
+}
+
+.rule-modal-body p:has(> strong:first-child) {
+    margin-top: 1.15rem;
+}
+
+.rule-modal-body p:first-child {
+    margin-top: 0;
 }
