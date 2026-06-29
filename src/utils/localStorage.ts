@@ -1,4 +1,4 @@
-import type { ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
+import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
 import { computeArmyUnitTotal } from './pointsCalc'
 import { uuid } from './uuid'
 
@@ -9,6 +9,14 @@ const emptyUnitConfig: UnitConfig = {
     generatorSelection: null,
     fleetDoctrineSelection: null,
     optionQuantities: {},
+}
+
+function normalizeFactionId(id: string): string {
+    return id === 'Alliance' ? 'alliance' : id
+}
+
+function normalizeUnitId(id: string): string {
+    return id.startsWith('Alliance_') ? `alliance_${id.slice('Alliance_'.length)}` : id
 }
 
 function safeParseLists(raw: string | null): ArmyList[] {
@@ -37,10 +45,11 @@ export function saveListsToStorage(lists: ArmyList[]): void {
 
 export function downloadList(list: ArmyList, units: Unit[]) {
     const exportData = {
-        format: 'dw-builder-list-v2',
+        format: 'dw-builder-list-v3',
         name: list.name,
         faction: list.faction_id,
         totalPoints: list.units.reduce((sum, unit) => sum + unit.totalPoints, 0),
+        battlefleets: list.battlefleets ?? [],
         list,
         units: list.units.map((entry) => {
             const unit = units.find((item) => item.id === entry.unitId)
@@ -48,6 +57,7 @@ export function downloadList(list: ArmyList, units: Unit[]) {
                 name: unit?.name ?? entry.unitId,
                 role: unit?.role,
                 points: entry.totalPoints,
+                battlefleetInstanceId: entry.battlefleetInstanceId ?? null,
                 config: entry.config,
             }
         }),
@@ -123,12 +133,28 @@ function isArmyListLike(value: unknown): value is ArmyList {
     )
 }
 
+function normalizeImportedBattlefleets(value: unknown): ArmyBattlefleet[] {
+    if (!Array.isArray(value)) return []
+    return value.flatMap((battlefleet) => {
+        if (!isObject(battlefleet) || typeof battlefleet.definitionId !== 'string') return []
+        return [{
+            instanceId: typeof battlefleet.instanceId === 'string' ? battlefleet.instanceId : uuid(),
+            definitionId: battlefleet.definitionId,
+            name: typeof battlefleet.name === 'string' && battlefleet.name.trim().length > 0
+                ? battlefleet.name
+                : battlefleet.definitionId,
+        }]
+    })
+}
+
 function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
-        const unit = units.find((item) => item.id === entry.unitId)
+        const unitId = normalizeUnitId(entry.unitId)
+        const unit = units.find((item) => item.id === unitId)
         if (!unit || !isUnitConfig(entry.config)) return []
         const normalized: ArmyUnit = {
             instanceId: uuid(),
-            unitId: unit.id,
+            unitId,
+            battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
             config: normalizeUnitConfig(entry.config),
             models: makeImportedModels(unit, entry.config, entry.models),
             totalPoints: 0,
@@ -145,7 +171,8 @@ function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {
     return {
         id: uuid(),
         name: list.name || 'Imported list',
-        faction_id: list.faction_id,
+        faction_id: normalizeFactionId(list.faction_id),
+        battlefleets: normalizeImportedBattlefleets(list.battlefleets),
         units: entries,
         createdAt: now,
         updatedAt: now,
@@ -165,13 +192,15 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
     }
 
     const now = new Date().toISOString()
+    const factionId = normalizeFactionId(data.faction)
     const entries: ArmyUnit[] = data.units.flatMap((entry) => {
         if (!isObject(entry) || typeof entry.name !== 'string' || !isUnitConfig(entry.config)) return []
-        const unit = units.find((item) => item.faction_id === data.faction && item.name === entry.name)
+        const unit = units.find((item) => item.faction_id === factionId && item.name === entry.name)
         if (!unit) return []
         const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
+            battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
             config: normalizeUnitConfig(entry.config),
             models: makeImportedModels(unit, entry.config, null),
             totalPoints: 0,
@@ -183,7 +212,8 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
     return {
         id: uuid(),
         name: data.name,
-        faction_id: data.faction,
+        faction_id: factionId,
+        battlefleets: normalizeImportedBattlefleets(data.battlefleets),
         units: entries,
         createdAt: now,
         updatedAt: now,

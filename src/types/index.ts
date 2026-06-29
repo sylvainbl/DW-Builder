@@ -9,12 +9,12 @@ export interface Faction {
 export interface Stat {
     MAS: number
     SPD: string
-    TRN: number
+    TRN: number | string
     DEF: number
     ARM: number
     HUL: number
     ACT: number
-    BRD: number
+    BRD: number | string
     REP: number
     CRW: number
 }
@@ -70,6 +70,40 @@ export interface FleetDoctrine {
     required_role?: string
 }
 
+export type BattlefleetType = 'main' | 'specialist'
+export type BattlefleetIssueSeverity = 'error' | 'warning'
+
+export interface BattlefleetRequirement {
+    all?: string[]
+    any?: string[]
+    unitIds?: string[]
+}
+
+export interface BattlefleetElement {
+    id: string
+    name: string
+    min: number
+    max: number
+    requirements: BattlefleetRequirement[]
+}
+
+export interface BattlefleetAdditionalMainstay {
+    flagshipUnitIds: string[]
+    classNames: string[]
+}
+
+export interface BattlefleetDefinition {
+    id: string
+    faction_id: string
+    name: string
+    type: BattlefleetType
+    legendary?: boolean
+    elements: BattlefleetElement[]
+    mainstayClassNames?: string[]
+    additionalMainstays?: BattlefleetAdditionalMainstay[]
+    specialRules?: string[]
+}
+
 export interface Unit {
     id: string
     faction_id: string
@@ -121,19 +155,34 @@ export interface ArmyModel {
 export interface ArmyUnit {
     instanceId: string
     unitId: string
+    battlefleetInstanceId?: string | null
     config: UnitConfig
     models: ArmyModel[]
     totalPoints: number
     attachedUnits?: ArmyUnit[]
 }
 
+export interface ArmyBattlefleet {
+    instanceId: string
+    definitionId: string
+    name: string
+}
+
 export interface ArmyList {
     id: string
     name: string
     faction_id: string
+    battlefleets?: ArmyBattlefleet[]
     units: ArmyUnit[]
     createdAt: string
     updatedAt: string
+}
+
+export interface BattlefleetIssue {
+    severity: BattlefleetIssueSeverity
+    message: string
+    battlefleetInstanceId?: string
+    unitInstanceId?: string
 }
 
 export type Glossary = Record<string, Record<string, string>>

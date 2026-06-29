@@ -120,7 +120,7 @@ export default function UnitListColumn() {
 
     return (
         <aside className="flex h-full flex-col overflow-hidden bg-white">
-            <div className="max-h-[45%] flex-none overflow-y-auto border-b border-neutral-200">
+            <div className="max-h-[62%] flex-none overflow-y-auto border-b border-neutral-200">
                 <ActiveListPanel />
             </div>
             <div className="flex min-h-0 flex-1 flex-col overflow-hidden">

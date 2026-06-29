@@ -1,7 +1,8 @@
-import { Download, Minus, X } from 'lucide-react'
+import { AlertTriangle, Download, Minus, Plus, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
-import type { ArmyUnit, Unit } from '../../types/index'
+import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
+import { getBattlefleetDefinitionsForFaction, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { downloadList } from '../../utils/localStorage'
 
 interface UnitRowProps {
@@ -9,11 +10,44 @@ interface UnitRowProps {
     unit?: Unit
     active: boolean
     nested?: boolean
+    battlefleets: ArmyBattlefleet[]
+    issues: BattlefleetIssue[]
     onSelect: () => void
     onRemove: () => void
+    onBattlefleetChange?: (battlefleetInstanceId: string | null) => void
 }
 
-function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: UnitRowProps) {
+interface BattlefleetSectionProps {
+    battlefleet: ArmyBattlefleet
+    definition?: BattlefleetDefinition
+    entries: ArmyUnit[]
+    issues: BattlefleetIssue[]
+    unitById: Map<string, Unit>
+    battlefleets: ArmyBattlefleet[]
+    selectedListInstanceId: string | null
+    onRemoveBattlefleet: () => void
+    onSelectUnit: (instanceId: string) => void
+    onRemoveUnit: (instanceId: string) => void
+    onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
+    unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
+}
+
+interface UnitGroupProps {
+    title: string
+    subtitle: string
+    entries: ArmyUnit[]
+    issues: BattlefleetIssue[]
+    unitById: Map<string, Unit>
+    battlefleets: ArmyBattlefleet[]
+    selectedListInstanceId: string | null
+    tone?: 'neutral' | 'warning'
+    onSelectUnit: (instanceId: string) => void
+    onRemoveUnit: (instanceId: string) => void
+    onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
+    unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
+}
+
+function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
     const rowClasses = nested
         ? active
             ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
@@ -23,9 +57,16 @@ function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: Un
             : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
 
     return (
-        <button
-            type="button"
+        <div
+            role="button"
+            tabIndex={0}
             onClick={onSelect}
+            onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    onSelect()
+                }
+            }}
             className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}
         >
             <div className="flex items-start justify-between gap-2">
@@ -41,6 +82,31 @@ function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: Un
                         <div className={`mt-0.5 text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}>
                             {entry.config.fleetDoctrineSelection.doctrineName}
                         </div>
+                    ) : null}
+                    {issues.length > 0 ? (
+                        <div className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${active && !nested ? 'text-amber-100' : 'text-rose-700'}`}>
+                            <AlertTriangle size={11} />
+                            <span>{issues[0].message}</span>
+                        </div>
+                    ) : null}
+                    {!nested && onBattlefleetChange ? (
+                        <select
+                            value={entry.battlefleetInstanceId ?? ''}
+                            onClick={(event) => event.stopPropagation()}
+                            onKeyDown={(event) => event.stopPropagation()}
+                            onChange={(event) => {
+                                event.stopPropagation()
+                                onBattlefleetChange(event.target.value || null)
+                            }}
+                            className={`mt-2 w-full rounded border px-2 py-1 text-[11px] font-medium outline-none ${active && !nested ? 'border-white/20 bg-white/10 text-white' : 'border-neutral-200 bg-white text-neutral-700'}`}
+                        >
+                            <option value="">No Battlefleet</option>
+                            {battlefleets.map((battlefleet) => (
+                                <option key={battlefleet.instanceId} value={battlefleet.instanceId}>
+                                    {battlefleet.name}
+                                </option>
+                            ))}
+                        </select>
                     ) : null}
                 </div>
                 <div className="flex items-center gap-2">
@@ -66,7 +132,177 @@ function UnitRow({ entry, unit, active, nested = false, onSelect, onRemove }: Un
                     </span>
                 </div>
             </div>
-        </button>
+        </div>
+    )
+}
+
+function renderUnitRows({
+    entries,
+    unitById,
+    battlefleets,
+    selectedListInstanceId,
+    onSelectUnit,
+    onRemoveUnit,
+    onMoveUnit,
+    unitIssuesByInstanceId,
+}: {
+    entries: ArmyUnit[]
+    unitById: Map<string, Unit>
+    battlefleets: ArmyBattlefleet[]
+    selectedListInstanceId: string | null
+    onSelectUnit: (instanceId: string) => void
+    onRemoveUnit: (instanceId: string) => void
+    onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
+    unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
+}) {
+    return entries.map((entry) => (
+        <div key={entry.instanceId} className="space-y-1">
+            <UnitRow
+                entry={entry}
+                unit={unitById.get(entry.unitId)}
+                active={selectedListInstanceId === entry.instanceId}
+                battlefleets={battlefleets}
+                issues={unitIssuesByInstanceId.get(entry.instanceId) ?? []}
+                onSelect={() => onSelectUnit(entry.instanceId)}
+                onRemove={() => onRemoveUnit(entry.instanceId)}
+                onBattlefleetChange={(battlefleetInstanceId) => onMoveUnit(entry.instanceId, battlefleetInstanceId)}
+            />
+            {(entry.attachedUnits ?? []).map((attachment) => (
+                <UnitRow
+                    key={attachment.instanceId}
+                    entry={attachment}
+                    unit={unitById.get(attachment.unitId)}
+                    active={selectedListInstanceId === attachment.instanceId}
+                    nested
+                    battlefleets={battlefleets}
+                    issues={unitIssuesByInstanceId.get(attachment.instanceId) ?? []}
+                    onSelect={() => onSelectUnit(attachment.instanceId)}
+                    onRemove={() => onRemoveUnit(attachment.instanceId)}
+                />
+            ))}
+        </div>
+    ))
+}
+
+function BattlefleetSection({
+    battlefleet,
+    definition,
+    entries,
+    issues,
+    unitById,
+    battlefleets,
+    selectedListInstanceId,
+    onRemoveBattlefleet,
+    onSelectUnit,
+    onRemoveUnit,
+    onMoveUnit,
+    unitIssuesByInstanceId,
+}: BattlefleetSectionProps) {
+    const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
+    const hasIssues = issues.length > 0
+
+    return (
+        <section className={`rounded-lg border bg-white shadow-sm ${hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
+            <div className={`border-b px-2.5 py-2 ${hasIssues ? 'border-rose-100 bg-rose-50/70' : 'border-neutral-200 bg-neutral-50'}`}>
+                <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                        <div className="truncate text-[13px] font-semibold text-neutral-900">{battlefleet.name}</div>
+                        <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                            <span>{definition?.type ?? 'Unknown'}</span>
+                            {definition?.legendary ? <span>Legendary</span> : null}
+                            <span>{entries.length} {entries.length === 1 ? 'unit' : 'units'}</span>
+                            <span>{points} pts</span>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        title="Remove Battlefleet"
+                        onClick={onRemoveBattlefleet}
+                        className="rounded p-1 text-neutral-400 hover:bg-rose-100 hover:text-rose-600"
+                    >
+                        <X size={13} />
+                    </button>
+                </div>
+                {issues.length > 0 ? (
+                    <div className="mt-2 space-y-1 text-[11px] text-rose-800">
+                        {issues.slice(0, 3).map((issue, index) => (
+                            <div key={`${battlefleet.instanceId}-${issue.message}-${index}`} className="flex gap-1.5">
+                                <AlertTriangle className="mt-0.5 flex-none" size={12} />
+                                <span>{issue.message}</span>
+                            </div>
+                        ))}
+                        {issues.length > 3 ? <div className="pl-5 text-rose-700">+{issues.length - 3} more issues</div> : null}
+                    </div>
+                ) : null}
+            </div>
+
+            <div className="space-y-1.5 p-2">
+                {entries.length > 0 ? (
+                    renderUnitRows({
+                        entries,
+                        unitById,
+                        battlefleets,
+                        selectedListInstanceId,
+                        onSelectUnit,
+                        onRemoveUnit,
+                        onMoveUnit,
+                        unitIssuesByInstanceId,
+                    })
+                ) : (
+                    <div className="rounded border border-dashed border-neutral-300 bg-neutral-50 p-2 text-[12px] text-neutral-500">
+                        No units assigned.
+                    </div>
+                )}
+            </div>
+        </section>
+    )
+}
+
+function UnitGroup({
+    title,
+    subtitle,
+    entries,
+    issues,
+    unitById,
+    battlefleets,
+    selectedListInstanceId,
+    tone = 'neutral',
+    onSelectUnit,
+    onRemoveUnit,
+    onMoveUnit,
+    unitIssuesByInstanceId,
+}: UnitGroupProps) {
+    const warning = tone === 'warning'
+
+    return (
+        <section className={`rounded-lg border shadow-sm ${warning ? 'border-amber-300 bg-amber-50' : 'border-neutral-200 bg-white'}`}>
+            <div className={`border-b px-2.5 py-2 ${warning ? 'border-amber-200' : 'border-neutral-200 bg-neutral-50'}`}>
+                <div className="text-[13px] font-semibold text-neutral-900">{title}</div>
+                <div className="text-[11px] text-neutral-500">{subtitle}</div>
+                {issues.length > 0 ? (
+                    <div className="mt-2 space-y-1 text-[11px] text-amber-900">
+                        {issues.slice(0, 3).map((issue, index) => (
+                            <div key={`${title}-${issue.message}-${index}`} className="flex gap-1.5">
+                                <AlertTriangle className="mt-0.5 flex-none" size={12} />
+                                <span>{issue.message}</span>
+                            </div>
+                        ))}
+                    </div>
+                ) : null}
+            </div>
+            <div className="space-y-1.5 p-2">
+                {renderUnitRows({
+                    entries,
+                    unitById,
+                    battlefleets,
+                    selectedListInstanceId,
+                    onSelectUnit,
+                    onRemoveUnit,
+                    onMoveUnit,
+                    unitIssuesByInstanceId,
+                })}
+            </div>
+        </section>
     )
 }
 
@@ -74,9 +310,13 @@ export default function ActiveListPanel() {
     const currentList = useAppStore((state) => state.currentList)
     const factions = useAppStore((state) => state.factions)
     const units = useAppStore((state) => state.units)
+    const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const closeList = useAppStore((state) => state.closeList)
     const renameList = useAppStore((state) => state.renameList)
     const removeUnitFromList = useAppStore((state) => state.removeUnitFromList)
+    const addBattlefleetToCurrentList = useAppStore((state) => state.addBattlefleetToCurrentList)
+    const removeBattlefleetFromCurrentList = useAppStore((state) => state.removeBattlefleetFromCurrentList)
+    const setUnitBattlefleet = useAppStore((state) => state.setUnitBattlefleet)
     const selectListUnit = useAppStore((state) => state.selectListUnit)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
     const [editingName, setEditingName] = useState(false)
@@ -87,10 +327,52 @@ export default function ActiveListPanel() {
         return factions.find((faction) => faction.id === currentList.faction_id)?.name ?? currentList.faction_id
     }, [currentList, factions])
     const unitById = useMemo(() => new Map(units.map((unit) => [unit.id, unit])), [units])
+    const definitionById = useMemo(() => new Map(battlefleetDefinitions.map((definition) => [definition.id, definition])), [battlefleetDefinitions])
+    const availableBattlefleetDefinitions = useMemo(
+        () => getBattlefleetDefinitionsForFaction(battlefleetDefinitions, currentList?.faction_id),
+        [battlefleetDefinitions, currentList?.faction_id],
+    )
+    const battlefleetIssues = useMemo(
+        () => validateBattlefleetOrganisation(currentList, units, battlefleetDefinitions),
+        [battlefleetDefinitions, currentList, units],
+    )
+    const unitIssuesByInstanceId = useMemo(() => {
+        const grouped = new Map<string, BattlefleetIssue[]>()
+        for (const issue of battlefleetIssues) {
+            if (!issue.unitInstanceId) continue
+            grouped.set(issue.unitInstanceId, [...(grouped.get(issue.unitInstanceId) ?? []), issue])
+        }
+        return grouped
+    }, [battlefleetIssues])
+    const battlefleetIssuesByInstanceId = useMemo(() => {
+        const grouped = new Map<string, BattlefleetIssue[]>()
+        for (const issue of battlefleetIssues) {
+            if (!issue.battlefleetInstanceId) continue
+            grouped.set(issue.battlefleetInstanceId, [...(grouped.get(issue.battlefleetInstanceId) ?? []), issue])
+        }
+        return grouped
+    }, [battlefleetIssues])
+    const forceIssues = useMemo(
+        () => battlefleetIssues.filter((issue) => !issue.battlefleetInstanceId && !issue.unitInstanceId),
+        [battlefleetIssues],
+    )
 
     if (!currentList) return null
 
     const totalPoints = currentList.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
+    const battlefleets = currentList.battlefleets ?? []
+    const entriesByBattlefleetId = new Map<string, ArmyUnit[]>()
+    for (const battlefleet of battlefleets) {
+        entriesByBattlefleetId.set(battlefleet.instanceId, [])
+    }
+    const unassignedEntries: ArmyUnit[] = []
+    for (const entry of currentList.units) {
+        if (entry.battlefleetInstanceId && entriesByBattlefleetId.has(entry.battlefleetInstanceId)) {
+            entriesByBattlefleetId.get(entry.battlefleetInstanceId)?.push(entry)
+        } else {
+            unassignedEntries.push(entry)
+        }
+    }
     const commitName = () => {
         renameList(currentList.id, draftName)
         setEditingName(false)
@@ -149,38 +431,94 @@ export default function ActiveListPanel() {
             </div>
             </div>
 
-            <div className="mt-3 space-y-1.5">
-                {currentList.units.length === 0 ? (
+            <div className="mt-3 rounded-lg border border-neutral-200 bg-white p-2.5 shadow-sm">
+                <div className="flex items-center justify-between gap-2">
+                    <div>
+                        <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--navy)]">Battlefleets</div>
+                        <div className="text-[11px] text-neutral-500">
+                            {battlefleets.length} {battlefleets.length === 1 ? 'formation' : 'formations'} · {currentList.units.length} {currentList.units.length === 1 ? 'unit' : 'units'}
+                        </div>
+                    </div>
+                    {availableBattlefleetDefinitions.length > 0 ? (
+                        <div className="relative flex-none">
+                            <Plus className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-[var(--navy)]" size={12} />
+                            <select
+                                aria-label="Add Battlefleet"
+                                value=""
+                                onChange={(event) => {
+                                    if (event.target.value) addBattlefleetToCurrentList(event.target.value)
+                                }}
+                                className="h-7 w-28 appearance-none rounded-md border border-neutral-300 bg-white pl-7 pr-6 text-[11px] font-semibold text-neutral-800 shadow-sm outline-none transition hover:border-neutral-400 hover:bg-neutral-50 focus:border-[var(--navy)] focus:ring-2 focus:ring-[var(--navy)]/10"
+                            >
+                                <option value="">Add</option>
+                                {availableBattlefleetDefinitions.map((definition) => (
+                                    <option key={definition.id} value={definition.id}>
+                                        {definition.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-neutral-500">▾</span>
+                        </div>
+                    ) : null}
+                </div>
+
+                {forceIssues.length > 0 ? (
+                    <div className="mt-2 space-y-1 rounded border border-rose-200 bg-rose-50 p-2 text-[11px] text-rose-800">
+                        {forceIssues.map((issue, index) => (
+                            <div key={`${issue.message}-${index}`} className="flex gap-1.5">
+                                <AlertTriangle className="mt-0.5 flex-none" size={12} />
+                                <span>{issue.message}</span>
+                            </div>
+                        ))}
+                    </div>
+                ) : battlefleetIssues.length === 0 ? (
+                    <div className="mt-2 rounded border border-emerald-200 bg-emerald-50 p-2 text-[11px] font-medium text-emerald-800">
+                        Battlefleet organisation valid.
+                    </div>
+                ) : null}
+            </div>
+
+            <div className="mt-3 space-y-2">
+                {battlefleets.length === 0 && currentList.units.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-3 text-sm text-neutral-500">
                         No units added.
                     </div>
                 ) : (
-                    currentList.units.map((entry) => {
-                        const unit = unitById.get(entry.unitId)
-                        const active = selectedListInstanceId === entry.instanceId
-                        return (
-                            <div key={entry.instanceId} className="space-y-1">
-                                <UnitRow
-                                    entry={entry}
-                                    unit={unit}
-                                    active={active}
-                                    onSelect={() => selectListUnit(entry.instanceId)}
-                                    onRemove={() => removeUnitFromList(entry.instanceId)}
-                                />
-                                {(entry.attachedUnits ?? []).map((attachment) => (
-                                    <UnitRow
-                                        key={attachment.instanceId}
-                                        entry={attachment}
-                                        unit={unitById.get(attachment.unitId)}
-                                        active={selectedListInstanceId === attachment.instanceId}
-                                        nested
-                                        onSelect={() => selectListUnit(attachment.instanceId)}
-                                        onRemove={() => removeUnitFromList(attachment.instanceId)}
-                                    />
-                                ))}
-                            </div>
-                        )
-                    })
+                    <>
+                        {battlefleets.map((battlefleet) => (
+                            <BattlefleetSection
+                                key={battlefleet.instanceId}
+                                battlefleet={battlefleet}
+                                definition={definitionById.get(battlefleet.definitionId)}
+                                entries={entriesByBattlefleetId.get(battlefleet.instanceId) ?? []}
+                                issues={battlefleetIssuesByInstanceId.get(battlefleet.instanceId) ?? []}
+                                unitById={unitById}
+                                battlefleets={battlefleets}
+                                selectedListInstanceId={selectedListInstanceId}
+                                onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
+                                onSelectUnit={selectListUnit}
+                                onRemoveUnit={removeUnitFromList}
+                                onMoveUnit={setUnitBattlefleet}
+                                unitIssuesByInstanceId={unitIssuesByInstanceId}
+                            />
+                        ))}
+                        {unassignedEntries.length > 0 ? (
+                            <UnitGroup
+                                title="Unassigned"
+                                subtitle={`${unassignedEntries.length} ${unassignedEntries.length === 1 ? 'unit needs' : 'units need'} a Battlefleet`}
+                                entries={unassignedEntries}
+                                issues={battlefleetIssues.filter((issue) => issue.unitInstanceId && !issue.battlefleetInstanceId)}
+                                unitById={unitById}
+                                battlefleets={battlefleets}
+                                selectedListInstanceId={selectedListInstanceId}
+                                tone="warning"
+                                onSelectUnit={selectListUnit}
+                                onRemoveUnit={removeUnitFromList}
+                                onMoveUnit={setUnitBattlefleet}
+                                unitIssuesByInstanceId={unitIssuesByInstanceId}
+                            />
+                        ) : null}
+                    </>
                 )}
             </div>
         </div>

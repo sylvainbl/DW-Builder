@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ArmyList, ArmyModel, ArmyUnit, Faction, FleetDoctrine, Generator, Unit, UnitConfig } from '../types/index'
+import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Faction, FleetDoctrine, Generator, Unit, UnitConfig } from '../types/index'
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
 import { computeArmyUnitTotal, isUnitLevelOption, updateListUnit } from '../utils/pointsCalc'
 import { uuid } from '../utils/uuid'
@@ -17,6 +17,7 @@ interface AppStore {
     glossary: Record<string, Record<string, string>> | null
     generators: Record<string, Generator[]>
     fleetDoctrines: Record<string, FleetDoctrine[]>
+    battlefleetDefinitions: BattlefleetDefinition[]
     dataLoaded: boolean
     loadData: () => Promise<void>
 
@@ -49,6 +50,9 @@ interface AppStore {
     addUnitToCurrentList: (unitId: string) => void
     addAttachmentToListUnit: (parentInstanceId: string, unitId: string) => void
     removeUnitFromList: (instanceId: string) => void
+    addBattlefleetToCurrentList: (definitionId: string) => void
+    removeBattlefleetFromCurrentList: (battlefleetInstanceId: string) => void
+    setUnitBattlefleet: (instanceId: string, battlefleetInstanceId: string | null) => void
     selectListUnit: (instanceId: string) => void
     selectModel: (modelId: string) => void
     addModelToListUnit: (instanceId: string) => void
@@ -62,6 +66,14 @@ interface AppStore {
 
 function cloneConfig(config: UnitConfig): UnitConfig {
     return structuredClone(config)
+}
+
+function normalizeFactionId(id: string): string {
+    return id === 'Alliance' ? 'alliance' : id
+}
+
+function normalizeUnitId(id: string): string {
+    return id.startsWith('Alliance_') ? `alliance_${id.slice('Alliance_'.length)}` : id
 }
 
 function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitConfig {
@@ -95,16 +107,32 @@ function makeModels(unit: Unit, firstConfig: UnitConfig = emptyUnitConfig): Army
     return Array.from({ length: modelCount }, (_, index) => makeModel(index === 0 ? firstConfig : emptyUnitConfig))
 }
 
-function makeArmyUnit(unit: Unit, config: UnitConfig = emptyUnitConfig): ArmyUnit {
+function makeArmyUnit(unit: Unit, config: UnitConfig = emptyUnitConfig, battlefleetInstanceId: string | null = null): ArmyUnit {
     const entry: ArmyUnit = {
         instanceId: uuid(),
         unitId: unit.id,
+        battlefleetInstanceId,
         config: cloneConfig(emptyUnitConfig),
         models: makeModels(unit, config),
         totalPoints: 0,
     }
     entry.totalPoints = computeArmyUnitTotal(entry, [unit])
     return entry
+}
+
+function makeBattlefleet(definition: BattlefleetDefinition, existingBattlefleets: ArmyBattlefleet[] = []): ArmyBattlefleet {
+    const existingCount = existingBattlefleets.filter((battlefleet) => battlefleet.definitionId === definition.id).length
+    return {
+        instanceId: uuid(),
+        definitionId: definition.id,
+        name: existingCount === 0 ? definition.name : `${definition.name} ${existingCount + 1}`,
+    }
+}
+
+function makeDefaultBattlefleets(factionId: string, definitions: BattlefleetDefinition[]): ArmyBattlefleet[] {
+    const defaultDefinition = definitions.find((definition) => definition.faction_id === factionId && definition.type === 'main' && !definition.legendary)
+        ?? definitions.find((definition) => definition.faction_id === factionId && definition.type === 'main')
+    return defaultDefinition ? [makeBattlefleet(defaultDefinition)] : []
 }
 
 function getAttachmentModelLimit(unit: Unit): number {
@@ -116,7 +144,8 @@ function countAttachedModels(entries: ArmyUnit[], unitId: string): number {
 }
 
 function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
-    const unit = units.find((item) => item.id === entry.unitId)
+    const unitId = normalizeUnitId(entry.unitId)
+    const unit = units.find((item) => item.id === unitId)
     if (!unit) return null
     const legacy = entry as ArmyUnit & {
         hardpoints?: { slot: string; weaponName: string }[]
@@ -143,7 +172,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
     }
     const normalized: ArmyUnit = {
         instanceId: entry.instanceId,
-        unitId: entry.unitId,
+        unitId,
         config: cloneConfig(config),
         models,
         totalPoints: 0,
@@ -151,14 +180,30 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
             const normalizedAttachment = normalizeArmyUnit(attachment, units)
             return normalizedAttachment ? [normalizedAttachment] : []
         }),
+        battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
     }
     normalized.totalPoints = computeArmyUnitTotal(normalized, units)
     return normalized
 }
 
-function normalizeLists(lists: ArmyList[], units: Unit[]): ArmyList[] {
+function normalizeBattlefleets(list: ArmyList, definitions: BattlefleetDefinition[]): ArmyBattlefleet[] {
+    const factionId = normalizeFactionId(list.faction_id)
+    const validDefinitionIds = new Set(definitions.filter((definition) => definition.faction_id === factionId).map((definition) => definition.id))
+    return (list.battlefleets ?? []).flatMap((battlefleet) => {
+        if (!validDefinitionIds.has(battlefleet.definitionId)) return []
+        return [{
+            instanceId: battlefleet.instanceId ?? uuid(),
+            definitionId: battlefleet.definitionId,
+            name: battlefleet.name || definitions.find((definition) => definition.id === battlefleet.definitionId)?.name || battlefleet.definitionId,
+        }]
+    })
+}
+
+function normalizeLists(lists: ArmyList[], units: Unit[], definitions: BattlefleetDefinition[]): ArmyList[] {
     return lists.map((list) => ({
         ...list,
+        faction_id: normalizeFactionId(list.faction_id),
+        battlefleets: normalizeBattlefleets(list, definitions),
         units: list.units.flatMap((entry) => {
             const normalizedEntry = normalizeArmyUnit(entry, units)
             return normalizedEntry ? [normalizedEntry] : []
@@ -249,25 +294,28 @@ export const useAppStore = create<AppStore>((set, get) => ({
     glossary: null,
     generators: {},
     fleetDoctrines: {},
+    battlefleetDefinitions: [],
     dataLoaded: false,
     loadData: async () => {
         try {
-            const [factionsRes, glossaryRes, generatorsRes, fleetDoctrinesRes, unitsRes] = await Promise.all([
+            const [factionsRes, glossaryRes, generatorsRes, fleetDoctrinesRes, battlefleetsRes, unitsRes] = await Promise.all([
                 fetch('/data/factions.json'),
                 fetch('/data/glossary.json'),
                 fetch('/data/generators.json'),
                 fetch('/data/fleet-doctrines.json'),
+                fetch('/data/battlefleets.json'),
                 fetch('/data/units-index.json'),
             ])
-            const [factions, glossary, generators, fleetDoctrines, units] = await Promise.all([
+            const [factions, glossary, generators, fleetDoctrines, battlefleetDefinitions, units] = await Promise.all([
                 factionsRes.json(),
                 glossaryRes.json(),
                 generatorsRes.json(),
                 fleetDoctrinesRes.json(),
+                battlefleetsRes.json(),
                 unitsRes.json(),
             ])
-            const savedLists = normalizeLists(loadListsFromStorage(), units)
-            set({ factions, glossary, generators, fleetDoctrines, units, dataLoaded: true, savedLists })
+            const savedLists = normalizeLists(loadListsFromStorage(), units, battlefleetDefinitions)
+            set({ factions, glossary, generators, fleetDoctrines, battlefleetDefinitions, units, dataLoaded: true, savedLists })
         } catch {
             set({ dataLoaded: true, savedLists: loadListsFromStorage() })
         }
@@ -298,10 +346,12 @@ export const useAppStore = create<AppStore>((set, get) => ({
 
     createList: (name, factionId) => {
         const now = new Date().toISOString()
+        const battlefleets = makeDefaultBattlefleets(factionId, get().battlefleetDefinitions)
         const newList: ArmyList = {
             id: uuid(),
             name,
             faction_id: factionId,
+            battlefleets,
             units: [],
             createdAt: now,
             updatedAt: now,
@@ -396,7 +446,8 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const unit = state.units.find((item) => item.id === unitId)
         if (!unit) return
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
-        const newEntry = makeArmyUnit(unit, config)
+        const onlyBattlefleet = state.currentList.battlefleets?.length === 1 ? state.currentList.battlefleets[0] : null
+        const newEntry = makeArmyUnit(unit, config, onlyBattlefleet?.instanceId ?? null)
         set({
             currentList: {
                 ...state.currentList,
@@ -418,13 +469,71 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const remainingModels = getAttachmentModelLimit(unit) - usedModels
         if (remainingModels < getMinimumModels(unit)) return
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
-        const attachment = makeArmyUnit(unit, config)
+        const attachment = makeArmyUnit(unit, config, parent.battlefleetInstanceId ?? null)
         attachment.models = attachment.models.slice(0, remainingModels)
         attachment.totalPoints = computeArmyUnitTotal(attachment, state.units)
         set({
             currentList: {
                 ...state.currentList,
                 units: attachArmyUnit(state.currentList.units, parentInstanceId, attachment, state.units),
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    addBattlefleetToCurrentList: (definitionId) => {
+        const state = get()
+        if (!state.currentList) return
+        const definition = state.battlefleetDefinitions.find((item) => item.id === definitionId && item.faction_id === state.currentList?.faction_id)
+        if (!definition) return
+        const battlefleets = [...(state.currentList.battlefleets ?? [])]
+        if (definition.legendary && battlefleets.some((battlefleet) => battlefleet.definitionId === definition.id)) return
+        const newBattlefleet = makeBattlefleet(definition, battlefleets)
+        set({
+            currentList: {
+                ...state.currentList,
+                battlefleets: [...battlefleets, newBattlefleet],
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    removeBattlefleetFromCurrentList: (battlefleetInstanceId) => {
+        const state = get()
+        if (!state.currentList) return
+        set({
+            currentList: {
+                ...state.currentList,
+                battlefleets: (state.currentList.battlefleets ?? []).filter((battlefleet) => battlefleet.instanceId !== battlefleetInstanceId),
+                units: state.currentList.units.map((entry) => ({
+                    ...entry,
+                    battlefleetInstanceId: entry.battlefleetInstanceId === battlefleetInstanceId ? null : entry.battlefleetInstanceId,
+                    attachedUnits: entry.attachedUnits?.map((attachment) => ({
+                        ...attachment,
+                        battlefleetInstanceId: attachment.battlefleetInstanceId === battlefleetInstanceId ? null : attachment.battlefleetInstanceId,
+                    })),
+                })),
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    setUnitBattlefleet: (instanceId, battlefleetInstanceId) => {
+        const state = get()
+        if (!state.currentList) return
+        const battlefleetExists = battlefleetInstanceId == null || (state.currentList.battlefleets ?? []).some((battlefleet) => battlefleet.instanceId === battlefleetInstanceId)
+        if (!battlefleetExists) return
+        set({
+            currentList: {
+                ...state.currentList,
+                units: updateArmyUnitModels(state.currentList.units, instanceId, state.units, (entry) => ({
+                    ...entry,
+                    battlefleetInstanceId,
+                    attachedUnits: entry.attachedUnits?.map((attachment) => ({
+                        ...attachment,
+                        battlefleetInstanceId,
+                    })),
+                })),
                 updatedAt: new Date().toISOString(),
             },
         })

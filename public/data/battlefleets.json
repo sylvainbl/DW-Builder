@@ -1,0 +1,890 @@
+[
+  {
+    "id": "commonwealth-main",
+    "faction_id": "commonwealth",
+    "name": "Commonwealth Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "commonwealth-flagship",
+        "name": "1 Commonwealth Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "commonwealth-line",
+        "name": "1-4 Commonwealth Line",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "commonwealth-patrol",
+        "name": "0-3 Commonwealth Patrol",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "commonwealth-support-scout",
+        "name": "1-4 Commonwealth Support / Scout",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth"
+            ],
+            "any": [
+              "Support",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "commonwealth-logistical",
+        "name": "0-1 Commonwealth Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Kutsov",
+      "Rurik"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "commonwealth_alexeyev"
+        ],
+        "classNames": [
+          "Dragunov"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "commonwealth_mozhayski"
+        ],
+        "classNames": [
+          "Morozko"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "commonwealth_zamiec"
+        ],
+        "classNames": [
+          "Voivode"
+        ]
+      }
+    ],
+    "specialRules": [
+      "commonwealth-main-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "commonwealth-ukrainian-haydamak",
+    "faction_id": "commonwealth",
+    "name": "Ukrainian Haydamak Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "ukrainian-flagship",
+        "name": "0-1 Ukrainian Flagship",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Ukrainian",
+              "Flagship"
+            ]
+          },
+          {
+            "unitIds": [
+              "commonwealth_akula"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ukrainian-line",
+        "name": "1-2 Ukrainian Line",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Ukrainian",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ukrainian-patrol",
+        "name": "1-2 Ukrainian Patrol",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Ukrainian",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ukrainian-support",
+        "name": "0-2 Ukrainian Support",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Ukrainian",
+              "Support"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Khyzhak",
+      "Piranya",
+      "Akula"
+    ],
+    "specialRules": [
+      "ukrainian-akula-flagship"
+    ]
+  },
+  {
+    "id": "commonwealth-skyhost",
+    "faction_id": "commonwealth",
+    "name": "Skyhost Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "airborne-flagship",
+        "name": "0-1 Commonwealth Airborne Flagship",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Airborne",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "airborne-line-patrol",
+        "name": "2-6 Commonwealth Airborne Line / Patrol",
+        "min": 2,
+        "max": 6,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Airborne"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "airborne-support-scout",
+        "name": "0-2 Commonwealth Airborne Support / Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Airborne"
+            ],
+            "any": [
+              "Support",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Jadwiga",
+      "Smok"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "commonwealth_khodynka"
+        ],
+        "classNames": [
+          "Tunguska"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "commonwealth_krasnaya"
+        ],
+        "classNames": [
+          "Irkutsk"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "commonwealth_zamiec"
+        ],
+        "classNames": [
+          "Voivode"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "commonwealth-black-wolf",
+    "faction_id": "commonwealth",
+    "name": "Black Wolf Hunting Pack",
+    "type": "main",
+    "legendary": true,
+    "elements": [
+      {
+        "id": "black-wolf-flagship",
+        "name": "1-2 Black Wolf Flagship",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Black Wolf"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "russian-ukrainian-line",
+        "name": "1-4 Russian / Ukrainian Line",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Line"
+            ],
+            "any": [
+              "Russian",
+              "Ukrainian"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "russian-ukrainian-patrol",
+        "name": "1-3 Russian / Ukrainian Patrol",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Patrol"
+            ],
+            "any": [
+              "Russian",
+              "Ukrainian"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "russian-ukrainian-support",
+        "name": "0-3 Russian / Ukrainian Support",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Support"
+            ],
+            "any": [
+              "Russian",
+              "Ukrainian"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Khyzhak",
+      "Piranya",
+      "Akula"
+    ],
+    "specialRules": [
+      "black-wolf-underwater-half",
+      "black-wolf-flagship-no-doctrine"
+    ]
+  },
+  {
+    "id": "alliance-main",
+    "faction_id": "alliance",
+    "name": "Alliance Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "alliance-flagship",
+        "name": "1 Alliance Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Alliance",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alliance-line-patrol",
+        "name": "2-6 Alliance Line / Patrol",
+        "min": 2,
+        "max": 6,
+        "requirements": [
+          {
+            "all": [
+              "Alliance"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alliance-support",
+        "name": "0-4 Alliance Support",
+        "min": 0,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Alliance",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alliance-scout",
+        "name": "0-2 Alliance Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Alliance",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alliance-logistical",
+        "name": "0-1 Alliance Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Alliance",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Chevalier",
+      "Ecuyere"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "alliance_columbia",
+          "alliance_virginia"
+        ],
+        "classNames": [
+          "Gettysburg"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "alliance_gotham"
+        ],
+        "classNames": [
+          "Saratoga"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "alliance_mars"
+        ],
+        "classNames": [
+          "Gladius"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "alliance_minerva"
+        ],
+        "classNames": [
+          "Scorpio"
+        ]
+      }
+    ],
+    "specialRules": [
+      "alliance-main-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "alliance-marine-levante",
+    "faction_id": "alliance",
+    "name": "Marine Levante Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "marine-flagship",
+        "name": "1 Marine Levante Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Marine Levante",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "marine-line-scout",
+        "name": "2-4 Marine Levante Line / Scout",
+        "min": 2,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Marine Levante"
+            ],
+            "any": [
+              "Line",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "marine-patrol",
+        "name": "0-2 Marine Levante Patrol",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Marine Levante",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "marine-support",
+        "name": "0-3 Marine Levante Support",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Marine Levante",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "marine-logistical",
+        "name": "0-2 Marine Levante Logistical",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Marine Levante",
+              "Logistical"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "marine-underwater",
+        "name": "0-1 French Underwater",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "French",
+              "Underwater"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Lyon",
+      "Honneur",
+      "Chasseur"
+    ]
+  },
+  {
+    "id": "alliance-triarii",
+    "faction_id": "alliance",
+    "name": "Triarii Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "triarii-flagship",
+        "name": "0-1 Italian Flagship",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Italian",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "triarii-line-support",
+        "name": "1-3 Italian Line / Support",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Italian"
+            ],
+            "any": [
+              "Line",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "triarii-patrol",
+        "name": "1-4 Italian Patrol",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Italian",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "triarii-scout",
+        "name": "0-2 Italian Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Italian",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Cestus",
+      "Pugio",
+      "Sagitta"
+    ]
+  },
+  {
+    "id": "alliance-barbudos",
+    "faction_id": "alliance",
+    "name": "Barbudos Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "barbudos-flagship",
+        "name": "0-1 SUSA Flagship",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "SUSA",
+              "Flagship"
+            ]
+          },
+          {
+            "unitIds": [
+              "alliance_francisco",
+              "alliance_salvador"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "barbudos-line-patrol",
+        "name": "2-5 SUSA Line / Patrol",
+        "min": 2,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "SUSA"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "barbudos-support",
+        "name": "0-2 SUSA Support",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "SUSA",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "barbudos-logistical",
+        "name": "0-1 SUSA Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "SUSA",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Springfield",
+      "Saratoga"
+    ],
+    "specialRules": [
+      "barbudos-cruiser-flagship"
+    ]
+  },
+  {
+    "id": "alliance-protecao-commercial",
+    "faction_id": "alliance",
+    "name": "Proteção Commercial Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "protecao-flagship",
+        "name": "0-1 Portuguese Flagship",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Portuguese",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "protecao-line-patrol",
+        "name": "1-4 Portuguese Line / Patrol",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Portuguese"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "protecao-scout",
+        "name": "1-2 Portuguese Scout",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Portuguese",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "protecao-platform",
+        "name": "0-1 Portuguese Platform",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Portuguese",
+              "Platform"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "protecao-logistical",
+        "name": "0-3 Alliance Logistical",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Alliance",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Loire",
+      "Bretteur"
+    ]
+  },
+  {
+    "id": "alliance-marina-pontificia",
+    "faction_id": "alliance",
+    "name": "Marina Pontificia Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "papal-flagship",
+        "name": "1 Papal Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Papal",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "papal-french-portuguese",
+        "name": "1 French / Portuguese",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "any": [
+              "French",
+              "Portuguese"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "papal-italian",
+        "name": "0-1 Italian",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Italian"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "papal-susa",
+        "name": "0-1 SUSA",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "SUSA"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [],
+    "specialRules": [
+      "alliance-main-airborne-underwater-limit"
+    ]
+  }
+]
