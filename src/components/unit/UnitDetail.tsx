@@ -57,6 +57,9 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     if ((optionTags.has('GUARDIAN_GENERATOR') && slot === 'L') || (optionTags.has('ADDITIONAL_GUARDIAN_GENERATOR') && slot === 'H')) {
         fixedChoices.push({ name: 'Guardian Generator', point_cost: 0 })
     }
+    if (optionTags.has('FREYA_ARRAY') && slot === 'L') {
+        fixedChoices.push({ name: 'Freya Array', point_cost: 0 })
+    }
     if (fixedChoices.length > 0) return fixedChoices
 
     return optionTags.has('GENERATOR') && slot === 'H' ? factionGenerators : []
@@ -473,6 +476,10 @@ export default function UnitDetail() {
                                     const max = unitLevel ? option.max : option.max ?? 1
                                     const canIncrease = max == null || qty < max
                                     const isGeneratorOption = option.tag === 'GENERATOR'
+                                        || option.tag === 'TRIDENT_GENERATOR'
+                                        || option.tag === 'GUARDIAN_GENERATOR'
+                                        || option.tag === 'ADDITIONAL_GUARDIAN_GENERATOR'
+                                        || option.tag === 'FREYA_ARRAY'
 
                                     return (
                                         <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">

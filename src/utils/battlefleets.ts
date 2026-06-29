@@ -318,6 +318,23 @@ function validateEastIndiaPrivateersSpecial(
     }]
 }
 
+function validateFlagshipNoDoctrine(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    return entries.flatMap((entry) => {
+        const unit = findUnit(units, entry)
+        if (!unit || !hasTrait(unit, 'Flagship') || !entry.config.fleetDoctrineSelection) return []
+        return [{
+            severity: 'error' as const,
+            battlefleetInstanceId: battlefleet.instanceId,
+            unitInstanceId: entry.instanceId,
+            message: `${unit.name} cannot purchase a Fleet Doctrine while assigned as the ${battlefleet.name} Flagship.`,
+        }]
+    })
+}
+
 function validateSpecialRules(
     definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
@@ -338,6 +355,9 @@ function validateSpecialRules(
         }
         if (rule === 'east-india-palashi-line') {
             issues.push(...validateEastIndiaPrivateersSpecial(battlefleet, entries, units))
+        }
+        if (rule === 'scions-flagship-no-doctrine') {
+            issues.push(...validateFlagshipNoDoctrine(battlefleet, entries, units))
         }
     }
     return issues

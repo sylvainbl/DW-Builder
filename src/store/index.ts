@@ -71,12 +71,14 @@ function cloneConfig(config: UnitConfig): UnitConfig {
 function normalizeFactionId(id: string): string {
     if (id === 'Alliance') return 'alliance'
     if (id === 'Crown') return 'crown'
+    if (id === 'Imperium') return 'imperium'
     return id
 }
 
 function normalizeUnitId(id: string): string {
     if (id.startsWith('Alliance_')) return `alliance_${id.slice('Alliance_'.length)}`
     if (id.startsWith('Crown_')) return `crown_${id.slice('Crown_'.length)}`
+    if (id.startsWith('Imperium_')) return `imperium_${id.slice('Imperium_'.length)}`
     return id
 }
 

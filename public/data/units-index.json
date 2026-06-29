@@ -3,6 +3,7 @@
   "files": [
     "units/alliance.json",
     "units/commonwealth.json",
-    "units/crown.json"
+    "units/crown.json",
+    "units/imperium.json"
   ]
 }

@@ -1,0 +1,9421 @@
+[
+  {
+    "id": "imperium_angrboda_midget_sub_carrier",
+    "faction_id": "imperium",
+    "name": "Angrboda",
+    "sub_name": "Midget Sub-carrier",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 95,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 2
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Combat Divers",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Vali Midget Subs"
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_arminius_frigate",
+    "faction_id": "imperium",
+    "name": "Arminius",
+    "sub_name": "Frigate",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-7\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Coordinated Defences",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 6
+  },
+  {
+    "id": "imperium_asgard_rotor_tethership",
+    "faction_id": "imperium",
+    "name": "Asgard",
+    "sub_name": "Rotor Tethership",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 310,
+    "vpr": 10,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-8\"",
+      "TRN": 1,
+      "DEF": 8,
+      "ARM": 6,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 12
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Mothership",
+        "value": null,
+        "detail": "Valkyrie Hunt Rotors"
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Flight Command",
+        "value": 1
+      },
+      {
+        "name": "Hoved Targeting Array",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 3
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_augustus_bombardment_cruiser",
+    "faction_id": "imperium",
+    "name": "Augustus",
+    "sub_name": "Bombardment Cruiser",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 125,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": 14
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Limited",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 9
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 2
+            },
+            {
+              "name": "Blast",
+              "value": 4
+            },
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Limited",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_baldr_raider",
+    "faction_id": "imperium",
+    "name": "Baldr",
+    "sub_name": "Raider",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Stromschlag Rocket Battery",
+        "arc": "PSA",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_blucher_cruiser",
+    "faction_id": "imperium",
+    "name": "Blucher",
+    "sub_name": "Cruiser",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Prussian Flagship"
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 7
+      },
+      {
+        "name": "Luftlancer Assault",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Prussian",
+        "Flagship"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_einherjar_vitruvian_colossus",
+    "faction_id": "imperium",
+    "name": "Einherjar",
+    "sub_name": "Vitruvian Colossus",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 175,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Underwater",
+      "Scout",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "0\"-6\"",
+      "TRN": 1,
+      "DEF": 3,
+      "ARM": 5,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": "--",
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Amphibious",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Capital"
+      },
+      {
+        "name": "Submarauder",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      },
+      {
+        "name": "Vitruvian Form",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Colossal Great Axe",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Uber Volt Vierling",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 3
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_elector_battleship_primar_configuration",
+    "faction_id": "imperium",
+    "name": "Elector",
+    "sub_name": "Battleship Primar Configuration",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 240,
+    "vpr": 7,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": 17
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "A",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 11
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 3
+            },
+            {
+              "name": "Blast",
+              "value": 6
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Guided Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_elector_battleship_sekundar_configuration",
+    "faction_id": "imperium",
+    "name": "Elector",
+    "sub_name": "Battleship Sekundar Configuration",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 210,
+    "vpr": 7,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "A",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": 17
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 11
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 3
+            },
+            {
+              "name": "Blast",
+              "value": 6
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Guided Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_europa_grand_conveyor",
+    "faction_id": "imperium",
+    "name": "Europa",
+    "sub_name": "Grand Conveyer",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 90,
+    "vpr": 0,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 1,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 10,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Resupply",
+        "value": 2
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Vierling Autokanone",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade with a Troop Transport; gains Ground Assault (3)",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "TROOP_TRANSPORT"
+      },
+      {
+        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_falkenstein_battlecarrier_primar_configuration",
+    "faction_id": "imperium",
+    "name": "Falkenstein",
+    "sub_name": "Battlecarrier Primar Configuration",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 235,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Capital",
+      "Carrier",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Messer Interceptors"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Erderschutterer Rocket Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Guided Erderschutterer Rocket Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 9,
+          "E": 16
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 3,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": 11
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 3
+            },
+            {
+              "name": "Blast",
+              "value": 6
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Guided Vierling Flak Array",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_falkenstein_battlecarrier_sekundar_configuration",
+    "faction_id": "imperium",
+    "name": "Falkenstein",
+    "sub_name": "Battlecarrier Sekundar Configuration",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 235,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Capital",
+      "Carrier",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Messer Interceptors"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Erderschutterer Rocket Battery",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Guided Erderschutterer Rocket Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Guided Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 3,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Guided Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      },
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_fenrir_submarine",
+    "faction_id": "imperium",
+    "name": "Fenrir",
+    "sub_name": "Submarine",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 35,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Underwater",
+      "Scout",
+      "Submarine",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-7\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4
+  },
+  {
+    "id": "imperium_ferdinand_advanced_cruiser",
+    "faction_id": "imperium",
+    "name": "Ferdinand",
+    "sub_name": "Advanced Cruiser",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 120,
+    "vpr": 4,
+    "models": "1-2",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Teutonic Construct",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Auto-Targeting Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Piercing",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Auto-Targeting Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Piercing",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Auto-Targeting Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Piercing",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 2,
+        "tag": "GENERATOR"
+      },
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 2,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_gefjon_merchantman",
+    "faction_id": "imperium",
+    "name": "Gefjon",
+    "sub_name": "Merchantman",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 105,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Scandinavian"
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 6
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Ground Assault",
+        "value": 2
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 1
+      },
+      {
+        "name": "Vikingr",
+        "value": 1
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Sc",
+        "inavian"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_gungnir_raider",
+    "faction_id": "imperium",
+    "name": "Gungnir",
+    "sub_name": "Raider",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 100,
+    "vpr": 3,
+    "models": "1-4",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Vierling Autokanone",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Upgrade with a Bogmaor Interception Net",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "BOGMAOR_INTERCEPTION_NET"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": "imperium_heidelberg_logistics_battlecruiser_primar_configuration",
+    "faction_id": "imperium",
+    "name": "Heidelberg Logistics",
+    "sub_name": "Battlecruiser Primar Configuration",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 180,
+    "vpr": 6,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Mine Layer",
+        "value": 2
+      },
+      {
+        "name": "Stockpile",
+        "value": 2
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Mine Sweeper",
+        "value": 3
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 2,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_heidelberg_logistics_battlecruiser_sekundar_configuration",
+    "faction_id": "imperium",
+    "name": "Heidelberg Logistics",
+    "sub_name": "Battlecruiser Sekundar Configuration",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 190,
+    "vpr": 6,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Mine Layer",
+        "value": 2
+      },
+      {
+        "name": "Stockpile",
+        "value": 2
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Mine Sweeper",
+        "value": 3
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 9,
+          "E": 16
+        },
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 2
+          },
+          {
+            "name": "Guided",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": 10
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 3
+            },
+            {
+              "name": "Blast",
+              "value": 6
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_hermes_supply_freighter",
+    "faction_id": "imperium",
+    "name": "Hermes",
+    "sub_name": "Supply Freighter",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 25,
+    "vpr": 0,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Light Vessel",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 4,
+      "DEF": 2,
+      "ARM": 2,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 2,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Surface"
+      },
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Resupply",
+        "value": 1
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 1
+      }
+    ],
+    "systems": [],
+    "weapons": [],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Surface"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_hochmeister_vitruvian_colossus",
+    "faction_id": "imperium",
+    "name": "Hochmeister",
+    "sub_name": "Vitruvian Colossus",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 180,
+    "vpr": 6,
+    "models": "1-2",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Underwater",
+      "Scout",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "0\"-6\"",
+      "TRN": 2,
+      "DEF": 4,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": "--",
+      "REP": 2,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Amphibious",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Reinforced Waterline",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Submarauder",
+        "value": null
+      },
+      {
+        "name": "Teutonic Construct",
+        "value": null
+      },
+      {
+        "name": "Vitruvian Form",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Zweihander Greatsword",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Kanzler Great Maul",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Assault",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Structural Failure",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "imperium_hoth_corvette",
+    "faction_id": "imperium",
+    "name": "Hoth",
+    "sub_name": "Corvette",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 25,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-8\"",
+      "TRN": 4,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Scandinavian"
+      },
+      {
+        "name": "Defensive",
+        "value": 1
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 3
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 1
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 3,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Sc",
+        "inavian"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "imperium_ice_maiden_dreadnought_super_carrier",
+    "faction_id": "imperium",
+    "name": "Ice Maiden",
+    "sub_name": "Dreadnought Supercarrier",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 495,
+    "vpr": 14,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Flagship",
+      "Capital",
+      "Carrier",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 9,
+      "SPD": "4\"-6\"",
+      "TRN": 1,
+      "DEF": 10,
+      "ARM": 5,
+      "HUL": 20,
+      "ACT": 5,
+      "BRD": "--",
+      "REP": 3,
+      "CRW": 10
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 14
+      },
+      {
+        "name": "Inspirational",
+        "value": 12
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Blitzen Bombers / Messer Interceptors"
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Teutonic Construct",
+        "value": null
+      },
+      {
+        "name": "Very Large",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      },
+      {
+        "name": "Flight Command",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Vierling Flak Array",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FA",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "PS",
+        "slot": "L",
+        "firepower": {
+          "C": 4,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmbringer Array",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 25,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 5
+          },
+          {
+            "name": "Blast",
+            "value": 5
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 8
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "PS",
+        "slot": "L",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Super Heavy Bombardment Array",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 18,
+            "E": 32
+          },
+          "qualities": [
+            {
+              "name": "Singular",
+              "value": null
+            },
+            {
+              "name": "Arc",
+              "value": 6
+            },
+            {
+              "name": "Hazard",
+              "value": 6
+            },
+            {
+              "name": "Blast",
+              "value": 12
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to six Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 6,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_jaeger_aerial_destroyer",
+    "faction_id": "imperium",
+    "name": "Jaeger",
+    "sub_name": "Aerial Destroyer",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 65,
+    "vpr": 2,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Airborne",
+      "Patrol",
+      "Airship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Dual Rudiger Autokanone",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 4,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 2
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4
+  },
+  {
+    "id": "imperium_jotunn_heavy_raider",
+    "faction_id": "imperium",
+    "name": "Jotunn",
+    "sub_name": "Heavy Raider",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 120,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 3
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_kaiser_heavy_battleship",
+    "faction_id": "imperium",
+    "name": "Kaiser",
+    "sub_name": "Heavy Battleship",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 255,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 13,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 4
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "PSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_konig_generator_ship",
+    "faction_id": "imperium",
+    "name": "Konig",
+    "sub_name": "Generator Ship",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 230,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Flagship",
+      "Capital",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 6,
+      "HUL": 9,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Teutonic Construct",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Generator Ship",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmbringer",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FP",
+        "slot": "L",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Twin-Linked Heavy Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 9,
+            "S": 12,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_konrad_support_carrier",
+    "faction_id": "imperium",
+    "name": "Konrad",
+    "sub_name": "Support Carrier",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 105,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Prussian Flagship"
+      },
+      {
+        "name": "Carrier",
+        "value": 4
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Messer Interceptors"
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Vierling Autokanone",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Prussian",
+        "Flagship"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_kriegsturm_assault_airship",
+    "faction_id": "imperium",
+    "name": "Kriegsturm",
+    "sub_name": "Assault Airship",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 95,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Airborne",
+      "Support",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 1,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 7
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Luftlancer Assault",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 4
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Luft Speerschleuder",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Sturmbringer",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Blast",
+              "value": 2
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Uber Volt Vierling",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 3
+            },
+            {
+              "name": "Voltaic",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_loki_shadow_raider",
+    "faction_id": "imperium",
+    "name": "Loki",
+    "sub_name": "Shadow Raider",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-4",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Scout",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Deceptive Deployment",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Lateral Engines",
+        "value": 3
+      },
+      {
+        "name": "Shroud Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": "imperium_malus_flak_destroyer",
+    "faction_id": "imperium",
+    "name": "Malus",
+    "sub_name": "Flak Destroyer",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 45,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Scout",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Coordinated Defences",
+        "value": null
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4
+  },
+  {
+    "id": "imperium_maximilian_aerial_linebreaker",
+    "faction_id": "imperium",
+    "name": "Maximilian",
+    "sub_name": "Aerial Linebreaker",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 305,
+    "vpr": 10,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Bavarian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-7\"",
+      "TRN": 1,
+      "DEF": 8,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 5,
+      "BRD": 4,
+      "REP": 2,
+      "CRW": 10
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      },
+      {
+        "name": "Generator Ship",
+        "value": null
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Ansturm Rocket Battery",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 12,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Ansturm Rocket Battery",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 12,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Uranium Trialen Bombs",
+        "arc": "A",
+        "slot": null,
+        "firepower": {
+          "C": 14,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Bomb",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 6
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Gustav Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": 17
+        },
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Bertha Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": 11
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 3
+            },
+            {
+              "name": "Blast",
+              "value": 6
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_metzger_vitruivian_colossus",
+    "faction_id": "imperium",
+    "name": "Metzger",
+    "sub_name": "Vitruvian Colossus",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 175,
+    "vpr": 5,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Teutonic",
+      "Underwater",
+      "Scout",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "0\"-6\"",
+      "TRN": 2,
+      "DEF": 4,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": "--",
+      "REP": 2,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Amphibious",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Reinforced Waterline",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Submarauder",
+        "value": null
+      },
+      {
+        "name": "Teutonic Construct",
+        "value": null
+      },
+      {
+        "name": "Vitruvian Form",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Claw Arc Projector (Melee)",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Piercing",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Claw Arc Projector (Ranged)",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Uber Volt Vierling",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 3
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Advanced Sturmbringer",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 10,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 2
+            },
+            {
+              "name": "Blast",
+              "value": 2
+            },
+            {
+              "name": "Deathblow",
+              "value": null
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_munich_aerial_destroyer",
+    "faction_id": "imperium",
+    "name": "Munich",
+    "sub_name": "Aerial Destroyer",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 60,
+    "vpr": 2,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Bavarian",
+      "Airborne",
+      "Patrol",
+      "Airship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 1
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Triplet Rudiger Autokanone",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 3
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4
+  },
+  {
+    "id": "imperium_nachtsturm_flak_frigate",
+    "faction_id": "imperium",
+    "name": "Nachtsturm",
+    "sub_name": "Flak Frigate",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-7\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Deceptive Deployment",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Coordinated Defences",
+        "value": null
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 2,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 6
+  },
+  {
+    "id": "imperium_nuremberg_heavy_airship",
+    "faction_id": "imperium",
+    "name": "Nuremberg",
+    "sub_name": "Heavy Airship",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 90,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Bavarian",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 1,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 2
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Unexpected Arrival",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Luft Speerschleuder",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Sturmbringer",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Blast",
+              "value": 2
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Uber Volt Vierling",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 3
+            },
+            {
+              "name": "Voltaic",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_odin_reaver",
+    "faction_id": "imperium",
+    "name": "Odin",
+    "sub_name": "Reaver",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 110,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_offshore_defence_platform",
+    "faction_id": "imperium",
+    "name": "Offshore Defence Platform",
+    "sub_name": "",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 60,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Croatian",
+      "Surface",
+      "Support",
+      "Platform",
+      "Immobile"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "--",
+      "TRN": "--",
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 2,
+      "BRD": "--",
+      "REP": 4,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Platform"
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Platform"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_offshore_heavy_platform",
+    "faction_id": "imperium",
+    "name": "Offshore Heavy Platform",
+    "sub_name": "",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 150,
+    "vpr": 4,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Croatian",
+      "Surface",
+      "Support",
+      "Platform",
+      "Immobile",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "--",
+      "TRN": "--",
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": "--",
+      "REP": 4,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 5
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      },
+      {
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_offshore_supply_platform",
+    "faction_id": "imperium",
+    "name": "Offshore Supply Platform",
+    "sub_name": "",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 65,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Croatian",
+      "Surface",
+      "Logistical",
+      "Platform",
+      "Immobile",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "--",
+      "TRN": "--",
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 2,
+      "BRD": "--",
+      "REP": 4,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to two Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_ragnarok_heavy_reaver",
+    "faction_id": "imperium",
+    "name": "Ragnarok",
+    "sub_name": "Heavy Reaver",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 240,
+    "vpr": 7,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-8\"",
+      "TRN": 2,
+      "DEF": 6,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 12
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Vikingr",
+        "value": 5
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Fury Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_reiter_flak_cruiser",
+    "faction_id": "imperium",
+    "name": "Reiter",
+    "sub_name": "Flak Cruiser",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 90,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Prussian Flagship"
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Airborne"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Flak Array",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 3,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Prussian",
+        "Flagship"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_sms_brandenburg",
+    "faction_id": "imperium",
+    "name": "SMS Brandenburg",
+    "sub_name": "Elector-class Battleship",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 255,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Platform"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Nassau Twin Bombard",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": 22
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "name": "Nassau Twin Bombard",
+        "arc": "A",
+        "slot": "H",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": 22
+        },
+        "qualities": [
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Hazard",
+            "value": 4
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Nassau Heavy Bombard",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": 15
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 5
+            },
+            {
+              "name": "Blast",
+              "value": 8
+            },
+            {
+              "name": "Guided",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_sms_sk_jalden",
+    "faction_id": "imperium",
+    "name": "SMS Skjalden",
+    "sub_name": "the Dark Omen",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 315,
+    "vpr": 10,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Scions of Jutland",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Repair",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-8\"",
+      "TRN": 1,
+      "DEF": 10,
+      "ARM": 6,
+      "HUL": 12,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 15
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      },
+      {
+        "name": "Terrifying",
+        "value": null,
+        "detail": "Scions of Jutland"
+      },
+      {
+        "name": "Vikingr",
+        "value": 8
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Stromschlag Rocket Battery",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_schaumburg_escort_cruiser",
+    "faction_id": "imperium",
+    "name": "Schaumburg",
+    "sub_name": "Escort Cruiser",
+    "faction": "Imperium",
+    "role": "Support",
+    "point_cost_per_model": 80,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Prussian Flagship"
+      },
+      {
+        "name": "Defensive",
+        "value": 2
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Ground Assault",
+        "value": 2
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      },
+      {
+        "name": "Auxiliary Mine Layer",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Mine Sweeper",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Prussian",
+        "Flagship"
+      ],
+      "max_models": 1
+    }
+  },
+  {
+    "id": "imperium_sigimer_destroyer",
+    "faction_id": "imperium",
+    "name": "Sigimer",
+    "sub_name": "Destroyer",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 50,
+    "vpr": 2,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Prussian Flagship"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Prussian",
+        "Flagship"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "imperium_stark_imperium_skyfortress",
+    "faction_id": "imperium",
+    "name": "Stark Imperium",
+    "sub_name": "Skyfortress",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 260,
+    "vpr": 9,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-7\"",
+      "TRN": 1,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 2,
+      "CRW": 10
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 14
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Carrier",
+        "value": 12
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Luftlancer Assault",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Messer Interceptors"
+      },
+      {
+        "name": "Stockpile",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 10
+      },
+      {
+        "name": "Flight Command",
+        "value": 2
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Vierling Flak Array",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Vierling Flak Array",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Luft Speerschleuder",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Sturmbringer",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 11,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Blast",
+              "value": 2
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Uber Volt Vierling",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 6,
+            "S": 9,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 3
+            },
+            {
+              "name": "Voltaic",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to five Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_tempelhof_fleet_carrier",
+    "faction_id": "imperium",
+    "name": "Tempelhof",
+    "sub_name": "Fleet Carrier",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 225,
+    "vpr": 7,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "3\"-7\"",
+      "TRN": 2,
+      "DEF": 8,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 8
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Blitzen Bombers / Messer Interceptors"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flight Command",
+        "value": 1
+      },
+      {
+        "name": "Freya Array",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 4,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPA",
+        "slot": null,
+        "firepower": {
+          "C": 4,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "SA",
+        "slot": null,
+        "firepower": {
+          "C": 4,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_thor_assault_raider",
+    "faction_id": "imperium",
+    "name": "Thor",
+    "sub_name": "Assault Raider",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 125,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-9\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Ablative Armour",
+        "value": 3,
+        "detail": "Fore"
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "Heavy Prow",
+        "value": 4
+      },
+      {
+        "name": "Vikingr",
+        "value": 5
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      },
+      {
+        "name": "Fury Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Sturmklaue",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Light Voltaic Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_titan_mass_conveyor",
+    "faction_id": "imperium",
+    "name": "Titan",
+    "sub_name": "Mass Conveyor",
+    "faction": "Imperium",
+    "role": "Logistical",
+    "point_cost_per_model": 70,
+    "vpr": 0,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      },
+      {
+        "name": "Resupply",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Vierling Autokanone",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade with a Troop Transport; gains Ground Assault (2)",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "TROOP_TRANSPORT"
+      },
+      {
+        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_toten_heavy_destroyer",
+    "faction_id": "imperium",
+    "name": "Toten",
+    "sub_name": "Heavy Destroyer",
+    "faction": "Imperium",
+    "role": "Patrol",
+    "point_cost_per_model": 60,
+    "vpr": 2,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-7\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 5,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Capital"
+      },
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": 3,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmklaue",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 3,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4
+  },
+  {
+    "id": "imperium_valhalla_fast_dreadnought",
+    "faction_id": "imperium",
+    "name": "Valhalla",
+    "sub_name": "Fast Dreadnought",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 305,
+    "vpr": 10,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Flagship",
+      "Capital",
+      "Carrier",
+      "Repair",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "3\"-8\"",
+      "TRN": 1,
+      "DEF": 8,
+      "ARM": 6,
+      "HUL": 12,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 15
+      },
+      {
+        "name": "Carrier",
+        "value": 4
+      },
+      {
+        "name": "Combat Divers",
+        "value": null
+      },
+      {
+        "name": "Daredevil Crew",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Vali Midget Subs"
+      },
+      {
+        "name": "Vikingr",
+        "value": 6
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 3
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Fury Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 11,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Erderschutterer Rocket Battery",
+        "arc": "FPS",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Heavy Voltaic Gun Battery",
+        "arc": "FPS",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Messer Interceptors",
+        "attack": 2,
+        "intercept": 3,
+        "support": 3,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Blitzen Bombers",
+        "attack": 4,
+        "intercept": 2,
+        "support": 4,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Offensive",
+            "value": null
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      },
+      {
+        "name": "Vali Midget Subs",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Breach / System Failure"
+          },
+          {
+            "name": "Underwater SRS",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "imperium_valkyrie_hunt_rotor",
+    "faction_id": "imperium",
+    "name": "Valkyrie",
+    "sub_name": "Hunt Rotor",
+    "faction": "Imperium",
+    "role": "Scout",
+    "point_cost_per_model": 45,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Imperium",
+      "Scandinavian",
+      "Surface",
+      "Scout",
+      "Rotorcraft",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "0\"-10\"",
+      "TRN": 5,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "--",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Scandinavian"
+      },
+      {
+        "name": "Elevated",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "Soar",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Rudiger Autokanone",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 2,
+          "S": 2,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 1
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Sturmklaue",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Stromschlag Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 2,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Sc",
+        "inavain"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "imperium_volsung_cruiser",
+    "faction_id": "imperium",
+    "name": "Volsung",
+    "sub_name": "Cruiser",
+    "faction": "Imperium",
+    "role": "Line",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Imperium",
+      "Teutonic",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Stoic",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Boosted Propulsion",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Speerschleuders",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Advanced Sturmbringer",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 9,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Deathblow",
+            "value": null
+          },
+          {
+            "name": "Devastating",
+            "value": 3
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Vierling Autokanone",
+        "arc": "FPSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace Light Hardpoint with a Freya Array",
+        "cost_per_unit": 0,
+        "max": null,
+        "tag": "FREYA_ARRAY"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "imperium_zeppelin_aerial_dreadnought",
+    "faction_id": "imperium",
+    "name": "Zeppelin",
+    "sub_name": "Aerial Dreadnought",
+    "faction": "Imperium",
+    "role": "Flagship",
+    "point_cost_per_model": 260,
+    "vpr": 8,
+    "models": "1",
+    "tags": [
+      "Imperium",
+      "Prussian",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-7\"",
+      "TRN": 1,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 11,
+      "ACT": 4,
+      "BRD": 4,
+      "REP": 2,
+      "CRW": 10
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 14
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Luftlancer Assault",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      },
+      {
+        "name": "Storm Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Ansturm Rocket Battery",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 12,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Ansturm Rocket Battery",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": null,
+          "S": 12,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Sturmfahne",
+        "arc": "FPSA",
+        "slot": null,
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Uranium Trialen Bombs",
+        "arc": "A",
+        "slot": null,
+        "firepower": {
+          "C": 14,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Bomb",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 6
+          },
+          {
+            "name": "Devastating",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Luft Speerschleuder",
+        "arc": "F",
+        "slot": "H",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Voltaic",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Sturmbringer",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 11,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Blast",
+              "value": 2
+            },
+            {
+              "name": "Devastating",
+              "value": 3
+            },
+            {
+              "name": "Powered",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Uber Volt Vierling",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 6,
+            "S": 9,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 3
+            },
+            {
+              "name": "Voltaic",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to three Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "",
+    "version": "4.00b",
+    "date": "2026-04-30",
+    "min": 1,
+    "max": 1
+  }
+]
