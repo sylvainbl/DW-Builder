@@ -42,6 +42,18 @@ export default function AppShell() {
                     <UnitDetail />
                 </div>
             </div>
+            <footer className="border-t border-[var(--gold)] bg-[var(--navy)] px-4 py-2 text-center text-xs font-medium text-white">
+                All rights belong to{' '}
+                <a
+                    href="https://www.dystopianwars.com/"
+                    className="underline decoration-[var(--gold)] underline-offset-2 hover:text-[var(--gold-light)]"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Dystopian Wars
+                </a>{' '}
+                and Warcradle.
+            </footer>
         </div>
     )
 }
