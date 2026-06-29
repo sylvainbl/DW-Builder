@@ -335,6 +335,164 @@ function validateFlagshipNoDoctrine(
     })
 }
 
+function validateEmpireMainLimit(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const countedEntries = entries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? !hasTrait(unit, 'Flagship') : false
+    })
+    const airborneCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Airborne') : false
+    }).length
+    const underwaterCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Underwater') : false
+    }).length
+
+    const issues: BattlefleetIssue[] = []
+    if (airborneCount > 2) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include at most two Airborne units, excluding its Flagship and Attachments.`,
+        })
+    }
+    if (underwaterCount > 1) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include at most one Underwater unit, excluding its Flagship and Attachments.`,
+        })
+    }
+    return issues
+}
+
+function validateEmpireChitaRestrictions(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const countedEntries = entries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? !hasTrait(unit, 'Flagship') : false
+    })
+    const airborneCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Airborne') : false
+    }).length
+    const underwaterCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Underwater') : false
+    }).length
+
+    const issues: BattlefleetIssue[] = []
+    if (airborneCount > 0) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} cannot include Airborne units, excluding its Flagship and Attachments.`,
+        })
+    }
+    if (underwaterCount > 4) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include at most four Underwater units, excluding its Flagship and Attachments.`,
+        })
+    }
+    return issues
+}
+
+function validateEmpireKagutsuchiLimit(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const countedEntries = entries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? !hasTrait(unit, 'Flagship') : false
+    })
+    const airborneCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Airborne') : false
+    }).length
+    const underwaterCount = countedEntries.filter((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, 'Underwater') : false
+    }).length
+
+    const issues: BattlefleetIssue[] = []
+    if (airborneCount > 2) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include at most two Airborne units, excluding its Flagship and Attachments.`,
+        })
+    }
+    if (underwaterCount > 2) {
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include at most two Underwater units, excluding its Flagship and Attachments.`,
+        })
+    }
+    return issues
+}
+
+function validateEmpireAirborneOnly(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    return entries.flatMap((entry) => {
+        const unit = findUnit(units, entry)
+        if (!unit || (hasTrait(unit, 'Airborne') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Underwater'))) return []
+        return [{
+            severity: 'error' as const,
+            battlefleetInstanceId: battlefleet.instanceId,
+            unitInstanceId: entry.instanceId,
+            message: `${battlefleet.name} cannot include Surface or Underwater units.`,
+        }]
+    })
+}
+
+function validateEmpireUnderwaterOnly(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    return entries.flatMap((entry) => {
+        const unit = findUnit(units, entry)
+        if (!unit || (hasTrait(unit, 'Underwater') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Airborne'))) return []
+        return [{
+            severity: 'error' as const,
+            battlefleetInstanceId: battlefleet.instanceId,
+            unitInstanceId: entry.instanceId,
+            message: `${battlefleet.name} cannot include Airborne or Surface units.`,
+        }]
+    })
+}
+
+function validateEmpireTianlongNoDoctrine(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+): BattlefleetIssue[] {
+    return entries.flatMap((entry) => (
+        entry.unitId === 'empire_tianlong_draconic_colossus' && entry.config.fleetDoctrineSelection
+            ? [{
+                severity: 'error' as const,
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `Tianlong Draconic Colossus cannot purchase a Fleet Doctrine while assigned to ${battlefleet.name}.`,
+            }]
+            : []
+    ))
+}
+
 function validateSpecialRules(
     definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
@@ -358,6 +516,24 @@ function validateSpecialRules(
         }
         if (rule === 'scions-flagship-no-doctrine') {
             issues.push(...validateFlagshipNoDoctrine(battlefleet, entries, units))
+        }
+        if (rule === 'empire-main-airborne-underwater-limit') {
+            issues.push(...validateEmpireMainLimit(battlefleet, entries, units))
+        }
+        if (rule === 'empire-chita-restrictions') {
+            issues.push(...validateEmpireChitaRestrictions(battlefleet, entries, units))
+        }
+        if (rule === 'empire-kagutsuchi-airborne-underwater-limit') {
+            issues.push(...validateEmpireKagutsuchiLimit(battlefleet, entries, units))
+        }
+        if (rule === 'empire-airborne-only') {
+            issues.push(...validateEmpireAirborneOnly(battlefleet, entries, units))
+        }
+        if (rule === 'empire-underwater-only') {
+            issues.push(...validateEmpireUnderwaterOnly(battlefleet, entries, units))
+        }
+        if (rule === 'empire-tianlong-flagship-no-doctrine') {
+            issues.push(...validateEmpireTianlongNoDoctrine(battlefleet, entries))
         }
     }
     return issues

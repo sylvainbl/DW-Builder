@@ -4,6 +4,7 @@
     "units/alliance.json",
     "units/commonwealth.json",
     "units/crown.json",
-    "units/imperium.json"
+    "units/imperium.json",
+    "units/empire.json"
   ]
 }

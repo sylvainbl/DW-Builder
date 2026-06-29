@@ -12,7 +12,7 @@ export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
     }
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit === null || option.tag === 'GENERATOR') continue
+        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR') continue
         const quantity = config.optionQuantities[option.tag] ?? 0
         total += quantity * option.cost_per_unit
     }
@@ -28,7 +28,7 @@ export function computeModelPoints(unit: Unit, config: UnitConfig): number {
     }
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || isUnitLevelOption(option.tag)) continue
+        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR' || isUnitLevelOption(option.tag)) continue
         const quantity = config.optionQuantities[option.tag] ?? 0
         total += quantity * option.cost_per_unit
     }

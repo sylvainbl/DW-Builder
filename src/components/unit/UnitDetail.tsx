@@ -50,6 +50,8 @@ function findParent(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | 
 function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined): Generator[] {
     const optionTags = new Set(unit.options_and_upgrades.map((option) => option.tag))
     const fixedChoices: Generator[] = []
+    const magmaCastOption = unit.options_and_upgrades.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
+    const freeGeneratorOption = unit.options_and_upgrades.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
 
     if (optionTags.has('TRIDENT_GENERATOR') && slot === 'H') {
         fixedChoices.push({ name: 'Trident Generator', point_cost: 0 })
@@ -59,6 +61,18 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     }
     if (optionTags.has('FREYA_ARRAY') && slot === 'L') {
         fixedChoices.push({ name: 'Freya Array', point_cost: 0 })
+    }
+    if (magmaCastOption && slot === 'H') {
+        fixedChoices.push({ name: 'Magma Cast Generator', point_cost: magmaCastOption.cost_per_unit ?? 0 })
+    }
+    if (freeGeneratorOption && slot === 'H') {
+        return [
+            ...factionGenerators.map((generator) => ({ ...generator, point_cost: 0 })),
+            ...fixedChoices,
+        ]
+    }
+    if (magmaCastOption && optionTags.has('GENERATOR') && slot === 'H') {
+        return [...factionGenerators, ...fixedChoices]
     }
     if (fixedChoices.length > 0) return fixedChoices
 
@@ -480,6 +494,8 @@ export default function UnitDetail() {
                                         || option.tag === 'GUARDIAN_GENERATOR'
                                         || option.tag === 'ADDITIONAL_GUARDIAN_GENERATOR'
                                         || option.tag === 'FREYA_ARRAY'
+                                        || option.tag === 'MAGMA_CAST_GENERATOR'
+                                        || option.tag === 'EMPIRE_FREE_GENERATOR'
 
                                     return (
                                         <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">

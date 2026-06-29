@@ -7,6 +7,8 @@ export function unitCanTakeGenerator(unit: Unit): boolean {
         || option.tag === 'GUARDIAN_GENERATOR'
         || option.tag === 'ADDITIONAL_GUARDIAN_GENERATOR'
         || option.tag === 'FREYA_ARRAY'
+        || option.tag === 'MAGMA_CAST_GENERATOR'
+        || option.tag === 'EMPIRE_FREE_GENERATOR'
     ))
     // TODO: when GENERATOR_MULTIPLE is implemented, also allow multiple generators for units tagged with GENERATOR_MULTIPLE.
     return hasGeneratorOption

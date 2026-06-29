@@ -739,7 +739,7 @@
   {
     "id": "alliance-protecao-commercial",
     "faction_id": "alliance",
-    "name": "Prote\u00e7\u00e3o Commercial Battlefleet",
+    "name": "Proteção Commercial Battlefleet",
     "type": "specialist",
     "elements": [
       {
@@ -1649,6 +1649,466 @@
     ],
     "specialRules": [
       "scions-flagship-no-doctrine"
+    ]
+  },
+  {
+    "id": "empire-main",
+    "faction_id": "empire",
+    "name": "Empire Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "empire-flagship",
+        "name": "1 Empire Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empire-line-patrol",
+        "name": "2-6 Empire Line / Patrol",
+        "min": 2,
+        "max": 6,
+        "requirements": [
+          {
+            "all": [
+              "Empire"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empire-support",
+        "name": "0-4 Empire Support",
+        "min": 0,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empire-scout",
+        "name": "0-2 Empire Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empire-logistical",
+        "name": "0-1 Empire Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Jian",
+      "Osaka"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "empire_akita_super_battleship"
+        ],
+        "classNames": [
+          "Hokkaido"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "empire_ergun_battleship"
+        ],
+        "classNames": [
+          "Qiang"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "empire_kongo_heavy_battleship"
+        ],
+        "classNames": [
+          "Sakata"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "empire_oni_command_cruiser"
+        ],
+        "classNames": [
+          "Kyoto"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "empire_yangtze_command_ship"
+        ],
+        "classNames": [
+          "Shanghai"
+        ]
+      }
+    ],
+    "specialRules": [
+      "empire-main-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "empire-chita-swarm",
+    "faction_id": "empire",
+    "name": "Chita-Swarm Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "chita-flagship",
+        "name": "1 Empire Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chita-line-patrol",
+        "name": "1-5 Empire Line / Patrol",
+        "min": 1,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Empire"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chita-support-scout",
+        "name": "1-5 Empire Support / Scout",
+        "min": 1,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Empire"
+            ],
+            "any": [
+              "Support",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chita-logistical",
+        "name": "0-1 Empire Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Yamaguchi",
+      "Kansai",
+      "Chubu"
+    ],
+    "specialRules": [
+      "empire-chita-restrictions"
+    ]
+  },
+  {
+    "id": "empire-dragons-wrath",
+    "faction_id": "empire",
+    "name": "Dragon's Wrath Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "dragon-tianlong",
+        "name": "1 Tianlong Draconic Colossus",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "unitIds": [
+              "empire_tianlong_draconic_colossus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dragon-draconic",
+        "name": "1-4 Empire Draconic",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Draconic"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dragon-light-vessel",
+        "name": "0-2 Empire Light Vessel",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Light Vessel"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Gong"
+    ],
+    "specialRules": [
+      "empire-tianlong-flagship-no-doctrine"
+    ]
+  },
+  {
+    "id": "empire-gwisin-silent-strike",
+    "faction_id": "empire",
+    "name": "Gwisin Silent-Strike Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "gwisin-rotorcraft",
+        "name": "2-5 Empire Rotorcraft",
+        "min": 2,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Rotorcraft"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gwisin-kite",
+        "name": "0-2 Empire Kite",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Kite"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Sanshin",
+      "Hwanung",
+      "Hobakbeol",
+      "Bangpae"
+    ],
+    "specialRules": [
+      "empire-airborne-only",
+      "empire-gwisin-zhanmadao-bonus"
+    ]
+  },
+  {
+    "id": "empire-kagutsuchi-volcanic",
+    "faction_id": "empire",
+    "name": "Kagutsuchi Volcanic Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "kagutsuchi-flagship",
+        "name": "1 Empire Flagship with Magma Generator",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kagutsuchi-line-patrol",
+        "name": "1-4 Empire Line / Patrol",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Empire"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kagutsuchi-support",
+        "name": "0-2 Empire Support",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Support"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Ryujin",
+      "Hexie",
+      "Meru"
+    ],
+    "specialRules": [
+      "empire-kagutsuchi-airborne-underwater-limit",
+      "empire-kagutsuchi-magma-flagship"
+    ]
+  },
+  {
+    "id": "empire-yamata-no-orochi",
+    "faction_id": "empire",
+    "name": "Yamata No Orochi Abyssal Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "yamata-underwater-colossus",
+        "name": "1 Empire Underwater Colossus",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Underwater",
+              "Colossus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "yamata-underwater",
+        "name": "1-6 Empire Underwater",
+        "min": 1,
+        "max": 6,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Underwater"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Chubu",
+      "Ofukoro",
+      "Kaiju"
+    ],
+    "specialRules": [
+      "empire-underwater-only"
+    ]
+  },
+  {
+    "id": "empire-zhanmadao",
+    "faction_id": "empire",
+    "name": "Zhanmadao Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "zhanmadao-flagship-skyfortress",
+        "name": "1 Empire Flagship Skyfortress",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Flagship",
+              "Skyfortress"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "zhanmadao-airborne",
+        "name": "1-4 Empire Airborne",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Empire",
+              "Airborne"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Qianshao",
+      "Ziwei"
+    ],
+    "specialRules": [
+      "empire-airborne-only"
     ]
   }
 ]
