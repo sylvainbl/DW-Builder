@@ -295,6 +295,29 @@ function validateBlackWolfSpecial(
     return issues
 }
 
+function validateEastIndiaPrivateersSpecial(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const palashiCount = entries.filter((entry) => entry.unitId === 'crown_palashi').length
+    if (palashiCount === 0) return []
+
+    const hasAdventurer = entries.some((entry) => entry.unitId === 'crown_adventurer')
+    const hasOtherFlagship = entries.some((entry) => {
+        const unit = findUnit(units, entry)
+        return unit ? entry.unitId !== 'crown_adventurer' && hasTrait(unit, 'Flagship') : false
+    })
+
+    if (!hasOtherFlagship || hasAdventurer) return []
+
+    return [{
+        severity: 'error',
+        battlefleetInstanceId: battlefleet.instanceId,
+        message: `${battlefleet.name} can include Palashi as a Line unit only when Adventurer is its Flagship.`,
+    }]
+}
+
 function validateSpecialRules(
     definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
@@ -306,12 +329,15 @@ function validateSpecialRules(
         if (rule === 'commonwealth-main-airborne-underwater-limit') {
             issues.push(...validateCommonwealthMainSpecial(battlefleet, entries, units))
         }
-        if (rule === 'alliance-main-airborne-underwater-limit') {
+        if (rule === 'alliance-main-airborne-underwater-limit' || rule === 'airborne-underwater-limit') {
             issues.push(...validateAirborneUnderwaterLimit(battlefleet, entries, units))
         }
         if (rule === 'black-wolf-underwater-half' || rule === 'black-wolf-flagship-no-doctrine') {
             issues.push(...validateBlackWolfSpecial(battlefleet, entries, units))
             break
+        }
+        if (rule === 'east-india-palashi-line') {
+            issues.push(...validateEastIndiaPrivateersSpecial(battlefleet, entries, units))
         }
     }
     return issues
@@ -422,7 +448,10 @@ export function validateBattlefleetOrganisation(
     })
 
     const mainCount = knownBattlefleets.filter(({ definition }) => definition.type === 'main').length
-    const specialistCount = knownBattlefleets.filter(({ definition }) => definition.type === 'specialist').length
+    const specialistCount = knownBattlefleets.filter(({ definition }) => (
+        definition.type === 'specialist'
+        && !definition.specialRules?.includes('mercenary-does-not-count')
+    )).length
     if (knownBattlefleets.length > 0 && mainCount === 0) {
         issues.push({ severity: 'error', message: 'A Force must contain at least one Main Battlefleet.' })
     }

@@ -4,7 +4,7 @@
       "name": "Forward Patrol",
       "point_cost": 15,
       "required_role": "Flagship",
-      "text": "Being the first to survey an area of battle can often be the difference between winning and losing. All the more important to those for whom losing means death.\n\nAt the start of their turn in the **Make a Special Deployment Action** step of Deployment, this Admiral can nominate one of their units in the Play Area that is not **Immobile.**\n\nThat unit gains the **Vanguard (5”)** property.\n\nThe Admiral can only use this Doctrine once per game."
+      "text": "Being the first to survey an area of battle can often be the difference between winning and losing. All the more important to those for whom losing means death.\n\nAt the start of their turn in the **Make a Special Deployment Action** step of Deployment, this Admiral can nominate one of their units in the Play Area that is not **Immobile.**\n\nThat unit gains the **Vanguard (5\u201d)** property.\n\nThe Admiral can only use this Doctrine once per game."
     },
     {
       "name": "Evasive Manoeuvres",
@@ -25,7 +25,7 @@
       "name": "Chain of Command",
       "point_cost": 25,
       "required_role": "Flagship",
-      "text": "Some Admirals rule with an iron fist, others have earned fierce devotion from the crews under their command. Whatever the case, their presence can turn the tide of a battle.\n\nOnce per Round, during the **Resolve Re-rolls** step of an **Action Roll** this Admiral is making for a unit in their Force, they can enact a **Special Valour Effect** with that unit. The unit must either be a **Flagship,** or be within **10”** of a friendly **Flagship.**\n\nIf the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
+      "text": "Some Admirals rule with an iron fist, others have earned fierce devotion from the crews under their command. Whatever the case, their presence can turn the tide of a battle.\n\nOnce per Round, during the **Resolve Re-rolls** step of an **Action Roll** this Admiral is making for a unit in their Force, they can enact a **Special Valour Effect** with that unit. The unit must either be a **Flagship,** or be within **10\u201d** of a friendly **Flagship.**\n\nIf the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
     },
     {
       "name": "Devil's Own Luck",
@@ -46,7 +46,7 @@
       "required_tags": [
         "Ukrainian"
       ],
-      "text": "Though seldom the holders of high rank in the White Navy, the captains of Akula Grand Submarines often serve as the unofficial leaders of roving Ukrainian wolfpacks.\n\nThis Doctrine can only be purchased for a **Ukrainian Flagship** unit.\n\nAt the start of a **Ukrainian Underwater Capital** unit's Activation, its Admiral may attempt to enact a **Special Valour Effect.** If successful, the unit gains a **Valour Effect** token. Until the start of this unit's next Activation, all **Ukrainian Underwater** units in this Force within **10”** of this unit are immune to the effects of **Blow the Tanks.** At the start of its next Activation, discard the Valour Effect token."
+      "text": "Though seldom the holders of high rank in the White Navy, the captains of Akula Grand Submarines often serve as the unofficial leaders of roving Ukrainian wolfpacks.\n\nThis Doctrine can only be purchased for a **Ukrainian Flagship** unit.\n\nAt the start of a **Ukrainian Underwater Capital** unit's Activation, its Admiral may attempt to enact a **Special Valour Effect.** If successful, the unit gains a **Valour Effect** token. Until the start of this unit's next Activation, all **Ukrainian Underwater** units in this Force within **10\u201d** of this unit are immune to the effects of **Blow the Tanks.** At the start of its next Activation, discard the Valour Effect token."
     },
     {
       "name": "Icemakers",
@@ -70,7 +70,7 @@
       "name": "Testudo Viridis",
       "point_cost": 5,
       "required_role": "Flagship",
-      "text": "This Doctrine can only be purchased for an Italian Flagship unit. During the Activation Phase, instead of resolving an SRS Mission, this Force’s Admiral may select a Minefield marker within 10” of an Italian model and declare a Remote Detonation. All models within Proximity of the Minefield marker suffer the effects of a Minefield Detonation. The marker is then removed. A Remote Detonation can be declared even if there are no friendly SRS Stacks in the Play Area.",
+      "text": "This Doctrine can only be purchased for an Italian Flagship unit. During the Activation Phase, instead of resolving an SRS Mission, this Force\u2019s Admiral may select a Minefield marker within 10\u201d of an Italian model and declare a Remote Detonation. All models within Proximity of the Minefield marker suffer the effects of a Minefield Detonation. The marker is then removed. A Remote Detonation can be declared even if there are no friendly SRS Stacks in the Play Area.",
       "required_tags": [
         "Italian"
       ]
@@ -79,7 +79,7 @@
       "name": "For Valour!",
       "point_cost": 10,
       "required_role": "Flagship",
-      "text": "This Doctrine can only be purchased for an Alliance Flagship unit. Once per Round, when this Force’s Admiral declares that they will enact a Valour Effect or Special Valour Effect with an Alliance unit, they may state For Valour! If successfully enacted, draw a card from the top of the Victory & Valour deck and add it to their hand.",
+      "text": "This Doctrine can only be purchased for an Alliance Flagship unit. Once per Round, when this Force\u2019s Admiral declares that they will enact a Valour Effect or Special Valour Effect with an Alliance unit, they may state For Valour! If successfully enacted, draw a card from the top of the Victory & Valour deck and add it to their hand.",
       "required_tags": [
         "Alliance"
       ]
@@ -88,13 +88,13 @@
       "name": "Forward Patrol",
       "point_cost": 15,
       "required_role": "Flagship",
-      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one unit in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once per game."
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one unit in the Play Area that is not Immobile. That unit gains Vanguard (5\u201d). The Admiral can only use this Doctrine once per game."
     },
     {
       "name": "Revolutionary Zeal",
       "point_cost": 15,
       "required_role": "Flagship",
-      "text": "This Doctrine can only be purchased for a SUSA Flagship unit. When making a Group Crew Check to see if Crippled models with the SUSA trait can Participate in an Action, this Force’s Admiral can discard a Victory & Valour Card from their hand to automatically pass the Check.",
+      "text": "This Doctrine can only be purchased for a SUSA Flagship unit. When making a Group Crew Check to see if Crippled models with the SUSA trait can Participate in an Action, this Force\u2019s Admiral can discard a Victory & Valour Card from their hand to automatically pass the Check.",
       "required_tags": [
         "SUSA"
       ]
@@ -103,7 +103,7 @@
       "name": "Advanced Telemetros",
       "point_cost": 20,
       "required_role": "Flagship",
-      "text": "When a model in this Force makes an Attack with the Guided (X) quality, it gains the benefit if the target is within 10” of a friendly model with the Hydrophone Relay system, even if it is not being Threatened by a friendly SRS Stack."
+      "text": "When a model in this Force makes an Attack with the Guided (X) quality, it gains the benefit if the target is within 10\u201d of a friendly model with the Hydrophone Relay system, even if it is not being Threatened by a friendly SRS Stack."
     },
     {
       "name": "Strategic Reserves",
@@ -115,7 +115,7 @@
       "name": "Rolling Broadside",
       "point_cost": 25,
       "required_role": "Flagship",
-      "text": "This Doctrine can only be purchased for a French Flagship unit. When this Force’s Admiral declares a Broadside action with a French Surface unit, they may discard a Victory & Valour Card to make this a Rolling Broadside. For the duration of this Action, models in the unit can Contribute to a Broadside action against a target within 6” instead of the usual 4”.",
+      "text": "This Doctrine can only be purchased for a French Flagship unit. When this Force\u2019s Admiral declares a Broadside action with a French Surface unit, they may discard a Victory & Valour Card to make this a Rolling Broadside. For the duration of this Action, models in the unit can Contribute to a Broadside action against a target within 6\u201d instead of the usual 4\u201d.",
       "required_tags": [
         "French"
       ]
@@ -124,10 +124,10 @@
       "name": "Chain of Command",
       "point_cost": 25,
       "required_role": "Flagship",
-      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10” of a friendly Flagship. If successfully enacted, the Admiral can re-roll any number of dice in the pool."
+      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10\u201d of a friendly Flagship. If successfully enacted, the Admiral can re-roll any number of dice in the pool."
     },
     {
-      "name": "Devil’s Own Luck",
+      "name": "Devil\u2019s Own Luck",
       "point_cost": 25,
       "required_role": "Flagship",
       "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the Effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
@@ -136,7 +136,87 @@
       "name": "Do Or Die",
       "point_cost": 30,
       "required_role": "Flagship",
-      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model’s Crew rating for this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model\u2019s Crew rating for this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+    }
+  ],
+  "crown": [
+    {
+      "name": "Snowbird Air Patrol",
+      "point_cost": 10,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Canadian"
+      ],
+      "text": "This Doctrine can only be purchased for a Canadian Flagship unit. Whenever a Canadian Surface unit in this Force is the target of an Attack Run mission, the Interception Attempt is made with 2 Bonus Dice and can be made even if there is no SRS Stack Supporting the unit."
+    },
+    {
+      "name": "Forward Patrol",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5\u201d). The Admiral can only use this Doctrine once per game."
+    },
+    {
+      "name": "Strategic Reserves",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
+    },
+    {
+      "name": "Her Majesty's Finest",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Canadian"
+      ],
+      "text": "This Doctrine can only be purchased for a Canadian Flagship unit. When a Canadian model in this Force is the Initial Target of an Attack action, its Admiral can discard a Victory & Valour Card before the Action Roll. If they do so, the model gains Ablative Armour (2), or increases its existing Ablative Armour value by 2."
+    },
+    {
+      "name": "Devil's Own Luck",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
+    },
+    {
+      "name": "Sabre Rattle",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Indian Raj"
+      ],
+      "text": "This Doctrine can only be purchased for an Indian Raj Flagship unit. Each Indian Raj unit in this Admiral's Force gains Vanguard (5\u201d). When an Indian Raj unit makes a Vanguard Move, each model must end closer to the enemy Deployment Zone than it was at the start."
+    },
+    {
+      "name": "Do Or Die",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model's Crew rating for this test only. In a Group Crew Check, this Modifier applies to all models in the unit."
+    },
+    {
+      "name": "Pax Britannica!",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Crown"
+      ],
+      "text": "Can only be purchased for a Crown Flagship unit. Once per round, before this Admiral makes an Attack action with a Crown Flagship unit, they may attempt to enact a Special Valour Effect. If successful, each Standard Counter in the Action Roll is converted into a Standard Strike."
+    },
+    {
+      "name": "Emergency Firing Drills",
+      "point_cost": 35,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Crown"
+      ],
+      "text": "Can only be purchased for a Crown Flagship unit. Once per round, before this Admiral makes an Attack action with a Crown Ship unit, they may attempt to enact a Special Valour Effect with that unit. If successful, the Effects of Disorder are ignored for the duration of the attack."
+    },
+    {
+      "name": "RFC Elite",
+      "point_cost": 35,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Carrier"
+      ],
+      "text": "Can only be purchased for a Crown Flagship Carrier unit. Once per round, before resolving an Attack Run mission with a Defiance SRS stack, this Admiral may attempt to enact a Special Valour Effect. If successful, the SRS Squadron may perform a Peregrine Dive and no Interception Attempt may be made against this Attack Run."
     }
   ]
 }

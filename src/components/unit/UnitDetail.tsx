@@ -7,7 +7,7 @@ import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { RuleModal } from '../ui/RuleModal'
-import type { ArmyUnit, FleetDoctrine } from '../../types/index'
+import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
 
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
@@ -45,6 +45,21 @@ function findParent(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | 
         if (nested) return nested
     }
     return null
+}
+
+function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined): Generator[] {
+    const optionTags = new Set(unit.options_and_upgrades.map((option) => option.tag))
+    const fixedChoices: Generator[] = []
+
+    if (optionTags.has('TRIDENT_GENERATOR') && slot === 'H') {
+        fixedChoices.push({ name: 'Trident Generator', point_cost: 0 })
+    }
+    if ((optionTags.has('GUARDIAN_GENERATOR') && slot === 'L') || (optionTags.has('ADDITIONAL_GUARDIAN_GENERATOR') && slot === 'H')) {
+        fixedChoices.push({ name: 'Guardian Generator', point_cost: 0 })
+    }
+    if (fixedChoices.length > 0) return fixedChoices
+
+    return optionTags.has('GENERATOR') && slot === 'H' ? factionGenerators : []
 }
 
 export default function UnitDetail() {
@@ -146,7 +161,7 @@ export default function UnitDetail() {
                         <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo}</p>
                     </div>
                     <div className="flex flex-col items-end text-right">
-                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? 0} pts</div>
+                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? '—'} pts</div>
                         <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-white/75">
                             {costBreakdown.length > 0 ? (
                                 <>
@@ -307,8 +322,9 @@ export default function UnitDetail() {
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
                                 const isGeneratorSlot = generatorSelection?.weaponIndex === index
-                                const canShowGeneratorSection = canTakeGenerator && weapon.slot === 'H' && (generatorSelection == null || generatorSelection.weaponIndex === index)
-                                const showGeneratorRow = weapon.slot === 'H' && isGeneratorSlot
+                                const generatorChoices = canTakeGenerator ? getGeneratorChoices(unit, factionGenerators, weapon.slot) : []
+                                const canShowGeneratorSection = generatorChoices.length > 0 && (generatorSelection == null || generatorSelection.weaponIndex === index)
+                                const showGeneratorRow = Boolean(weapon.slot) && isGeneratorSlot
 
                                 if (showGeneratorRow && generatorSelection) {
                                     return (
@@ -340,7 +356,7 @@ export default function UnitDetail() {
                                 return (
                                     <tr key={weaponKey} className="align-top unit-detail-weapon-row">
                                         <td className="rounded-l-lg px-2 py-2">
-                                            {options.length > 0 ? (
+                                            {options.length > 0 || canShowGeneratorSection ? (
                                                 <div className="space-y-1">
                                                     <button
                                                         type="button"
@@ -390,10 +406,10 @@ export default function UnitDetail() {
                                                                     ))}
                                                                 </>
                                                             ) : null}
-                                                            {canShowGeneratorSection && factionGenerators.length > 0 ? (
+                                                            {canShowGeneratorSection ? (
                                                                 <>
                                                                     <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400">Generators</div>
-                                                                    {factionGenerators.map((generator) => (
+                                                                    {generatorChoices.map((generator) => (
                                                                         <label key={generator.name} className="mt-1 flex items-center justify-between gap-2">
                                                                             <span className="flex items-center gap-2">
                                                                                 <input

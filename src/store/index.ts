@@ -69,11 +69,15 @@ function cloneConfig(config: UnitConfig): UnitConfig {
 }
 
 function normalizeFactionId(id: string): string {
-    return id === 'Alliance' ? 'alliance' : id
+    if (id === 'Alliance') return 'alliance'
+    if (id === 'Crown') return 'crown'
+    return id
 }
 
 function normalizeUnitId(id: string): string {
-    return id.startsWith('Alliance_') ? `alliance_${id.slice('Alliance_'.length)}` : id
+    if (id.startsWith('Alliance_')) return `alliance_${id.slice('Alliance_'.length)}`
+    if (id.startsWith('Crown_')) return `crown_${id.slice('Crown_'.length)}`
+    return id
 }
 
 function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitConfig {
@@ -199,6 +203,24 @@ function normalizeBattlefleets(list: ArmyList, definitions: BattlefleetDefinitio
     })
 }
 
+function isUnitIndexManifest(value: unknown): value is { files: string[] } {
+    return (
+        typeof value === 'object'
+        && value !== null
+        && Array.isArray((value as { files?: unknown }).files)
+        && (value as { files: unknown[] }).files.every((file) => typeof file === 'string')
+    )
+}
+
+async function loadUnitsFromIndex(unitsIndex: unknown): Promise<Unit[]> {
+    if (Array.isArray(unitsIndex)) return unitsIndex as Unit[]
+    if (!isUnitIndexManifest(unitsIndex)) return []
+
+    const responses = await Promise.all(unitsIndex.files.map((file) => fetch(`/data/${file}`)))
+    const groups = await Promise.all(responses.map((response) => response.json() as Promise<Unit[]>))
+    return groups.flat()
+}
+
 function normalizeLists(lists: ArmyList[], units: Unit[], definitions: BattlefleetDefinition[]): ArmyList[] {
     return lists.map((list) => ({
         ...list,
@@ -312,7 +334,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 generatorsRes.json(),
                 fleetDoctrinesRes.json(),
                 battlefleetsRes.json(),
-                unitsRes.json(),
+                unitsRes.json().then(loadUnitsFromIndex),
             ])
             const savedLists = normalizeLists(loadListsFromStorage(), units, battlefleetDefinitions)
             set({ factions, glossary, generators, fleetDoctrines, battlefleetDefinitions, units, dataLoaded: true, savedLists })

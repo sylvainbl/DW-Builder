@@ -12,11 +12,15 @@ const emptyUnitConfig: UnitConfig = {
 }
 
 function normalizeFactionId(id: string): string {
-    return id === 'Alliance' ? 'alliance' : id
+    if (id === 'Alliance') return 'alliance'
+    if (id === 'Crown') return 'crown'
+    return id
 }
 
 function normalizeUnitId(id: string): string {
-    return id.startsWith('Alliance_') ? `alliance_${id.slice('Alliance_'.length)}` : id
+    if (id.startsWith('Alliance_')) return `alliance_${id.slice('Alliance_'.length)}`
+    if (id.startsWith('Crown_')) return `crown_${id.slice('Crown_'.length)}`
+    return id
 }
 
 function safeParseLists(raw: string | null): ArmyList[] {
