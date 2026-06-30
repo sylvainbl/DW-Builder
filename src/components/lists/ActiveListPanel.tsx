@@ -1,8 +1,9 @@
-import { AlertTriangle, Download, Minus, Plus, Printer, X } from 'lucide-react'
+import { AlertTriangle, BookOpenText, Download, Minus, Plus, Printer, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
 import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
+import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
 import { previewPrintableList } from '../../utils/printList'
 
@@ -334,8 +335,10 @@ export default function ActiveListPanel() {
     const setUnitBattlefleet = useAppStore((state) => state.setUnitBattlefleet)
     const selectListUnit = useAppStore((state) => state.selectListUnit)
     const selectBattlefleet = useAppStore((state) => state.selectBattlefleet)
+    const selectListGlossary = useAppStore((state) => state.selectListGlossary)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
     const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
+    const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
     const [editingName, setEditingName] = useState(false)
     const [draftName, setDraftName] = useState('')
 
@@ -398,6 +401,11 @@ export default function ActiveListPanel() {
         () => availableBattlefleetDefinitions.filter((definition) => isMercenaryInForce(definition, currentList?.faction_id)),
         [availableBattlefleetDefinitions, currentList?.faction_id],
     )
+    const listGlossary = useMemo(
+        () => getListGlossary(currentList?.units ?? [], units, glossary),
+        [currentList?.units, glossary, units],
+    )
+    const listGlossaryCount = useMemo(() => getListGlossaryCount(listGlossary), [listGlossary])
 
     if (!currentList) return null
 
@@ -596,6 +604,27 @@ export default function ActiveListPanel() {
                     </>
                 )}
             </div>
+
+            <button
+                type="button"
+                onClick={selectListGlossary}
+                className={`mt-3 flex w-full items-center justify-between gap-3 rounded-lg border p-2.5 text-left shadow-sm transition ${selectedListGlossary ? 'border-[var(--navy)] bg-[var(--navy)] text-white ring-2 ring-[var(--gold)]/40' : 'border-neutral-200 bg-white hover:border-neutral-300 hover:bg-neutral-50'}`}
+            >
+                <span className="flex min-w-0 items-center gap-2">
+                    <span className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-[var(--detail-panel)] text-[var(--navy)]'}`}>
+                        <BookOpenText size={15} />
+                    </span>
+                    <span className="min-w-0">
+                        <span className={`block text-[13px] font-semibold ${selectedListGlossary ? 'text-white' : 'text-neutral-900'}`}>Glossary</span>
+                        <span className={`block text-[11px] ${selectedListGlossary ? 'text-white/70' : 'text-neutral-500'}`}>
+                            {listGlossaryCount} {listGlossaryCount === 1 ? 'rule' : 'rules'} used by this list
+                        </span>
+                    </span>
+                </span>
+                <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
+                    View
+                </span>
+            </button>
         </div>
     )
 }

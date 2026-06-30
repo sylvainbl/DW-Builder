@@ -39,8 +39,8 @@ function renderMarkdown(text: string): string {
 }
 
 function formatRuleName(rule: NamedValue): string {
-    if (rule.value == null) return rule.name
-    return `${rule.name} ${rule.value}`
+    const label = rule.value == null ? rule.name : `${rule.name} ${rule.value}`
+    return rule.detail ? `${label} (${rule.detail})` : label
 }
 
 function formatValue(value: number | string | null | undefined): string {

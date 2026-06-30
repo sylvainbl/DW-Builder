@@ -9,6 +9,7 @@ import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
+import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
@@ -84,11 +85,13 @@ export default function UnitDetail() {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
+    const glossary = useAppStore((state) => state.glossary)
     const fleetDoctrines = useAppStore((state) => state.fleetDoctrines)
     const currentList = useAppStore((state) => state.currentList)
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
     const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
+    const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
     const selectedModelId = useAppStore((state) => state.selectedModelId)
     const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
@@ -126,6 +129,16 @@ export default function UnitDetail() {
     )
 
     if (!unit) {
+        if (currentList && selectedListGlossary) {
+            return (
+                <ListGlossaryDetail
+                    list={currentList}
+                    units={units}
+                    glossary={glossary}
+                />
+            )
+        }
+
         if (currentList && selectedBattlefleet && selectedBattlefleetDefinition) {
             return (
                 <BattlefleetDetail
@@ -640,7 +653,7 @@ export default function UnitDetail() {
                                                 <div className="flex flex-wrap gap-1">
                                                     {squadron.properties.map((property) => (
                                                         <span key={`${squadron.name}-${property.name}`} className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600">
-                                                            <RuleWord category="properties" name={property.name} value={property.value} />
+                                                            <RuleWord category="properties" name={property.name} value={property.value} detail={property.detail} />
                                                         </span>
                                                     ))}
                                                 </div>
