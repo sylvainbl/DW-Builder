@@ -67,7 +67,7 @@ export default function FactionAndSearchHeader({
     const toggleRoleFilter = useAppStore((state) => state.toggleRoleFilter)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
     const currentList = useAppStore((state) => state.currentList)
-    const [showDomains, setShowDomains] = useState(true)
+    const [showDomains, setShowDomains] = useState(false)
     const [showKeywords, setShowKeywords] = useState(false)
 
     const availableFactions = currentList
@@ -92,47 +92,48 @@ export default function FactionAndSearchHeader({
     return (
         <div className={`border-b border-neutral-200 ${compact ? 'space-y-2 p-3' : 'space-y-3 p-4'}`}>
             <div className="flex items-center justify-between gap-2">
-                <div>
+                <div className="flex-none">
                     <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Units</div>
                     <div className="text-[11px] text-neutral-500">{visibleCount} visible</div>
                 </div>
-                <select
-                    value={sortMode}
-                    onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc')}
-                    className="rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
-                >
-                    <option value="name">Name A-Z</option>
-                    <option value="points-asc">Points ↑</option>
-                    <option value="points-desc">Points ↓</option>
-                </select>
+                <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+                    {currentList ? (
+                        <select
+                            value={sourceMode}
+                            disabled={sourceOptions.length <= 1}
+                            onChange={(event) => onSourceModeChange(event.target.value as 'force' | 'mercenary' | 'both')}
+                            className="min-w-0 max-w-[16rem] flex-1 rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none disabled:bg-neutral-100 disabled:text-neutral-500"
+                        >
+                            {sourceOptions.map((option) => (
+                                <option key={option.value} value={option.value}>{option.label}</option>
+                            ))}
+                        </select>
+                    ) : (
+                        <select
+                            value={factionId ?? ''}
+                            onChange={(event) => {
+                                setSelectedFactionId(event.target.value || null)
+                                setSelectedUnitId(null)
+                            }}
+                            className="min-w-0 max-w-[16rem] flex-1 rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
+                        >
+                            <option value="">Select a faction</option>
+                            {availableFactions.map((faction) => (
+                                <option key={faction.id} value={faction.id}>{faction.name}</option>
+                            ))}
+                        </select>
+                    )}
+                    <select
+                        value={sortMode}
+                        onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc')}
+                        className="flex-none rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
+                    >
+                        <option value="name">Name A-Z</option>
+                        <option value="points-asc">Points ↑</option>
+                        <option value="points-desc">Points ↓</option>
+                    </select>
+                </div>
             </div>
-
-            {currentList ? (
-                <select
-                    value={sourceMode}
-                    disabled={sourceOptions.length <= 1}
-                    onChange={(event) => onSourceModeChange(event.target.value as 'force' | 'mercenary' | 'both')}
-                    className="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-700 outline-none disabled:bg-neutral-100 disabled:text-neutral-500"
-                >
-                    {sourceOptions.map((option) => (
-                        <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                </select>
-            ) : (
-                <select
-                    value={factionId ?? ''}
-                    onChange={(event) => {
-                        setSelectedFactionId(event.target.value || null)
-                        setSelectedUnitId(null)
-                    }}
-                    className="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-700 outline-none"
-                >
-                    <option value="">Select a faction</option>
-                    {availableFactions.map((faction) => (
-                        <option key={faction.id} value={faction.id}>{faction.name}</option>
-                    ))}
-                </select>
-            )}
 
             <label className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm">
                 <Search size={14} className="text-neutral-400" />

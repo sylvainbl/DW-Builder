@@ -2186,7 +2186,7 @@
     "role": "Flagship",
     "point_cost_per_model": 160,
     "vpr": 5,
-    "models": "1",
+    "models": "1-2",
     "tags": [
       "Empire",
       "Japanese",
@@ -2406,7 +2406,7 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 1
+    "max": 2
   },
   {
     "id": "empire_tianlong_draconic_colossus",

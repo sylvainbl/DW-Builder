@@ -193,7 +193,7 @@ export default function UnitListColumn() {
 
     return (
         <aside className="flex h-full flex-col overflow-hidden bg-white">
-            <div className={`${unitsPickerCollapsed ? 'max-h-[calc(100%-2rem)] flex-none' : 'max-h-[62%] flex-none'} overflow-y-auto border-b border-neutral-200`}>
+            <div className={`${unitsPickerCollapsed ? 'max-h-[calc(100%-2rem)]' : 'max-h-[60%]'} min-h-0 flex-none overflow-y-auto border-b border-neutral-200`}>
                 <ActiveListPanel />
             </div>
             <button

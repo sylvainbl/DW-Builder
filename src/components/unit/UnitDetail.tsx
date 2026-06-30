@@ -298,8 +298,9 @@ export default function UnitDetail() {
                 </div>
 
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-[var(--navy)]">
-                    <span className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{unit.role}</span>
-                    <span className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{unit.faction}</span>
+                    {unit.tags.map((tag) => (
+                        <span key={tag} className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{tag}</span>
+                    ))}
                 </div>
                 {selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
