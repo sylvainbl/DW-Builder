@@ -53,7 +53,12 @@ export interface OptionUpgrade {
     cost_per_unit: number | null
     max: number | null
     tag: string
+    display_name?: string
     restrictions?: string[]
+    adds_properties?: NamedValue[]
+    adds_systems?: NamedValue[]
+    adds_qualities?: NamedValue[]
+    removes_weapons?: string[]
     choices?: unknown[]
 }
 

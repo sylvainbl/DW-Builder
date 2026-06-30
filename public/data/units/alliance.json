@@ -467,7 +467,13 @@
         "description": "Upgrade any number of models with a Scutum Mine Launcher; gains Auxiliary Mine Layer (1)",
         "cost_per_unit": 10,
         "max": 3,
-        "tag": "SCUTUM_MINE_LAUNCHER"
+        "tag": "SCUTUM_MINE_LAUNCHER",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 1
+          }
+        ]
       }
     ],
     "lore": "",
@@ -2170,8 +2176,23 @@
       {
         "description": "Replace both Focused Torpedo Turrets on any number of models with a Pontifex Array; upgraded models gain Incendiary Broadsides and Solex Generator",
         "cost_per_unit": 0,
-        "max": 2,
-        "tag": "PONTIFEX_ARRAY"
+        "max": 1,
+        "tag": "PONTIFEX_ARRAY",
+        "adds_properties": [
+          {
+            "name": "Incendiary Broadsides",
+            "value": null
+          }
+        ],
+        "adds_systems": [
+          {
+            "name": "Solex Generator",
+            "value": null
+          }
+        ],
+        "removes_weapons": [
+          "Focused Torpedo Turret"
+        ]
       }
     ],
     "lore": "",
@@ -2483,7 +2504,19 @@
         "description": "Upgrade one Couronne Grand Carrier in the Force to La Dame Liberte; gains Legendary, Inspirational (12), and Solex Generator",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "LA_DAME_LIBERTE"
+        "tag": "LA_DAME_LIBERTE",
+        "adds_properties": [
+          {
+            "name": "Inspirational",
+            "value": 12
+          }
+        ],
+        "adds_systems": [
+          {
+            "name": "Solex Generator",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -2893,7 +2926,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "",
@@ -3113,7 +3152,13 @@
         "description": "Upgrade with a Troop Transport Bay; gains Ground Assault (2)",
         "cost_per_unit": 25,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 2
+          }
+        ]
       },
       {
         "description": "Upgrade with an Olympia Levant Drive",
@@ -4351,7 +4396,13 @@
         "description": "Upgrade any number of models with a Scutum Mine Launcher; gains Auxiliary Mine Layer (1)",
         "cost_per_unit": 10,
         "max": 3,
-        "tag": "SCUTUM_MINE_LAUNCHER"
+        "tag": "SCUTUM_MINE_LAUNCHER",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 1
+          }
+        ]
       }
     ],
     "lore": "",
@@ -5881,7 +5932,13 @@
         "description": "Upgrade the model with a Francisco Solex Generator",
         "cost_per_unit": 20,
         "max": 3,
-        "tag": "FRANCISCO_SOLEX_GENERATOR"
+        "tag": "FRANCISCO_SOLEX_GENERATOR",
+        "adds_systems": [
+          {
+            "name": "Solex Generator",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -7303,7 +7360,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "",
@@ -7781,7 +7844,13 @@
         "description": "Upgrade any number of models with a Scutum Mine Launcher; gains Auxiliary Mine Layer (1)",
         "cost_per_unit": 10,
         "max": 3,
-        "tag": "SCUTUM_MINE_LAUNCHER"
+        "tag": "SCUTUM_MINE_LAUNCHER",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 1
+          }
+        ]
       }
     ],
     "lore": "",
@@ -9797,7 +9866,13 @@
         "description": "Upgrade any number of models with a Scutum Mine Launcher; gains Auxiliary Mine Layer (1)",
         "cost_per_unit": 10,
         "max": 3,
-        "tag": "SCUTUM_MINE_LAUNCHER"
+        "tag": "SCUTUM_MINE_LAUNCHER",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 1
+          }
+        ]
       }
     ],
     "lore": "",
@@ -10424,7 +10499,13 @@
         "description": "Upgrade with a Troop Transport Bay; gains Ground Assault (2)",
         "cost_per_unit": 15,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 2
+          }
+        ]
       },
       {
         "description": "Upgrade with an Olympia Levant Drive",
@@ -10640,7 +10721,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "",

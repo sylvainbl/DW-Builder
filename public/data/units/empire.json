@@ -7719,7 +7719,13 @@
         "description": "Upgrade the unit with Defensive Mines, gaining Auxiliary Mine Layer (3).",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -7925,7 +7931,13 @@
         "description": "Upgrade the unit with Defensive Mines, gaining Auxiliary Mine Layer (3).",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -10873,7 +10885,13 @@
         "description": "Upgrade with a Troop Transport Bay, gaining Ground Assault (3).",
         "cost_per_unit": 15,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Upgrade with an Olympia Levant Drive: replace Surface with Airborne and gain Low Altitude.",
@@ -11204,7 +11222,13 @@
         "description": "Upgrade the unit with Defensive Mines, gaining Auxiliary Mine Layer (3).",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -11380,7 +11404,13 @@
         "description": "Upgrade with a Troop Transport Bay, gaining Ground Assault (3).",
         "cost_per_unit": 15,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Upgrade with an Olympia Levant Drive: replace Surface with Airborne and gain Low Altitude.",

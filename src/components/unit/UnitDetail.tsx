@@ -7,6 +7,7 @@ import { computeModelPoints, computeTotalPoints, isUnitLevelOption } from '../..
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
+import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from '../../utils/optionRuleEffects'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
@@ -176,6 +177,18 @@ export default function UnitDetail() {
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorSelection = activeUnitConfig.generatorSelection
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
+    const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
+    const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
+    const displayedWeapons = unit.weapons
+        .map((weapon, index) => ({ weapon, index }))
+        .filter(({ weapon }) => !removedWeaponNames.has(weapon.name))
+    const displayedProperties = mergeNamedValues(unit.properties, optionRuleEffects.properties)
+    const displayedSystems = mergeNamedValues(
+        unit.systems,
+        generatorSelection ? [{ name: generatorSelection.generatorName, value: null }] : [],
+        optionRuleEffects.systems,
+        factionSpecialRules,
+    )
     const fleetDoctrineSelection = selectedEntry?.config.fleetDoctrineSelection ?? null
     const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
@@ -191,7 +204,7 @@ export default function UnitDetail() {
     const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
-    const srsProperty = unit.properties.find((property) => property.name === 'SRS')
+    const srsProperty = displayedProperties.find((property) => property.name === 'SRS')
     const srsTypeNames = srsProperty?.detail
         ?.split(/[,/]/)
         .map((name) => name.trim())
@@ -199,7 +212,7 @@ export default function UnitDetail() {
     const visibleSquadrons = unit.short_range_squadrons?.filter((squadron) => (
         srsTypeNames.length === 0 || srsTypeNames.includes(squadron.name)
     )) ?? []
-    const hasCarrierSrs = unit.properties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier') && visibleSquadrons.length > 0
+    const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry
         ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
         : 0
@@ -216,7 +229,7 @@ export default function UnitDetail() {
             if (qty <= 0 || option.cost_per_unit == null) {
                 return []
             }
-            return [`${option.tag} ×${qty}: +${qty * option.cost_per_unit} pts`]
+            return [`${formatOptionName(option)} ×${qty}: +${qty * option.cost_per_unit} pts`]
         }),
         ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
@@ -392,9 +405,9 @@ export default function UnitDetail() {
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Properties</div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
-                        {unit.properties.length > 0 ? (
-                            unit.properties.map((property) => (
-                                <div key={property.name} className="unit-detail-rule-row">
+                        {displayedProperties.length > 0 ? (
+                            displayedProperties.map((property) => (
+                                <div key={`${property.name}-${property.value ?? ''}-${property.detail ?? ''}`} className="unit-detail-rule-row">
                                     <span className="min-w-0 font-medium text-neutral-900">
                                         <RuleWord category="properties" name={property.name} value={property.value} showValue={false} />
                                     </span>
@@ -411,25 +424,16 @@ export default function UnitDetail() {
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Systems</div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
-                        {unit.systems.length > 0 || factionSpecialRules.length > 0 ? (
-                            <>
-                                {unit.systems.map((system) => (
-                                    <div key={system.name} className="unit-detail-rule-row">
-                                        <span className="min-w-0 font-medium text-neutral-900">
-                                            <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
-                                        </span>
-                                        {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
-                                    </div>
-                                ))}
-                                {factionSpecialRules.map((rule) => (
-                                    <div key={rule.name} className="unit-detail-rule-row">
-                                        <span className="min-w-0 font-medium text-neutral-900">
-                                            <RuleWord category="systems" name={rule.name} value={rule.value} showValue={false} />
-                                        </span>
-                                        {rule.detail ? <span className="unit-detail-rule-detail">{rule.detail}</span> : null}
-                                    </div>
-                                ))}
-                            </>
+                        {displayedSystems.length > 0 ? (
+                            displayedSystems.map((system) => (
+                                <div key={`${system.name}-${system.value ?? ''}-${system.detail ?? ''}`} className="unit-detail-rule-row">
+                                    <span className="min-w-0 font-medium text-neutral-900">
+                                        <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
+                                    </span>
+                                    {system.detail ? <span className="unit-detail-rule-detail">{system.detail}</span> : null}
+                                    {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
+                                </div>
+                            ))
                         ) : (
                             <div className="unit-detail-empty">None</div>
                         )}
@@ -452,7 +456,7 @@ export default function UnitDetail() {
                             </tr>
                         </thead>
                         <tbody>
-                            {unit.weapons.map((weapon, index) => {
+                            {displayedWeapons.map(({ weapon, index }) => {
                                 const weaponKey = `${unit.id}-${index}-${weapon.slot ?? 'base'}`
                                 const selectedName = activeUnitConfig.hardpointSelections[index] ?? weapon.name
                                 const options = weapon.slot ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
@@ -621,7 +625,7 @@ export default function UnitDetail() {
                                     return (
                                         <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">
                                             <div className="min-w-0">
-                                                <div className="text-[12px] font-semibold text-neutral-900">{option.tag}</div>
+                                                <div className="text-[12px] font-semibold text-neutral-900">{formatOptionName(option)}</div>
                                                 <div className="text-[11px] leading-tight text-[var(--detail-ink)]">{option.description}</div>
                                             </div>
                                             {isGeneratorOption ? (

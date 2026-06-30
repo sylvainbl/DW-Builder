@@ -1,6 +1,7 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetForceType, isMercenaryInForce } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
+import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints } from './pointsCalc'
 
 type RuleCategory = 'properties' | 'systems' | 'qualities'
@@ -84,7 +85,7 @@ function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
     }))
 }
 
-function collectRulesForModel(unit: Unit, model: ArmyModel, ruleMap: Map<string, RuleReference>): void {
+function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitConfig, ruleMap: Map<string, RuleReference>): void {
     if (model.config.generatorSelection) {
         addRule(ruleMap, 'systems', {
             name: model.config.generatorSelection.generatorName,
@@ -92,7 +93,9 @@ function collectRulesForModel(unit: Unit, model: ArmyModel, ruleMap: Map<string,
         })
     }
 
+    const removedWeaponNames = getSelectedRemovedWeaponNames(unit, model.config, entryConfig)
     for (const weapon of unit.weapons) {
+        if (removedWeaponNames.has(weapon.name)) continue
         const index = unit.weapons.indexOf(weapon)
         const displayWeapon = selectedWeapon(unit, model, index, weapon)
         for (const quality of displayWeapon.qualities) {
@@ -107,6 +110,29 @@ function collectRulesForModel(unit: Unit, model: ArmyModel, ruleMap: Map<string,
     }
 }
 
+function selectedModelRuleEffects(unit: Unit, entry: ArmyUnit): { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[] } {
+    return entry.models.reduce((effects, model) => {
+        const modelEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
+        return {
+            properties: mergeNamedValues(effects.properties, modelEffects.properties),
+            systems: mergeNamedValues(effects.systems, modelEffects.systems),
+            qualities: mergeNamedValues(effects.qualities, modelEffects.qualities),
+        }
+    }, { properties: [], systems: [], qualities: [] } as { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[] })
+}
+
+function displayedProperties(unit: Unit, entry: ArmyUnit): NamedValue[] {
+    return mergeNamedValues(unit.properties, selectedModelRuleEffects(unit, entry).properties)
+}
+
+function displayedSystems(unit: Unit, entry: ArmyUnit): NamedValue[] {
+    const selectedGeneratorSystems = entry.models.flatMap((model) => (
+        model.config.generatorSelection ? [{ name: model.config.generatorSelection.generatorName, value: null }] : []
+    ))
+    const factionSpecialRules = entry.models.flatMap((model) => getFactionSpecialRules(unit, model.config.generatorSelection?.generatorName ?? null))
+    return mergeNamedValues(unit.systems, selectedGeneratorSystems, selectedModelRuleEffects(unit, entry).systems, factionSpecialRules)
+}
+
 function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleReference>): void {
     for (const property of unit.properties) addRule(ruleMap, 'properties', property)
     for (const system of unit.systems) addRule(ruleMap, 'systems', system)
@@ -114,7 +140,11 @@ function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleRefe
         for (const rule of getFactionSpecialRules(unit, model.config.generatorSelection?.generatorName ?? null)) {
             addRule(ruleMap, 'systems', rule)
         }
-        collectRulesForModel(unit, model, ruleMap)
+        collectRulesForModel(unit, model, entry.config, ruleMap)
+        const optionRuleEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
+        for (const property of optionRuleEffects.properties) addRule(ruleMap, 'properties', property)
+        for (const system of optionRuleEffects.systems) addRule(ruleMap, 'systems', system)
+        for (const quality of optionRuleEffects.qualities) addRule(ruleMap, 'qualities', quality)
     }
 }
 
@@ -124,9 +154,12 @@ function renderRuleBadges(rules: NamedValue[], category: RuleCategory): string {
 }
 
 function renderWeaponRows(unit: Unit, config: UnitConfig): string {
-    return unit.weapons.map((weapon, index) => {
+    const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config)
+
+    return unit.weapons.flatMap((weapon, index) => {
+        if (removedWeaponNames.has(weapon.name)) return []
         if (config.generatorSelection?.weaponIndex === index) {
-            return `
+            return [`
                 <tr>
                     <td><strong>${escapeHtml(config.generatorSelection.generatorName)}</strong> <span class="muted">+${config.generatorSelection.generatorCost} pts</span></td>
                     <td class="center">-</td>
@@ -135,12 +168,12 @@ function renderWeaponRows(unit: Unit, config: UnitConfig): string {
                     <td class="center">-</td>
                     <td>${renderRuleBadges([{ name: 'Generator', value: null }], 'systems')}</td>
                 </tr>
-            `
+            `]
         }
 
         const displayWeapon = selectedWeapon(unit, { modelId: '', config }, index, weapon)
         const displayArc = weapon.arc ?? displayWeapon.arc ?? '-'
-        return `
+        return [`
             <tr>
                 <td><strong>${escapeHtml(displayWeapon.name)}</strong></td>
                 <td class="center">${escapeHtml(displayArc)}</td>
@@ -149,7 +182,7 @@ function renderWeaponRows(unit: Unit, config: UnitConfig): string {
                 <td class="center">${escapeHtml(formatValue(displayWeapon.firepower.E))}</td>
                 <td>${displayWeapon.qualities.length > 0 ? renderRuleBadges(displayWeapon.qualities, 'qualities') : '<span class="muted">-</span>'}</td>
             </tr>
-        `
+        `]
     }).join('')
 }
 
@@ -191,7 +224,7 @@ function renderOptionRows(unit: Unit, config: UnitConfig): string {
             <tbody>
                 ${rows.map(({ option, quantity, points }) => `
                     <tr>
-                        <td><strong>${escapeHtml(option.tag)}</strong></td>
+                        <td><strong>${escapeHtml(formatOptionName(option))}</strong></td>
                         <td>${escapeHtml(option.description)}</td>
                         <td class="center">${quantity}</td>
                         <td class="center">${option.max == null ? 'Unlimited' : option.max}</td>
@@ -306,8 +339,8 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
             <div class="stats">
                 ${Object.entries(unit.stats).map(([key, value]) => `<span><strong>${escapeHtml(key)}</strong> ${escapeHtml(String(value))}</span>`).join('')}
             </div>
-            <div class="rule-row"><strong>Properties</strong><div>${renderRuleBadges(unit.properties, 'properties')}</div></div>
-            <div class="rule-row"><strong>Systems</strong><div>${renderRuleBadges(unit.systems, 'systems')}</div></div>
+            <div class="rule-row"><strong>Properties</strong><div>${renderRuleBadges(displayedProperties(unit, entry), 'properties')}</div></div>
+            <div class="rule-row"><strong>Systems</strong><div>${renderRuleBadges(displayedSystems(unit, entry), 'systems')}</div></div>
             ${doctrine}
             <div class="profile-block">
                 <h4>Unit Options</h4>

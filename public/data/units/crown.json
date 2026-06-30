@@ -2042,7 +2042,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "First employed in Cape Comorin, securing the Palk Straits for the use of the East India Trading Company and the short-lived British North Borneo Company after the removal of the Dutch, Ceylon Guardian Platforms are now stationed all over the world. DEFENSIVE MINES They are used to support and safeguard defensive lines, and to provide safe harbours far from Crown territory, their Guardian This unit can be upgraded with Defensive Mines. If so, Generators projecting powerful defensive screens to shield Her it gains the Auxiliary Mine Layer (3) property. Majesty's forces as they carry out Her will.",
@@ -2346,7 +2352,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "To safeguard Her Majesty's economic interests and strategic influence, the Crown deploys Ross-class battle platforms. These well-armed bastions serve as unyielding sentinels on the high seas, often standing guard over unarmed supply and logistics platforms, or adding fire support to the larger Dublin-class war DEFENSIVE MINES platforms. Deterring threats to vital shipping lanes, the presence of a Ross battle platform bolsters the Crown's claims on contested This unit can be upgraded with Defensive Mines. If so, territories, a powerful symbol of unwavering commitment to Her it gains the Auxiliary Mine Layer (3) property. sovereignty",
@@ -4247,7 +4259,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Add 1 Ceylon Guardian Platform or 1 Defence Platform as an Attachment",
@@ -7587,7 +7605,13 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES"
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
       }
     ],
     "lore": "The Belfast-class offshore support platform is one of the Royal Navy's greatest strategic assets. Dotted about the world's seas DEFENSIVE MINES and oceans, their ability to provide support and repair facilities extends the reach and operational range of Her Majesty's navy, This unit can be upgraded with Defensive Mines. If so, allowing Her fleets to venture further, and project the Crown's it gains the Auxiliary Mine Layer (3) property. influence to every corner of the globe.",

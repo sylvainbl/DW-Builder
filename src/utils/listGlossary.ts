@@ -1,6 +1,6 @@
-import type { ArmyUnit, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
+import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { isUnitLevelOption } from './pointsCalc'
+import { getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
 
@@ -25,23 +25,6 @@ function addNamedValues(target: Set<string>, values: NamedValue[] | undefined) {
     for (const value of values ?? []) {
         target.add(value.name)
     }
-}
-
-function optionConfig(entry: ArmyUnit, modelConfig: UnitConfig, option: OptionUpgrade): UnitConfig {
-    return isUnitLevelOption(option.tag) ? entry.config : modelConfig
-}
-
-function addOptionChoiceRules(ruleNames: Record<GlossaryCategory, Set<string>>, choice: unknown) {
-    if (typeof choice !== 'object' || choice === null) return
-
-    const structuredChoice = choice as {
-        adds_systems?: NamedValue[]
-        adds_properties?: NamedValue[]
-        adds_qualities?: NamedValue[]
-    }
-    addNamedValues(ruleNames.systems, structuredChoice.adds_systems)
-    addNamedValues(ruleNames.properties, structuredChoice.adds_properties)
-    addNamedValues(ruleNames.qualities, structuredChoice.adds_qualities)
 }
 
 function getDisplayedWeapon(unit: Unit, weapon: Weapon, weaponIndex: number, config: UnitConfig): Weapon {
@@ -84,18 +67,17 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
 
         addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, config.generatorSelection?.generatorName ?? null))
 
+        const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config, entry.config)
         unit.weapons.forEach((weapon, weaponIndex) => {
+            if (removedWeaponNames.has(weapon.name)) return
             if (config.generatorSelection?.weaponIndex === weaponIndex) return
             addNamedValues(ruleNames.qualities, getDisplayedWeapon(unit, weapon, weaponIndex, config).qualities)
         })
 
-        for (const option of unit.options_and_upgrades) {
-            const quantity = optionConfig(entry, config, option).optionQuantities[option.tag] ?? 0
-            if (quantity <= 0) continue
-            for (const choice of option.choices ?? []) {
-                addOptionChoiceRules(ruleNames, choice)
-            }
-        }
+        const optionRuleEffects = getSelectedOptionRuleEffects(unit, config, entry.config)
+        addNamedValues(ruleNames.properties, optionRuleEffects.properties)
+        addNamedValues(ruleNames.systems, optionRuleEffects.systems)
+        addNamedValues(ruleNames.qualities, optionRuleEffects.qualities)
     }
 
     for (const attachment of entry.attachedUnits ?? []) {
