@@ -6329,8 +6329,9 @@
             "value": null
           },
           {
-            "name": "Surgical Strike (Shredded Defences)",
-            "value": null
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Shredded Defences"
           }
         ]
       }
@@ -7577,8 +7578,9 @@
             "value": null
           },
           {
-            "name": "Surgical Strike (Shredded Defences)",
-            "value": null
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Shredded Defences"
           }
         ]
       }
