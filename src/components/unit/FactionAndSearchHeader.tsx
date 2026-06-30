@@ -19,6 +19,18 @@ interface Props {
 }
 
 const domainTags = ['Surface', 'Airborne', 'Underwater']
+const roleTagOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
+
+function sortRoleTags(a: string, b: string): number {
+    const aIndex = roleTagOrder.indexOf(a)
+    const bIndex = roleTagOrder.indexOf(b)
+    if (aIndex !== -1 || bIndex !== -1) {
+        if (aIndex === -1) return 1
+        if (bIndex === -1) return -1
+        return aIndex - bIndex
+    }
+    return a.localeCompare(b)
+}
 
 function FilterChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
     return (
@@ -64,7 +76,7 @@ export default function FactionAndSearchHeader({
     const factionId = currentList?.faction_id ?? selectedFactionId
     const roles = useMemo(() => {
         if (!factionId) return []
-        return Array.from(new Set(filterUnits.map((unit) => unit.role))).sort()
+        return Array.from(new Set(filterUnits.map((unit) => unit.role))).sort(sortRoleTags)
     }, [factionId, filterUnits])
     const availableDomains = useMemo(
         () => domainTags.filter((tag) => filterUnits.some((unit) => unit.tags.includes(tag))),
