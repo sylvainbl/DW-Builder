@@ -1,4 +1,4 @@
-import { Pencil } from 'lucide-react'
+import { Pencil, Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
@@ -9,6 +9,7 @@ import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
+import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
@@ -123,6 +124,7 @@ export default function UnitDetail() {
     const setFleetDoctrineSelection = useAppStore((state) => state.setFleetDoctrineSelection)
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const selectModel = useAppStore((state) => state.selectModel)
+    const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const renameListUnit = useAppStore((state) => state.renameListUnit)
@@ -227,7 +229,7 @@ export default function UnitDetail() {
         : 0
     const maxModels = selectedEntryGeneratedByOption
         ? selectedEntry?.models.length ?? normalMaxModels
-        : selectedEntryParent ? (unit.attachment?.max_models ?? normalMaxModels) - siblingAttachmentModels : normalMaxModels
+        : selectedEntryParent ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels : normalMaxModels
     const canAddModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
@@ -255,6 +257,23 @@ export default function UnitDetail() {
         }),
         ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
+    const canManageAttachments = Boolean(selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption)
+    const availableAttachments = canManageAttachments && selectedEntry
+        ? units
+            .filter((candidate) => canAttachToParent(candidate, unit))
+            .map((candidate) => {
+                const usedModels = (selectedEntry.attachedUnits ?? [])
+                    .filter((attachment) => attachment.unitId === candidate.id)
+                    .reduce((sum, attachment) => sum + attachment.models.length, 0)
+                return {
+                    unit: candidate,
+                    keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
+                    remainingModels: getAttachmentModelLimitForUnit(candidate) - usedModels,
+                }
+            })
+            .filter((candidate) => candidate.remainingModels >= getMinimumModelsForUnit(candidate.unit))
+            .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
+        : []
     const commitUnitName = () => {
         if (selectedEntry) renameListUnit(selectedEntry.instanceId, unitDraftName)
         setEditingUnitName(false)
@@ -399,6 +418,48 @@ export default function UnitDetail() {
                     </div>
                 ) : null}
             </section>
+
+            {canManageAttachments && selectedEntry ? (
+                <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                    <div className="flex items-center justify-between gap-2">
+                        <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Attachments</div>
+                        {attachmentPoints > 0 ? (
+                            <span className="rounded-full border border-white/70 bg-white px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
+                                +{attachmentPoints}
+                            </span>
+                        ) : null}
+                    </div>
+                    {availableAttachments.length > 0 ? (
+                        <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
+                            {availableAttachments.map(({ unit: attachment, keyword, remainingModels }) => (
+                                <button
+                                    key={attachment.id}
+                                    type="button"
+                                    title={`Add ${attachment.name}`}
+                                    onClick={() => addAttachmentToListUnit(selectedEntry.instanceId, attachment.id)}
+                                    className="grid min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm transition hover:border-[var(--gold)] hover:bg-white"
+                                >
+                                    <span className="min-w-0">
+                                        <span className="block truncate text-[12px] font-semibold text-neutral-900">
+                                            {attachment.name} ({keyword})
+                                        </span>
+                                        <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
+                                            {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {remainingModels} {remainingModels === 1 ? 'model' : 'models'} available
+                                        </span>
+                                    </span>
+                                    <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-[var(--navy)] text-white shadow-sm">
+                                        <Plus size={14} />
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="mt-2 rounded-lg border border-dashed border-white/70 bg-white/40 p-2 text-[12px] text-[var(--detail-ink)]/70">
+                            No eligible attachments available.
+                        </div>
+                    )}
+                </section>
+            ) : null}
 
             <section className="unit-detail-section unit-detail-stat rounded-xl p-2.5 shadow-sm">
                 <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Stats</div>

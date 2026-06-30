@@ -8,11 +8,9 @@ interface Props {
     active: boolean
     onSelect: () => void
     onAdd?: () => void
-    attachmentTargets?: { instanceId: string; label: string }[]
-    onAttach?: (parentInstanceId: string) => void
 }
 
-export default function UnitCard({ unit, faction, active, onSelect, onAdd, attachmentTargets = [], onAttach }: Props) {
+export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Props) {
     return (
         <button
             type="button"
@@ -55,32 +53,6 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd, attac
                     <TagChip key={tag} label={tag} />
                 ))}
             </div>
-            {attachmentTargets.length > 0 && onAttach ? (
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                    {attachmentTargets.map((target) => (
-                        <span
-                            key={target.instanceId}
-                            role="button"
-                            tabIndex={0}
-                            title={`Attach to ${target.label}`}
-                            onClick={(event) => {
-                                event.stopPropagation()
-                                onAttach(target.instanceId)
-                            }}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter' || event.key === ' ') {
-                                    event.preventDefault()
-                                    event.stopPropagation()
-                                    onAttach(target.instanceId)
-                                }
-                            }}
-                            className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[10px] font-medium text-amber-800 hover:bg-amber-100"
-                        >
-                            Attach to {target.label}
-                        </span>
-                    ))}
-                </div>
-            ) : null}
         </button>
     )
 }

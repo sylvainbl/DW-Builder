@@ -3,6 +3,7 @@ import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinit
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
 import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/battlefleets'
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
+import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
 import { uuid } from '../utils/uuid'
 
 const emptyUnitConfig: UnitConfig = {
@@ -238,10 +239,6 @@ function makeDefaultBattlefleets(factionId: string, definitions: BattlefleetDefi
     const defaultDefinition = definitions.find((definition) => definition.faction_id === factionId && definition.type === 'main' && !definition.legendary)
         ?? definitions.find((definition) => definition.faction_id === factionId && definition.type === 'main')
     return defaultDefinition ? [makeBattlefleet(defaultDefinition)] : []
-}
-
-function getAttachmentModelLimit(unit: Unit): number {
-    return unit.attachment?.max_models ?? getMaximumModels(unit)
 }
 
 function countAttachedModels(entries: ArmyUnit[], unitId: string): number {
@@ -652,9 +649,10 @@ export const useAppStore = create<AppStore>((set, get) => ({
         if (!unit) return
         const parent = findArmyUnit(state.currentList.units, parentInstanceId)
         if (!parent) return
-        if (parent.unitId === unit.id) return
+        const parentUnit = state.units.find((item) => item.id === parent.unitId)
+        if (!parentUnit || !canAttachToParent(unit, parentUnit)) return
         const usedModels = countAttachedModels(parent.attachedUnits ?? [], unitId)
-        const remainingModels = getAttachmentModelLimit(unit) - usedModels
+        const remainingModels = getAttachmentModelLimitForUnit(unit) - usedModels
         if (remainingModels < getMinimumModels(unit)) return
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
         const attachment = makeArmyUnit(unit, config, parent.battlefleetInstanceId ?? null, state.currentList)
@@ -825,7 +823,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 .filter((attachment) => attachment.unitId === unit.id && attachment.instanceId !== instanceId)
                 .reduce((sum, attachment) => sum + attachment.models.length, 0)
             : 0
-        const maxModels = parent ? getAttachmentModelLimit(unit) - siblingModels : getMaximumModels(unit)
+        const maxModels = parent ? getAttachmentModelLimitForUnit(unit) - siblingModels : getMaximumModels(unit)
         if (entry.models.length >= maxModels) return
         const newModel = makeModel()
         const currentList = syncListGeneratedOptionAttachments({

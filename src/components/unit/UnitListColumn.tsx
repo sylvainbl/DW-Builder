@@ -1,29 +1,11 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
 import { isMercenaryInForce } from '../../utils/battlefleets'
 import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
-
-function unitTraits(unit: Unit): string[] {
-    return [unit.name, unit.sub_name, unit.role, ...unit.tags].map((trait) => trait.toLowerCase())
-}
-
-function canAttachToParent(attachment: Unit, parent: Unit): boolean {
-    if (!attachment.attachment || attachment.faction_id !== parent.faction_id) return false
-    if (attachment.id === parent.id) return false
-    const parentTraits = unitTraits(parent)
-    return attachment.attachment.parent_traits.every((requiredTrait) =>
-        parentTraits.includes(requiredTrait.toLowerCase()),
-    )
-}
-
-function attachmentModelLimit(unit: Unit): number {
-    const fallback = unit.max ?? (typeof unit.models === 'number' ? unit.models : 1)
-    return unit.attachment?.max_models ?? fallback
-}
 
 function UnitCardList() {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
@@ -37,17 +19,16 @@ function UnitCardList() {
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
-    const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
     const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
     const [selectedDomains, setSelectedDomains] = useState<string[]>([])
-    const [selectedKeywords, setSelectedKeywords] = useState<string[]>([])
-
-    useEffect(() => {
-        setSelectedKeywords([])
-    }, [currentList?.id])
+    const [selectedKeywordState, setSelectedKeywordState] = useState<{ listId: string | null; values: string[] }>({ listId: null, values: [] })
 
     const factionId = currentList?.faction_id ?? selectedFactionId
+    const selectedKeywords = useMemo(
+        () => (selectedKeywordState.listId === (currentList?.id ?? null) ? selectedKeywordState.values : []),
+        [currentList?.id, selectedKeywordState.listId, selectedKeywordState.values],
+    )
     const mercenaryFactionIds = useMemo(() => {
         const ids = new Set<string>()
         for (const battlefleet of currentList?.battlefleets ?? []) {
@@ -113,27 +94,15 @@ function UnitCardList() {
         ))
     }
     const toggleKeyword = (tag: string) => {
-        setSelectedKeywords((selected) => (
-            selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag]
-        ))
+        const listId = currentList?.id ?? null
+        setSelectedKeywordState((state) => {
+            const selected = state.listId === listId ? state.values : []
+            return {
+                listId,
+                values: selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag],
+            }
+        })
     }
-    const attachmentTargetsByUnitId = useMemo(() => {
-        if (!currentList) return new Map<string, { instanceId: string; label: string }[]>()
-        return new Map(filteredUnits.map((unit) => {
-            const targets = currentList.units.flatMap((entry) => {
-                const parent = units.find((item) => item.id === entry.unitId)
-                if (!parent || !canAttachToParent(unit, parent)) return []
-                const usedModels = (entry.attachedUnits ?? [])
-                    .filter((attachment) => attachment.unitId === unit.id)
-                    .reduce((sum, attachment) => sum + attachment.models.length, 0)
-                const minimum = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
-                if (usedModels + minimum > attachmentModelLimit(unit)) return []
-                return [{ instanceId: entry.instanceId, label: parent.name }]
-            })
-            return [unit.id, targets]
-        }))
-    }, [currentList, filteredUnits, units])
-
     return (
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
             <FactionAndSearchHeader
@@ -172,8 +141,6 @@ function UnitCardList() {
                                     setSelectedUnitId(unit.id)
                                 }}
                                 onAdd={currentList ? () => addUnitToCurrentList(unit.id) : undefined}
-                                attachmentTargets={attachmentTargetsByUnitId.get(unit.id)}
-                                onAttach={currentList ? (parentInstanceId) => addAttachmentToListUnit(parentInstanceId, unit.id) : undefined}
                             />
                         ))}
                     </div>
