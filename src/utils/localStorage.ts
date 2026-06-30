@@ -1,5 +1,5 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
-import { computeArmyUnitTotal } from './pointsCalc'
+import { computeArmyUnitTotal, updateArmyUnitTotals } from './pointsCalc'
 import { uuid } from './uuid'
 
 const STORAGE_KEY = 'dw-builder-lists-v1'
@@ -189,15 +189,20 @@ function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
 function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {
     const now = new Date().toISOString()
     const entries = list.units.flatMap((entry) => normalizeImportedEntry(entry, units))
-
-    return {
+    const battlefleets = normalizeImportedBattlefleets(list.battlefleets)
+    const normalizedList = {
         id: uuid(),
         name: list.name || 'Imported list',
         faction_id: normalizeFactionId(list.faction_id),
-        battlefleets: normalizeImportedBattlefleets(list.battlefleets),
+        battlefleets,
         units: entries,
         createdAt: now,
         updatedAt: now,
+    }
+
+    return {
+        ...normalizedList,
+        units: updateArmyUnitTotals(normalizedList.units, units, normalizedList),
     }
 }
 
@@ -215,6 +220,7 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
 
     const now = new Date().toISOString()
     const factionId = normalizeFactionId(data.faction)
+    const battlefleets = normalizeImportedBattlefleets(data.battlefleets)
     const entries: ArmyUnit[] = data.units.flatMap((entry) => {
         if (!isObject(entry) || typeof entry.name !== 'string' || !isUnitConfig(entry.config)) return []
         const unit = units.find((item) => item.faction_id === factionId && item.name === entry.name)
@@ -233,14 +239,18 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
         normalized.totalPoints = computeArmyUnitTotal(normalized, units)
         return [normalized]
     })
-
-    return {
+    const normalizedList = {
         id: uuid(),
         name: data.name,
         faction_id: factionId,
-        battlefleets: normalizeImportedBattlefleets(data.battlefleets),
+        battlefleets,
         units: entries,
         createdAt: now,
         updatedAt: now,
+    }
+
+    return {
+        ...normalizedList,
+        units: updateArmyUnitTotals(normalizedList.units, units, normalizedList),
     }
 }

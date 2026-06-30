@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
-import { computeModelPoints, computeTotalPoints, isUnitLevelOption } from '../../utils/pointsCalc'
+import { computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
@@ -223,7 +223,8 @@ export default function UnitDetail() {
             if (qty <= 0 || option.cost_per_unit == null) {
                 return []
             }
-            return [`${formatOptionName(option)} ×${qty}: +${qty * option.cost_per_unit} pts`]
+            const points = computeOptionPoints(option, qty, Boolean(selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined))) ?? 0
+            return [`${formatOptionName(option)} ×${qty}: +${points} pts`]
         }),
         ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
@@ -602,13 +603,14 @@ export default function UnitDetail() {
                     {hasOptions ? (
                         <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
                             <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
-                            <div className="unit-detail-line mt-1.5 divide-y">
+                            <div className="mt-2 space-y-1.5">
                                 {unit.options_and_upgrades.map((option) => {
                                     const unitLevel = isUnitLevelOption(option.tag)
                                     const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
                                     const qty = config.optionQuantities[option.tag] ?? 0
                                     const max = unitLevel ? option.max : option.max ?? 1
                                     const canIncrease = max == null || qty < max
+                                    const optionPoints = computeOptionPoints(option, qty, Boolean(unitLevel && selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined)))
                                     const isGeneratorOption = option.tag === 'GENERATOR'
                                         || option.tag === 'TRIDENT_GENERATOR'
                                         || option.tag === 'GUARDIAN_GENERATOR'
@@ -618,15 +620,15 @@ export default function UnitDetail() {
                                         || option.tag === 'EMPIRE_FREE_GENERATOR'
 
                                     return (
-                                        <div key={option.tag} className="flex items-center justify-between gap-3 py-1.5 text-[var(--detail-ink)]">
+                                        <div key={option.tag} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
                                             <div className="min-w-0">
                                                 <div className="text-[12px] font-semibold text-neutral-900">{formatOptionName(option)}</div>
                                                 <div className="text-[11px] leading-tight text-[var(--detail-ink)]">{option.description}</div>
                                             </div>
                                             {isGeneratorOption ? (
-                                                <div className="text-[11px] text-[var(--detail-ink)]/70">—</div>
+                                                <div className="justify-self-start text-[11px] text-[var(--detail-ink)]/70 md:justify-self-end">—</div>
                                             ) : (
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-center justify-start gap-2 md:justify-end">
                                                     <button
                                                         type="button"
                                                         className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
@@ -648,11 +650,11 @@ export default function UnitDetail() {
                                                     >
                                                         +
                                                     </button>
-                                                    <div className="text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                                    <div className="w-16 text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
                                                 </div>
                                             )}
-                                            <div className="text-right text-[11px] font-medium text-[var(--navy)]">
-                                                {option.cost_per_unit == null ? '—' : `${qty * option.cost_per_unit} pts`}
+                                            <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
+                                                {optionPoints == null ? '—' : `${optionPoints} pts`}
                                             </div>
                                         </div>
                                     )

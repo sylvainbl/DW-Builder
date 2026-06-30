@@ -40,6 +40,10 @@ function matchesElement(entry: ArmyUnit, unit: Unit, element: BattlefleetElement
     return element.requirements.some((requirement) => matchesRequirement(entry, unit, requirement))
 }
 
+export function getMatchingBattlefleetElement(definition: BattlefleetDefinition, entry: ArmyUnit, unit: Unit): BattlefleetElement | null {
+    return definition.elements.find((element) => matchesElement(entry, unit, element)) ?? null
+}
+
 function flattenUnits(entries: ArmyUnit[]): ArmyUnit[] {
     return entries.flatMap((entry) => [entry, ...flattenUnits(entry.attachedUnits ?? [])])
 }

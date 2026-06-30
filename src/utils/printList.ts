@@ -2,7 +2,7 @@ import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinit
 import { getBattlefleetForceType, isMercenaryInForce } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
-import { computeModelPoints } from './pointsCalc'
+import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
 
 type RuleCategory = 'properties' | 'systems' | 'qualities'
@@ -67,13 +67,13 @@ function selectedWeapon(unit: Unit, model: ArmyModel, index: number, weapon: Wea
     return options.find((option) => option.name === selectedName) ?? weapon
 }
 
-function optionRows(unit: Unit, config: UnitConfig): Array<{ option: OptionUpgrade; quantity: number; points: number | null }> {
+function optionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false): Array<{ option: OptionUpgrade; quantity: number; points: number | null }> {
     return unit.options_and_upgrades.map((option) => {
         const quantity = config.optionQuantities[option.tag] ?? 0
         return {
             option,
             quantity,
-            points: option.cost_per_unit == null ? null : quantity * option.cost_per_unit,
+            points: computeOptionPoints(option, quantity, discountFirstEscort),
         }
     })
 }
@@ -207,8 +207,8 @@ function renderWeaponsTable(unit: Unit, config: UnitConfig): string {
     `
 }
 
-function renderOptionRows(unit: Unit, config: UnitConfig): string {
-    const rows = optionRows(unit, config)
+function renderOptionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false): string {
+    const rows = optionRows(unit, config, discountFirstEscort)
     if (rows.length === 0) return '<div class="empty compact">No options.</div>'
 
     return `
@@ -299,7 +299,7 @@ function renderModelSummary(unit: Unit, models: PrintableModel[]): string {
     }).join('')
 }
 
-function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleReference>, nested = false): string {
+function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleReference>, nested = false, pointsContext?: PointsContext): string {
     const unit = units.find((item) => item.id === entry.unitId)
     if (!unit) {
         return `
@@ -319,7 +319,8 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
     const doctrine = entry.config.fleetDoctrineSelection
         ? `<div class="note"><strong>Fleet Doctrine:</strong> ${escapeHtml(entry.config.fleetDoctrineSelection.doctrineName)} (+${entry.config.fleetDoctrineSelection.doctrineCost} pts)</div>`
         : ''
-    const attachments = (entry.attachedUnits ?? []).map((attachment) => renderEntry(attachment, units, ruleMap, true)).join('')
+    const discountFirstEscort = hasChitaSwarmEscortDiscount(entry, pointsContext)
+    const attachments = (entry.attachedUnits ?? []).map((attachment) => renderEntry(attachment, units, ruleMap, true, pointsContext)).join('')
 
     return `
         <article class="unit-card ${nested ? 'attachment' : ''}">
@@ -339,7 +340,7 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
             ${doctrine}
             <div class="profile-block">
                 <h4>Unit Options</h4>
-                ${renderOptionRows(unit, entry.config)}
+                ${renderOptionRows(unit, entry.config, discountFirstEscort)}
             </div>
             <div class="model-grid">${renderModelSummary(unit, printableModels(unit, entry))}</div>
             ${renderSrsTable(unit)}
@@ -355,6 +356,7 @@ function renderBattlefleetSection(
     forceFactionId: string,
     units: Unit[],
     ruleMap: Map<string, RuleReference>,
+    pointsContext: PointsContext,
 ): string {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
@@ -372,7 +374,7 @@ function renderBattlefleetSection(
                 </div>
                 <strong>${points} pts</strong>
             </div>
-            ${entries.length > 0 ? entries.map((entry) => renderEntry(entry, units, ruleMap)).join('') : '<div class="empty">No units assigned.</div>'}
+            ${entries.length > 0 ? entries.map((entry) => renderEntry(entry, units, ruleMap, false, pointsContext)).join('') : '<div class="empty">No units assigned.</div>'}
         </section>
     `
 }
@@ -416,6 +418,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
     const ruleMap = new Map<string, RuleReference>()
     const definitions = new Map(battlefleetDefinitions.map((definition) => [definition.id, definition]))
     const battlefleets = list.battlefleets ?? []
+    const pointsContext = { battlefleets }
     const assignedIds = new Set(battlefleets.map((battlefleet) => battlefleet.instanceId))
     const entriesByBattlefleetId = new Map<string, ArmyUnit[]>(battlefleets.map((battlefleet) => [battlefleet.instanceId, []]))
     const unassignedEntries: ArmyUnit[] = []
@@ -435,9 +438,10 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
         list.faction_id,
         units,
         ruleMap,
+        pointsContext,
     ))
     const unassigned = unassignedEntries.length > 0
-        ? `<section class="battlefleet"><div class="section-head"><div><h2>Unassigned</h2><div class="muted">Units without a Battlefleet</div></div><strong>${unassignedEntries.reduce((sum, entry) => sum + entry.totalPoints, 0)} pts</strong></div>${unassignedEntries.map((entry) => renderEntry(entry, units, ruleMap)).join('')}</section>`
+        ? `<section class="battlefleet"><div class="section-head"><div><h2>Unassigned</h2><div class="muted">Units without a Battlefleet</div></div><strong>${unassignedEntries.reduce((sum, entry) => sum + entry.totalPoints, 0)} pts</strong></div>${unassignedEntries.map((entry) => renderEntry(entry, units, ruleMap, false, pointsContext)).join('')}</section>`
         : ''
 
     return `

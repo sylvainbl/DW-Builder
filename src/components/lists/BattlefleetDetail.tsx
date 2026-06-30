@@ -2,9 +2,11 @@ import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
-import { getBattlefleetForceType, isMercenaryInForce } from '../../utils/battlefleets'
+import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
+import { formatOptionName } from '../../utils/optionRuleEffects'
+import { computeOptionPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
@@ -28,6 +30,80 @@ function unitLabel(units: Unit[], entry: ArmyUnit): string {
 
 function textList(items: string[]): string {
     return items.length > 0 ? items.join(', ') : 'None'
+}
+
+const GENERATOR_OPTION_TAGS = new Set([
+    'GENERATOR',
+    'TRIDENT_GENERATOR',
+    'GUARDIAN_GENERATOR',
+    'ADDITIONAL_GUARDIAN_GENERATOR',
+    'FREYA_ARRAY',
+    'MAGMA_CAST_GENERATOR',
+    'EMPIRE_FREE_GENERATOR',
+])
+
+function elementLabel(definition: BattlefleetDefinition, entry: ArmyUnit, unit: Unit): string {
+    const element = getMatchingBattlefleetElement(definition, entry, unit)
+    if (!element) return unit.role
+    return element.name
+        .replace(/^\d+(?:-\d+)?\s+/, '')
+        .replace(/^Empire\s+/, '')
+}
+
+function addPointGroup(groups: Map<string, { quantity: number; points: number }>, label: string, quantity: number, points: number): void {
+    const current = groups.get(label) ?? { quantity: 0, points: 0 }
+    groups.set(label, {
+        quantity: current.quantity + quantity,
+        points: current.points + points,
+    })
+}
+
+function pointBreakdown(entry: ArmyUnit, unit: Unit, battlefleet: ArmyBattlefleet): string[] {
+    const lines: string[] = []
+    const baseCost = unit.point_cost_per_model ?? 0
+    if (baseCost > 0) {
+        lines.push(`${entry.models.length} ${entry.models.length === 1 ? 'model' : 'models'}: ${entry.models.length} x ${baseCost} = ${entry.models.length * baseCost} pts`)
+    }
+
+    const optionGroups = new Map<string, { quantity: number; points: number }>()
+    for (const model of entry.models) {
+        if (model.config.generatorSelection) {
+            const generator = model.config.generatorSelection
+            addPointGroup(optionGroups, generator.generatorName, 1, generator.generatorCost)
+        }
+
+        for (const option of unit.options_and_upgrades) {
+            if (option.cost_per_unit == null || isUnitLevelOption(option.tag) || GENERATOR_OPTION_TAGS.has(option.tag)) continue
+            const quantity = model.config.optionQuantities[option.tag] ?? 0
+            if (quantity <= 0) continue
+            addPointGroup(optionGroups, formatOptionName(option), quantity, computeOptionPoints(option, quantity) ?? 0)
+        }
+    }
+
+    if (entry.config.fleetDoctrineSelection) {
+        const doctrine = entry.config.fleetDoctrineSelection
+        addPointGroup(optionGroups, `Doctrine: ${doctrine.doctrineName}`, 1, doctrine.doctrineCost)
+    }
+
+    for (const option of unit.options_and_upgrades) {
+        if (option.cost_per_unit == null || !isUnitLevelOption(option.tag)) continue
+        const quantity = entry.config.optionQuantities[option.tag] ?? 0
+        if (quantity <= 0) continue
+        const points = computeOptionPoints(option, quantity, hasChitaSwarmEscortDiscount(entry, { battlefleets: [battlefleet] })) ?? 0
+        addPointGroup(optionGroups, formatOptionName(option), quantity, points)
+    }
+
+    for (const [label, group] of optionGroups) {
+        const quantity = group.quantity > 1 ? ` x${group.quantity}` : ''
+        lines.push(`${label}${quantity}: +${group.points} pts`)
+    }
+
+    const attachmentsTotal = (entry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
+    if (attachmentsTotal > 0) {
+        lines.push(`Attachments: +${attachmentsTotal} pts`)
+    }
+
+    return lines
 }
 
 export default function BattlefleetDetail({ battlefleet, definition, forceFactionId, entries, units, fleetDoctrines }: Props) {
@@ -127,16 +203,40 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Assigned Units</div>
                     <div className="mt-2 space-y-1">
-                        {entries.length > 0 ? entries.map((entry) => (
-                            <div key={entry.instanceId} className="flex items-center justify-between gap-2 rounded-lg border border-white/80 bg-white/65 px-2.5 py-2 text-[12px]">
-                                <div className="min-w-0">
-                                    <div className="truncate font-semibold text-neutral-900">{unitLabel(units, entry)}</div>
-                                    {entry.customName ? <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{entry.customName}</div> : null}
-                                    <div className="text-[11px] text-neutral-500">{entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}</div>
+                        {entries.length > 0 ? entries.map((entry) => {
+                            const unit = units.find((item) => item.id === entry.unitId)
+                            const breakdown = unit ? pointBreakdown(entry, unit, battlefleet) : []
+                            return (
+                                <div key={entry.instanceId} className="rounded-lg border border-white/80 bg-white/65 px-2.5 py-2 text-[12px]">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <div className="min-w-0">
+                                            <div className="truncate font-semibold text-neutral-900">{unitLabel(units, entry)}</div>
+                                            {entry.customName ? <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{entry.customName}</div> : null}
+                                            {unit ? (
+                                                <div className="mt-1 flex flex-wrap gap-1">
+                                                    <span className="rounded-full border border-white bg-[var(--gold-light)] px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
+                                                        {elementLabel(definition, entry, unit)}
+                                                    </span>
+                                                    <span className="rounded-full border border-white bg-white/80 px-2 py-0.5 text-[10px] text-neutral-600">
+                                                        {unit.role}
+                                                    </span>
+                                                </div>
+                                            ) : null}
+                                        </div>
+                                        <div className="flex-none text-right font-semibold text-[var(--navy)]">{entry.totalPoints} pts</div>
+                                    </div>
+                                    {breakdown.length > 0 ? (
+                                        <div className="mt-2 flex flex-wrap gap-1.5 text-[10px] text-neutral-600">
+                                            {breakdown.map((line) => (
+                                                <span key={line} className="rounded-full border border-neutral-200 bg-white/75 px-2 py-0.5">
+                                                    {line}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    ) : null}
                                 </div>
-                                <div className="flex-none font-semibold text-[var(--navy)]">{entry.totalPoints} pts</div>
-                            </div>
-                        )) : (
+                            )
+                        }) : (
                             <div className="rounded-lg border border-dashed border-neutral-300 bg-white/45 p-3 text-sm text-neutral-500">
                                 No units assigned.
                             </div>
