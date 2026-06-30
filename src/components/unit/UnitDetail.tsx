@@ -753,6 +753,7 @@ export default function UnitDetail() {
                     value={openDoctrine.point_cost}
                     category="Fleet Doctrine"
                     text={openDoctrine.text}
+                    glossary={glossary}
                     onClose={() => setOpenDoctrine(null)}
                 />
             ) : null}

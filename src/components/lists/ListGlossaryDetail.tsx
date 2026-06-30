@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import type { ArmyList, Glossary, Unit } from '../../types/index'
 import { getListGlossary, type GlossaryCategory, type ListGlossaryRule } from '../../utils/listGlossary'
-import { MarkdownText } from '../ui/MarkdownText'
+import { MarkdownText, type GlossaryRuleLink } from '../ui/MarkdownText'
+import { RuleModal } from '../ui/RuleModal'
 
 interface Props {
     list: ArmyList
@@ -14,12 +16,18 @@ const categoryLabels: Record<GlossaryCategory, string> = {
     qualities: 'Qualities',
 }
 
-function RuleBlock({ rule }: { rule: ListGlossaryRule }) {
+function RuleBlock({ rule, glossary, onRuleClick }: { rule: ListGlossaryRule; glossary: Glossary | null; onRuleClick: (rule: GlossaryRuleLink) => void }) {
     return (
         <div className="rounded-lg border border-white/80 bg-white/65 p-2.5">
             <div className="text-sm font-semibold text-neutral-900">{rule.name}</div>
             {rule.text ? (
-                <MarkdownText text={rule.text} className="rule-modal-body mt-1 text-[12px] leading-relaxed text-neutral-800" />
+                <MarkdownText
+                    text={rule.text}
+                    className="rule-modal-body mt-1 text-[12px] leading-relaxed text-neutral-800"
+                    glossary={glossary}
+                    currentRuleName={rule.name}
+                    onRuleClick={onRuleClick}
+                />
             ) : (
                 <div className="mt-1 text-[12px] text-neutral-500">No glossary text available.</div>
             )}
@@ -28,6 +36,7 @@ function RuleBlock({ rule }: { rule: ListGlossaryRule }) {
 }
 
 export default function ListGlossaryDetail({ list, units, glossary }: Props) {
+    const [openRule, setOpenRule] = useState<GlossaryRuleLink | null>(null)
     const listGlossary = getListGlossary(list.units, units, glossary)
     const totalRules = listGlossary.systems.length + listGlossary.properties.length + listGlossary.qualities.length
 
@@ -60,7 +69,14 @@ export default function ListGlossaryDetail({ list, units, glossary }: Props) {
                             </div>
                             <div className="mt-2 space-y-2">
                                 {rules.length > 0 ? (
-                                    rules.map((rule) => <RuleBlock key={`${category}-${rule.name}`} rule={rule} />)
+                                    rules.map((rule) => (
+                                        <RuleBlock
+                                            key={`${category}-${rule.name}`}
+                                            rule={rule}
+                                            glossary={glossary}
+                                            onRuleClick={setOpenRule}
+                                        />
+                                    ))
                                 ) : (
                                     <div className="rounded-lg border border-dashed border-neutral-300 bg-white/45 p-3 text-sm text-neutral-500">
                                         None
@@ -71,6 +87,15 @@ export default function ListGlossaryDetail({ list, units, glossary }: Props) {
                     )
                 })}
             </section>
+            {openRule ? (
+                <RuleModal
+                    name={openRule.name}
+                    category={openRule.category}
+                    text={openRule.text}
+                    glossary={glossary}
+                    onClose={() => setOpenRule(null)}
+                />
+            ) : null}
         </div>
     )
 }

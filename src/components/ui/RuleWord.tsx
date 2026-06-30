@@ -41,6 +41,7 @@ export function RuleWord({
                     value={value}
                     category={category}
                     text={ruleText}
+                    glossary={glossary}
                     onClose={() => setModalOpen(false)}
                 />
             )}

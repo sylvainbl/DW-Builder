@@ -163,3 +163,18 @@
 .rule-modal-body p:first-child {
     margin-top: 0;
 }
+
+.rule-inline-link {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.rule-inline-link:hover {
+    color: var(--navy);
+}

@@ -1,19 +1,27 @@
-import { MarkdownText } from './MarkdownText'
+import { useState } from 'react'
+import type { Glossary } from '../../types/index'
+import { MarkdownText, type GlossaryRuleLink } from './MarkdownText'
 
 export function RuleModal({
     name,
     value,
     category,
     text,
+    glossary,
     onClose,
 }: {
     name: string
     value?: number | null
     category: string
     text: string
+    glossary?: Glossary | null
     onClose: () => void
 }) {
-    const label = value != null ? `${name} (${value})` : name
+    const [selectedRule, setSelectedRule] = useState<GlossaryRuleLink | null>(null)
+    const displayedName = selectedRule?.name ?? name
+    const displayedCategory = selectedRule?.category ?? category
+    const displayedText = selectedRule?.text ?? text
+    const label = selectedRule ? selectedRule.name : value != null ? `${name} (${value})` : name
 
     return (
         <div
@@ -42,15 +50,18 @@ export function RuleModal({
                 }}
             >
                 <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#888', marginBottom: '4px' }}>
-                    {category}
+                    {displayedCategory}
                 </p>
                 <h2 style={{ fontSize: '18px', fontWeight: 500, marginBottom: '12px' }}>
                     {label}
                 </h2>
                 <MarkdownText
-                    text={text}
+                    text={displayedText}
                     className="rule-modal-body"
                     style={{ fontSize: '14px', lineHeight: 1.6, color: '#444' }}
+                    glossary={glossary}
+                    currentRuleName={displayedName}
+                    onRuleClick={setSelectedRule}
                 />
                 <button
                     onClick={onClose}
