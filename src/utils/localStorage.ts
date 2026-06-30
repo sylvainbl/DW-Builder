@@ -167,23 +167,23 @@ function normalizeImportedBattlefleets(value: unknown): ArmyBattlefleet[] {
 }
 
 function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
-        const unitId = normalizeUnitId(entry.unitId)
-        const unit = units.find((item) => item.id === unitId)
-        if (!unit || !isUnitConfig(entry.config)) return []
-        const normalized: ArmyUnit = {
-            instanceId: uuid(),
-            unitId,
-            customName: typeof entry.customName === 'string' && entry.customName.trim().length > 0
-                ? entry.customName.trim()
-                : undefined,
-            battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
-            config: normalizeUnitConfig(entry.config),
-            models: makeImportedModels(unit, entry.config, entry.models),
-            totalPoints: 0,
-            attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
-        }
-        normalized.totalPoints = computeArmyUnitTotal(normalized, units)
-        return [normalized]
+    const unitId = normalizeUnitId(entry.unitId)
+    const unit = units.find((item) => item.id === unitId)
+    if (!unit || !isUnitConfig(entry.config)) return []
+    const normalized: ArmyUnit = {
+        instanceId: uuid(),
+        unitId,
+        customName: typeof entry.customName === 'string' && entry.customName.trim().length > 0
+            ? entry.customName.trim()
+            : undefined,
+        battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
+        config: normalizeUnitConfig(entry.config),
+        models: makeImportedModels(unit, entry.config, entry.models),
+        totalPoints: 0,
+        attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
+    }
+    normalized.totalPoints = computeArmyUnitTotal(normalized, units)
+    return [normalized]
 }
 
 function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {

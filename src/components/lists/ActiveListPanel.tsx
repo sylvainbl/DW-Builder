@@ -66,50 +66,40 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
     const generated = Boolean(entry.generatedByOption)
 
     return (
-        <div
-            role="button"
-            tabIndex={0}
-            onClick={onSelect}
-            onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault()
-                    onSelect()
-                }
-            }}
-            className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}
-        >
+        <div className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}>
             <div className="flex items-start justify-between gap-2">
-                <div className="min-w-0">
-                    <div className="flex items-center gap-1.5">
-                        {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>{generated ? 'Tethered' : 'Attachment'}</span> : null}
-                        <div className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</div>
-                    </div>
+                <div className="min-w-0 flex-1">
+                    <button
+                        type="button"
+                        onClick={onSelect}
+                        className="block w-full text-left"
+                    >
+                        <span className="flex items-center gap-1.5">
+                            {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>{generated ? 'Tethered' : 'Attachment'}</span> : null}
+                            <span className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</span>
+                        </span>
                     {customName ? (
-                        <div className={`truncate text-[11px] font-semibold ${active && !nested ? 'text-white/85' : 'text-[var(--navy)]'}`}>{customName}</div>
+                            <span className={`block truncate text-[11px] font-semibold ${active && !nested ? 'text-white/85' : 'text-[var(--navy)]'}`}>{customName}</span>
                     ) : null}
-                    <div className={`text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>
+                        <span className={`block text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>
                         {unit?.role ?? 'Unit'} · {entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}
-                    </div>
+                        </span>
                     {entry.config.fleetDoctrineSelection ? (
-                        <div className={`mt-0.5 text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}>
+                            <span className={`mt-0.5 block text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}>
                             {entry.config.fleetDoctrineSelection.doctrineName}
-                        </div>
+                            </span>
                     ) : null}
                     {issues.length > 0 ? (
-                        <div className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${active && !nested ? 'text-amber-100' : 'text-rose-700'}`}>
+                            <span className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${active && !nested ? 'text-amber-100' : 'text-rose-700'}`}>
                             <AlertTriangle size={11} />
                             <span>{issues[0].message}</span>
-                        </div>
+                            </span>
                     ) : null}
+                    </button>
                     {!nested && onBattlefleetChange ? (
                         <select
                             value={entry.battlefleetInstanceId ?? ''}
-                            onClick={(event) => event.stopPropagation()}
-                            onKeyDown={(event) => event.stopPropagation()}
-                            onChange={(event) => {
-                                event.stopPropagation()
-                                onBattlefleetChange(event.target.value || null)
-                            }}
+                            onChange={(event) => onBattlefleetChange(event.target.value || null)}
                             className={`mt-2 w-full rounded border px-2 py-1 text-[11px] font-medium outline-none ${active && !nested ? 'border-white/20 bg-white/10 text-white' : 'border-neutral-200 bg-white text-neutral-700'}`}
                         >
                             <option value="">No Battlefleet</option>
@@ -124,25 +114,14 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
                 <div className="flex items-center gap-2">
                     <span className={`whitespace-nowrap text-[11px] font-medium ${active && !nested ? 'text-white' : 'text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
                     {!generated ? (
-                        <span
-                            role="button"
-                            tabIndex={0}
+                        <button
+                            type="button"
                             title="Remove"
-                            onClick={(event) => {
-                                event.stopPropagation()
-                                onRemove()
-                            }}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter' || event.key === ' ') {
-                                    event.preventDefault()
-                                    event.stopPropagation()
-                                    onRemove()
-                                }
-                            }}
+                            onClick={onRemove}
                             className={`rounded p-1 ${active && !nested ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
                         >
                             <Minus size={13} />
-                        </span>
+                        </button>
                     ) : null}
                 </div>
             </div>

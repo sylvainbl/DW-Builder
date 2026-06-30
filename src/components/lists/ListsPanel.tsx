@@ -115,42 +115,42 @@ export default function ListsPanel() {
                         const active = currentList?.id === list.id
                         const total = list.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
                         return (
-                            <button
+                            <div
                                 key={list.id}
-                                type="button"
-                                onClick={() => openList(list.id)}
                                 className={`w-full rounded-lg border p-3 text-left transition ${active ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm' : 'border-neutral-200 bg-white hover:bg-neutral-50'}`}
                                 style={{ borderLeftWidth: active ? 5 : 1, borderLeftColor: active ? 'var(--gold)' : undefined }}
                             >
                                 <div className="flex items-start justify-between gap-2">
-                                    <div className="min-w-0">
+                                    <button
+                                        type="button"
+                                        onClick={() => openList(list.id)}
+                                        className="min-w-0 flex-1 text-left"
+                                    >
                                         <div className={`truncate text-sm font-medium ${active ? 'text-white' : 'text-neutral-900'}`}>▶ {list.name}</div>
                                         <div className={`mt-1 text-[11px] ${active ? 'text-white/70' : 'text-neutral-500'}`}>
                                             {factionNames.get(list.faction_id) ?? list.faction_id} · {list.units.length} u.
                                         </div>
-                                    </div>
-                                    <span
-                                        role="button"
-                                        tabIndex={0}
+                                    </button>
+                                    <button
+                                        type="button"
                                         title="Delete"
                                         onClick={(event) => {
                                             event.stopPropagation()
                                             if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
                                         }}
-                                        onKeyDown={(event) => {
-                                            if (event.key === 'Enter' || event.key === ' ') {
-                                                event.preventDefault()
-                                                event.stopPropagation()
-                                                if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
-                                            }
-                                        }}
                                         className={`rounded p-1 ${active ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
                                     >
                                         <X size={14} />
-                                    </span>
+                                    </button>
                                 </div>
-                                <div className={`mt-2 text-[12px] font-medium ${active ? 'text-white' : 'text-[var(--navy)]'}`}>{total.toLocaleString('fr-FR')} pts</div>
-                            </button>
+                                <button
+                                    type="button"
+                                    onClick={() => openList(list.id)}
+                                    className={`mt-2 text-left text-[12px] font-medium ${active ? 'text-white' : 'text-[var(--navy)]'}`}
+                                >
+                                    {total.toLocaleString('fr-FR')} pts
+                                </button>
+                            </div>
                         )
                     })
                 )}
