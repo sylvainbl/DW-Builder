@@ -1,3 +1,4 @@
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
@@ -180,6 +181,7 @@ function UnitCardList() {
 
 export default function UnitListColumn() {
     const currentList = useAppStore((state) => state.currentList)
+    const [unitsPickerCollapsed, setUnitsPickerCollapsed] = useState(false)
 
     if (!currentList) {
         return (
@@ -191,12 +193,22 @@ export default function UnitListColumn() {
 
     return (
         <aside className="flex h-full flex-col overflow-hidden bg-white">
-            <div className="max-h-[62%] flex-none overflow-y-auto border-b border-neutral-200">
+            <div className={`${unitsPickerCollapsed ? 'max-h-[calc(100%-2rem)] flex-none' : 'max-h-[62%] flex-none'} overflow-y-auto border-b border-neutral-200`}>
                 <ActiveListPanel />
             </div>
-            <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                <UnitCardList />
-            </div>
+            <button
+                type="button"
+                onClick={() => setUnitsPickerCollapsed((collapsed) => !collapsed)}
+                className="flex h-8 flex-none items-center justify-center gap-1 border-b border-neutral-200 bg-neutral-50 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--navy)] transition hover:bg-[var(--detail-panel)]"
+            >
+                {unitsPickerCollapsed ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+                {unitsPickerCollapsed ? 'Show units' : 'Hide units'}
+            </button>
+            {!unitsPickerCollapsed ? (
+                <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+                    <UnitCardList />
+                </div>
+            ) : null}
         </aside>
     )
 }
