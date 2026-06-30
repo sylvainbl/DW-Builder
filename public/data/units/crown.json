@@ -43,15 +43,15 @@
         "value": 6
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Inspirational",
         "value": 7
       }
     ],
     "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
       {
         "name": "Guardian Generator",
         "value": 2
@@ -2557,10 +2557,6 @@
         "value": null
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Resupply",
         "value": 2
       },
@@ -2570,6 +2566,10 @@
       }
     ],
     "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
       {
         "name": "Heavy Shield Generator",
         "value": null
@@ -6319,16 +6319,16 @@
       {
         "name": "Shallow Draught",
         "value": null
-      },
-      {
-        "name": "Logistical Support",
-        "value": null
       }
     ],
     "systems": [
       {
         "name": "Guardian Generator",
         "value": 2
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
       }
     ],
     "weapons": [

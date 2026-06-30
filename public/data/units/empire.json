@@ -92,7 +92,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -116,7 +116,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -140,7 +140,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -247,7 +247,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -424,7 +424,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -448,7 +448,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -511,7 +511,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -561,7 +561,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -729,7 +729,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -753,7 +753,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -777,7 +777,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -953,7 +953,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -977,7 +977,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -1040,7 +1040,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -1090,7 +1090,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -1321,7 +1321,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -1540,7 +1540,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -1564,7 +1564,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -1588,7 +1588,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -1818,7 +1818,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -1896,7 +1896,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -1916,7 +1916,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -2111,7 +2111,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -2214,15 +2214,15 @@
       {
         "name": "Stoic",
         "value": null
-      },
-      {
-        "name": "Logistical Support",
-        "value": null
       }
     ],
     "systems": [
       {
         "name": "Coordinated Defences",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
         "value": null
       }
     ],
@@ -2330,7 +2330,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -2658,7 +2658,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -2752,13 +2752,14 @@
       {
         "name": "Pivot",
         "value": null
-      },
+      }
+    ],
+    "systems": [
       {
         "name": "Logistical Support",
         "value": null
       }
     ],
-    "systems": [],
     "weapons": [
       {
         "name": "Erlang Shen Bombard Array",
@@ -2872,7 +2873,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -3459,7 +3460,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -3522,7 +3523,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -3572,7 +3573,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -3877,7 +3878,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -3931,7 +3932,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -3951,7 +3952,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -4162,7 +4163,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -4313,7 +4314,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -4376,7 +4377,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -4426,7 +4427,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -4606,7 +4607,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -4807,7 +4808,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5009,7 +5010,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5194,7 +5195,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5214,7 +5215,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5516,7 +5517,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -5539,7 +5540,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5571,7 +5572,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5591,7 +5592,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5740,7 +5741,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5760,7 +5761,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5944,7 +5945,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -5998,7 +5999,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6018,7 +6019,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6225,7 +6226,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6615,7 +6616,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6635,7 +6636,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6835,7 +6836,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -6989,7 +6990,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -7012,7 +7013,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -7247,7 +7248,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -7436,7 +7437,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -7668,7 +7669,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -7874,7 +7875,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -8620,7 +8621,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -8674,7 +8675,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -8694,7 +8695,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9107,7 +9108,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9307,7 +9308,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -9331,7 +9332,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -9354,7 +9355,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9534,7 +9535,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9749,7 +9750,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9931,7 +9932,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -9951,7 +9952,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -10209,7 +10210,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -10523,7 +10524,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -10547,7 +10548,7 @@
             "value": 1
           },
           {
-            "name": "All-Around",
+            "name": "All Around",
             "value": null
           },
           {
@@ -10570,7 +10571,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -10763,10 +10764,6 @@
         "value": null
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Resupply",
         "value": 2
       },
@@ -10776,6 +10773,10 @@
       }
     ],
     "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
       {
         "name": "Heavy Shield Generator",
         "value": null
@@ -10810,7 +10811,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -10830,7 +10831,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -11033,15 +11034,16 @@
         "value": null
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Stockpile",
         "value": 1
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Light Gun Battery",
@@ -11071,7 +11073,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -11091,7 +11093,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -11329,7 +11331,7 @@
               "value": 1
             },
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {
@@ -11349,7 +11351,7 @@
           },
           "qualities": [
             {
-              "name": "All-Around",
+              "name": "All Around",
               "value": null
             },
             {

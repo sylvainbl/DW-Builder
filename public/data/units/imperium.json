@@ -2677,10 +2677,6 @@
         "value": 2
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Stockpile",
         "value": 1
       },
@@ -2690,6 +2686,10 @@
       }
     ],
     "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
       {
         "name": "Boosted Propulsion",
         "value": 2
@@ -3009,10 +3009,6 @@
         "value": 2
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Strategic Asset",
         "value": 3
       }
@@ -3024,6 +3020,10 @@
       },
       {
         "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
         "value": null
       },
       {
@@ -3214,10 +3214,6 @@
         "value": 2
       },
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Strategic Asset",
         "value": 3
       }
@@ -3233,6 +3229,10 @@
       },
       {
         "name": "Storm Generator",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
         "value": null
       }
     ],
