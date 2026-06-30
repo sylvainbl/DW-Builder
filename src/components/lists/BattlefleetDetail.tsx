@@ -1,6 +1,7 @@
-import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, Unit } from '../../types/index'
+import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
 import { getBattlefleetForceType, isMercenaryInForce } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
+import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
     forceFactionId: string
     entries: ArmyUnit[]
     units: Unit[]
+    fleetDoctrines: Record<string, FleetDoctrine[]>
 }
 
 function unitName(units: Unit[], unitId: string): string {
@@ -25,11 +27,23 @@ function textList(items: string[]): string {
     return items.length > 0 ? items.join(', ') : 'None'
 }
 
-export default function BattlefleetDetail({ battlefleet, definition, forceFactionId, entries, units }: Props) {
+export default function BattlefleetDetail({ battlefleet, definition, forceFactionId, entries, units, fleetDoctrines }: Props) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const displayInfo = getBattlefleetDisplayInfo(definition.id)
     const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
     const battlefleetBonus = definition.battlefleetBonus ?? displayInfo.battlefleetBonus ?? null
+    const selectedFleetDoctrines = entries.flatMap((entry) => {
+        const selection = entry.config.fleetDoctrineSelection
+        const unit = units.find((item) => item.id === entry.unitId)
+        if (!selection || !unit) return []
+
+        const doctrine = getAvailableFleetDoctrines(unit, fleetDoctrines)
+            .find((item) => item.name === selection.doctrineName)
+        if (!doctrine) return []
+
+        return [{ entry, unit, doctrine }]
+    })
+    const hasSpecialRules = specialRuleText.length > 0
     const forceType = getBattlefleetForceType(definition, forceFactionId)
     const mercenary = isMercenaryInForce(definition, forceFactionId)
     const titleParts = [
@@ -115,22 +129,44 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                     </div>
                 </div>
 
-                <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Special Rules</div>
-                    <div className="mt-2 space-y-2">
-                        {specialRuleText.length > 0 ? specialRuleText.map((text, index) => (
-                            <MarkdownText
-                                key={`${definition.id}-rule-${index}`}
-                                text={text}
-                                className="rule-modal-body rounded-lg border border-white/80 bg-white/65 p-2.5 text-[12px] leading-relaxed text-neutral-800"
-                            />
-                        )) : (
-                            <div className="rounded-lg border border-dashed border-neutral-300 bg-white/45 p-3 text-sm text-neutral-500">
-                                No special rules.
-                            </div>
-                        )}
+                <div className="space-y-2">
+                    <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                        <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Special Rules</div>
+                        <div className="mt-2 space-y-2">
+                            {hasSpecialRules ? (
+                                specialRuleText.map((text, index) => (
+                                    <MarkdownText
+                                        key={`${definition.id}-rule-${index}`}
+                                        text={text}
+                                        className="rule-modal-body rounded-lg border border-white/80 bg-white/65 p-2.5 text-[12px] leading-relaxed text-neutral-800"
+                                    />
+                                ))
+                            ) : (
+                                <div className="rounded-lg border border-dashed border-neutral-300 bg-white/45 p-3 text-sm text-neutral-500">
+                                    No special rules.
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </div>
+
+                    {selectedFleetDoctrines.length > 0 ? (
+                        <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                            <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Fleet Doctrine</div>
+                            <div className="mt-2 space-y-2">
+                                {selectedFleetDoctrines.map(({ entry, unit, doctrine }) => (
+                                    <div key={`${entry.instanceId}-doctrine-${doctrine.name}`} className="rounded-lg border border-white/80 bg-white/65 p-2.5">
+                                        <div className="flex flex-wrap items-center justify-between gap-2">
+                                            <div className="text-[12px] font-semibold text-neutral-900">{doctrine.name}</div>
+                                            <div className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700">+{doctrine.point_cost} pts</div>
+                                        </div>
+                                        <div className="mt-0.5 text-[11px] text-neutral-500">Selected on {unitLabel(units, entry)} {unit.role}</div>
+                                        <MarkdownText text={doctrine.text} className="rule-modal-body mt-1 text-[12px] leading-relaxed text-neutral-800" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ) : null}
+                    </div>
             </section>
 
             {battlefleetBonus ? (

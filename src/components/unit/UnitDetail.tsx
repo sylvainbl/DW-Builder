@@ -134,6 +134,7 @@ export default function UnitDetail() {
                     forceFactionId={currentList.faction_id}
                     entries={selectedBattlefleetEntries}
                     units={units}
+                    fleetDoctrines={fleetDoctrines}
                 />
             )
         }
