@@ -1,6 +1,8 @@
 import type { NamedValue, OptionUpgrade, Unit, UnitConfig } from '../types/index'
 import { isUnitLevelOption } from './optionConfig'
 
+export const SYSTEM_GENERATOR_WEAPON_INDEX = -1
+
 export interface OptionRuleEffects {
     properties: NamedValue[]
     systems: NamedValue[]
@@ -77,10 +79,18 @@ export function isWeaponRemovedBySelectedOptions(unit: Unit, weaponIndex: number
     return Boolean(weapon && getSelectedRemovedWeaponNames(unit, modelConfig, unitConfig).has(weapon.name))
 }
 
+export function unitUsesSystemGeneratorMount(unit: Unit): boolean {
+    return unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
+}
+
 export function getEffectiveGeneratorSelection(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): UnitConfig['generatorSelection'] {
     const selection = modelConfig.generatorSelection
     if (!selection) return null
-    return isWeaponRemovedBySelectedOptions(unit, selection.weaponIndex, modelConfig, unitConfig) ? null : selection
+    const effectiveSelection = unitUsesSystemGeneratorMount(unit)
+        ? { ...selection, weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX }
+        : selection
+    if (effectiveSelection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX) return effectiveSelection
+    return isWeaponRemovedBySelectedOptions(unit, effectiveSelection.weaponIndex, modelConfig, unitConfig) ? null : effectiveSelection
 }
 
 export function getSelectedTags(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): string[] {

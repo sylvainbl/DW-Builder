@@ -1,7 +1,7 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetForceType, isMercenaryInForce } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
 
@@ -87,9 +87,10 @@ function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
 }
 
 function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitConfig, ruleMap: Map<string, RuleReference>): void {
-    if (model.config.generatorSelection) {
+    const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entryConfig)
+    if (generatorSelection) {
         addRule(ruleMap, 'systems', {
-            name: model.config.generatorSelection.generatorName,
+            name: generatorSelection.generatorName,
             value: null,
         })
     }
@@ -127,10 +128,14 @@ function displayedProperties(unit: Unit, entry: ArmyUnit): NamedValue[] {
 }
 
 function displayedSystems(unit: Unit, entry: ArmyUnit): NamedValue[] {
-    const selectedGeneratorSystems = entry.models.flatMap((model) => (
-        model.config.generatorSelection ? [{ name: model.config.generatorSelection.generatorName, value: null }] : []
-    ))
-    const factionSpecialRules = entry.models.flatMap((model) => getFactionSpecialRules(unit, model.config.generatorSelection?.generatorName ?? null))
+    const selectedGeneratorSystems = entry.models.flatMap((model) => {
+        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
+        return generatorSelection ? [{ name: generatorSelection.generatorName, value: null }] : []
+    })
+    const factionSpecialRules = entry.models.flatMap((model) => {
+        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
+        return getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
+    })
     return mergeNamedValues(unit.systems, selectedGeneratorSystems, selectedModelRuleEffects(unit, entry).systems, factionSpecialRules)
 }
 
@@ -138,7 +143,8 @@ function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleRefe
     for (const property of unit.properties) addRule(ruleMap, 'properties', property)
     for (const system of unit.systems) addRule(ruleMap, 'systems', system)
     for (const model of entry.models) {
-        for (const rule of getFactionSpecialRules(unit, model.config.generatorSelection?.generatorName ?? null)) {
+        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
+        for (const rule of getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)) {
             addRule(ruleMap, 'systems', rule)
         }
         collectRulesForModel(unit, model, entry.config, ruleMap)
@@ -156,13 +162,14 @@ function renderRuleBadges(rules: NamedValue[], category: RuleCategory): string {
 
 function renderWeaponRows(unit: Unit, config: UnitConfig): string {
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config)
+    const generatorSelection = getEffectiveGeneratorSelection(unit, config)
 
     return unit.weapons.flatMap((weapon, index) => {
         if (removedWeaponNames.has(weapon.name)) return []
-        if (config.generatorSelection?.weaponIndex === index) {
+        if (generatorSelection?.weaponIndex === index) {
             return [`
                 <tr>
-                    <td><strong>${escapeHtml(config.generatorSelection.generatorName)}</strong> <span class="muted">+${config.generatorSelection.generatorCost} pts</span></td>
+                    <td><strong>${escapeHtml(generatorSelection.generatorName)}</strong> <span class="muted">+${generatorSelection.generatorCost} pts</span></td>
                     <td class="center">-</td>
                     <td class="center">-</td>
                     <td class="center">-</td>

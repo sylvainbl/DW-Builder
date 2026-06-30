@@ -7,7 +7,7 @@ import { computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSw
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
-import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, mergeNamedValues } from '../../utils/optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
@@ -53,10 +53,11 @@ function findParent(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | 
 }
 
 function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined): Generator[] {
-    const optionTags = new Set(unit.options_and_upgrades.map((option) => option.tag))
+    const weaponGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon !== false)
+    const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
     const fixedChoices: Generator[] = []
-    const magmaCastOption = unit.options_and_upgrades.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const freeGeneratorOption = unit.options_and_upgrades.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
+    const magmaCastOption = weaponGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
+    const freeGeneratorOption = weaponGeneratorOptions.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
 
     if (optionTags.has('TRIDENT_GENERATOR') && slot === 'H') {
         fixedChoices.push({ name: 'Trident Generator', point_cost: 0 })
@@ -82,6 +83,26 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     if (fixedChoices.length > 0) return fixedChoices
 
     return optionTags.has('GENERATOR') && slot === 'H' ? factionGenerators : []
+}
+
+function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[]): Generator[] {
+    const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
+    if (systemGeneratorOptions.length === 0) return []
+
+    const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
+    const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
+    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR')
+        ? factionGenerators.map((generator) => ({
+            ...generator,
+            point_cost: optionTags.has('EMPIRE_FREE_GENERATOR') ? 0 : generator.point_cost,
+        }))
+        : []
+
+    if (magmaCastOption) {
+        choices.push({ name: 'Magma Cast Generator', point_cost: magmaCastOption.cost_per_unit ?? 0 })
+    }
+
+    return choices
 }
 
 export default function UnitDetail() {
@@ -178,6 +199,8 @@ export default function UnitDetail() {
     const availableFleetDoctrines = getAvailableFleetDoctrines(unit, fleetDoctrines)
     const canTakeGenerator = unitCanTakeGenerator(unit)
     const generatorSelection = getEffectiveGeneratorSelection(unit, activeUnitConfig, selectedEntry?.config)
+    const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators) : []
+    const selectedSystemGenerator = generatorSelection?.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX ? generatorSelection : null
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
@@ -602,12 +625,41 @@ export default function UnitDetail() {
                 </div>
             </section>
 
-            {hasOptions || (selectedEntry && availableFleetDoctrines.length > 0) ? (
+            {hasOptions || systemGeneratorChoices.length > 0 || (selectedEntry && availableFleetDoctrines.length > 0) ? (
                 <section className="grid items-start gap-2 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.55fr)]">
-                    {hasOptions ? (
+                    {hasOptions || systemGeneratorChoices.length > 0 ? (
                         <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
                             <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
                             <div className="mt-2 space-y-1.5">
+                                {systemGeneratorChoices.length > 0 ? (
+                                    <div className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
+                                        <div className="min-w-0">
+                                            <div className="text-[12px] font-semibold text-neutral-900">Generator</div>
+                                        </div>
+                                        <select
+                                            className="w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)] md:w-56"
+                                            value={selectedSystemGenerator?.generatorName ?? ''}
+                                            onChange={(event) => {
+                                                const generator = systemGeneratorChoices.find((item) => item.name === event.target.value)
+                                                setGeneratorSelection(generator ? {
+                                                    weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
+                                                    generatorName: generator.name,
+                                                    generatorCost: generator.point_cost,
+                                                } : null)
+                                            }}
+                                        >
+                                            <option value="">Select</option>
+                                            {systemGeneratorChoices.map((generator) => (
+                                                <option key={generator.name} value={generator.name}>
+                                                    {generator.name} (+{generator.point_cost})
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
+                                            {selectedSystemGenerator ? `${selectedSystemGenerator.generatorCost} pts` : '—'}
+                                        </div>
+                                    </div>
+                                ) : null}
                                 {unit.options_and_upgrades.map((option) => {
                                     const unitLevel = isUnitLevelOption(option.tag)
                                     const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
@@ -622,6 +674,7 @@ export default function UnitDetail() {
                                         || option.tag === 'FREYA_ARRAY'
                                         || option.tag === 'MAGMA_CAST_GENERATOR'
                                         || option.tag === 'EMPIRE_FREE_GENERATOR'
+                                        || option.generator_replaces_weapon === false
 
                                     return (
                                         <div key={option.tag} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">

@@ -55,6 +55,7 @@ export interface OptionUpgrade {
     tag: string
     display_name?: string
     exclusive_group?: string
+    generator_replaces_weapon?: boolean
     restrictions?: string[]
     adds_tags?: string[]
     removes_tags?: string[]

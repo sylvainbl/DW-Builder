@@ -1608,16 +1608,18 @@
         "tag": "ESCORT"
       },
       {
-        "description": "May select an Empire Generator Hardpoint where allowed by the Force Selection entry.",
+        "description": "May select an Empire Generator where allowed by the Force Selection entry.",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false
       },
       {
         "description": "May select or upgrade to a Magma Cast Generator where allowed by the Force Selection entry.",
         "cost_per_unit": 35,
         "max": 1,
-        "tag": "MAGMA_CAST_GENERATOR"
+        "tag": "MAGMA_CAST_GENERATOR",
+        "generator_replaces_weapon": false
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -2381,13 +2383,15 @@
         "description": "Must or may select a no-cost Empire Generator choice where allowed by the Force Selection entry.",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "EMPIRE_FREE_GENERATOR"
+        "tag": "EMPIRE_FREE_GENERATOR",
+        "generator_replaces_weapon": false
       },
       {
         "description": "May select or upgrade to a Magma Cast Generator where allowed by the Force Selection entry.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "MAGMA_CAST_GENERATOR"
+        "tag": "MAGMA_CAST_GENERATOR",
+        "generator_replaces_weapon": false
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",

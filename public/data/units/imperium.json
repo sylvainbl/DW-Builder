@@ -4775,6 +4775,13 @@
     },
     "options_and_upgrades": [
       {
+        "description": "May select an Imperium Generator where allowed by the Force Selection entry.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false
+      },
+      {
         "description": "Add up to three Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
