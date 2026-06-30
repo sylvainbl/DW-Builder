@@ -2,7 +2,7 @@ import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
-import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce } from '../../utils/battlefleets'
+import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce, sortBattlefleetEntries } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName } from '../../utils/optionRuleEffects'
@@ -111,10 +111,11 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
     const [editingName, setEditingName] = useState(false)
     const [draftName, setDraftName] = useState('')
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
+    const sortedEntries = sortBattlefleetEntries(entries, units)
     const displayInfo = getBattlefleetDisplayInfo(definition.id)
     const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
     const battlefleetBonus = definition.battlefleetBonus ?? displayInfo.battlefleetBonus ?? null
-    const selectedFleetDoctrines = entries.flatMap((entry) => {
+    const selectedFleetDoctrines = sortedEntries.flatMap((entry) => {
         const selection = entry.config.fleetDoctrineSelection
         const unit = units.find((item) => item.id === entry.unitId)
         if (!selection || !unit) return []
@@ -203,7 +204,7 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
                     <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Assigned Units</div>
                     <div className="mt-2 space-y-1">
-                        {entries.length > 0 ? entries.map((entry) => {
+                        {sortedEntries.length > 0 ? sortedEntries.map((entry) => {
                             const unit = units.find((item) => item.id === entry.unitId)
                             const breakdown = unit ? pointBreakdown(entry, unit, battlefleet) : []
                             return (

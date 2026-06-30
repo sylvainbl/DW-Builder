@@ -1,5 +1,5 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
-import { getBattlefleetForceType, isMercenaryInForce } from './battlefleets'
+import { getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
@@ -436,6 +436,9 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
         } else {
             unassignedEntries.push(entry)
         }
+    }
+    for (const [battlefleetInstanceId, entries] of entriesByBattlefleetId) {
+        entriesByBattlefleetId.set(battlefleetInstanceId, sortBattlefleetEntries(entries, units))
     }
 
     const battlefleetSections = battlefleets.map((battlefleet) => renderBattlefleetSection(

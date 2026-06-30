@@ -2,7 +2,7 @@ import { AlertTriangle, BookOpenText, ChevronDown, ChevronRight, Download, Minus
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
-import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
+import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
 import { previewPrintableList } from '../../utils/printList'
@@ -456,6 +456,9 @@ export default function ActiveListPanel() {
         } else {
             unassignedEntries.push(entry)
         }
+    }
+    for (const [battlefleetInstanceId, entries] of entriesByBattlefleetId) {
+        entriesByBattlefleetId.set(battlefleetInstanceId, sortBattlefleetEntries(entries, units))
     }
     const commitName = () => {
         renameList(currentList.id, draftName)

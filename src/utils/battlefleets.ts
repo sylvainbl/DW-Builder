@@ -56,6 +56,20 @@ function findUnit(units: Unit[], entry: ArmyUnit): Unit | null {
     return units.find((unit) => unit.id === entry.unitId) ?? null
 }
 
+const battlefleetRoleOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
+
+function battlefleetRoleRank(unit: Unit | null): number {
+    const index = unit ? battlefleetRoleOrder.indexOf(unit.role) : -1
+    return index === -1 ? battlefleetRoleOrder.length : index
+}
+
+export function sortBattlefleetEntries(entries: ArmyUnit[], units: Unit[]): ArmyUnit[] {
+    return entries
+        .map((entry, index) => ({ entry, index, rank: battlefleetRoleRank(findUnit(units, entry)) }))
+        .sort((a, b) => a.rank - b.rank || a.index - b.index)
+        .map(({ entry }) => entry)
+}
+
 function unitLabel(units: Unit[], entry: ArmyUnit): string {
     return findUnit(units, entry)?.name ?? entry.unitId
 }
