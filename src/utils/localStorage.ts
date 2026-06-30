@@ -63,10 +63,12 @@ export function downloadList(list: ArmyList, units: Unit[]) {
             const unit = units.find((item) => item.id === entry.unitId)
             return {
                 name: unit?.name ?? entry.unitId,
+                customName: entry.customName,
                 role: unit?.role,
                 points: entry.totalPoints,
                 battlefleetInstanceId: entry.battlefleetInstanceId ?? null,
                 config: entry.config,
+                models: entry.models,
             }
         }),
         exportedAt: new Date().toISOString(),
@@ -117,7 +119,13 @@ function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): Ar
     const importedModels = Array.isArray(models)
         ? models.flatMap((model) => (
             isObject(model) && isUnitConfig(model.config)
-                ? [{ modelId: uuid(), config: normalizeUnitConfig(model.config) }]
+                ? [{
+                    modelId: uuid(),
+                    customName: typeof model.customName === 'string' && model.customName.trim().length > 0
+                        ? model.customName.trim()
+                        : undefined,
+                    config: normalizeUnitConfig(model.config),
+                }]
                 : []
         ))
         : []
@@ -151,6 +159,9 @@ function normalizeImportedBattlefleets(value: unknown): ArmyBattlefleet[] {
             name: typeof battlefleet.name === 'string' && battlefleet.name.trim().length > 0
                 ? battlefleet.name
                 : battlefleet.definitionId,
+            customName: typeof battlefleet.customName === 'string' && battlefleet.customName.trim().length > 0
+                ? battlefleet.customName.trim()
+                : undefined,
         }]
     })
 }
@@ -162,6 +173,9 @@ function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
         const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId,
+            customName: typeof entry.customName === 'string' && entry.customName.trim().length > 0
+                ? entry.customName.trim()
+                : undefined,
             battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
             config: normalizeUnitConfig(entry.config),
             models: makeImportedModels(unit, entry.config, entry.models),
@@ -208,9 +222,12 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
         const normalized: ArmyUnit = {
             instanceId: uuid(),
             unitId: unit.id,
+            customName: typeof entry.customName === 'string' && entry.customName.trim().length > 0
+                ? entry.customName.trim()
+                : undefined,
             battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
             config: normalizeUnitConfig(entry.config),
-            models: makeImportedModels(unit, entry.config, null),
+            models: makeImportedModels(unit, entry.config, entry.models),
             totalPoints: 0,
         }
         normalized.totalPoints = computeArmyUnitTotal(normalized, units)

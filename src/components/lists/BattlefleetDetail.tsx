@@ -1,3 +1,6 @@
+import { Pencil } from 'lucide-react'
+import { useState } from 'react'
+import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
 import { getBattlefleetForceType, isMercenaryInForce } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
@@ -28,6 +31,9 @@ function textList(items: string[]): string {
 }
 
 export default function BattlefleetDetail({ battlefleet, definition, forceFactionId, entries, units, fleetDoctrines }: Props) {
+    const renameBattlefleet = useAppStore((state) => state.renameBattlefleet)
+    const [editingName, setEditingName] = useState(false)
+    const [draftName, setDraftName] = useState('')
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const displayInfo = getBattlefleetDisplayInfo(definition.id)
     const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
@@ -51,6 +57,11 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
         mercenary ? 'Mercenary' : null,
         definition.legendary ? 'Legendary' : null,
     ].filter(Boolean)
+    const customName = battlefleet.customName?.trim()
+    const commitName = () => {
+        renameBattlefleet(battlefleet.instanceId, draftName)
+        setEditingName(false)
+    }
 
     return (
         <div className="space-y-2">
@@ -58,8 +69,35 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                 <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                         <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">Battlefleet</div>
-                        <h2 className="mt-1 text-lg font-semibold text-white">{battlefleet.name}</h2>
-                        <p className="text-sm text-white/78">{definition.name}</p>
+                        <div className="mt-1 flex min-w-0 items-center gap-2">
+                            <h2 className="truncate text-lg font-semibold text-white">{definition.name}</h2>
+                            <button
+                                type="button"
+                                title={customName ? 'Rename Battlefleet' : 'Add Battlefleet name'}
+                                onClick={() => {
+                                    setDraftName(customName ?? '')
+                                    setEditingName(true)
+                                }}
+                                className="flex h-6 w-6 flex-none items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                            >
+                                <Pencil size={12} />
+                            </button>
+                        </div>
+                        {editingName ? (
+                            <input
+                                value={draftName}
+                                autoFocus
+                                onChange={(event) => setDraftName(event.target.value)}
+                                onBlur={commitName}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') commitName()
+                                    if (event.key === 'Escape') setEditingName(false)
+                                }}
+                                className="mt-1 w-full max-w-xs rounded border border-white/30 bg-white px-2 py-1 text-sm font-semibold text-[var(--navy)] outline-none"
+                            />
+                        ) : customName ? (
+                            <p className="truncate text-sm font-semibold text-white/90">{customName}</p>
+                        ) : null}
                         <p className="mt-1 text-[11px] font-medium text-white/65">{titleParts.join(' · ')}</p>
                     </div>
                     <div className="flex flex-col items-end gap-2 text-right">
@@ -93,6 +131,7 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                             <div key={entry.instanceId} className="flex items-center justify-between gap-2 rounded-lg border border-white/80 bg-white/65 px-2.5 py-2 text-[12px]">
                                 <div className="min-w-0">
                                     <div className="truncate font-semibold text-neutral-900">{unitLabel(units, entry)}</div>
+                                    {entry.customName ? <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{entry.customName}</div> : null}
                                     <div className="text-[11px] text-neutral-500">{entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}</div>
                                 </div>
                                 <div className="flex-none font-semibold text-[var(--navy)]">{entry.totalPoints} pts</div>

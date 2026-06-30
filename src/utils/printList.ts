@@ -78,7 +78,7 @@ function optionRows(unit: Unit, config: UnitConfig): Array<{ option: OptionUpgra
 
 function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
     return entry.models.map((model, index) => ({
-        label: `Model ${index + 1}`,
+        label: model.customName?.trim() || `Model ${index + 1}`,
         points: computeModelPoints(unit, model.config),
         config: model.config,
     }))
@@ -298,6 +298,7 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
             <div class="unit-head">
                 <div>
                     <h3>${escapeHtml(unit.name)}</h3>
+                    ${entry.customName ? `<div class="custom-name">${escapeHtml(entry.customName)}</div>` : ''}
                     <div class="muted">${escapeHtml([unit.sub_name, unit.role].filter(Boolean).join(' · '))}</div>
                 </div>
                 <strong>${entry.totalPoints} pts</strong>
@@ -331,12 +332,14 @@ function renderBattlefleetSection(
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
     const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
     const labels = [forceType, mercenary ? 'Mercenary' : null, definition?.legendary ? 'Legendary' : null].filter(Boolean).join(' · ')
+    const battlefleetName = definition?.name ?? battlefleet.name
 
     return `
         <section class="battlefleet">
             <div class="section-head">
                 <div>
-                    <h2>${escapeHtml(battlefleet.name)}</h2>
+                    <h2>${escapeHtml(battlefleetName)}</h2>
+                    ${battlefleet.customName ? `<div class="custom-name">${escapeHtml(battlefleet.customName)}</div>` : ''}
                     <div class="muted">${escapeHtml(labels || 'Battlefleet')}</div>
                 </div>
                 <strong>${points} pts</strong>
@@ -429,6 +432,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     .cover { display: flex; justify-content: space-between; gap: 24px; border-bottom: 2px solid #18181b; padding-bottom: 16px; margin-bottom: 18px; }
                     .total { font-size: 24px; font-weight: 800; white-space: nowrap; }
                     .muted { color: #71717a; }
+                    .custom-name { color: #1f3a5f; font-weight: 700; margin-top: 1px; }
                     .battlefleet, .glossary { margin-top: 16px; }
                     .section-head, .unit-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
                     .section-head { break-after: avoid; border: 1px solid #d4d4d8; background: #f4f4f5; padding: 10px 12px; }

@@ -53,7 +53,8 @@ function unitLabel(units: Unit[], entry: ArmyUnit): string {
 }
 
 function battlefleetLabel(battlefleet: ArmyBattlefleet, definition?: BattlefleetDefinition): string {
-    return battlefleet.name || definition?.name || battlefleet.definitionId
+    const typeName = definition?.name || battlefleet.name || battlefleet.definitionId
+    return battlefleet.customName ? `${typeName} (${battlefleet.customName})` : typeName
 }
 
 export function isBattlefleetAvailableForFaction(definition: BattlefleetDefinition, factionId: string | null | undefined): boolean {

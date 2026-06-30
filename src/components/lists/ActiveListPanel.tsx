@@ -62,6 +62,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
         : active
             ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm ring-2 ring-[var(--gold)]/40'
             : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
+    const customName = entry.customName?.trim()
 
     return (
         <div
@@ -82,6 +83,9 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
                         {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>Attachment</span> : null}
                         <div className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</div>
                     </div>
+                    {customName ? (
+                        <div className={`truncate text-[11px] font-semibold ${active && !nested ? 'text-white/85' : 'text-[var(--navy)]'}`}>{customName}</div>
+                    ) : null}
                     <div className={`text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>
                         {unit?.role ?? 'Unit'} · {entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}
                     </div>
@@ -110,7 +114,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
                             <option value="">No Battlefleet</option>
                             {battlefleets.map((battlefleet) => (
                                 <option key={battlefleet.instanceId} value={battlefleet.instanceId}>
-                                    {battlefleet.name}
+                                    {battlefleet.customName ? `${battlefleet.name} - ${battlefleet.customName}` : battlefleet.name}
                                 </option>
                             ))}
                         </select>
@@ -214,6 +218,8 @@ function BattlefleetSection({
     const hasIssues = issues.length > 0
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
     const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
+    const customName = battlefleet.customName?.trim()
+    const typeName = definition?.name ?? battlefleet.name
 
     return (
         <section className={`rounded-lg border bg-white shadow-sm ${active ? 'border-[var(--navy)] ring-2 ring-[var(--gold)]/40' : hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
@@ -232,7 +238,8 @@ function BattlefleetSection({
                         onClick={onSelectBattlefleet}
                         className="min-w-0 flex-1 text-left"
                     >
-                        <div className="truncate text-[13px] font-semibold text-neutral-900">{battlefleet.name}</div>
+                        <div className="truncate text-[13px] font-semibold text-neutral-900">{typeName}</div>
+                        {customName ? <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{customName}</div> : null}
                         <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                             <span>{forceType ?? 'Unknown'}</span>
                             {mercenary ? <span>Mercenary</span> : null}

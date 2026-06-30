@@ -157,12 +157,14 @@ export interface UnitConfig {
 
 export interface ArmyModel {
     modelId: string
+    customName?: string
     config: UnitConfig
 }
 
 export interface ArmyUnit {
     instanceId: string
     unitId: string
+    customName?: string
     battlefleetInstanceId?: string | null
     config: UnitConfig
     models: ArmyModel[]
@@ -174,6 +176,7 @@ export interface ArmyBattlefleet {
     instanceId: string
     definitionId: string
     name: string
+    customName?: string
 }
 
 export interface ArmyList {

@@ -58,6 +58,9 @@ interface AppStore {
     addBattlefleetToCurrentList: (definitionId: string) => void
     removeBattlefleetFromCurrentList: (battlefleetInstanceId: string) => void
     setUnitBattlefleet: (instanceId: string, battlefleetInstanceId: string | null) => void
+    renameBattlefleet: (battlefleetInstanceId: string, customName: string) => void
+    renameListUnit: (instanceId: string, customName: string) => void
+    renameModel: (instanceId: string, modelId: string, customName: string) => void
     selectListUnit: (instanceId: string) => void
     selectModel: (modelId: string) => void
     addModelToListUnit: (instanceId: string) => void
@@ -177,6 +180,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
     const models = Array.isArray(legacyModels) && legacyModels.length > 0
         ? legacyModels.map((model) => ({
             modelId: model.modelId ?? uuid(),
+            customName: model.customName?.trim() || undefined,
             config: normalizeConfig(model.config),
         })).slice(0, getMaximumModels(unit))
         : makeModels(unit, config)
@@ -186,6 +190,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
     const normalized: ArmyUnit = {
         instanceId: entry.instanceId,
         unitId,
+        customName: entry.customName?.trim() || undefined,
         config: cloneConfig(config),
         models,
         totalPoints: 0,
@@ -208,6 +213,7 @@ function normalizeBattlefleets(list: ArmyList, definitions: BattlefleetDefinitio
             instanceId: battlefleet.instanceId ?? uuid(),
             definitionId: battlefleet.definitionId,
             name: battlefleet.name || definitions.find((definition) => definition.id === battlefleet.definitionId)?.name || battlefleet.definitionId,
+            customName: battlefleet.customName?.trim() || undefined,
         }]
     })
 }
@@ -601,6 +607,57 @@ export const useAppStore = create<AppStore>((set, get) => ({
                         ...attachment,
                         battlefleetInstanceId,
                     })),
+                })),
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    renameBattlefleet: (battlefleetInstanceId, customName) => {
+        const state = get()
+        if (!state.currentList) return
+        const trimmed = customName.trim()
+        set({
+            currentList: {
+                ...state.currentList,
+                battlefleets: (state.currentList.battlefleets ?? []).map((battlefleet) => (
+                    battlefleet.instanceId === battlefleetInstanceId
+                        ? { ...battlefleet, customName: trimmed || undefined }
+                        : battlefleet
+                )),
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    renameListUnit: (instanceId, customName) => {
+        const state = get()
+        if (!state.currentList) return
+        const trimmed = customName.trim()
+        set({
+            currentList: {
+                ...state.currentList,
+                units: updateArmyUnitModels(state.currentList.units, instanceId, state.units, (entry) => ({
+                    ...entry,
+                    customName: trimmed || undefined,
+                })),
+                updatedAt: new Date().toISOString(),
+            },
+        })
+        get().persistLists()
+    },
+    renameModel: (instanceId, modelId, customName) => {
+        const state = get()
+        if (!state.currentList) return
+        const trimmed = customName.trim()
+        set({
+            currentList: {
+                ...state.currentList,
+                units: updateArmyUnitModels(state.currentList.units, instanceId, state.units, (entry) => ({
+                    ...entry,
+                    models: entry.models.map((model) => (
+                        model.modelId === modelId ? { ...model, customName: trimmed || undefined } : model
+                    )),
                 })),
                 updatedAt: new Date().toISOString(),
             },

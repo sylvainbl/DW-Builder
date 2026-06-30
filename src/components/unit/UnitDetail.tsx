@@ -1,3 +1,4 @@
+import { Pencil } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
@@ -101,8 +102,14 @@ export default function UnitDetail() {
     const selectModel = useAppStore((state) => state.selectModel)
     const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
+    const renameListUnit = useAppStore((state) => state.renameListUnit)
+    const renameModel = useAppStore((state) => state.renameModel)
     const [openHardpointKey, setOpenHardpointKey] = useState<string | null>(null)
     const [openDoctrine, setOpenDoctrine] = useState<FleetDoctrine | null>(null)
+    const [editingUnitName, setEditingUnitName] = useState(false)
+    const [unitDraftName, setUnitDraftName] = useState('')
+    const [editingModelName, setEditingModelName] = useState(false)
+    const [modelDraftName, setModelDraftName] = useState('')
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
     const selectedBattlefleet = useMemo(
@@ -126,6 +133,10 @@ export default function UnitDetail() {
     const selectedEntryParent = useMemo(
         () => currentList ? findParent(currentList.units, selectedListInstanceId) : null,
         [currentList, selectedListInstanceId],
+    )
+    const selectedModel = useMemo(
+        () => selectedEntry?.models.find((model) => model.modelId === selectedModelId) ?? null,
+        [selectedEntry, selectedModelId],
     )
 
     if (!unit) {
@@ -209,14 +220,52 @@ export default function UnitDetail() {
         }),
         ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
+    const commitUnitName = () => {
+        if (selectedEntry) renameListUnit(selectedEntry.instanceId, unitDraftName)
+        setEditingUnitName(false)
+    }
+    const commitModelName = () => {
+        if (selectedEntry && selectedModelId) renameModel(selectedEntry.instanceId, selectedModelId, modelDraftName)
+        setEditingModelName(false)
+    }
 
     return (
         <div className="space-y-2">
             <section className="unit-detail-section unit-detail-hero rounded-xl p-3 shadow-sm">
                 <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0">
                         <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">Detail</div>
-                        <h2 className="mt-1 text-lg font-semibold text-white">{unit.name}</h2>
+                        <div className="mt-1 flex min-w-0 items-center gap-2">
+                            <h2 className="truncate text-lg font-semibold text-white">{unit.name}</h2>
+                            {selectedEntry ? (
+                                <button
+                                    type="button"
+                                    title={selectedEntry.customName ? 'Rename unit' : 'Add unit name'}
+                                    onClick={() => {
+                                        setUnitDraftName(selectedEntry.customName ?? '')
+                                        setEditingUnitName(true)
+                                    }}
+                                    className="flex h-6 w-6 flex-none items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                                >
+                                    <Pencil size={12} />
+                                </button>
+                            ) : null}
+                        </div>
+                        {editingUnitName ? (
+                            <input
+                                value={unitDraftName}
+                                autoFocus
+                                onChange={(event) => setUnitDraftName(event.target.value)}
+                                onBlur={commitUnitName}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') commitUnitName()
+                                    if (event.key === 'Escape') setEditingUnitName(false)
+                                }}
+                                className="mt-1 w-full max-w-xs rounded border border-white/30 bg-white px-2 py-1 text-sm font-semibold text-[var(--navy)] outline-none"
+                            />
+                        ) : selectedEntry?.customName ? (
+                            <p className="truncate text-sm font-semibold text-white/90">{selectedEntry.customName}</p>
+                        ) : null}
                         <p className="text-sm text-white/78">{unit.sub_name}</p>
                         <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo}</p>
                     </div>
@@ -242,7 +291,22 @@ export default function UnitDetail() {
                 {selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
                         <div className="flex items-center justify-between gap-2">
-                            <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
+                            <div className="flex min-w-0 items-center gap-2">
+                                <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
+                                {selectedModel ? (
+                                    <button
+                                        type="button"
+                                        title={selectedModel.customName ? 'Rename model' : 'Add model name'}
+                                        onClick={() => {
+                                            setModelDraftName(selectedModel.customName ?? '')
+                                            setEditingModelName(true)
+                                        }}
+                                        className="flex h-5 w-5 flex-none items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                                    >
+                                        <Pencil size={11} />
+                                    </button>
+                                ) : null}
+                            </div>
                             <div className="flex items-center gap-1">
                                 <button
                                     type="button"
@@ -270,6 +334,7 @@ export default function UnitDetail() {
                         <div className="mt-2 flex flex-wrap gap-1.5">
                             {selectedEntry.models.map((model, index) => {
                                 const active = selectedModelId === model.modelId
+                                const modelName = model.customName?.trim() || `Model ${index + 1}`
                                 return (
                                     <button
                                         key={model.modelId}
@@ -277,11 +342,24 @@ export default function UnitDetail() {
                                         className={`rounded-full border px-2.5 py-1 text-[11px] font-medium shadow-sm ${active ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]' : 'border-white/40 bg-white text-[var(--navy)] hover:bg-[var(--gold-light)]'}`}
                                         onClick={() => selectModel(model.modelId)}
                                     >
-                                        Model {index + 1}
+                                        {modelName}
                                     </button>
                                 )
                             })}
                         </div>
+                        {editingModelName ? (
+                            <input
+                                value={modelDraftName}
+                                autoFocus
+                                onChange={(event) => setModelDraftName(event.target.value)}
+                                onBlur={commitModelName}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') commitModelName()
+                                    if (event.key === 'Escape') setEditingModelName(false)
+                                }}
+                                className="mt-2 w-full max-w-xs rounded border border-white/30 bg-white px-2 py-1 text-[11px] font-semibold text-[var(--navy)] outline-none"
+                            />
+                        ) : null}
                     </div>
                 ) : null}
             </section>
