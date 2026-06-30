@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppStore } from '../../store'
 import ListsPanel from '../lists/ListsPanel'
@@ -12,7 +12,12 @@ export default function AppShell() {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const setSelectedFactionId = useAppStore((state) => state.setSelectedFactionId)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
+    const selectedUnitId = useAppStore((state) => state.selectedUnitId)
+    const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
+    const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
+    const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
     const [listsCollapsed, setListsCollapsed] = useState(false)
+    const detailPaneRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         if (factionId && factionId !== selectedFactionId) {
@@ -28,8 +33,12 @@ export default function AppShell() {
         }
     }, [unitId, setSelectedUnitId])
 
+    useEffect(() => {
+        detailPaneRef.current?.scrollTo({ top: 0 })
+    }, [selectedUnitId, selectedListInstanceId, selectedBattlefleetInstanceId, selectedListGlossary])
+
     return (
-        <div className="flex min-h-screen flex-col bg-[var(--panel)] text-[var(--text)]">
+        <div className="flex h-screen flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
             <AppHeader />
             <div className={`grid flex-1 overflow-hidden ${listsCollapsed ? 'grid-cols-[2.25rem_24%_1fr]' : 'grid-cols-[15%_20%_65%]'}`}>
                 <div className="min-h-0 overflow-hidden border-r border-neutral-200">
@@ -68,7 +77,7 @@ export default function AppShell() {
                     <UnitListColumn />
                 </div>
 
-                <div className="min-h-0 overflow-y-auto bg-[var(--panel)] p-4">
+                <div ref={detailPaneRef} className="min-h-0 overflow-y-auto bg-[var(--panel)] p-4">
                     <UnitDetail />
                 </div>
             </div>
