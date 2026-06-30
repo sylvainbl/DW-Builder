@@ -9,27 +9,31 @@ import type {
     BattlefleetRequirement,
     Unit,
 } from '../types/index'
+import { getSelectedTags } from './optionRuleEffects'
 
 function normalizeTrait(value: string): string {
     return value.trim().toLowerCase()
 }
 
-function getUnitTraits(unit: Unit): Set<string> {
+function getUnitTraits(unit: Unit, entry?: ArmyUnit): Set<string> {
+    const tags = entry
+        ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config)
+        : unit.tags
     return new Set(
-        [unit.faction_id, unit.faction, unit.name, unit.sub_name, unit.role, ...unit.tags]
+        [unit.faction_id, unit.faction, unit.name, unit.sub_name, unit.role, ...tags]
             .filter((trait): trait is string => typeof trait === 'string' && trait.trim().length > 0)
             .map(normalizeTrait),
     )
 }
 
-function hasTrait(unit: Unit, trait: string): boolean {
-    return getUnitTraits(unit).has(normalizeTrait(trait))
+function hasTrait(unit: Unit, trait: string, entry?: ArmyUnit): boolean {
+    return getUnitTraits(unit, entry).has(normalizeTrait(trait))
 }
 
 function matchesRequirement(entry: ArmyUnit, unit: Unit, requirement: BattlefleetRequirement): boolean {
     if (requirement.unitIds?.includes(entry.unitId)) return true
 
-    const traits = getUnitTraits(unit)
+    const traits = getUnitTraits(unit, entry)
     const hasAll = (requirement.all ?? []).every((trait) => traits.has(normalizeTrait(trait)))
     const hasAny = !requirement.any || requirement.any.some((trait) => traits.has(normalizeTrait(trait)))
 

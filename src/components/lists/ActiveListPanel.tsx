@@ -63,6 +63,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
             ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm ring-2 ring-[var(--gold)]/40'
             : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
     const customName = entry.customName?.trim()
+    const generated = Boolean(entry.generatedByOption)
 
     return (
         <div
@@ -80,7 +81,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                        {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>Attachment</span> : null}
+                        {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>{generated ? 'Tethered' : 'Attachment'}</span> : null}
                         <div className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</div>
                     </div>
                     {customName ? (
@@ -122,25 +123,27 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
                 </div>
                 <div className="flex items-center gap-2">
                     <span className={`whitespace-nowrap text-[11px] font-medium ${active && !nested ? 'text-white' : 'text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
-                    <span
-                        role="button"
-                        tabIndex={0}
-                        title="Remove"
-                        onClick={(event) => {
-                            event.stopPropagation()
-                            onRemove()
-                        }}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                event.preventDefault()
+                    {!generated ? (
+                        <span
+                            role="button"
+                            tabIndex={0}
+                            title="Remove"
+                            onClick={(event) => {
                                 event.stopPropagation()
                                 onRemove()
-                            }
-                        }}
-                        className={`rounded p-1 ${active && !nested ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
-                    >
-                        <Minus size={13} />
-                    </span>
+                            }}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter' || event.key === ' ') {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    onRemove()
+                                }
+                            }}
+                            className={`rounded p-1 ${active && !nested ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-neutral-400 hover:bg-rose-50 hover:text-rose-600'}`}
+                        >
+                            <Minus size={13} />
+                        </span>
+                    ) : null}
                 </div>
             </div>
         </div>

@@ -1,14 +1,14 @@
 import type { ArmyList, ArmyUnit, OptionUpgrade, Unit, UnitConfig } from '../types/index'
+import { isUnitLevelOption } from './optionConfig'
+import { getEffectiveGeneratorSelection } from './optionRuleEffects'
+
+export { isUnitLevelOption } from './optionConfig'
 
 const CHITA_SWARM_BATTLEFLEET_ID = 'empire-chita-swarm'
 const CHITA_SWARM_FIRST_ESCORT_COST = 5
 
 export interface PointsContext {
     battlefleets?: ArmyList['battlefleets']
-}
-
-export function isUnitLevelOption(tag: string): boolean {
-    return tag === 'ESCORT'
 }
 
 export function hasChitaSwarmEscortDiscount(entry: ArmyUnit, context?: PointsContext): boolean {
@@ -27,8 +27,9 @@ export function computeOptionPoints(option: OptionUpgrade, quantity: number, dis
 export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
     let total = unit.point_cost_per_model ?? 0
 
-    if (config.generatorSelection) {
-        total += config.generatorSelection.generatorCost
+    const generatorSelection = getEffectiveGeneratorSelection(unit, config)
+    if (generatorSelection) {
+        total += generatorSelection.generatorCost
     }
 
     for (const option of unit.options_and_upgrades) {
@@ -40,11 +41,12 @@ export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
     return total
 }
 
-export function computeModelPoints(unit: Unit, config: UnitConfig): number {
+export function computeModelPoints(unit: Unit, config: UnitConfig, unitConfig?: UnitConfig | null): number {
     let total = unit.point_cost_per_model ?? 0
 
-    if (config.generatorSelection) {
-        total += config.generatorSelection.generatorCost
+    const generatorSelection = getEffectiveGeneratorSelection(unit, config, unitConfig)
+    if (generatorSelection) {
+        total += generatorSelection.generatorCost
     }
 
     for (const option of unit.options_and_upgrades) {
@@ -76,7 +78,7 @@ export function computeArmyUnitTotal(entry: ArmyUnit, allUnits: Unit[], context?
     const unit = allUnits.find((item) => item.id === entry.unitId)
     const ownTotal = unit
         ? computeUnitLevelPoints(unit, entry.config, hasChitaSwarmEscortDiscount(entry, context))
-            + entry.models.reduce((sum, model) => sum + computeModelPoints(unit, model.config), 0)
+            + entry.models.reduce((sum, model) => sum + computeModelPoints(unit, model.config, entry.config), 0)
         : entry.totalPoints
     const attachmentsTotal = (entry.attachedUnits ?? [])
         .reduce((sum, attachment) => sum + computeArmyUnitTotal(attachment, allUnits, context), 0)

@@ -6784,6 +6784,22 @@
         "slot": "H"
       }
     ],
+    "short_range_squadrons": [
+      {
+        "name": "Doksuri Fighters",
+        "attack": 2,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "Hazard"
+          }
+        ]
+      }
+    ],
     "hardpoint_options": {
       "H": [
         {
@@ -6890,16 +6906,31 @@
         "tag": "GENERATOR"
       },
       {
-        "description": "Mandatory choice: Jinhae Flight Deck grants Flight Deck: Doksuri Fighters.",
+        "description": "Variant: Jinhae Flight Deck grants Flight Deck: Doksuri Fighters.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "JINHAE_FLIGHT_DECK"
+        "tag": "JINHAE_FLIGHT_DECK",
+        "exclusive_group": "MIYAGI_VARIANT",
+        "adds_properties": [
+          {
+            "name": "Flight Deck",
+            "value": null,
+            "detail": "Doksuri Fighters"
+          }
+        ]
       },
       {
-        "description": "Mandatory choice: Okinawa Mine Launcher.",
+        "description": "Variant: Okinawa Mine Launcher grants Mine Layer (2).",
         "cost_per_unit": 10,
         "max": 1,
-        "tag": "OKINAWA_MINE_LAUNCHER"
+        "tag": "OKINAWA_MINE_LAUNCHER",
+        "exclusive_group": "MIYAGI_VARIANT",
+        "adds_properties": [
+          {
+            "name": "Mine Layer",
+            "value": 2
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -8089,9 +8120,15 @@
       },
       {
         "description": "Add up to two Tethered Bangpae for each model in the unit.",
-        "cost_per_unit": 20,
+        "cost_per_unit": 0,
         "max": 2,
-        "tag": "TETHERED_BANGPAE"
+        "tag": "TETHERED_BANGPAE",
+        "adds_properties": [
+          {
+            "name": "Tethered Bangpae",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -9162,10 +9199,29 @@
         "tag": "MAGMA_CAST_GENERATOR"
       },
       {
-        "description": "Regional subclass: convert all models to Japanese subclass.",
+        "description": "Japanese subclass: replace Chinese with Japanese, remove the Heavy Hardpoint, and gain Boarding Parties (8) and Bushi Ryu Dojo.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "JAPANESE_SUBCLASS"
+        "tag": "JAPANESE_SUBCLASS",
+        "adds_tags": [
+          "Japanese"
+        ],
+        "removes_tags": [
+          "Chinese"
+        ],
+        "adds_properties": [
+          {
+            "name": "Boarding Parties",
+            "value": 8
+          },
+          {
+            "name": "Bushi Ryu Dojo",
+            "value": null
+          }
+        ],
+        "removes_weapon_slots": [
+          "H"
+        ]
       },
       {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
@@ -9378,9 +9434,15 @@
     "options_and_upgrades": [
       {
         "description": "Add up to two Tethered Bangpae for each model in the unit.",
-        "cost_per_unit": 20,
+        "cost_per_unit": 0,
         "max": 2,
-        "tag": "TETHERED_BANGPAE"
+        "tag": "TETHERED_BANGPAE",
+        "adds_properties": [
+          {
+            "name": "Tethered Bangpae",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -9481,6 +9543,25 @@
         },
         "qualities": [],
         "slot": "H"
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Rin Exo-Submersible",
+        "attack": 4,
+        "intercept": 3,
+        "support": 2,
+        "resilience": 5,
+        "properties": [
+          {
+            "name": "Exo-Sub",
+            "value": null
+          },
+          {
+            "name": "Superior Mine Clearance",
+            "value": null
+          }
+        ]
       }
     ],
     "hardpoint_options": {
@@ -9589,16 +9670,31 @@
         "tag": "GENERATOR"
       },
       {
-        "description": "Mandatory choice: Mizuchi Exo-sub Launcher.",
+        "description": "Variant: Mizuchi Exo-Sub Launcher grants Flight Deck: Rin Exo-Submersibles.",
         "cost_per_unit": 5,
         "max": 1,
-        "tag": "MIZUCHI_EXO_SUB_LAUNCHER"
+        "tag": "MIZUCHI_EXO_SUB_LAUNCHER",
+        "exclusive_group": "YAMAGUCHI_VARIANT",
+        "adds_properties": [
+          {
+            "name": "Flight Deck",
+            "value": null,
+            "detail": "Rin Exo-Submersibles"
+          }
+        ]
       },
       {
-        "description": "Mandatory choice: Ishikawa Moon Pool.",
+        "description": "Variant: Ishikawa Moon Pool grants Escort Support.",
         "cost_per_unit": 10,
         "max": 1,
-        "tag": "ISHIKAWA_MOON_POOL"
+        "tag": "ISHIKAWA_MOON_POOL",
+        "exclusive_group": "YAMAGUCHI_VARIANT",
+        "adds_properties": [
+          {
+            "name": "Escort Support",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -9813,7 +9909,13 @@
         "description": "Upgrade any number of models with Huo Broadsides.",
         "cost_per_unit": 5,
         "max": null,
-        "tag": "HUO_BROADSIDES"
+        "tag": "HUO_BROADSIDES",
+        "adds_properties": [
+          {
+            "name": "Incendiary Broadsides",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -10264,16 +10366,44 @@
         "tag": "MAGMA_CAST_GENERATOR"
       },
       {
-        "description": "Regional subclass: convert all models to Japanese subclass.",
+        "description": "Japanese subclass: replace Chinese with Japanese, remove the Heavy Hardpoint, and gain Boarding Parties (8) and Bushi Ryu Dojo.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "JAPANESE_SUBCLASS"
+        "tag": "JAPANESE_SUBCLASS",
+        "adds_tags": [
+          "Japanese"
+        ],
+        "removes_tags": [
+          "Chinese"
+        ],
+        "adds_properties": [
+          {
+            "name": "Boarding Parties",
+            "value": 8
+          },
+          {
+            "name": "Bushi Ryu Dojo",
+            "value": null
+          }
+        ],
+        "removes_weapon_slots": [
+          "H"
+        ]
       },
       {
-        "description": "Convert all models in the unit to Earthshaker Construction.",
+        "description": "Earthshaker Construction: remove Light Huoqiang Array and gain Encompassing Broadsides.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "EARTHSHAKER_CONSTRUCTION"
+        "tag": "EARTHSHAKER_CONSTRUCTION",
+        "adds_properties": [
+          {
+            "name": "Encompassing Broadsides",
+            "value": null
+          }
+        ],
+        "removes_weapons": [
+          "Light Huoqiang Array"
+        ]
       },
       {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",

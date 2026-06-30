@@ -1,5 +1,5 @@
 import type { NamedValue, OptionUpgrade, Unit, UnitConfig } from '../types/index'
-import { isUnitLevelOption } from './pointsCalc'
+import { isUnitLevelOption } from './optionConfig'
 
 export interface OptionRuleEffects {
     properties: NamedValue[]
@@ -49,19 +49,56 @@ export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig
     return effects
 }
 
+function isOptionSelected(option: OptionUpgrade, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): boolean {
+    return (optionConfig(option, modelConfig, unitConfig).optionQuantities[option.tag] ?? 0) > 0
+}
+
 export function getSelectedRemovedWeaponNames(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): Set<string> {
     const removedWeapons = new Set<string>()
 
     for (const option of unit.options_and_upgrades) {
-        const quantity = optionConfig(option, modelConfig, unitConfig).optionQuantities[option.tag] ?? 0
-        if (quantity <= 0) continue
+        if (!isOptionSelected(option, modelConfig, unitConfig)) continue
 
         for (const weaponName of option.removes_weapons ?? []) {
             removedWeapons.add(weaponName)
         }
+        for (const slot of option.removes_weapon_slots ?? []) {
+            unit.weapons
+                .filter((weapon) => weapon.slot === slot)
+                .forEach((weapon) => removedWeapons.add(weapon.name))
+        }
     }
 
     return removedWeapons
+}
+
+export function isWeaponRemovedBySelectedOptions(unit: Unit, weaponIndex: number, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): boolean {
+    const weapon = unit.weapons[weaponIndex]
+    return Boolean(weapon && getSelectedRemovedWeaponNames(unit, modelConfig, unitConfig).has(weapon.name))
+}
+
+export function getEffectiveGeneratorSelection(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): UnitConfig['generatorSelection'] {
+    const selection = modelConfig.generatorSelection
+    if (!selection) return null
+    return isWeaponRemovedBySelectedOptions(unit, selection.weaponIndex, modelConfig, unitConfig) ? null : selection
+}
+
+export function getSelectedTags(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): string[] {
+    const tags = unit.tags.filter((tag) => (
+        !unit.options_and_upgrades.some((option) => (
+            isOptionSelected(option, modelConfig, unitConfig)
+            && (option.removes_tags ?? []).includes(tag)
+        ))
+    ))
+
+    for (const option of unit.options_and_upgrades) {
+        if (!isOptionSelected(option, modelConfig, unitConfig)) continue
+        for (const tag of option.adds_tags ?? []) {
+            if (!tags.includes(tag)) tags.push(tag)
+        }
+    }
+
+    return tags
 }
 
 export function mergeNamedValues(...groups: NamedValue[][]): NamedValue[] {

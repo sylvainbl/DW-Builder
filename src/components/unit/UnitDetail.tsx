@@ -7,7 +7,7 @@ import { computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSw
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
-import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from '../../utils/optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, mergeNamedValues } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
@@ -140,6 +140,7 @@ export default function UnitDetail() {
         () => selectedEntry?.models.find((model) => model.modelId === selectedModelId) ?? null,
         [selectedEntry, selectedModelId],
     )
+    const selectedEntryGeneratedByOption = Boolean(selectedEntry?.generatedByOption)
 
     if (!unit) {
         if (currentList && selectedListGlossary) {
@@ -176,7 +177,7 @@ export default function UnitDetail() {
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const availableFleetDoctrines = getAvailableFleetDoctrines(unit, fleetDoctrines)
     const canTakeGenerator = unitCanTakeGenerator(unit)
-    const generatorSelection = activeUnitConfig.generatorSelection
+    const generatorSelection = getEffectiveGeneratorSelection(unit, activeUnitConfig, selectedEntry?.config)
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
@@ -193,7 +194,7 @@ export default function UnitDetail() {
     const fleetDoctrineSelection = selectedEntry?.config.fleetDoctrineSelection ?? null
     const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
-    const selectedModelCost = computeModelPoints(unit, activeUnitConfig)
+    const selectedModelCost = computeModelPoints(unit, activeUnitConfig, selectedEntry?.config)
     const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
     const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
     const siblingAttachmentModels = selectedEntryParent && selectedEntry
@@ -201,12 +202,15 @@ export default function UnitDetail() {
             .filter((attachment) => attachment.unitId === unit.id && attachment.instanceId !== selectedEntry.instanceId)
             .reduce((sum, attachment) => sum + attachment.models.length, 0)
         : 0
-    const maxModels = selectedEntryParent ? (unit.attachment?.max_models ?? normalMaxModels) - siblingAttachmentModels : normalMaxModels
-    const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
-    const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
+    const maxModels = selectedEntryGeneratedByOption
+        ? selectedEntry?.models.length ?? normalMaxModels
+        : selectedEntryParent ? (unit.attachment?.max_models ?? normalMaxModels) - siblingAttachmentModels : normalMaxModels
+    const canAddModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels)
+    const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
-    const visibleSquadrons = getVisibleSrsSquadrons(unit)
-    const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier') && visibleSquadrons.length > 0
+    const displayedTags = getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
+    const visibleSquadrons = getVisibleSrsSquadrons(unit, displayedProperties)
+    const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier' || property.name === 'Flight Deck' || property.name === 'SRS') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry
         ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
         : 0
@@ -293,7 +297,7 @@ export default function UnitDetail() {
                 </div>
 
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-[var(--navy)]">
-                    {unit.tags.map((tag) => (
+                    {displayedTags.map((tag) => (
                         <span key={tag} className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{tag}</span>
                     ))}
                 </div>

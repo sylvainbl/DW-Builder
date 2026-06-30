@@ -1,6 +1,6 @@
 import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
+import { getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
@@ -53,16 +53,17 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
         : [entry.config]
 
     for (const config of modelConfigs) {
-        if (config.generatorSelection) {
-            ruleNames.systems.add(config.generatorSelection.generatorName)
+        const generatorSelection = getEffectiveGeneratorSelection(unit, config, entry.config)
+        if (generatorSelection) {
+            ruleNames.systems.add(generatorSelection.generatorName)
         }
 
-        addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, config.generatorSelection?.generatorName ?? null))
+        addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null))
 
         const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config, entry.config)
         unit.weapons.forEach((weapon, weaponIndex) => {
             if (removedWeaponNames.has(weapon.name)) return
-            if (config.generatorSelection?.weaponIndex === weaponIndex) return
+            if (generatorSelection?.weaponIndex === weaponIndex) return
             addNamedValues(ruleNames.qualities, getDisplayedWeapon(unit, weapon, weaponIndex, config).qualities)
         })
 

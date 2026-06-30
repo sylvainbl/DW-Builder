@@ -11,6 +11,8 @@ const emptyUnitConfig: UnitConfig = {
     fleetDoctrineSelection: null,
     optionQuantities: {},
 }
+const TETHERED_BANGPAE_OPTION_TAG = 'TETHERED_BANGPAE'
+const BANGPAE_UNIT_ID = 'empire_bangpae_explosive_automata'
 
 interface AppStore {
     factions: Faction[]
@@ -103,6 +105,25 @@ function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitCo
     }
 }
 
+function updateOptionQuantitiesForSelection(unit: Unit, config: UnitConfig, tag: string, quantity: number): UnitConfig['optionQuantities'] {
+    const nextQuantity = Math.max(0, quantity)
+    const selectedOption = unit.options_and_upgrades.find((option) => option.tag === tag)
+    const optionQuantities = {
+        ...config.optionQuantities,
+        [tag]: nextQuantity,
+    }
+
+    if (nextQuantity > 0 && selectedOption?.exclusive_group) {
+        for (const option of unit.options_and_upgrades) {
+            if (option.tag !== tag && option.exclusive_group === selectedOption.exclusive_group) {
+                optionQuantities[option.tag] = 0
+            }
+        }
+    }
+
+    return optionQuantities
+}
+
 function getMinimumModels(unit: Unit): number {
     return Math.max(1, unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
 }
@@ -134,6 +155,74 @@ function makeArmyUnit(unit: Unit, config: UnitConfig = emptyUnitConfig, battlefl
     }
     entry.totalPoints = computeArmyUnitTotal(entry, [unit], list)
     return entry
+}
+
+function getTetheredBangpaeModelCount(entry: ArmyUnit): number {
+    return entry.models.reduce((sum, model) => sum + (model.config.optionQuantities[TETHERED_BANGPAE_OPTION_TAG] ?? 0), 0)
+}
+
+function isGeneratedTetheredBangpae(entry: ArmyUnit, parentInstanceId: string): boolean {
+    return entry.generatedByOption?.parentInstanceId === parentInstanceId
+        && entry.generatedByOption.optionTag === TETHERED_BANGPAE_OPTION_TAG
+        && entry.unitId === BANGPAE_UNIT_ID
+}
+
+function makeGeneratedTetheredBangpae(parent: ArmyUnit, bangpaeUnit: Unit, modelCount: number, existing: ArmyUnit | undefined, units: Unit[], list: ArmyList): ArmyUnit {
+    const models = (existing?.models ?? []).slice(0, modelCount)
+    while (models.length < modelCount) {
+        models.push(makeModel())
+    }
+
+    const generated: ArmyUnit = {
+        instanceId: existing?.instanceId ?? uuid(),
+        unitId: bangpaeUnit.id,
+        customName: 'Tethered Bangpae',
+        battlefleetInstanceId: parent.battlefleetInstanceId ?? null,
+        config: cloneConfig(emptyUnitConfig),
+        models,
+        totalPoints: 0,
+        generatedByOption: {
+            parentInstanceId: parent.instanceId,
+            optionTag: TETHERED_BANGPAE_OPTION_TAG,
+        },
+    }
+    generated.totalPoints = computeArmyUnitTotal(generated, units, list)
+    return generated
+}
+
+function syncGeneratedOptionAttachments(entry: ArmyUnit, units: Unit[], list: ArmyList): ArmyUnit {
+    const bangpaeUnit = units.find((unit) => unit.id === BANGPAE_UNIT_ID)
+    const generatedBangpae = (entry.attachedUnits ?? []).find((attachment) => isGeneratedTetheredBangpae(attachment, entry.instanceId))
+    const normalAttachments = (entry.attachedUnits ?? [])
+        .filter((attachment) => !isGeneratedTetheredBangpae(attachment, entry.instanceId))
+        .map((attachment) => syncGeneratedOptionAttachments(attachment, units, list))
+    const tetheredBangpaeCount = getTetheredBangpaeModelCount(entry)
+    const attachedUnits = bangpaeUnit && tetheredBangpaeCount > 0
+        ? [
+            ...normalAttachments,
+            makeGeneratedTetheredBangpae(entry, bangpaeUnit, tetheredBangpaeCount, generatedBangpae, units, list),
+        ]
+        : normalAttachments
+    const updated = {
+        ...entry,
+        attachedUnits: attachedUnits.length > 0 ? attachedUnits : undefined,
+    }
+
+    return {
+        ...updated,
+        totalPoints: computeArmyUnitTotal(updated, units, list),
+    }
+}
+
+function syncListGeneratedOptionAttachments(list: ArmyList, units: Unit[]): ArmyList {
+    const updated = {
+        ...list,
+        units: list.units.map((entry) => syncGeneratedOptionAttachments(entry, units, list)),
+    }
+    return {
+        ...updated,
+        units: updateArmyUnitTotals(updated.units, units, updated),
+    }
 }
 
 function makeBattlefleet(definition: BattlefleetDefinition, existingBattlefleets: ArmyBattlefleet[] = []): ArmyBattlefleet {
@@ -199,6 +288,11 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
             return normalizedAttachment ? [normalizedAttachment] : []
         }),
         battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
+        generatedByOption: entry.generatedByOption
+            && typeof entry.generatedByOption.parentInstanceId === 'string'
+            && typeof entry.generatedByOption.optionTag === 'string'
+            ? entry.generatedByOption
+            : undefined,
     }
     normalized.totalPoints = computeArmyUnitTotal(normalized, units)
     return normalized
@@ -248,17 +342,16 @@ function normalizeLists(lists: ArmyList[], units: Unit[], definitions: Battlefle
             }),
         }
         return {
-            ...normalizedList,
-            units: updateArmyUnitTotals(normalizedList.units, units, normalizedList),
+            ...syncListGeneratedOptionAttachments(normalizedList, units),
         }
     })
 }
 
 function recalculateListUnitTotals(list: ArmyList, units: Unit[]): ArmyList {
-    return {
+    return syncListGeneratedOptionAttachments({
         ...list,
         units: updateArmyUnitTotals(list.units, units, list),
-    }
+    }, units)
 }
 
 function findArmyUnit(entries: ArmyUnit[], instanceId: string): ArmyUnit | null {
@@ -542,12 +635,13 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
         const onlyBattlefleet = state.currentList.battlefleets?.length === 1 ? state.currentList.battlefleets[0] : null
         const newEntry = makeArmyUnit(unit, config, onlyBattlefleet?.instanceId ?? null, state.currentList)
+        const currentList = syncListGeneratedOptionAttachments({
+            ...state.currentList,
+            units: [...state.currentList.units, newEntry],
+            updatedAt: new Date().toISOString(),
+        }, state.units)
         set({
-            currentList: {
-                ...state.currentList,
-                units: [...state.currentList.units, newEntry],
-                updatedAt: new Date().toISOString(),
-            },
+            currentList,
         })
         get().persistLists()
     },
@@ -734,14 +828,14 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const maxModels = parent ? getAttachmentModelLimit(unit) - siblingModels : getMaximumModels(unit)
         if (entry.models.length >= maxModels) return
         const newModel = makeModel()
-        const currentList = {
+        const currentList = syncListGeneratedOptionAttachments({
             ...state.currentList,
             units: updateArmyUnitModels(state.currentList.units, instanceId, state.units, state.currentList, (target) => ({
                 ...target,
                 models: [...target.models, newModel],
             })),
             updatedAt: new Date().toISOString(),
-        }
+        }, state.units)
         set({
             currentList,
             selectedModelId: newModel.modelId,
@@ -759,14 +853,14 @@ export const useAppStore = create<AppStore>((set, get) => ({
         if (entry.models.length <= minModels) return
         const nextModels = entry.models.filter((model) => model.modelId !== modelId)
         const selectedModel = nextModels[0] ?? null
-        const currentList = {
+        const currentList = syncListGeneratedOptionAttachments({
             ...state.currentList,
             units: updateArmyUnitModels(state.currentList.units, instanceId, state.units, state.currentList, (target) => ({
                 ...target,
                 models: target.models.filter((model) => model.modelId !== modelId),
             })),
             updatedAt: new Date().toISOString(),
-        }
+        }, state.units)
         set({
             currentList,
             selectedModelId: state.selectedModelId === modelId ? selectedModel?.modelId ?? null : state.selectedModelId,
@@ -829,29 +923,30 @@ export const useAppStore = create<AppStore>((set, get) => ({
         set((state) => {
             if (state.selectedListInstanceId && state.currentList && isUnitLevelOption(tag)) {
                 const entry = findArmyUnit(state.currentList.units, state.selectedListInstanceId)
-                if (!entry) return state
+                const unit = entry ? state.units.find((item) => item.id === entry.unitId) : null
+                if (!entry || !unit) return state
                 const unitConfig = {
                     ...entry.config,
-                    optionQuantities: {
-                        ...entry.config.optionQuantities,
-                        [tag]: Math.max(0, quantity),
-                    },
+                    optionQuantities: updateOptionQuantitiesForSelection(unit, entry.config, tag, quantity),
                 }
+                const currentList = updateListUnit(state.currentList, state.selectedListInstanceId, unitConfig, state.units)
                 return {
-                    currentList: updateListUnit(state.currentList, state.selectedListInstanceId, unitConfig, state.units),
+                    currentList: syncListGeneratedOptionAttachments(currentList, state.units),
                 }
             }
+            const unit = state.units.find((item) => item.id === state.selectedUnitId)
+            if (!unit) return state
             const newConfig = {
                 ...state.activeUnitConfig,
-                optionQuantities: {
-                    ...state.activeUnitConfig.optionQuantities,
-                    [tag]: Math.max(0, quantity),
-                },
+                optionQuantities: updateOptionQuantitiesForSelection(unit, state.activeUnitConfig, tag, quantity),
             }
             return {
                 activeUnitConfig: newConfig,
                 currentList: state.selectedListInstanceId && state.currentList
-                    ? updateListUnit(state.currentList, state.selectedListInstanceId, newConfig, state.units, state.selectedModelId ?? undefined)
+                    ? syncListGeneratedOptionAttachments(
+                        updateListUnit(state.currentList, state.selectedListInstanceId, newConfig, state.units, state.selectedModelId ?? undefined),
+                        state.units,
+                    )
                     : state.currentList,
             }
         })

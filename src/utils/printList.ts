@@ -81,7 +81,7 @@ function optionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false)
 function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
     return entry.models.map((model, index) => ({
         label: model.customName?.trim() || `Model ${index + 1}`,
-        points: computeModelPoints(unit, model.config),
+        points: computeModelPoints(unit, model.config, entry.config),
         config: model.config,
     }))
 }

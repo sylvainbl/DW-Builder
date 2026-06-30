@@ -1,4 +1,4 @@
-import type { ShortRangeSquadron, Unit } from '../types/index'
+import type { NamedValue, ShortRangeSquadron, Unit } from '../types/index'
 
 function singularizeLastWord(value: string): string {
     const words = value.split(' ')
@@ -23,16 +23,17 @@ function normalizeSrsTypeName(value: string): string {
     )
 }
 
-export function getSrsTypeNames(unit: Unit): string[] {
-    const srsProperty = unit.properties.find((property) => property.name === 'SRS')
-    return srsProperty?.detail
+export function getSrsTypeNames(unit: Unit, properties: NamedValue[] = unit.properties): string[] {
+    return properties
+        .filter((property) => property.name === 'SRS' || property.name === 'Flight Deck')
+        .flatMap((property) => property.detail
         ?.split(/[,/]/)
         .map((name) => name.trim())
-        .filter(Boolean) ?? []
+            .filter(Boolean) ?? [])
 }
 
-export function getVisibleSrsSquadrons(unit: Unit): ShortRangeSquadron[] {
-    const srsTypeNames = getSrsTypeNames(unit)
+export function getVisibleSrsSquadrons(unit: Unit, properties: NamedValue[] = unit.properties): ShortRangeSquadron[] {
+    const srsTypeNames = getSrsTypeNames(unit, properties)
     const normalizedTypes = new Set(srsTypeNames.map(normalizeSrsTypeName))
 
     return unit.short_range_squadrons?.filter((squadron) => (

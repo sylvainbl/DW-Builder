@@ -54,11 +54,15 @@ export interface OptionUpgrade {
     max: number | null
     tag: string
     display_name?: string
+    exclusive_group?: string
     restrictions?: string[]
+    adds_tags?: string[]
+    removes_tags?: string[]
     adds_properties?: NamedValue[]
     adds_systems?: NamedValue[]
     adds_qualities?: NamedValue[]
     removes_weapons?: string[]
+    removes_weapon_slots?: string[]
     choices?: unknown[]
 }
 
@@ -175,6 +179,10 @@ export interface ArmyUnit {
     models: ArmyModel[]
     totalPoints: number
     attachedUnits?: ArmyUnit[]
+    generatedByOption?: {
+        parentInstanceId: string
+        optionTag: string
+    }
 }
 
 export interface ArmyBattlefleet {
