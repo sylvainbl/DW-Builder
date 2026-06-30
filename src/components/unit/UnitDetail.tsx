@@ -8,6 +8,7 @@ import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from '../../utils/optionRuleEffects'
+import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
@@ -204,14 +205,7 @@ export default function UnitDetail() {
     const canAddModel = Boolean(selectedEntry && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && selectedEntry.models.length > minModels)
     const hasOptions = unit.options_and_upgrades.length > 0
-    const srsProperty = displayedProperties.find((property) => property.name === 'SRS')
-    const srsTypeNames = srsProperty?.detail
-        ?.split(/[,/]/)
-        .map((name) => name.trim())
-        .filter(Boolean) ?? []
-    const visibleSquadrons = unit.short_range_squadrons?.filter((squadron) => (
-        srsTypeNames.length === 0 || srsTypeNames.includes(squadron.name)
-    )) ?? []
+    const visibleSquadrons = getVisibleSrsSquadrons(unit)
     const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry
         ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)

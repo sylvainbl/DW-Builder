@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
 import { isMercenaryInForce } from '../../utils/battlefleets'
@@ -42,6 +42,10 @@ function UnitCardList() {
     const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
     const [selectedDomains, setSelectedDomains] = useState<string[]>([])
     const [selectedKeywords, setSelectedKeywords] = useState<string[]>([])
+
+    useEffect(() => {
+        setSelectedKeywords([])
+    }, [currentList?.id])
 
     const factionId = currentList?.faction_id ?? selectedFactionId
     const mercenaryFactionIds = useMemo(() => {

@@ -3,6 +3,7 @@ import { getBattlefleetForceType, isMercenaryInForce } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { formatOptionName, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints } from './pointsCalc'
+import { getVisibleSrsSquadrons } from './srs'
 
 type RuleCategory = 'properties' | 'systems' | 'qualities'
 
@@ -238,17 +239,11 @@ function renderOptionRows(unit: Unit, config: UnitConfig): string {
 
 function visibleSrsSquadrons(unit: Unit) {
     const srsProperty = unit.properties.find((property) => property.name === 'SRS')
-    const srsTypeNames = srsProperty?.detail
-        ?.split(/[,/]/)
-        .map((name) => name.trim())
-        .filter(Boolean) ?? []
     const hasCarrierSrs = unit.properties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier')
 
     if (!hasCarrierSrs || !srsProperty) return []
 
-    return unit.short_range_squadrons?.filter((squadron) => (
-        srsTypeNames.length === 0 || srsTypeNames.includes(squadron.name)
-    )) ?? []
+    return getVisibleSrsSquadrons(unit)
 }
 
 function renderSrsTable(unit: Unit): string {

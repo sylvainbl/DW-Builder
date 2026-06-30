@@ -1,6 +1,7 @@
 import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
+import { getVisibleSrsSquadrons } from './srs'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
 
@@ -34,16 +35,7 @@ function getDisplayedWeapon(unit: Unit, weapon: Weapon, weaponIndex: number, con
 }
 
 function addSrsProperties(ruleNames: Record<GlossaryCategory, Set<string>>, unit: Unit) {
-    const srsProperty = unit.properties.find((property) => property.name === 'SRS')
-    const srsTypeNames = srsProperty?.detail
-        ?.split(/[,/]/)
-        .map((name) => name.trim())
-        .filter(Boolean) ?? []
-    const visibleSquadrons = unit.short_range_squadrons?.filter((squadron) => (
-        srsTypeNames.length === 0 || srsTypeNames.includes(squadron.name)
-    )) ?? []
-
-    for (const squadron of visibleSquadrons) {
+    for (const squadron of getVisibleSrsSquadrons(unit)) {
         addNamedValues(ruleNames.properties, squadron.properties)
     }
 }
