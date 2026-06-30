@@ -1,9 +1,10 @@
-import { AlertTriangle, Download, Minus, Plus, X } from 'lucide-react'
+import { AlertTriangle, Download, Minus, Plus, Printer, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
 import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { downloadList } from '../../utils/localStorage'
+import { previewPrintableList } from '../../utils/printList'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -323,6 +324,7 @@ export default function ActiveListPanel() {
     const currentList = useAppStore((state) => state.currentList)
     const factions = useAppStore((state) => state.factions)
     const units = useAppStore((state) => state.units)
+    const glossary = useAppStore((state) => state.glossary)
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const closeList = useAppStore((state) => state.closeList)
     const renameList = useAppStore((state) => state.renameList)
@@ -458,6 +460,14 @@ export default function ActiveListPanel() {
                         className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                     >
                         <Download size={14} />
+                    </button>
+                    <button
+                        type="button"
+                        title="Preview printable PDF"
+                        onClick={() => previewPrintableList(currentList, units, glossary, battlefleetDefinitions)}
+                        className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                    >
+                        <Printer size={14} />
                     </button>
                     <button
                         type="button"
