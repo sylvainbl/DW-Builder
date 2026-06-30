@@ -1,4 +1,4 @@
-import { AlertTriangle, BookOpenText, Download, Minus, Plus, Printer, X } from 'lucide-react'
+import { AlertTriangle, BookOpenText, ChevronDown, ChevronRight, Download, Minus, Plus, Printer, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
@@ -29,6 +29,8 @@ interface BattlefleetSectionProps {
     battlefleets: ArmyBattlefleet[]
     selectedListInstanceId: string | null
     active: boolean
+    collapsed: boolean
+    onToggleCollapsed: () => void
     onRemoveBattlefleet: () => void
     onSelectBattlefleet: () => void
     onSelectUnit: (instanceId: string) => void
@@ -199,6 +201,8 @@ function BattlefleetSection({
     battlefleets,
     selectedListInstanceId,
     active,
+    collapsed,
+    onToggleCollapsed,
     onRemoveBattlefleet,
     onSelectBattlefleet,
     onSelectUnit,
@@ -217,8 +221,16 @@ function BattlefleetSection({
                 <div className="flex items-start justify-between gap-2">
                     <button
                         type="button"
+                        title={collapsed ? 'Expand Battlefleet' : 'Collapse Battlefleet'}
+                        onClick={onToggleCollapsed}
+                        className={`mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-md border transition ${active ? 'border-[var(--gold)]/50 bg-[var(--gold-light)] text-[var(--navy)]' : 'border-neutral-200 bg-white text-neutral-500 hover:border-neutral-300 hover:text-[var(--navy)]'}`}
+                    >
+                        {collapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                    <button
+                        type="button"
                         onClick={onSelectBattlefleet}
-                        className="min-w-0 text-left"
+                        className="min-w-0 flex-1 text-left"
                     >
                         <div className="truncate text-[13px] font-semibold text-neutral-900">{battlefleet.name}</div>
                         <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
@@ -226,19 +238,23 @@ function BattlefleetSection({
                             {mercenary ? <span>Mercenary</span> : null}
                             {definition?.legendary ? <span>Legendary</span> : null}
                             <span>{entries.length} {entries.length === 1 ? 'unit' : 'units'}</span>
-                            <span>{points} pts</span>
                         </div>
                     </button>
-                    <button
-                        type="button"
-                        title="Remove Battlefleet"
-                        onClick={onRemoveBattlefleet}
-                        className="rounded p-1 text-neutral-400 hover:bg-rose-100 hover:text-rose-600"
-                    >
-                        <X size={13} />
-                    </button>
+                    <div className="flex flex-none items-start gap-1">
+                        <div className="rounded-md border border-[var(--gold)]/60 bg-[var(--gold-light)] px-2 py-1 text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
+                            {points.toLocaleString('fr-FR')} pts
+                        </div>
+                        <button
+                            type="button"
+                            title="Remove Battlefleet"
+                            onClick={onRemoveBattlefleet}
+                            className="rounded p-1 text-neutral-400 hover:bg-rose-100 hover:text-rose-600"
+                        >
+                            <X size={13} />
+                        </button>
+                    </div>
                 </div>
-                {issues.length > 0 ? (
+                {issues.length > 0 && !collapsed ? (
                     <div className="mt-2 space-y-1 text-[11px] text-rose-800">
                         {issues.slice(0, 3).map((issue, index) => (
                             <div key={`${battlefleet.instanceId}-${issue.message}-${index}`} className="flex gap-1.5">
@@ -249,26 +265,33 @@ function BattlefleetSection({
                         {issues.length > 3 ? <div className="pl-5 text-rose-700">+{issues.length - 3} more issues</div> : null}
                     </div>
                 ) : null}
+                {issues.length > 0 && collapsed ? (
+                    <div className="mt-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold text-rose-800">
+                        {issues.length} {issues.length === 1 ? 'issue' : 'issues'}
+                    </div>
+                ) : null}
             </div>
 
-            <div className="space-y-1.5 p-2">
-                {entries.length > 0 ? (
-                    renderUnitRows({
-                        entries,
-                        unitById,
-                        battlefleets,
-                        selectedListInstanceId,
-                        onSelectUnit,
-                        onRemoveUnit,
-                        onMoveUnit,
-                        unitIssuesByInstanceId,
-                    })
-                ) : (
-                    <div className="rounded border border-dashed border-neutral-300 bg-neutral-50 p-2 text-[12px] text-neutral-500">
-                        No units assigned.
-                    </div>
-                )}
-            </div>
+            {!collapsed ? (
+                <div className="space-y-1.5 p-2">
+                    {entries.length > 0 ? (
+                        renderUnitRows({
+                            entries,
+                            unitById,
+                            battlefleets,
+                            selectedListInstanceId,
+                            onSelectUnit,
+                            onRemoveUnit,
+                            onMoveUnit,
+                            unitIssuesByInstanceId,
+                        })
+                    ) : (
+                        <div className="rounded border border-dashed border-neutral-300 bg-neutral-50 p-2 text-[12px] text-neutral-500">
+                            No units assigned.
+                        </div>
+                    )}
+                </div>
+            ) : null}
         </section>
     )
 }
@@ -341,6 +364,7 @@ export default function ActiveListPanel() {
     const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
     const [editingName, setEditingName] = useState(false)
     const [draftName, setDraftName] = useState('')
+    const [collapsedBattlefleetIds, setCollapsedBattlefleetIds] = useState<string[]>([])
 
     const factionName = useMemo(() => {
         if (!currentList) return ''
@@ -427,6 +451,13 @@ export default function ActiveListPanel() {
         renameList(currentList.id, draftName)
         setEditingName(false)
     }
+    const toggleBattlefleetCollapsed = (battlefleetInstanceId: string) => {
+        setCollapsedBattlefleetIds((ids) => (
+            ids.includes(battlefleetInstanceId)
+                ? ids.filter((id) => id !== battlefleetInstanceId)
+                : [...ids, battlefleetInstanceId]
+        ))
+    }
 
     return (
         <div className="border-b border-neutral-200 bg-neutral-100 p-3">
@@ -458,7 +489,9 @@ export default function ActiveListPanel() {
                         </button>
                     )}
                     <div className="mt-1 text-[11px] text-neutral-500">{factionName}</div>
-                    <div className="text-[12px] font-medium text-[var(--navy)]">Total: {totalPoints.toLocaleString('fr-FR')} pts</div>
+                    <div className="mt-2 inline-flex items-center rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                        Total: {totalPoints.toLocaleString('fr-FR')} pts
+                    </div>
                 </div>
                 <div className="flex items-center gap-1">
                     <button
@@ -577,6 +610,8 @@ export default function ActiveListPanel() {
                                 battlefleets={battlefleets}
                                 selectedListInstanceId={selectedListInstanceId}
                                 active={selectedBattlefleetInstanceId === battlefleet.instanceId}
+                                collapsed={collapsedBattlefleetIds.includes(battlefleet.instanceId)}
+                                onToggleCollapsed={() => toggleBattlefleetCollapsed(battlefleet.instanceId)}
                                 onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
                                 onSelectBattlefleet={() => selectBattlefleet(battlefleet.instanceId)}
                                 onSelectUnit={selectListUnit}
