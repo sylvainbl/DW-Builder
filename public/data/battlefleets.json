@@ -2113,5 +2113,317 @@
     "specialRules": [
       "empire-airborne-only"
     ]
+  },
+  {
+    "id": "sultanate-main",
+    "faction_id": "sultanate",
+    "name": "Sultanate Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "sultanate-flagship",
+        "name": "1 Sultanate Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Sultanate",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sultanate-line-patrol",
+        "name": "2-6 Sultanate Line / Patrol",
+        "min": 2,
+        "max": 6,
+        "requirements": [
+          {
+            "all": [
+              "Sultanate"
+            ],
+            "any": [
+              "Line",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sultanate-support",
+        "name": "0-3 Sultanate Support",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Sultanate",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sultanate-scout",
+        "name": "0-2 Sultanate Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Sultanate",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sultanate-logistical",
+        "name": "0-1 Sultanate Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Sultanate",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Iskandar",
+      "Temir"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "sultanate_abydos_hover_stronghold"
+        ],
+        "classNames": [
+          "Mesektet"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "sultanate_khartoum_heavy_battleskimmer"
+        ],
+        "classNames": [
+          "Mandjet"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "sultanate_suleiman_fleet_carrier"
+        ],
+        "classNames": [
+          "Mihrimah"
+        ]
+      }
+    ],
+    "specialRules": [
+      "airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "sultanate-allshard-order-aethernautic",
+    "faction_id": "sultanate",
+    "name": "Allshard Order Aethernautic Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "order-retaj",
+        "name": "1 Retaj Portalship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "unitIds": [
+              "sultanate_retaj_portalship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "order-line",
+        "name": "1-2 Order Line",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Order",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "order-support",
+        "name": "0-2 Order Support",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Order",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "order-scout",
+        "name": "0-2 Order Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Order",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Carolus",
+      "Lesath"
+    ]
+  },
+  {
+    "id": "sultanate-balik-kartali",
+    "faction_id": "sultanate",
+    "name": "Balik Kartali Air Fleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "turkish-airborne-flagship",
+        "name": "1 Turkish Airborne Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Turkish",
+              "Airborne",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turkish-airborne-line",
+        "name": "1-2 Turkish Airborne Line",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Turkish",
+              "Airborne",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turkish-airborne-patrol",
+        "name": "0-3 Turkish Airborne Patrol",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Turkish",
+              "Airborne",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turkish-airborne-support",
+        "name": "0-1 Turkish Airborne Support",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Turkish",
+              "Airborne",
+              "Support"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Awsbiri",
+      "Nasr"
+    ]
+  },
+  {
+    "id": "sultanate-crimson-league-privateers",
+    "faction_id": "sultanate",
+    "name": "Crimson League Privateers",
+    "type": "main",
+    "mercenary": true,
+    "elements": [
+      {
+        "id": "crimson-lyceum",
+        "name": "1 Lyceum Aerial Dreadnought",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "unitIds": [
+              "sultanate_lyceum_aerial_dreadnought"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "crimson-turkish-patrol",
+        "name": "2-5 Turkish Patrol",
+        "min": 2,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Turkish",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "crimson-enlightened-automata",
+        "name": "0-1 Enlightened Underwater Automata",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "enlightened",
+              "Underwater",
+              "Automata"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Alsaqr",
+      "Hirka",
+      "Nasr"
+    ],
+    "specialRules": [
+      "sultanate-crimson-flagship-no-doctrine"
+    ]
   }
 ]

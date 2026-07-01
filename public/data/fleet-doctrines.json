@@ -358,5 +358,70 @@
       ],
       "text": "This Doctrine can only be purchased for a Chinese Surface Flagship unit. When this Admiral Activates a Chinese Surface unit with the Pivot property they may attempt to enact a Special Valour Effect. If successful, each model in the unit gains Boosted Propulsion (X) until the end of their Movement Step, where X is equal to that model's Mass."
     }
+  ],
+  "sultanate": [
+    {
+      "name": "Strategic Reserves",
+      "point_cost": 10,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
+    },
+    {
+      "name": "Fly Sabiha, Fly!",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "During the Launch Phase, this Admiral can assign any number of Sabiha SRS token stacks to a Portal marker as if it were a Target. At the start of their Activation Phase, when nominating an SRS Stack assigned to a Portal marker, choose an SRS Mission as though it were the Launch Phase and move the Stack to a valid target within 10 inches of any Portal marker, then immediately resolve the mission."
+    },
+    {
+      "name": "Forward Patrol",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once."
+    },
+    {
+      "name": "To the Sultan I Commend Myself",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model’s Crew rating for this test only. In a Group Crew Check, this Modifier applies to all models in the unit."
+    },
+    {
+      "name": "Chain of Command",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10 inches of a friendly Flagship. If the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
+    },
+    {
+      "name": "Devil’s Own Luck",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per game, when the opposing Admiral attempts to enact a Valor Effect, this Admiral can use this Doctrine instead of attempting to Deny the Effect. The opposing Admiral reveals their Victory & Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
+    },
+    {
+      "name": "Control of the Cosmos",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Order"
+      ],
+      "text": "This Doctrine can only be purchased for an Order Flagship unit. Once per Round, at the start of their Activation Phase this Force’s Admiral can discard a Victory & Valour Card from their hand instead of resolving an SRS Mission. If they do so, they immediately Collapse a Portal marker. Once resolved, they can immediately Weave a Portal anywhere in the Play Area that is not within Proximity of a model, Terrain Feature, or another Marker, or overlapping an Airborne or Underwater model. This can only be done if there is at least one friendly Portal Manipulator model in the Play Area."
+    },
+    {
+      "name": "The Thirteenth",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Egyptian"
+      ],
+      "text": "This Doctrine can only be purchased for an Egyptian Flagship unit. Once per game, in the Clean Up step of the End Phase, this Admiral can discard a Victory & Valour Card from their hand. If they do so, they can immediately remove all levels of Disorder from any Egyptian models in the Play Area."
+    },
+    {
+      "name": "The Sultan’s Hammer",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Sultanate"
+      ],
+      "text": "This Doctrine can only be purchased for a Sultanate Flagship unit. Once per Round, this Admiral can discard a Victory & Valour Card from their hand when they declare an Attack action with a Flagship unit. The Action Pool for this action gains Bonus Dice equal to the Value of the discarded card."
+    }
   ]
 }

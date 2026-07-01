@@ -144,5 +144,39 @@
       "name": "Shroud Generator",
       "point_cost": 10
     }
+  ],
+  "sultanate": [
+    {
+      "name": "Atomic Generator",
+      "point_cost": 5
+    },
+    {
+      "name": "Fury Generator",
+      "point_cost": 20
+    },
+    {
+      "name": "Heavy Shield Generator",
+      "point_cost": 15
+    },
+    {
+      "name": "Magnetic Generator",
+      "point_cost": 15
+    },
+    {
+      "name": "Mirage Generator",
+      "point_cost": 15
+    },
+    {
+      "name": "Portal Generator",
+      "point_cost": 20
+    },
+    {
+      "name": "Repulsion Field Generator",
+      "point_cost": 10
+    },
+    {
+      "name": "Shroud Generator",
+      "point_cost": 10
+    }
   ]
 }

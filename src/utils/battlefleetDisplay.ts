@@ -224,6 +224,38 @@ const displayInfo: Record<string, BattlefleetDisplayInfo> = {
             text: 'When making an Attack or Boarding action, a **Scions of Jutland** unit in this Force may re-roll Blanks or Counters in the Action Roll, up to the number of Negative Effect tokens on the Initial Target.',
         },
     },
+    'sultanate-main': {
+        specialRuleText: [
+            'This Battlefleet can include at most one **Airborne** unit and/or one **Underwater** unit. Its **Flagship** and **Attachments** do not count toward this limit.',
+        ],
+        battlefleetBonus: {
+            name: 'Superior Weaponry',
+            text: 'Once per Round, when declaring Contributing Weapons for an Attack action made by a **Sultanate** unit in this Force, this Admiral can declare Superior Weaponry. For the duration of this Action, all Contributing weapons with Piercing (X), Precise (X), or Structural Failure (X) increase all Firepower values by the highest X value among those Qualities. Firepower values listed as "-" are unaffected.',
+        },
+    },
+    'sultanate-allshard-order-aethernautic': {
+        battlefleetBonus: {
+            name: 'Aethernauts',
+            text: 'If an **Order** unit from this Force Departs through a Portal, its Admiral can attempt to enact a Special Valour Effect at the end of the Movement Step. If denied, the unit returns to Reserve as normal. If successful, the unit is immediately Deployed through another Portal in the Play Area as though it had just arrived from Reserve.',
+        },
+    },
+    'sultanate-balik-kartali': {
+        battlefleetBonus: {
+            name: 'Serpens Caput',
+            text: 'Once per Round, when declaring Contributing Weapons for an Attack action made by an **Airborne Patrol** unit in this Force where the Initial Target is in the Fore arc of all Participating models, this Admiral can reveal and discard a Victory & Valour Card. If they do, add Bonus Dice to the Action Pool equal to the card Value.',
+        },
+    },
+    'sultanate-crimson-league-privateers': {
+        specialRuleText: [
+            'A Fleet Doctrine cannot be purchased for this Battlefleet’s **Flagship**.',
+            'All units in this Battlefleet gain the **Crimson League** trait.',
+            'This is a **Mercenary Battlefleet** and can be fielded as a Specialist Battlefleet in a Force created using a different ORBAT. Its units must still be chosen from the Sultanate ORBAT, except for the optional Enlightened Automata unit.',
+        ],
+        battlefleetBonus: {
+            name: 'Peer in Residence',
+            text: 'Whenever this Battlefleet’s Admiral Activates a **Crimson League** unit in their Force, they can remove a single System Failure Critical Damage Effect from one Battle-Ready model in that unit.',
+        },
+    },
 }
 
 export function getBattlefleetDisplayInfo(definitionId: string): BattlefleetDisplayInfo {

@@ -66,6 +66,7 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     const fixedChoices: Generator[] = []
     const magmaCastOption = weaponGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
     const freeGeneratorOption = weaponGeneratorOptions.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
+        ?? weaponGeneratorOptions.find((option) => option.tag === 'FREE_GENERATOR')
 
     if (optionTags.has('TRIDENT_GENERATOR') && slot === 'H') {
         fixedChoices.push({ name: 'Trident Generator', point_cost: 0 })
@@ -104,10 +105,10 @@ function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], e
 
     const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
     const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR')
+    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR')
         ? factionGenerators.map((generator) => ({
             ...generator,
-            point_cost: optionTags.has('EMPIRE_FREE_GENERATOR') ? 0 : generator.point_cost,
+            point_cost: optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') ? 0 : generator.point_cost,
         }))
         : []
 
@@ -795,6 +796,7 @@ export default function UnitDetail() {
                                         || option.tag === 'FREYA_ARRAY'
                                         || option.tag === 'MAGMA_CAST_GENERATOR'
                                         || option.tag === 'EMPIRE_FREE_GENERATOR'
+                                        || option.tag === 'FREE_GENERATOR'
                                         || option.generator_replaces_weapon === false
 
                                     return (

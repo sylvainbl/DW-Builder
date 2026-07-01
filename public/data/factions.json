@@ -21,11 +21,11 @@
     "accentColor": "#8edecb"
   },
   {
-    "id": "Sultanat",
-    "name": "Sultanat",
+    "id": "sultanate",
+    "name": "Sultanate",
     "description": "",
-    "color": "#1f3b62",
-    "accentColor": "#9fb8dc"
+    "color": "#0d4f3b",
+    "accentColor": "#d6b36a"
   },
   {
     "id": "crown",

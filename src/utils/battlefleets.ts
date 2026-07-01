@@ -625,7 +625,7 @@ function validateSpecialRules(
         if (rule === 'east-india-palashi-line') {
             issues.push(...validateEastIndiaPrivateersSpecial(battlefleet, entries, units))
         }
-        if (rule === 'scions-flagship-no-doctrine') {
+        if (rule === 'scions-flagship-no-doctrine' || rule === 'sultanate-crimson-flagship-no-doctrine') {
             issues.push(...validateFlagshipNoDoctrine(battlefleet, entries, units))
         }
         if (rule === 'empire-main-airborne-underwater-limit') {
