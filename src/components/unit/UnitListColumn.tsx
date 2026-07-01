@@ -2,7 +2,7 @@ import { AlertTriangle, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
-import { isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
+import { canUnitJoinBattlefleetDefinition, isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { getRoleSortRank } from '../../utils/unitRoles'
 import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
@@ -54,6 +54,14 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
         ]
     }, [currentList?.battlefleets, definitionById])
     const selectedDestinationLabel = destinationOptions.find((option) => option.value === (targetBattlefleetInstanceId ?? ''))?.label ?? addTargetLabel ?? 'Unassigned units'
+    const selectedBattlefleetDefinition = useMemo(() => {
+        if (!currentList || !targetBattlefleetInstanceId) return null
+        const battlefleet = currentList.battlefleets?.find((item) => item.instanceId === targetBattlefleetInstanceId)
+        return battlefleet ? definitionById.get(battlefleet.definitionId) ?? null : null
+    }, [currentList, definitionById, targetBattlefleetInstanceId])
+    const selectedMercenaryFactionId = selectedBattlefleetDefinition && isMercenaryInForce(selectedBattlefleetDefinition, currentList?.faction_id)
+        ? selectedBattlefleetDefinition.faction_id
+        : null
     const selectedBattlefleetIssues = useMemo(
         () => currentList && targetBattlefleetInstanceId
             ? validateBattlefleetOrganisation(currentList, units, battlefleetDefinitions)
@@ -75,22 +83,32 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
         }
         return ids
     }, [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id])
-    const effectiveSourceMode = mercenaryFactionIds.size === 0 ? 'force' : sourceMode
+    const effectiveSourceMode = selectedMercenaryFactionId ? 'mercenary' : mercenaryFactionIds.size === 0 ? 'force' : sourceMode
     const visibleFactionIds = useMemo(() => {
         const ids = new Set<string>()
+        if (selectedMercenaryFactionId) {
+            ids.add(selectedMercenaryFactionId)
+            return ids
+        }
         if (effectiveSourceMode !== 'mercenary' && factionId) ids.add(factionId)
         if (effectiveSourceMode !== 'force') {
             mercenaryFactionIds.forEach((id) => ids.add(id))
         }
         return ids
-    }, [effectiveSourceMode, factionId, mercenaryFactionIds])
+    }, [effectiveSourceMode, factionId, mercenaryFactionIds, selectedMercenaryFactionId])
     const filterSourceUnits = useMemo(
         () => units.filter((unit) => visibleFactionIds.size === 0 || visibleFactionIds.has(unit.faction_id)),
         [units, visibleFactionIds],
     )
+    const eligibleSourceUnits = useMemo(
+        () => selectedBattlefleetDefinition
+            ? filterSourceUnits.filter((unit) => canUnitJoinBattlefleetDefinition(selectedBattlefleetDefinition, unit))
+            : filterSourceUnits,
+        [filterSourceUnits, selectedBattlefleetDefinition],
+    )
     const filteredUnits = useMemo(() => {
         const query = searchQuery.trim().toLowerCase()
-        const filtered = filterSourceUnits.filter((unit) => {
+        const filtered = eligibleSourceUnits.filter((unit) => {
             if (selectedDomains.length > 0 && !selectedDomains.some((tag) => unit.tags.includes(tag))) return false
             if (selectedKeywords.length > 0 && !selectedKeywords.some((tag) => unit.tags.includes(tag))) return false
 
@@ -111,11 +129,14 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
             }
             return a.name.localeCompare(b.name)
         })
-    }, [filterSourceUnits, searchQuery, selectedDomains, selectedKeywords, selectedRoles, sortMode])
+    }, [eligibleSourceUnits, searchQuery, selectedDomains, selectedKeywords, selectedRoles, sortMode])
 
     const factionById = useMemo(() => new Map(factions.map((faction) => [faction.id, faction])), [factions])
     const sourceOptions = useMemo(() => {
         const forceFactionName = factionById.get(factionId ?? '')?.name ?? 'Current faction'
+        if (selectedMercenaryFactionId) {
+            return [{ value: 'mercenary' as const, label: factionById.get(selectedMercenaryFactionId)?.name ?? selectedMercenaryFactionId }]
+        }
         const mercenaryNames = Array.from(mercenaryFactionIds)
             .map((id) => factionById.get(id)?.name ?? id)
             .join(', ')
@@ -127,7 +148,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
             { value: 'force' as const, label: forceFactionName },
             { value: 'mercenary' as const, label: mercenaryNames },
         ]
-    }, [currentList, factionById, factionId, mercenaryFactionIds])
+    }, [currentList, factionById, factionId, mercenaryFactionIds, selectedMercenaryFactionId])
     const toggleDomain = (tag: string) => {
         setSelectedDomains((selected) => (
             selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag]
@@ -192,7 +213,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
                 sortMode={sortMode}
                 onSortModeChange={setSortMode}
                 visibleCount={filteredUnits.length}
-                filterUnits={filterSourceUnits}
+                filterUnits={eligibleSourceUnits}
                 sourceMode={effectiveSourceMode}
                 sourceOptions={sourceOptions}
                 onSourceModeChange={setSourceMode}

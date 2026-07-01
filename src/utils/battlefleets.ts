@@ -30,14 +30,18 @@ function hasTrait(unit: Unit, trait: string, entry?: ArmyUnit): boolean {
     return getUnitTraits(unit, entry).has(normalizeTrait(trait))
 }
 
-function matchesRequirement(entry: ArmyUnit, unit: Unit, requirement: BattlefleetRequirement): boolean {
-    if (requirement.unitIds?.includes(entry.unitId)) return true
-
+function unitMatchesRequirement(unit: Unit, requirement: BattlefleetRequirement, entry?: ArmyUnit): boolean {
+    if (requirement.unitIds?.includes(entry?.unitId ?? unit.id)) return true
+    if (!requirement.all?.length && !requirement.any?.length) return false
     const traits = getUnitTraits(unit, entry)
     const hasAll = (requirement.all ?? []).every((trait) => traits.has(normalizeTrait(trait)))
     const hasAny = !requirement.any || requirement.any.some((trait) => traits.has(normalizeTrait(trait)))
 
     return hasAll && hasAny
+}
+
+function matchesRequirement(entry: ArmyUnit, unit: Unit, requirement: BattlefleetRequirement): boolean {
+    return unitMatchesRequirement(unit, requirement, entry)
 }
 
 function matchesElement(entry: ArmyUnit, unit: Unit, element: BattlefleetElement): boolean {
@@ -46,6 +50,27 @@ function matchesElement(entry: ArmyUnit, unit: Unit, element: BattlefleetElement
 
 export function getMatchingBattlefleetElement(definition: BattlefleetDefinition, entry: ArmyUnit, unit: Unit): BattlefleetElement | null {
     return definition.elements.find((element) => matchesElement(entry, unit, element)) ?? null
+}
+
+function unitMatchesBattlefleetElement(definition: BattlefleetDefinition, unit: Unit): boolean {
+    return definition.elements.some((element) => (
+        element.requirements.some((requirement) => unitMatchesRequirement(unit, requirement))
+    ))
+}
+
+function passesCategoricalSpecialRules(definition: BattlefleetDefinition, unit: Unit): boolean {
+    const rules = definition.specialRules ?? []
+    if (rules.includes('empire-airborne-only') && (!hasTrait(unit, 'Airborne') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Underwater'))) {
+        return false
+    }
+    if (rules.includes('empire-underwater-only') && (!hasTrait(unit, 'Underwater') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Airborne'))) {
+        return false
+    }
+    return true
+}
+
+export function canUnitJoinBattlefleetDefinition(definition: BattlefleetDefinition, unit: Unit): boolean {
+    return unitMatchesBattlefleetElement(definition, unit) && passesCategoricalSpecialRules(definition, unit)
 }
 
 function flattenUnits(entries: ArmyUnit[]): ArmyUnit[] {
