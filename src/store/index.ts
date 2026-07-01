@@ -4,6 +4,7 @@ import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
 import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/battlefleets'
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
 import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
+import { getSelectedTags } from '../utils/optionRuleEffects'
 import { uuid } from '../utils/uuid'
 
 const emptyUnitConfig: UnitConfig = {
@@ -653,7 +654,10 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const parent = findArmyUnit(state.currentList.units, parentInstanceId)
         if (!parent) return
         const parentUnit = state.units.find((item) => item.id === parent.unitId)
-        if (!parentUnit || !canAttachToParent(unit, parentUnit)) return
+        const parentModelConfig = parent.models[0]?.config ?? parent.config
+        const parentTags = parentUnit ? getSelectedTags(parentUnit, parentModelConfig, parent.config) : []
+        if (!parentUnit || !canAttachToParent(unit, parentUnit, { parentTags })) return
+        if ((parent.attachedUnits ?? []).some((attachment) => !attachment.generatedByOption)) return
         const usedModels = countAttachedModels(parent.attachedUnits ?? [], unitId)
         const remainingModels = getAttachmentModelLimitForUnit(unit) - usedModels
         if (remainingModels < getMinimumModels(unit)) return

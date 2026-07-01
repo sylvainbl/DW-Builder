@@ -2813,8 +2813,7 @@
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Sc",
-        "inavian"
+        "Scandinavian"
       ],
       "max_models": 1
     }
@@ -3720,8 +3719,7 @@
     "max": 4,
     "attachment": {
       "parent_traits": [
-        "Sc",
-        "inavian"
+        "Scandinavian"
       ],
       "max_models": 2
     }
@@ -9056,8 +9054,7 @@
     "max": 4,
     "attachment": {
       "parent_traits": [
-        "Sc",
-        "inavain"
+        "Scandinavian"
       ],
       "max_models": 2
     }

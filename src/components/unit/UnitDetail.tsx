@@ -258,22 +258,28 @@ export default function UnitDetail() {
         }),
     ]
     const canManageAttachments = Boolean(selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption)
+    const hasNormalAttachment = Boolean(selectedEntry?.attachedUnits?.some((attachment) => !attachment.generatedByOption))
     const attachmentChoices = canManageAttachments && selectedEntry
         ? units
-            .filter((candidate) => canAttachToParent(candidate, unit))
+            .filter((candidate) => {
+                const isAttached = (selectedEntry.attachedUnits ?? []).some((attachment) => attachment.unitId === candidate.id)
+                return isAttached || canAttachToParent(candidate, unit, { parentTags: displayedTags })
+            })
             .map((candidate) => {
                 const attachedEntries = (selectedEntry.attachedUnits ?? []).filter((attachment) => attachment.unitId === candidate.id)
                 const removableEntries = attachedEntries.filter((attachment) => !attachment.generatedByOption)
                 const usedModels = attachedEntries
                     .reduce((sum, attachment) => sum + attachment.models.length, 0)
                 const remainingModels = getAttachmentModelLimitForUnit(candidate) - usedModels
+                const eligible = canAttachToParent(candidate, unit, { parentTags: displayedTags })
                 return {
                     unit: candidate,
                     removableEntry: removableEntries.at(-1) ?? null,
                     keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
                     usedModels,
                     remainingModels,
-                    canAdd: remainingModels >= getMinimumModelsForUnit(candidate),
+                    eligible,
+                    canAdd: eligible && !hasNormalAttachment && remainingModels >= getMinimumModelsForUnit(candidate),
                 }
             })
             .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
@@ -434,7 +440,7 @@ export default function UnitDetail() {
                                     </div>
                                     {attachmentChoices.length > 0 ? (
                                         <div className="mt-2 grid gap-1.5">
-                                            {attachmentChoices.map(({ unit: attachment, removableEntry, keyword, usedModels, remainingModels, canAdd }) => {
+                                            {attachmentChoices.map(({ unit: attachment, removableEntry, keyword, usedModels, remainingModels, eligible, canAdd }) => {
                                                 const isSelected = usedModels > 0
                                                 return (
                                                     <div
@@ -453,7 +459,7 @@ export default function UnitDetail() {
                                                                 ) : null}
                                                             </span>
                                                             <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
-                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {remainingModels} available
+                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {!eligible ? 'position mismatch' : hasNormalAttachment && !isSelected ? 'attachment limit reached' : `${remainingModels} available`}
                                                             </span>
                                                         </span>
                                                         <span className="flex items-center gap-1">
