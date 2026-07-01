@@ -57,6 +57,8 @@ function findUnit(units: Unit[], entry: ArmyUnit): Unit | null {
 }
 
 const battlefleetRoleOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
+const EMPIRE_TIANLONG_UNIT_ID = 'empire_tianlong_draconic_colossus'
+const EMPIRE_DRAGONS_WRATH_RULE = 'empire-tianlong-flagship-no-doctrine'
 
 function battlefleetRoleRank(unit: Unit | null): number {
     const index = unit ? battlefleetRoleOrder.indexOf(unit.role) : -1
@@ -186,12 +188,16 @@ function validateDuplicateClasses(
     }
 
     for (const [className, { label, count }] of classCounts) {
-        const limit = mainstayClasses.has(className) ? 2 : 1
+        const dragonWrathTianlongLimit = definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE) && className === normalizeTrait('Tianlong') ? 2 : null
+        const limit = dragonWrathTianlongLimit ?? (mainstayClasses.has(className) ? 2 : 1)
         if (count > limit) {
+            const limitText = dragonWrathTianlongLimit != null
+                ? 'Dragon\'s Wrath allows up to two Tianlong units'
+                : mainstayClasses.has(className) ? 'mainstay classes are limited to two' : 'duplicate classes are limited to one'
             issues.push({
                 severity: 'error',
                 battlefleetInstanceId: battlefleet.instanceId,
-                message: `${battlefleet.name} has ${count} ${label} units; ${mainstayClasses.has(className) ? 'mainstay classes are limited to two' : 'duplicate classes are limited to one'} per Battlefleet.`,
+                message: `${battlefleet.name} has ${count} ${label} units; ${limitText} per Battlefleet.`,
             })
         }
     }
@@ -200,14 +206,19 @@ function validateDuplicateClasses(
 }
 
 function validateFlagshipLimit(
+    definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
     entries: ArmyUnit[],
     units: Unit[],
 ): BattlefleetIssue[] {
-    const flagshipCount = entries.filter((entry) => {
+    const rawFlagshipCount = entries.filter((entry) => {
         const unit = findUnit(units, entry)
         return unit ? hasTrait(unit, 'Flagship') : false
     }).length
+    const exemptTianlongCount = definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE)
+        ? Math.min(1, Math.max(0, entries.filter((entry) => entry.unitId === EMPIRE_TIANLONG_UNIT_ID).length - 1))
+        : 0
+    const flagshipCount = rawFlagshipCount - exemptTianlongCount
 
     if (flagshipCount <= 1) return []
 
@@ -519,7 +530,7 @@ function validateEmpireTianlongNoDoctrine(
     entries: ArmyUnit[],
 ): BattlefleetIssue[] {
     return entries.flatMap((entry) => (
-        entry.unitId === 'empire_tianlong_draconic_colossus' && entry.config.fleetDoctrineSelection
+        entry.unitId === EMPIRE_TIANLONG_UNIT_ID && entry.config.fleetDoctrineSelection
             ? [{
                 severity: 'error' as const,
                 battlefleetInstanceId: battlefleet.instanceId,
@@ -620,7 +631,7 @@ function validateBattlefleet(
         })
     }
 
-    issues.push(...validateFlagshipLimit(battlefleet, entries, units))
+    issues.push(...validateFlagshipLimit(definition, battlefleet, entries, units))
     issues.push(...validateDuplicateClasses(definition, battlefleet, entries, units))
     issues.push(...validateSpecialRules(definition, battlefleet, entries, units))
 
