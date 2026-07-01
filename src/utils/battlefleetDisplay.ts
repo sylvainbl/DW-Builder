@@ -166,7 +166,7 @@ const displayInfo: Record<string, BattlefleetDisplayInfo> = {
     'empire-kagutsuchi-volcanic': {
         specialRuleText: [
             'This Battlefleet can include at most two **Airborne** units and at most two **Underwater** units. Its **Flagship** and **Attachments** do not count toward these limits.',
-            'During Force Selection, models in this Battlefleet add Magma Cast Generator to their Generator options at +5 points. If a model already has a Magma Cast Generator option, its cost is unchanged.',
+            'During Force Selection, models in this Battlefleet add Magma Cast Generator to their Generator options at +45 points. If a model already has a Magma Cast Generator option, its cost is unchanged. Its Flagship must have a Magma Cast Generator or Magma Tower Generator.',
         ],
         battlefleetBonus: {
             name: 'Monument of Fire',

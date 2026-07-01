@@ -9,7 +9,7 @@ import type {
     BattlefleetRequirement,
     Unit,
 } from '../types/index'
-import { getSelectedTags } from './optionRuleEffects'
+import { getEffectiveGeneratorSelection, getSelectedTags } from './optionRuleEffects'
 
 function normalizeTrait(value: string): string {
     return value.trim().toLowerCase()
@@ -59,6 +59,10 @@ function findUnit(units: Unit[], entry: ArmyUnit): Unit | null {
 const battlefleetRoleOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
 const EMPIRE_TIANLONG_UNIT_ID = 'empire_tianlong_draconic_colossus'
 const EMPIRE_DRAGONS_WRATH_RULE = 'empire-tianlong-flagship-no-doctrine'
+const EMPIRE_GWISIN_BATTLEFLEET_ID = 'empire-gwisin-silent-strike'
+const EMPIRE_ZHANMADAO_BATTLEFLEET_ID = 'empire-zhanmadao'
+const EMPIRE_KAGUTSUCHI_MAGMA_RULE = 'empire-kagutsuchi-magma-flagship'
+const MAGMA_GENERATOR_NAMES = new Set(['Magma Cast Generator', 'Magma Tower Generator'])
 
 function battlefleetRoleRank(unit: Unit | null): number {
     const index = unit ? battlefleetRoleOrder.indexOf(unit.role) : -1
@@ -170,6 +174,7 @@ function validateDuplicateClasses(
     const classCounts = new Map<string, { label: string; count: number }>()
     const exemptBarbudosFlagshipIds = new Set(['alliance_francisco', 'alliance_salvador'])
     let barbudosFlagshipExemptionUsed = false
+    let ukrainianAkulaFlagshipExemptionUsed = false
 
     for (const entry of entries) {
         const unit = findUnit(units, entry)
@@ -180,6 +185,14 @@ function validateDuplicateClasses(
             && !barbudosFlagshipExemptionUsed
         ) {
             barbudosFlagshipExemptionUsed = true
+            continue
+        }
+        if (
+            definition.specialRules?.includes('ukrainian-akula-flagship')
+            && unit.id === 'commonwealth_akula'
+            && !ukrainianAkulaFlagshipExemptionUsed
+        ) {
+            ukrainianAkulaFlagshipExemptionUsed = true
             continue
         }
         const key = normalizeTrait(unit.name)
@@ -541,6 +554,31 @@ function validateEmpireTianlongNoDoctrine(
     ))
 }
 
+function unitHasMagmaGenerator(unit: Unit, entry: ArmyUnit): boolean {
+    if (unit.systems.some((system) => MAGMA_GENERATOR_NAMES.has(system.name))) return true
+    return entry.models.some((model) => {
+        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
+        return Boolean(generatorSelection && MAGMA_GENERATOR_NAMES.has(generatorSelection.generatorName))
+    })
+}
+
+function validateEmpireKagutsuchiMagmaFlagship(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    return entries.flatMap((entry) => {
+        const unit = findUnit(units, entry)
+        if (!unit || !hasTrait(unit, 'Flagship') || unitHasMagmaGenerator(unit, entry)) return []
+        return [{
+            severity: 'error' as const,
+            battlefleetInstanceId: battlefleet.instanceId,
+            unitInstanceId: entry.instanceId,
+            message: `${battlefleet.name} Flagship must have a Magma Cast Generator or Magma Tower Generator.`,
+        }]
+    })
+}
+
 function validateSpecialRules(
     definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
@@ -573,6 +611,9 @@ function validateSpecialRules(
         }
         if (rule === 'empire-kagutsuchi-airborne-underwater-limit') {
             issues.push(...validateEmpireKagutsuchiLimit(battlefleet, entries, units))
+        }
+        if (rule === EMPIRE_KAGUTSUCHI_MAGMA_RULE) {
+            issues.push(...validateEmpireKagutsuchiMagmaFlagship(battlefleet, entries, units))
         }
         if (rule === 'empire-airborne-only') {
             issues.push(...validateEmpireAirborneOnly(battlefleet, entries, units))
@@ -691,10 +732,12 @@ export function validateBattlefleetOrganisation(
         return [{ battlefleet, definition }]
     })
 
+    const hasEmpireZhanmadao = knownBattlefleets.some(({ definition }) => definition.id === EMPIRE_ZHANMADAO_BATTLEFLEET_ID)
     const mainCount = knownBattlefleets.filter(({ definition }) => getBattlefleetForceType(definition, list.faction_id) === 'main').length
     const specialistCount = knownBattlefleets.filter(({ definition }) => (
         getBattlefleetForceType(definition, list.faction_id) === 'specialist'
         && !(definition.specialRules?.includes('mercenary-does-not-count') && !isMercenaryInForce(definition, list.faction_id))
+        && !(definition.id === EMPIRE_GWISIN_BATTLEFLEET_ID && hasEmpireZhanmadao)
     )).length
     const mercenaryCount = knownBattlefleets.filter(({ definition }) => isMercenaryInForce(definition, list.faction_id)).length
     if (knownBattlefleets.length > 0 && mainCount === 0) {

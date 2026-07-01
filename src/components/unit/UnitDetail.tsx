@@ -15,6 +15,9 @@ import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 
+const KAGUTSUCHI_BATTLEFLEET_ID = 'empire-kagutsuchi-volcanic'
+const KAGUTSUCHI_MAGMA_CAST_COST = 45
+
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
 }
@@ -53,7 +56,11 @@ function findParent(entries: ArmyUnit[], instanceId: string | null): ArmyUnit | 
     return null
 }
 
-function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined): Generator[] {
+function unitHasNativeMagmaCastOption(unit: Unit): boolean {
+    return unit.options_and_upgrades.some((option) => option.tag === 'MAGMA_CAST_GENERATOR')
+}
+
+function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined, extraMagmaCastCost: number | null = null): Generator[] {
     const weaponGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon !== false)
     const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
     const fixedChoices: Generator[] = []
@@ -72,6 +79,9 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     if (magmaCastOption && slot === 'H') {
         fixedChoices.push({ name: 'Magma Cast Generator', point_cost: magmaCastOption.cost_per_unit ?? 0 })
     }
+    if (!magmaCastOption && extraMagmaCastCost != null && slot === 'H') {
+        fixedChoices.push({ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost })
+    }
     if (freeGeneratorOption && slot === 'H') {
         return [
             ...factionGenerators.map((generator) => ({ ...generator, point_cost: 0 })),
@@ -86,9 +96,11 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     return optionTags.has('GENERATOR') && slot === 'H' ? factionGenerators : []
 }
 
-function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[]): Generator[] {
+function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], extraMagmaCastCost: number | null = null): Generator[] {
     const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
-    if (systemGeneratorOptions.length === 0) return []
+    if (systemGeneratorOptions.length === 0) {
+        return extraMagmaCastCost != null ? [{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }] : []
+    }
 
     const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
     const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
@@ -101,6 +113,9 @@ function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[]): 
 
     if (magmaCastOption) {
         choices.push({ name: 'Magma Cast Generator', point_cost: magmaCastOption.cost_per_unit ?? 0 })
+    }
+    if (!magmaCastOption && extraMagmaCastCost != null) {
+        choices.push({ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost })
     }
 
     return choices
@@ -200,9 +215,15 @@ export default function UnitDetail() {
     const statEntries = Object.entries(unit.stats)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const availableFleetDoctrines = getAvailableFleetDoctrines(unit, fleetDoctrines)
-    const canTakeGenerator = unitCanTakeGenerator(unit)
+    const selectedEntryBattlefleet = currentList?.battlefleets?.find((battlefleet) => battlefleet.instanceId === selectedEntry?.battlefleetInstanceId) ?? null
+    const isKagutsuchiEntry = selectedEntryBattlefleet?.definitionId === KAGUTSUCHI_BATTLEFLEET_ID
+    const extraMagmaCastCost = isKagutsuchiEntry && !unitHasNativeMagmaCastOption(unit) ? KAGUTSUCHI_MAGMA_CAST_COST : null
+    const hasNativeGeneratorAccess = unitCanTakeGenerator(unit)
+    const usesSystemGeneratorMount = unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
+    const extraSystemMagmaCastCost = extraMagmaCastCost != null && (!hasNativeGeneratorAccess || usesSystemGeneratorMount) ? extraMagmaCastCost : null
+    const canTakeGenerator = hasNativeGeneratorAccess || extraMagmaCastCost != null
     const generatorSelection = getEffectiveGeneratorSelection(unit, activeUnitConfig, selectedEntry?.config)
-    const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators) : []
+    const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost) : []
     const selectedSystemGenerator = generatorSelection?.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX ? generatorSelection : null
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
@@ -587,7 +608,7 @@ export default function UnitDetail() {
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
                                 const isGeneratorSlot = generatorSelection?.weaponIndex === index
-                                const generatorChoices = canTakeGenerator ? getGeneratorChoices(unit, factionGenerators, weapon.slot) : []
+                                const generatorChoices = canTakeGenerator ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost) : []
                                 const canShowGeneratorSection = generatorChoices.length > 0 && (generatorSelection == null || generatorSelection.weaponIndex === index)
                                 const showGeneratorRow = Boolean(weapon.slot) && isGeneratorSlot
 
