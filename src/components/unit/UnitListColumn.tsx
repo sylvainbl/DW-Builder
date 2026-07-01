@@ -3,9 +3,12 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
 import { isMercenaryInForce } from '../../utils/battlefleets'
+import { getRoleSortRank } from '../../utils/unitRoles'
 import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
+
+type SortMode = 'name' | 'points-asc' | 'points-desc' | 'type'
 
 interface UnitCardListProps {
     addTargetBattlefleetInstanceId?: string | null
@@ -25,7 +28,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
-    const [sortMode, setSortMode] = useState<'name' | 'points-asc' | 'points-desc'>('name')
+    const [sortMode, setSortMode] = useState<SortMode>('name')
     const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
     const [selectedDomains, setSelectedDomains] = useState<string[]>([])
     const [selectedKeywordState, setSelectedKeywordState] = useState<{ listId: string | null; values: string[] }>({ listId: null, values: [] })
@@ -75,6 +78,10 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
         return [...filtered].sort((a, b) => {
             if (sortMode === 'points-asc') return (a.point_cost_per_model ?? 0) - (b.point_cost_per_model ?? 0)
             if (sortMode === 'points-desc') return (b.point_cost_per_model ?? 0) - (a.point_cost_per_model ?? 0)
+            if (sortMode === 'type') {
+                const roleRank = getRoleSortRank(a.role) - getRoleSortRank(b.role)
+                if (roleRank !== 0) return roleRank
+            }
             return a.name.localeCompare(b.name)
         })
     }, [filterSourceUnits, searchQuery, selectedDomains, selectedKeywords, selectedRoles, sortMode])

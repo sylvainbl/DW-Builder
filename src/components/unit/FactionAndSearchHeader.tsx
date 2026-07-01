@@ -2,11 +2,12 @@ import { ChevronDown, ChevronRight, Search } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
+import { sortRoleTags } from '../../utils/unitRoles'
 
 interface Props {
     compact?: boolean
-    sortMode: 'name' | 'points-asc' | 'points-desc'
-    onSortModeChange: (mode: 'name' | 'points-asc' | 'points-desc') => void
+    sortMode: 'name' | 'points-asc' | 'points-desc' | 'type'
+    onSortModeChange: (mode: 'name' | 'points-asc' | 'points-desc' | 'type') => void
     visibleCount: number
     filterUnits: Unit[]
     sourceMode: 'force' | 'mercenary' | 'both'
@@ -19,18 +20,6 @@ interface Props {
 }
 
 const domainTags = ['Surface', 'Airborne', 'Underwater']
-const roleTagOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
-
-function sortRoleTags(a: string, b: string): number {
-    const aIndex = roleTagOrder.indexOf(a)
-    const bIndex = roleTagOrder.indexOf(b)
-    if (aIndex !== -1 || bIndex !== -1) {
-        if (aIndex === -1) return 1
-        if (bIndex === -1) return -1
-        return aIndex - bIndex
-    }
-    return a.localeCompare(b)
-}
 
 function FilterChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
     return (
@@ -125,12 +114,13 @@ export default function FactionAndSearchHeader({
                     )}
                     <select
                         value={sortMode}
-                        onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc')}
+                        onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc' | 'type')}
                         className="flex-none rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
                     >
                         <option value="name">Name A-Z</option>
                         <option value="points-asc">Points ↑</option>
                         <option value="points-desc">Points ↓</option>
+                        <option value="type">Type</option>
                     </select>
                 </div>
             </div>
