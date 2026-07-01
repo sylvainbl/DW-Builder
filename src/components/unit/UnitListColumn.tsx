@@ -1,8 +1,8 @@
-import { X } from 'lucide-react'
+import { AlertTriangle, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
-import { isMercenaryInForce } from '../../utils/battlefleets'
+import { isMercenaryInForce, validateBattlefleetOrganisation } from '../../utils/battlefleets'
 import { getRoleSortRank } from '../../utils/unitRoles'
 import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
@@ -29,11 +29,38 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
     const [sortMode, setSortMode] = useState<SortMode>('name')
+    const [targetBattlefleetInstanceId, setTargetBattlefleetInstanceId] = useState<string | null>(addTargetBattlefleetInstanceId ?? null)
     const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
     const [selectedDomains, setSelectedDomains] = useState<string[]>([])
     const [selectedKeywordState, setSelectedKeywordState] = useState<{ listId: string | null; values: string[] }>({ listId: null, values: [] })
 
     const factionId = currentList?.faction_id ?? selectedFactionId
+    const definitionById = useMemo(
+        () => new Map(battlefleetDefinitions.map((definition) => [definition.id, definition])),
+        [battlefleetDefinitions],
+    )
+    const destinationOptions = useMemo(() => {
+        const battlefleets = currentList?.battlefleets ?? []
+        return [
+            { value: '', label: 'Unassigned units' },
+            ...battlefleets.map((battlefleet) => {
+                const definition = definitionById.get(battlefleet.definitionId)
+                const typeName = definition?.name ?? battlefleet.name
+                return {
+                    value: battlefleet.instanceId,
+                    label: battlefleet.customName ? `${typeName} - ${battlefleet.customName}` : typeName,
+                }
+            }),
+        ]
+    }, [currentList?.battlefleets, definitionById])
+    const selectedDestinationLabel = destinationOptions.find((option) => option.value === (targetBattlefleetInstanceId ?? ''))?.label ?? addTargetLabel ?? 'Unassigned units'
+    const selectedBattlefleetIssues = useMemo(
+        () => currentList && targetBattlefleetInstanceId
+            ? validateBattlefleetOrganisation(currentList, units, battlefleetDefinitions)
+                .filter((issue) => issue.battlefleetInstanceId === targetBattlefleetInstanceId)
+            : [],
+        [battlefleetDefinitions, currentList, targetBattlefleetInstanceId, units],
+    )
     const selectedKeywords = useMemo(
         () => (selectedKeywordState.listId === (currentList?.id ?? null) ? selectedKeywordState.values : []),
         [currentList?.id, selectedKeywordState.listId, selectedKeywordState.values],
@@ -122,7 +149,18 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
                 <div className="flex flex-none items-start justify-between gap-3 border-b border-neutral-200 bg-[var(--navy)] px-3 py-2.5 text-white">
                     <div className="min-w-0">
                         <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60">Add unit to</div>
-                        <div className="truncate text-sm font-semibold">{addTargetLabel}</div>
+                        <select
+                            value={targetBattlefleetInstanceId ?? ''}
+                            onChange={(event) => setTargetBattlefleetInstanceId(event.target.value || null)}
+                            className="mt-1 max-w-full rounded-md border border-white/20 bg-white/10 px-2 py-1 text-sm font-semibold text-white outline-none transition hover:bg-white/15 focus:border-[var(--gold)]"
+                            title={selectedDestinationLabel}
+                        >
+                            {destinationOptions.map((option) => (
+                                <option key={option.value || 'unassigned'} value={option.value} className="text-neutral-900">
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     {onClose ? (
                         <button
@@ -133,6 +171,19 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
                         >
                             <X size={15} />
                         </button>
+                    ) : null}
+                </div>
+            ) : null}
+            {selectedBattlefleetIssues.length > 0 ? (
+                <div className="flex-none space-y-1 border-b border-rose-200 bg-rose-50 px-3 py-2 text-[11px] text-rose-800">
+                    {selectedBattlefleetIssues.slice(0, 4).map((issue, index) => (
+                        <div key={`${issue.message}-${index}`} className="flex gap-1.5">
+                            <AlertTriangle className="mt-0.5 flex-none" size={12} />
+                            <span>{issue.message}</span>
+                        </div>
+                    ))}
+                    {selectedBattlefleetIssues.length > 4 ? (
+                        <div className="pl-5 text-rose-700">+{selectedBattlefleetIssues.length - 4} more issues</div>
                     ) : null}
                 </div>
             ) : null}
@@ -170,9 +221,8 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
                                 onSelect={() => {
                                     setSelectedListInstanceId(null)
                                     setSelectedUnitId(unit.id)
-                                    onClose?.()
                                 }}
-                                onAdd={currentList ? () => addUnitToCurrentList(unit.id, addTargetBattlefleetInstanceId) : undefined}
+                                onAdd={currentList ? () => addUnitToCurrentList(unit.id, targetBattlefleetInstanceId) : undefined}
                             />
                         ))}
                     </div>
@@ -193,7 +243,7 @@ function OpenListUnitColumn() {
                 />
             </div>
             {unitPickerTarget ? (
-                <div className="absolute inset-x-0 bottom-0 z-20 flex max-h-[72%] min-h-[22rem] flex-col overflow-hidden border-t border-neutral-300 bg-white shadow-[0_-18px_35px_rgba(15,23,42,0.18)]">
+                <div className="absolute inset-0 z-20 flex flex-col overflow-hidden bg-white shadow-[0_-18px_35px_rgba(15,23,42,0.18)]">
                     <UnitCardList
                         addTargetBattlefleetInstanceId={unitPickerTarget.battlefleetInstanceId}
                         addTargetLabel={unitPickerTarget.label}

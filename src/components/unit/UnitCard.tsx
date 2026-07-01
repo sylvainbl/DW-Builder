@@ -1,4 +1,5 @@
-import { Plus } from 'lucide-react'
+import { Check, Plus } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import type { Faction, Unit } from '../../types/index'
 import TagChip from '../ui/TagChip'
 
@@ -11,6 +12,20 @@ interface Props {
 }
 
 export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Props) {
+    const [added, setAdded] = useState(false)
+    const addedTimer = useRef<number | null>(null)
+
+    useEffect(() => () => {
+        if (addedTimer.current != null) window.clearTimeout(addedTimer.current)
+    }, [])
+
+    const addUnit = () => {
+        onAdd?.()
+        setAdded(true)
+        if (addedTimer.current != null) window.clearTimeout(addedTimer.current)
+        addedTimer.current = window.setTimeout(() => setAdded(false), 650)
+    }
+
     return (
         <div
             className={`w-full rounded-xl border p-3 text-left transition ${active ? 'border-sky-500 bg-sky-50 shadow-sm ring-1 ring-sky-200' : 'border-neutral-200 bg-white hover:border-sky-200 hover:bg-sky-50/40'}`}
@@ -28,11 +43,12 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Pro
                 {onAdd ? (
                     <button
                         type="button"
-                        title="Add to list"
-                        onClick={onAdd}
-                        className="rounded-md px-1.5 py-1 text-[var(--navy)] hover:bg-blue-50"
+                        title={added ? 'Added' : 'Add to list'}
+                        onClick={addUnit}
+                        className={`flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-semibold transition ${added ? 'scale-105 bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200' : 'text-[var(--navy)] hover:bg-blue-50'}`}
                     >
-                        <Plus size={15} />
+                        {added ? <Check size={15} /> : <Plus size={15} />}
+                        {added ? <span>Added</span> : null}
                     </button>
                 ) : null}
             </div>
