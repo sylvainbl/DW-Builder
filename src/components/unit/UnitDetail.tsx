@@ -1,4 +1,4 @@
-import { Pencil, Plus } from 'lucide-react'
+import { Minus, Pencil, Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
@@ -125,6 +125,7 @@ export default function UnitDetail() {
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const selectModel = useAppStore((state) => state.selectModel)
     const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
+    const removeUnitFromList = useAppStore((state) => state.removeUnitFromList)
     const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const renameListUnit = useAppStore((state) => state.renameListUnit)
@@ -255,23 +256,26 @@ export default function UnitDetail() {
             const points = computeOptionPoints(option, qty, Boolean(selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined))) ?? 0
             return [`${formatOptionName(option)} ×${qty}: +${points} pts`]
         }),
-        ...(attachmentPoints > 0 ? [`Attachments: +${attachmentPoints} pts`] : []),
     ]
     const canManageAttachments = Boolean(selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption)
-    const availableAttachments = canManageAttachments && selectedEntry
+    const attachmentChoices = canManageAttachments && selectedEntry
         ? units
             .filter((candidate) => canAttachToParent(candidate, unit))
             .map((candidate) => {
-                const usedModels = (selectedEntry.attachedUnits ?? [])
-                    .filter((attachment) => attachment.unitId === candidate.id)
+                const attachedEntries = (selectedEntry.attachedUnits ?? []).filter((attachment) => attachment.unitId === candidate.id)
+                const removableEntries = attachedEntries.filter((attachment) => !attachment.generatedByOption)
+                const usedModels = attachedEntries
                     .reduce((sum, attachment) => sum + attachment.models.length, 0)
+                const remainingModels = getAttachmentModelLimitForUnit(candidate) - usedModels
                 return {
                     unit: candidate,
+                    removableEntry: removableEntries.at(-1) ?? null,
                     keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
-                    remainingModels: getAttachmentModelLimitForUnit(candidate) - usedModels,
+                    usedModels,
+                    remainingModels,
+                    canAdd: remainingModels >= getMinimumModelsForUnit(candidate),
                 }
             })
-            .filter((candidate) => candidate.remainingModels >= getMinimumModelsForUnit(candidate.unit))
             .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
         : []
     const commitUnitName = () => {
@@ -345,121 +349,150 @@ export default function UnitDetail() {
                 </div>
                 {selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
-                        <div className="flex items-center justify-between gap-2">
-                            <div className="flex min-w-0 items-center gap-2">
-                                <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
-                                {selectedModel ? (
-                                    <button
-                                        type="button"
-                                        title={selectedModel.customName ? 'Rename model' : 'Add model name'}
-                                        onClick={() => {
-                                            setModelDraftName(selectedModel.customName ?? '')
-                                            setEditingModelName(true)
+                        <div className={`grid gap-3 ${canManageAttachments ? 'lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)]' : ''}`}>
+                            <div className="min-w-0">
+                                <div className="flex items-center justify-between gap-2">
+                                    <div className="flex min-w-0 items-center gap-2">
+                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
+                                        {selectedModel ? (
+                                            <button
+                                                type="button"
+                                                title={selectedModel.customName ? 'Rename model' : 'Add model name'}
+                                                onClick={() => {
+                                                    setModelDraftName(selectedModel.customName ?? '')
+                                                    setEditingModelName(true)
+                                                }}
+                                                className="flex h-5 w-5 flex-none items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                                            >
+                                                <Pencil size={11} />
+                                            </button>
+                                        ) : null}
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                        <button
+                                            type="button"
+                                            className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                            onClick={() => removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')}
+                                            disabled={!canRemoveModel || !selectedModelId}
+                                            title="Remove selected model"
+                                        >
+                                            −
+                                        </button>
+                                        <span className="min-w-12 text-center text-[11px] font-medium text-white">
+                                            {selectedEntry.models.length}/{maxModels}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                            onClick={() => addModelToListUnit(selectedEntry.instanceId)}
+                                            disabled={!canAddModel}
+                                            title="Add model"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="mt-2 flex flex-wrap gap-1.5">
+                                    {selectedEntry.models.map((model, index) => {
+                                        const active = selectedModelId === model.modelId
+                                        const modelName = model.customName?.trim() || `Model ${index + 1}`
+                                        return (
+                                            <button
+                                                key={model.modelId}
+                                                type="button"
+                                                className={`rounded-full border px-2.5 py-1 text-[11px] font-medium shadow-sm ${active ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]' : 'border-white/40 bg-white text-[var(--navy)] hover:bg-[var(--gold-light)]'}`}
+                                                onClick={() => selectModel(model.modelId)}
+                                            >
+                                                {modelName}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                                {editingModelName ? (
+                                    <input
+                                        value={modelDraftName}
+                                        autoFocus
+                                        onChange={(event) => setModelDraftName(event.target.value)}
+                                        onBlur={commitModelName}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'Enter') commitModelName()
+                                            if (event.key === 'Escape') setEditingModelName(false)
                                         }}
-                                        className="flex h-5 w-5 flex-none items-center justify-center rounded-full border border-white/25 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
-                                    >
-                                        <Pencil size={11} />
-                                    </button>
+                                        className="mt-2 w-full max-w-xs rounded border border-white/30 bg-white px-2 py-1 text-[11px] font-semibold text-[var(--navy)] outline-none"
+                                    />
                                 ) : null}
                             </div>
-                            <div className="flex items-center gap-1">
-                                <button
-                                    type="button"
-                                    className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                    onClick={() => removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')}
-                                    disabled={!canRemoveModel || !selectedModelId}
-                                    title="Remove selected model"
-                                >
-                                    −
-                                </button>
-                                <span className="min-w-12 text-center text-[11px] font-medium text-white">
-                                    {selectedEntry.models.length}/{maxModels}
-                                </span>
-                                <button
-                                    type="button"
-                                    className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                    onClick={() => addModelToListUnit(selectedEntry.instanceId)}
-                                    disabled={!canAddModel}
-                                    title="Add model"
-                                >
-                                    +
-                                </button>
-                            </div>
+                            {canManageAttachments ? (
+                                <div className="min-w-0 rounded-lg border border-white/15 bg-white/10 p-2">
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Attachments</div>
+                                        {attachmentPoints > 0 ? (
+                                            <span className="rounded-full border border-white/25 bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white">
+                                                +{attachmentPoints}
+                                            </span>
+                                        ) : null}
+                                    </div>
+                                    {attachmentChoices.length > 0 ? (
+                                        <div className="mt-2 grid gap-1.5">
+                                            {attachmentChoices.map(({ unit: attachment, removableEntry, keyword, usedModels, remainingModels, canAdd }) => {
+                                                const isSelected = usedModels > 0
+                                                return (
+                                                    <div
+                                                        key={attachment.id}
+                                                        className={`grid min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-lg border px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm transition ${isSelected ? 'border-[var(--gold)] bg-[var(--gold-light)]' : 'border-white/35 bg-white/90'}`}
+                                                    >
+                                                        <span className="min-w-0">
+                                                            <span className="flex min-w-0 items-center gap-1.5">
+                                                                <span className="truncate text-[12px] font-semibold text-neutral-900">
+                                                                    {attachment.name} ({keyword})
+                                                                </span>
+                                                                {isSelected ? (
+                                                                    <span className="flex-none rounded-full border border-[var(--gold)] bg-white px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--navy)]">
+                                                                        Selected
+                                                                    </span>
+                                                                ) : null}
+                                                            </span>
+                                                            <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
+                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {remainingModels} available
+                                                            </span>
+                                                        </span>
+                                                        <span className="flex items-center gap-1">
+                                                            <button
+                                                                type="button"
+                                                                title={`Remove ${attachment.name}`}
+                                                                onClick={() => {
+                                                                    if (removableEntry) removeUnitFromList(removableEntry.instanceId)
+                                                                }}
+                                                                disabled={!removableEntry}
+                                                                className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-white text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                            >
+                                                                <Minus size={14} />
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                title={`Add ${attachment.name}`}
+                                                                onClick={() => addAttachmentToListUnit(selectedEntry.instanceId, attachment.id)}
+                                                                disabled={!canAdd}
+                                                                className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-[var(--navy)] text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                            >
+                                                                <Plus size={14} />
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <div className="mt-2 rounded-lg border border-dashed border-white/35 bg-white/10 p-2 text-[12px] text-white/70">
+                                            No eligible attachments.
+                                        </div>
+                                    )}
+                                </div>
+                            ) : null}
                         </div>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                            {selectedEntry.models.map((model, index) => {
-                                const active = selectedModelId === model.modelId
-                                const modelName = model.customName?.trim() || `Model ${index + 1}`
-                                return (
-                                    <button
-                                        key={model.modelId}
-                                        type="button"
-                                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium shadow-sm ${active ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]' : 'border-white/40 bg-white text-[var(--navy)] hover:bg-[var(--gold-light)]'}`}
-                                        onClick={() => selectModel(model.modelId)}
-                                    >
-                                        {modelName}
-                                    </button>
-                                )
-                            })}
-                        </div>
-                        {editingModelName ? (
-                            <input
-                                value={modelDraftName}
-                                autoFocus
-                                onChange={(event) => setModelDraftName(event.target.value)}
-                                onBlur={commitModelName}
-                                onKeyDown={(event) => {
-                                    if (event.key === 'Enter') commitModelName()
-                                    if (event.key === 'Escape') setEditingModelName(false)
-                                }}
-                                className="mt-2 w-full max-w-xs rounded border border-white/30 bg-white px-2 py-1 text-[11px] font-semibold text-[var(--navy)] outline-none"
-                            />
-                        ) : null}
                     </div>
                 ) : null}
             </section>
-
-            {canManageAttachments && selectedEntry ? (
-                <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                    <div className="flex items-center justify-between gap-2">
-                        <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Attachments</div>
-                        {attachmentPoints > 0 ? (
-                            <span className="rounded-full border border-white/70 bg-white px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
-                                +{attachmentPoints}
-                            </span>
-                        ) : null}
-                    </div>
-                    {availableAttachments.length > 0 ? (
-                        <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
-                            {availableAttachments.map(({ unit: attachment, keyword, remainingModels }) => (
-                                <button
-                                    key={attachment.id}
-                                    type="button"
-                                    title={`Add ${attachment.name}`}
-                                    onClick={() => addAttachmentToListUnit(selectedEntry.instanceId, attachment.id)}
-                                    className="grid min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm transition hover:border-[var(--gold)] hover:bg-white"
-                                >
-                                    <span className="min-w-0">
-                                        <span className="block truncate text-[12px] font-semibold text-neutral-900">
-                                            {attachment.name} ({keyword})
-                                        </span>
-                                        <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
-                                            {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {remainingModels} {remainingModels === 1 ? 'model' : 'models'} available
-                                        </span>
-                                    </span>
-                                    <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-[var(--navy)] text-white shadow-sm">
-                                        <Plus size={14} />
-                                    </span>
-                                </button>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="mt-2 rounded-lg border border-dashed border-white/70 bg-white/40 p-2 text-[12px] text-[var(--detail-ink)]/70">
-                            No eligible attachments available.
-                        </div>
-                    )}
-                </section>
-            ) : null}
 
             <section className="unit-detail-section unit-detail-stat rounded-xl p-2.5 shadow-sm">
                 <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Stats</div>
