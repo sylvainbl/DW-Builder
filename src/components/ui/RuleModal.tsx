@@ -41,11 +41,11 @@ export function RuleModal({
                 style={{
                     background: 'white',
                     borderRadius: '12px',
-                    padding: '24px',
-                    maxWidth: '480px',
-                    maxHeight: '80vh',
+                    padding: '28px 32px',
+                    maxWidth: '760px',
+                    maxHeight: '84vh',
                     overflowY: 'auto',
-                    width: '90%',
+                    width: 'min(92vw, 760px)',
                     boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
                 }}
             >

@@ -28,7 +28,6 @@ export function RuleWord({
     return (
         <>
             <span
-                title={ruleText}
                 onClick={() => setModalOpen(true)}
                 style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}
             >
