@@ -5964,7 +5964,7 @@
       {
         "name": "Extreme Range Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 5,
