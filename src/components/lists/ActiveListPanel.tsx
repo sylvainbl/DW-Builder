@@ -6,6 +6,7 @@ import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercena
 import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
 import { previewPrintableList } from '../../utils/printList'
+import { computeArmyUnitGuardianPool, computeEntriesGuardianPool, isCrownFaction } from '../../utils/guardianPool'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -14,6 +15,8 @@ interface UnitRowProps {
     nested?: boolean
     battlefleets: ArmyBattlefleet[]
     issues: BattlefleetIssue[]
+    showGuardianPool: boolean
+    guardianPool: number
     onSelect: () => void
     onRemove: () => void
     onBattlefleetChange?: (battlefleetInstanceId: string | null) => void
@@ -30,6 +33,7 @@ interface BattlefleetSectionProps {
     selectedListInstanceId: string | null
     active: boolean
     collapsed: boolean
+    showGuardianPool: boolean
     onToggleCollapsed: () => void
     onRemoveBattlefleet: () => void
     onSelectBattlefleet: () => void
@@ -48,6 +52,7 @@ interface UnitGroupProps {
     unitById: Map<string, Unit>
     battlefleets: ArmyBattlefleet[]
     selectedListInstanceId: string | null
+    showGuardianPool: boolean
     tone?: 'neutral' | 'warning'
     onSelectUnit: (instanceId: string) => void
     onRemoveUnit: (instanceId: string) => void
@@ -55,7 +60,7 @@ interface UnitGroupProps {
     unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
 }
 
-function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
+function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
     const rowClasses = nested
         ? active
             ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
@@ -113,7 +118,14 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, on
                     ) : null}
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className={`whitespace-nowrap text-[11px] font-medium ${active && !nested ? 'text-white' : 'text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
+                    <div className="flex flex-wrap items-center justify-end gap-1">
+                        <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-[var(--gold-light)] text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
+                        {showGuardianPool ? (
+                            <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
+                                GP {guardianPool}
+                            </span>
+                        ) : null}
+                    </div>
                     {!generated ? (
                         <button
                             type="button"
@@ -139,6 +151,8 @@ function renderUnitRows({
     onRemoveUnit,
     onMoveUnit,
     unitIssuesByInstanceId,
+    showGuardianPool,
+    allUnits,
 }: {
     entries: ArmyUnit[]
     unitById: Map<string, Unit>
@@ -148,6 +162,8 @@ function renderUnitRows({
     onRemoveUnit: (instanceId: string) => void
     onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
     unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
+    showGuardianPool: boolean
+    allUnits: Unit[]
 }) {
     return entries.map((entry) => (
         <div key={entry.instanceId} className="space-y-1">
@@ -157,6 +173,8 @@ function renderUnitRows({
                 active={selectedListInstanceId === entry.instanceId}
                 battlefleets={battlefleets}
                 issues={unitIssuesByInstanceId.get(entry.instanceId) ?? []}
+                showGuardianPool={showGuardianPool}
+                guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(entry, allUnits) : 0}
                 onSelect={() => onSelectUnit(entry.instanceId)}
                 onRemove={() => onRemoveUnit(entry.instanceId)}
                 onBattlefleetChange={(battlefleetInstanceId) => onMoveUnit(entry.instanceId, battlefleetInstanceId)}
@@ -170,6 +188,8 @@ function renderUnitRows({
                     nested
                     battlefleets={battlefleets}
                     issues={unitIssuesByInstanceId.get(attachment.instanceId) ?? []}
+                    showGuardianPool={showGuardianPool}
+                    guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(attachment, allUnits) : 0}
                     onSelect={() => onSelectUnit(attachment.instanceId)}
                     onRemove={() => onRemoveUnit(attachment.instanceId)}
                 />
@@ -189,6 +209,7 @@ function BattlefleetSection({
     selectedListInstanceId,
     active,
     collapsed,
+    showGuardianPool,
     onToggleCollapsed,
     onRemoveBattlefleet,
     onSelectBattlefleet,
@@ -199,6 +220,7 @@ function BattlefleetSection({
     unitIssuesByInstanceId,
 }: BattlefleetSectionProps) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
+    const guardianPool = showGuardianPool ? computeEntriesGuardianPool(entries, Array.from(unitById.values())) : 0
     const hasIssues = issues.length > 0
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
     const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
@@ -232,8 +254,15 @@ function BattlefleetSection({
                         </div>
                     </button>
                     <div className="flex flex-none items-start gap-1">
-                        <div className="rounded-md border border-[var(--gold)]/60 bg-[var(--gold-light)] px-2 py-1 text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
-                            {points.toLocaleString('fr-FR')} pts
+                        <div className="flex flex-wrap justify-end gap-1">
+                            <div className="rounded-md border border-[var(--gold)]/60 bg-[var(--gold-light)] px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
+                                {points.toLocaleString('fr-FR')} pts
+                            </div>
+                            {showGuardianPool ? (
+                                <div className="rounded-md border border-neutral-200 bg-white px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
+                                    GP {guardianPool.toLocaleString('fr-FR')}
+                                </div>
+                            ) : null}
                         </div>
                         <button
                             type="button"
@@ -285,6 +314,8 @@ function BattlefleetSection({
                             onRemoveUnit,
                             onMoveUnit,
                             unitIssuesByInstanceId,
+                            showGuardianPool,
+                            allUnits: Array.from(unitById.values()),
                         })
                     ) : (
                         <div className="rounded border border-dashed border-neutral-300 bg-neutral-50 p-2 text-[12px] text-neutral-500">
@@ -305,6 +336,7 @@ function UnitGroup({
     unitById,
     battlefleets,
     selectedListInstanceId,
+    showGuardianPool,
     tone = 'neutral',
     onSelectUnit,
     onRemoveUnit,
@@ -339,6 +371,8 @@ function UnitGroup({
                     onRemoveUnit,
                     onMoveUnit,
                     unitIssuesByInstanceId,
+                    showGuardianPool,
+                    allUnits: Array.from(unitById.values()),
                 })}
             </div>
         </section>
@@ -439,6 +473,8 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
     if (!currentList) return null
 
     const totalPoints = currentList.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
+    const showGuardianPool = isCrownFaction(currentList.faction_id)
+    const guardianPool = showGuardianPool ? computeEntriesGuardianPool(currentList.units, units) : 0
     const battlefleets = currentList.battlefleets ?? []
     const entriesByBattlefleetId = new Map<string, ArmyUnit[]>()
     for (const battlefleet of battlefleets) {
@@ -497,8 +533,15 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                         </button>
                     )}
                     <div className="mt-1 text-[11px] text-neutral-500">{factionName}</div>
-                    <div className="mt-2 inline-flex items-center rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
-                        Total: {totalPoints.toLocaleString('fr-FR')} pts
+                    <div className="mt-2 inline-flex flex-wrap items-center gap-1">
+                        <span className="rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                            Total: {totalPoints.toLocaleString('fr-FR')} pts
+                        </span>
+                        {showGuardianPool ? (
+                            <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                                GP {guardianPool.toLocaleString('fr-FR')}
+                            </span>
+                        ) : null}
                     </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -629,6 +672,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 selectedListInstanceId={selectedListInstanceId}
                                 active={selectedBattlefleetInstanceId === battlefleet.instanceId}
                                 collapsed={collapsedBattlefleetIds.includes(battlefleet.instanceId)}
+                                showGuardianPool={showGuardianPool}
                                 onToggleCollapsed={() => toggleBattlefleetCollapsed(battlefleet.instanceId)}
                                 onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
                                 onSelectBattlefleet={() => selectBattlefleet(battlefleet.instanceId)}
@@ -648,6 +692,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 unitById={unitById}
                                 battlefleets={battlefleets}
                                 selectedListInstanceId={selectedListInstanceId}
+                                showGuardianPool={showGuardianPool}
                                 tone="warning"
                                 onSelectUnit={selectListUnit}
                                 onRemoveUnit={removeUnitFromList}

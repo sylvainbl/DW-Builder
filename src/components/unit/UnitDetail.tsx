@@ -10,6 +10,7 @@ import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
+import { computeArmyUnitGuardianPool, computeModelGuardianPool, isCrownFaction } from '../../utils/guardianPool'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
@@ -263,6 +264,12 @@ export default function UnitDetail() {
     const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
     const selectedModelCost = computeModelPoints(unit, activeUnitConfig, selectedEntry?.config)
+    const showGuardianPool = isCrownFaction(unit.faction_id)
+    const guardianPool = showGuardianPool
+        ? selectedEntry
+            ? computeArmyUnitGuardianPool(selectedEntry, units)
+            : computeModelGuardianPool(unit, activeUnitConfig)
+        : 0
     const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
     const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
     const siblingAttachmentModels = selectedEntryParent && selectedEntry
@@ -387,6 +394,11 @@ export default function UnitDetail() {
                                 </>
                             ) : null}
                             <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
+                            {showGuardianPool ? (
+                                <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
+                                    Guardian Pool: {guardianPool}
+                                </div>
+                            ) : null}
                         </div>
                     </div>
                 </div>
