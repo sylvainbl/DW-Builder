@@ -2891,7 +2891,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -2915,7 +2915,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -3612,7 +3612,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -3636,7 +3636,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -5900,7 +5900,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -5924,7 +5924,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -6356,7 +6356,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -6380,7 +6380,7 @@
       {
         "name": "Light Swift Torpedo Turret",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
