@@ -609,7 +609,8 @@
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Flagship"
+        "British Flagship",
+        "Canadian Flagship"
       ],
       "max_models": 1
     }
@@ -795,7 +796,7 @@
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Flagship"
+        "British Flagship"
       ],
       "max_models": 1
     }
@@ -2211,7 +2212,9 @@
     "max": 1,
     "attachment": {
       "parent_traits": [
-        "Indian Raj"
+        "Indian Raj",
+        "Adventurer",
+        "Palashi"
       ],
       "max_models": 1
     }

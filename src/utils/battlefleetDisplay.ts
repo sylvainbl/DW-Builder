@@ -256,6 +256,44 @@ const displayInfo: Record<string, BattlefleetDisplayInfo> = {
             text: 'Whenever this Battlefleet’s Admiral Activates a **Crimson League** unit in their Force, they can remove a single System Failure Critical Damage Effect from one Battle-Ready model in that unit.',
         },
     },
+    'union-main': {
+        specialRuleText: [
+            'This Battlefleet can include at most two **Airborne** units and at most one **Underwater** unit. **Mainstay Classes**, its **Flagship**, and **Attachments** do not count toward this limit.',
+        ],
+        battlefleetBonus: {
+            name: "Give 'em Hell",
+            text: 'Before declaring a Broadside action with a **Union** unit, this Admiral may discard a Victory & Valour Card. Each Exploding Strike in the subsequent Broadside Roll allows another Action Die to be rolled as if it were an Action Roll. If the active unit is **Airborne**, it gains Broadside Cascade for the duration of the Action. At the end of the Action, each model whose batteries Contributed gains 1 Disorder and cannot Rally in the subsequent Consolidation Phase.',
+        },
+    },
+    'union-freedom': {
+        specialRuleText: [
+            'This Battlefleet can include at most one **Airborne** unit and at most one **Underwater** unit. **Mainstay Classes**, its **Flagship**, and **Attachments** do not count toward this limit.',
+        ],
+        battlefleetBonus: {
+            name: 'Plant the Flag',
+            text: 'In the Complete Objectives step of the End Phase, this Admiral scores 4 Victory Points for every Territory where they have more Landing Party tokens than their opponent, as long as that Territory is within 10 inches of a friendly unit with the **Union** and **Platform** traits.',
+        },
+    },
+    'union-manifest-destiny': {
+        specialRuleText: [
+            'This Battlefleet’s **Flagship** must be an **America Special Operations Vessel** or a **Senator Command Cruiser** unit.',
+            'This Battlefleet can include at most one **Airborne** unit and at most one **Underwater** unit. **Mainstay Classes**, its **Flagship**, and **Attachments** do not count toward this limit.',
+        ],
+        battlefleetBonus: {
+            name: 'Forward Depot',
+            text: 'This Battlefleet’s **Flagship** gains the Stockpile (3) property and Repair Facilities (1) system.',
+        },
+    },
+    'union-honorable-eclipse-company': {
+        specialRuleText: [
+            'A Fleet Doctrine cannot be purchased for this Battlefleet’s **Flagship**.',
+            'This is a **Mercenary Battlefleet** and can be fielded as a Specialist Battlefleet in a Force created using a different ORBAT. Its units must still be chosen from the Union ORBAT.',
+        ],
+        battlefleetBonus: {
+            name: 'HEC Contractors',
+            text: 'Every model in this Battlefleet gains the Descend property.',
+        },
+    },
 }
 
 export function getBattlefleetDisplayInfo(definitionId: string): BattlefleetDisplayInfo {

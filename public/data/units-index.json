@@ -6,6 +6,7 @@
     "units/crown.json",
     "units/imperium.json",
     "units/empire.json",
-    "units/sultanate.json"
+    "units/sultanate.json",
+    "units/union.json"
   ]
 }

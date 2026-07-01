@@ -7,6 +7,8 @@ export interface OptionRuleEffects {
     properties: NamedValue[]
     systems: NamedValue[]
     qualities: NamedValue[]
+    removedProperties: Set<string>
+    removedSystems: Set<string>
 }
 
 export function formatOptionName(option: Pick<OptionUpgrade, 'tag'> & { display_name?: string }): string {
@@ -23,6 +25,8 @@ export function emptyOptionRuleEffects(): OptionRuleEffects {
         properties: [],
         systems: [],
         qualities: [],
+        removedProperties: new Set<string>(),
+        removedSystems: new Set<string>(),
     }
 }
 
@@ -36,23 +40,37 @@ function addNamedValues(target: NamedValue[], values: NamedValue[] | undefined) 
     }
 }
 
-export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): OptionRuleEffects {
-    const effects = emptyOptionRuleEffects()
+function getConfiguredGeneratorSelections(modelConfig: UnitConfig): NonNullable<UnitConfig['generatorSelections']> {
+    return modelConfig.generatorSelections ?? (modelConfig.generatorSelection ? [modelConfig.generatorSelection] : [])
+}
 
-    for (const option of unit.options_and_upgrades) {
-        const quantity = optionConfig(option, modelConfig, unitConfig).optionQuantities[option.tag] ?? 0
-        if (quantity <= 0) continue
-
-        addNamedValues(effects.properties, option.adds_properties)
-        addNamedValues(effects.systems, option.adds_systems)
-        addNamedValues(effects.qualities, option.adds_qualities)
-    }
-
-    return effects
+function isSystemGeneratorSelected(option: OptionUpgrade, modelConfig: UnitConfig): boolean {
+    return option.generator_replaces_weapon === false && getConfiguredGeneratorSelections(modelConfig).length > 0
 }
 
 function isOptionSelected(option: OptionUpgrade, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): boolean {
     return (optionConfig(option, modelConfig, unitConfig).optionQuantities[option.tag] ?? 0) > 0
+        || isSystemGeneratorSelected(option, modelConfig)
+}
+
+export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): OptionRuleEffects {
+    const effects = emptyOptionRuleEffects()
+
+    for (const option of unit.options_and_upgrades) {
+        if (!isOptionSelected(option, modelConfig, unitConfig)) continue
+
+        addNamedValues(effects.properties, option.adds_properties)
+        addNamedValues(effects.systems, option.adds_systems)
+        addNamedValues(effects.qualities, option.adds_qualities)
+        for (const propertyName of option.removes_properties ?? []) {
+            effects.removedProperties.add(propertyName)
+        }
+        for (const systemName of option.removes_systems ?? []) {
+            effects.removedSystems.add(systemName)
+        }
+    }
+
+    return effects
 }
 
 export function getSelectedRemovedWeaponNames(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): Set<string> {
@@ -83,14 +101,27 @@ export function unitUsesSystemGeneratorMount(unit: Unit): boolean {
     return unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
 }
 
+export function getSystemGeneratorSlotCount(unit: Unit): number {
+    return Math.max(
+        1,
+        ...unit.options_and_upgrades
+            .filter((option) => option.generator_replaces_weapon === false)
+            .map((option) => option.system_generator_slots ?? option.max ?? 1),
+    )
+}
+
+export function getEffectiveGeneratorSelections(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): NonNullable<UnitConfig['generatorSelections']> {
+    return getConfiguredGeneratorSelections(modelConfig).flatMap((selection) => {
+        const effectiveSelection = unitUsesSystemGeneratorMount(unit)
+            ? { ...selection, weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX }
+            : selection
+        if (effectiveSelection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX) return [effectiveSelection]
+        return isWeaponRemovedBySelectedOptions(unit, effectiveSelection.weaponIndex, modelConfig, unitConfig) ? [] : [effectiveSelection]
+    })
+}
+
 export function getEffectiveGeneratorSelection(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): UnitConfig['generatorSelection'] {
-    const selection = modelConfig.generatorSelection
-    if (!selection) return null
-    const effectiveSelection = unitUsesSystemGeneratorMount(unit)
-        ? { ...selection, weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX }
-        : selection
-    if (effectiveSelection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX) return effectiveSelection
-    return isWeaponRemovedBySelectedOptions(unit, effectiveSelection.weaponIndex, modelConfig, unitConfig) ? null : effectiveSelection
+    return getEffectiveGeneratorSelections(unit, modelConfig, unitConfig)[0] ?? null
 }
 
 export function getSelectedTags(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): string[] {

@@ -7,11 +7,11 @@ import { computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSw
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
-import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
 import { RuleModal } from '../ui/RuleModal'
-import type { ArmyUnit, FleetDoctrine, Generator, Unit } from '../../types/index'
+import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 
@@ -60,9 +60,18 @@ function unitHasNativeMagmaCastOption(unit: Unit): boolean {
     return unit.options_and_upgrades.some((option) => option.tag === 'MAGMA_CAST_GENERATOR')
 }
 
+function getRestrictedGeneratorNames(unit: Unit): Set<string> {
+    return new Set(unit.options_and_upgrades.flatMap((option) => option.restrictions ?? []))
+}
+
+function filterRestrictedGenerators(generators: Generator[], restrictedGeneratorNames: Set<string>): Generator[] {
+    return generators.filter((generator) => !restrictedGeneratorNames.has(generator.name))
+}
+
 function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined, extraMagmaCastCost: number | null = null): Generator[] {
     const weaponGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon !== false)
     const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
+    const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
     const fixedChoices: Generator[] = []
     const magmaCastOption = weaponGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
     const freeGeneratorOption = weaponGeneratorOptions.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
@@ -85,22 +94,23 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     }
     if (freeGeneratorOption && slot === 'H') {
         return [
-            ...factionGenerators.map((generator) => ({ ...generator, point_cost: 0 })),
-            ...fixedChoices,
+            ...filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames).map((generator) => ({ ...generator, point_cost: 0 })),
+            ...filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames),
         ]
     }
     if (magmaCastOption && optionTags.has('GENERATOR') && slot === 'H') {
-        return [...factionGenerators, ...fixedChoices]
+        return filterRestrictedGenerators([...factionGenerators, ...fixedChoices], restrictedGeneratorNames)
     }
-    if (fixedChoices.length > 0) return fixedChoices
+    if (fixedChoices.length > 0) return filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames)
 
-    return optionTags.has('GENERATOR') && slot === 'H' ? factionGenerators : []
+    return optionTags.has('GENERATOR') && slot === 'H' ? filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames) : []
 }
 
 function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], extraMagmaCastCost: number | null = null): Generator[] {
     const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
+    const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
     if (systemGeneratorOptions.length === 0) {
-        return extraMagmaCastCost != null ? [{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }] : []
+        return extraMagmaCastCost != null ? filterRestrictedGenerators([{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }], restrictedGeneratorNames) : []
     }
 
     const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
@@ -119,7 +129,11 @@ function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], e
         choices.push({ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost })
     }
 
-    return choices
+    return filterRestrictedGenerators(choices, restrictedGeneratorNames)
+}
+
+function optionUnavailableForAttachment(option: OptionUpgrade): boolean {
+    return (option.restrictions ?? []).some((restriction) => restriction.toLowerCase().includes('attachment'))
 }
 
 export default function UnitDetail() {
@@ -137,6 +151,7 @@ export default function UnitDetail() {
     const activeUnitConfig = useAppStore((state) => state.activeUnitConfig)
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
     const setGeneratorSelection = useAppStore((state) => state.setGeneratorSelection)
+    const setSystemGeneratorSelection = useAppStore((state) => state.setSystemGeneratorSelection)
     const setFleetDoctrineSelection = useAppStore((state) => state.setFleetDoctrineSelection)
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const selectModel = useAppStore((state) => state.selectModel)
@@ -223,19 +238,24 @@ export default function UnitDetail() {
     const usesSystemGeneratorMount = unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
     const extraSystemMagmaCastCost = extraMagmaCastCost != null && (!hasNativeGeneratorAccess || usesSystemGeneratorMount) ? extraMagmaCastCost : null
     const canTakeGenerator = hasNativeGeneratorAccess || extraMagmaCastCost != null
-    const generatorSelection = getEffectiveGeneratorSelection(unit, activeUnitConfig, selectedEntry?.config)
+    const generatorSelections = getEffectiveGeneratorSelections(unit, activeUnitConfig, selectedEntry?.config)
+    const weaponGeneratorSelection = generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
+    const selectedSystemGenerators = generatorSelections.filter((selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX)
     const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost) : []
-    const selectedSystemGenerator = generatorSelection?.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX ? generatorSelection : null
-    const factionSpecialRules = getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
+    const systemGeneratorSlotCount = systemGeneratorChoices.length > 0 ? getSystemGeneratorSlotCount(unit) : 0
+    const factionSpecialRules = getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
     const displayedWeapons = unit.weapons
         .map((weapon, index) => ({ weapon, index }))
         .filter(({ weapon }) => !removedWeaponNames.has(weapon.name))
-    const displayedProperties = mergeNamedValues(unit.properties, optionRuleEffects.properties)
+    const displayedProperties = mergeNamedValues(
+        unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name)),
+        optionRuleEffects.properties,
+    )
     const displayedSystems = mergeNamedValues(
-        unit.systems,
-        generatorSelection ? [{ name: generatorSelection.generatorName, value: null }] : [],
+        unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)),
+        generatorSelections.map((selection) => ({ name: selection.generatorName, value: null })),
         optionRuleEffects.systems,
         factionSpecialRules,
     )
@@ -255,7 +275,8 @@ export default function UnitDetail() {
         : selectedEntryParent ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels : normalMaxModels
     const canAddModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
-    const hasOptions = unit.options_and_upgrades.length > 0
+    const availableOptions = unit.options_and_upgrades.filter((option) => !(selectedEntryParent && optionUnavailableForAttachment(option)))
+    const hasOptions = availableOptions.length > 0
     const displayedTags = getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
     const visibleSquadrons = getVisibleSrsSquadrons(unit, displayedProperties)
     const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier' || property.name === 'Flight Deck' || property.name === 'SRS') && visibleSquadrons.length > 0
@@ -268,8 +289,8 @@ export default function UnitDetail() {
     const costBreakdown = [
         ...(selectedEntry ? [`Selected model: ${selectedModelCost} pts`] : []),
         ...(fleetDoctrineSelection ? [`Doctrine (${fleetDoctrineSelection.doctrineName}): +${fleetDoctrineSelection.doctrineCost} pts`] : []),
-        ...(generatorSelection ? [`Generator (${generatorSelection.generatorName}): +${generatorSelection.generatorCost} pts`] : []),
-        ...unit.options_and_upgrades.flatMap((option) => {
+        ...generatorSelections.map((selection, index) => [`Generator${generatorSelections.length > 1 ? ` ${index + 1}` : ''} (${selection.generatorName}): +${selection.generatorCost} pts`]).flat(),
+        ...availableOptions.flatMap((option) => {
             const config = isUnitLevelOption(option.tag) && selectedEntry ? selectedEntry.config : activeUnitConfig
             const qty = config.optionQuantities[option.tag] ?? 0
             if (qty <= 0 || option.cost_per_unit == null) {
@@ -604,22 +625,24 @@ export default function UnitDetail() {
                             {displayedWeapons.map(({ weapon, index }) => {
                                 const weaponKey = `${unit.id}-${index}-${weapon.slot ?? 'base'}`
                                 const selectedName = activeUnitConfig.hardpointSelections[index] ?? weapon.name
-                                const options = weapon.slot ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
+                                const options = weapon.slot && !weapon.hardpoint_locked
+                                    ? (unit.hardpoint_options?.[weapon.slot] ?? []).filter((option) => option.name !== weapon.name)
+                                    : []
                                 const displayWeapon = options.find((option) => option.name === selectedName) ?? weapon
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
-                                const isGeneratorSlot = generatorSelection?.weaponIndex === index
-                                const generatorChoices = canTakeGenerator ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost) : []
-                                const canShowGeneratorSection = generatorChoices.length > 0 && (generatorSelection == null || generatorSelection.weaponIndex === index)
+                                const isGeneratorSlot = weaponGeneratorSelection?.weaponIndex === index
+                                const generatorChoices = canTakeGenerator && !weapon.hardpoint_locked ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost) : []
+                                const canShowGeneratorSection = generatorChoices.length > 0 && (weaponGeneratorSelection == null || weaponGeneratorSelection.weaponIndex === index)
                                 const showGeneratorRow = Boolean(weapon.slot) && isGeneratorSlot
 
-                                if (showGeneratorRow && generatorSelection) {
+                                if (showGeneratorRow && weaponGeneratorSelection) {
                                     return (
                                         <tr key={weaponKey} className="align-top unit-detail-weapon-row">
                                             <td className="rounded-l-lg px-2 py-2">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-medium text-neutral-900">{generatorSelection.generatorName}</span>
-                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">+{generatorSelection.generatorCost} pts</span>
+                                                    <span className="font-medium text-neutral-900">{weaponGeneratorSelection.generatorName}</span>
+                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">+{weaponGeneratorSelection.generatorCost} pts</span>
                                                     <button
                                                         type="button"
                                                         className="text-[10px] font-medium text-neutral-500 underline-offset-2 hover:underline"
@@ -664,7 +687,7 @@ export default function UnitDetail() {
                                                                     onChange={() => {
                                                                         setHardpointSelection(index, weapon.name)
                                                                         setOpenHardpointKey(null)
-                                                                        if (generatorSelection?.weaponIndex === index) {
+                                                                        if (weaponGeneratorSelection?.weaponIndex === index) {
                                                                             setGeneratorSelection(null)
                                                                         }
                                                                     }}
@@ -683,7 +706,7 @@ export default function UnitDetail() {
                                                                                 onChange={() => {
                                                                                     setHardpointSelection(index, option.name)
                                                                                     setOpenHardpointKey(null)
-                                                                                    if (generatorSelection?.weaponIndex === index) {
+                                                                                    if (weaponGeneratorSelection?.weaponIndex === index) {
                                                                                         setGeneratorSelection(null)
                                                                                     }
                                                                                 }}
@@ -702,7 +725,7 @@ export default function UnitDetail() {
                                                                                 <input
                                                                                     type="radio"
                                                                                     name={`slot-${selectedModelId ?? 'preview'}-${index}`}
-                                                                                    checked={generatorSelection?.weaponIndex === index && generatorSelection?.generatorName === generator.name}
+                                                                                    checked={weaponGeneratorSelection?.weaponIndex === index && weaponGeneratorSelection?.generatorName === generator.name}
                                                                                     onChange={() => {
                                                                                         setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
                                                                                         setOpenHardpointKey(null)
@@ -753,36 +776,39 @@ export default function UnitDetail() {
                         <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
                             <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
                             <div className="mt-2 space-y-1.5">
-                                {systemGeneratorChoices.length > 0 ? (
-                                    <div className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
-                                        <div className="min-w-0">
-                                            <div className="text-[12px] font-semibold text-neutral-900">Generator</div>
+                                {Array.from({ length: systemGeneratorSlotCount }, (_, slotIndex) => {
+                                    const selectedSystemGenerator = selectedSystemGenerators[slotIndex] ?? null
+                                    return (
+                                        <div key={`system-generator-${slotIndex}`} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
+                                            <div className="min-w-0">
+                                                <div className="text-[12px] font-semibold text-neutral-900">Generator{systemGeneratorSlotCount > 1 ? ` ${slotIndex + 1}` : ''}</div>
+                                            </div>
+                                            <select
+                                                className="w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)] md:w-56"
+                                                value={selectedSystemGenerator?.generatorName ?? ''}
+                                                onChange={(event) => {
+                                                    const generator = systemGeneratorChoices.find((item) => item.name === event.target.value)
+                                                    setSystemGeneratorSelection(slotIndex, generator ? {
+                                                        weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
+                                                        generatorName: generator.name,
+                                                        generatorCost: generator.point_cost,
+                                                    } : null)
+                                                }}
+                                            >
+                                                <option value="">Select</option>
+                                                {systemGeneratorChoices.map((generator) => (
+                                                    <option key={generator.name} value={generator.name}>
+                                                        {generator.name} (+{generator.point_cost})
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
+                                                {selectedSystemGenerator ? `${selectedSystemGenerator.generatorCost} pts` : '—'}
+                                            </div>
                                         </div>
-                                        <select
-                                            className="w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)] md:w-56"
-                                            value={selectedSystemGenerator?.generatorName ?? ''}
-                                            onChange={(event) => {
-                                                const generator = systemGeneratorChoices.find((item) => item.name === event.target.value)
-                                                setGeneratorSelection(generator ? {
-                                                    weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
-                                                    generatorName: generator.name,
-                                                    generatorCost: generator.point_cost,
-                                                } : null)
-                                            }}
-                                        >
-                                            <option value="">Select</option>
-                                            {systemGeneratorChoices.map((generator) => (
-                                                <option key={generator.name} value={generator.name}>
-                                                    {generator.name} (+{generator.point_cost})
-                                                </option>
-                                            ))}
-                                        </select>
-                                        <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
-                                            {selectedSystemGenerator ? `${selectedSystemGenerator.generatorCost} pts` : '—'}
-                                        </div>
-                                    </div>
-                                ) : null}
-                                {unit.options_and_upgrades.map((option) => {
+                                    )
+                                })}
+                                {availableOptions.map((option) => {
                                     const unitLevel = isUnitLevelOption(option.tag)
                                     const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
                                     const qty = config.optionQuantities[option.tag] ?? 0

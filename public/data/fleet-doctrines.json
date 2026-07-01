@@ -423,5 +423,64 @@
       ],
       "text": "This Doctrine can only be purchased for a Sultanate Flagship unit. Once per Round, this Admiral can discard a Victory & Valour Card from their hand when they declare an Attack action with a Flagship unit. The Action Pool for this action gains Bonus Dice equal to the Value of the discarded card."
     }
+  ],
+  "union": [
+    {
+      "name": "AWACS",
+      "point_cost": 10,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Union"
+      ],
+      "text": "This Doctrine can only be purchased for a Union Flagship unit. When a Union unit from this Force makes an Attack action in which the Initial Target is within 10\" of an Akron Sentry Rotor, its Admiral may attempt to enact a Special Valour Effect with that unit. If successful, all Contributing weapons with the Barrage or Torpedo qualities gain High Velocity (1) and Guided (1). If there are no Contributing weapons with these qualities, this Special Valour Effect cannot be used."
+    },
+    {
+      "name": "Improved Dissipation Array",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Pipeworks"
+      ],
+      "text": "This Doctrine can only be purchased for a Pipeworks Flagship unit. Whenever a Pipeworks unit with an Arc Generator in this Force declares that it is Overcharging Its Weapons, this Admiral may declare a Special Valour Effect with that unit. If successful, the unit does not take the 1 level of Disorder for Overcharging Its Weapons. Instead, the Admiral may apply that Disorder to the nearest model belonging to another unit, friend or foe, within 10\" of the active unit. If there is no other model within 10\", the Disorder is discarded."
+    },
+    {
+      "name": "Forward Patrol",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one unit in the Play Area that is not Immobile. That unit gains Vanguard (5\"). The Admiral can only use this Doctrine once per game."
+    },
+    {
+      "name": "Strategic Reserves",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
+    },
+    {
+      "name": "Chain of Command",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10\" of a friendly Flagship. If the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
+    },
+    {
+      "name": "Combined Arms",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Union"
+      ],
+      "text": "This Doctrine can only be purchased for a Union Flagship unit. When the last model in a unit from this Force is Destroyed or Withdraws, do not remove its Escort tokens from the Play Area. Instead, reposition the Escort tokens to the nearest friendly unit with the same Positional Trait. In addition, whenever an Akron Sentry Rotor is Destroyed or Withdraws, roll an Action Die: on any Strike result, the nearest friendly unit gains an Escort token. This rule can allow a unit to have more Escort tokens than it could ordinarily purchase during Force Selection."
+    },
+    {
+      "name": "Devil's Own Luck",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
+    },
+    {
+      "name": "Do Or Die",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model's Crew rating, for the purposes of this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+    }
   ]
 }

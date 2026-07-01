@@ -2425,5 +2425,384 @@
     "specialRules": [
       "sultanate-crimson-flagship-no-doctrine"
     ]
+  },
+  {
+    "id": "union-main",
+    "faction_id": "union",
+    "name": "Union Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "union-flagship",
+        "name": "1 Union Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-line",
+        "name": "1-4 Union Line",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-patrol",
+        "name": "1-3 Union Patrol",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-support-logistical",
+        "name": "0-4 Union Support / Logistical",
+        "min": 0,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Union"
+            ],
+            "any": [
+              "Support",
+              "Logistical"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-scout",
+        "name": "0-2 Union Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Yorktown",
+      "Farragut"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "union_columbia_heavy_battleship"
+        ],
+        "classNames": [
+          "Gettysburg"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "union_destiny_skyfortress"
+        ],
+        "classNames": [
+          "Akron"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "union_independence_battlecruiser"
+        ],
+        "classNames": [
+          "Valiant"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "union_uss_indianapolis_independence_class",
+          "union_uss_rio_grande_independence_class",
+          "union_uss_mexico_constitution_class"
+        ],
+        "classNames": [
+          "Discovery"
+        ]
+      }
+    ],
+    "specialRules": [
+      "union-main-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "union-freedom",
+    "faction_id": "union",
+    "name": "Freedom Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "union-surface-flagship",
+        "name": "1 Union Surface Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Surface",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-freedom-patrol",
+        "name": "2-5 Union Patrol",
+        "min": 2,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-freedom-support-logistical",
+        "name": "1-4 Union Support / Logistical",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Union"
+            ],
+            "any": [
+              "Support",
+              "Logistical"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-freedom-scout",
+        "name": "0-2 Union Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-platforms",
+        "name": "1-3 Union Platforms",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Platform"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Farpoint",
+      "Reliant"
+    ],
+    "specialRules": [
+      "union-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "union-manifest-destiny",
+    "faction_id": "union",
+    "name": "Manifest Destiny Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "union-manifest-flagship",
+        "name": "1 Union Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-manifest-line",
+        "name": "0-2 Union Line",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-manifest-patrol",
+        "name": "1-3 Union Patrol",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-manifest-support-logistical",
+        "name": "0-4 Union Support / Logistical",
+        "min": 0,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Union"
+            ],
+            "any": [
+              "Support",
+              "Logistical"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "union-manifest-scout",
+        "name": "1-4 Union Scout",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Union",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Chicago",
+      "Akron",
+      "Republic",
+      "Puritan"
+    ],
+    "specialRules": [
+      "union-manifest-flagship",
+      "union-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "union-honorable-eclipse-company",
+    "faction_id": "union",
+    "name": "Honorable Eclipse Company Mercenary Battlefleet",
+    "type": "main",
+    "mercenary": true,
+    "elements": [
+      {
+        "id": "hec-flagship",
+        "name": "1 Honorable Eclipse Company Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "HEC",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hec-line",
+        "name": "0-3 Honorable Eclipse Company Line",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "HEC",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hec-patrol-scout",
+        "name": "1-3 Honorable Eclipse Company Patrol / Scout",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "HEC"
+            ],
+            "any": [
+              "Patrol",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hec-support",
+        "name": "0-3 Honorable Eclipse Company Support",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "HEC",
+              "Support"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Steward",
+      "Bogota Carryall"
+    ],
+    "specialRules": [
+      "union-hec-flagship-no-doctrine"
+    ]
   }
 ]

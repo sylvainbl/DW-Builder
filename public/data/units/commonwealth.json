@@ -701,7 +701,7 @@
           },
           {
             "name": "Breach",
-            "value": 2
+            "value": 1
           },
           {
             "name": "Torpedo",
@@ -3208,20 +3208,15 @@
         "cost_per_unit": 15,
         "max": null,
         "tag": "KHATANGA_BREACHING_DRILL",
-        "modifies_properties": {
-          "removes": [
-            {
-              "name": "Heavy Prow",
-              "value": 3
-            }
-          ],
-          "adds": [
-            {
-              "name": "Breaching Drill",
-              "value": 10
-            }
-          ]
-        }
+        "removes_properties": [
+          "Heavy Prow"
+        ],
+        "adds_properties": [
+          {
+            "name": "Breaching Drill",
+            "value": 10
+          }
+        ]
       }
     ],
     "lore": "Developed from the redoubtable Norilsk, the Morozko incorporates a Cryo generator, enabling it to create hazardous icebergs to great effect in the path of their enemies. A brutal addition to the White Navy and favoured by northern Captains, the Khatanga combines a ferocious Semyenov pattern assault bore in the prow with the dreaded Cryo generator.",
@@ -4572,7 +4567,7 @@
       "Submarine"
     ],
     "stats": {
-      "MAS": 3,
+      "MAS": 1,
       "SPD": "2\"-7\"",
       "TRN": 4,
       "DEF": 3,
@@ -5367,28 +5362,30 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Upgrade any number of models with one of the following (mutually exclusive per model): a Tsiolkovsky-pattern rocket launcher for +5 pts, granting the Flak Barrage (3) system; or a Kosolov Shockwave Generator for +5 pts, granting the Shockwave Generator system.",
+        "description": "Upgrade this model with a Tsiolkovsky-pattern rocket launcher, granting the Flak Barrage (3) system.",
         "cost_per_unit": 5,
-        "max": null,
-        "tag": "WEAPON_UPGRADE",
-        "choices": [
+        "max": 1,
+        "tag": "TSIOLKOVSKY_ROCKET_LAUNCHER",
+        "display_name": "Tsiolkovsky-pattern rocket launcher",
+        "exclusive_group": "RURIK_WEAPON_UPGRADE",
+        "adds_systems": [
           {
-            "name": "Tsiolkovsky-pattern rocket launcher",
-            "adds_systems": [
-              {
-                "name": "Flak Barrage",
-                "value": 3
-              }
-            ]
-          },
+            "name": "Flak Barrage",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "description": "Upgrade this model with a Kosolov Shockwave Generator, granting the Shockwave Generator system.",
+        "cost_per_unit": 5,
+        "max": 1,
+        "tag": "KOSOLOV_SHOCKWAVE_GENERATOR",
+        "display_name": "Kosolov Shockwave Generator",
+        "exclusive_group": "RURIK_WEAPON_UPGRADE",
+        "adds_systems": [
           {
-            "name": "Kosolov Shockwave Generator",
-            "adds_systems": [
-              {
-                "name": "Shockwave Generator",
-                "value": null
-              }
-            ]
+            "name": "Shockwave Generator",
+            "value": null
           }
         ]
       }
@@ -6547,13 +6544,13 @@
       "MAS": 7,
       "SPD": "0\"-6\"",
       "TRN": 0,
-      "DEF": 5,
-      "ARM": 18,
-      "HUL": 3,
-      "ACT": 4,
+      "DEF": 10,
+      "ARM": 5,
+      "HUL": 18,
+      "ACT": 3,
       "BRD": 4,
-      "REP": 11,
-      "CRW": null
+      "REP": 4,
+      "CRW": 11
     },
     "properties": [
       {
@@ -7382,7 +7379,7 @@
       "ARM": 5,
       "HUL": 13,
       "ACT": 3,
-      "BRD": 4,
+      "BRD": 3,
       "REP": 4,
       "CRW": 10
     },

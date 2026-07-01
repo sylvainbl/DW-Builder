@@ -14,10 +14,13 @@ const systemRuleTriggers: SystemRuleTrigger[] = [
     },
 ]
 
-export function getFactionSpecialRules(unit: Unit, selectedGeneratorName: string | null): NamedValue[] {
+export function getFactionSpecialRules(unit: Unit, selectedGeneratorName: string | string[] | null): NamedValue[] {
+    const selectedGeneratorNames = Array.isArray(selectedGeneratorName)
+        ? selectedGeneratorName
+        : selectedGeneratorName ? [selectedGeneratorName] : []
     const systemNames = new Set([
         ...unit.systems.map((system) => system.name),
-        ...(selectedGeneratorName ? [selectedGeneratorName] : []),
+        ...selectedGeneratorNames,
     ])
 
     return systemRuleTriggers

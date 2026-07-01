@@ -5,7 +5,7 @@ import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, U
 import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce, sortBattlefleetEntries } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
-import { formatOptionName } from '../../utils/optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelections } from '../../utils/optionRuleEffects'
 import { computeOptionPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { MarkdownText } from '../ui/MarkdownText'
 
@@ -67,8 +67,7 @@ function pointBreakdown(entry: ArmyUnit, unit: Unit, battlefleet: ArmyBattleflee
 
     const optionGroups = new Map<string, { quantity: number; points: number }>()
     for (const model of entry.models) {
-        if (model.config.generatorSelection) {
-            const generator = model.config.generatorSelection
+        for (const generator of getEffectiveGeneratorSelections(unit, model.config, entry.config)) {
             addPointGroup(optionGroups, generator.generatorName, 1, generator.generatorCost)
         }
 

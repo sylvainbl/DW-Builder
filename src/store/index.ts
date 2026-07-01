@@ -72,6 +72,7 @@ interface AppStore {
 
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
     setGeneratorSelection: (selection: UnitConfig['generatorSelection']) => void
+    setSystemGeneratorSelection: (slotIndex: number, selection: UnitConfig['generatorSelection']) => void
     setFleetDoctrineSelection: (selection: UnitConfig['fleetDoctrineSelection']) => void
     setOptionQuantity: (tag: string, quantity: number) => void
 }
@@ -102,6 +103,7 @@ function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitCo
         ...config,
         hardpointSelections: config?.hardpointSelections ?? {},
         generatorSelection: config?.generatorSelection ?? null,
+        generatorSelections: config?.generatorSelections,
         fleetDoctrineSelection: config?.fleetDoctrineSelection ?? null,
         optionQuantities: config?.optionQuantities ?? {},
     }
@@ -885,6 +887,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 generatorSelection: state.activeUnitConfig.generatorSelection?.weaponIndex === weaponIndex
                     ? null
                     : state.activeUnitConfig.generatorSelection,
+                generatorSelections: state.activeUnitConfig.generatorSelections?.filter((selection) => selection.weaponIndex !== weaponIndex),
             }
             return {
                 activeUnitConfig: newConfig,
@@ -899,7 +902,30 @@ export const useAppStore = create<AppStore>((set, get) => ({
         set((state) => {
             const hardpointSelections = { ...state.activeUnitConfig.hardpointSelections }
             if (selection) delete hardpointSelections[selection.weaponIndex]
-            const newConfig = { ...state.activeUnitConfig, generatorSelection: selection, hardpointSelections }
+            const newConfig = { ...state.activeUnitConfig, generatorSelection: selection, generatorSelections: undefined, hardpointSelections }
+            return {
+                activeUnitConfig: newConfig,
+                currentList: state.selectedListInstanceId && state.currentList
+                    ? updateListUnit(state.currentList, state.selectedListInstanceId, newConfig, state.units, state.selectedModelId ?? undefined)
+                    : state.currentList,
+            }
+        })
+        get().persistLists()
+    },
+    setSystemGeneratorSelection: (slotIndex, selection) => {
+        set((state) => {
+            const generatorSelections = [...(state.activeUnitConfig.generatorSelections ?? (state.activeUnitConfig.generatorSelection ? [state.activeUnitConfig.generatorSelection] : []))]
+            if (selection) {
+                generatorSelections[slotIndex] = selection
+            } else {
+                generatorSelections.splice(slotIndex, 1)
+            }
+            const normalizedSelections = generatorSelections.filter(Boolean)
+            const newConfig = {
+                ...state.activeUnitConfig,
+                generatorSelection: normalizedSelections[0] ?? null,
+                generatorSelections: normalizedSelections.length > 0 ? normalizedSelections : undefined,
+            }
             return {
                 activeUnitConfig: newConfig,
                 currentList: state.selectedListInstanceId && state.currentList

@@ -1,0 +1,8523 @@
+[
+  {
+    "id": "union_america_special_operations_vessel",
+    "faction_id": "union",
+    "name": "America",
+    "sub_name": "Special Operations Vessel",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 255,
+    "vpr": 8,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Shroud Generator",
+        "value": null
+      },
+      {
+        "name": "Long-Range Coordination",
+        "value": null
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 7,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Named after the heart of the Union, the title also speaks to the ambition of that Great Power to dominate the entire continent. These Special Operations Vessels are designed to operate on extended forays all over the globe. So crucial are these clandestine operations that the Talon Autog yros and Pacifier assault teams are constantly drilled to be kept at peak readiness.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_columbia_heavy_battleship",
+    "faction_id": "union",
+    "name": "Columbia",
+    "sub_name": "Heavy Battleship",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 235,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 5,
+      "REP": 4,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 7,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 4 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "DESIGNER'S NOTE The Columbia-class was the most powerful vessel in the Union Navy during the Ore War. Twelve of these vessels The Columbia Battleship is a resin miniature with its were maintained throughout the conflict, their rugged design Light Rocket Batteries moulded to the ship's hull. allowing them to be returned to service after sustaining Previous editions of Dystopian Wars offered the option catastrophic damage. In the modern Union fleet, the Columbia- of replacing these with different weapons and we class was recategorized as a Heavy Battleship. recognise that some Admirals will have converted their vessels with these options. New players keen to take on a project are more than welcome to convert their models if they wish!",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_constitution_battleship",
+    "faction_id": "union",
+    "name": "Constitution",
+    "sub_name": "Battleship",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 255,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 8,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+2\""
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Triangulated Heavy Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Triangulate",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 4 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Mainstay of the Union Fleet and pride of the Bath Iron Works, there were twelve Constitution-class vessels built in the closing years of the Ore War. Now they, and many more of the class built since then, ensure that the Federated States can achieve their Manifest Destiny. OPTIONS AND UPGRADES",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_custodian_aircruiser",
+    "faction_id": "union",
+    "name": "Custodian",
+    "sub_name": "Aircruiser",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 220,
+    "vpr": 8,
+    "models": 1,
+    "tags": [
+      "HEC",
+      "Airborne",
+      "Flagship",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 10
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Sky Commandos",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Defensive",
+        "value": 3
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      },
+      {
+        "name": "Generator Ship",
+        "value": null
+      },
+      {
+        "name": "Sentinel Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heat Lance",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Solex",
+            "value": 2
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Freedom Incendiary Bombs",
+        "arc": "A",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Bomb",
+            "value": null
+          },
+          {
+            "name": "Hazard",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "A design created by the Spring field-Goodyear Corporation at the behest of the Honorable Eclipse Company, the duralanium hull and three interior keels are held aloft by twenty six helium- filled gas cells made from gelatin-latex fabric. This ensures that thermal flashbacks from the prow mounted Sentinel generator are contained.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_destiny_skyfortress",
+    "faction_id": "union",
+    "name": "Destiny",
+    "sub_name": "Skyfortress",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 325,
+    "vpr": 1,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Airborne",
+      "Flagship",
+      "Airship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 8,
+      "SPD": "4\"-8\"",
+      "TRN": 1,
+      "DEF": 9,
+      "ARM": 5,
+      "HUL": 13,
+      "ACT": 4,
+      "BRD": 6,
+      "REP": 4,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 8
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Mothership",
+        "value": null,
+        "detail": "Akron Sentry Rotor / Bogota Carryall Rotor"
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Corsair Fighters"
+      },
+      {
+        "name": "Very Large",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 12
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Dual Magnetic Gatling Guns",
+        "arc": "F",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Navigation Lock",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Dual Magnetic Gatling Guns",
+        "arc": "F",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Navigation Lock",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Dystopian Wars is a trademark of Warcradle Studios. Illustrations and Designs are copyright © 2025 Warcradle Studios. Made in the UK. These mighty vessels are the pride of Air General Alonzo Gladwyne's Airforce. Carrying squadrons of Corsair Fighters and acting as a home base for a complement of light rotors, the Destiny-class can project airpower into even the most challenging environs.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Corsair Fighters",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
+  },
+  {
+    "id": "union_enterprise_heavy_carrier",
+    "faction_id": "union",
+    "name": "Enterprise",
+    "sub_name": "Heavy Carrier",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 285,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "4\"-6\"",
+      "TRN": 1,
+      "DEF": 9,
+      "ARM": 6,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 9
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 10
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Corsair Fighters"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flight Command",
+        "value": 2
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Rocket Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 5 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "As the Union pushes out into the Pacific and Atlantic, it requires significant air power to support fleet operations. The Enterprise-class is a formidable warship and the largest vessel in the Union naval register. Once dubbed \"The Great Experiment\" , the success of these vessels is now beyond doubt.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Corsair Fighters",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
+  },
+  {
+    "id": "union_gotham_assault_carrier",
+    "faction_id": "union",
+    "name": "Gotham",
+    "sub_name": "Assault Carrier",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 260,
+    "vpr": 10,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 6,
+      "SPD": "2\"-6\"",
+      "TRN": 1,
+      "DEF": 7,
+      "ARM": 6,
+      "HUL": 11,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 5,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 14
+      },
+      {
+        "name": "Carrier",
+        "value": 8
+      },
+      {
+        "name": "Flight Deck",
+        "value": null,
+        "detail": "Talon Autogyros"
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Ground Assault",
+        "value": 2
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 5
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      },
+      {
+        "name": "Flight Command",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FP",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FS",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "PA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "SA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 5 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Since their inception in 1775, the Union Federal Marine Corps have been recognised as their nation's most formidable fighting force. With its multiple Talon Autog yro launch platforms and dedicated training facilities, the Gotham-class is the corps home away from home for Minutemen shock troopers and Pacifier heavy infantry.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_independence_battlecruiser",
+    "faction_id": "union",
+    "name": "Independence",
+    "sub_name": "Battlecruiser",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 245,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Magnetic Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 7,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Earning their first battle stars during the Caribbean Hurricane campaign, the original USS Independence and her sister ships have proven to be a crucial tactical element in leading fast moving battlefleets. With the arrival of these vessels, the last of the obsolete Pensacola-class battlecruisers in Union service were broken up and scrapped at the Puget Sound Naval Yard.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_uss_indianapolis_independence_class",
+    "faction_id": "union",
+    "name": "USS Indianapolis",
+    "sub_name": "Independence-Class",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 260,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Arc Generator",
+        "value": null
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Tesla Coil",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Helical Rail Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Helical Rail Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Light Helical Rail Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Light Helical Rail Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Rail",
+            "value": 1
+          },
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Dystopian Wars is a trademark of Warcradle Studios. Illustrations and Designs are copyright © 2025 Warcradle Studios. Made in the UK. The USS Indianapolis was already a seasoned warship with six battle stars for meritorious combat service before being leased from the Union Navy to the Pipeworks. There, under command of Captain Charles Russell, the Indianapolis serves as a testbed for Helical Railgun technolog y: Project Tudor.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_liberty_battlecarrier",
+    "faction_id": "union",
+    "name": "Liberty",
+    "sub_name": "Battlecarrier",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 230,
+    "vpr": 8,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 6
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Corsair Fighters"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flight Command",
+        "value": 1
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "These superb and sought after vessels enable the Union to deploy squadrons of Corsair Fighters in engagements where a heavy carrier is unwarranted, and a strike carrier is insufficient. The Philadelphia Naval Shipyard currently has three construction cradles dedicated to producing the Liberty-class at a rate of one battlecarrier every seven months.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Corsair Fighters",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
+  },
+  {
+    "id": "union_uss_mexico_constitution_class",
+    "faction_id": "union",
+    "name": "USS Mexico",
+    "sub_name": "Constitution-Class",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 270,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 8,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Arc Generator",
+        "value": null
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Tesla Coil",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Electrocannon",
+        "arc": "FPA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Heavy Electrocannon",
+        "arc": "FSA",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 4 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Testbed ship for Nikolai Tesla's revolutionary Arc technologies, the USS Mexico is often sent into battle against a variety of adversaries. The results of these engagements make for precious study material at the Pipeworks.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_uss_monitor_virginia_class_assault",
+    "faction_id": "union",
+    "name": "USS Monitor",
+    "sub_name": "Virginia-Class Assault",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 245,
+    "vpr": 9,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Carrier",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 5,
+      "REP": 4,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 5
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 8,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 5 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "A veteran of the earliest battles of the Ore War, the USS Monitor is the last remaining Virginia-class Assault Battleship left in service to the Union. Her guns and brave Talon Autog yro crews have earned the vessel multiple battle honours over the decades, making her a proud reminder of a more valourous era.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_uss_rio_grande_independence_class",
+    "faction_id": "union",
+    "name": "USS Rio Grande",
+    "sub_name": "Independence-Class",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 255,
+    "vpr": 8,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Flagship",
+      "Ship",
+      "Capital",
+      "Unique"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 5,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Arc Generator",
+        "value": null
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Tesla Coil",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Thermobaric Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Hazard 2)",
+            "value": null
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Thermobaric Rocket Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": null,
+          "S": 8,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 2
+          },
+          {
+            "name": "Hazard 2)",
+            "value": null
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Thermobaric Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 1
+          },
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Thermobaric Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 1
+          },
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Dystopian Wars is a trademark of Warcradle Studios. Illustrations and Designs are copyright © 2025 Warcradle Studios. Made in the UK. The Rio Grande is the Pipework's testbed for their deadly powdered aluminium and RJ-1027 vacuum explosives, technolog y known as the \"Witch's Cauldron\" . A close association with the project and her cold and unforgiving demeanour has given rise to the Rio Grande's commanding officer, Captain Maureen Wayne, being privately known as the",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_senator_command_cruiser",
+    "faction_id": "union",
+    "name": "Senator",
+    "sub_name": "Command Cruiser",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 195,
+    "vpr": 6,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Flagship",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Triangulated Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Triangulate",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "name": "Chesapeake Gatling Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 9,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Chesapeake Gatling Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 9,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Chesapeake Gatling Gun",
+        "arc": "FPA",
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Chesapeake Gatling Gun",
+        "arc": "FSA",
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 5 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Senator Command Cruisers are deployed in pairs to provide leadership to larger fleet operations. They are also commonly deployed where aerial engagements are likely, their supreme air defence systems shielding their forces from enemy aircraft.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "union_venture_assault_aircruiser",
+    "faction_id": "union",
+    "name": "Venture",
+    "sub_name": "Assault Aircruiser",
+    "faction": "Union",
+    "role": "Flagship",
+    "point_cost_per_model": 210,
+    "vpr": 7,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Airborne",
+      "Flagship",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 10
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Ground Assault",
+        "value": 3
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 4
+      },
+      {
+        "name": "Unexpected Arrival",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Aerial Torpedo Pods",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Magnetic Gatling Battery",
+        "arc": "F",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Navigation Lock",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "Powerful aerial warships, the Venture-class has sixteen Brayton diesel-electric motors that drive her outside propellers. These propellers can be rotated down or backwards, providing a form of thrust vectoring that allows the large craft to perform rapid and controlled ascents and ground assaults. HONORABLE ECLIPSE COMPANY VARIANT",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_chicago_cruiser",
+    "faction_id": "union",
+    "name": "Chicago",
+    "sub_name": "Cruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 190,
+    "vpr": 5,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Built at the Norfolk Fleet Yards, the Chicago-class was commissioned as part of the Union's Pacific naval strateg y. Though these vessels are a significant investment of resources, the class has proven to be a vital asset in a variety of global deployments including the incorporation of the Hawai'ian Archipelago into Federal territory.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_constellation_airship",
+    "faction_id": "union",
+    "name": "Constellation",
+    "sub_name": "Airship",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 1,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "F",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Dual Harper Autocannon",
+        "arc": "F",
+        "firepower": {
+          "C": 8,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Freedom Incendiary Bombs",
+        "arc": "A",
+        "firepower": {
+          "C": 6,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Bomb",
+            "value": null
+          },
+          {
+            "name": "Hazard",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "The Constellation-class is the main fighting airship of the Union's dirigible program. Their combination of thunderous gun battery shelling and blazing ordnance dropped from underslung bomb bays make them a powerful and mobile asset in the Union's fight for global supremacy. HONORABLE ECLIPSE COMPANY VARIANT",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_discovery_arc_cruiser",
+    "faction_id": "union",
+    "name": "Discovery",
+    "sub_name": "Arc Cruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 125,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Arc Generator",
+        "value": null
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Electrocannon Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Tesla Coil",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 2
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Electrocannon Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Undergoing sea trials in 1869 before finally entering into general deployment two years later, the Discovery-class is replete with Edwina Houston and Nikolai Tesla's Arc technologies. Built initially at the Bath Iron Works alongside more conventional dockmates, a second production has begun at Norfolk, Virginia to increase capacity.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_excelsior_heavy_aircruiser",
+    "faction_id": "union",
+    "name": "Excelsior",
+    "sub_name": "Heavy Aircruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 185,
+    "vpr": 6,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "F",
+        "firepower": {
+          "C": 4,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Dual Harper Autocannon",
+        "arc": "F",
+        "firepower": {
+          "C": 9,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Freedom Incendiary Bombs",
+        "arc": "A",
+        "firepower": {
+          "C": 12,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Bomb",
+            "value": null
+          },
+          {
+            "name": "Hazard",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "FLAGSHIP VARIANT The Excelsior-class was known as \"The Great Experiment\" , as the structural load on the airframe went well beyond For +5 pts, a single Excelsior Heavy Aircruiser unit in this theoretical tolerances. It was the sturginium alloy added to Force can carry the Admiral's Flag. If it does so, it may only the duralanium spine of the ship that heralded a new era for have 1 model. Union air support. Such was its success that the Venture, and Replace the Line trait with Flagship. A Battlefleet that has ultimately the Destiny-class, was built upon its foundation. a Excelsior Heavy Aircruiser unit as its Flagship can have another Excelsior Heavy Aircruiser unit allocated to a Line Element, even if it is not listed as a Mainstay Class. HONORABLE ECLIPSE",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "union_lexington_heavy_cruiser",
+    "faction_id": "union",
+    "name": "Lexington",
+    "sub_name": "Heavy Cruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 120,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 6,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Electrocannon Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Electrocannon Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "The Lexington-class was commissioned to outfight the Japanese Yamaguchi Attack Cruisers that had proven so decisive in the naval engagements during the Caribbean Hurricane.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_philadelphia_heavy_arc_cruiser",
+    "faction_id": "union",
+    "name": "Philadelphia",
+    "sub_name": "Heavy Arc Cruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 165,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 6,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Temperamental",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Arc Generator",
+        "value": null
+      },
+      {
+        "name": "Decksweepers",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Tesla Coil",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
+          {
+            "name": "Arc",
+            "value": 4
+          },
+          {
+            "name": "Homing",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          },
+          {
+            "name": "Mayhem",
+            "value": null
+          },
+          {
+            "name": "Powered",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Electrocannon Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Electrocannon Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "H"
+      },
+      {
+        "name": "Electrocannon Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Electrocannon Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Dystopian Wars is a trademark of Warcradle Studios. Illustrations and Designs are copyright © 2025 Warcradle Studios. Made in the UK. The Philadelphia-class was born out of lessons learned from Pipeworks naval test platforms such as the USS Mexico. This led to Congress passing the 1871 National Defense Authorization Act, mandating the construction of a larger Arc generator-equipped vessel with greater range and capability.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_ticonderoga_assault_airship",
+    "faction_id": "union",
+    "name": "Ticonderoga",
+    "sub_name": "Assault Airship",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 100,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Line",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Boarding Parties",
+        "value": 7
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Ground Assault",
+        "value": 1
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Ticonderoga Rocket Battery",
+        "arc": "F",
+        "firepower": {
+          "C": null,
+          "S": 10,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "The Ticonderoga-class assault airship is designed to fly high above enemy bastions and bulwarks before landing its underslung Minutemen assault troops in a punishing assault. Rockets and flak batteries ensure that the airship is well defended while it carries out its mission. HONORABLE ECLIPSE COMPANY VARIANT",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_yorktown_cruiser",
+    "faction_id": "union",
+    "name": "Yorktown",
+    "sub_name": "Cruiser",
+    "faction": "Union",
+    "role": "Line",
+    "point_cost_per_model": 100,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Line",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Dependable and powerful, the Yorktown-class Cruisers are often partnered with Akron Observation Rotors to turn them into highly capable vessels. Their paddlewheels give them surprising manoeuvrability that offsets their focus on frontal engagements.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_bogota_carryall_rotor",
+    "faction_id": "union",
+    "name": "Bogota Carryall",
+    "sub_name": "Rotor",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 25,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Patrol",
+      "Rotorcraft",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "0-10\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 2,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Harper Autocannon",
+        "arc": "F",
+        "firepower": {
+          "C": 4,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Sky Strike",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "Fabricated in the aeronautical factory at Guaymaral, in the newest Union State of Colombia, this heavy lift rotorcraft was named after the South American State's capital. HONORABLE ECLIPSE COMPANY VARIANT This unit may, at no additional cost, an asset of the Honorable Eclipse Company. Every model in the unit loses the Union trait and gains OPTIONS AND UPGRADES the HEC trait.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Airborne"
+      ],
+      "max_models": 4
+    }
+  },
+  {
+    "id": "union_defiant_destroyer",
+    "faction_id": "union",
+    "name": "Defiant",
+    "sub_name": "Destroyer",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 50,
+    "vpr": 1,
+    "models": "1-4",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Surface"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "Developed in response to the growing threat across the Atlantic, the Defiant-class proved instrumental in disrupting Latin Alliance convoys supporting the Socialist Unity of South America.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 4
+    }
+  },
+  {
+    "id": "union_farragut_frigate",
+    "faction_id": "union",
+    "name": "Farragut",
+    "sub_name": "Frigate",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Support"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+2\""
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sperry Light Torpedo Launchers",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": 3,
+          "E": 3
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Named after Admiral Glasgow Farragut, who gave the famous order \"Damn the torpedoes, full speed ahead\" during the Battle of Mobile Bay. Farragut Frigates are often deployed in large squadrons to maximise firepower. Modified by the brilliant minds at the Pipeworks from Farragut hulls, the Boston-variant Recon Frigate uses a Leary-pattern Infrasound array to detect and relay positional information to the fleet.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 6,
+    "attachment": {
+      "parent_traits": [
+        "Support"
+      ],
+      "max_models": 6
+    }
+  },
+  {
+    "id": "union_gettysburg_heavy_monitor",
+    "faction_id": "union",
+    "name": "Gettysburg",
+    "sub_name": "Heavy Monitor",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 105,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 4,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+2\""
+      },
+      {
+        "name": "Mine Sweeper",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Gettysburg Heavy Monitors underwent a modernisation programme as part of the Union's new generation navy and had their electrical systems updated to be able to install generators and newer weaponry. The rugged design of these ships along with their lengthy battle honours made them highly desirable postings.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_john_henry_vitruvian_colossus",
+    "faction_id": "union",
+    "name": "John Henry",
+    "sub_name": "Vitruvian Colossus",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 160,
+    "vpr": 4,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": "-",
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Elevated",
+        "value": null
+      },
+      {
+        "name": "Raking Strike",
+        "value": 6
+      },
+      {
+        "name": "Soar",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+6\""
+      },
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Twin Vitruvian Hammers",
+        "arc": "FPS",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Assault",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Chesapeake Gatling Gun",
+        "arc": "FPS",
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Chesapeake Gatling Gun",
+        "arc": "FPS",
+        "firepower": {
+          "C": 5,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Grant Jackhammer",
+          "arc": null,
+          "firepower": {
+            "C": 8,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Assault",
+              "value": null
+            },
+            {
+              "name": "Breach",
+              "value": 1
+            },
+            {
+              "name": "Devastating",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Usually equipped with a pair of Sturginium Hammers to physically assault their targets, the John Henry-class boasts formidable short-range firepower from forearm-mounted Chesapeake Gatling Cannons. Other crews prefer to wield a two-handed Grant Jackhammer and bring its rocket-propelled drill head down to pulverise a target.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "union_patriot_automata",
+    "faction_id": "union",
+    "name": "Patriot",
+    "sub_name": "Automata",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-4",
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Patrol",
+      "Automata",
+      "Light Vessel",
+      "Colossus"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1-11\"",
+      "TRN": 4,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Agile",
+        "value": 2
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Pipeworks"
+      },
+      {
+        "name": "Elevated",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Soar",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Mine Sweeper",
+        "value": 1
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Chace Rocket Pods",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 1
+          },
+          {
+            "name": "Limited",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Electrocannon Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Arc",
+            "value": 1
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Magnetic Gatling Guns",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Navigation Lock",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Designed by the brilliant theoretical engineers at the Pipeworks, the RC-52 Patriot is the largest automata in the Union's military. Just like smaller automata, over time their adaptive computations develop quirks that give veteran automata distinctive personalities.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Pipeworks"
+      ],
+      "max_models": 4
+    }
+  },
+  {
+    "id": "union_reliant_monitor",
+    "faction_id": "union",
+    "name": "Reliant",
+    "sub_name": "Monitor",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 65,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 6,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Torpedo Tubes",
+        "arc": "A",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Protecting the harbours, ports and estuaries of the Union, the Reliant lives up to its name as a stalwart mobile firebase. Equipped with below-waterline torpedo tubes fore and aft, the Reliant is surprisingly well armed. As the Union expands its sphere of influence, the Reliant-class proves to be a hard- working asset to the fleet.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_valiant_fast_destroyer",
+    "faction_id": "union",
+    "name": "Valiant",
+    "sub_name": "Fast Destroyer",
+    "faction": "Union",
+    "role": "Patrol",
+    "point_cost_per_model": 60,
+    "vpr": 1,
+    "models": "1-4",
+    "tags": [
+      "Union",
+      "Surface",
+      "Patrol",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 2,
+      "SPD": "1\"-8\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 5,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+2\""
+      },
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sperry Light Torpedo Launchers",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": 3,
+          "E": 3
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "Often seen in support of aerial merchant shipping convoys such as those of the Honourable Eclipse Company, the Valiant-class of Fast Destroyers are designed to counter threats from above with barrages of unguided rockets. Developed in response to the growing threat across the Atlantic, the Defiant variant has proven instrumental in disrupting Latin Alliance convoys supporting the Socialist Unity of South America.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 4
+    }
+  },
+  {
+    "id": "union_farpoint_bunker_platform",
+    "faction_id": "union",
+    "name": "Farpoint",
+    "sub_name": "Bunker Platform",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 75,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Platform",
+      "Carrier",
+      "Immobile"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "-",
+      "TRN": "-",
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 6,
+      "ACT": 2,
+      "BRD": "-",
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 3
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Farpoint Bunker Platforms are used by the Union for supporting and deploying Pacifier assault troops and auxiliary aircraft to help maintain a hardened defence of regions liberated from tyranny.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_midway_heavy_landing_ship",
+    "faction_id": "union",
+    "name": "Midway",
+    "sub_name": "Heavy Landing Ship",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 170,
+    "vpr": 5,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Ground Assault",
+        "value": 3
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 3
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 2,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 2,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 10,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "The Manifest Destiny the Union requires heavy landing operations to deliver effectively, deploying Lakota Heavy Rail trains and Pacifier and Minuteman infantry to secure and liberate contested territories. This was seen in 1874 with the success of Operation Cyclone, after which the Union renamed the Wasp-class the Midway, in recognition of securing the Union's furthest most territory.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "union_nashville_heavy_support_ship",
+    "faction_id": "union",
+    "name": "Nashville",
+    "sub_name": "Heavy Support Ship",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 165,
+    "vpr": 4,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 10,
+      "ACT": 3,
+      "BRD": 2,
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Auxiliary Mine Layer",
+        "value": 3
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Repair Facilities",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "Built at the Norfolk Naval yard in Virginia, the Nashville- class has become a vital part of the extended logistics and support arm of the Union naval operations around the world.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "union_offshore_defence_platform",
+    "faction_id": "union",
+    "name": "Offshore Defence",
+    "sub_name": "Platform",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 60,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Platform",
+      "Immobile"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "-",
+      "TRN": "-",
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 2,
+      "BRD": "-",
+      "REP": 4,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Platform"
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      },
+      {
+        "description": "Upgrade the unit to have Defensive Mines; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "lore": "The Union makes use of Colorado Defence Platforms to maintain a static defence in resource rich regions, to protect shipping lanes, and to reinforce disputed territorial claims. OPTIONS AND UPGRADES Add up to two Escort tokens at +10 pts each. This",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Platform"
+      ],
+      "max_models": 3
+    }
+  },
+  {
+    "id": "union_offshore_heavy_platform",
+    "faction_id": "union",
+    "name": "Offshore Heavy",
+    "sub_name": "Platform",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 150,
+    "vpr": 4,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Platform",
+      "Immobile",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "-",
+      "TRN": "-",
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 12,
+      "ACT": 3,
+      "BRD": "-",
+      "REP": 4,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 5
+      },
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 5,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 10,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 7,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Generator from the Generator list",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false
+      },
+      {
+        "description": "Upgrade the unit to have Defensive Mines; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "lore": "The Freedom Heavy Platform is laid out using the common design for Offshore Heavy Platforms found around the globe. Part trading post and part fortification, these are tangible symbols of the Union's presence throughout the world. OPTIONS AND UPGRADES Add up to two Escort tokens at +10 pts each. One Generator can be chosen for this model (see page 6). This does not replace a Hardpoint.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_ranger_aircarrier",
+    "faction_id": "union",
+    "name": "Ranger",
+    "sub_name": "Aircarrier",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 100,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Support",
+      "Airship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 4,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 4
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Corsair Fighters"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Flak Barrage",
+        "value": 8
+      }
+    ],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "The heart of the Ranger-class, and the sole purpose for its existence, is her copious internal fighter hanger. With entry and egress through the launch bay in the prow, control of aircraft is vital to allow for smooth operation. There are limitations of design that have structural girders partially obstructing the internal space, requiring craft to make a sharp veer to the left or right on landing. HONORABLE ECLIPSE COMPANY VARIANT",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Corsair Fighters",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
+  },
+  {
+    "id": "union_roanoke_carrier",
+    "faction_id": "union",
+    "name": "Roanoke",
+    "sub_name": "Carrier",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 90,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Union"
+      },
+      {
+        "name": "Carrier",
+        "value": 4
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Corsair Fighters"
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Employing powerful electromagnetic catapults to rapidly launch their Corsair strike fighters into the fray, the Roanoke carrier is a valuable vessel in the Union fleet. The class was named after the Union naval base on Roanoke Island, destroyed in 1862 during the Ore War.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Union"
+      ],
+      "max_models": 3
+    },
+    "short_range_squadrons": [
+      {
+        "name": "Corsair Fighters",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
+      }
+    ]
+  },
+  {
+    "id": "union_saratoga_assault_cruiser",
+    "faction_id": "union",
+    "name": "Saratoga",
+    "sub_name": "Assault Cruiser",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 115,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 3
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "After the Ore War, Saratoga-class vessels were reclassified as littoral cruisers. Their rear landing pads were used to deploy Talon Autog yros. The early models of these Pitcairn-Cierva manufactured aircraft had been crucial in the civil war, deploying Pacifier units to assault the decks of Confederate vessels or storm fortifications.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_springfield_corvette",
+    "faction_id": "union",
+    "name": "Springfield",
+    "sub_name": "Corvette",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 3,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Defensive",
+        "value": 1
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [],
+    "lore": "Corvettes are one of the smallest-classifications of vessel in the fleet, with disproportionately powerful armament for their tonnage. The Spring field-class has been in service for nearly twenty years, serving with distinction in the fleets of both the Union and Confederacy.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 6,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 6
+    }
+  },
+  {
+    "id": "union_steward_airship",
+    "faction_id": "union",
+    "name": "Steward",
+    "sub_name": "Airship",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 145,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "HEC",
+      "Airborne",
+      "Support",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 4,
+      "REP": 1,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Airborne Flagship"
+      },
+      {
+        "name": "Boarding Parties",
+        "value": 8
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      },
+      {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
+        "name": "Sky Commandos",
+        "value": 8
+      }
+    ],
+    "systems": [
+      {
+        "name": "Defensive",
+        "value": 2
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      },
+      {
+        "name": "Generator Ship",
+        "value": null
+      },
+      {
+        "name": "Sentinel Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Heat Lance",
+        "arc": "F",
+        "firepower": {
+          "C": 7,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Powered",
+            "value": null
+          },
+          {
+            "name": "Solex",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Featuring a prow mounted Sentinel generator, reverse engineered from Solex and Guardian generators acquired by HEC contractors under questionable circumstances, Stewards channel excess heat from the deflector projectors into a thermal lance of awesome effect.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Airborne",
+        "Flagship"
+      ],
+      "max_models": 3
+    }
+  },
+  {
+    "id": "union_sumter_landing_ship",
+    "faction_id": "union",
+    "name": "Sumter",
+    "sub_name": "Landing Ship",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 105,
+    "vpr": 4,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 3
+      },
+      {
+        "name": "Ground Assault",
+        "value": 2
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "With hundreds of Providence-class Merchantman in various stages of manufacture across the Union at the close of the Ore War, the hulls were refitted as Sumter-class landing ships. Designed to rapidly move troops and armour to key strike points, the Sumter also made use of the trusty Talon Autog yros to make assaults in support of landings.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_washington_missile_cruiser",
+    "faction_id": "union",
+    "name": "Washington",
+    "sub_name": "Missile Cruiser",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 130,
+    "vpr": 3,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Kettering Missile Silos",
+        "arc": "FPSA",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": 12
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          },
+          {
+            "name": "Blast",
+            "value": 4
+          },
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Indirect",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Armed with Kettering-pattern cruise missiles, the crew of Washington-class vessels often make use of observation rotors and spotters in Corsair fighter squadrons to ensure the deadly payload strikes true.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": "union_wisconsin_heavy_assault_cruiser",
+    "faction_id": "union",
+    "name": "Wisconsin",
+    "sub_name": "Heavy Assault Cruiser",
+    "faction": "Union",
+    "role": "Support",
+    "point_cost_per_model": 175,
+    "vpr": 5,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2\"-6\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 5,
+      "HUL": 9,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Carrier",
+        "value": 4
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Talon Autogyros"
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Since their inception in 1775, the Union Federal Marine Corps have been recognised as the Union's most formidable fighting force. Wisconsin-class vessels maintain barracks and training facilities for platoons of UFMC Pacifier heavy infantry to make airborne assaults from the Talon Autog yros embarked on the aft flightdeck.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2,
+    "short_range_squadrons": [
+      {
+        "name": "Talon Autogyros",
+        "attack": 4,
+        "intercept": 2,
+        "support": 0,
+        "resilience": 2,
+        "properties": [
+          {
+            "name": "Specialist",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "union_boston_arc_frigate",
+    "faction_id": "union",
+    "name": "Boston",
+    "sub_name": "Arc Frigate",
+    "faction": "Union",
+    "role": "Scout",
+    "point_cost_per_model": 35,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Surface",
+      "Scout",
+      "Ship",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Light Vessel Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [
+      {
+        "name": "Decksweepers",
+        "value": null
+      },
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Sperry Light Torpedo Launchers",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": 3,
+          "E": 3
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": null,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Electrocannon Battery",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "Modified by the brilliant minds at the Pipeworks from Farragut frigate hulls, the Boston-class frigate uses a Leary-pattern infrasound array to detect and relay positional information to the fleet.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 6
+  },
+  {
+    "id": "union_cheyenne_submarine",
+    "faction_id": "union",
+    "name": "Cheyenne",
+    "sub_name": "Submarine",
+    "faction": "Union",
+    "role": "Scout",
+    "point_cost_per_model": 35,
+    "vpr": 1,
+    "models": "1-4",
+    "tags": [
+      "Union",
+      "Underwater",
+      "Scout",
+      "Submarine",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 3,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Triangulated Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          },
+          {
+            "name": "Triangulate",
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "Submarine warfare is a new theatre of war for the Union, but it is an area they are rapidly learning to excel in. Cheyenne-class Submarines are adept at hunting down enemy warships as well as safeguarding their own fleets from submersible threats.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": "union_intrepid_light_cruiser",
+    "faction_id": "union",
+    "name": "Intrepid",
+    "sub_name": "Light Cruiser",
+    "faction": "Union",
+    "role": "Scout",
+    "point_cost_per_model": 95,
+    "vpr": 2,
+    "models": "1-4",
+    "tags": [
+      "Union",
+      "Surface",
+      "Scout",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "H"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 9,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      }
+    ],
+    "lore": "Voyaging far beyond the Union's territorial waters, the Intrepid-class Light Cruisers are more than a match for the patrol ships of their neighbours. It is a prudent captain who withdraws her Intrepid before heavier enemy vessels come within range, however.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": "union_puritan_automata_submarine",
+    "faction_id": "union",
+    "name": "Puritan",
+    "sub_name": "Automata Submarine",
+    "faction": "Union",
+    "role": "Scout",
+    "point_cost_per_model": 25,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Union",
+      "Pipeworks",
+      "Underwater",
+      "Scout",
+      "Submarine",
+      "Automata",
+      "Light"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-7\"",
+      "TRN": 3,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 1,
+      "CRW": 4
+    },
+    "properties": [
+      {
+        "name": "Auxiliary Mine Layer",
+        "value": 2
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Self Destruct",
+        "value": 2
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Sperry Light Torpedo Launchers",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": 3,
+          "E": 3
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "Developed as a surprising confluence of workstreams by the mine-laying, automata, and submersible project groups, the Puritan-class RS-11 automata is tasked with laying mines ahead of naval operations and then detonating itself and any undeployed mines beneath a target.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 6
+  },
+  {
+    "id": "union_republic_airship",
+    "faction_id": "union",
+    "name": "Republic",
+    "sub_name": "Airship",
+    "faction": "Union",
+    "role": "Scout",
+    "point_cost_per_model": 115,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Scout",
+      "Airship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 5,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 4,
+      "REP": 1,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Cloud Dive",
+        "value": null
+      },
+      {
+        "name": "Dirigible",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": null,
+        "detail": "+3\""
+      },
+      {
+        "name": "Flak Barrage",
+        "value": 6
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Aerial Torpedo Pods",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Dual Magnetic Gatling Guns",
+        "arc": "F",
+        "firepower": {
+          "C": 8,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Indiscriminate",
+            "value": null
+          },
+          {
+            "name": "Navigation Lock",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Convert this unit to Honorable Eclipse Company; replace Union with HEC",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "HEC_CONTRACTORS",
+        "adds_tags": [
+          "HEC"
+        ],
+        "removes_tags": [
+          "Union"
+        ]
+      }
+    ],
+    "lore": "The Union Air Corps is a key part of the emergent power's globa ambitions. Prototyped less than a decade ago, these armoured balloons have evolved into complex war machines the envy of the world. Republic-class airships soar high above the clouds, before descending rapidly to unleash their potent weapons on an unsuspecting enemy. The Ticonderoga assault variant is designed to fly high above enemy bastions and bulwarks before landing its payload of Minutemen assault troops in a punishing assault. Rockets and HONORABLE ECLIPSE flak batteries ensure that the airship is well defended while it COMPANY VARIANT carries out its mission.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_akron_sentry_rotor",
+    "faction_id": "union",
+    "name": "Akron",
+    "sub_name": "Sentry Rotor",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-8",
+    "tags": [
+      "Union",
+      "Airborne",
+      "Logistical",
+      "Rotorcraft",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "0-10\"",
+      "TRN": 3,
+      "DEF": 4,
+      "ARM": 3,
+      "HUL": 3,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mobile",
+        "value": null
+      },
+      {
+        "name": "Vanguard",
+        "value": null,
+        "detail": "5\""
+      }
+    ],
+    "systems": [
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      },
+      {
+        "name": "Mine Sweeper",
+        "value": 1
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Chace Rocket Pods",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "Limited",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "The Union uses Akron Sentry Rotors for observation and infiltration. Usually, the supremely capable Akron is attached to units throughout the fleet, giving much needed aerial cover.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 2,
+    "max": 8,
+    "attachment": {
+      "parent_traits": [
+        "Airborne"
+      ],
+      "max_models": 8
+    }
+  },
+  {
+    "id": "union_california_supply_cruiser",
+    "faction_id": "union",
+    "name": "California",
+    "sub_name": "Supply Cruiser",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 100,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Inspirational",
+        "value": null,
+        "detail": "5\""
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Mine Sweeper",
+        "value": 2
+      }
+    ],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "The California-class is seen by many as little more than merchant or civilian vessels, and hardly of the same calibre as the rest of the fleet. However, for those that come to know them, the animated and enthusiastic crews typical of California-class vessels can be found to uphold the finest traditions of the Union navy.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 3
+    }
+  },
+  {
+    "id": "union_europa_grand_conveyor",
+    "faction_id": "union",
+    "name": "Europa",
+    "sub_name": "Grand Conveyor",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 90,
+    "vpr": 0,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 4,
+      "SPD": "2-7\"",
+      "TRN": 1,
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 10,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Resupply",
+        "value": 2
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      },
+      {
+        "name": "Logistical Support",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 4 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade this model to be a Troop Transport",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "lore": "The hunger of the Dystopian Age requires more resources than The highlight of their creation is the Callisto, a Europa Grand even fleets of Titan Mass Conveyors can comfortably provide. Conveyor decked out for passengers of the highest class. Built Thankfully, the engineering minds behind Norddeutscher with comfort and exclusivity in mind, her proprietary repulsor Hamburg and White Wolf had the foresight to adapt the generators are said to be the quietest publicly available. Majestic plans of the Titan, almost as soon as the inaugural vessel was views in luxurious surroundings are the norm aboard the launched. Callisto. OPTIONS AND UPGRADES",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_frontier_platform_transport",
+    "faction_id": "union",
+    "name": "Frontier",
+    "sub_name": "Platform Transport",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 185,
+    "vpr": 5,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Capital",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 5,
+      "SPD": "2\"-6\"",
+      "TRN": 2,
+      "DEF": 7,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 2,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Inspirational",
+        "value": null,
+        "detail": "7\""
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 1
+      }
+    ],
+    "systems": [
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "Platform Transport",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 3
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Heavy Rocket Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": null,
+          "S": 7,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": 7,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Chesapeake Gatling Battery",
+          "arc": null,
+          "firepower": {
+            "C": 10,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 5 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 5,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "The Frontier class was designed to deploy and support the chains of Bunker and Battle Platforms which the Union aggressively deploys across the Atlantic and Pacific.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  },
+  {
+    "id": "union_hermes_supply_freighter",
+    "faction_id": "union",
+    "name": "Hermes",
+    "sub_name": "Supply Freighter",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 25,
+    "vpr": 0,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Light Vessel",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1-6\"",
+      "TRN": 4,
+      "DEF": 2,
+      "ARM": 2,
+      "HUL": 5,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 2,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Surface"
+      },
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Resupply",
+        "value": 1
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 1
+      }
+    ],
+    "systems": [],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "Hundreds of Hermes Supply Freighters ferry goods across oceans, seas and along coastlines. It is the true workhorse of the water. Each one of the Great Powers have numerous Hermes listed as their property. So many are seen over the globe that some sailors have taken up the hobby of ‘spotting' them. They fill notebooks with names, locations, loadouts, and even colour schemes. Occasionally, officers have used this information for more strategic purposes, although none admit to it.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Surface"
+      ],
+      "max_models": 3
+    }
+  },
+  {
+    "id": "union_montgomery_repair_ship",
+    "faction_id": "union",
+    "name": "Montgomery",
+    "sub_name": "Repair Ship",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 80,
+    "vpr": 2,
+    "models": "1-2",
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 1,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Auxiliary Mine Layer",
+        "value": 2
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 1
+      }
+    ],
+    "systems": [
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
+      }
+    ],
+    "lore": "With a reputation for working miracles, the crews of Montgomery Support Ships are always a welcome addition to any battlefleet. Scores of repair teams use a combination of flight gear and escort craft to effect repairs and rescue to friendly vessels in need.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 2,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "union_offshore_supply_platform",
+    "faction_id": "union",
+    "name": "Offshore Supply",
+    "sub_name": "Platform",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 65,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Platform",
+      "Immobile",
+      "Repair"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "-",
+      "TRN": "-",
+      "DEF": 3,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 2,
+      "BRD": "-",
+      "REP": 4,
+      "CRW": 7
+    },
+    "properties": [
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Platform",
+        "value": null
+      },
+      {
+        "name": "Stockpile",
+        "value": 3
+      }
+    ],
+    "systems": [
+      {
+        "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "Repair Facilities",
+        "value": 2
+      }
+    ],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade the unit to have Defensive Mines; gains Auxiliary Mine Layer (3)",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "DEFENSIVE_MINES",
+        "adds_properties": [
+          {
+            "name": "Auxiliary Mine Layer",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "lore": "Oklahoma Offshore Supply Platforms are often supported by Colorado Defence Platforms or by Escorts, a superb waypoint for Union fleets as they push outwards to bring liberty to the world. OPTIONS AND UPGRADES Add up to two Escort tokens at +10 pts each.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_providence_merchantman",
+    "faction_id": "union",
+    "name": "Providence",
+    "sub_name": "Merchantman",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 60,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 2,
+      "DEF": 3,
+      "ARM": 4,
+      "HUL": 9,
+      "ACT": 2,
+      "BRD": 1,
+      "REP": 3,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Pivot",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      },
+      {
+        "name": "Stockpile",
+        "value": 1
+      }
+    ],
+    "systems": [],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "PSA",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 1 Escort token to the unit",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "ESCORT"
+      }
+    ],
+    "lore": "For decades, the Providence-class has supplied goods and materiel around the Union and beyond. In this climate of increasing global tensions, these Merchantmen are tasked with accessing difficult logistics and supply routes. The work of the Providence-class and their crews are essential for a young, expanding nation with the world arrayed against them.",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": "union_titan_mass_conveyor",
+    "faction_id": "union",
+    "name": "Titan",
+    "sub_name": "Mass Conveyor",
+    "faction": "Union",
+    "role": "Logistical",
+    "point_cost_per_model": 70,
+    "vpr": 0,
+    "models": 1,
+    "tags": [
+      "Union",
+      "Surface",
+      "Logistical",
+      "Ship",
+      "Merchantman"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2-7\"",
+      "TRN": 2,
+      "DEF": 2,
+      "ARM": 3,
+      "HUL": 7,
+      "ACT": 1,
+      "BRD": "-",
+      "REP": 3,
+      "CRW": 6
+    },
+    "properties": [
+      {
+        "name": "Civilian Vessel",
+        "value": null
+      },
+      {
+        "name": "Flotsam",
+        "value": null
+      },
+      {
+        "name": "Forward Deployment",
+        "value": null
+      },
+      {
+        "name": "Resupply",
+        "value": 2
+      },
+      {
+        "name": "Strategic Asset",
+        "value": 2
+      }
+    ],
+    "systems": [
+      {
+        "name": "Heavy Shield Generator",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [],
+        "slot": "L"
+      }
+    ],
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Chesapeake Gatling Gun",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 4 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade this model to be a Troop Transport",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "lore": "The Titan-class was intended to be the greatest oceangoing liner for size, speed, and cost. The proliferation of these vessels, in a plethora of frontline and support roles in navies all over the globe is a testament to an ambition amply met. OPTIONS AND UPGRADES",
+    "version": "4.00A",
+    "date": "2026-02-26",
+    "min": 1,
+    "max": 1
+  }
+]

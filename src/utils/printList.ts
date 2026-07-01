@@ -1,7 +1,7 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { formatOptionName, getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
+import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
 
@@ -63,7 +63,7 @@ function addRule(ruleMap: Map<string, RuleReference>, category: RuleCategory, ru
 
 function selectedWeapon(unit: Unit, model: ArmyModel, index: number, weapon: Weapon): Weapon {
     const selectedName = model.config.hardpointSelections[index] ?? weapon.name
-    const options = weapon.slot ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
+    const options = weapon.slot && !weapon.hardpoint_locked ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
     return options.find((option) => option.name === selectedName) ?? weapon
 }
 
@@ -87,8 +87,8 @@ function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
 }
 
 function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitConfig, ruleMap: Map<string, RuleReference>): void {
-    const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entryConfig)
-    if (generatorSelection) {
+    const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entryConfig)
+    for (const generatorSelection of generatorSelections) {
         addRule(ruleMap, 'systems', {
             name: generatorSelection.generatorName,
             value: null,
@@ -99,6 +99,7 @@ function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitCon
     for (const weapon of unit.weapons) {
         if (removedWeaponNames.has(weapon.name)) continue
         const index = unit.weapons.indexOf(weapon)
+        if (generatorSelections.some((generatorSelection) => generatorSelection.weaponIndex === index)) continue
         const displayWeapon = selectedWeapon(unit, model, index, weapon)
         for (const quality of displayWeapon.qualities) {
             addRule(ruleMap, 'qualities', quality)
@@ -112,43 +113,53 @@ function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitCon
     }
 }
 
-function selectedModelRuleEffects(unit: Unit, entry: ArmyUnit): { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[] } {
+function selectedModelRuleEffects(unit: Unit, entry: ArmyUnit): { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[]; removedProperties: Set<string>; removedSystems: Set<string> } {
     return entry.models.reduce((effects, model) => {
         const modelEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
+        for (const propertyName of modelEffects.removedProperties) {
+            effects.removedProperties.add(propertyName)
+        }
+        for (const systemName of modelEffects.removedSystems) {
+            effects.removedSystems.add(systemName)
+        }
         return {
             properties: mergeNamedValues(effects.properties, modelEffects.properties),
             systems: mergeNamedValues(effects.systems, modelEffects.systems),
             qualities: mergeNamedValues(effects.qualities, modelEffects.qualities),
+            removedProperties: effects.removedProperties,
+            removedSystems: effects.removedSystems,
         }
-    }, { properties: [], systems: [], qualities: [] } as { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[] })
+    }, { properties: [], systems: [], qualities: [], removedProperties: new Set<string>(), removedSystems: new Set<string>() } as { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[]; removedProperties: Set<string>; removedSystems: Set<string> })
 }
 
 function displayedProperties(unit: Unit, entry: ArmyUnit): NamedValue[] {
-    return mergeNamedValues(unit.properties, selectedModelRuleEffects(unit, entry).properties)
+    const effects = selectedModelRuleEffects(unit, entry)
+    return mergeNamedValues(unit.properties.filter((property) => !effects.removedProperties.has(property.name)), effects.properties)
 }
 
 function displayedSystems(unit: Unit, entry: ArmyUnit): NamedValue[] {
     const selectedGeneratorSystems = entry.models.flatMap((model) => {
-        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
-        return generatorSelection ? [{ name: generatorSelection.generatorName, value: null }] : []
+        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
+        return generatorSelections.map((generatorSelection) => ({ name: generatorSelection.generatorName, value: null }))
     })
     const factionSpecialRules = entry.models.flatMap((model) => {
-        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
-        return getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)
+        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
+        return getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
     })
-    return mergeNamedValues(unit.systems, selectedGeneratorSystems, selectedModelRuleEffects(unit, entry).systems, factionSpecialRules)
+    const effects = selectedModelRuleEffects(unit, entry)
+    return mergeNamedValues(unit.systems.filter((system) => !effects.removedSystems.has(system.name)), selectedGeneratorSystems, effects.systems, factionSpecialRules)
 }
 
 function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleReference>): void {
-    for (const property of unit.properties) addRule(ruleMap, 'properties', property)
-    for (const system of unit.systems) addRule(ruleMap, 'systems', system)
     for (const model of entry.models) {
-        const generatorSelection = getEffectiveGeneratorSelection(unit, model.config, entry.config)
-        for (const rule of getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null)) {
+        const optionRuleEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
+        for (const property of unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name))) addRule(ruleMap, 'properties', property)
+        for (const system of unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name))) addRule(ruleMap, 'systems', system)
+        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
+        for (const rule of getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))) {
             addRule(ruleMap, 'systems', rule)
         }
         collectRulesForModel(unit, model, entry.config, ruleMap)
-        const optionRuleEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
         for (const property of optionRuleEffects.properties) addRule(ruleMap, 'properties', property)
         for (const system of optionRuleEffects.systems) addRule(ruleMap, 'systems', system)
         for (const quality of optionRuleEffects.qualities) addRule(ruleMap, 'qualities', quality)
@@ -162,10 +173,11 @@ function renderRuleBadges(rules: NamedValue[], category: RuleCategory): string {
 
 function renderWeaponRows(unit: Unit, config: UnitConfig): string {
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config)
-    const generatorSelection = getEffectiveGeneratorSelection(unit, config)
+    const generatorSelections = getEffectiveGeneratorSelections(unit, config)
 
     return unit.weapons.flatMap((weapon, index) => {
         if (removedWeaponNames.has(weapon.name)) return []
+        const generatorSelection = generatorSelections.find((selection) => selection.weaponIndex === index) ?? null
         if (generatorSelection?.weaponIndex === index) {
             return [`
                 <tr>

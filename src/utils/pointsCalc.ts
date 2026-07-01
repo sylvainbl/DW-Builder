@@ -1,6 +1,6 @@
 import type { ArmyList, ArmyUnit, OptionUpgrade, Unit, UnitConfig } from '../types/index'
 import { isUnitLevelOption } from './optionConfig'
-import { getEffectiveGeneratorSelection } from './optionRuleEffects'
+import { getEffectiveGeneratorSelections } from './optionRuleEffects'
 
 export { isUnitLevelOption } from './optionConfig'
 
@@ -27,10 +27,7 @@ export function computeOptionPoints(option: OptionUpgrade, quantity: number, dis
 export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
     let total = unit.point_cost_per_model ?? 0
 
-    const generatorSelection = getEffectiveGeneratorSelection(unit, config)
-    if (generatorSelection) {
-        total += generatorSelection.generatorCost
-    }
+    total += getEffectiveGeneratorSelections(unit, config).reduce((sum, generator) => sum + generator.generatorCost, 0)
 
     for (const option of unit.options_and_upgrades) {
         if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR') continue
@@ -44,10 +41,7 @@ export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
 export function computeModelPoints(unit: Unit, config: UnitConfig, unitConfig?: UnitConfig | null): number {
     let total = unit.point_cost_per_model ?? 0
 
-    const generatorSelection = getEffectiveGeneratorSelection(unit, config, unitConfig)
-    if (generatorSelection) {
-        total += generatorSelection.generatorCost
-    }
+    total += getEffectiveGeneratorSelections(unit, config, unitConfig).reduce((sum, generator) => sum + generator.generatorCost, 0)
 
     for (const option of unit.options_and_upgrades) {
         if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR' || isUnitLevelOption(option.tag)) continue

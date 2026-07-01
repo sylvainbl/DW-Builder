@@ -1,6 +1,6 @@
 import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { getEffectiveGeneratorSelection, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
+import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
@@ -30,7 +30,7 @@ function addNamedValues(target: Set<string>, values: NamedValue[] | undefined) {
 
 function getDisplayedWeapon(unit: Unit, weapon: Weapon, weaponIndex: number, config: UnitConfig): Weapon {
     const selectedName = config.hardpointSelections[weaponIndex] ?? weapon.name
-    const options = weapon.slot ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
+    const options = weapon.slot && !weapon.hardpoint_locked ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
     return options.find((option) => option.name === selectedName) ?? weapon
 }
 
@@ -44,8 +44,6 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
     const unit = unitsById.get(entry.unitId)
     if (!unit) return
 
-    addNamedValues(ruleNames.properties, unit.properties)
-    addNamedValues(ruleNames.systems, unit.systems)
     addSrsProperties(ruleNames, unit)
 
     const modelConfigs = entry.models.length > 0
@@ -53,21 +51,24 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
         : [entry.config]
 
     for (const config of modelConfigs) {
-        const generatorSelection = getEffectiveGeneratorSelection(unit, config, entry.config)
-        if (generatorSelection) {
+        const optionRuleEffects = getSelectedOptionRuleEffects(unit, config, entry.config)
+        addNamedValues(ruleNames.properties, unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name)))
+        addNamedValues(ruleNames.systems, unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)))
+
+        const generatorSelections = getEffectiveGeneratorSelections(unit, config, entry.config)
+        for (const generatorSelection of generatorSelections) {
             ruleNames.systems.add(generatorSelection.generatorName)
         }
 
-        addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, generatorSelection?.generatorName ?? null))
+        addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName)))
 
         const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config, entry.config)
         unit.weapons.forEach((weapon, weaponIndex) => {
             if (removedWeaponNames.has(weapon.name)) return
-            if (generatorSelection?.weaponIndex === weaponIndex) return
+            if (generatorSelections.some((generatorSelection) => generatorSelection.weaponIndex === weaponIndex)) return
             addNamedValues(ruleNames.qualities, getDisplayedWeapon(unit, weapon, weaponIndex, config).qualities)
         })
 
-        const optionRuleEffects = getSelectedOptionRuleEffects(unit, config, entry.config)
         addNamedValues(ruleNames.properties, optionRuleEffects.properties)
         addNamedValues(ruleNames.systems, optionRuleEffects.systems)
         addNamedValues(ruleNames.qualities, optionRuleEffects.qualities)

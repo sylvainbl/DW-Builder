@@ -35,6 +35,7 @@ export interface Weapon {
     name: string
     arc: string
     slot?: string
+    hardpoint_locked?: boolean
     firepower: Firepower
     qualities: NamedValue[]
 }
@@ -62,8 +63,11 @@ export interface OptionUpgrade {
     adds_properties?: NamedValue[]
     adds_systems?: NamedValue[]
     adds_qualities?: NamedValue[]
+    removes_properties?: string[]
+    removes_systems?: string[]
     removes_weapons?: string[]
     removes_weapon_slots?: string[]
+    system_generator_slots?: number
     choices?: unknown[]
 }
 
@@ -158,6 +162,11 @@ export interface UnitConfig {
         generatorName: string
         generatorCost: number
     } | null
+    generatorSelections?: {
+        weaponIndex: number
+        generatorName: string
+        generatorCost: number
+    }[]
     fleetDoctrineSelection: {
         doctrineName: string
         doctrineCost: number

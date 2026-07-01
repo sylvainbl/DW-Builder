@@ -1503,6 +1503,10 @@
             "name": "Mirage Generator",
             "value": null
           }
+        ],
+        "removes_systems": [
+          "Portal Accelerator Array",
+          "Portal Generator"
         ]
       }
     ],
@@ -5517,7 +5521,10 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "FREE_GENERATOR",
-        "generator_replaces_weapon": false
+        "generator_replaces_weapon": false,
+        "removes_systems": [
+          "Portal Generator"
+        ]
       }
     ],
     "lore": "Enemy vessels caught in this blast can do little against such an assault. These needles, so light to the touch, are capable of slicing through skin with the slightest of effort. Drawn inexorably down by gravity and picking up speed, this shower of fragmented metal can shred through steel and flesh alike in a matter of seconds. Mihrimahs have been known to cripple entire units of cruisers, tearing apart decking, eviscerating important machinery, and disabling weapons in a single shot. Most effective over long range, there are few targets the Mihrimah cannot reach, a fact that is aided with its onboard Portal Generator. With the ability to open and close liminal tears in reality across the waves, admirals have even been known to fire flechette launchers through these portals, in a tactic known as the Şahin Manoeuvre after Admiral Aras Şahin's decisive gambit against Union forces in the Pacific.",

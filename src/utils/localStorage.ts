@@ -90,10 +90,12 @@ function isObject(value: unknown): value is Record<string, unknown> {
 function isUnitConfig(value: unknown): value is UnitConfig {
     if (!isObject(value)) return false
     const generatorSelection = value.generatorSelection
+    const generatorSelections = value.generatorSelections
     const fleetDoctrineSelection = value.fleetDoctrineSelection
     return (
         isObject(value.hardpointSelections) &&
         (generatorSelection === null || isObject(generatorSelection)) &&
+        (generatorSelections === undefined || Array.isArray(generatorSelections)) &&
         (fleetDoctrineSelection === undefined || fleetDoctrineSelection === null || isObject(fleetDoctrineSelection)) &&
         isObject(value.optionQuantities)
     )
@@ -103,6 +105,7 @@ function normalizeUnitConfig(config: UnitConfig): UnitConfig {
     return {
         ...structuredClone(emptyUnitConfig),
         ...config,
+        generatorSelections: config.generatorSelections,
         fleetDoctrineSelection: config.fleetDoctrineSelection ?? null,
     }
 }

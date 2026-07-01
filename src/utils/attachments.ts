@@ -1,6 +1,10 @@
 import type { Unit } from '../types/index'
 
-const POSITIONAL_TRAITS = new Set(['surface', 'airborne', 'underwater'])
+const POSITIONAL_TRAITS = new Set(['surface', 'airborne', 'airship', 'rotorcraft', 'underwater'])
+const POSITIONAL_TRAIT_ALIASES: Record<string, string> = {
+    airship: 'airborne',
+    rotorcraft: 'airborne',
+}
 
 export function getMinimumModelsForUnit(unit: Unit): number {
     return Math.max(1, unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
@@ -25,6 +29,7 @@ export function getPositionalTraits(tags: string[]): string[] {
     return tags
         .map((tag) => tag.toLowerCase())
         .filter((tag) => POSITIONAL_TRAITS.has(tag))
+        .map((tag) => POSITIONAL_TRAIT_ALIASES[tag] ?? tag)
 }
 
 function getUnitTraits(unit: Unit, tags: string[] = unit.tags): string[] {

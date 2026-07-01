@@ -1732,7 +1732,8 @@
             "value": 1
           }
         ],
-        "slot": "H"
+        "slot": "H",
+        "hardpoint_locked": true
       },
       {
         "name": "Heavy Gun Battery",
@@ -2025,7 +2026,8 @@
             "value": 1
           }
         ],
-        "slot": "H"
+        "slot": "H",
+        "hardpoint_locked": true
       },
       {
         "name": "Heavy Gun Battery",
@@ -2552,7 +2554,7 @@
             "detail": "Empire"
           }
         ],
-        "slot": null
+        "slot": "S"
       },
       {
         "name": "Scything Tail",
@@ -2572,7 +2574,7 @@
             "value": 1
           }
         ],
-        "slot": null
+        "slot": "S"
       },
       {
         "name": "Heavy Gun Battery",
@@ -2584,30 +2586,6 @@
         },
         "qualities": [],
         "slot": "H"
-      },
-      {
-        "name": "Draconic Heat Lancette",
-        "arc": null,
-        "firepower": {
-          "C": 6,
-          "S": 2,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Aerial",
-            "value": null
-          },
-          {
-            "name": "Hazard",
-            "value": 1
-          },
-          {
-            "name": "Solex",
-            "value": 1
-          }
-        ],
-        "slot": null
       }
     ],
     "hardpoint_options": {
@@ -2700,6 +2678,32 @@
           ],
           "slot": null
         }
+      ],
+      "S": [
+        {
+          "name": "Draconic Heat Lancette",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Aerial",
+              "value": null
+            },
+            {
+              "name": "Hazard",
+              "value": 1
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ],
+          "slot": null
+        }
       ]
     },
     "options_and_upgrades": [
@@ -2713,7 +2717,20 @@
         "description": "Replace the Heavy Hardpoint with Celestian Guards: gain Boarding Parties (8) and Bushi Ryu Dojo.",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "CELESTIAN_GUARDS"
+        "tag": "CELESTIAN_GUARDS",
+        "removes_weapon_slots": [
+          "H"
+        ],
+        "adds_properties": [
+          {
+            "name": "Boarding Parties",
+            "value": 8
+          },
+          {
+            "name": "Bushi Ryu Dojo",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -2811,7 +2828,8 @@
             "value": 1
           }
         ],
-        "slot": "H"
+        "slot": "H",
+        "hardpoint_locked": true
       },
       {
         "name": "Heavy Gun Battery",
@@ -3437,7 +3455,8 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": "L",
+        "hardpoint_locked": true
       },
       {
         "name": "Heavy Gun Battery",
@@ -4280,7 +4299,8 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": "L",
+        "hardpoint_locked": true
       },
       {
         "name": "Heavy Gun Battery",
@@ -5582,34 +5602,6 @@
             {
               "name": "Barrage",
               "value": null
-            }
-          ],
-          "slot": null
-        },
-        {
-          "name": "Light Corrosive Mortar",
-          "arc": null,
-          "firepower": {
-            "C": null,
-            "S": 2,
-            "E": 3
-          },
-          "qualities": [
-            {
-              "name": "All Around",
-              "value": null
-            },
-            {
-              "name": "Indirect",
-              "value": null
-            },
-            {
-              "name": "Mayhem",
-              "value": null
-            },
-            {
-              "name": "Structural Failure",
-              "value": 1
             }
           ],
           "slot": null
