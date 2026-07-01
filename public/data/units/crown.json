@@ -49,13 +49,13 @@
     ],
     "systems": [
       {
-        "name": "Logistical Support",
-        "value": null
-      },
-      {
         "name": "Guardian Generator",
         "value": 2
       }
+      {
+        "name": "Logistical Support",
+        "value": null
+      },
     ],
     "weapons": [
       {
