@@ -1,31 +1,17 @@
 [
   {
+    "id": "alliance",
+    "name": "Alliance",
+    "description": "",
+    "color": "#0e2737",
+    "accentColor": "#7aa8c1"
+  },
+  {
     "id": "commonwealth",
     "name": "Commonwealth",
     "description": "",
     "color": "#1a3a5c",
     "accentColor": "#c8aa6e"
-  },
-  {
-    "id": "empire",
-    "name": "Empire",
-    "description": "",
-    "color": "#8a0f0f",
-    "accentColor": "#e0b35f"
-  },
-  {
-    "id": "union",
-    "name": "Union",
-    "description": "",
-    "color": "#134021",
-    "accentColor": "#8edecb"
-  },
-  {
-    "id": "sultanate",
-    "name": "Sultanate",
-    "description": "",
-    "color": "#0d4f3b",
-    "accentColor": "#d6b36a"
   },
   {
     "id": "crown",
@@ -35,11 +21,11 @@
     "accentColor": "#50b5d8"
   },
   {
-    "id": "imperium",
-    "name": "Imperium",
+    "id": "empire",
+    "name": "Empire",
     "description": "",
-    "color": "#4d3a18",
-    "accentColor": "#f2c96f"
+    "color": "#8a0f0f",
+    "accentColor": "#e0b35f"
   },
   {
     "id": "Enlighted",
@@ -49,10 +35,24 @@
     "accentColor": "#c9c5b8"
   },
   {
-    "id": "alliance",
-    "name": "Alliance",
+    "id": "imperium",
+    "name": "Imperium",
     "description": "",
-    "color": "#0e2737",
-    "accentColor": "#7aa8c1"
+    "color": "#4d3a18",
+    "accentColor": "#f2c96f"
+  },
+  {
+    "id": "sultanate",
+    "name": "Sultanate",
+    "description": "",
+    "color": "#0d4f3b",
+    "accentColor": "#d6b36a"
+  },
+  {
+    "id": "union",
+    "name": "Union",
+    "description": "",
+    "color": "#134021",
+    "accentColor": "#8edecb"
   }
 ]
