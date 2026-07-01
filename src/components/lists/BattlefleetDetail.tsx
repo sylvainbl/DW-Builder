@@ -7,7 +7,7 @@ import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections } from '../../utils/optionRuleEffects'
 import { computeOptionPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
-import { computeArmyUnitGuardianPool, computeEntriesGuardianPool, isCrownFaction } from '../../utils/guardianPool'
+import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeEntriesGuardianPool, computeEntriesGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
 import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
@@ -113,6 +113,7 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const showGuardianPool = isCrownFaction(forceFactionId)
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(entries, units) : 0
+    const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(entries, units) : 0
     const sortedEntries = sortBattlefleetEntries(entries, units)
     const displayInfo = getBattlefleetDisplayInfo(definition.id)
     const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
@@ -181,7 +182,11 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                     </div>
                     <div className="flex flex-col items-end gap-2 text-right">
                         <div className="text-sm font-medium text-white">{points} pts</div>
-                        {showGuardianPool ? <div className="text-[11px] font-medium text-white/75">Guardian Pool: {guardianPool}</div> : null}
+                        {showGuardianPool ? (
+                            <div className="text-[11px] font-medium text-white/75">
+                                Guardian Pool: {guardianPool} - Guardian Surge: {guardianSurge}
+                            </div>
+                        ) : null}
                         <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
                             {entries.length} {entries.length === 1 ? 'unit' : 'units'}
                         </div>
@@ -229,7 +234,11 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
                                         </div>
                                         <div className="flex-none text-right font-semibold text-[var(--navy)]">
                                             <div>{entry.totalPoints} pts</div>
-                                            {showGuardianPool ? <div className="mt-1 text-[10px]">Guardian Pool: {computeArmyUnitGuardianPool(entry, units)}</div> : null}
+                                            {showGuardianPool ? (
+                                                <div className="mt-1 text-[10px]">
+                                                    Guardian Pool: {computeArmyUnitGuardianPool(entry, units)} - Guardian Surge: {computeArmyUnitGuardianSurge(entry, units)}
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
                                     {breakdown.length > 0 ? (

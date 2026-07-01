@@ -6,7 +6,7 @@ import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercena
 import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
 import { previewPrintableList } from '../../utils/printList'
-import { computeArmyUnitGuardianPool, computeEntriesGuardianPool, isCrownFaction } from '../../utils/guardianPool'
+import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeEntriesGuardianPool, computeEntriesGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -17,6 +17,7 @@ interface UnitRowProps {
     issues: BattlefleetIssue[]
     showGuardianPool: boolean
     guardianPool: number
+    guardianSurge: number
     onSelect: () => void
     onRemove: () => void
     onBattlefleetChange?: (battlefleetInstanceId: string | null) => void
@@ -60,7 +61,7 @@ interface UnitGroupProps {
     unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
 }
 
-function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
+function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, guardianSurge, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
     const rowClasses = nested
         ? active
             ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
@@ -122,7 +123,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, sh
                         <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-[var(--gold-light)] text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
                         {showGuardianPool ? (
                             <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
-                                GP {guardianPool}
+                                GP {guardianPool} - GS {guardianSurge}
                             </span>
                         ) : null}
                     </div>
@@ -175,6 +176,7 @@ function renderUnitRows({
                 issues={unitIssuesByInstanceId.get(entry.instanceId) ?? []}
                 showGuardianPool={showGuardianPool}
                 guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(entry, allUnits) : 0}
+                guardianSurge={showGuardianPool ? computeArmyUnitGuardianSurge(entry, allUnits) : 0}
                 onSelect={() => onSelectUnit(entry.instanceId)}
                 onRemove={() => onRemoveUnit(entry.instanceId)}
                 onBattlefleetChange={(battlefleetInstanceId) => onMoveUnit(entry.instanceId, battlefleetInstanceId)}
@@ -190,6 +192,7 @@ function renderUnitRows({
                     issues={unitIssuesByInstanceId.get(attachment.instanceId) ?? []}
                     showGuardianPool={showGuardianPool}
                     guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(attachment, allUnits) : 0}
+                    guardianSurge={showGuardianPool ? computeArmyUnitGuardianSurge(attachment, allUnits) : 0}
                     onSelect={() => onSelectUnit(attachment.instanceId)}
                     onRemove={() => onRemoveUnit(attachment.instanceId)}
                 />
@@ -221,6 +224,7 @@ function BattlefleetSection({
 }: BattlefleetSectionProps) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(entries, Array.from(unitById.values())) : 0
+    const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(entries, Array.from(unitById.values())) : 0
     const hasIssues = issues.length > 0
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
     const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
@@ -260,7 +264,7 @@ function BattlefleetSection({
                             </div>
                             {showGuardianPool ? (
                                 <div className="rounded-md border border-neutral-200 bg-white px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
-                                    GP {guardianPool.toLocaleString('fr-FR')}
+                                    GP {guardianPool.toLocaleString('fr-FR')} - GS {guardianSurge.toLocaleString('fr-FR')}
                                 </div>
                             ) : null}
                         </div>
@@ -475,6 +479,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
     const totalPoints = currentList.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
     const showGuardianPool = isCrownFaction(currentList.faction_id)
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(currentList.units, units) : 0
+    const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(currentList.units, units) : 0
     const battlefleets = currentList.battlefleets ?? []
     const entriesByBattlefleetId = new Map<string, ArmyUnit[]>()
     for (const battlefleet of battlefleets) {
@@ -539,7 +544,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                         </span>
                         {showGuardianPool ? (
                             <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
-                                GP {guardianPool.toLocaleString('fr-FR')}
+                                GP {guardianPool.toLocaleString('fr-FR')} - GS {guardianSurge.toLocaleString('fr-FR')}
                             </span>
                         ) : null}
                     </div>
