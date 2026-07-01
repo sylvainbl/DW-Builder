@@ -55,7 +55,7 @@ interface AppStore {
     renameList: (listId: string, newName: string) => void
     persistLists: () => void
 
-    addUnitToCurrentList: (unitId: string) => void
+    addUnitToCurrentList: (unitId: string, battlefleetInstanceId?: string | null) => void
     addAttachmentToListUnit: (parentInstanceId: string, unitId: string) => void
     removeUnitFromList: (instanceId: string) => void
     addBattlefleetToCurrentList: (definitionId: string) => void
@@ -624,14 +624,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
         set({ savedLists: lists })
     },
 
-    addUnitToCurrentList: (unitId) => {
+    addUnitToCurrentList: (unitId, battlefleetInstanceId) => {
         const state = get()
         if (!state.currentList) return
         const unit = state.units.find((item) => item.id === unitId)
         if (!unit) return
+        const battlefleetExists = battlefleetInstanceId == null || (state.currentList.battlefleets ?? []).some((battlefleet) => battlefleet.instanceId === battlefleetInstanceId)
+        if (battlefleetInstanceId !== undefined && !battlefleetExists) return
         const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
         const onlyBattlefleet = state.currentList.battlefleets?.length === 1 ? state.currentList.battlefleets[0] : null
-        const newEntry = makeArmyUnit(unit, config, onlyBattlefleet?.instanceId ?? null, state.currentList)
+        const targetBattlefleetInstanceId = battlefleetInstanceId === undefined ? onlyBattlefleet?.instanceId ?? null : battlefleetInstanceId
+        const newEntry = makeArmyUnit(unit, config, targetBattlefleetInstanceId, state.currentList)
         const currentList = syncListGeneratedOptionAttachments({
             ...state.currentList,
             units: [...state.currentList.units, newEntry],

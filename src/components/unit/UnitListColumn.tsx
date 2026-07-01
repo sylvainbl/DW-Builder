@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
@@ -7,7 +7,13 @@ import ActiveListPanel from '../lists/ActiveListPanel'
 import FactionAndSearchHeader from './FactionAndSearchHeader'
 import UnitCard from './UnitCard'
 
-function UnitCardList() {
+interface UnitCardListProps {
+    addTargetBattlefleetInstanceId?: string | null
+    addTargetLabel?: string
+    onClose?: () => void
+}
+
+function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose }: UnitCardListProps) {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
@@ -105,6 +111,24 @@ function UnitCardList() {
     }
     return (
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+            {currentList && addTargetLabel ? (
+                <div className="flex flex-none items-start justify-between gap-3 border-b border-neutral-200 bg-[var(--navy)] px-3 py-2.5 text-white">
+                    <div className="min-w-0">
+                        <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60">Add unit to</div>
+                        <div className="truncate text-sm font-semibold">{addTargetLabel}</div>
+                    </div>
+                    {onClose ? (
+                        <button
+                            type="button"
+                            title="Close unit picker"
+                            onClick={onClose}
+                            className="flex h-7 w-7 flex-none items-center justify-center rounded-md border border-white/20 bg-white/10 text-white/80 transition hover:bg-white/20 hover:text-white"
+                        >
+                            <X size={15} />
+                        </button>
+                    ) : null}
+                </div>
+            ) : null}
             <FactionAndSearchHeader
                 compact={Boolean(currentList)}
                 sortMode={sortMode}
@@ -139,8 +163,9 @@ function UnitCardList() {
                                 onSelect={() => {
                                     setSelectedListInstanceId(null)
                                     setSelectedUnitId(unit.id)
+                                    onClose?.()
                                 }}
-                                onAdd={currentList ? () => addUnitToCurrentList(unit.id) : undefined}
+                                onAdd={currentList ? () => addUnitToCurrentList(unit.id, addTargetBattlefleetInstanceId) : undefined}
                             />
                         ))}
                     </div>
@@ -150,9 +175,31 @@ function UnitCardList() {
     )
 }
 
+function OpenListUnitColumn() {
+    const [unitPickerTarget, setUnitPickerTarget] = useState<{ battlefleetInstanceId: string | null; label: string } | null>(null)
+
+    return (
+        <aside className="relative flex h-full flex-col overflow-hidden bg-white">
+            <div className="min-h-0 flex-1 overflow-y-auto">
+                <ActiveListPanel
+                    onOpenUnitPicker={(battlefleetInstanceId, label) => setUnitPickerTarget({ battlefleetInstanceId, label })}
+                />
+            </div>
+            {unitPickerTarget ? (
+                <div className="absolute inset-x-0 bottom-0 z-20 flex max-h-[72%] min-h-[22rem] flex-col overflow-hidden border-t border-neutral-300 bg-white shadow-[0_-18px_35px_rgba(15,23,42,0.18)]">
+                    <UnitCardList
+                        addTargetBattlefleetInstanceId={unitPickerTarget.battlefleetInstanceId}
+                        addTargetLabel={unitPickerTarget.label}
+                        onClose={() => setUnitPickerTarget(null)}
+                    />
+                </div>
+            ) : null}
+        </aside>
+    )
+}
+
 export default function UnitListColumn() {
     const currentList = useAppStore((state) => state.currentList)
-    const [unitsPickerCollapsed, setUnitsPickerCollapsed] = useState(false)
 
     if (!currentList) {
         return (
@@ -162,24 +209,5 @@ export default function UnitListColumn() {
         )
     }
 
-    return (
-        <aside className="flex h-full flex-col overflow-hidden bg-white">
-            <div className={`${unitsPickerCollapsed ? 'max-h-[calc(100%-2rem)]' : 'max-h-[60%]'} min-h-0 flex-none overflow-y-auto border-b border-neutral-200`}>
-                <ActiveListPanel />
-            </div>
-            <button
-                type="button"
-                onClick={() => setUnitsPickerCollapsed((collapsed) => !collapsed)}
-                className="flex h-8 flex-none items-center justify-center gap-1 border-b border-neutral-200 bg-neutral-50 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--navy)] transition hover:bg-[var(--detail-panel)]"
-            >
-                {unitsPickerCollapsed ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
-                {unitsPickerCollapsed ? 'Show units' : 'Hide units'}
-            </button>
-            {!unitsPickerCollapsed ? (
-                <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                    <UnitCardList />
-                </div>
-            ) : null}
-        </aside>
-    )
+    return <OpenListUnitColumn key={currentList.id} />
 }

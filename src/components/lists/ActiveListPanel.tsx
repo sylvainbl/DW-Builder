@@ -33,6 +33,7 @@ interface BattlefleetSectionProps {
     onToggleCollapsed: () => void
     onRemoveBattlefleet: () => void
     onSelectBattlefleet: () => void
+    onAddUnit: () => void
     onSelectUnit: (instanceId: string) => void
     onRemoveUnit: (instanceId: string) => void
     onMoveUnit: (instanceId: string, battlefleetInstanceId: string | null) => void
@@ -191,6 +192,7 @@ function BattlefleetSection({
     onToggleCollapsed,
     onRemoveBattlefleet,
     onSelectBattlefleet,
+    onAddUnit,
     onSelectUnit,
     onRemoveUnit,
     onMoveUnit,
@@ -258,6 +260,16 @@ function BattlefleetSection({
                     <div className="mt-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold text-rose-800">
                         {issues.length} {issues.length === 1 ? 'issue' : 'issues'}
                     </div>
+                ) : null}
+                {!collapsed ? (
+                    <button
+                        type="button"
+                        onClick={onAddUnit}
+                        className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--navy)]/35 bg-white px-3 py-2.5 text-[12px] font-semibold text-[var(--navy)] shadow-sm transition hover:border-[var(--navy)] hover:bg-[var(--detail-panel)]"
+                    >
+                        <Plus size={16} />
+                        Add unit to this Battlefleet
+                    </button>
                 ) : null}
             </div>
 
@@ -333,7 +345,11 @@ function UnitGroup({
     )
 }
 
-export default function ActiveListPanel() {
+interface ActiveListPanelProps {
+    onOpenUnitPicker: (battlefleetInstanceId: string | null, label: string) => void
+}
+
+export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelProps) {
     const currentList = useAppStore((state) => state.currentList)
     const factions = useAppStore((state) => state.factions)
     const units = useAppStore((state) => state.units)
@@ -585,9 +601,19 @@ export default function ActiveListPanel() {
 
             <div className="mt-3 space-y-2">
                 {battlefleets.length === 0 && currentList.units.length === 0 ? (
-                    <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-3 text-sm text-neutral-500">
-                        No units added.
-                    </div>
+                    <>
+                        <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 p-3 text-sm text-neutral-500">
+                            No units added.
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => onOpenUnitPicker(null, 'Unassigned units')}
+                            className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-neutral-300 bg-white px-3 py-3 text-[12px] font-semibold text-neutral-700 shadow-sm transition hover:border-[var(--navy)] hover:bg-[var(--detail-panel)] hover:text-[var(--navy)]"
+                        >
+                            <Plus size={18} />
+                            Add unit without Battlefleet
+                        </button>
+                    </>
                 ) : (
                     <>
                         {battlefleets.map((battlefleet) => (
@@ -606,6 +632,7 @@ export default function ActiveListPanel() {
                                 onToggleCollapsed={() => toggleBattlefleetCollapsed(battlefleet.instanceId)}
                                 onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
                                 onSelectBattlefleet={() => selectBattlefleet(battlefleet.instanceId)}
+                                onAddUnit={() => onOpenUnitPicker(battlefleet.instanceId, definitionById.get(battlefleet.definitionId)?.name ?? battlefleet.name)}
                                 onSelectUnit={selectListUnit}
                                 onRemoveUnit={removeUnitFromList}
                                 onMoveUnit={setUnitBattlefleet}
@@ -628,6 +655,14 @@ export default function ActiveListPanel() {
                                 unitIssuesByInstanceId={unitIssuesByInstanceId}
                             />
                         ) : null}
+                        <button
+                            type="button"
+                            onClick={() => onOpenUnitPicker(null, 'Unassigned units')}
+                            className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-neutral-300 bg-white px-3 py-3 text-[12px] font-semibold text-neutral-700 shadow-sm transition hover:border-[var(--navy)] hover:bg-[var(--detail-panel)] hover:text-[var(--navy)]"
+                        >
+                            <Plus size={18} />
+                            Add unit without Battlefleet
+                        </button>
                     </>
                 )}
             </div>

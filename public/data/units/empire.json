@@ -11018,7 +11018,7 @@
       },
       {
         "description": "Upgrade with a Troop Transport Bay, gaining Ground Assault (3).",
-        "cost_per_unit": 15,
+        "cost_per_unit": 25,
         "max": 1,
         "tag": "TROOP_TRANSPORT_BAY",
         "adds_properties": [
@@ -11030,9 +11030,21 @@
       },
       {
         "description": "Upgrade with an Olympia Levant Drive: replace Surface with Airborne and gain Low Altitude.",
-        "cost_per_unit": 15,
+        "cost_per_unit": 20,
         "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -11552,7 +11564,19 @@
         "description": "Upgrade with an Olympia Levant Drive: replace Surface with Airborne and gain Low Altitude.",
         "cost_per_unit": 15,
         "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",

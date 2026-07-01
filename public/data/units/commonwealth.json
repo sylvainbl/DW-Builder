@@ -1368,12 +1368,26 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "This model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property.",
+        "cost_per_unit": 20,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       }
     ],
-    "olympia_variant": {
-      "cost": 20,
-      "description": "This model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property."
-    },
     "lore": "The hunger of the Dystopian Age requires more resources than even fleets of Titan Mass Conveyors can comfortably provide. Thankfully, the engineering minds behind Norddeutscher Hamburg and White Wolf had the foresight to adapt the plans of the Titan, almost as soon as the inaugural vessel was launched.",
     "version": "4.00",
     "date": "2026-06-28",
@@ -6485,12 +6499,26 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "This model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property.",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       }
     ],
-    "olympia_variant": {
-      "cost": 15,
-      "description": "This model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property."
-    },
     "lore": "Norddeutscher Hamburg and White Wolf partnered to create the Titan class, aiming for the most impressive ocean liner ever built. The Titan's prevalence across the globe and its association with good fortune speak volumes about the success of this design philosophy.",
     "version": "4.00",
     "date": "2026-06-28",

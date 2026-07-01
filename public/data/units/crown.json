@@ -2644,13 +2644,31 @@
         "description": "Upgrade with a Troop Transport Bay",
         "cost_per_unit": 25,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 3
+          }
+        ]
       },
       {
         "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       },
       {
         "description": "Add 1 Hermes Supply Freighter as an Attachment",
@@ -8267,15 +8285,15 @@
     "options_and_upgrades": [
       {
         "description": "Upgrade with a Troop Transport Bay",
-        "cost_per_unit": 25,
+        "cost_per_unit": 15,
         "max": 1,
-        "tag": "TROOP_TRANSPORT_BAY"
-      },
-      {
-        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
-        "cost_per_unit": 20,
-        "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "TROOP_TRANSPORT_BAY",
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 2
+          }
+        ]
       }
     ],
     "lore": "OLYMPIA LEVANT DRIVE This model can be upgraded with an Olympia Levant Drive. If so, its Surface trait is replaced with Airborne, and it gains the Low Altitude property. A joint effort by shipping companies Norddeutscher Hamburg and White Wolf produced the Titan-class container ship, TROOP TRANSPORT BAY designed to be the ultimate oceangoing vessel for speed, size, and affordability. Today, the Titan is ubiquitous, ferrying war This model can be upgraded with a Troop Transport materiel and troops for nation states, mercenary companies, and Bay. If so, it gains the /Ground Assault (2)/ property. the Great Powers alike.",

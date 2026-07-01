@@ -3164,7 +3164,19 @@
         "description": "Upgrade with an Olympia Levant Drive",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -10511,7 +10523,19 @@
         "description": "Upgrade with an Olympia Levant Drive",
         "cost_per_unit": 15,
         "max": 1,
-        "tag": "OLYMPIA_LEVANT_DRIVE"
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
