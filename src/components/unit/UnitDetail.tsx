@@ -12,7 +12,7 @@ import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
 import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeModelGuardianPool, computeModelGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
 import { RuleModal } from '../ui/RuleModal'
-import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit } from '../../types/index'
+import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit, Weapon } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 
@@ -135,6 +135,121 @@ function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], e
 
 function optionUnavailableForAttachment(option: OptionUpgrade): boolean {
     return (option.restrictions ?? []).some((restriction) => restriction.toLowerCase().includes('attachment'))
+}
+
+function WeaponQualityChips({ qualities }: { qualities: Weapon['qualities'] }) {
+    if (qualities.length === 0) return <span className="text-neutral-500">—</span>
+
+    return (
+        <div className="flex flex-wrap gap-1">
+            {qualities.map((quality) => (
+                <span key={`${quality.name}-${quality.value ?? ''}`} className="unit-detail-chip">
+                    <RuleWord category="qualities" name={quality.name} value={quality.value} />
+                </span>
+            ))}
+        </div>
+    )
+}
+
+function WeaponChoiceRow({
+    label,
+    weapon,
+    inheritedArc,
+    checked,
+    name,
+    onChange,
+}: {
+    label: string
+    weapon: Weapon
+    inheritedArc: string | null | undefined
+    checked: boolean
+    name: string
+    onChange: () => void
+}) {
+    const displayArc = weapon.arc ?? inheritedArc ?? '—'
+
+    return (
+        <label className={`unit-detail-choice-row ${checked ? 'unit-detail-choice-row-selected' : ''}`}>
+            <input
+                type="radio"
+                name={name}
+                checked={checked}
+                onChange={onChange}
+            />
+            <span className="unit-detail-choice-main">
+                <span className="unit-detail-choice-name">{weapon.name}</span>
+                <span className="unit-detail-choice-kind">{label}</span>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>Arc</span>
+                <strong>{displayArc}</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>C</span>
+                <strong>{formatValue(weapon.firepower.C)}</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>S</span>
+                <strong>{formatValue(weapon.firepower.S)}</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>E</span>
+                <strong>{formatValue(weapon.firepower.E)}</strong>
+            </span>
+            <span className="unit-detail-choice-rules">
+                <WeaponQualityChips qualities={weapon.qualities} />
+            </span>
+        </label>
+    )
+}
+
+function GeneratorChoiceRow({
+    generator,
+    checked,
+    name,
+    onChange,
+}: {
+    generator: Generator
+    checked: boolean
+    name: string
+    onChange: () => void
+}) {
+    return (
+        <label className={`unit-detail-choice-row ${checked ? 'unit-detail-choice-row-selected' : ''}`}>
+            <input
+                type="radio"
+                name={name}
+                checked={checked}
+                onChange={onChange}
+            />
+            <span className="unit-detail-choice-main">
+                <span className="unit-detail-choice-name">{generator.name}</span>
+                <span className="unit-detail-choice-kind">Generator</span>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>Arc</span>
+                <strong>—</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>C</span>
+                <strong>—</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>S</span>
+                <strong>—</strong>
+            </span>
+            <span className="unit-detail-choice-stat">
+                <span>E</span>
+                <strong>—</strong>
+            </span>
+            <span className="unit-detail-choice-rules">
+                <span className="unit-detail-chip">
+                    <RuleWord category="systems" name={generator.name} showValue={false} />
+                </span>
+                <span className="unit-detail-chip unit-detail-chip-cost">+{generator.point_cost} pts</span>
+            </span>
+        </label>
+    )
 }
 
 export default function UnitDetail() {
@@ -648,6 +763,7 @@ export default function UnitDetail() {
                                 const displayWeapon = options.find((option) => option.name === selectedName) ?? weapon
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
+                                const radioName = `slot-${selectedModelId ?? 'preview'}-${index}`
                                 const isGeneratorSlot = weaponGeneratorSelection?.weaponIndex === index
                                 const generatorChoices = canTakeGenerator && !weapon.hardpoint_locked ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost) : []
                                 const canShowGeneratorSection = generatorChoices.length > 0 && (weaponGeneratorSelection == null || weaponGeneratorSelection.weaponIndex === index)
@@ -674,7 +790,12 @@ export default function UnitDetail() {
                                             <td className="px-2 py-2 text-neutral-600">—</td>
                                             <td className="px-2 py-2 text-neutral-600">—</td>
                                             <td className="rounded-r-lg px-2 py-2 text-neutral-600">
-                                                <span className="rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600">(Generator)</span>
+                                                <div className="flex flex-wrap gap-1">
+                                                    <span className="unit-detail-chip">
+                                                        <RuleWord category="systems" name={weaponGeneratorSelection.generatorName} showValue={false} />
+                                                    </span>
+                                                    <span className="unit-detail-chip unit-detail-chip-cost">Generator</span>
+                                                </div>
                                             </td>
                                         </tr>
                                     )
@@ -682,7 +803,7 @@ export default function UnitDetail() {
 
                                 return (
                                     <tr key={weaponKey} className="align-top unit-detail-weapon-row">
-                                        <td className="rounded-l-lg px-2 py-2">
+                                        <td colSpan={isOpen ? 6 : undefined} className={`${isOpen ? 'rounded-lg' : 'rounded-l-lg'} px-2 py-2`}>
                                             {options.length > 0 || canShowGeneratorSection ? (
                                                 <div className="space-y-1">
                                                     <button
@@ -694,64 +815,58 @@ export default function UnitDetail() {
                                                         <span className="text-[10px] text-neutral-400">▾</span>
                                                     </button>
                                                     {isOpen ? (
-                                                        <div className="rounded border border-neutral-200 bg-white p-2 text-[11px] text-neutral-700 shadow-sm">
-                                                            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400">Default</div>
-                                                            <label className="mt-1 flex items-center gap-2">
-                                                                <input
-                                                                    type="radio"
-                                                                    name={`slot-${selectedModelId ?? 'preview'}-${index}`}
-                                                                    checked={selectedName === weapon.name}
-                                                                    onChange={() => {
-                                                                        setHardpointSelection(index, weapon.name)
-                                                                        setOpenHardpointKey(null)
-                                                                        if (weaponGeneratorSelection?.weaponIndex === index) {
-                                                                            setGeneratorSelection(null)
-                                                                        }
-                                                                    }}
-                                                                />
-                                                                <span>{weapon.name}</span>
-                                                            </label>
+                                                        <div className="unit-detail-choice-menu">
+                                                            <div className="unit-detail-choice-heading">Default</div>
+                                                            <WeaponChoiceRow
+                                                                label="Default"
+                                                                weapon={weapon}
+                                                                inheritedArc={weapon.arc}
+                                                                checked={selectedName === weapon.name}
+                                                                name={radioName}
+                                                                onChange={() => {
+                                                                    setHardpointSelection(index, weapon.name)
+                                                                    setOpenHardpointKey(null)
+                                                                    if (weaponGeneratorSelection?.weaponIndex === index) {
+                                                                        setGeneratorSelection(null)
+                                                                    }
+                                                                }}
+                                                            />
                                                             {options.length > 0 ? (
                                                                 <>
-                                                                    <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400">Hardpoint Alternatives</div>
+                                                                    <div className="unit-detail-choice-heading mt-2">Hardpoint Alternatives</div>
                                                                     {options.map((option) => (
-                                                                        <label key={option.name} className="mt-1 flex items-center gap-2">
-                                                                            <input
-                                                                                type="radio"
-                                                                                name={`slot-${selectedModelId ?? 'preview'}-${index}`}
-                                                                                checked={selectedName === option.name}
-                                                                                onChange={() => {
-                                                                                    setHardpointSelection(index, option.name)
-                                                                                    setOpenHardpointKey(null)
-                                                                                    if (weaponGeneratorSelection?.weaponIndex === index) {
-                                                                                        setGeneratorSelection(null)
-                                                                                    }
-                                                                                }}
-                                                                            />
-                                                                            <span>{option.name}</span>
-                                                                        </label>
+                                                                        <WeaponChoiceRow
+                                                                            key={option.name}
+                                                                            label="Alternative"
+                                                                            weapon={option}
+                                                                            inheritedArc={weapon.arc}
+                                                                            checked={selectedName === option.name}
+                                                                            name={radioName}
+                                                                            onChange={() => {
+                                                                                setHardpointSelection(index, option.name)
+                                                                                setOpenHardpointKey(null)
+                                                                                if (weaponGeneratorSelection?.weaponIndex === index) {
+                                                                                    setGeneratorSelection(null)
+                                                                                }
+                                                                            }}
+                                                                        />
                                                                     ))}
                                                                 </>
                                                             ) : null}
                                                             {canShowGeneratorSection ? (
                                                                 <>
-                                                                    <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400">Generators</div>
+                                                                    <div className="unit-detail-choice-heading mt-2">Generators</div>
                                                                     {generatorChoices.map((generator) => (
-                                                                        <label key={generator.name} className="mt-1 flex items-center justify-between gap-2">
-                                                                            <span className="flex items-center gap-2">
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name={`slot-${selectedModelId ?? 'preview'}-${index}`}
-                                                                                    checked={weaponGeneratorSelection?.weaponIndex === index && weaponGeneratorSelection?.generatorName === generator.name}
-                                                                                    onChange={() => {
-                                                                                        setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
-                                                                                        setOpenHardpointKey(null)
-                                                                                    }}
-                                                                                />
-                                                                                <span>{generator.name}</span>
-                                                                            </span>
-                                                                            <span className="text-[10px] text-neutral-500">+{generator.point_cost} pts</span>
-                                                                        </label>
+                                                                        <GeneratorChoiceRow
+                                                                            key={generator.name}
+                                                                            generator={generator}
+                                                                            checked={weaponGeneratorSelection?.weaponIndex === index && weaponGeneratorSelection?.generatorName === generator.name}
+                                                                            name={radioName}
+                                                                            onChange={() => {
+                                                                                setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
+                                                                                setOpenHardpointKey(null)
+                                                                            }}
+                                                                        />
                                                                     ))}
                                                                 </>
                                                             ) : null}
@@ -762,23 +877,17 @@ export default function UnitDetail() {
                                                 <span className="font-medium text-neutral-900">{displayWeapon.name}</span>
                                             )}
                                         </td>
-                                        <td className="px-2 py-2 text-neutral-600">{displayArc}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.C)}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.S)}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.E)}</td>
-                                        <td className="rounded-r-lg px-2 py-2 text-neutral-600">
-                                            {displayWeapon.qualities.length > 0 ? (
-                                                <div className="flex flex-wrap gap-1">
-                                                    {displayWeapon.qualities.map((quality) => (
-                                                        <span key={quality.name} className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600">
-                                                            <RuleWord category="qualities" name={quality.name} value={quality.value} />
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            ) : (
-                                                '—'
-                                            )}
-                                        </td>
+                                        {!isOpen ? (
+                                            <>
+                                                <td className="px-2 py-2 text-neutral-600">{displayArc}</td>
+                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.C)}</td>
+                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.S)}</td>
+                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.E)}</td>
+                                                <td className="rounded-r-lg px-2 py-2 text-neutral-600">
+                                                    <WeaponQualityChips qualities={displayWeapon.qualities} />
+                                                </td>
+                                            </>
+                                        ) : null}
                                     </tr>
                                 )
                             })}
