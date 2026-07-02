@@ -116,10 +116,17 @@ const EMPIRE_KAGUTSUCHI_MAGMA_RULE = 'empire-kagutsuchi-magma-flagship'
 const MAGMA_GENERATOR_NAMES = new Set(['Magma Cast Generator', 'Magma Tower Generator'])
 const CROWN_ADVENTURER_UNIT_ID = 'crown_adventurer'
 const CROWN_PALASHI_UNIT_ID = 'crown_palashi'
+const COMMONWEALTH_AKULA_UNIT_ID = 'commonwealth_akula'
+const UKRAINIAN_AKULA_FLAGSHIP_RULE = 'ukrainian-akula-flagship'
 
 function battlefleetRoleRank(unit: Unit | null): number {
     const index = unit ? battlefleetRoleOrder.indexOf(unit.role) : -1
     return index === -1 ? battlefleetRoleOrder.length : index
+}
+
+export function isUkrainianAkulaFlagship(definition: BattlefleetDefinition | null | undefined, entries: ArmyUnit[], entry: ArmyUnit | null | undefined): boolean {
+    if (!definition?.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE) || !entry || entry.unitId !== COMMONWEALTH_AKULA_UNIT_ID) return false
+    return entries.find((candidate) => candidate.unitId === COMMONWEALTH_AKULA_UNIT_ID)?.instanceId === entry.instanceId
 }
 
 export function sortBattlefleetEntries(entries: ArmyUnit[], units: Unit[]): ArmyUnit[] {
@@ -241,8 +248,8 @@ function validateDuplicateClasses(
             continue
         }
         if (
-            definition.specialRules?.includes('ukrainian-akula-flagship')
-            && unit.id === 'commonwealth_akula'
+            definition.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE)
+            && unit.id === COMMONWEALTH_AKULA_UNIT_ID
             && !ukrainianAkulaFlagshipExemptionUsed
         ) {
             ukrainianAkulaFlagshipExemptionUsed = true

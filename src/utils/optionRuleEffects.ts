@@ -9,6 +9,7 @@ export interface OptionRuleEffects {
     qualities: NamedValue[]
     removedProperties: Set<string>
     removedSystems: Set<string>
+    removedOptions: Set<string>
 }
 
 export function formatOptionName(option: Pick<OptionUpgrade, 'tag'> & { display_name?: string }): string {
@@ -27,6 +28,7 @@ export function emptyOptionRuleEffects(): OptionRuleEffects {
         qualities: [],
         removedProperties: new Set<string>(),
         removedSystems: new Set<string>(),
+        removedOptions: new Set<string>(),
     }
 }
 
@@ -67,6 +69,9 @@ export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig
         }
         for (const systemName of option.removes_systems ?? []) {
             effects.removedSystems.add(systemName)
+        }
+        for (const optionTag of option.removes_options ?? []) {
+            effects.removedOptions.add(optionTag)
         }
     }
 

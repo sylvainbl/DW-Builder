@@ -15,6 +15,7 @@ import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit, Weapon } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
+import { isUkrainianAkulaFlagship } from '../../utils/battlefleets'
 
 const KAGUTSUCHI_BATTLEFLEET_ID = 'empire-kagutsuchi-volcanic'
 const KAGUTSUCHI_MAGMA_CAST_COST = 45
@@ -354,8 +355,16 @@ export default function UnitDetail() {
 
     const statEntries = Object.entries(unit.stats)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
-    const availableFleetDoctrines = getAvailableFleetDoctrines(unit, fleetDoctrines)
     const selectedEntryBattlefleet = currentList?.battlefleets?.find((battlefleet) => battlefleet.instanceId === selectedEntry?.battlefleetInstanceId) ?? null
+    const selectedEntryBattlefleetDefinition = battlefleetDefinitions.find((definition) => definition.id === selectedEntryBattlefleet?.definitionId) ?? null
+    const selectedEntryBattlefleetEntries = currentList && selectedEntryBattlefleet
+        ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedEntryBattlefleet.instanceId)
+        : []
+    const promotedAkulaFlagship = isUkrainianAkulaFlagship(selectedEntryBattlefleetDefinition, selectedEntryBattlefleetEntries, selectedEntry)
+    const effectiveDoctrineUnit = promotedAkulaFlagship
+        ? { ...unit, role: 'Flagship', tags: unit.tags.includes('Flagship') ? unit.tags : [...unit.tags, 'Flagship'] }
+        : unit
+    const availableFleetDoctrines = getAvailableFleetDoctrines(effectiveDoctrineUnit, fleetDoctrines)
     const isKagutsuchiEntry = selectedEntryBattlefleet?.definitionId === KAGUTSUCHI_BATTLEFLEET_ID
     const extraMagmaCastCost = isKagutsuchiEntry && !unitHasNativeMagmaCastOption(unit) ? KAGUTSUCHI_MAGMA_CAST_COST : null
     const hasNativeGeneratorAccess = unitCanTakeGenerator(unit)
@@ -412,9 +421,14 @@ export default function UnitDetail() {
         : selectedEntryParent ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels : normalMaxModels
     const canAddModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels)
     const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
-    const availableOptions = unit.options_and_upgrades.filter((option) => !(selectedEntryParent && optionUnavailableForAttachment(option)))
+    const availableOptions = unit.options_and_upgrades.filter((option) => (
+        !optionRuleEffects.removedOptions.has(option.tag)
+        && !(selectedEntryParent && optionUnavailableForAttachment(option))
+    ))
     const hasOptions = availableOptions.length > 0
-    const displayedTags = getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
+    const displayedTags = promotedAkulaFlagship
+        ? [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), 'Flagship']
+        : getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
     const visibleSquadrons = getVisibleSrsSquadrons(unit, displayedProperties)
     const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier' || property.name === 'Flight Deck' || property.name === 'SRS') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry

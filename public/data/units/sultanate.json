@@ -252,7 +252,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens to the unit",
+        "description": "Includes 2 Escort tokens in its cost; add up to 2 additional Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
@@ -691,13 +691,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 1 Escort token to the unit",
-        "cost_per_unit": 10,
-        "max": 1,
-        "tag": "ESCORT"
-      },
-      {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
         "cost_per_unit": 35,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -707,7 +701,7 @@
         "adds_properties": [
           {
             "name": "Carrier",
-            "value": 2
+            "value": 3
           },
           {
             "name": "SRS",
@@ -715,13 +709,39 @@
             "detail": "Khepri Automata"
           }
         ]
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
       }
     ],
     "lore": "date and which is noted for the dreadful potency of its deadly warheads. First deployed during the battle of the Gulf of Tunis in 1873, this gargantuan hovercraft made a grim impression on the assembled flotilla of French and Italian raiders that sought to violently enter the port, its missiles tearing apart enemy cruisers and airborne craft at a terrifying rate. Since then, the Kadesh has served as the flagship of choice for Egyptian commodores tasked with protecting the Mediterranean from external threats. Their reputation as the exemplars of the destructive capabilities of the Egyptian fleet brings comfort to any captain that may find themselves part of the first line of defence against enemy incursions. Even when caught off guard This by a larger enemy force, a Kadesh, with its reinforced hulls and It gains multiple batteries, can lay waste to all but the most resilient of (Khepri enemy vessels, its salvo missiles raining death and destruction.",
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_khartoum_heavy_battleskimmer",
@@ -929,13 +949,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 1 Escort token to the unit",
-        "cost_per_unit": 10,
-        "max": 1,
-        "tag": "ESCORT"
-      },
-      {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
         "cost_per_unit": 35,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -945,7 +959,7 @@
         "adds_properties": [
           {
             "name": "Carrier",
-            "value": 2
+            "value": 3
           },
           {
             "name": "SRS",
@@ -953,13 +967,39 @@
             "detail": "Khepri Automata"
           }
         ]
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
       }
     ],
     "lore": "and navigational systems. As this weapon requires neither line of sight nor ammunition, the Khartoum can range for miles whilst remaining relatively independent from Sultanate supply lines. This quality makes it an excellent flagship for long-ranged patrol fleets in need of effective fire support. In addition to the many concessions that the league extracted from Rameses the Thirteenth in exchange for their expertise, it was widely speculated that the Crimson Deava was able to use this lucrative deal to further drive a wedge between the Sultan and the Pharaoh-Khalif, the two rulers already struggling to accommodate the other's uncompromising ego. Regardless of the political fallout following the Khartoum's creation, its manufacture within the workshops of Cairo did much to revitalise the faltering riverside districts on the banks of the Nile, much to the delight of the city's population.",
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_lyceum_aerial_dreadnought",
@@ -3626,7 +3666,27 @@
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_sadrazam_heavy_cruiser",
@@ -4540,7 +4600,27 @@
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_nasr_skyship",
@@ -6041,7 +6121,27 @@
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_sobek_skimmer",
@@ -6259,7 +6359,27 @@
     "version": "4.01",
     "date": "2026-06-16",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "short_range_squadrons": [
+      {
+        "name": "Khepri Automata",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": [
+          {
+            "name": "Launch Range",
+            "value": 20
+          },
+          {
+            "name": "Surgical Strike",
+            "value": null,
+            "detail": "System Failure"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sultanate_chaska_vitruvian_colossus",
@@ -6607,24 +6727,26 @@
         ]
       },
       {
-        "name": "Gun Battery",
+        "name": "Light Gun Battery",
         "arc": "FPS",
         "firepower": {
           "C": 2,
           "S": 3,
           "E": null
         },
-        "qualities": []
+        "qualities": [],
+        "slot": "L"
       },
       {
-        "name": "Gun Battery",
+        "name": "Light Gun Battery",
         "arc": "PSA",
         "firepower": {
           "C": 2,
           "S": 3,
           "E": null
         },
-        "qualities": []
+        "qualities": [],
+        "slot": "L"
       }
     ],
     "hardpoint_options": {
@@ -7243,13 +7365,10 @@
         ],
         "removes_tags": [
           "Surface"
+        ],
+        "removes_options": [
+          "ATTACHMENT"
         ]
-      },
-      {
-        "description": "Add 1 Hermes Supply Freighter as an Attachment",
-        "cost_per_unit": null,
-        "max": 1,
-        "tag": "ATTACHMENT"
       }
     ],
     "lore": "be the smoothest ever designed. Nevertheless, as with much in this Dystopian Age, military contracts have proven to be an irresistible joint venture. Fleets of Europa-class container ships, usually sailing under a variety of neutral or small nation flags, are in consistently high demand amongst Great Powers looking to avoid tariffs, circumvent blockades, or covertly land troops on unsuspecting islands. Several dozen operate out of the Turkish port city of Karamürsel, supplying the greater part of the Sultanate's Mediterranean fleet. The original Callisto, however, has become a common sight in the pleasure ports of Tripoli, Athens, and Alexandria, after Sultan Mustafa made Norddeutscher Hamburg and White Wolf an offer they could not refuse. It now serves more or less as its designers intended-as the ultra-luxurious flagship for the Golden Sultan himself.",

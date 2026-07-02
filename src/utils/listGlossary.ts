@@ -1,6 +1,6 @@
 import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getFactionSpecialRules } from './factionSpecialRules'
-import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames } from './optionRuleEffects'
+import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
@@ -34,8 +34,8 @@ function getDisplayedWeapon(unit: Unit, weapon: Weapon, weaponIndex: number, con
     return options.find((option) => option.name === selectedName) ?? weapon
 }
 
-function addSrsProperties(ruleNames: Record<GlossaryCategory, Set<string>>, unit: Unit) {
-    for (const squadron of getVisibleSrsSquadrons(unit)) {
+function addSrsProperties(ruleNames: Record<GlossaryCategory, Set<string>>, unit: Unit, properties: NamedValue[] = unit.properties) {
+    for (const squadron of getVisibleSrsSquadrons(unit, properties)) {
         addNamedValues(ruleNames.properties, squadron.properties)
     }
 }
@@ -44,16 +44,19 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
     const unit = unitsById.get(entry.unitId)
     if (!unit) return
 
-    addSrsProperties(ruleNames, unit)
-
     const modelConfigs = entry.models.length > 0
         ? entry.models.map((model) => model.config)
         : [entry.config]
 
     for (const config of modelConfigs) {
         const optionRuleEffects = getSelectedOptionRuleEffects(unit, config, entry.config)
-        addNamedValues(ruleNames.properties, unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name)))
+        const effectiveProperties = mergeNamedValues(
+            unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name)),
+            optionRuleEffects.properties,
+        )
+        addNamedValues(ruleNames.properties, effectiveProperties)
         addNamedValues(ruleNames.systems, unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)))
+        addSrsProperties(ruleNames, unit, effectiveProperties)
 
         const generatorSelections = getEffectiveGeneratorSelections(unit, config, entry.config)
         for (const generatorSelection of generatorSelections) {
@@ -69,7 +72,6 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
             addNamedValues(ruleNames.qualities, getDisplayedWeapon(unit, weapon, weaponIndex, config).qualities)
         })
 
-        addNamedValues(ruleNames.properties, optionRuleEffects.properties)
         addNamedValues(ruleNames.systems, optionRuleEffects.systems)
         addNamedValues(ruleNames.qualities, optionRuleEffects.qualities)
     }

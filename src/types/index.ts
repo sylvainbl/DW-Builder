@@ -65,6 +65,7 @@ export interface OptionUpgrade {
     adds_qualities?: NamedValue[]
     removes_properties?: string[]
     removes_systems?: string[]
+    removes_options?: string[]
     removes_weapons?: string[]
     removes_weapon_slots?: string[]
     system_generator_slots?: number

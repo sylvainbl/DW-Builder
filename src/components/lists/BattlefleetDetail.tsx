@@ -2,7 +2,7 @@ import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
-import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce, sortBattlefleetEntries } from '../../utils/battlefleets'
+import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce, isUkrainianAkulaFlagship, sortBattlefleetEntries } from '../../utils/battlefleets'
 import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections } from '../../utils/optionRuleEffects'
@@ -124,7 +124,10 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
         const unit = units.find((item) => item.id === entry.unitId)
         if (!selection || !unit) return []
 
-        const doctrine = getAvailableFleetDoctrines(unit, fleetDoctrines)
+        const doctrineUnit = isUkrainianAkulaFlagship(definition, entries, entry)
+            ? { ...unit, role: 'Flagship', tags: unit.tags.includes('Flagship') ? unit.tags : [...unit.tags, 'Flagship'] }
+            : unit
+        const doctrine = getAvailableFleetDoctrines(doctrineUnit, fleetDoctrines)
             .find((item) => item.name === selection.doctrineName)
         if (!doctrine) return []
 
