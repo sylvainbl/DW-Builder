@@ -69,6 +69,10 @@ function filterRestrictedGenerators(generators: Generator[], restrictedGenerator
     return generators.filter((generator) => !restrictedGeneratorNames.has(generator.name))
 }
 
+function getGeneratorChoiceNames(options: OptionUpgrade[]): Set<string> {
+    return new Set(options.flatMap((option) => (option.choices ?? []).filter((choice): choice is string => typeof choice === 'string')))
+}
+
 function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined, extraMagmaCastCost: number | null = null): Generator[] {
     const weaponGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon !== false)
     const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
@@ -115,9 +119,13 @@ function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], e
     }
 
     const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
+    const generatorChoiceNames = getGeneratorChoiceNames(systemGeneratorOptions)
+    const availableFactionGenerators = generatorChoiceNames.size > 0
+        ? factionGenerators.filter((generator) => generatorChoiceNames.has(generator.name))
+        : factionGenerators
     const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR')
-        ? factionGenerators.map((generator) => ({
+    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') || generatorChoiceNames.size > 0
+        ? availableFactionGenerators.map((generator) => ({
             ...generator,
             point_cost: optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') ? 0 : generator.point_cost,
         }))
@@ -353,7 +361,7 @@ export default function UnitDetail() {
     const hasNativeGeneratorAccess = unitCanTakeGenerator(unit)
     const usesSystemGeneratorMount = unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
     const extraSystemMagmaCastCost = extraMagmaCastCost != null && (!hasNativeGeneratorAccess || usesSystemGeneratorMount) ? extraMagmaCastCost : null
-    const canTakeGenerator = hasNativeGeneratorAccess || extraMagmaCastCost != null
+    const canTakeGenerator = hasNativeGeneratorAccess || usesSystemGeneratorMount || extraMagmaCastCost != null
     const generatorSelections = getEffectiveGeneratorSelections(unit, activeUnitConfig, selectedEntry?.config)
     const weaponGeneratorSelection = generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
     const selectedSystemGenerators = generatorSelections.filter((selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX)

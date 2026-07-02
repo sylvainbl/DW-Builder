@@ -4308,6 +4308,7 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR_ADDON",
+        "generator_replaces_weapon": false,
         "choices": [
           "Heavy Shield Generator",
           "Magnetic Generator",
@@ -7324,6 +7325,7 @@
         "cost_per_unit": 10,
         "max": null,
         "tag": "ZUBR_ANTI_AIR",
+        "exclusive_group": "YAK_ARRAY",
         "mutually_exclusive_with": "GIYENA_DISSONANCE",
         "adds_properties": [
           {
@@ -7338,6 +7340,7 @@
         "cost_per_unit": 10,
         "max": null,
         "tag": "GIYENA_DISSONANCE",
+        "exclusive_group": "YAK_ARRAY",
         "mutually_exclusive_with": "ZUBR_ANTI_AIR",
         "adds_systems": [
           {
