@@ -57,7 +57,7 @@ export default function UnitCard({ unit, faction, active, onSelect, onAdd }: Pro
                 onClick={onSelect}
                 className="mt-2 flex w-full items-center justify-between gap-2 text-left"
             >
-                <span className="text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model ?? '—'} pts</span>
+                <span className="text-[11px] font-medium text-[var(--navy)]">{unit.point_cost_per_model ?? '—'} pts · {unit.vpr} VPR</span>
             </button>
             <button
                 type="button"

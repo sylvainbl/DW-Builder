@@ -2,6 +2,7 @@ import { FolderOpen, Plus, X } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../../store'
 import { parseImportedList } from '../../utils/localStorage'
+import { computeEntriesVpr } from '../../utils/pointsCalc'
 
 export default function ListsPanel() {
     const factions = useAppStore((state) => state.factions)
@@ -114,6 +115,7 @@ export default function ListsPanel() {
                     savedLists.map((list) => {
                         const active = currentList?.id === list.id
                         const total = list.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
+                        const totalVpr = computeEntriesVpr(list.units, units)
                         return (
                             <div
                                 key={list.id}
@@ -148,7 +150,7 @@ export default function ListsPanel() {
                                     onClick={() => openList(list.id)}
                                     className={`mt-2 text-left text-[12px] font-medium ${active ? 'text-white' : 'text-[var(--navy)]'}`}
                                 >
-                                    {total.toLocaleString('fr-FR')} pts
+                                    {total.toLocaleString('fr-FR')} pts · {totalVpr.toLocaleString('fr-FR')} VPR
                                 </button>
                             </div>
                         )

@@ -79,6 +79,18 @@ export function computeArmyUnitTotal(entry: ArmyUnit, allUnits: Unit[], context?
     return ownTotal + attachmentsTotal
 }
 
+export function computeArmyUnitVpr(entry: ArmyUnit, allUnits: Unit[]): number {
+    const unit = allUnits.find((item) => item.id === entry.unitId)
+    const ownTotal = unit ? entry.models.length * unit.vpr : 0
+    const attachmentsTotal = (entry.attachedUnits ?? [])
+        .reduce((sum, attachment) => sum + computeArmyUnitVpr(attachment, allUnits), 0)
+    return ownTotal + attachmentsTotal
+}
+
+export function computeEntriesVpr(entries: ArmyUnit[], allUnits: Unit[]): number {
+    return entries.reduce((sum, entry) => sum + computeArmyUnitVpr(entry, allUnits), 0)
+}
+
 export function updateArmyUnitTotals(entries: ArmyUnit[], allUnits: Unit[], context?: PointsContext): ArmyUnit[] {
     return entries.map((entry) => {
         const attachedUnits = entry.attachedUnits ? updateArmyUnitTotals(entry.attachedUnits, allUnits, context) : undefined

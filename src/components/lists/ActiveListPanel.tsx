@@ -7,6 +7,7 @@ import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
 import { previewPrintableList } from '../../utils/printList'
 import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeEntriesGuardianPool, computeEntriesGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
+import { computeArmyUnitVpr, computeEntriesVpr } from '../../utils/pointsCalc'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -18,6 +19,7 @@ interface UnitRowProps {
     showGuardianPool: boolean
     guardianPool: number
     guardianSurge: number
+    vpr: number
     onSelect: () => void
     onRemove: () => void
     onBattlefleetChange?: (battlefleetInstanceId: string | null) => void
@@ -61,7 +63,7 @@ interface UnitGroupProps {
     unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
 }
 
-function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, guardianSurge, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
+function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, guardianSurge, vpr, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
     const rowClasses = nested
         ? active
             ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
@@ -121,6 +123,7 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, sh
                 <div className="flex items-center gap-2">
                     <div className="flex flex-wrap items-center justify-end gap-1">
                         <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-[var(--gold-light)] text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
+                        <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>{vpr} VPR</span>
                         {showGuardianPool ? (
                             <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
                                 GP {guardianPool} - GS {guardianSurge}
@@ -177,6 +180,7 @@ function renderUnitRows({
                 showGuardianPool={showGuardianPool}
                 guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(entry, allUnits) : 0}
                 guardianSurge={showGuardianPool ? computeArmyUnitGuardianSurge(entry, allUnits) : 0}
+                vpr={computeArmyUnitVpr(entry, allUnits)}
                 onSelect={() => onSelectUnit(entry.instanceId)}
                 onRemove={() => onRemoveUnit(entry.instanceId)}
                 onBattlefleetChange={(battlefleetInstanceId) => onMoveUnit(entry.instanceId, battlefleetInstanceId)}
@@ -193,6 +197,7 @@ function renderUnitRows({
                     showGuardianPool={showGuardianPool}
                     guardianPool={showGuardianPool ? computeArmyUnitGuardianPool(attachment, allUnits) : 0}
                     guardianSurge={showGuardianPool ? computeArmyUnitGuardianSurge(attachment, allUnits) : 0}
+                    vpr={computeArmyUnitVpr(attachment, allUnits)}
                     onSelect={() => onSelectUnit(attachment.instanceId)}
                     onRemove={() => onRemoveUnit(attachment.instanceId)}
                 />
@@ -223,6 +228,7 @@ function BattlefleetSection({
     unitIssuesByInstanceId,
 }: BattlefleetSectionProps) {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
+    const vpr = computeEntriesVpr(entries, Array.from(unitById.values()))
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(entries, Array.from(unitById.values())) : 0
     const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(entries, Array.from(unitById.values())) : 0
     const hasIssues = issues.length > 0
@@ -261,6 +267,9 @@ function BattlefleetSection({
                         <div className="flex flex-wrap justify-end gap-1">
                             <div className="rounded-md border border-[var(--gold)]/60 bg-[var(--gold-light)] px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
                                 {points.toLocaleString('fr-FR')} pts
+                            </div>
+                            <div className="rounded-md border border-neutral-200 bg-white px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
+                                {vpr.toLocaleString('fr-FR')} VPR
                             </div>
                             {showGuardianPool ? (
                                 <div className="rounded-md border border-neutral-200 bg-white px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
@@ -477,6 +486,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
     if (!currentList) return null
 
     const totalPoints = currentList.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
+    const totalVpr = computeEntriesVpr(currentList.units, units)
     const showGuardianPool = isCrownFaction(currentList.faction_id)
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(currentList.units, units) : 0
     const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(currentList.units, units) : 0
@@ -541,6 +551,9 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                     <div className="mt-2 inline-flex flex-wrap items-center gap-1">
                         <span className="rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
                             Total: {totalPoints.toLocaleString('fr-FR')} pts
+                        </span>
+                        <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                            {totalVpr.toLocaleString('fr-FR')} VPR
                         </span>
                         {showGuardianPool ? (
                             <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">

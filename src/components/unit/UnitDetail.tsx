@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
-import { computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
+import { computeArmyUnitVpr, computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
@@ -399,6 +399,8 @@ export default function UnitDetail() {
             : computeModelGuardianSurge(unit, activeUnitConfig)
         : 0
     const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
+    const detailModelCount = selectedEntry?.models.length ?? minModels
+    const totalVpr = selectedEntry ? computeArmyUnitVpr(selectedEntry, units) : detailModelCount * unit.vpr
     const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
     const siblingAttachmentModels = selectedEntryParent && selectedEntry
         ? (selectedEntryParent.attachedUnits ?? [])
@@ -509,10 +511,10 @@ export default function UnitDetail() {
                             <p className="truncate text-sm font-semibold text-white/90">{selectedEntry.customName}</p>
                         ) : null}
                         <p className="text-sm text-white/78">{unit.sub_name}</p>
-                        <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo}</p>
+                        <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo} · VPR: {detailModelCount} x {unit.vpr} = {detailModelCount * unit.vpr}</p>
                     </div>
                     <div className="flex flex-col items-end text-right">
-                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? '—'} pts</div>
+                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? '—'} pts · {unit.vpr} VPR</div>
                         <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-white/75">
                             {costBreakdown.length > 0 ? (
                                 <>
@@ -522,6 +524,7 @@ export default function UnitDetail() {
                                 </>
                             ) : null}
                             <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
+                            <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalVpr} VPR</div>
                             {showGuardianPool ? (
                                 <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
                                     Guardian Pool: {guardianPool} - Guardian Surge: {guardianSurge}
@@ -592,7 +595,7 @@ export default function UnitDetail() {
                                                 className={`rounded-full border px-2.5 py-1 text-[11px] font-medium shadow-sm ${active ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]' : 'border-white/40 bg-white text-[var(--navy)] hover:bg-[var(--gold-light)]'}`}
                                                 onClick={() => selectModel(model.modelId)}
                                             >
-                                                {modelName}
+                                                {modelName} · {unit.vpr} VPR
                                             </button>
                                         )
                                     })}
@@ -642,7 +645,7 @@ export default function UnitDetail() {
                                                                 ) : null}
                                                             </span>
                                                             <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
-                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {!eligible ? 'position mismatch' : hasNormalAttachment && !isSelected ? 'attachment limit reached' : `${remainingModels} available`}
+                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {attachment.vpr} VPR · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {!eligible ? 'position mismatch' : hasNormalAttachment && !isSelected ? 'attachment limit reached' : `${remainingModels} available`}
                                                             </span>
                                                         </span>
                                                         <span className="flex items-center gap-1">
