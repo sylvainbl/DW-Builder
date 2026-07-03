@@ -482,5 +482,67 @@
       "required_role": "Flagship",
       "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model's Crew rating, for the purposes of this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
     }
+  ],
+  "enlightened": [
+    {
+      "name": "Forward Patrol",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once per game."
+    },
+    {
+      "name": "Orca Pod Bays",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "All Descartes Control Ships in this force gain the SRS (Orca Constructs) property."
+    },
+    {
+      "name": "Strategic Reserves",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
+    },
+    {
+      "name": "Chain of Command",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10” of a friendly Flagship. If the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
+    },
+    {
+      "name": "Devil’s Own Luck",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
+    },
+    {
+      "name": "Unstable Scythe Cargo",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "When this Admiral makes use of the Sympathetic Detonation weapon quality, each token they discard allows them to convert one Heavy Strike or Standard Strike to an Exploding Strike."
+    },
+    {
+      "name": "Do Or Die",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model’s Crew rating, for the purposes of this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+    },
+    {
+      "name": "Luminiferous Defences",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "Models in this force that have a Mass rating of 3 or higher are fitted with Luminiferous Defences. If one of these models is the Initial Target of an Attack action, and the Resistance Roll contains one or more Exploding Strikes, its Admiral can attempt to enact a Special Valour Effect. If it is successfully enacted, the model’s Armour rating is treated as being one higher when resolving the action. A model that is affected by a Heavy Shield Generator system cannot benefit from this rule."
+    },
+    {
+      "name": "Overcharged Capacitors",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "When a unit in this Force makes an Attack action, its Admiral can declare that they are Overriding Safety Protocols immediately before making the Action Roll. Make a Group Crew Check for the models that are Participating in the action. If successful, the Admiral may re-roll Standard Counters and Heavy Counters in the subsequent Action Roll. If the Check fails, the Attack action ends immediately, and each Participating model suffers 2 System Failure Critical Damage Effects and 1 Damage."
+    },
+    {
+      "name": "Peer in Residence",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral Activates a unit, they can remove a single System Failure Critical Damage Effect from one Battle-Ready model in that unit."
+    }
   ]
 }

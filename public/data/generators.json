@@ -204,5 +204,39 @@
       "name": "Shroud Generator",
       "point_cost": 10
     }
+  ],
+  "enlightened": [
+    {
+      "name": "Atomic Generator",
+      "point_cost": 5
+    },
+    {
+      "name": "Chrono Generator",
+      "point_cost": 20
+    },
+    {
+      "name": "Fury Generator",
+      "point_cost": 20
+    },
+    {
+      "name": "Heavy Shield Generator",
+      "point_cost": 15
+    },
+    {
+      "name": "Magnetic Generator",
+      "point_cost": 15
+    },
+    {
+      "name": "Null-Clone Generator",
+      "point_cost": 20
+    },
+    {
+      "name": "Repulsion Field Generator",
+      "point_cost": 10
+    },
+    {
+      "name": "Shroud Generator",
+      "point_cost": 10
+    }
   ]
 }

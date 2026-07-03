@@ -2804,5 +2804,356 @@
     "specialRules": [
       "union-hec-flagship-no-doctrine"
     ]
+  },
+  {
+    "id": "enlightened-main",
+    "faction_id": "enlightened",
+    "name": "Enlightened Faction Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "enlightened-flagship",
+        "name": "1 Enlightened Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enlightened-line",
+        "name": "1-3 Enlightened Line",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enlightened-patrol",
+        "name": "1-2 Enlightened Patrol",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enlightened-support",
+        "name": "0-2 Enlightened Support",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enlightened-scout",
+        "name": "0-2 Enlightened Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enlightened-logistical",
+        "name": "0-1 Enlightened Logistical",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Lovelace",
+      "Merian"
+    ],
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "enlightened_hypatia"
+        ],
+        "classNames": [
+          "Tacitus"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "enlightened_icarus"
+        ],
+        "classNames": [
+          "Copernicus"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "enlightened_xenophon"
+        ],
+        "classNames": [
+          "Antarctica"
+        ]
+      }
+    ],
+    "specialRules": [
+      "enlightened-main-airborne-underwater-limit"
+    ]
+  },
+  {
+    "id": "enlightened-exploratory-group",
+    "faction_id": "enlightened",
+    "name": "Exploratory Group",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "exploratory-flagship",
+        "name": "1 Enlightened Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "exploratory-line",
+        "name": "0-1 Enlightened Line",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "exploratory-patrol",
+        "name": "1-2 Enlightened Patrol",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "exploratory-scout",
+        "name": "1-4 Enlightened Scout",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Stiletto",
+      "Diogenes",
+      "Euclid"
+    ]
+  },
+  {
+    "id": "enlightened-autonomous-research-group",
+    "faction_id": "enlightened",
+    "name": "Autonomous Research Group",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "autonomous-flagship",
+        "name": "1 Enlightened Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "autonomous-automata-patrol",
+        "name": "1-3 Enlightened Automata Patrol",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Automata",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "autonomous-support",
+        "name": "0-3 Enlightened Support",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "autonomous-scout",
+        "name": "0-2 Enlightened Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "autonomous-logistical",
+        "name": "0-2 Enlightened Logistical",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Logistical"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Ketos",
+      "Origen",
+      "Praxilla"
+    ],
+    "specialRules": [
+      "enlightened-autonomous-airborne-limit"
+    ]
+  },
+  {
+    "id": "enlightened-cetacean-ops-groups",
+    "faction_id": "enlightened",
+    "name": "Cetacean Ops Groups",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "cetacean-descartes",
+        "name": "1 Descartes Control Ship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "unitIds": [
+              "enlightened_descartes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cetacean-patrol",
+        "name": "0-1 Enlightened Patrol",
+        "min": 0,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cetacean-support",
+        "name": "1-3 Enlightened Support",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cetacean-scout",
+        "name": "0-2 Enlightened Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Enlightened",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Vesalius",
+      "Aronnax"
+    ],
+    "specialRules": [
+      "enlightened-cetacean-half-srs-constructs"
+    ]
   }
 ]

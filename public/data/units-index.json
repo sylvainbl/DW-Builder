@@ -7,6 +7,7 @@
     "units/imperium.json",
     "units/empire.json",
     "units/sultanate.json",
-    "units/union.json"
+    "units/union.json",
+    "units/enlightened.json"
   ]
 }

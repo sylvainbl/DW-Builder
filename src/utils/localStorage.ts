@@ -16,6 +16,7 @@ function normalizeFactionId(id: string): string {
     if (id === 'Crown') return 'crown'
     if (id === 'Imperium') return 'imperium'
     if (id === 'Empire') return 'empire'
+    if (id === 'Enlighted' || id === 'enlighted' || id === 'Enlightened') return 'enlightened'
     return id
 }
 
