@@ -70,6 +70,9 @@ export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig
         for (const systemName of option.removes_systems ?? []) {
             effects.removedSystems.add(systemName)
         }
+        for (const system of option.replaces_systems ?? []) {
+            effects.removedSystems.add(system.name)
+        }
         for (const optionTag of option.removes_options ?? []) {
             effects.removedOptions.add(optionTag)
         }
@@ -107,11 +110,18 @@ export function unitUsesSystemGeneratorMount(unit: Unit): boolean {
 }
 
 export function getSystemGeneratorSlotCount(unit: Unit): number {
+    const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
+    const explicitSlotCount = Math.max(0, ...systemGeneratorOptions.map((option) => option.system_generator_slots ?? 0))
+    if (explicitSlotCount > 0) return explicitSlotCount
+
+    const mandatorySlotCount = systemGeneratorOptions
+        .filter((option) => option.mandatory)
+        .reduce((sum, option) => sum + (option.max ?? 1), 0)
+    if (mandatorySlotCount > 0) return mandatorySlotCount
+
     return Math.max(
         1,
-        ...unit.options_and_upgrades
-            .filter((option) => option.generator_replaces_weapon === false)
-            .map((option) => option.system_generator_slots ?? option.max ?? 1),
+        ...systemGeneratorOptions.map((option) => option.max ?? 1),
     )
 }
 

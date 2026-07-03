@@ -56,6 +56,8 @@ export interface OptionUpgrade {
     tag: string
     display_name?: string
     exclusive_group?: string
+    mandatory?: boolean
+    applies_per_model?: boolean
     generator_replaces_weapon?: boolean
     restrictions?: string[]
     adds_tags?: string[]
@@ -64,12 +66,13 @@ export interface OptionUpgrade {
     adds_systems?: NamedValue[]
     adds_qualities?: NamedValue[]
     removes_properties?: string[]
+    replaces_systems?: NamedValue[]
     removes_systems?: string[]
     removes_options?: string[]
     removes_weapons?: string[]
     removes_weapon_slots?: string[]
     system_generator_slots?: number
-    choices?: unknown[]
+    choices?: unknown[] | string
 }
 
 export interface Generator {

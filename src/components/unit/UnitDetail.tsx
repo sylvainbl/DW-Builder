@@ -70,8 +70,65 @@ function filterRestrictedGenerators(generators: Generator[], restrictedGenerator
     return generators.filter((generator) => !restrictedGeneratorNames.has(generator.name))
 }
 
+function getOptionChoices(option: OptionUpgrade): unknown[] {
+    if (Array.isArray(option.choices)) return option.choices
+    if (typeof option.choices === 'string') return [option.choices]
+    return []
+}
+
 function getGeneratorChoiceNames(options: OptionUpgrade[]): Set<string> {
-    return new Set(options.flatMap((option) => (option.choices ?? []).filter((choice): choice is string => typeof choice === 'string')))
+    return new Set(options.flatMap((option) => getOptionChoices(option).filter((choice): choice is string => typeof choice === 'string')))
+}
+
+function generatorChoiceName(choice: unknown): string | null {
+    if (typeof choice === 'string') return choice
+    if (choice && typeof choice === 'object' && 'name' in choice && typeof choice.name === 'string') return choice.name
+    return null
+}
+
+function generatorChoiceCost(choice: unknown): number | null {
+    if (choice && typeof choice === 'object' && 'cost_per_unit' in choice && typeof choice.cost_per_unit === 'number') {
+        return choice.cost_per_unit
+    }
+    return null
+}
+
+function isGeneratorHardpointsListChoice(name: string): boolean {
+    return name.toLowerCase().includes('generator hardpoints list')
+}
+
+function addGeneratorChoice(choices: Generator[], generator: Generator) {
+    const existingIndex = choices.findIndex((choice) => choice.name === generator.name)
+    if (existingIndex >= 0) {
+        choices[existingIndex] = generator
+        return
+    }
+    choices.push(generator)
+}
+
+function getOptionGeneratorChoices(option: OptionUpgrade, factionGenerators: Generator[], freeFactionGenerators: boolean): Generator[] {
+    const choices: Generator[] = []
+
+    for (const choice of getOptionChoices(option)) {
+        const name = generatorChoiceName(choice)
+        if (!name) continue
+
+        const cost = generatorChoiceCost(choice)
+        if (isGeneratorHardpointsListChoice(name)) {
+            for (const generator of factionGenerators) {
+                addGeneratorChoice(choices, { ...generator, point_cost: freeFactionGenerators || cost === 0 ? 0 : generator.point_cost })
+            }
+            continue
+        }
+
+        const factionGenerator = factionGenerators.find((generator) => generator.name === name)
+        addGeneratorChoice(choices, {
+            name,
+            point_cost: cost ?? (freeFactionGenerators ? 0 : factionGenerator?.point_cost ?? 0),
+        })
+    }
+
+    return choices
 }
 
 function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined, extraMagmaCastCost: number | null = null): Generator[] {
@@ -112,23 +169,37 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     return optionTags.has('GENERATOR') && slot === 'H' ? filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames) : []
 }
 
-function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], extraMagmaCastCost: number | null = null): Generator[] {
+function getSystemGeneratorOptionForSlot(systemGeneratorOptions: OptionUpgrade[], slotIndex: number): OptionUpgrade | null {
+    const mandatoryOptions = systemGeneratorOptions.filter((option) => option.mandatory)
+    if (mandatoryOptions.length > 1) return mandatoryOptions[slotIndex] ?? null
+    return null
+}
+
+function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], extraMagmaCastCost: number | null = null, slotIndex: number | null = null): Generator[] {
     const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
     const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
     if (systemGeneratorOptions.length === 0) {
         return extraMagmaCastCost != null ? filterRestrictedGenerators([{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }], restrictedGeneratorNames) : []
     }
 
-    const optionTags = new Set(systemGeneratorOptions.map((option) => option.tag))
-    const generatorChoiceNames = getGeneratorChoiceNames(systemGeneratorOptions)
-    const availableFactionGenerators = generatorChoiceNames.size > 0
-        ? factionGenerators.filter((generator) => generatorChoiceNames.has(generator.name))
-        : factionGenerators
+    const relevantOptions = slotIndex == null
+        ? systemGeneratorOptions
+        : [getSystemGeneratorOptionForSlot(systemGeneratorOptions, slotIndex)].filter((option): option is OptionUpgrade => option != null)
+    const optionsForChoices = relevantOptions.length > 0 ? relevantOptions : systemGeneratorOptions
+    const optionTags = new Set(optionsForChoices.map((option) => option.tag))
+    const freeFactionGenerators = optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR')
+    const explicitChoices = optionsForChoices.flatMap((option) => getOptionGeneratorChoices(option, factionGenerators, freeFactionGenerators))
+    const generatorChoiceNames = getGeneratorChoiceNames(optionsForChoices)
+    const availableFactionGenerators = explicitChoices.length > 0
+        ? explicitChoices
+        : generatorChoiceNames.size > 0
+            ? factionGenerators.filter((generator) => generatorChoiceNames.has(generator.name))
+            : factionGenerators
     const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') || generatorChoiceNames.size > 0
+    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') || generatorChoiceNames.size > 0 || explicitChoices.length > 0
         ? availableFactionGenerators.map((generator) => ({
             ...generator,
-            point_cost: optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') ? 0 : generator.point_cost,
+            point_cost: freeFactionGenerators ? 0 : generator.point_cost,
         }))
         : []
 
@@ -929,6 +1000,7 @@ export default function UnitDetail() {
                             <div className="mt-2 space-y-1.5">
                                 {Array.from({ length: systemGeneratorSlotCount }, (_, slotIndex) => {
                                     const selectedSystemGenerator = selectedSystemGenerators[slotIndex] ?? null
+                                    const slotGeneratorChoices = getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost, slotIndex)
                                     return (
                                         <div key={`system-generator-${slotIndex}`} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
                                             <div className="min-w-0">
@@ -938,7 +1010,7 @@ export default function UnitDetail() {
                                                 className="w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)] md:w-56"
                                                 value={selectedSystemGenerator?.generatorName ?? ''}
                                                 onChange={(event) => {
-                                                    const generator = systemGeneratorChoices.find((item) => item.name === event.target.value)
+                                                    const generator = slotGeneratorChoices.find((item) => item.name === event.target.value)
                                                     setSystemGeneratorSelection(slotIndex, generator ? {
                                                         weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
                                                         generatorName: generator.name,
@@ -947,7 +1019,7 @@ export default function UnitDetail() {
                                                 }}
                                             >
                                                 <option value="">Select</option>
-                                                {systemGeneratorChoices.map((generator) => (
+                                                {slotGeneratorChoices.map((generator) => (
                                                     <option key={generator.name} value={generator.name}>
                                                         {generator.name} (+{generator.point_cost})
                                                     </option>
