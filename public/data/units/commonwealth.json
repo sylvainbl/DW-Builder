@@ -10,6 +10,7 @@
     "vpr": 5,
     "models": "1-2",
     "tags": [
+      "Commonwealth",
       "Ukrainian",
       "Underwater",
       "Support",
@@ -207,7 +208,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Extrapolated by Ukrainian engineers from charred blueprints of the stolen Death Bringer, the Akula is still the most powerful in the Ukrainian Submarine Command. One element that was successfully replicated was the magnetohydrodynamic drive, enabling the boat to approach virtually undetected before striking.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 2
@@ -223,6 +224,7 @@
     "vpr": 9,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -426,7 +428,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Largest Ekranoplan in the world, the Alexeyev is tasked with rapidly deploying small squadrons of hovercraft, or even other Ekranoplans, to key locations as part of a rapid reaction force. Named after Evgenievich Alexayev, the brilliant engineer who won the Tsar's wager by proving his proposed design for the Ekranoplan was possible.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -442,6 +444,7 @@
     "vpr": 13,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Black Wolf",
       "Russian",
       "Surface",
@@ -623,7 +626,7 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Volodymyr Nikonov was gifted this modified mobile stronghold by the Tsar and in gratitude he named it after his love, the Tsar's eldest daughter. Based near Novo-Arkhangelsk in Alaska, this vessel is the home base for Nikonov and his Black Wolf Mercenaries.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1,
@@ -647,6 +650,7 @@
     "vpr": 6,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -796,7 +800,7 @@
       }
     ],
     "lore": "Well designed so that a Borodino can be repaired and maintained by her own crew, even after sustaining considerable damage, these battleships are the rugged mainstay of the White Navy.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2024-06-05",
     "id": "commonwealth_borodino",
     "faction_id": "commonwealth",
@@ -814,6 +818,7 @@
     "vpr": 9,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Black Wolf",
       "Underwater",
       "Flagship",
@@ -1020,7 +1025,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Flagship of the Black Wolf Mercenary Fleet and commanded by the charismatic Volodymyr Nikonov, the Death Bringer is feared around the globe. Stolen from the Enlightened during a presentation to the Tsar, Nikonov ensured the Death Bringer was an utterly unique masterpiece by destroying the blueprints and setting the shipyards ablaze.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -1036,6 +1041,7 @@
     "vpr": 2,
     "models": "1-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Patrol",
@@ -1210,7 +1216,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Usually assigned to the fleet base in Astrakhan, the Dragunov Ekranoplan Brawlers are often deployed far beyond the confines of the Caspian Sea itself through the Eurasia Canal.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 4
@@ -1226,6 +1232,7 @@
     "vpr": 0,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Surface",
       "Logistical",
       "Ship",
@@ -1389,7 +1396,7 @@
       }
     ],
     "lore": "The hunger of the Dystopian Age requires more resources than even fleets of Titan Mass Conveyors can comfortably provide. Thankfully, the engineering minds behind Norddeutscher Hamburg and White Wolf had the foresight to adapt the plans of the Titan, almost as soon as the inaugural vessel was launched.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -1405,6 +1412,7 @@
     "vpr": 0,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Surface",
       "Logistical",
       "Ship",
@@ -1465,7 +1473,7 @@
       "note": "Escort tokens cannot be purchased when taken as Attachment."
     },
     "lore": "Hundreds of Hermes Supply Freighters ferry goods across oceans, seas, and along coastlines. It is the true workhorse of the water. Each one of the Great Powers have numerous Hermes listed as their property. So many are seen over the globe that some sailors have taken up the hobby of 'spotting' them. They fill notebooks with names, locations, loadouts, and even colour schemes. Occasionally, officers have used this information for more strategic purposes, although none admit to it.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -1481,6 +1489,7 @@
     "vpr": 3,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Scout",
@@ -1550,7 +1559,7 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Utilising the repulsion field generator obtained by Helsinki Markov in 1856, the Irkutsk Skydrill is often heard approaching, long before it is seen. The buzz of the overcharged field generators and the roar of the Semyenov assault bore spinning up to full speed making a terrifying cacophony.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -1566,6 +1575,7 @@
     "vpr": 2,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Patrol",
@@ -1710,7 +1720,7 @@
       }
     ],
     "lore": "Jadwiga Light Airships make up the bulk of the Polish-Lithuanian airforce and are seen in fleets of almost any size. True workhorses, they can pound any enemy into submission with enough rockets.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -1726,6 +1736,7 @@
     "vpr": 6,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Flagship",
@@ -1780,7 +1791,7 @@
           },
           {
             "name": "Breach",
-            "value": 2
+            "value": 1
           },
           {
             "name": "Torpedo",
@@ -1891,7 +1902,7 @@
       }
     ],
     "lore": "Classified as a heavy skycruiser, the Khodynka-class are deployed as command vessels where enemy airpower is expected, or Commonwealth airpower would give a decisive advantage. These powerful vessels offer an unparalleled view of the engagement zone and are highly prized by the White Navy Admiralty.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -1907,6 +1918,7 @@
     "vpr": 2,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Ukrainian",
       "Underwater",
       "Line",
@@ -2070,7 +2082,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Based in Odessa, Ukrainian Submarine Command (UPK) has the lead in subnautical warfare and exploration for the Commonwealth. With an impressive training academy in nearby Zatoka, the UPK provides a steady supply of skilled submariners and vessels like the lethally fast Khyzhak-class.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -2086,6 +2098,7 @@
     "vpr": 6,
     "models": "1-2",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Support",
@@ -2167,7 +2180,7 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Instead of divine thunder, fear the Konostoga's apocalyptic boom. These monstrous cannon blasts can cleave cruisers in two with a single strike, a devastating power mistaken for divine judgment.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 2
@@ -2183,6 +2196,7 @@
     "vpr": 5,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Underwater",
       "Support",
@@ -2413,7 +2427,7 @@
     },
     "options_and_upgrades": [],
     "lore": "The Kostroma-class Vitruvian Colossus wields a powerful Mag-rail Axe and Claw Arc Projector to deliver punishing blows to enemy vessels at close range. What is surprising is that it is capable of engaging targets at a distance, using Commonwealth railgun expertise to surprising effect as a two-hundred-metre-tall sniper.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -2429,6 +2443,7 @@
     "vpr": 7,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Flagship",
@@ -2588,7 +2603,7 @@
       }
     ],
     "lore": "The Krasnaya was built at the behest of the Baltic Fleet command. A monstrous icebreaker designed to tear through the weaponized ice floes plaguing the north. With a terrifying symphony of overcharged field generators whining and its Semyenov assault bore, the Krasnaya strikes fear into the hearts of the Tsar's enemies.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -2604,6 +2619,7 @@
     "vpr": 3,
     "models": "2-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Line",
@@ -2703,12 +2719,12 @@
       {
         "description": "Upgrade any number of models with a single Generator Hardpoint",
         "cost_per_unit": null,
-        "max": null,
+        "max": 1,
         "tag": "GENERATOR"
       }
     ],
     "lore": "The iconic ship of the White Navy, the Kutsov is on the recruitment posters throughout the Commonwealth. For many sailors their first posting is to a Kutsov, where the cramped confines and deafening roar of the guns make the glamorous poster image a bitter irony.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
     "max": 4
@@ -2724,6 +2740,7 @@
     "vpr": 5,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Underwater",
       "Scout",
@@ -2887,7 +2904,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Reverse engineered from a Metager prototype captured from the Imperium during the Liberation of Krakow, the Marena Vitruvian Colossus is carried to the engagement zone by air before being dropped to sink to the seabed. There they position themselves to patiently wait for their unsuspecting prey to approach before emerging on powerful hydro jets.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -2903,6 +2920,7 @@
     "vpr": 8,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Support",
@@ -3011,7 +3029,7 @@
       }
     ],
     "lore": "Originally a prototype vessel of the Hypatia-class, the theft of Prometheus by Helsinki Markov crippled the Covenant of the Enlightened and allowed the generator technology they had so selfishly hoarded to be given to the world. The vessel now serves more for propaganda purposes as many of her advancements have been stripped out by the Ministry of Technology.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -3027,6 +3045,7 @@
     "vpr": 4,
     "models": "1-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Line",
@@ -3200,13 +3219,13 @@
       {
         "description": "Upgrade any number of models with a single Generator Hardpoint",
         "cost_per_unit": null,
-        "max": null,
+        "max": 1,
         "tag": "GENERATOR"
       },
       {
         "description": "Upgrade any number of models with a Khatanga Breaching Drill. Each model with this upgrade loses the Heavy Prow (3) property, but gains the Breaching Drill (10) property.",
         "cost_per_unit": 15,
-        "max": null,
+        "max": 1,
         "tag": "KHATANGA_BREACHING_DRILL",
         "removes_properties": [
           "Heavy Prow"
@@ -3220,7 +3239,7 @@
       }
     ],
     "lore": "Developed from the redoubtable Norilsk, the Morozko incorporates a Cryo generator, enabling it to create hazardous icebergs to great effect in the path of their enemies. A brutal addition to the White Navy and favoured by northern Captains, the Khatanga combines a ferocious Semyenov pattern assault bore in the prow with the dreaded Cryo generator.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 4
@@ -3236,6 +3255,7 @@
     "vpr": 9,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -3466,7 +3486,7 @@
       }
     ],
     "lore": "Pride of the White Navy, the Moskva-class Heavy Battleships are a potent combination of heavy firepower and crews that exalt the finest traditions of the Commonwealth.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -3482,6 +3502,7 @@
     "vpr": 7,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -3649,7 +3670,7 @@
       }
     ],
     "lore": "Though the Commonwealth places less emphasis on air support than the other Great Powers, they still appreciate its uses in achieving victory. The Mozhayski are integral to this combined arms doctrine and the expansive internal spaces for officers make them preferred command ships for commodores.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1,
@@ -3675,6 +3696,7 @@
     "vpr": 12,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -3850,7 +3872,7 @@
       }
     ],
     "lore": "Part firebase and part repair yard, a Murmansk allows the Commonwealth to expand its theatres of operation around the globe. Utilising integrated Void Engine technology acquired by Helsinki Markov, the Murmansk can appear unexpectedly, rising from beneath the waves in a matter of minutes.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -3866,6 +3888,7 @@
     "vpr": 3,
     "models": "1-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Line",
@@ -4035,12 +4058,12 @@
       {
         "description": "Upgrade any number of models with a single Generator Hardpoint",
         "cost_per_unit": null,
-        "max": null,
+        "max": 1,
         "tag": "GENERATOR"
       }
     ],
     "lore": "Powerful and dependable, Norilsk-class Heavy Cruisers have been present at almost every major victory for the Commonwealth since they first entered service over two decades ago. Named for the region that provides huge mineral wealth to the Commonwealth decades ahead of schedule, thanks to the Troika's advanced detection and extraction advances.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 4
@@ -4056,6 +4079,7 @@
     "vpr": 2,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Mongolian",
       "Surface",
       "Support",
@@ -4156,7 +4180,7 @@
       {
         "description": "Upgrade the unit to have Defensive Mines. Grants the Auxiliary Mine Layer (3) property.",
         "cost_per_unit": 20,
-        "max": null,
+        "max": 1,
         "tag": "DEFENSIVE_MINES",
         "adds_properties": [
           {
@@ -4175,7 +4199,7 @@
       "note": "No Upgrades can be purchased when taken as Attachment."
     },
     "lore": "Harriet Anson-Maunsell didn't anticipate the military application of her modular platforms. Designed for oil, sturginium, and gas extraction, her creations became a surprise hit with the Great Powers who had identified the military applications of the rugged design.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -4191,6 +4215,7 @@
     "vpr": 4,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Mongolian",
       "Surface",
       "Support",
@@ -4329,7 +4354,7 @@
       }
     ],
     "lore": "It was Ver Mehr Engineering that developed the heavy platform, based on the Anson-Maunsell design that had become so widespread in the oceans and seas in the 1860s. These heavy platforms retained much of the former's modular nature but reinforced and expanded to allow for more substantial applications both commercially and militarily.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -4345,6 +4370,7 @@
     "vpr": 2,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Mongolian",
       "Surface",
       "Logistical",
@@ -4405,7 +4431,7 @@
       {
         "description": "Upgrade the unit to have Defensive Mines. Grants the Auxiliary Mine Layer (3) property.",
         "cost_per_unit": 20,
-        "max": null,
+        "max": 1,
         "tag": "DEFENSIVE_MINES",
         "adds_properties": [
           {
@@ -4423,7 +4449,7 @@
       "max_models": null
     },
     "lore": "Taking the Anson-Maunsell platform as a starting point, the Otroq Supply Platform boasts a modular design that allows it to work seamlessly with engineering and logistics equipment anywhere in the world. This versatility empowers it to deliver a comprehensive range of repair and resupply services.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -4439,6 +4465,7 @@
     "vpr": 2,
     "models": "1-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Patrol",
@@ -4546,7 +4573,7 @@
       }
     ],
     "lore": "The Commonwealth is famed for refusing to give ground once it has been taken in the name of the Tsar. Oleg-class Monitors are ideally suited to this mentality, offering unglamorous but determined resistance that deters all but the most persistent of foes.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 4
@@ -4562,6 +4589,7 @@
     "vpr": 1,
     "models": "2-6",
     "tags": [
+      "Commonwealth",
       "Ukrainian",
       "Underwater",
       "Patrol",
@@ -4634,7 +4662,7 @@
       "max_models": 2
     },
     "lore": "Fast and deadly, the Piranya Hunter Submarines patrol in packs along the Black Sea and the Bering Strait. With a complement of twelve, the Piranya make for a close-knit boat crew, ideal for such vessels with sparse living comforts on month-long duty beneath the waves.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
     "max": 6
@@ -4650,6 +4678,7 @@
     "vpr": 4,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Support",
@@ -4767,7 +4796,7 @@
       }
     ],
     "lore": "A recent addition to the White Navy as a low-cost alternative to the larger fleet carriers, the Pravda has already proved itself to many in the admiralty. Vulnerable when isolated, Pravda most commonly operate in pairs or trios.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3,
@@ -4793,6 +4822,7 @@
     "vpr": 9,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -5018,7 +5048,7 @@
       }
     ],
     "lore": "With enviable state rooms and extensive supply facilities, the Prezidium is a vital command ship. With these well-armed vessels as flagships, the admiralty of the White Navy can conduct operations anywhere across the globe with the surety that they are well resourced.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -5034,6 +5064,7 @@
     "vpr": 9,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -5228,7 +5259,7 @@
       }
     ],
     "lore": "Mounting the largest naval cannon in the world, the Rikhter-class relies on kinetic dampers to absorb the massive recoil from the weapon. A Void Engine is used to translocate the colossal atomic munitions from a fortified stronghold deep in Siberia. The shockwave alone will utterly pulverise any crewmember foolish enough to be on deck when fired.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -5244,6 +5275,7 @@
     "vpr": 1,
     "models": "2-6",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Patrol",
@@ -5398,7 +5430,7 @@
       "max_models": 2
     },
     "lore": "The influence of Admiral Andrei Popov's design philosophy can be seen in the wide body of the Rurik Frigates. This broader beam allows for a shallower draught enabling squadrons to unexpectedly come inland by using rivers and other waterways.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
     "max": 6
@@ -5414,6 +5446,7 @@
     "vpr": 4,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Support",
@@ -5498,7 +5531,7 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "The principles of the Sturginium Thermal Pressure Engines that are used throughout the Russian White Navy have been over-engineered and amplified within the Saransk Skyfurnace. The resultant excess of high-pressure steam is vented at the command of the ship's captain to horrific effect on exposed enemy infantry and deck crews.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -5514,6 +5547,7 @@
     "vpr": 3,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Scout",
@@ -5670,7 +5704,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Sacrificing armour for speed, the Sineus enables the Commonwealth to respond quickly to rapidly changing situations. A squadron of Sineus still carries enough firepower to break through blockades or disrupt supply lines if necessary.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -5686,6 +5720,7 @@
     "vpr": 1,
     "models": "2-4",
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Patrol",
@@ -5820,7 +5855,7 @@
       }
     ],
     "lore": "Smok Aerial Destroyers can manoeuvre into almost any position, ready to unleash hell against the enemies of the Commonwealth.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
     "max": 4
@@ -5836,6 +5871,7 @@
     "vpr": 4,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Support",
@@ -5988,7 +6024,7 @@
       }
     ],
     "lore": "The Stanislaw Assault Airship can land ground forces where other naval vessels simply cannot reach.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -6004,6 +6040,7 @@
     "vpr": 2,
     "models": "1-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Support",
@@ -6169,7 +6206,7 @@
     },
     "options_and_upgrades": [],
     "lore": "These ground effect vehicles were designed by Helsinki Markov himself following his return to the Commonwealth after years studying with the Covenant of the Enlightened. Skimming the surface of the sea, they excel at high-speed rocket attacks and troop transport.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 4
@@ -6185,6 +6222,7 @@
     "vpr": 4,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Support",
@@ -6324,7 +6362,7 @@
     },
     "options_and_upgrades": [],
     "lore": "Szlachta Swordwing Carriers bring fighter support and use them to reach out and attack at almost any range. For some commodores, there can never be enough of these useful craft.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3,
@@ -6360,6 +6398,7 @@
     "vpr": 0,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Surface",
       "Logistical",
       "Ship",
@@ -6518,7 +6557,7 @@
       }
     ],
     "lore": "Norddeutscher Hamburg and White Wolf partnered to create the Titan class, aiming for the most impressive ocean liner ever built. The Titan's prevalence across the globe and its association with good fortune speak volumes about the success of this design philosophy.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1
@@ -6534,6 +6573,7 @@
     "vpr": 12,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Flagship",
@@ -6821,7 +6861,7 @@
       }
     ],
     "lore": "A development on the Murmansk, the Tobolsk Mobile Stronghold is often deployed in the far northern waters where it provides a tactical advantage to the Commonwealth in those isolated freezing seas. Though the Void Engines still require many hours to recharge, the element of surprise makes this a uniquely viable technology for these mobile strongholds.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1,
@@ -6847,6 +6887,7 @@
     "vpr": 3,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Airborne",
       "Line",
@@ -6951,7 +6992,7 @@
       {
         "description": "Upgrade any number of models with a single Generator Hardpoint. A Repulsion Field Generator cannot be chosen for a model in this unit.",
         "cost_per_unit": null,
-        "max": null,
+        "max": 1,
         "tag": "GENERATOR",
         "restrictions": [
           "Repulsion Field Generator"
@@ -6966,7 +7007,7 @@
       "max_models": 1
     },
     "lore": "A bruiser of the skies, the Tunguska-class skycruiser boasts a thick, slab-like hull of sturginium steel wrapped around powerful engines. This workhorse of the White Navy surprises enemies with sudden bursts of speed, closing the distance to unleash a fury of firepower from its heavy batteries.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -6982,6 +7023,7 @@
     "vpr": 4,
     "models": "1-3",
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Line",
@@ -7142,7 +7184,7 @@
       }
     ],
     "lore": "Voivode Heavy Airships unleash withering volleys of rockets towards the foe, punching through all but the heaviest of aerial defence.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 3
@@ -7158,6 +7200,7 @@
     "vpr": 2,
     "models": "2-4",
     "tags": [
+      "Commonwealth",
       "Russian",
       "Surface",
       "Scout",
@@ -7323,7 +7366,7 @@
       {
         "description": "Upgrade any number of models with the Zubr Anti-Air Array. Each model gains the Hunter (Airborne) property. A model cannot have both this upgrade and the Giyena Dissonance Array.",
         "cost_per_unit": 10,
-        "max": null,
+        "max": 1,
         "tag": "ZUBR_ANTI_AIR",
         "exclusive_group": "YAK_ARRAY",
         "mutually_exclusive_with": "GIYENA_DISSONANCE",
@@ -7338,7 +7381,7 @@
       {
         "description": "Upgrade any number of models with a Giyena Dissonance Array. Each model gains the Shockwave Generator system. A model cannot have both this upgrade and the Zubr Anti-Air Array.",
         "cost_per_unit": 10,
-        "max": null,
+        "max": 1,
         "tag": "GIYENA_DISSONANCE",
         "exclusive_group": "YAK_ARRAY",
         "mutually_exclusive_with": "ZUBR_ANTI_AIR",
@@ -7351,7 +7394,7 @@
       }
     ],
     "lore": "Developed by Evgeniya Peshkov to specifications laid out by the Imperial Technical Society, the Yak Transport Hovercraft has a cargo area of almost 400 square metres, can carry almost 150 tonnes of mechanised infantry, and has an operational range of 300 nautical miles.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
     "max": 4
@@ -7367,6 +7410,7 @@
     "vpr": 10,
     "models": 1,
     "tags": [
+      "Commonwealth",
       "Polish-Lithuanian",
       "Airborne",
       "Flagship",
@@ -7589,7 +7633,7 @@
       }
     ],
     "lore": "The Zamiec Skyfortress allows fighters to strike from the skies wherever the Commonwealth needs, Szpada fighters racing towards their target using speed to close range before the enemy can lock on. It is considered a great privilege to be the first to fall into battle.",
-    "version": "4.00",
+    "version": "4.00A",
     "date": "2026-06-28",
     "min": 1,
     "max": 1,
