@@ -66,6 +66,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -89,35 +90,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -125,8 +126,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -140,6 +142,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -157,6 +160,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -172,6 +176,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 7,
             "S": null,
@@ -323,8 +328,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -338,6 +344,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -355,6 +362,7 @@
         {
           "name": "Light Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 4,
             "S": 6,
@@ -365,6 +373,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 7,
             "S": null,
@@ -431,8 +440,7 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Heavy Shield Generator",
@@ -443,6 +451,7 @@
       {
         "name": "Triangulated Heavy Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 7,
           "S": 7,
@@ -470,35 +479,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FPA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FSA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -506,8 +515,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -521,6 +531,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -627,6 +638,7 @@
       {
         "name": "Heat Lance",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 7,
           "S": 3,
@@ -650,6 +662,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 4,
@@ -660,12 +673,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 4,
@@ -676,12 +689,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Freedom Incendiary Bombs",
         "arc": "A",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": null,
@@ -722,7 +735,7 @@
     "faction": "Union",
     "role": "Flagship",
     "point_cost_per_model": 325,
-    "vpr": 1,
+    "vpr": 11,
     "models": 1,
     "tags": [
       "Union",
@@ -780,8 +793,33 @@
     ],
     "weapons": [
       {
+        "name": "Heavy Aerial Torpedo Pods",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 7,
+          "S": 7,
+          "E": 7
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "High Velocity",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
         "name": "Dual Magnetic Gatling Guns",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -801,6 +839,7 @@
       {
         "name": "Dual Magnetic Gatling Guns",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -820,6 +859,7 @@
       {
         "name": "Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -835,6 +875,7 @@
       {
         "name": "Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -850,6 +891,7 @@
       {
         "name": "Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -865,6 +907,7 @@
       {
         "name": "Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -966,6 +1009,7 @@
       {
         "name": "Heavy Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 8,
@@ -976,12 +1020,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Heavy Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 8,
@@ -992,12 +1036,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Heavy Rocket Battery",
         "arc": "FPA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 8,
@@ -1008,8 +1052,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       }
     ],
     "hardpoint_options": {},
@@ -1121,6 +1164,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FP",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1131,12 +1175,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "FS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1147,12 +1191,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "PA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1163,12 +1207,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "SA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1179,8 +1223,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {},
@@ -1262,6 +1305,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -1285,46 +1329,46 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "PSA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -1332,8 +1376,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -1347,6 +1392,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -1364,6 +1410,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -1379,6 +1426,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 7,
             "S": null,
@@ -1464,8 +1512,33 @@
     ],
     "weapons": [
       {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
         "name": "Tesla Coil",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -1501,6 +1574,7 @@
       {
         "name": "Heavy Helical Rail Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
@@ -1520,6 +1594,7 @@
       {
         "name": "Heavy Helical Rail Battery",
         "arc": "PSA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
@@ -1539,6 +1614,7 @@
       {
         "name": "Light Helical Rail Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
@@ -1558,6 +1634,7 @@
       {
         "name": "Light Helical Rail Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 6,
@@ -1649,6 +1726,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -1672,24 +1750,24 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FSA",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -1697,8 +1775,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -1712,6 +1791,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -1813,6 +1893,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -1836,6 +1917,7 @@
       {
         "name": "Tesla Coil",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -1871,6 +1953,7 @@
       {
         "name": "Heavy Electrocannon",
         "arc": "FPA",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": 8,
@@ -1886,6 +1969,7 @@
       {
         "name": "Heavy Electrocannon",
         "arc": "FSA",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": 8,
@@ -1965,28 +2049,29 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 6,
           "S": 8,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -1997,12 +2082,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "PSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -2013,8 +2098,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -2022,8 +2106,9 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
-            "C": 1,
+            "C": 11,
             "S": null,
             "E": null
           },
@@ -2037,6 +2122,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 8,
@@ -2137,8 +2223,33 @@
     ],
     "weapons": [
       {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
         "name": "Tesla Coil",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -2174,6 +2285,7 @@
       {
         "name": "Heavy Thermobaric Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 8,
@@ -2189,8 +2301,8 @@
             "value": 2
           },
           {
-            "name": "Hazard 2)",
-            "value": null
+            "name": "Hazard",
+            "value": 2
           },
           {
             "name": "Indiscriminate",
@@ -2201,6 +2313,7 @@
       {
         "name": "Heavy Thermobaric Rocket Battery",
         "arc": "PSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 8,
@@ -2216,8 +2329,8 @@
             "value": 2
           },
           {
-            "name": "Hazard 2)",
-            "value": null
+            "name": "Hazard",
+            "value": 2
           },
           {
             "name": "Indiscriminate",
@@ -2228,6 +2341,7 @@
       {
         "name": "Light Thermobaric Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -2255,6 +2369,7 @@
       {
         "name": "Light Thermobaric Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -2348,6 +2463,7 @@
       {
         "name": "Triangulated Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -2375,6 +2491,7 @@
       {
         "name": "Chesapeake Gatling Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 9,
           "S": null,
@@ -2385,12 +2502,12 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Chesapeake Gatling Battery",
         "arc": "PSA",
+        "slot": "H",
         "firepower": {
           "C": 9,
           "S": null,
@@ -2401,12 +2518,12 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Chesapeake Gatling Gun",
         "arc": "FPA",
+        "slot": "L",
         "firepower": {
           "C": 5,
           "S": null,
@@ -2417,12 +2534,12 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Chesapeake Gatling Gun",
         "arc": "FSA",
+        "slot": "L",
         "firepower": {
           "C": 5,
           "S": null,
@@ -2433,8 +2550,7 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -2442,6 +2558,7 @@
         {
           "name": "Heavy Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 4,
             "S": 6,
@@ -2452,6 +2569,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -2469,6 +2587,7 @@
         {
           "name": "Light Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -2479,6 +2598,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -2571,6 +2691,7 @@
       {
         "name": "Aerial Torpedo Pods",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -2594,6 +2715,7 @@
       {
         "name": "Magnetic Gatling Battery",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 10,
           "S": null,
@@ -2613,6 +2735,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -2623,12 +2746,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -2639,8 +2762,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {},
@@ -2714,6 +2836,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -2737,46 +2860,46 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "PSA",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -2784,6 +2907,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -2799,6 +2923,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -2816,6 +2941,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -2831,6 +2957,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -2894,8 +3021,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
@@ -2908,17 +3034,18 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Dual Harper Autocannon",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 8,
           "S": 6,
@@ -2934,6 +3061,7 @@
       {
         "name": "Freedom Incendiary Bombs",
         "arc": "A",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": null,
@@ -3035,6 +3163,7 @@
       {
         "name": "Heavy Electrocannon Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 6,
@@ -3045,12 +3174,12 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Tesla Coil",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": 10,
           "S": null,
@@ -3086,6 +3215,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 4,
@@ -3096,8 +3226,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -3105,6 +3234,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -3120,6 +3250,7 @@
         {
           "name": "Electrocannon Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -3135,6 +3266,7 @@
         {
           "name": "Light Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -3197,8 +3329,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [],
@@ -3206,17 +3337,18 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 7,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Dual Harper Autocannon",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 9,
           "S": 6,
@@ -3232,6 +3364,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -3242,12 +3375,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -3258,12 +3391,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Freedom Incendiary Bombs",
         "arc": "A",
+        "slot": null,
         "firepower": {
           "C": 12,
           "S": null,
@@ -3300,6 +3433,20 @@
         "removes_tags": [
           "Union"
         ]
+      },
+      {
+        "description": "Flagship Variant: a single Excelsior Heavy Aircruiser unit may carry the Admiral’s Flag; it must have 1 model, replace Line with Flagship, and costs +5 pts",
+        "cost_per_unit": 5,
+        "max": 1,
+        "tag": "FLAGSHIP_VARIANT",
+        "sets_models": 1,
+        "removes_tags": [
+          "Line"
+        ],
+        "adds_tags": [
+          "Flagship"
+        ],
+        "restriction": "A Battlefleet with this unit as its Flagship can still allocate another Excelsior Heavy Aircruiser unit to a Line Element even if it is not a Mainstay Class."
       }
     ],
     "lore": "FLAGSHIP VARIANT The Excelsior-class was known as \"The Great Experiment\" , as the structural load on the airframe went well beyond For +5 pts, a single Excelsior Heavy Aircruiser unit in this theoretical tolerances. It was the sturginium alloy added to Force can carry the Admiral's Flag. If it does so, it may only the duralanium spine of the ship that heralded a new era for have 1 model. Union air support. Such was its success that the Venture, and Replace the Line trait with Flagship. A Battlefleet that has ultimately the Destiny-class, was built upon its foundation. a Excelsior Heavy Aircruiser unit as its Flagship can have another Excelsior Heavy Aircruiser unit allocated to a Line Element, even if it is not listed as a Mainstay Class. HONORABLE ECLIPSE",
@@ -3351,6 +3498,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -3374,35 +3522,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -3410,6 +3558,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -3425,6 +3574,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -3440,6 +3590,7 @@
         {
           "name": "Heavy Electrocannon Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 4,
             "S": 6,
@@ -3457,6 +3608,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -3472,6 +3624,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -3487,6 +3640,7 @@
         {
           "name": "Electrocannon Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -3576,8 +3730,33 @@
     ],
     "weapons": [
       {
+        "name": "Torpedo Tubes",
+        "arc": "F",
+        "slot": null,
+        "firepower": {
+          "C": 5,
+          "S": 5,
+          "E": 5
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Breach",
+            "value": 1
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
         "name": "Tesla Coil",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": 10,
           "S": null,
@@ -3613,6 +3792,7 @@
       {
         "name": "Heavy Electrocannon Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 6,
@@ -3623,12 +3803,12 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Heavy Electrocannon Battery",
         "arc": "PSA",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 6,
@@ -3639,12 +3819,12 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "H"
+        ]
       },
       {
         "name": "Electrocannon Battery",
         "arc": "FPA",
+        "slot": null,
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3655,12 +3835,12 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Electrocannon Battery",
         "arc": "FSA",
+        "slot": null,
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3671,8 +3851,7 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {},
@@ -3742,6 +3921,7 @@
       {
         "name": "Ticonderoga Rocket Battery",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 10,
@@ -3821,6 +4001,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -3844,24 +4025,24 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -3869,6 +4050,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -3884,6 +4066,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -3963,8 +4146,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
@@ -3977,6 +4159,7 @@
       {
         "name": "Harper Autocannon",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 3,
@@ -4002,6 +4185,42 @@
         ],
         "removes_tags": [
           "Union"
+        ]
+      },
+      {
+        "description": "Replace Flak Launchers with Fuel Tanks; replace Flak Barrage (2) with Strategic Asset (1)",
+        "cost_per_unit": 0,
+        "max": 4,
+        "tag": "FUEL_TANKS",
+        "removes_systems": [
+          {
+            "name": "Flak Barrage",
+            "value": 2
+          }
+        ],
+        "adds_properties": [
+          {
+            "name": "Strategic Asset",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "description": "Replace Flak Launchers with a Lakota Transport Container; replace Flak Barrage (2) with Ground Assault (1)",
+        "cost_per_unit": 0,
+        "max": 4,
+        "tag": "LAKOTA_TRANSPORT_CONTAINER",
+        "removes_systems": [
+          {
+            "name": "Flak Barrage",
+            "value": 2
+          }
+        ],
+        "adds_properties": [
+          {
+            "name": "Ground Assault",
+            "value": 1
+          }
         ]
       }
     ],
@@ -4096,6 +4315,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -4184,14 +4404,14 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       }
     ],
     "weapons": [
       {
         "name": "Sperry Light Torpedo Launchers",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -4215,13 +4435,13 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 3,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -4229,6 +4449,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 3,
@@ -4244,6 +4465,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -4319,8 +4541,7 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Mine Sweeper",
@@ -4367,6 +4588,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -4382,6 +4604,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -4399,6 +4622,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -4414,6 +4638,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -4493,8 +4718,7 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+6\""
+        "value": 6
       },
       {
         "name": "Heavy Shield Generator",
@@ -4505,6 +4729,7 @@
       {
         "name": "Twin Vitruvian Hammers",
         "arc": "FPS",
+        "slot": "S",
         "firepower": {
           "C": 10,
           "S": null,
@@ -4520,6 +4745,7 @@
       {
         "name": "Chesapeake Gatling Gun",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 5,
           "S": null,
@@ -4530,12 +4756,12 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Chesapeake Gatling Gun",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 5,
           "S": null,
@@ -4546,15 +4772,15 @@
             "name": "Indiscriminate",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
-      "L": [
+      "S": [
         {
           "name": "Grant Jackhammer",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 8,
             "S": null,
@@ -4574,10 +4800,13 @@
               "value": 1
             }
           ]
-        },
+        }
+      ],
+      "L": [
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -4667,6 +4896,7 @@
       {
         "name": "Chace Rocket Pods",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": null,
@@ -4690,6 +4920,7 @@
       {
         "name": "Electrocannon Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 3,
@@ -4700,8 +4931,7 @@
             "name": "Arc",
             "value": 1
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -4709,6 +4939,7 @@
         {
           "name": "Magnetic Gatling Guns",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -4787,6 +5018,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -4810,6 +5042,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "A",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -4833,13 +5066,13 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -4847,6 +5080,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -4862,6 +5096,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -4948,8 +5183,7 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Hydrophone Relay",
@@ -4960,6 +5194,7 @@
       {
         "name": "Sperry Light Torpedo Launchers",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -4983,6 +5218,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 3,
@@ -4993,12 +5229,12 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       },
       {
         "name": "Light Rocket Battery",
         "arc": "PSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 3,
@@ -5009,8 +5245,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {},
@@ -5121,6 +5356,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -5136,6 +5372,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -5226,6 +5463,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -5249,35 +5487,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 7,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 5,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 5,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -5285,6 +5523,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 7,
@@ -5300,6 +5539,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 10,
             "S": null,
@@ -5317,6 +5557,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 5,
@@ -5332,6 +5573,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 6,
             "S": null,
@@ -5418,6 +5660,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -5441,35 +5684,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -5477,6 +5720,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -5492,6 +5736,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -5509,6 +5754,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -5524,6 +5770,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -5629,6 +5876,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -5644,6 +5892,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -5780,6 +6029,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 10,
             "S": null,
@@ -5795,6 +6045,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 7,
@@ -5817,11 +6068,12 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add 1 Generator from the Generator list",
+        "description": "Choose one Generator for this model; this does not replace a Hardpoint",
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR",
-        "generator_replaces_weapon": false
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1
       },
       {
         "description": "Upgrade the unit to have Defensive Mines; gains Auxiliary Mine Layer (3)",
@@ -6003,6 +6255,7 @@
         {
           "name": "Light Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -6013,6 +6266,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6135,6 +6389,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -6150,6 +6405,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -6167,6 +6423,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -6182,6 +6439,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6297,6 +6555,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 3,
@@ -6312,6 +6571,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6412,6 +6672,7 @@
       {
         "name": "Heat Lance",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 7,
           "S": 3,
@@ -6530,6 +6791,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -6545,6 +6807,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6627,6 +6890,7 @@
       {
         "name": "Kettering Missile Silos",
         "arc": "FPSA",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 6,
@@ -6658,6 +6922,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 4,
@@ -6668,8 +6933,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -6677,6 +6941,7 @@
         {
           "name": "Light Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 4,
@@ -6687,6 +6952,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6769,6 +7035,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -6792,35 +7059,35 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -6828,6 +7095,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -6843,6 +7111,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -6860,6 +7129,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -6875,6 +7145,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -6955,7 +7226,11 @@
         "detail": "Airborne"
       },
       {
-        "name": "Light Vessel Mechanical Soul",
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mechanical Soul",
         "value": null
       },
       {
@@ -6968,8 +7243,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
@@ -6986,6 +7260,7 @@
       {
         "name": "Sperry Light Torpedo Launchers",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -7009,6 +7284,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 3,
@@ -7019,8 +7295,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "L"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -7028,6 +7303,7 @@
         {
           "name": "Electrocannon Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 2,
             "S": 3,
@@ -7043,6 +7319,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -7119,6 +7396,7 @@
       {
         "name": "Triangulated Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -7187,8 +7465,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [],
@@ -7196,6 +7473,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -7219,24 +7497,24 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
           "E": null
         },
-        "qualities": [],
-        "slot": "H"
+        "qualities": []
       },
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
           "E": null
         },
-        "qualities": [],
-        "slot": "L"
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -7244,6 +7522,7 @@
         {
           "name": "Heavy Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 6,
@@ -7259,6 +7538,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 9,
             "S": null,
@@ -7276,6 +7556,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -7291,6 +7572,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -7387,6 +7669,7 @@
       {
         "name": "Sperry Light Torpedo Launchers",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": 3,
@@ -7457,8 +7740,7 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+3\""
+        "value": 3
       },
       {
         "name": "Flak Barrage",
@@ -7469,6 +7751,7 @@
       {
         "name": "Aerial Torpedo Pods",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -7492,6 +7775,7 @@
       {
         "name": "Dual Magnetic Gatling Guns",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 8,
           "S": null,
@@ -7581,8 +7865,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
@@ -7599,6 +7882,7 @@
       {
         "name": "Chace Rocket Pods",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 3,
           "S": null,
@@ -7666,8 +7950,7 @@
       },
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Pivot",
@@ -7788,6 +8071,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -7803,6 +8087,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -7898,8 +8183,7 @@
       },
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       },
       {
         "name": "Pivot",
@@ -7928,6 +8212,7 @@
       {
         "name": "Torpedo Tubes",
         "arc": "F",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 5,
@@ -7951,6 +8236,7 @@
       {
         "name": "Heavy Rocket Battery",
         "arc": "PSA",
+        "slot": "H",
         "firepower": {
           "C": null,
           "S": 7,
@@ -7961,8 +8247,7 @@
             "name": "Barrage",
             "value": null
           }
-        ],
-        "slot": "H"
+        ]
       }
     ],
     "hardpoint_options": {
@@ -7970,6 +8255,7 @@
         {
           "name": "Heavy Gun Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": 7,
@@ -7980,6 +8266,7 @@
         {
           "name": "Chesapeake Gatling Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 10,
             "S": null,
@@ -8329,6 +8616,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -8344,6 +8632,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
@@ -8447,6 +8736,7 @@
         {
           "name": "Light Rocket Battery",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": null,
             "S": 4,
@@ -8462,6 +8752,7 @@
         {
           "name": "Chesapeake Gatling Gun",
           "arc": null,
+          "slot": null,
           "firepower": {
             "C": 5,
             "S": null,
