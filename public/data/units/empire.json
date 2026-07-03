@@ -100,7 +100,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -124,7 +124,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -148,7 +148,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -737,7 +737,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -761,7 +761,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -785,7 +785,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       }
     ],
     "short_range_squadrons": [
@@ -1548,7 +1548,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -1572,7 +1572,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Alchemical Rockets",
@@ -1596,7 +1596,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -1606,20 +1606,6 @@
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
-      },
-      {
-        "description": "May select an Empire Generator where allowed by the Force Selection entry.",
-        "cost_per_unit": null,
-        "max": 1,
-        "tag": "GENERATOR",
-        "generator_replaces_weapon": false
-      },
-      {
-        "description": "May select or upgrade to a Magma Cast Generator where allowed by the Force Selection entry.",
-        "cost_per_unit": 35,
-        "max": 1,
-        "tag": "MAGMA_CAST_GENERATOR",
-        "generator_replaces_weapon": false
       },
       {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
@@ -1632,6 +1618,33 @@
         "cost_per_unit": null,
         "max": 0,
         "tag": "SELECTION_NOTE_EMPIRE_MATSUMOTO_GENERATOR_SHIP"
+      },
+      {
+        "description": "Mandatory selection: choose one Generator from the Generator Hardpoints list; this does not replace a Weapon Hardpoint.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "MANDATORY_GENERATOR_1",
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "choices": "Generator Hardpoints list"
+      },
+      {
+        "description": "Mandatory selection: choose either a second Generator from the Generator Hardpoints list, or a Magma Cast Generator (+35 pts); this does not replace a Weapon Hardpoint.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "MANDATORY_SECOND_GENERATOR_OR_MAGMA_CAST",
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "choices": [
+          {
+            "name": "Second Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          },
+          {
+            "name": "Magma Cast Generator",
+            "cost_per_unit": 35
+          }
+        ]
       }
     ],
     "lore": "",
@@ -1732,8 +1745,7 @@
             "value": 1
           }
         ],
-        "slot": "H",
-        "hardpoint_locked": true
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -1858,30 +1870,6 @@
             }
           ],
           "slot": null
-        },
-        {
-          "name": "Cap Cap Flak Gun",
-          "arc": null,
-          "firepower": {
-            "C": 6,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Aerial",
-              "value": null
-            },
-            {
-              "name": "Indiscriminate",
-              "value": null
-            },
-            {
-              "name": "Protective Fire",
-              "value": 4
-            }
-          ],
-          "slot": null
         }
       ],
       "L": [
@@ -1933,6 +1921,30 @@
             {
               "name": "Structural Failure",
               "value": 1
+            }
+          ],
+          "slot": null
+        },
+        {
+          "name": "Cap Cap Flak Gun",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Aerial",
+              "value": null
+            },
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Protective Fire",
+              "value": 4
             }
           ],
           "slot": null
@@ -2026,8 +2038,7 @@
             "value": 1
           }
         ],
-        "slot": "H",
-        "hardpoint_locked": true
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -2589,6 +2600,32 @@
       }
     ],
     "hardpoint_options": {
+      "S": [
+        {
+          "name": "Draconic Heat Lancette",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Aerial",
+              "value": null
+            },
+            {
+              "name": "Hazard",
+              "value": 1
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ],
+          "slot": null
+        }
+      ],
       "H": [
         {
           "name": "Heavy Alchemical Rockets",
@@ -2674,32 +2711,6 @@
             {
               "name": "Indiscriminate",
               "value": null
-            }
-          ],
-          "slot": null
-        }
-      ],
-      "S": [
-        {
-          "name": "Draconic Heat Lancette",
-          "arc": null,
-          "firepower": {
-            "C": 6,
-            "S": 2,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Aerial",
-              "value": null
-            },
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 1
             }
           ],
           "slot": null
@@ -2828,8 +2839,7 @@
             "value": 1
           }
         ],
-        "slot": "H",
-        "hardpoint_locked": true
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -3455,8 +3465,7 @@
             "value": 1
           }
         ],
-        "slot": "L",
-        "hardpoint_locked": true
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -4109,7 +4118,7 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -4299,8 +4308,7 @@
             "value": 1
           }
         ],
-        "slot": "L",
-        "hardpoint_locked": true
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -5431,18 +5439,6 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Must or may select a no-cost Empire Generator choice where allowed by the Force Selection entry.",
-        "cost_per_unit": null,
-        "max": 1,
-        "tag": "EMPIRE_FREE_GENERATOR"
-      },
-      {
-        "description": "May select or upgrade to a Magma Cast Generator where allowed by the Force Selection entry.",
-        "cost_per_unit": 15,
-        "max": 1,
-        "tag": "MAGMA_CAST_GENERATOR"
-      },
-      {
         "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
         "cost_per_unit": null,
         "max": 0,
@@ -5453,6 +5449,33 @@
         "cost_per_unit": null,
         "max": 0,
         "tag": "SELECTION_NOTE_EMPIRE_GANGCHEORI_DRACONIC_COLOSSUS"
+      },
+      {
+        "description": "Mandatory selection: choose one Generator for each model; this does not replace a Weapon Hardpoint. Choices are Atomic Generator (0 pts), Magnetic Generator (0 pts), Shroud Generator (0 pts), or Magma Cast Generator (+15 pts).",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "MANDATORY_GENERATOR_CHOICE",
+        "mandatory": true,
+        "applies_per_model": true,
+        "generator_replaces_weapon": false,
+        "choices": [
+          {
+            "name": "Atomic Generator",
+            "cost_per_unit": 0
+          },
+          {
+            "name": "Magnetic Generator",
+            "cost_per_unit": 0
+          },
+          {
+            "name": "Shroud Generator",
+            "cost_per_unit": 0
+          },
+          {
+            "name": "Magma Cast Generator",
+            "cost_per_unit": 15
+          }
+        ]
       }
     ],
     "lore": "",
@@ -5525,7 +5548,7 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": "S"
       },
       {
         "name": "Light Alchemical Rockets",
@@ -5553,7 +5576,7 @@
       }
     ],
     "hardpoint_options": {
-      "L": [
+      "S": [
         {
           "name": "Light Corrosive Mortar",
           "arc": null,
@@ -5602,6 +5625,36 @@
             {
               "name": "Barrage",
               "value": null
+            }
+          ],
+          "slot": null
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Corrosive Mortar",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 2,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "All Around",
+              "value": null
+            },
+            {
+              "name": "Indirect",
+              "value": null
+            },
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Structural Failure",
+              "value": 1
             }
           ],
           "slot": null
@@ -5667,6 +5720,10 @@
       },
       {
         "name": "Fusillade",
+        "value": null
+      },
+      {
+        "name": "Landing Party Support",
         "value": null
       },
       {
@@ -7398,7 +7455,7 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -8103,26 +8160,38 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "May select an Empire Generator Hardpoint where allowed by the Force Selection entry.",
-        "cost_per_unit": null,
-        "max": 1,
-        "tag": "GENERATOR"
-      },
-      {
-        "description": "May select or upgrade to a Magma Cast Generator where allowed by the Force Selection entry.",
-        "cost_per_unit": 35,
-        "max": 1,
-        "tag": "MAGMA_CAST_GENERATOR"
-      },
-      {
         "description": "Add up to two Tethered Bangpae for each model in the unit.",
-        "cost_per_unit": 0,
+        "cost_per_unit": 20,
         "max": 2,
         "tag": "TETHERED_BANGPAE",
+        "applies_per_model": true,
         "adds_properties": [
           {
             "name": "Tethered Bangpae",
             "value": null
+          }
+        ]
+      },
+      {
+        "description": "Replace Heavy Shield Generator with one of the following: a Generator Hardpoint from the Generator Hardpoints list, or a Magma Cast Generator (+35 pts). This does not replace a Weapon Hardpoint.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "REPLACE_HEAVY_SHIELD_GENERATOR",
+        "generator_replaces_weapon": false,
+        "replaces_systems": [
+          {
+            "name": "Heavy Shield Generator",
+            "value": null
+          }
+        ],
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          },
+          {
+            "name": "Magma Cast Generator",
+            "cost_per_unit": 35
           }
         ]
       }
@@ -9430,9 +9499,10 @@
     "options_and_upgrades": [
       {
         "description": "Add up to two Tethered Bangpae for each model in the unit.",
-        "cost_per_unit": 0,
+        "cost_per_unit": 20,
         "max": 2,
         "tag": "TETHERED_BANGPAE",
+        "applies_per_model": true,
         "adds_properties": [
           {
             "name": "Tethered Bangpae",
@@ -10602,7 +10672,7 @@
             "value": 1
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Alchemical Cluster Bombs",
