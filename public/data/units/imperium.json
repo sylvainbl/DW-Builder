@@ -304,7 +304,26 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "For +5 pts, this unit may be commandeered by the Ordo Teutonic; every model loses Prussian and gains Teutonic and Stoic",
+        "cost_per_unit": 5,
+        "max": 1,
+        "tag": "TEUTONIC_VARIANT",
+        "adds_tags": [
+          "Teutonic"
+        ],
+        "removes_tags": [
+          "Prussian"
+        ],
+        "adds_properties": [
+          {
+            "name": "Stoic",
+            "value": null
+          }
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -536,7 +555,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 8,
@@ -560,7 +579,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -1011,7 +1030,7 @@
       {
         "name": "Uber Volt Vierling",
         "arc": "FPSA",
-        "slot": "H",
+        "slot": null,
         "firepower": {
           "C": 5,
           "S": 8,
@@ -1202,7 +1221,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 10,
@@ -1262,7 +1281,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -1286,7 +1305,9 @@
               "value": 2
             }
           ]
-        },
+        }
+      ],
+      "H": [
         {
           "name": "Guided Stromschlag Rocket Battery",
           "arc": null,
@@ -1438,7 +1459,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "A",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 10,
@@ -1498,7 +1519,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -1522,7 +1543,9 @@
               "value": 2
             }
           ]
-        },
+        }
+      ],
+      "H": [
         {
           "name": "Guided Stromschlag Rocket Battery",
           "arc": null,
@@ -1555,6 +1578,12 @@
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
       }
     ],
     "lore": "",
@@ -1807,7 +1836,7 @@
       {
         "name": "Guided Erderschutterer Rocket Battery",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1831,7 +1860,7 @@
       {
         "name": "Guided Erderschutterer Rocket Battery",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -1855,7 +1884,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 9,
@@ -1950,7 +1979,7 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -1974,9 +2003,7 @@
               "value": 2
             }
           ]
-        }
-      ],
-      "L": [
+        },
         {
           "name": "Guided Vierling Flak Array",
           "arc": null,
@@ -1998,6 +2025,32 @@
             {
               "name": "Sky Strike",
               "value": 2
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Guided Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
             }
           ]
         }
@@ -2099,7 +2152,7 @@
       {
         "name": "Guided Erderschutterer Rocket Battery",
         "arc": "FP",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -2123,7 +2176,7 @@
       {
         "name": "Guided Erderschutterer Rocket Battery",
         "arc": "FS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": null,
           "S": 5,
@@ -2287,6 +2340,32 @@
             }
           ]
         }
+      ],
+      "L": [
+        {
+          "name": "Guided Erderschutterer Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Voltaic",
+              "value": 1
+            }
+          ]
+        }
       ]
     },
     "options_and_upgrades": [
@@ -2384,7 +2463,20 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Prussian Variant: at no additional cost, every model loses Scandinavian and gains Prussian",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "PRUSSIAN_VARIANT",
+        "adds_tags": [
+          "Prussian"
+        ],
+        "removes_tags": [
+          "Scandinavian"
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -2964,10 +3056,20 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Upgrade with a Bogmaor Interception Net",
-        "cost_per_unit": 10,
+        "description": "Any model may take a Bogmaor Interception Net; gains the Freya Array and Flak Barrage (5) systems",
+        "cost_per_unit": 15,
         "max": 1,
-        "tag": "BOGMAOR_INTERCEPTION_NET"
+        "tag": "BOGMAOR_INTERCEPTION_NET",
+        "adds_systems": [
+          {
+            "name": "Freya Array",
+            "value": null
+          },
+          {
+            "name": "Flak Barrage",
+            "value": 5
+          }
+        ]
       }
     ],
     "lore": "",
@@ -3173,6 +3275,18 @@
         "cost_per_unit": null,
         "max": 2,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "For +5 pts, a single Heidelberg Logistics Battlecruiser unit can carry the Admiral’s Flag; replace Logistical with Flagship",
+        "cost_per_unit": 5,
+        "max": 1,
+        "tag": "FLAGSHIP_VARIANT",
+        "adds_tags": [
+          "Flagship"
+        ],
+        "removes_tags": [
+          "Logistical"
+        ]
       }
     ],
     "lore": "",
@@ -3311,7 +3425,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 9,
@@ -3331,7 +3445,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -3358,7 +3472,26 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "For +5 pts, a single Heidelberg Logistics Battlecruiser unit can carry the Admiral’s Flag; replace Logistical with Flagship",
+        "cost_per_unit": 5,
+        "max": 1,
+        "tag": "FLAGSHIP_VARIANT",
+        "adds_tags": [
+          "Flagship"
+        ],
+        "removes_tags": [
+          "Logistical"
+        ]
+      },
+      {
+        "description": "Add up to four Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 4,
+        "tag": "ESCORT"
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -3506,7 +3639,7 @@
       {
         "name": "Zweihander Greatsword",
         "arc": "FPS",
-        "slot": null,
+        "slot": "S",
         "firepower": {
           "C": 12,
           "S": null,
@@ -3558,7 +3691,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Kanzler Great Maul",
           "arc": null,
@@ -3582,7 +3715,9 @@
               "value": 3
             }
           ]
-        },
+        }
+      ],
+      "H": [
         {
           "name": "Stromschlag Rocket Battery",
           "arc": null,
@@ -3605,7 +3740,39 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Replace one Heavy Hardpoint on any number of models with an Atomic, Heavy Shield, Magnetic, or Shroud Generator at the cost shown on page 6",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "allowed_generators": [
+          "Atomic Generator",
+          "Heavy Shield Generator",
+          "Magnetic Generator",
+          "Shroud Generator"
+        ]
+      },
+      {
+        "description": "For +10 pts, a single Hochmeister Vitruvian Colossus unit can carry the Grand Master’s Commandery; it may only have 1 model, replaces Scout with Flagship, and gains Inspirational (7”)",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "FLAGSHIP_VARIANT",
+        "sets_models": "1",
+        "adds_tags": [
+          "Flagship"
+        ],
+        "removes_tags": [
+          "Scout"
+        ],
+        "adds_properties": [
+          {
+            "name": "Inspirational",
+            "value": 7
+          }
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -3816,7 +3983,7 @@
       {
         "name": "Vierling Autokanone",
         "arc": "FA",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 5,
@@ -3836,7 +4003,7 @@
       {
         "name": "Vierling Autokanone",
         "arc": "PS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 4,
           "S": 5,
@@ -3856,7 +4023,7 @@
       {
         "name": "Advanced Sturmbringer Array",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 25,
           "S": null,
@@ -4027,7 +4194,7 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Super Heavy Bombardment Array",
           "arc": null,
@@ -4053,6 +4220,22 @@
             {
               "name": "Blast",
               "value": 12
+            }
+          ]
+        },
+        {
+          "name": "Super Heavy Voltaic Array",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 20,
+            "S": 32,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Voltaic",
+              "value": 8
             }
           ]
         }
@@ -4244,7 +4427,7 @@
       {
         "name": "Heavy Sturmklaue",
         "arc": "F",
-        "slot": "H",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": null,
@@ -4658,7 +4841,7 @@
       {
         "name": "Advanced Sturmbringer",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 11,
           "S": null,
@@ -4746,7 +4929,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Twin-Linked Heavy Voltaic Gun Battery",
           "arc": null,
@@ -5064,7 +5247,7 @@
       {
         "name": "Luft Speerschleuder",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 5,
           "S": 5,
@@ -5128,7 +5311,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Sturmbringer",
           "arc": null,
@@ -5403,7 +5586,7 @@
       {
         "name": "Vierling Autokanone",
         "arc": "FPS",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 2,
           "S": 2,
@@ -5635,7 +5818,7 @@
       {
         "name": "Gustav Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 10,
@@ -5651,7 +5834,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Bertha Heavy Bombard",
           "arc": null,
@@ -5680,6 +5863,24 @@
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "For +10 pts, this unit can be commandeered by the Ordo Teutonic; every model loses Bavarian and gains Teutonic and Stoic",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "TEUTONIC_VARIANT",
+        "adds_tags": [
+          "Teutonic"
+        ],
+        "removes_tags": [
+          "Bavarian"
+        ],
+        "adds_properties": [
+          {
+            "name": "Stoic",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "",
@@ -5817,7 +6018,7 @@
       {
         "name": "Uber Volt Vierling",
         "arc": "FPSA",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 5,
           "S": 8,
@@ -5841,7 +6042,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Advanced Sturmbringer",
           "arc": null,
@@ -5876,7 +6077,23 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Prussian Rite Variant: at no additional cost, replace Teutonic with Prussian and lose Stoic",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "PRUSSIAN_RITE_VARIANT",
+        "adds_tags": [
+          "Prussian"
+        ],
+        "removes_tags": [
+          "Teutonic"
+        ],
+        "removes_properties": [
+          "Stoic"
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -6105,7 +6322,7 @@
       {
         "name": "Luft Speerschleuder",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 5,
           "S": 5,
@@ -6133,7 +6350,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Sturmbringer",
           "arc": null,
@@ -6248,7 +6465,7 @@
       {
         "name": "Heavy Sturmklaue",
         "arc": "F",
-        "slot": "H",
+        "slot": null,
         "firepower": {
           "C": 6,
           "S": null,
@@ -6577,10 +6794,12 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Replace Heavy Hardpoint with a Generator Hardpoint",
+        "description": "Upgrade the model to have a Generator at the points cost listed in the Generator Hardpoints list; this does not replace one of the model’s Heavy Hardpoint weapons",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1
       },
       {
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
@@ -7117,7 +7336,7 @@
       {
         "name": "Nassau Twin Bombard",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 10,
@@ -7137,7 +7356,7 @@
       {
         "name": "Nassau Twin Bombard",
         "arc": "A",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": null,
           "S": 10,
@@ -7157,7 +7376,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Nassau Heavy Bombard",
           "arc": null,
@@ -7560,7 +7779,7 @@
       {
         "name": "Light Voltaic Gun Battery",
         "arc": "FPSA",
-        "slot": "L",
+        "slot": null,
         "firepower": {
           "C": 2,
           "S": 3,
@@ -7793,7 +8012,7 @@
       {
         "name": "Heavy Luft Speerschleuder",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 7,
           "S": 7,
@@ -7872,7 +8091,7 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Sturmbringer",
           "arc": null,
@@ -8616,7 +8835,23 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Prussian Rite Variant: at no additional cost, replace Teutonic with Prussian and lose Stoic",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "PRUSSIAN_RITE_VARIANT",
+        "adds_tags": [
+          "Prussian"
+        ],
+        "removes_tags": [
+          "Teutonic"
+        ],
+        "removes_properties": [
+          "Stoic"
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.00b",
     "date": "2026-04-30",
@@ -9214,6 +9449,30 @@
         "cost_per_unit": 0,
         "max": null,
         "tag": "FREYA_ARRAY"
+      },
+      {
+        "description": "Prussian Rite Variant: at no additional cost, every model loses Teutonic and gains Prussian",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "PRUSSIAN_RITE_VARIANT",
+        "adds_tags": [
+          "Prussian"
+        ],
+        "removes_tags": [
+          "Teutonic"
+        ]
+      },
+      {
+        "description": "Scandinavian Rite Variant: at no additional cost, every model loses Teutonic and gains Scandinavian",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "SCANDINAVIAN_RITE_VARIANT",
+        "adds_tags": [
+          "Scandinavian"
+        ],
+        "removes_tags": [
+          "Teutonic"
+        ]
       }
     ],
     "lore": "",
@@ -9380,7 +9639,7 @@
       {
         "name": "Heavy Luft Speerschleuder",
         "arc": "F",
-        "slot": "H",
+        "slot": "S",
         "firepower": {
           "C": 7,
           "S": 7,
@@ -9408,7 +9667,7 @@
     ],
     "short_range_squadrons": [],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
           "name": "Sturmbringer",
           "arc": null,
