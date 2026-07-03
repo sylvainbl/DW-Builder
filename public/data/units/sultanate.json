@@ -41,8 +41,7 @@
       },
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       },
       {
         "name": "Reinforced Decking",
@@ -261,7 +260,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "Suez, the Abydos hovercrafts of the Egyptian fleet are some of the largest in the world. First deployed in 1861, the Abydos serves as an ideal command and support vessel, its immense hull sporting a forest of craned limbs to repair the Sultanate's warmachines even as battle rages around them. This ability to keep damaged ships on the water allows for a battlefleet led by an Abydos to range far from friendly logistical hubs and drydocks whilst still maintaining full operational capacity. These qualities have made the Abydos the lynchpin for expanding the Egyptian sphere of influence, solidifying Rameses the Thirteenth's precarious status as a quasi-autonomous ruler under Sultan Mustafa the Golden. The image of the Abydos is so intrinsically connected to the Pharaoh-Khalif, that the mere This unit sight of an Abydos on the waves is enough to galvanize his loyal can be sailors even through the bloodiest of engagements.",
@@ -302,8 +302,7 @@
     "properties": [
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       },
       {
         "name": "Maritime Patrol",
@@ -317,8 +316,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "4\""
+        "value": 4
       }
     ],
     "weapons": [
@@ -486,7 +484,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "of firepower pour forth from amassed batteries of heavy and light weaponry, tearing apart all but the largest of enemy ships with terrifying deftness. This is to say nothing of its manoeuvrability, with advanced Yanal-engines allowing the Anatolia to shunt its significant heft laterally across the waves and reposition at a moment's notice. Despite these advancements, the designs of these inspiring ships remain staunchly steeped in tradition. As such, it is not unusual for these flagships to be almost entirely crewed by veteran sailors, their greying hair and lined features communicating experience that few others can match. For many, it is their last posting; a natural final chapter in their many years of service. To sail in the wake of such ships is to be led by true masters of the waves, enacting Sultan Mustafa's will with unquestioning fealty and unbridled ferocity.",
@@ -691,7 +690,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
         "cost_per_unit": 35,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -714,7 +713,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "date and which is noted for the dreadful potency of its deadly warheads. First deployed during the battle of the Gulf of Tunis in 1873, this gargantuan hovercraft made a grim impression on the assembled flotilla of French and Italian raiders that sought to violently enter the port, its missiles tearing apart enemy cruisers and airborne craft at a terrifying rate. Since then, the Kadesh has served as the flagship of choice for Egyptian commodores tasked with protecting the Mediterranean from external threats. Their reputation as the exemplars of the destructive capabilities of the Egyptian fleet brings comfort to any captain that may find themselves part of the first line of defence against enemy incursions. Even when caught off guard This by a larger enemy force, a Kadesh, with its reinforced hulls and It gains multiple batteries, can lay waste to all but the most resilient of (Khepri enemy vessels, its salvo missiles raining death and destruction.",
@@ -730,6 +730,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -949,7 +953,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (3), and SRS (Khepri Automata)",
         "cost_per_unit": 35,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -972,7 +976,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "and navigational systems. As this weapon requires neither line of sight nor ammunition, the Khartoum can range for miles whilst remaining relatively independent from Sultanate supply lines. This quality makes it an excellent flagship for long-ranged patrol fleets in need of effective fire support. In addition to the many concessions that the league extracted from Rameses the Thirteenth in exchange for their expertise, it was widely speculated that the Crimson Deava was able to use this lucrative deal to further drive a wedge between the Sultan and the Pharaoh-Khalif, the two rulers already struggling to accommodate the other's uncompromising ego. Regardless of the political fallout following the Khartoum's creation, its manufacture within the workshops of Cairo did much to revitalise the faltering riverside districts on the banks of the Nile, much to the delight of the city's population.",
@@ -988,6 +993,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -1042,8 +1051,7 @@
       },
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "10\""
+        "value": 10
       },
       {
         "name": "Mobile",
@@ -1074,7 +1082,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -1090,7 +1098,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -1106,7 +1114,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -1122,7 +1130,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -1138,7 +1146,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -1154,7 +1162,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Heavy Gun Battery",
@@ -1243,10 +1251,11 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       },
       {
-        "description": "Upgrade with Sabiha Guardians; gains Guardian Wing (6)",
+        "description": "Upgrade the model with Sabiha Guardians; gains Guardian Wing (6)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "SABIHA_GUARDIANS",
@@ -1306,8 +1315,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Portal Accelerator Array",
@@ -1605,8 +1613,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [],
@@ -1775,7 +1782,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "a competitive pastime their rulers might enjoy. Such contests are wont to ruin the commanders of these vessels, who have been known to lose everything from their money, to their land, to even their own command in the quest to best their hated rivals. The first of the great hovercraft commissioned by Rameses the Thirteenth, the Osiris-class began as a single, unique vessel; the Pharaoh-Khalif's personal flagship, The Osiris. Its gilded hull was designed as much to be a potent symbol of sovereignty, as it was a formidable war craft. For over five years, radiant as it lazily glided up and down the Nile, the pristine ship saw no active service, until the eruption of the Straits Crisis in 1865, when it was pressed into service in order to repel a surprise Commonwealth assault on Istanbul. It was during this conflict that The Osiris annihilated the Borodino Battleship, Prospect's March, an act that helped to turn the conflict in the favour of the Sultanate.",
@@ -2078,8 +2086,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Portal Generator",
@@ -2250,8 +2257,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Portal Generator",
@@ -2273,7 +2279,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -2289,7 +2295,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -2305,7 +2311,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -2321,7 +2327,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -2422,8 +2428,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Portal Generator",
@@ -2578,6 +2583,10 @@
         "resilience": 3,
         "properties": [
           {
+            "name": "Hover SRS",
+            "value": null
+          },
+          {
             "name": "Launch Range",
             "value": 20
           },
@@ -2646,8 +2655,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Portal Generator",
@@ -2669,7 +2677,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -2685,7 +2693,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Ikili Torpedos",
@@ -2708,7 +2716,8 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -2777,20 +2786,17 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "6\""
+        "value": 6
       }
     ],
     "weapons": [
@@ -2893,7 +2899,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Upgrade with Sabiha Guardians; gains Guardian Wing (2)",
+        "description": "Upgrade this model with Sabiha Guardians; gains Guardian Wing (2)",
         "cost_per_unit": 10,
         "max": 1,
         "tag": "SABIHA_GUARDIANS",
@@ -2953,8 +2959,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Mine Sweeper",
@@ -3149,6 +3154,13 @@
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "Bayezid more than a match for any two such craft. A full squadron, accompanied by Ferik skiff escorts, will likely decimate most comers, long before their captains realise that these intricate- looking craft will not be turning and fleeing in the manner they have been led to expect. Like most Sultanate catamarans, the Bayezid mounts a Heavy Shield Generator. These are expensive vessels, the centrepieces of any admiral's battleline. Integrated defensive systems coupled with sheer size lends the Bayezid impressive staying power, but while the caricature of the fragile Sultanate bauble is grossly exaggerated, a straight or fair fight is certainly not most officers' first preference. Repairs are time consuming and costly, and Sultanate commanders tend to be judged not only on their performance in battle, but on the state of their vessel coming out of it.",
@@ -3222,8 +3234,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -3299,8 +3310,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       }
     ],
     "weapons": [
@@ -3442,7 +3452,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "herself in the refinement of orichalcite only two years earlier. Centrifugal pumps accelerate water through closed magnetic impellers, permitting speeds in ideal conditions in excess of 34 knots. These engines incorporate great vents across their port and starboard faces which, when released, expel the processed fluids within with geyser-like force, allowing the Iskandar to move not only forward and back, but in great lateral skips across the waves. While many of the Sultanate's vessels have adopted these mechanisms in the years since, with even their great ikili hulled ships outfitted, the Iskandar remains the most ubiquitous. Serving as the mainstay of most Turkish fleets, it is not unusual to see these destroyers using their lateral capabilities to feint their targets, repositioning themselves at the last minute to deliver a killing blow against an ill-prepared and poorly defended enemy.",
@@ -3642,7 +3653,7 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
         "cost_per_unit": 15,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -3675,6 +3686,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -3726,8 +3741,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       }
     ],
     "weapons": [
@@ -3879,7 +3893,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "on ostentatious appearance, however, means that they number amongst the more brittle ships of the Dystopian Age. Not so for the Sadrazam Heavy Cruiser. Boasting reinforced orichalcite-steel armour plating across its hull, the Sadrazam is one of the most durable line ships available to the Sublime Porte, as heavy armaments and explosive salvos glance off its gleaming exterior. With firepower comparable to the heaviest cruisers of the other Great Powers, the Sadrazam's more heavyset construction has done little to tamper its agility, with its nacelle-housed engines allowing it to outmanoeuvre all but the fastest of enemy ships. Moving laterally across the waves before bearing down upon opposing forces, these ships reposition themselves to draw perfect line of sight, before their amassed heavy batteries shred their target's hull apart in a matter of seconds.",
@@ -3937,13 +3952,11 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "6\""
+        "value": 6
       }
     ],
     "weapons": [
@@ -3960,7 +3973,8 @@
             "name": "Aerial",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       },
       {
         "name": "Aetheric Lance",
@@ -3976,7 +3990,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -4041,8 +4055,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -4184,8 +4197,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "6\""
+        "value": 6
       }
     ],
     "weapons": [
@@ -4301,15 +4313,13 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -4412,7 +4422,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "lift it out of the water, propelling it a short distance without ever touching the waves-or any explosive objects that might be floating beneath them. This is, of course, a tremendous boon when working in heavily mined waterways. While many monitors are employed defensively, the Izmir is more commonly deployed as the spearhead to a Sultanate attack. An Izmir squadron can skip over the enemy's defense with near impunity, followed by a contact wire sweep over the minefield to clear it for the more heavyweight warships following behind. Once this is done, the monitors are manoeuvrable enough to be rapidly redeployed to the front. Often, this will be in support of a valuable fleet asset such as a Suleiman or a Constantinople. Many an enemy submarine, having been set to eliminate one of these elegant Sultanate flagships, has instead fallen prey to the unerring torpedo salvoes of an Izmir.",
@@ -4471,8 +4482,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [],
@@ -4576,7 +4586,7 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
         "cost_per_unit": 25,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -4609,6 +4619,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -4660,13 +4674,11 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "6\""
+        "value": 6
       }
     ],
     "weapons": [
@@ -4796,7 +4808,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Upgrade with Sabiha Guardians; gains Guardian Wing (2)",
+        "description": "Upgrade this model with Sabiha Guardians; gains Guardian Wing (2)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "SABIHA_GUARDIANS",
@@ -4862,8 +4874,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -4934,7 +4945,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens to the unit",
+        "description": "If this unit is not taken as an Attachment, add up to two Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
@@ -5000,8 +5011,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -5019,7 +5029,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Torpedo Salvo",
@@ -5042,7 +5052,8 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -5343,11 +5354,12 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add 1 Generator from the Generator Hardpoints list",
+        "description": "Add 1 Generator from the Generator Hardpoints list; this does not replace a Weapon Hardpoint",
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR",
-        "generator_replaces_weapon": false
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1
       },
       {
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
@@ -5360,6 +5372,12 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "Add 1 Defence Platform as an Attachment",
+        "cost_per_unit": 60,
+        "max": 1,
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM"
       }
     ],
     "lore": "sinking entire forerunner fleets with repeated, crippling volleys from their mounted gunneries. Housed within its labyrinthine construction, highly complex repair facilities offer a safe haven for flagging ships, with elite crews cycled out every six months. Whether in the midst of battle, or simply for merchant vessels looking for protective harbourage in a storm, the speed with which these engineers work allows their charges to return to the waves within a matter of hours. In addition to the Deniz Mayını fields that surround them- great bombs capable of sinking the heaviest of ships entirely- these platforms are often outfitted with a variety of protective generators. These obfuscate or defend against incoming enemy fire with an ease oft unseen in such static targets, with shields shrugging off heavy shells and magnetic generators causing projectiles to veer wildly off course.",
@@ -5423,8 +5441,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Portal Generator",
@@ -5520,8 +5537,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Portal Generator",
@@ -5530,7 +5546,7 @@
     ],
     "weapons": [
       {
-        "name": "Orcichalcite Flechette Launcher",
+        "name": "Orichalcite Flechette Launcher",
         "arc": "F",
         "firepower": {
           "C": null,
@@ -5546,7 +5562,8 @@
             "name": "Indirect",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -5562,7 +5579,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Torpedo Salvo",
@@ -5585,7 +5602,8 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -5597,14 +5615,18 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Replace any model's Portal Generator with a Generator from the Generator Hardpoints list at no cost",
-        "cost_per_unit": null,
+        "description": "Replace this model's Portal Generator with a Generator from the Generator Hardpoints list at no cost",
+        "cost_per_unit": 0,
         "max": 1,
         "tag": "FREE_GENERATOR",
         "generator_replaces_weapon": false,
-        "removes_systems": [
-          "Portal Generator"
-        ]
+        "replaces_systems": [
+          {
+            "name": "Portal Generator",
+            "value": null
+          }
+        ],
+        "choices": "Generator Hardpoints list"
       }
     ],
     "lore": "Enemy vessels caught in this blast can do little against such an assault. These needles, so light to the touch, are capable of slicing through skin with the slightest of effort. Drawn inexorably down by gravity and picking up speed, this shower of fragmented metal can shred through steel and flesh alike in a matter of seconds. Mihrimahs have been known to cripple entire units of cruisers, tearing apart decking, eviscerating important machinery, and disabling weapons in a single shot. Most effective over long range, there are few targets the Mihrimah cannot reach, a fact that is aided with its onboard Portal Generator. With the ability to open and close liminal tears in reality across the waves, admirals have even been known to fire flechette launchers through these portals, in a tactic known as the Şahin Manoeuvre after Admiral Aras Şahin's decisive gambit against Union forces in the Pacific.",
@@ -5663,13 +5685,11 @@
     "systems": [
       {
         "name": "Boosted Propulsion",
-        "value": null,
-        "detail": "+2\""
+        "value": 2
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "6\""
+        "value": 6
       }
     ],
     "weapons": [
@@ -5737,7 +5757,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Upgrade with Sabiha Guardians; gains Guardian Wing (2)",
+        "description": "Upgrade this model with Sabiha Guardians; gains Guardian Wing (2)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "SABIHA_GUARDIANS",
@@ -5792,8 +5812,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Portal Generator",
@@ -5802,7 +5821,7 @@
     ],
     "weapons": [
       {
-        "name": "Orcichalcite Flechette Launcher",
+        "name": "Orichalcite Flechette Launcher",
         "arc": "F",
         "firepower": {
           "C": null,
@@ -5818,10 +5837,11 @@
             "name": "Indirect",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       },
       {
-        "name": "Orcichalcite Flechette Launcher",
+        "name": "Orichalcite Flechette Launcher",
         "arc": "F",
         "firepower": {
           "C": null,
@@ -5837,7 +5857,8 @@
             "name": "Indirect",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       },
       {
         "name": "Heavy Rocket Battery",
@@ -5853,7 +5874,7 @@
             "value": null
           }
         ],
-        "slot": "H"
+        "slot": null
       },
       {
         "name": "Heavy Rocket Battery",
@@ -5869,7 +5890,7 @@
             "value": null
           }
         ],
-        "slot": "H"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -5885,7 +5906,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Light Rocket Battery",
@@ -5901,7 +5922,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Ikili Torpedos",
@@ -5924,7 +5945,8 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -5979,8 +6001,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Hunter",
@@ -6097,7 +6118,7 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
         "cost_per_unit": 15,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -6130,6 +6151,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -6335,7 +6360,7 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Add Khepri Attendants; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
+        "description": "Add Khepri Attendants to this model; gains Carrier, Carrier (2), and SRS (Khepri Automata)",
         "cost_per_unit": 25,
         "max": 1,
         "tag": "KHEPRI_ATTENDANTS",
@@ -6368,6 +6393,10 @@
         "support": 2,
         "resilience": 3,
         "properties": [
+          {
+            "name": "Hover SRS",
+            "value": null
+          },
           {
             "name": "Launch Range",
             "value": 20
@@ -6432,8 +6461,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Mirage Generator",
@@ -6547,8 +6575,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       }
     ],
     "weapons": [
@@ -6687,8 +6714,7 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
@@ -6698,8 +6724,7 @@
       },
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       },
       {
         "name": "Mine Sweeper",
@@ -6708,7 +6733,7 @@
     ],
     "weapons": [
       {
-        "name": "Torpedo Salvo",
+        "name": "Micro Torpedo Salvo",
         "arc": "F",
         "firepower": {
           "C": 3,
@@ -6724,7 +6749,8 @@
             "name": "Homing",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       },
       {
         "name": "Light Gun Battery",
@@ -6834,15 +6860,13 @@
       },
       {
         "name": "Vanguard",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       }
     ],
     "weapons": [
@@ -6979,7 +7003,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens to the unit",
+        "description": "If this unit is not taken as an Attachment, add up to two Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
@@ -6988,7 +7012,8 @@
         "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       }
     ],
     "lore": "were paid for before Sultan Mustafa's attention drifted to other projects, and only a handful ever sailed into the pockets of the Vizierate. They argue that the name derives from its home port of Haydarpaşa, just across the Bosporos, which was itself named after a famous Ottoman vizier. A number of somewhat suspect traditions have nevertheless endured amongst their crews. It is seen, for example, as a great honour to be the first Sultanate vessel to win sight of the enemy, particularly if that vessel is one of particular renown. This has led to instances of Pashas suffering engine failure, or even coming to blows amongst themselves, before the battelines are even drawn. The Sublime Navy have condemned these \"races\" in no uncertain terms, and have recalled a number of captains to Istanbul to face corporal punishment. The practice remains widespread, however, and not even its most ardent critics could doubt the bravery of Pasha captains and their crews.",
@@ -7054,8 +7079,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Mirage Generator",
@@ -7145,15 +7169,13 @@
       },
       {
         "name": "Inspirational",
-        "value": null,
-        "detail": "7\""
+        "value": 7
       }
     ],
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "5\""
+        "value": 5
       },
       {
         "name": "Logistical Support",
@@ -7175,7 +7197,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Torpedo Salvo",
@@ -7198,13 +7220,14 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens to the unit",
+        "description": "If this unit is not taken as an Attachment, add up to two Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
@@ -7332,9 +7355,9 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 4 Escort tokens to the unit",
+        "description": "Add up to five Escort tokens to the unit",
         "cost_per_unit": 10,
-        "max": 4,
+        "max": 5,
         "tag": "ESCORT"
       },
       {
@@ -7357,18 +7380,23 @@
         "adds_tags": [
           "Airborne"
         ],
+        "removes_tags": [
+          "Surface"
+        ],
         "adds_properties": [
           {
             "name": "Low Altitude",
             "value": null
           }
         ],
-        "removes_tags": [
-          "Surface"
-        ],
-        "removes_options": [
-          "ATTACHMENT"
-        ]
+        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE"
+      },
+      {
+        "description": "Add 1 Hermes Supply Freighter as an Attachment",
+        "cost_per_unit": 25,
+        "max": 1,
+        "tag": "ATTACHMENT_HERMES_SUPPLY_FREIGHTER",
+        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE"
       }
     ],
     "lore": "be the smoothest ever designed. Nevertheless, as with much in this Dystopian Age, military contracts have proven to be an irresistible joint venture. Fleets of Europa-class container ships, usually sailing under a variety of neutral or small nation flags, are in consistently high demand amongst Great Powers looking to avoid tariffs, circumvent blockades, or covertly land troops on unsuspecting islands. Several dozen operate out of the Turkish port city of Karamürsel, supplying the greater part of the Sultanate's Mediterranean fleet. The original Callisto, however, has become a common sight in the pleasure ports of Tripoli, Athens, and Alexandria, after Sultan Mustafa made Norddeutscher Hamburg and White Wolf an offer they could not refuse. It now serves more or less as its designers intended-as the ultra-luxurious flagship for the Golden Sultan himself.",
@@ -7431,22 +7459,11 @@
       }
     ],
     "systems": [],
-    "weapons": [
-      {
-        "name": "-",
-        "arc": null,
-        "firepower": {
-          "C": null,
-          "S": null,
-          "E": null
-        },
-        "qualities": []
-      }
-    ],
+    "weapons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens to the unit",
+        "description": "If this unit is not taken as an Attachment, add up to two Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
@@ -7508,8 +7525,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Repair Facilities",
@@ -7526,7 +7542,7 @@
           "E": null
         },
         "qualities": [],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Torpedo Salvo",
@@ -7549,18 +7565,12 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
-    "options_and_upgrades": [
-      {
-        "description": "Add up to 2 Escort tokens to the unit",
-        "cost_per_unit": 10,
-        "max": 2,
-        "tag": "ESCORT"
-      }
-    ],
+    "options_and_upgrades": [],
     "lore": "Sultanate forces are highly mobile. Their vessels spend precious little time in one place for it is the wish of Sultan Mustafa-n, through him, of the Sublime PPoorrttee-that his naval might should be seen as well as felt. Magnificent Turkish flagships and their attendants glide from port to port in a never-ending pageant of beauty, power, and Ottoman largesse. Such craft are thus commonly attended wherever they go by dedicated Konya-class maintenance ships. These ships, themselves objects of remarkable grace, are laden with repair skiffs and auxiliary hovercraft by which teams of craftsmen can perform running repairs on their noble charges, even in the midst of battle. In addition to the usual complement of naval engineers, it is not unusual to find goldsmiths, pewterers, engravers, giltworkers, damasceners and This unit more amongst a Konya's crew: artists who can restore a ship not just to battle-readiness, but to beauty.",
     "version": "4.01",
     "date": "2026-06-16",
@@ -7611,8 +7621,7 @@
     "systems": [
       {
         "name": "Lateral Engines",
-        "value": null,
-        "detail": "3\""
+        "value": 3
       },
       {
         "name": "Mine Sweeper",
@@ -7638,7 +7647,7 @@
             "value": null
           }
         ],
-        "slot": "L"
+        "slot": null
       },
       {
         "name": "Torpedo Salvo",
@@ -7661,7 +7670,8 @@
             "name": "Torpedo",
             "value": null
           }
-        ]
+        ],
+        "slot": null
       }
     ],
     "hardpoint_options": {},
@@ -7726,18 +7736,7 @@
         "value": 2
       }
     ],
-    "weapons": [
-      {
-        "name": "-",
-        "arc": null,
-        "firepower": {
-          "C": null,
-          "S": null,
-          "E": null
-        },
-        "qualities": []
-      }
-    ],
+    "weapons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -7757,6 +7756,12 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "Add 1 Defence Platform as an Attachment",
+        "cost_per_unit": 60,
+        "max": 1,
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM"
       }
     ],
     "lore": "engineers, trained under the shipwrights of the Crimson League for a whole year before their posting. Aided by multi-limbed Yengeç automata-crab-like machines that skitter about the platform with uncanny speed and precision-these expert crews are at their best under pressure, capable of stripping and refitting ships in a matter of minutes. Many a vessel at danger of sinking has docked at these rigs mid-battle, only to emerge into the fray once more, refreshed and ready to turn the tide once more in the Sultanate's favour. Though unassuming, few tools are as potent in ensuring Sultan Mustafa's supremacy over the waves, and those who serve aboard these stations are well compensated for their skills. Promised an early retirement and a considerable stipend for their families, both before and after service, the Benghazi's crew count amongst some of the most efficient and loyal sailors in the Sultanate's navy.",
@@ -7896,21 +7901,23 @@
         "adds_tags": [
           "Airborne"
         ],
+        "removes_tags": [
+          "Surface"
+        ],
         "adds_properties": [
           {
             "name": "Low Altitude",
             "value": null
           }
         ],
-        "removes_tags": [
-          "Surface"
-        ]
+        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE"
       },
       {
         "description": "Add 1 Hermes Supply Freighter as an Attachment",
-        "cost_per_unit": null,
+        "cost_per_unit": 25,
         "max": 1,
-        "tag": "ATTACHMENT"
+        "tag": "ATTACHMENT_HERMES_SUPPLY_FREIGHTER",
+        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE"
       }
     ],
     "lore": "Bosporus Strait, the Straits of Gibraltar, and the recently completed Suez Canal, the Sultanate thrives on maritime trade- and on the duties this allows it to impose on others. Indeed, given the quantity of wealth that it bleeds daily into the hands of the House of Gold, there are those who would argue that these merchant fleets are more vital to the Sultanate than any battleship. This is a view most volubly expressed by the merchant captains themselves, who tend to be prosperous, extravagantly attired individuals with only limited attachment to the Sublime Navy. It is a boast with some merit, however. A Titan-class vessel- particularly one outfitted with advanced Sultanate weaponry-is a match for any smaller warship, but their benefit to a Sultanate fleet is more often in the psychological effect they bring. Sultanate seamen regard their Titan's as floating paychests, regardless of the goods they may or may not be carrying, cheering their arrival in battle and fighting all the harder when they are near.",
