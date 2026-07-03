@@ -1626,7 +1626,12 @@
         "tag": "MANDATORY_GENERATOR_1",
         "mandatory": true,
         "generator_replaces_weapon": false,
-        "choices": "Generator Hardpoints list"
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          }
+        ]
       },
       {
         "description": "Mandatory selection: choose either a second Generator from the Generator Hardpoints list, or a Magma Cast Generator (+35 pts); this does not replace a Weapon Hardpoint.",
