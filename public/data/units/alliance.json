@@ -69,7 +69,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 4,
@@ -136,8 +136,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -152,13 +152,24 @@
           ]
         },
         {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
           "name": "Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -172,29 +183,66 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
           "name": "Heavy Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -321,7 +369,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -383,8 +431,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -404,8 +452,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -424,7 +472,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -439,9 +487,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -537,7 +643,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -548,7 +654,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -604,54 +710,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 4,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -662,13 +748,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 3,
+            "S": 3,
+            "E": 3
           },
           "qualities": [
             {
@@ -683,7 +769,19 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
@@ -801,86 +899,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
@@ -995,7 +1014,7 @@
       {
         "name": "Focused Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 3,
           "S": 5,
@@ -1053,11 +1072,11 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Focused Heat Lance",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
+            "C": 8,
             "S": 4,
             "E": null
           },
@@ -1073,13 +1092,13 @@
           ]
         },
         {
-          "name": "Heavy Magnetic Bombard",
+          "name": "Focused Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 5,
+            "E": 7
           },
           "qualities": [
             {
@@ -1093,12 +1112,12 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Focused Heavy Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 7,
             "E": null
           },
           "qualities": [
@@ -1113,9 +1132,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Focused Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
             "C": 6,
-            "S": 6,
-            "E": 6
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Focused Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Focused Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -1136,6 +1213,17 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
       }
     ],
     "lore": "",
@@ -1205,7 +1293,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -1216,7 +1304,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -1227,7 +1315,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -1289,8 +1377,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -1305,13 +1393,24 @@
           ]
         },
         {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
           "name": "Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -1325,12 +1424,54 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Heavy Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Focused Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 5,
             "E": null
           },
           "qualities": [
@@ -1341,13 +1482,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -1534,8 +1675,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -1555,8 +1696,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -1575,7 +1716,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -1590,9 +1731,9 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -1613,6 +1754,17 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
       }
     ],
     "lore": "",
@@ -1695,7 +1847,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -1711,7 +1863,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -1849,6 +2001,39 @@
             }
           ]
         }
+      ],
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        }
       ]
     },
     "options_and_upgrades": [
@@ -1910,14 +2095,6 @@
         "value": 7
       },
       {
-        "name": "Reinforced Waterline",
-        "value": null
-      },
-      {
-        "name": "Stoic",
-        "value": null
-      },
-      {
         "name": "Strategic Asset",
         "value": 5
       }
@@ -1976,7 +2153,7 @@
       {
         "name": "Focused Heat Lance",
         "arc": "FPS",
-        "slot": null,
+        "slot": "H",
         "firepower": {
           "C": 8,
           "S": 4,
@@ -1996,7 +2173,7 @@
       {
         "name": "Focused Heat Lance",
         "arc": "PSA",
-        "slot": null,
+        "slot": "H",
         "firepower": {
           "C": 8,
           "S": 4,
@@ -2016,7 +2193,7 @@
       {
         "name": "Focused Heat Lancette",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 6,
           "S": 1,
@@ -2083,80 +2260,28 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Focused Heavy Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 7,
             "E": null
           },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
+          "qualities": []
+        }
+      ],
+      "L": [
         {
-          "name": "Heavy Magnetic Bombard",
+          "name": "Focused Light Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
+            "C": 3,
+            "S": 5,
             "E": null
           },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
+          "qualities": []
         }
       ]
     },
@@ -2261,7 +2386,7 @@
       {
         "name": "Heat Lance",
         "arc": "F",
-        "slot": "H",
+        "slot": null,
         "firepower": {
           "C": 10,
           "S": 4,
@@ -2321,7 +2446,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -2337,7 +2462,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -2353,7 +2478,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -2414,80 +2539,35 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Light Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
             }
           ]
         }
@@ -2585,7 +2665,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 3,
@@ -2641,54 +2721,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 4,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -2699,13 +2759,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 3,
+            "S": 3,
+            "E": 3
           },
           "qualities": [
             {
@@ -2720,7 +2780,19 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
+      }
+    ],
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
@@ -2742,7 +2814,7 @@
     "role": "Logistical",
     "point_cost_per_model": 65,
     "vpr": 2,
-    "models": 1,
+    "models": "1-3",
     "tags": [
       "Alliance",
       "Portuguese",
@@ -2835,86 +2907,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [
       {
         "description": "Add up to two Escort tokens to the unit",
@@ -2938,7 +2931,7 @@
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
-    "min": 3,
+    "min": 1,
     "max": 3,
     "id": "alliance_elvas",
     "faction_id": "alliance"
@@ -3006,7 +2999,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3062,54 +3055,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -3120,13 +3093,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -3363,86 +3336,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [
       {
         "description": "Add up to two Escort tokens to the unit",
@@ -3535,7 +3429,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3546,7 +3440,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3557,7 +3451,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -3619,8 +3513,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -3635,13 +3529,24 @@
           ]
         },
         {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
           "name": "Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -3655,12 +3560,54 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Heavy Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -3671,13 +3618,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -3791,7 +3738,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 4,
@@ -3858,8 +3805,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -3874,13 +3821,24 @@
           ]
         },
         {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
           "name": "Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -3894,29 +3852,66 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
           "name": "Heavy Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -4009,7 +4004,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -4020,7 +4015,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -4082,8 +4077,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -4103,8 +4098,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -4123,7 +4118,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -4138,9 +4133,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -4320,15 +4373,19 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Sharpshooter Heat Lance",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
+            {
+              "name": "Precise",
+              "value": 1
+            },
             {
               "name": "Hazard",
               "value": 1
@@ -4340,13 +4397,13 @@
           ]
         },
         {
-          "name": "Heavy Magnetic Bombard",
+          "name": "Sharpshooter Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -4356,42 +4413,30 @@
             {
               "name": "Navigation Lock",
               "value": 1
+            },
+            {
+              "name": "Precise",
+              "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Sharpshooter Heavy Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
             {
               "name": "Barrage",
               "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
             },
             {
-              "name": "Torpedo",
-              "value": null
+              "name": "Precise",
+              "value": 1
             }
           ]
         }
@@ -4483,7 +4528,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Talon Rotors"
+        "detail": "Talon Autogyros"
       },
       {
         "name": "Strategic Asset",
@@ -4504,7 +4549,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -4520,7 +4565,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -4536,7 +4581,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "PA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -4552,7 +4597,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "SA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -4612,7 +4657,41 @@
         ]
       }
     ],
-    "hardpoint_options": {},
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
     "options_and_upgrades": [
       {
         "description": "Add up to five Escort tokens to the unit",
@@ -4636,7 +4715,7 @@
     "role": "Logistical",
     "point_cost_per_model": 25,
     "vpr": 0,
-    "models": 1,
+    "models": "1-3",
     "tags": [
       "Alliance",
       "Surface",
@@ -4728,86 +4807,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [
       {
         "description": "Add up to two Escort tokens to the unit",
@@ -4819,7 +4819,7 @@
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
-    "min": 3,
+    "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
@@ -4879,7 +4879,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 3,
@@ -4895,7 +4895,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 3,
@@ -4956,71 +4956,46 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Light Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 2,
+            "S": 3,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 3,
+            "S": 3,
+            "E": 3
           },
           "qualities": [
             {
@@ -5175,86 +5150,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
@@ -5326,40 +5222,36 @@
     ],
     "weapons": [
       {
-        "name": "Aerial Torpedo Salvo",
-        "arc": "F",
+        "name": "Thermal Cluster Bombs",
+        "arc": "A",
         "slot": null,
         "firepower": {
-          "C": 5,
-          "S": 5,
-          "E": 5
+          "C": 12,
+          "S": null,
+          "E": null
         },
         "qualities": [
           {
-            "name": "Aerial",
+            "name": "Bomb",
             "value": null
           },
           {
-            "name": "Breach",
-            "value": 1
+            "name": "Hazard",
+            "value": 4
           },
           {
-            "name": "High Velocity",
-            "value": 3
-          },
-          {
-            "name": "Torpedo",
-            "value": null
+            "name": "Solex",
+            "value": 4
           }
         ]
       },
       {
         "name": "Heat Lance",
-        "arc": "FPS",
+        "arc": "FPSA",
         "slot": null,
         "firepower": {
-          "C": 7,
-          "S": 3,
+          "C": 10,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5375,11 +5267,11 @@
       },
       {
         "name": "Heat Lance",
-        "arc": "PSA",
+        "arc": "FPSA",
         "slot": null,
         "firepower": {
-          "C": 7,
-          "S": 3,
+          "C": 10,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5394,37 +5286,108 @@
         ]
       },
       {
-        "name": "Light Gun Battery",
-        "arc": "FPS",
+        "name": "Heat Lance",
+        "arc": "FPSA",
         "slot": null,
         "firepower": {
-          "C": 2,
+          "C": 10,
           "S": 4,
           "E": null
         },
-        "qualities": []
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Solex",
+            "value": 2
+          }
+        ]
       },
       {
-        "name": "Light Gun Battery",
-        "arc": "FPA",
+        "name": "Heat Lance",
+        "arc": "FPSA",
         "slot": null,
         "firepower": {
-          "C": 2,
+          "C": 10,
           "S": 4,
           "E": null
         },
-        "qualities": []
+        "qualities": [
+          {
+            "name": "Hazard",
+            "value": 1
+          },
+          {
+            "name": "Solex",
+            "value": 2
+          }
+        ]
       },
       {
-        "name": "Light Gun Battery",
-        "arc": "FSA",
-        "slot": null,
+        "name": "Light Rocket Battery",
+        "arc": "FP",
+        "slot": "L",
         "firepower": {
-          "C": 2,
-          "S": 4,
+          "C": null,
+          "S": 6,
           "E": null
         },
-        "qualities": []
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FS",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "PA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "SA",
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
       }
     ],
     "short_range_squadrons": [
@@ -5473,7 +5436,21 @@
         ]
       }
     ],
-    "hardpoint_options": {},
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        }
+      ]
+    },
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
@@ -5586,7 +5563,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -5648,8 +5625,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -5669,8 +5646,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -5689,7 +5666,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -5704,9 +5681,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -5727,6 +5762,17 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
       }
     ],
     "lore": "",
@@ -5798,7 +5844,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -5860,8 +5906,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -5881,8 +5927,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -5901,7 +5947,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -5919,6 +5965,64 @@
             "C": 6,
             "S": 6,
             "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -5998,36 +6102,40 @@
     "systems": [],
     "weapons": [
       {
-        "name": "Thermal Cluster Bombs",
-        "arc": "A",
+        "name": "Aerial Torpedo Salvo",
+        "arc": "F",
         "slot": null,
         "firepower": {
-          "C": 12,
-          "S": null,
-          "E": null
+          "C": 5,
+          "S": 5,
+          "E": 5
         },
         "qualities": [
           {
-            "name": "Bomb",
+            "name": "Aerial",
             "value": null
           },
           {
-            "name": "Hazard",
-            "value": 4
+            "name": "Breach",
+            "value": 1
           },
           {
-            "name": "Solex",
-            "value": 4
+            "name": "High Velocity",
+            "value": 3
+          },
+          {
+            "name": "Torpedo",
+            "value": null
           }
         ]
       },
       {
         "name": "Heat Lance",
-        "arc": "FPSA",
+        "arc": "FPS",
         "slot": "H",
         "firepower": {
-          "C": 10,
-          "S": 4,
+          "C": 7,
+          "S": 3,
           "E": null
         },
         "qualities": [
@@ -6043,11 +6151,11 @@
       },
       {
         "name": "Heat Lance",
-        "arc": "FPSA",
+        "arc": "PSA",
         "slot": "H",
         "firepower": {
-          "C": 10,
-          "S": 4,
+          "C": 7,
+          "S": 3,
           "E": null
         },
         "qualities": [
@@ -6062,36 +6170,37 @@
         ]
       },
       {
-        "name": "Light Rocket Battery",
-        "arc": "FP",
-        "slot": null,
+        "name": "Light Gun Battery",
+        "arc": "FPS",
+        "slot": "L",
         "firepower": {
-          "C": null,
-          "S": 6,
+          "C": 2,
+          "S": 4,
           "E": null
         },
-        "qualities": [
-          {
-            "name": "Barrage",
-            "value": null
-          }
-        ]
+        "qualities": []
       },
       {
-        "name": "Light Rocket Battery",
-        "arc": "FS",
-        "slot": null,
+        "name": "Light Gun Battery",
+        "arc": "FPA",
+        "slot": "L",
         "firepower": {
-          "C": null,
-          "S": 6,
+          "C": 2,
+          "S": 4,
           "E": null
         },
-        "qualities": [
-          {
-            "name": "Barrage",
-            "value": null
-          }
-        ]
+        "qualities": []
+      },
+      {
+        "name": "Light Gun Battery",
+        "arc": "FSA",
+        "slot": "L",
+        "firepower": {
+          "C": 2,
+          "S": 4,
+          "E": null
+        },
+        "qualities": []
       }
     ],
     "short_range_squadrons": [
@@ -6143,24 +6252,15 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 4,
+            "S": 6,
             "E": null
           },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
+          "qualities": []
         },
         {
           "name": "Heavy Magnetic Bombard",
@@ -6168,8 +6268,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -6188,7 +6288,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -6206,6 +6306,64 @@
             "C": 6,
             "S": 6,
             "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -6618,8 +6776,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -6634,13 +6792,24 @@
           ]
         },
         {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
           "name": "Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -6654,29 +6823,13 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
           "name": "Heavy Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -6790,7 +6943,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -6806,7 +6959,23 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPSA",
-        "slot": null,
+        "slot": "L",
+        "firepower": {
+          "C": null,
+          "S": 6,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Barrage",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Light Rocket Battery",
+        "arc": "FPSA",
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -6866,7 +7035,41 @@
         ]
       }
     ],
-    "hardpoint_options": {},
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
     "options_and_upgrades": [
       {
         "description": "Add up to four Escort tokens to the unit",
@@ -6991,7 +7194,7 @@
       {
         "name": "Focused Light Gun Battery",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 3,
           "S": 5,
@@ -7002,7 +7205,7 @@
       {
         "name": "Focused Light Gun Battery",
         "arc": "FS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 3,
           "S": 5,
@@ -7060,11 +7263,11 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Focused Heat Lance",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
+            "C": 8,
             "S": 4,
             "E": null
           },
@@ -7080,13 +7283,13 @@
           ]
         },
         {
-          "name": "Heavy Magnetic Bombard",
+          "name": "Focused Heavy Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 5,
+            "E": 7
           },
           "qualities": [
             {
@@ -7100,12 +7303,12 @@
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Focused Heavy Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 7,
             "E": null
           },
           "qualities": [
@@ -7120,9 +7323,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Focused Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
             "C": 6,
-            "S": 6,
-            "E": 6
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Focused Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Focused Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -7217,6 +7478,17 @@
       }
     ],
     "weapons": [
+      {
+        "name": "Heavy Gun Battery",
+        "arc": "FPSA",
+        "slot": "H",
+        "firepower": {
+          "C": 6,
+          "S": 8,
+          "E": null
+        },
+        "qualities": []
+      },
       {
         "name": "Heavy Gun Battery",
         "arc": "FPSA",
@@ -7363,10 +7635,12 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "description": "Add 1 Generator from the Generator Hardpoints list",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1
       },
       {
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
@@ -7542,8 +7816,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -7563,8 +7837,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -7583,7 +7857,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -7598,9 +7872,9 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -7621,6 +7895,17 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Mandatory selection: this unit has either the French trait or the Portuguese trait",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "MANDATORY_SUBFACTION_TRAIT",
+        "mandatory": true,
+        "choices": [
+          "French",
+          "Portuguese"
+        ]
       }
     ],
     "lore": "",
@@ -7772,8 +8057,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -7793,8 +8078,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -7813,7 +8098,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -7828,9 +8113,9 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -7880,7 +8165,7 @@
     "role": "Logistical",
     "point_cost_per_model": 60,
     "vpr": 2,
-    "models": 1,
+    "models": "1-3",
     "tags": [
       "Alliance",
       "SUSA",
@@ -7928,7 +8213,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -7939,7 +8224,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -7995,54 +8280,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -8053,13 +8318,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -8078,7 +8343,7 @@
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
-    "min": 3,
+    "min": 1,
     "max": 3,
     "id": "alliance_providence",
     "faction_id": "alliance"
@@ -8131,7 +8396,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 3,
@@ -8142,7 +8407,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 3,
@@ -8198,54 +8463,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 4,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -8256,13 +8501,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 3,
+            "S": 3,
+            "E": 3
           },
           "qualities": [
             {
@@ -8396,86 +8641,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
@@ -8587,7 +8753,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -8598,7 +8764,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -8656,24 +8822,15 @@
     "hardpoint_options": {
       "H": [
         {
-          "name": "Heat Lance",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 4,
+            "S": 6,
             "E": null
           },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
+          "qualities": []
         },
         {
           "name": "Heavy Magnetic Bombard",
@@ -8681,8 +8838,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -8701,7 +8858,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -8716,9 +8873,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -8797,7 +9012,7 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
@@ -8808,7 +9023,7 @@
       {
         "name": "Heavy Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "H",
         "firepower": {
           "C": 4,
           "S": 6,
@@ -8819,7 +9034,7 @@
       {
         "name": "Torpedo Turret",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 4,
@@ -8839,7 +9054,7 @@
       {
         "name": "Torpedo Turret",
         "arc": "FS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 4,
@@ -8859,7 +9074,7 @@
       {
         "name": "Torpedo Turret",
         "arc": "PA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 4,
@@ -8879,7 +9094,7 @@
       {
         "name": "Torpedo Turret",
         "arc": "SA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 4,
           "S": 4,
@@ -8943,7 +9158,91 @@
         ]
       }
     ],
-    "hardpoint_options": {},
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Heavy Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
     "options_and_upgrades": [
       {
         "description": "Add up to two Escort tokens to the unit",
@@ -9003,7 +9302,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Talon Rotors"
+        "detail": "Talon Autogyros"
       }
     ],
     "systems": [],
@@ -9022,7 +9321,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -9084,8 +9383,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -9105,8 +9404,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -9125,7 +9424,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -9140,9 +9439,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -9272,7 +9629,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -9328,54 +9685,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -9386,13 +9723,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -9462,7 +9799,7 @@
       {
         "name": "Heat Lancette",
         "arc": "F",
-        "slot": null,
+        "slot": "S",
         "firepower": {
           "C": 4,
           "S": 1,
@@ -9475,26 +9812,6 @@
           },
           {
             "name": "Solex",
-            "value": 1
-          }
-        ]
-      },
-      {
-        "name": "Magnetic Bombard",
-        "arc": "F",
-        "slot": null,
-        "firepower": {
-          "C": 1,
-          "S": 2,
-          "E": 3
-        },
-        "qualities": [
-          {
-            "name": "Guided",
-            "value": 2
-          },
-          {
-            "name": "Navigation Lock",
             "value": 1
           }
         ]
@@ -9547,35 +9864,15 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "S": [
         {
-          "name": "Heat Lance",
+          "name": "Magnetic Bombard",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
+            "C": 1,
+            "S": 2,
+            "E": 3
           },
           "qualities": [
             {
@@ -9585,42 +9882,6 @@
             {
               "name": "Navigation Lock",
               "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
             }
           ]
         }
@@ -9732,7 +9993,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -9794,8 +10055,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -9815,8 +10076,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -9835,7 +10096,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -9850,9 +10111,67 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "L": [
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 5,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Light Rocket Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -10007,86 +10326,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
@@ -10150,7 +10390,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Talon Rotors"
+        "detail": "Talon Autogyros"
       },
       {
         "name": "Strategic Asset",
@@ -10162,7 +10402,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -10218,54 +10458,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -10276,13 +10496,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -10365,7 +10585,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -10421,54 +10641,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -10479,13 +10679,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -10553,7 +10753,7 @@
     "role": "Support",
     "point_cost_per_model": 60,
     "vpr": 2,
-    "models": 1,
+    "models": "1-3",
     "tags": [
       "Alliance",
       "Portuguese",
@@ -10661,8 +10861,8 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 7,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -10682,8 +10882,8 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 6,
-            "E": 8
+            "S": 4,
+            "E": 6
           },
           "qualities": [
             {
@@ -10702,7 +10902,7 @@
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -10717,9 +10917,9 @@
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 5,
+            "S": 5,
+            "E": 5
           },
           "qualities": [
             {
@@ -10757,7 +10957,7 @@
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
-    "min": 3,
+    "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
@@ -10847,7 +11047,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FP",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -10863,7 +11063,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -10879,7 +11079,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "PA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -10895,7 +11095,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "SA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -10904,26 +11104,6 @@
         "qualities": [
           {
             "name": "Barrage",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Torpedo Turret",
-        "arc": "F",
-        "slot": null,
-        "firepower": {
-          "C": 6,
-          "S": 6,
-          "E": 6
-        },
-        "qualities": [
-          {
-            "name": "Submerged",
-            "value": null
-          },
-          {
-            "name": "Torpedo",
             "value": null
           }
         ]
@@ -10975,7 +11155,61 @@
         ]
       }
     ],
-    "hardpoint_options": {},
+    "hardpoint_options": {
+      "L": [
+        {
+          "name": "Light Gun Battery",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Mayhem",
+              "value": null
+            },
+            {
+              "name": "Solex",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Torpedo Turret",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 6,
+            "S": 6,
+            "E": 6
+          },
+          "qualities": [
+            {
+              "name": "Submerged",
+              "value": null
+            },
+            {
+              "name": "Torpedo",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
     "options_and_upgrades": [
       {
         "description": "Add up to five Escort tokens to the unit",
@@ -11033,7 +11267,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Talon Rotors"
+        "detail": "Talon Autogyros"
       }
     ],
     "systems": [
@@ -11068,7 +11302,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "FPS",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -11084,7 +11318,7 @@
       {
         "name": "Light Rocket Battery",
         "arc": "PSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": null,
           "S": 6,
@@ -11201,24 +11435,37 @@
               "value": null
             }
           ]
-        },
+        }
+      ],
+      "L": [
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Light Gun Battery",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
+            "C": 3,
             "S": 6,
-            "E": 6
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heat Lancette",
+          "arc": null,
+          "slot": null,
+          "firepower": {
+            "C": 7,
+            "S": 1,
+            "E": null
           },
           "qualities": [
             {
-              "name": "Submerged",
+              "name": "Mayhem",
               "value": null
             },
             {
-              "name": "Torpedo",
-              "value": null
+              "name": "Solex",
+              "value": 1
             }
           ]
         }
@@ -11295,7 +11542,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FPA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -11306,7 +11553,7 @@
       {
         "name": "Light Gun Battery",
         "arc": "FSA",
-        "slot": null,
+        "slot": "L",
         "firepower": {
           "C": 2,
           "S": 4,
@@ -11362,54 +11609,34 @@
       }
     ],
     "hardpoint_options": {
-      "H": [
+      "L": [
         {
-          "name": "Heat Lance",
+          "name": "Heat Lancette",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 10,
-            "S": 4,
+            "C": 5,
+            "S": 1,
             "E": null
           },
           "qualities": [
             {
-              "name": "Hazard",
-              "value": 1
+              "name": "Mayhem",
+              "value": null
             },
             {
               "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
               "value": 1
             }
           ]
         },
         {
-          "name": "Heavy Rocket Battery",
+          "name": "Light Rocket Battery",
           "arc": null,
           "slot": null,
           "firepower": {
             "C": null,
-            "S": 8,
+            "S": 4,
             "E": null
           },
           "qualities": [
@@ -11420,13 +11647,13 @@
           ]
         },
         {
-          "name": "Heavy Torpedo Turret",
+          "name": "Torpedo Turret",
           "arc": null,
           "slot": null,
           "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -11575,86 +11802,7 @@
         ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Heat Lance",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 10,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Hazard",
-              "value": 1
-            },
-            {
-              "name": "Solex",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "name": "Heavy Magnetic Bombard",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 6,
-            "E": 8
-          },
-          "qualities": [
-            {
-              "name": "Guided",
-              "value": 2
-            },
-            {
-              "name": "Navigation Lock",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Heavy Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 8,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Heavy Torpedo Turret",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": 6,
-            "S": 6,
-            "E": 6
-          },
-          "qualities": [
-            {
-              "name": "Submerged",
-              "value": null
-            },
-            {
-              "name": "Torpedo",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
