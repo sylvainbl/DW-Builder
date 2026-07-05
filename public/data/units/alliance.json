@@ -83,52 +83,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -378,52 +332,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -663,52 +571,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -853,52 +715,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -1021,52 +837,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -1324,52 +1094,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -1622,52 +1346,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -1872,52 +1550,6 @@
         "qualities": [
           {
             "name": "Barrage",
-            "value": null
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
             "value": null
           }
         ]
@@ -2207,52 +1839,6 @@
           {
             "name": "Solex",
             "value": 1
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
           }
         ]
       }
@@ -2674,52 +2260,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -2802,7 +2342,21 @@
       "parent_traits": [
         "French / Portuguese"
       ],
-      "max_models": 6
+      "max_models": 6,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "French"
+            ]
+          },
+          {
+            "allOfTags": [
+              "Portuguese"
+            ]
+          }
+        ]
+      }
     },
     "id": "alliance_ecuyere",
     "faction_id": "alliance"
@@ -2861,52 +2415,6 @@
       }
     ],
     "weapons": [],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -3006,52 +2514,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -3290,52 +2752,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -3458,52 +2874,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -3656,7 +3026,17 @@
       "parent_traits": [
         "French Flagship"
       ],
-      "max_models": 3
+      "max_models": 3,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "French",
+              "Flagship"
+            ]
+          }
+        ]
+      }
     },
     "id": "alliance_furieux",
     "faction_id": "alliance"
@@ -3747,52 +3127,6 @@
         "qualities": [
           {
             "name": "Barrage",
-            "value": null
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
             "value": null
           }
         ]
@@ -4022,52 +3356,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -4320,52 +3608,6 @@
           {
             "name": "Precise",
             "value": 1
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
           }
         ]
       }
@@ -4761,52 +4003,6 @@
     ],
     "systems": [],
     "weapons": [],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -4909,52 +4105,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -5018,9 +4168,20 @@
     "max": 4,
     "attachment": {
       "parent_traits": [
-        "Marine Levante, Carrier"
+        "Marine Levante",
+        "Carrier"
       ],
-      "max_models": 4
+      "max_models": 4,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Marine Levante",
+              "Carrier"
+            ]
+          }
+        ]
+      }
     },
     "id": "alliance_honneur",
     "faction_id": "alliance"
@@ -5572,52 +4733,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -5851,52 +4966,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -6203,52 +5272,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -6510,52 +5533,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -7214,52 +6191,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -7501,52 +6432,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -7763,52 +6648,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -8004,52 +6843,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "H": [
         {
@@ -8233,52 +7026,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -8416,52 +7163,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -8529,7 +7230,24 @@
     "min": 1,
     "max": 3,
     "id": "alliance_pugio",
-    "faction_id": "alliance"
+    "faction_id": "alliance",
+    "attachment": {
+      "parent_traits": [
+        "Italian",
+        "Support"
+      ],
+      "max_models": 3,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Italian",
+              "Support"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "name": "Sagitta",
@@ -8590,52 +7308,6 @@
           },
           {
             "name": "Torpedo",
-            "value": null
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
             "value": null
           }
         ]
@@ -9107,52 +7779,6 @@
           },
           {
             "name": "Torpedo",
-            "value": null
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
             "value": null
           }
         ]
@@ -9638,52 +8264,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -9813,52 +8393,6 @@
           {
             "name": "Solex",
             "value": 1
-          }
-        ]
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
           }
         ]
       }
@@ -10000,52 +8534,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -10278,52 +8766,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {},
@@ -10594,52 +9036,6 @@
         "qualities": []
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {
       "L": [
         {
@@ -10806,52 +9202,6 @@
           "E": null
         },
         "qualities": []
-      }
-    ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
       }
     ],
     "hardpoint_options": {
@@ -11756,60 +10106,29 @@
         ]
       }
     ],
-    "short_range_squadrons": [
-      {
-        "name": "Malinois Interdictors",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Harrier",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Frelon Bombers",
-        "attack": 4,
-        "intercept": 0,
-        "support": 1,
-        "resilience": 3,
-        "properties": [
-          {
-            "name": "Offensive",
-            "value": null
-          },
-          {
-            "name": "Surgical Strike",
-            "value": null,
-            "detail": "Hazard"
-          }
-        ]
-      },
-      {
-        "name": "Talon Rotors",
-        "attack": 4,
-        "intercept": 0,
-        "support": 0,
-        "resilience": 2,
-        "properties": [
-          {
-            "name": "Specialist",
-            "value": null
-          }
-        ]
-      }
-    ],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
     "version": "4.01 Beta 2",
     "date": "2026-06-22",
     "min": 1,
-    "max": 3,
+    "max": 1,
     "id": "alliance_vulcan",
-    "faction_id": "alliance"
+    "faction_id": "alliance",
+    "attachment": {
+      "parent_traits": [
+        "Italian"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Italian"
+            ]
+          }
+        ]
+      }
+    }
   }
 ]

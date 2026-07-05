@@ -4196,7 +4196,17 @@
         "Offshore Supply Platform"
       ],
       "max_models": 1,
-      "note": "No Upgrades can be purchased when taken as Attachment."
+      "note": "No Upgrades can be purchased when taken as Attachment.",
+      "eligibility": {
+        "anyOf": [
+          {
+            "parentUnitIds": [
+              "commonwealth_offshore_heavy_platform",
+              "commonwealth_offshore_supply_platform"
+            ]
+          }
+        ]
+      }
     },
     "lore": "Harriet Anson-Maunsell didn't anticipate the military application of her modular platforms. Designed for oil, sturginium, and gas extraction, her creations became a surprise hit with the Great Powers who had identified the military applications of the rugged design.",
     "version": "4.00A",
@@ -4446,7 +4456,17 @@
         "Offshore Heavy Platform",
         "Offshore Defence Platform"
       ],
-      "max_models": null
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "parentUnitIds": [
+              "commonwealth_offshore_heavy_platform",
+              "commonwealth_offshore_defence_platform"
+            ]
+          }
+        ]
+      }
     },
     "lore": "Taking the Anson-Maunsell platform as a starting point, the Otroq Supply Platform boasts a modular design that allows it to work seamlessly with engineering and logistics equipment anywhere in the world. This versatility empowers it to deliver a comprehensive range of repair and resupply services.",
     "version": "4.00A",
@@ -5858,7 +5878,24 @@
     "version": "4.00A",
     "date": "2026-06-28",
     "min": 2,
-    "max": 4
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Polish-Lithuanian",
+        "Carrier"
+      ],
+      "max_models": 2,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Polish-Lithuanian",
+              "Carrier"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "commonwealth_stanislaw",

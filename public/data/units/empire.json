@@ -299,12 +299,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_AKITA_SUPER_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -604,12 +598,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_ERGUN_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -828,12 +816,6 @@
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HACHIMAN_GRAND_CARRIER"
       }
     ],
     "lore": "",
@@ -1133,12 +1115,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HEILONG_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -1373,12 +1349,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_KONGO_HEAVY_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -1606,12 +1576,6 @@
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_MATSUMOTO_GENERATOR_SHIP"
       },
       {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
@@ -1968,12 +1932,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_NARAKA_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -2183,12 +2141,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_NING_JING_BATTLESHIP"
       }
     ],
     "lore": "",
@@ -2410,12 +2362,6 @@
         "max": 1,
         "tag": "MAGMA_CAST_GENERATOR",
         "generator_replaces_weapon": false
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_ONI_COMMAND_CRUISER"
       },
       {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
@@ -2962,12 +2908,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_YANGTZE_COMMAND_SHIP"
       }
     ],
     "lore": "",
@@ -3636,12 +3576,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_DAO_LIGHT_CRUISER"
       }
     ],
     "lore": "",
@@ -3741,12 +3675,6 @@
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_DIYU_IMMOLATION_CRUISER"
       }
     ],
     "lore": "",
@@ -4045,12 +3973,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HOKKAIDO_HEAVY_CRUISER"
       }
     ],
     "lore": "",
@@ -4252,7 +4174,24 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Chinese",
+        "Flagship"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Chinese",
+              "Flagship"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_meru_heavy_cruiser",
@@ -4490,12 +4429,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_MERU_HEAVY_CRUISER"
       }
     ],
     "lore": "",
@@ -4696,12 +4629,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_OSAKA_CRUISER"
       }
     ],
     "lore": "",
@@ -4887,12 +4814,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_QIANG_CRUISER"
       }
     ],
     "lore": "",
@@ -5105,12 +5026,6 @@
         "cost_per_unit": 35,
         "max": 1,
         "tag": "MAGMA_CAST_GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_RYUJIN_SUBMARINE"
       }
     ],
     "lore": "",
@@ -5302,12 +5217,6 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_SAKATA_HEAVY_DESTROYER"
       }
     ],
     "lore": "",
@@ -5443,12 +5352,6 @@
     ],
     "hardpoint_options": {},
     "options_and_upgrades": [
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_GANGCHEORI_DRACONIC_COLOSSUS"
-      },
       {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
         "cost_per_unit": null,
@@ -5666,14 +5569,7 @@
         }
       ]
     },
-    "options_and_upgrades": [
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_GONG_DESTROYER"
-      }
-    ],
+    "options_and_upgrades": [],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
@@ -5839,14 +5735,7 @@
         }
       ]
     },
-    "options_and_upgrades": [
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HEXIE_HOVER_ZEBEK"
-      }
-    ],
+    "options_and_upgrades": [],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
@@ -6133,12 +6022,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HONSHU_LIGHT_CRUISER"
       }
     ],
     "lore": "",
@@ -6336,12 +6219,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_KANAGAWA_HEAVY_MONITOR"
       }
     ],
     "lore": "",
@@ -6436,12 +6313,6 @@
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_KANSAI_TORPEDO_SUBMARINE"
       }
     ],
     "lore": "",
@@ -6750,7 +6621,22 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 2,
-    "max": 6
+    "max": 6,
+    "attachment": {
+      "parent_traits": [
+        "Japanese"
+      ],
+      "max_models": 2,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Japanese"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_miyagi_advanced_monitor",
@@ -6991,12 +6877,6 @@
         ]
       },
       {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_MIYAGI_ADVANCED_MONITOR"
-      },
-      {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
         "cost_per_unit": null,
         "max": 0,
@@ -7127,7 +7007,24 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 2,
-    "max": 8
+    "max": 8,
+    "attachment": {
+      "parent_traits": [
+        "Chinese",
+        "Support"
+      ],
+      "max_models": 2,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Chinese",
+              "Support"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_shenlong_draconic_colossus",
@@ -7566,14 +7463,7 @@
         }
       ]
     },
-    "options_and_upgrades": [
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_WUSONG_MONITOR"
-      }
-    ],
+    "options_and_upgrades": [],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
@@ -7816,19 +7706,28 @@
             "value": 3
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_DEFENCE_PLATFORM_BARANGAO_CLA"
       }
     ],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Platform"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Platform"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_heavy_platform_malandok_class",
@@ -8028,12 +7927,6 @@
             "value": 3
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HEAVY_PLATFORM_MALANDOK_CLASS"
       }
     ],
     "lore": "",
@@ -8205,7 +8098,22 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 2
+    "max": 2,
+    "attachment": {
+      "parent_traits": [
+        "Rotorcraft"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Rotorcraft"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_ikuchi_exo_submersible_carrier",
@@ -8327,12 +8235,6 @@
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_IKUCHI_EXO_SUBMERSIBLE_CARRIE"
       }
     ],
     "lore": "",
@@ -8457,12 +8359,6 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_KAIJU_IKA_COLOSSUS"
       }
     ],
     "lore": "",
@@ -8586,12 +8482,6 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_KOROMODAKO_ATTACK_SUBMARINE"
       }
     ],
     "lore": "",
@@ -8852,12 +8742,6 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_MEKONG_ASSAULT_CRUISER"
       }
     ],
     "lore": "",
@@ -9003,12 +8887,6 @@
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_OFUKORO_IKA_COLOSSUS"
       }
     ],
     "lore": "",
@@ -9514,12 +9392,6 @@
             "value": null
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_SANSHIN_JUDGEMENT_AIRCRUISER"
       }
     ],
     "lore": "",
@@ -9768,12 +9640,6 @@
         ]
       },
       {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_YAMAGUCHI_ADVANCED_CRUISER"
-      },
-      {
         "description": "This unit has mandatory or subclass choices in its Force Selection entry; see listed options for the available choices.",
         "cost_per_unit": null,
         "max": 0,
@@ -9979,7 +9845,7 @@
       {
         "description": "Upgrade any number of models with Huo Broadsides.",
         "cost_per_unit": 5,
-        "max": null,
+        "max": 3,
         "tag": "HUO_BROADSIDES",
         "adds_properties": [
           {
@@ -9987,12 +9853,6 @@
             "value": null
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_YANSHI_FIREBASE"
       }
     ],
     "lore": "",
@@ -10175,12 +10035,6 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_YAOJI_BOMBARDMENT_CRUISER"
       }
     ],
     "lore": "",
@@ -10590,7 +10444,22 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 2,
-    "max": 6
+    "max": 6,
+    "attachment": {
+      "parent_traits": [
+        "Underwater"
+      ],
+      "max_models": 2,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Underwater"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_hobakbeol_assault_rotor",
@@ -10792,14 +10661,7 @@
         }
       ]
     },
-    "options_and_upgrades": [
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HOBAKBEOL_ASSAULT_ROTOR"
-      }
-    ],
+    "options_and_upgrades": [],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
@@ -10908,12 +10770,6 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_UMIBOZU_ATTACK_SUBMARINE"
       }
     ],
     "lore": "",
@@ -11112,12 +10968,6 @@
             "value": null
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_EUROPA_GRAND_CONVEYOR"
       }
     ],
     "lore": "",
@@ -11188,19 +11038,28 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_HERMES_SUPPLY_FREIGHTER"
       }
     ],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 3
+    "max": 3,
+    "attachment": {
+      "parent_traits": [
+        "Merchantman"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Merchantman"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_lantau_merchantman",
@@ -11356,19 +11215,28 @@
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_LANTAU_MERCHANTMAN"
       }
     ],
     "lore": "",
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 4
+    "max": 4,
+    "attachment": {
+      "parent_traits": [
+        "Chinese"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Chinese"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "empire_supply_platform_magwayen_class",
@@ -11444,12 +11312,6 @@
             "value": 3
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_SUPPLY_PLATFORM_MAGWAYEN_CLAS"
       }
     ],
     "lore": "",
@@ -11644,12 +11506,6 @@
             "value": null
           }
         ]
-      },
-      {
-        "description": "Force Selection entry includes attachment choices; add eligible units with the app's attachment controls.",
-        "cost_per_unit": null,
-        "max": 0,
-        "tag": "ATTACHMENT_NOTE_EMPIRE_TITAN_MASS_CONVEYOR"
       }
     ],
     "lore": "",
@@ -11720,6 +11576,21 @@
     "version": "4.01",
     "date": "2026-06-18",
     "min": 1,
-    "max": 1
+    "max": 1,
+    "attachment": {
+      "parent_traits": [
+        "Chinese"
+      ],
+      "max_models": 1,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Chinese"
+            ]
+          }
+        ]
+      }
+    }
   }
 ]

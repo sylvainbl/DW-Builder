@@ -5377,7 +5377,10 @@
         "description": "Add 1 Defence Platform as an Attachment",
         "cost_per_unit": 60,
         "max": 1,
-        "tag": "ATTACHMENT_DEFENCE_PLATFORM"
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM",
+        "attachment_unit_ids": [
+          "sultanate_defence_platform_jebel_class"
+        ]
       }
     ],
     "lore": "sinking entire forerunner fleets with repeated, crippling volleys from their mounted gunneries. Housed within its labyrinthine construction, highly complex repair facilities offer a safe haven for flagging ships, with elite crews cycled out every six months. Whether in the midst of battle, or simply for merchant vessels looking for protective harbourage in a storm, the speed with which these engineers work allows their charges to return to the waves within a matter of hours. In addition to the Deniz Mayını fields that surround them- great bombs capable of sinking the heaviest of ships entirely- these platforms are often outfitted with a variety of protective generators. These obfuscate or defend against incoming enemy fire with an ease oft unseen in such static targets, with shields shrugging off heavy shells and magnetic generators causing projectiles to veer wildly off course.",
@@ -5626,7 +5629,9 @@
             "value": null
           }
         ],
-        "choices": "Generator Hardpoints list"
+        "choices": [
+          "Generator Hardpoints list"
+        ]
       }
     ],
     "lore": "Enemy vessels caught in this blast can do little against such an assault. These needles, so light to the touch, are capable of slicing through skin with the slightest of effort. Drawn inexorably down by gravity and picking up speed, this shower of fragmented metal can shred through steel and flesh alike in a matter of seconds. Mihrimahs have been known to cripple entire units of cruisers, tearing apart decking, eviscerating important machinery, and disabling weapons in a single shot. Most effective over long range, there are few targets the Mihrimah cannot reach, a fact that is aided with its onboard Portal Generator. With the ability to open and close liminal tears in reality across the waves, admirals have even been known to fire flechette launchers through these portals, in a tactic known as the Şahin Manoeuvre after Admiral Aras Şahin's decisive gambit against Union forces in the Pacific.",
@@ -6669,7 +6674,17 @@
       "parent_traits": [
         "Egyptian Flagship"
       ],
-      "max_models": 2
+      "max_models": 2,
+      "eligibility": {
+        "anyOf": [
+          {
+            "allOfTags": [
+              "Egyptian",
+              "Flagship"
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -7401,7 +7416,10 @@
         "cost_per_unit": 25,
         "max": 1,
         "tag": "ATTACHMENT_HERMES_SUPPLY_FREIGHTER",
-        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE"
+        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE",
+        "attachment_unit_ids": [
+          "sultanate_hermes_supply_freighter"
+        ]
       }
     ],
     "lore": "be the smoothest ever designed. Nevertheless, as with much in this Dystopian Age, military contracts have proven to be an irresistible joint venture. Fleets of Europa-class container ships, usually sailing under a variety of neutral or small nation flags, are in consistently high demand amongst Great Powers looking to avoid tariffs, circumvent blockades, or covertly land troops on unsuspecting islands. Several dozen operate out of the Turkish port city of Karamürsel, supplying the greater part of the Sultanate's Mediterranean fleet. The original Callisto, however, has become a common sight in the pleasure ports of Tripoli, Athens, and Alexandria, after Sultan Mustafa made Norddeutscher Hamburg and White Wolf an offer they could not refuse. It now serves more or less as its designers intended-as the ultra-luxurious flagship for the Golden Sultan himself.",
@@ -7766,7 +7784,10 @@
         "description": "Add 1 Defence Platform as an Attachment",
         "cost_per_unit": 60,
         "max": 1,
-        "tag": "ATTACHMENT_DEFENCE_PLATFORM"
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM",
+        "attachment_unit_ids": [
+          "sultanate_defence_platform_jebel_class"
+        ]
       }
     ],
     "lore": "engineers, trained under the shipwrights of the Crimson League for a whole year before their posting. Aided by multi-limbed Yengeç automata-crab-like machines that skitter about the platform with uncanny speed and precision-these expert crews are at their best under pressure, capable of stripping and refitting ships in a matter of minutes. Many a vessel at danger of sinking has docked at these rigs mid-battle, only to emerge into the fray once more, refreshed and ready to turn the tide once more in the Sultanate's favour. Though unassuming, few tools are as potent in ensuring Sultan Mustafa's supremacy over the waves, and those who serve aboard these stations are well compensated for their skills. Promised an early retirement and a considerable stipend for their families, both before and after service, the Benghazi's crew count amongst some of the most efficient and loyal sailors in the Sultanate's navy.",
@@ -7922,7 +7943,10 @@
         "cost_per_unit": 25,
         "max": 1,
         "tag": "ATTACHMENT_HERMES_SUPPLY_FREIGHTER",
-        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE"
+        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE",
+        "attachment_unit_ids": [
+          "sultanate_hermes_supply_freighter"
+        ]
       }
     ],
     "lore": "Bosporus Strait, the Straits of Gibraltar, and the recently completed Suez Canal, the Sultanate thrives on maritime trade- and on the duties this allows it to impose on others. Indeed, given the quantity of wealth that it bleeds daily into the hands of the House of Gold, there are those who would argue that these merchant fleets are more vital to the Sultanate than any battleship. This is a view most volubly expressed by the merchant captains themselves, who tend to be prosperous, extravagantly attired individuals with only limited attachment to the Sublime Navy. It is a boast with some merit, however. A Titan-class vessel- particularly one outfitted with advanced Sultanate weaponry-is a match for any smaller warship, but their benefit to a Sultanate fleet is more often in the psychological effect they bring. Sultanate seamen regard their Titan's as floating paychests, regardless of the goods they may or may not be carrying, cheering their arrival in battle and fighting all the harder when they are near.",

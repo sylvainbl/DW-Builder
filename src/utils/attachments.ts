@@ -59,11 +59,28 @@ function getAttachmentRequirements(unit: Unit): AttachmentRequirement[] {
     return parseAttachmentRequirement(keyword)
 }
 
+function getParentAttachmentTargetIds(parent: Unit): Set<string> {
+    return new Set(parent.options_and_upgrades
+        .filter((option) => option.max !== 0)
+        .flatMap((option) => option.attachment_unit_ids ?? []))
+}
+
 function parentMatchesTrait(parentTraits: string[], requiredTrait: string): boolean {
     const normalized = requiredTrait.toLowerCase()
     if (parentTraits.includes(normalized)) return true
     const words = normalized.split(/\s+/).filter(Boolean)
     return words.length > 1 && words.every((word) => parentTraits.includes(word))
+}
+
+function parentMatchesExplicitEligibility(attachment: Unit, parent: Unit, parentTraits: string[]): boolean | null {
+    const branches = attachment.attachment?.eligibility?.anyOf
+    if (!branches?.length) return null
+
+    return branches.some((branch) => {
+        const tagMatch = branch.allOfTags?.every((tag) => parentMatchesTrait(parentTraits, tag)) ?? true
+        const unitMatch = branch.parentUnitIds?.includes(parent.id) ?? true
+        return tagMatch && unitMatch
+    })
 }
 
 function hasMatchingPositionalTrait(attachmentTags: string[], parentTags: string[]): boolean {
@@ -82,9 +99,13 @@ export function canAttachToParent(
     const attachmentTags = tags.attachmentTags ?? attachment.tags
     const parentTags = tags.parentTags ?? parent.tags
     if (!hasMatchingPositionalTrait(attachmentTags, parentTags)) return false
+    const parentAttachmentTargetIds = getParentAttachmentTargetIds(parent)
+    if (parentAttachmentTargetIds.size > 0 && !parentAttachmentTargetIds.has(attachment.id)) return false
+    const parentTraits = getUnitTraits(parent, parentTags)
+    const explicitEligibility = parentMatchesExplicitEligibility(attachment, parent, parentTraits)
+    if (explicitEligibility != null) return explicitEligibility
     const requirements = getAttachmentRequirements(attachment)
     if (requirements.length === 0) return false
-    const parentTraits = getUnitTraits(parent, parentTags)
     return requirements.every((requirement) => (
         requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait))
     ))

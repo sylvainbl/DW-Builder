@@ -73,6 +73,7 @@ export interface OptionUpgrade {
     removes_weapon_slots?: string[]
     system_generator_slots?: number
     choices?: unknown[] | string
+    attachment_unit_ids?: string[]
 }
 
 export interface Generator {
@@ -156,6 +157,14 @@ export interface Unit {
     attachment?: {
         parent_traits: string[]
         max_models?: number | null
+        only_as_attachment?: boolean
+        eligibility?: {
+            anyOf: {
+                allOfTags?: string[]
+                parentUnitIds?: string[]
+            }[]
+        }
+        note?: string
     }
 }
 

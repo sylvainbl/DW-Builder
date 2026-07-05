@@ -279,7 +279,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -480,7 +479,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -577,7 +575,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -736,7 +733,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -785,7 +781,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -898,7 +894,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -1084,7 +1079,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -1279,7 +1273,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -1517,7 +1510,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -1671,7 +1663,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -2066,7 +2057,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -2343,6 +2334,30 @@
       ],
       "L": [
         {
+          "name": "Guided Vierling Autokanone",
+          "arc": "FPSA",
+          "slot": null,
+          "firepower": {
+            "C": 3,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Guided",
+              "value": 1
+            },
+            {
+              "name": "Indiscriminate",
+              "value": null
+            },
+            {
+              "name": "Sky Strike",
+              "value": 1
+            }
+          ]
+        },
+        {
           "name": "Guided Erderschutterer Rocket Battery",
           "arc": null,
           "slot": null,
@@ -2384,7 +2399,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -2461,7 +2476,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -2631,7 +2645,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -2712,7 +2725,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -2845,7 +2858,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -2894,7 +2906,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -3005,7 +3017,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -3238,7 +3249,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -3443,7 +3453,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -3553,7 +3562,6 @@
     ],
     "systems": [],
     "weapons": [],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -3689,7 +3697,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -3876,7 +3883,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -4365,7 +4371,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -4481,7 +4486,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -4718,7 +4722,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -4927,7 +4930,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -5177,7 +5179,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -5309,7 +5311,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -5480,7 +5481,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -5624,7 +5624,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -5832,7 +5831,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -6040,7 +6038,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -6167,7 +6164,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -6260,7 +6256,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -6348,7 +6343,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -6503,7 +6497,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -6611,7 +6604,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -6761,7 +6753,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -6876,7 +6867,6 @@
       }
     ],
     "weapons": [],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -7020,7 +7010,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -7178,7 +7167,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -7207,7 +7195,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       }
     ],
@@ -7374,7 +7362,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
@@ -7592,7 +7579,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -7696,7 +7682,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
@@ -7793,7 +7778,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -8513,7 +8497,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -8640,7 +8623,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -8833,7 +8815,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
@@ -9257,7 +9238,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "H": [
         {
@@ -9418,7 +9398,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "L": [
         {
@@ -9447,7 +9426,7 @@
       {
         "description": "Replace Light Hardpoint with a Freya Array",
         "cost_per_unit": 0,
-        "max": null,
+        "max": 1,
         "tag": "FREYA_ARRAY"
       },
       {
@@ -9665,7 +9644,6 @@
         ]
       }
     ],
-    "short_range_squadrons": [],
     "hardpoint_options": {
       "S": [
         {
