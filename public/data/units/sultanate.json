@@ -4308,7 +4308,7 @@
         "value": null
       },
       {
-        "name": "Shallow Draft",
+        "name": "Shallow Draught",
         "value": null
       },
       {
@@ -6682,7 +6682,12 @@
     "point_cost_per_model": 60,
     "vpr": 2,
     "models": "2-5",
-    "tags": [],
+    "tags": [
+      "Sultanate",
+      "Surface",
+      "Scout",
+      "Hovercraft"
+    ],
     "stats": {
       "MAS": 2,
       "SPD": "1\"-11\"",

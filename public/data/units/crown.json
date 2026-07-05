@@ -817,7 +817,8 @@
       "Flagship",
       "Airship",
       "Capital",
-      "Carrier"
+      "Carrier",
+      "Airborne"
     ],
     "stats": {
       "MAS": 6,
