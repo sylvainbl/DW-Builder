@@ -1,4 +1,5 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
+import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
 import { getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries } from './battlefleets'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
@@ -17,6 +18,11 @@ interface PrintableModel {
     label: string
     points: number
     config: UnitConfig
+}
+
+interface PrintContext extends PointsContext {
+    list: ArmyList
+    battlefleetDefinitions: BattlefleetDefinition[]
 }
 
 function escapeHtml(value: string): string {
@@ -132,12 +138,16 @@ function selectedModelRuleEffects(unit: Unit, entry: ArmyUnit): { properties: Na
     }, { properties: [], systems: [], qualities: [], removedProperties: new Set<string>(), removedSystems: new Set<string>() } as { properties: NamedValue[]; systems: NamedValue[]; qualities: NamedValue[]; removedProperties: Set<string>; removedSystems: Set<string> })
 }
 
-function displayedProperties(unit: Unit, entry: ArmyUnit): NamedValue[] {
+function displayedProperties(unit: Unit, entry: ArmyUnit, units: Unit[], context?: PrintContext): NamedValue[] {
     const effects = selectedModelRuleEffects(unit, entry)
-    return mergeNamedValues(unit.properties.filter((property) => !effects.removedProperties.has(property.name)), effects.properties)
+    return mergeNamedValues(
+        unit.properties.filter((property) => !effects.removedProperties.has(property.name)),
+        effects.properties,
+        getBattlefleetAddedProperties(context?.list, context?.battlefleetDefinitions ?? [], units, entry),
+    )
 }
 
-function displayedSystems(unit: Unit, entry: ArmyUnit): NamedValue[] {
+function displayedSystems(unit: Unit, entry: ArmyUnit, units: Unit[], context?: PrintContext): NamedValue[] {
     const selectedGeneratorSystems = entry.models.flatMap((model) => {
         const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
         return generatorSelections.map((generatorSelection) => ({ name: generatorSelection.generatorName, value: null }))
@@ -147,10 +157,16 @@ function displayedSystems(unit: Unit, entry: ArmyUnit): NamedValue[] {
         return getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
     })
     const effects = selectedModelRuleEffects(unit, entry)
-    return mergeNamedValues(unit.systems.filter((system) => !effects.removedSystems.has(system.name)), selectedGeneratorSystems, effects.systems, factionSpecialRules)
+    return mergeNamedValues(
+        unit.systems.filter((system) => !effects.removedSystems.has(system.name)),
+        selectedGeneratorSystems,
+        effects.systems,
+        factionSpecialRules,
+        getBattlefleetAddedSystems(context?.list, context?.battlefleetDefinitions ?? [], units, entry),
+    )
 }
 
-function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleReference>): void {
+function collectRules(unit: Unit, entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleReference>, context?: PrintContext): void {
     for (const model of entry.models) {
         const optionRuleEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
         for (const property of unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name))) addRule(ruleMap, 'properties', property)
@@ -164,6 +180,8 @@ function collectRules(unit: Unit, entry: ArmyUnit, ruleMap: Map<string, RuleRefe
         for (const system of optionRuleEffects.systems) addRule(ruleMap, 'systems', system)
         for (const quality of optionRuleEffects.qualities) addRule(ruleMap, 'qualities', quality)
     }
+    for (const property of getBattlefleetAddedProperties(context?.list, context?.battlefleetDefinitions ?? [], units, entry)) addRule(ruleMap, 'properties', property)
+    for (const system of getBattlefleetAddedSystems(context?.list, context?.battlefleetDefinitions ?? [], units, entry)) addRule(ruleMap, 'systems', system)
 }
 
 function renderRuleBadges(rules: NamedValue[], category: RuleCategory): string {
@@ -318,7 +336,7 @@ function renderModelSummary(unit: Unit, models: PrintableModel[]): string {
     }).join('')
 }
 
-function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleReference>, nested = false, pointsContext?: PointsContext): string {
+function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleReference>, nested = false, context?: PrintContext): string {
     const unit = units.find((item) => item.id === entry.unitId)
     if (!unit) {
         return `
@@ -334,12 +352,12 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
         `
     }
 
-    collectRules(unit, entry, ruleMap)
+    collectRules(unit, entry, units, ruleMap, context)
     const doctrine = entry.config.fleetDoctrineSelection
         ? `<div class="note"><strong>Fleet Doctrine:</strong> ${escapeHtml(entry.config.fleetDoctrineSelection.doctrineName)} (+${entry.config.fleetDoctrineSelection.doctrineCost} pts)</div>`
         : ''
-    const discountFirstEscort = hasChitaSwarmEscortDiscount(entry, pointsContext)
-    const attachments = (entry.attachedUnits ?? []).map((attachment) => renderEntry(attachment, units, ruleMap, true, pointsContext)).join('')
+    const discountFirstEscort = hasChitaSwarmEscortDiscount(entry, context)
+    const attachments = (entry.attachedUnits ?? []).map((attachment) => renderEntry(attachment, units, ruleMap, true, context)).join('')
 
     return `
         <article class="unit-card ${nested ? 'attachment' : ''}">
@@ -354,8 +372,8 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
             <div class="stats">
                 ${Object.entries(unit.stats).map(([key, value]) => `<span><strong>${escapeHtml(key)}</strong> ${escapeHtml(String(value))}</span>`).join('')}
             </div>
-            <div class="rule-row"><strong>Properties</strong><div>${renderRuleBadges(displayedProperties(unit, entry), 'properties')}</div></div>
-            <div class="rule-row"><strong>Systems</strong><div>${renderRuleBadges(displayedSystems(unit, entry), 'systems')}</div></div>
+            <div class="rule-row"><strong>Properties</strong><div>${renderRuleBadges(displayedProperties(unit, entry, units, context), 'properties')}</div></div>
+            <div class="rule-row"><strong>Systems</strong><div>${renderRuleBadges(displayedSystems(unit, entry, units, context), 'systems')}</div></div>
             ${doctrine}
             <div class="profile-block">
                 <h4>Unit Options</h4>
@@ -375,7 +393,7 @@ function renderBattlefleetSection(
     forceFactionId: string,
     units: Unit[],
     ruleMap: Map<string, RuleReference>,
-    pointsContext: PointsContext,
+    context: PrintContext,
 ): string {
     const points = entries.reduce((sum, entry) => sum + entry.totalPoints, 0)
     const forceType = definition ? getBattlefleetForceType(definition, forceFactionId) : null
@@ -393,7 +411,7 @@ function renderBattlefleetSection(
                 </div>
                 <strong>${points} pts</strong>
             </div>
-            ${entries.length > 0 ? entries.map((entry) => renderEntry(entry, units, ruleMap, false, pointsContext)).join('') : '<div class="empty">No units assigned.</div>'}
+            ${entries.length > 0 ? entries.map((entry) => renderEntry(entry, units, ruleMap, false, context)).join('') : '<div class="empty">No units assigned.</div>'}
         </section>
     `
 }
@@ -437,7 +455,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
     const ruleMap = new Map<string, RuleReference>()
     const definitions = new Map(battlefleetDefinitions.map((definition) => [definition.id, definition]))
     const battlefleets = list.battlefleets ?? []
-    const pointsContext = { battlefleets }
+    const printContext = { battlefleets, list, battlefleetDefinitions }
     const assignedIds = new Set(battlefleets.map((battlefleet) => battlefleet.instanceId))
     const entriesByBattlefleetId = new Map<string, ArmyUnit[]>(battlefleets.map((battlefleet) => [battlefleet.instanceId, []]))
     const unassignedEntries: ArmyUnit[] = []
@@ -460,10 +478,10 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
         list.faction_id,
         units,
         ruleMap,
-        pointsContext,
+        printContext,
     ))
     const unassigned = unassignedEntries.length > 0
-        ? `<section class="battlefleet"><div class="section-head"><div><h2>Unassigned</h2><div class="muted">Units without a Battlefleet</div></div><strong>${unassignedEntries.reduce((sum, entry) => sum + entry.totalPoints, 0)} pts</strong></div>${unassignedEntries.map((entry) => renderEntry(entry, units, ruleMap, false, pointsContext)).join('')}</section>`
+        ? `<section class="battlefleet"><div class="section-head"><div><h2>Unassigned</h2><div class="muted">Units without a Battlefleet</div></div><strong>${unassignedEntries.reduce((sum, entry) => sum + entry.totalPoints, 0)} pts</strong></div>${unassignedEntries.map((entry) => renderEntry(entry, units, ruleMap, false, printContext)).join('')}</section>`
         : ''
 
     return `

@@ -10,6 +10,7 @@ import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
+import { getBattlefleetAddedProperties, getBattlefleetAddedSystems, getBattlefleetAddedTags } from '../../utils/battlefleetEffects'
 import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeModelGuardianPool, computeModelGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
 import { RuleModal } from '../ui/RuleModal'
 import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit, Weapon } from '../../types/index'
@@ -400,6 +401,7 @@ export default function UnitDetail() {
                     list={currentList}
                     units={units}
                     glossary={glossary}
+                    battlefleetDefinitions={battlefleetDefinitions}
                 />
             )
         }
@@ -449,6 +451,9 @@ export default function UnitDetail() {
     const systemGeneratorSlotCount = systemGeneratorChoices.length > 0 ? getSystemGeneratorSlotCount(unit) : 0
     const factionSpecialRules = getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
+    const battlefleetAddedTags = getBattlefleetAddedTags(currentList, battlefleetDefinitions, units, selectedEntry)
+    const battlefleetAddedProperties = getBattlefleetAddedProperties(currentList, battlefleetDefinitions, units, selectedEntry)
+    const battlefleetAddedSystems = getBattlefleetAddedSystems(currentList, battlefleetDefinitions, units, selectedEntry)
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
     const displayedWeapons = unit.weapons
         .map((weapon, index) => ({ weapon, index }))
@@ -456,12 +461,14 @@ export default function UnitDetail() {
     const displayedProperties = mergeNamedValues(
         unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name)),
         optionRuleEffects.properties,
+        battlefleetAddedProperties,
     )
     const displayedSystems = mergeNamedValues(
         unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)),
         generatorSelections.map((selection) => ({ name: selection.generatorName, value: null })),
         optionRuleEffects.systems,
         factionSpecialRules,
+        battlefleetAddedSystems,
     )
     const fleetDoctrineSelection = selectedEntry?.config.fleetDoctrineSelection ?? null
     const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
@@ -497,9 +504,9 @@ export default function UnitDetail() {
         && !(selectedEntryParent && optionUnavailableForAttachment(option))
     ))
     const hasOptions = availableOptions.length > 0
-    const displayedTags = promotedAkulaFlagship
-        ? [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), 'Flagship']
-        : getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
+    const displayedTags = Array.from(new Set(promotedAkulaFlagship
+        ? [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), ...battlefleetAddedTags, 'Flagship']
+        : [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), ...battlefleetAddedTags]))
     const visibleSquadrons = getVisibleSrsSquadrons(unit, displayedProperties)
     const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier' || property.name === 'Flight Deck' || property.name === 'SRS') && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry

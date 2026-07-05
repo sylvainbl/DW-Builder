@@ -478,8 +478,8 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
         [availableBattlefleetDefinitions, currentList?.faction_id],
     )
     const listGlossary = useMemo(
-        () => getListGlossary(currentList?.units ?? [], units, glossary),
-        [currentList?.units, glossary, units],
+        () => getListGlossary(currentList?.units ?? [], units, glossary, currentList, battlefleetDefinitions),
+        [battlefleetDefinitions, currentList, glossary, units],
     )
     const listGlossaryCount = useMemo(() => getListGlossaryCount(listGlossary), [listGlossary])
 

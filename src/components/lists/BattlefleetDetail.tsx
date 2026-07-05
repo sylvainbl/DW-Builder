@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Unit } from '../../types/index'
 import { getBattlefleetForceType, getMatchingBattlefleetElement, isMercenaryInForce, isUkrainianAkulaFlagship, sortBattlefleetEntries } from '../../utils/battlefleets'
-import { getBattlefleetDisplayInfo } from '../../utils/battlefleetDisplay'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections } from '../../utils/optionRuleEffects'
 import { computeArmyUnitVpr, computeEntriesVpr, computeOptionPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
@@ -116,9 +115,8 @@ export default function BattlefleetDetail({ battlefleet, definition, forceFactio
     const guardianPool = showGuardianPool ? computeEntriesGuardianPool(entries, units) : 0
     const guardianSurge = showGuardianPool ? computeEntriesGuardianSurge(entries, units) : 0
     const sortedEntries = sortBattlefleetEntries(entries, units)
-    const displayInfo = getBattlefleetDisplayInfo(definition.id)
-    const specialRuleText = definition.specialRuleText ?? displayInfo.specialRuleText ?? []
-    const battlefleetBonus = definition.battlefleetBonus ?? displayInfo.battlefleetBonus ?? null
+    const specialRuleText = definition.specialRuleText ?? []
+    const battlefleetBonus = definition.battlefleetBonus ?? null
     const selectedFleetDoctrines = sortedEntries.flatMap((entry) => {
         const selection = entry.config.fleetDoctrineSelection
         const unit = units.find((item) => item.id === entry.unitId)

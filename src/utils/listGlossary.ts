@@ -1,4 +1,5 @@
-import type { ArmyUnit, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
+import type { ArmyList, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
+import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
 import { getFactionSpecialRules } from './factionSpecialRules'
 import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
@@ -40,9 +41,16 @@ function addSrsProperties(ruleNames: Record<GlossaryCategory, Set<string>>, unit
     }
 }
 
-function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: ArmyUnit, unitsById: Map<string, Unit>) {
+function addEntryRules(
+    ruleNames: Record<GlossaryCategory, Set<string>>,
+    entry: ArmyUnit,
+    unitsById: Map<string, Unit>,
+    list?: ArmyList | null,
+    battlefleetDefinitions: BattlefleetDefinition[] = [],
+) {
     const unit = unitsById.get(entry.unitId)
     if (!unit) return
+    const units = [...unitsById.values()]
 
     const modelConfigs = entry.models.length > 0
         ? entry.models.map((model) => model.config)
@@ -76,17 +84,26 @@ function addEntryRules(ruleNames: Record<GlossaryCategory, Set<string>>, entry: 
         addNamedValues(ruleNames.qualities, optionRuleEffects.qualities)
     }
 
+    addNamedValues(ruleNames.properties, getBattlefleetAddedProperties(list, battlefleetDefinitions, units, entry))
+    addNamedValues(ruleNames.systems, getBattlefleetAddedSystems(list, battlefleetDefinitions, units, entry))
+
     for (const attachment of entry.attachedUnits ?? []) {
-        addEntryRules(ruleNames, attachment, unitsById)
+        addEntryRules(ruleNames, attachment, unitsById, list, battlefleetDefinitions)
     }
 }
 
-export function getListGlossary(entries: ArmyUnit[], units: Unit[], glossary: Glossary | null): ListGlossary {
+export function getListGlossary(
+    entries: ArmyUnit[],
+    units: Unit[],
+    glossary: Glossary | null,
+    list?: ArmyList | null,
+    battlefleetDefinitions: BattlefleetDefinition[] = [],
+): ListGlossary {
     const unitsById = new Map(units.map((unit) => [unit.id, unit]))
     const ruleNames = emptyRuleSets()
 
     for (const entry of entries) {
-        addEntryRules(ruleNames, entry, unitsById)
+        addEntryRules(ruleNames, entry, unitsById, list, battlefleetDefinitions)
     }
 
     return Object.fromEntries(categories.map((category) => [

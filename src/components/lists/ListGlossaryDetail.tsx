@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { ArmyList, Glossary, Unit } from '../../types/index'
+import type { ArmyList, BattlefleetDefinition, Glossary, Unit } from '../../types/index'
 import { getListGlossary, type GlossaryCategory, type ListGlossaryRule } from '../../utils/listGlossary'
 import { MarkdownText, type GlossaryRuleLink } from '../ui/MarkdownText'
 import { RuleModal } from '../ui/RuleModal'
@@ -8,6 +8,7 @@ interface Props {
     list: ArmyList
     units: Unit[]
     glossary: Glossary | null
+    battlefleetDefinitions: BattlefleetDefinition[]
 }
 
 const categoryLabels: Record<GlossaryCategory, string> = {
@@ -35,9 +36,9 @@ function RuleBlock({ rule, glossary, onRuleClick }: { rule: ListGlossaryRule; gl
     )
 }
 
-export default function ListGlossaryDetail({ list, units, glossary }: Props) {
+export default function ListGlossaryDetail({ list, units, glossary, battlefleetDefinitions }: Props) {
     const [openRule, setOpenRule] = useState<GlossaryRuleLink | null>(null)
-    const listGlossary = getListGlossary(list.units, units, glossary)
+    const listGlossary = getListGlossary(list.units, units, glossary, list, battlefleetDefinitions)
     const totalRules = listGlossary.systems.length + listGlossary.properties.length + listGlossary.qualities.length
 
     return (

@@ -87,7 +87,9 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
     const visibleFactionIds = useMemo(() => {
         const ids = new Set<string>()
         if (selectedMercenaryFactionId) {
-            ids.add(selectedMercenaryFactionId)
+            for (const sourceFactionId of selectedBattlefleetDefinition?.unitSourceFactionIds ?? [selectedMercenaryFactionId]) {
+                ids.add(sourceFactionId)
+            }
             return ids
         }
         if (effectiveSourceMode !== 'mercenary' && factionId) ids.add(factionId)
@@ -95,7 +97,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
             mercenaryFactionIds.forEach((id) => ids.add(id))
         }
         return ids
-    }, [effectiveSourceMode, factionId, mercenaryFactionIds, selectedMercenaryFactionId])
+    }, [effectiveSourceMode, factionId, mercenaryFactionIds, selectedBattlefleetDefinition, selectedMercenaryFactionId])
     const filterSourceUnits = useMemo(
         () => units.filter((unit) => visibleFactionIds.size === 0 || visibleFactionIds.has(unit.faction_id)),
         [units, visibleFactionIds],
@@ -135,7 +137,10 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
     const sourceOptions = useMemo(() => {
         const forceFactionName = factionById.get(factionId ?? '')?.name ?? 'Current faction'
         if (selectedMercenaryFactionId) {
-            return [{ value: 'mercenary' as const, label: factionById.get(selectedMercenaryFactionId)?.name ?? selectedMercenaryFactionId }]
+            const sourceNames = (selectedBattlefleetDefinition?.unitSourceFactionIds ?? [selectedMercenaryFactionId])
+                .map((id) => factionById.get(id)?.name ?? id)
+                .join(', ')
+            return [{ value: 'mercenary' as const, label: sourceNames }]
         }
         const mercenaryNames = Array.from(mercenaryFactionIds)
             .map((id) => factionById.get(id)?.name ?? id)
@@ -148,7 +153,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
             { value: 'force' as const, label: forceFactionName },
             { value: 'mercenary' as const, label: mercenaryNames },
         ]
-    }, [currentList, factionById, factionId, mercenaryFactionIds, selectedMercenaryFactionId])
+    }, [currentList, factionById, factionId, mercenaryFactionIds, selectedBattlefleetDefinition, selectedMercenaryFactionId])
     const toggleDomain = (tag: string) => {
         setSelectedDomains((selected) => (
             selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag]

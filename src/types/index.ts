@@ -116,6 +116,14 @@ export interface BattlefleetBonus {
     text: string
 }
 
+export interface BattlefleetEffect {
+    scope: 'battlefleet' | 'force'
+    requirements?: BattlefleetRequirement[]
+    addTags?: string[]
+    addProperties?: NamedValue[]
+    addSystems?: NamedValue[]
+}
+
 export interface BattlefleetDefinition {
     id: string
     faction_id: string
@@ -123,12 +131,14 @@ export interface BattlefleetDefinition {
     type: BattlefleetType
     legendary?: boolean
     mercenary?: boolean
+    unitSourceFactionIds?: string[]
     elements: BattlefleetElement[]
     mainstayClassNames?: string[]
     additionalMainstays?: BattlefleetAdditionalMainstay[]
     specialRules?: string[]
     specialRuleText?: string[]
     battlefleetBonus?: BattlefleetBonus
+    effects?: BattlefleetEffect[]
 }
 
 export interface Unit {
