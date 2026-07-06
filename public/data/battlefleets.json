@@ -703,7 +703,7 @@
     ],
     "battlefleetBonus": {
       "name": "Naval Maniple",
-      "text": "All **Italian Patrol** units in this Force gain the Coordinated Defence and Defkoppers systems."
+      "text": "All **Italian Patrol** units in this Force gain the Coordinated Defence and Decksweepers systems."
     },
     "effects": [
       {
@@ -722,7 +722,7 @@
             "value": null
           },
           {
-            "name": "Defkoppers",
+            "name": "Decksweepers",
             "value": null
           }
         ]
