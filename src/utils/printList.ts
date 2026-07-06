@@ -60,7 +60,8 @@ function ruleKey(category: RuleCategory, name: string): string {
 }
 
 function addRule(ruleMap: Map<string, RuleReference>, category: RuleCategory, rule: NamedValue): void {
-    ruleMap.set(ruleKey(category, rule.name), {
+    const label = rule.value == null ? rule.name : `${rule.name} X`
+    ruleMap.set(ruleKey(category, label), {
         category,
         name: rule.name,
         value: rule.value,
@@ -74,13 +75,14 @@ function selectedWeapon(unit: Unit, model: ArmyModel, index: number, weapon: Wea
 }
 
 function optionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false): Array<{ option: OptionUpgrade; quantity: number; points: number | null }> {
-    return unit.options_and_upgrades.map((option) => {
+    return unit.options_and_upgrades.flatMap((option) => {
         const quantity = config.optionQuantities[option.tag] ?? 0
-        return {
+        if (quantity <= 0) return []
+        return [{
             option,
             quantity,
             points: computeOptionPoints(option, quantity, discountFirstEscort),
-        }
+        }]
     })
 }
 
@@ -189,6 +191,11 @@ function renderRuleBadges(rules: NamedValue[], category: RuleCategory): string {
     return rules.map((rule) => `<span class="badge ${category}">${escapeHtml(formatRuleName(rule))}</span>`).join('')
 }
 
+function renderRuleRow(title: string, rules: NamedValue[], category: RuleCategory): string {
+    if (rules.length === 0) return ''
+    return `<div class="rule-row"><strong>${escapeHtml(title)}</strong><div>${renderRuleBadges(rules, category)}</div></div>`
+}
+
 function renderWeaponRows(unit: Unit, config: UnitConfig): string {
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config)
     const generatorSelections = getEffectiveGeneratorSelections(unit, config)
@@ -246,7 +253,7 @@ function renderWeaponsTable(unit: Unit, config: UnitConfig): string {
 
 function renderOptionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false): string {
     const rows = optionRows(unit, config, discountFirstEscort)
-    if (rows.length === 0) return '<div class="empty compact">No options.</div>'
+    if (rows.length === 0) return ''
 
     return `
         <table class="profile-table option-table">
@@ -320,6 +327,7 @@ function renderSrsTable(unit: Unit): string {
 
 function renderModelSummary(unit: Unit, models: PrintableModel[]): string {
     return models.map((model) => {
+        const options = renderOptionRows(unit, model.config)
         return `
             <div class="model-line">
                 <div><strong>${escapeHtml(model.label)}</strong> <span class="muted">${model.points} pts</span></div>
@@ -327,10 +335,10 @@ function renderModelSummary(unit: Unit, models: PrintableModel[]): string {
                     <h4>Weapons</h4>
                     ${renderWeaponsTable(unit, model.config)}
                 </div>
-                <div class="profile-block">
+                ${options ? `<div class="profile-block">
                     <h4>Options & Upgrades</h4>
-                    ${renderOptionRows(unit, model.config)}
-                </div>
+                    ${options}
+                </div>` : ''}
             </div>
         `
     }).join('')
@@ -358,6 +366,8 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
         : ''
     const discountFirstEscort = hasChitaSwarmEscortDiscount(entry, context)
     const attachments = (entry.attachedUnits ?? []).map((attachment) => renderEntry(attachment, units, ruleMap, true, context)).join('')
+    const systems = displayedSystems(unit, entry, units, context)
+    const unitOptions = renderOptionRows(unit, entry.config, discountFirstEscort)
 
     return `
         <article class="unit-card ${nested ? 'attachment' : ''}">
@@ -372,13 +382,13 @@ function renderEntry(entry: ArmyUnit, units: Unit[], ruleMap: Map<string, RuleRe
             <div class="stats">
                 ${Object.entries(unit.stats).map(([key, value]) => `<span><strong>${escapeHtml(key)}</strong> ${escapeHtml(String(value))}</span>`).join('')}
             </div>
-            <div class="rule-row"><strong>Properties</strong><div>${renderRuleBadges(displayedProperties(unit, entry, units, context), 'properties')}</div></div>
-            <div class="rule-row"><strong>Systems</strong><div>${renderRuleBadges(displayedSystems(unit, entry, units, context), 'systems')}</div></div>
+            ${renderRuleRow('Properties', displayedProperties(unit, entry, units, context), 'properties')}
+            ${renderRuleRow('Systems', systems, 'systems')}
             ${doctrine}
-            <div class="profile-block">
+            ${unitOptions ? `<div class="profile-block">
                 <h4>Unit Options</h4>
-                ${renderOptionRows(unit, entry.config, discountFirstEscort)}
-            </div>
+                ${unitOptions}
+            </div>` : ''}
             <div class="model-grid">${renderModelSummary(unit, printableModels(unit, entry))}</div>
             ${renderSrsTable(unit)}
             ${attachments ? `<div class="attachments"><h4>Attachments</h4>${attachments}</div>` : ''}
@@ -419,12 +429,14 @@ function renderBattlefleetSection(
 function renderGlossaryCategory(title: string, rules: RuleReference[], glossary: Glossary | null): string {
     if (rules.length === 0) return ''
 
+    const sortedRules = [...rules].sort((a, b) => glossaryLabel(a).localeCompare(glossaryLabel(b)))
+
     return `
         <section class="glossary-category">
             <h3>${escapeHtml(title)}</h3>
-            ${rules.map((rule) => {
+            ${sortedRules.map((rule) => {
                 const text = glossary?.[rule.category]?.[rule.name] ?? null
-                const label = rule.value == null ? rule.name : `${rule.name} ${rule.value}`
+                const label = glossaryLabel(rule)
                 return `
                     <article class="glossary-entry">
                         <h4>${escapeHtml(label)}</h4>
@@ -436,8 +448,12 @@ function renderGlossaryCategory(title: string, rules: RuleReference[], glossary:
     `
 }
 
+function glossaryLabel(rule: RuleReference): string {
+    return rule.value == null ? rule.name : `${rule.name} X`
+}
+
 function renderGlossary(ruleMap: Map<string, RuleReference>, glossary: Glossary | null): string {
-    const rules = [...ruleMap.values()].sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name))
+    const rules = [...ruleMap.values()].sort((a, b) => a.category.localeCompare(b.category) || glossaryLabel(a).localeCompare(glossaryLabel(b)))
     if (rules.length === 0) return '<section class="glossary"><h2>Glossary</h2><div class="empty">No glossary rules found for this list.</div></section>'
 
     return `
@@ -491,7 +507,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                 <meta charset="utf-8" />
                 <title>${escapeHtml(list.name)} - Print</title>
                 <style>
-                    @page { margin: 14mm; }
+                    @page { margin: 12mm; }
                     * { box-sizing: border-box; }
                     body { margin: 0; color: #18181b; background: #f4f4f5; font-family: Inter, Arial, sans-serif; font-size: 12px; line-height: 1.35; }
                     main { max-width: 980px; margin: 0 auto; padding: 24px; background: white; }
@@ -509,8 +525,9 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     .section-head, .unit-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
                     .section-head { break-after: avoid; border: 1px solid #d4d4d8; background: #f4f4f5; padding: 10px 12px; }
                     .unit-card { border: 1px solid #d4d4d8; border-top: 0; padding: 10px 12px; }
-                    .unit-head, .stats, .rule-row, .profile-block h4 { break-after: avoid; }
-                    tr, .badge, .model-line { break-inside: avoid; }
+                    .unit-head, .stats, .rule-row, .profile-block h4, .model-line > div:first-child { break-after: avoid; }
+                    .unit-head, .unit-head + .stats { break-inside: avoid; }
+                    tr, .badge, .model-line, .weapon-table, .option-table, .srs-table { break-inside: avoid; }
                     .unit-card.attachment { margin-top: 8px; border: 1px dashed #a1a1aa; background: #fafafa; }
                     .stats { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 1px; margin-top: 8px; border: 1px solid #d4d4d8; background: #d4d4d8; }
                     .stats span { background: white; padding: 4px; text-align: center; }
@@ -537,10 +554,10 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     .empty.compact { padding: 5px 6px; }
                     .rule-text p + p, .glossary-entry p + p { margin-top: 6px; }
                     .glossary { border-top: 2px solid #18181b; padding-top: 14px; }
-                    .glossary-category { margin-top: 12px; }
-                    .glossary-category h3 { break-after: avoid; border-bottom: 1px solid #d4d4d8; padding-bottom: 4px; text-transform: uppercase; font-size: 12px; color: #3f3f46; }
-                    .glossary-entry { break-inside: avoid; border-bottom: 1px solid #e4e4e7; padding: 9px 0; }
-                    .glossary-entry h4 { margin-bottom: 4px; }
+                    .glossary-category { margin-top: 18px; }
+                    .glossary-category h3 { break-after: avoid; border-bottom: 1px solid #d4d4d8; padding-bottom: 5px; margin-bottom: 2px; text-transform: uppercase; font-size: 15px; font-weight: 800; color: #27272a; }
+                    .glossary-entry { border-bottom: 1px solid #e4e4e7; padding: 6px 0; }
+                    .glossary-entry h4 { break-after: avoid; margin-bottom: 3px; font-weight: 800; }
                     .print-note { margin-top: 10px; color: #71717a; font-size: 11px; }
                     @media print {
                         body { background: white; }
@@ -555,7 +572,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                         <div>
                             <h1>${escapeHtml(list.name)}</h1>
                             <div class="muted">${escapeHtml(list.faction_id)} · ${list.units.length} ${list.units.length === 1 ? 'unit' : 'units'}</div>
-                            <div class="print-note">Use your browser print dialog to save this preview as a PDF.</div>
+                            <div class="print-note">Use your browser print dialog to save this preview as a PDF. Disable browser headers and footers there to remove dates, titles, URLs, and page counters.</div>
                         </div>
                         <div class="total">${totalPoints.toLocaleString('fr-FR')} pts</div>
                     </header>
