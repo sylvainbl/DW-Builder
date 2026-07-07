@@ -1,5 +1,266 @@
 [
   {
+    "id": "enlightened_agora",
+    "faction_id": "enlightened",
+    "name": "Agora",
+    "sub_name": "Command Cruiser",
+    "faction": "Enlightened",
+    "role": "Flagship",
+    "point_cost_per_model": 130,
+    "vpr": 5,
+    "models": "1-2",
+    "tags": [
+      "Enlightened",
+      "ESCF",
+      "Surface",
+      "Flagship",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 7,
+      "ARM": 4,
+      "HUL": 8,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 3,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Wavelurker",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "Localised Anomaly Stabilisation Unit",
+        "value": null
+      },
+      {
+        "name": "Luminiferous Defences",
+        "value": 2
+      },
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Precognisant Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 10,
+          "S": 10,
+          "E": 10
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Particle Beamer",
+        "arc": "FPS",
+        "firepower": {
+          "C": 6,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ],
+        "slot": "H"
+      }
+    ],
+    "short_range_squadrons": [],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Caloric Oscillator",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Torrent",
+              "value": 2
+            },
+            {
+              "name": "Disruption",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Molecular Disharmoniser",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 2,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Synergy",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Pulse Emitter",
+          "arc": null,
+          "firepower": {
+            "C": 8,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Sturginium Atomiser",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Agitation",
+              "value": 5
+            },
+            {
+              "name": "Structural Failure",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Heavy Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": []
+        },
+        {
+          "name": "Heavy ESCF Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Replace a Heavy Hardpoint on any number of models with one of the following: a Generator Hardpoint, a Chrono Generator (+20 pts), or a Null-Clone Generator (+20 pts)",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR_OR_CHRONO_NULL_CLONE",
+        "generator_replaces_weapon": true,
+        "choices": [
+          {
+            "name": "Generator Hardpoint",
+            "cost_per_unit": null
+          },
+          {
+            "name": "Chrono Generator",
+            "cost_per_unit": 20
+          },
+          {
+            "name": "Null-Clone Generator",
+            "cost_per_unit": 20
+          }
+        ]
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "AGORA_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "AGORA_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "AGORA_ATTACHMENT"
+      }
+    ],
+    "lore": "",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
+    "min": 1,
+    "max": 2
+  },
+  {
     "id": "enlightened_archimedes",
     "faction_id": "enlightened",
     "name": "Archimedes",
@@ -45,6 +306,10 @@
       },
       {
         "name": "Priority Signals",
+        "value": null
+      },
+      {
+        "name": "TED",
         "value": null
       }
     ],
@@ -238,16 +503,16 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 4 Escort tokens at +10 pts each",
+        "description": "Add up to 4 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
       },
       {
-        "description": "The model may replace its Callimachus Chrono-Lathe system for a Diophantus Chaos-Orb",
+        "description": "Convert this model to Nansen Subclass: lose Callimachus Chrono-Lathe and gain Diophantus Chaos-Orb",
         "cost_per_unit": 0,
         "max": 1,
-        "tag": "DIOPHANTUS_CHAOS_ORB",
+        "tag": "NANSEN_SUBCLASS",
         "removes_systems": [
           "Callimachus Chrono-Lathe"
         ],
@@ -257,11 +522,41 @@
             "value": null
           }
         ]
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "ARCHIMEDES_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "ARCHIMEDES_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "ARCHIMEDES_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   },
@@ -296,7 +591,7 @@
     },
     "properties": [
       {
-        "name": "Forward Deployment",
+        "name": "Euripidean Host",
         "value": null
       },
       {
@@ -306,11 +601,6 @@
       {
         "name": "Maritime Patrol",
         "value": null
-      },
-      {
-        "name": "Mothership",
-        "value": null,
-        "detail": "Euripides Submarine"
       }
     ],
     "systems": [],
@@ -386,121 +676,12 @@
       }
     ],
     "hardpoint_options": {},
-    "options_and_upgrades": [
-      {
-        "description": "When this unit is added to a Force, it must take a Euripides Submarine unit as an Attachment, at no points cost",
-        "cost_per_unit": 0,
-        "max": 1,
-        "tag": "EURIPIDES_AMBUSH",
-        "mandatory": true,
-        "attachment_unit_ids": [
-          "enlightened_euripides"
-        ]
-      }
-    ],
-    "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
-    "min": 1,
-    "max": 1
-  },
-  {
-    "id": "enlightened_euripides",
-    "faction_id": "enlightened",
-    "name": "Euripides",
-    "sub_name": "Submarine",
-    "faction": "Enlightened",
-    "role": "Flagship",
-    "point_cost_per_model": null,
-    "vpr": null,
-    "models": 6,
-    "tags": [
-      "Enlightened",
-      "Underwater",
-      "Submarine",
-      "Automata",
-      "Light Vessel"
-    ],
-    "stats": {
-      "MAS": 1,
-      "SPD": "1\"-7\"",
-      "TRN": 3,
-      "DEF": 5,
-      "ARM": 3,
-      "HUL": 3,
-      "ACT": 1,
-      "BRD": 1,
-      "REP": 1,
-      "CRW": 5
-    },
-    "properties": [
-      {
-        "name": "Attachment",
-        "value": null,
-        "detail": "Chione"
-      },
-      {
-        "name": "Daredevil Crew",
-        "value": null
-      },
-      {
-        "name": "Forward Deployment",
-        "value": null
-      },
-      {
-        "name": "Heavy Prow",
-        "value": 5
-      },
-      {
-        "name": "Light Vessel",
-        "value": null
-      },
-      {
-        "name": "Mechanical Soul",
-        "value": null
-      }
-    ],
-    "systems": [
-      {
-        "name": "Hydrophone Relay",
-        "value": null
-      }
-    ],
-    "weapons": [
-      {
-        "name": "Conodontic Flenser",
-        "arc": "F",
-        "firepower": {
-          "C": 4,
-          "S": null,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Torrent",
-            "value": 2
-          },
-          {
-            "name": "Devastating",
-            "value": 1
-          }
-        ]
-      }
-    ],
-    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
-    "min": 6,
-    "max": 6,
-    "attachment": {
-      "parent_traits": [
-        "Chione"
-      ],
-      "max_models": 6,
-      "note": "This unit does not have a Points Cost, but can only be included in a Force as an Attachment to a Chione Subnautical Explorer unit."
-    }
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
+    "min": 1,
+    "max": 1
   },
   {
     "id": "enlightened_daedalus",
@@ -535,6 +716,10 @@
       {
         "name": "Boarding Parties",
         "value": 12
+      },
+      {
+        "name": "Reclamator Swarm",
+        "value": null
       }
     ],
     "systems": [
@@ -552,6 +737,10 @@
       },
       {
         "name": "Magnetic Generator",
+        "value": null
+      },
+      {
+        "name": "TED",
         "value": null
       }
     ],
@@ -749,15 +938,45 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "DAEDALUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "DAEDALUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "DAEDALUS_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   },
@@ -792,23 +1011,22 @@
     },
     "properties": [
       {
-        "name": "Carrier",
-        "value": 5
-      },
-      {
         "name": "Mine Layer",
-        "value": 2
+        "value": 1
       },
       {
-        "name": "SRS",
-        "value": null,
-        "detail": "Physeter Constructs"
+        "name": "Physeter Support Hub",
+        "value": null
       }
     ],
     "systems": [
       {
         "name": "Mine Sweeper",
         "value": 3
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -939,40 +1157,48 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "DESCARTES_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "DESCARTES_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "DESCARTES_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
-    "short_range_squadrons": [
-      {
-        "name": "Physeter Constructs",
-        "attack": 5,
-        "intercept": 1,
-        "support": 0,
-        "resilience": 4,
-        "properties": [
-          {
-            "name": "Exceptional",
-            "value": null
-          },
-          {
-            "name": "Specialist",
-            "value": null
-          },
-          {
-            "name": "Underwater SRS",
-            "value": null
-          }
-        ]
-      }
-    ]
+    "short_range_squadrons": []
   },
   {
     "id": "enlightened_hypatia",
@@ -1017,6 +1243,10 @@
       {
         "name": "Naval Shield Amplifier",
         "value": null
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -1147,22 +1377,52 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Choose three Generators from the Generator Hardpoints list",
+        "cost_per_unit": null,
+        "max": 3,
+        "tag": "MANDATORY_GENERATOR",
+        "mandatory": true
+      },
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
       },
       {
-        "description": "3 Generators must be chosen for this model",
-        "cost_per_unit": null,
-        "max": 3,
-        "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "HYPATIA_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "HYPATIA_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "HYPATIA_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   },
@@ -1204,7 +1464,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       }
     ],
     "systems": [
@@ -1215,6 +1475,10 @@
       {
         "name": "Repair Facilities",
         "value": 2
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -1329,20 +1593,62 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Scythe Fabrication Mount; Carrier increases to Carrier (12)",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "SCYTHE_FABRICATION_MOUNT",
+        "adds_properties": [
+          {
+            "name": "Carrier",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "ICARUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "ICARUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "ICARUS_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -1363,6 +1669,7 @@
     "models": 1,
     "tags": [
       "Enlightened",
+      "ESCF",
       "Surface",
       "Flagship",
       "Ship"
@@ -1397,6 +1704,10 @@
       {
         "name": "Flak Barrage",
         "value": 6
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -1487,7 +1798,7 @@
           "arc": null,
           "firepower": {
             "C": null,
-            "S": 5,
+            "S": 7,
             "E": 5
           },
           "qualities": [
@@ -1515,7 +1826,7 @@
               "value": 2
             },
             {
-              "name": "Sky strike",
+              "name": "Skystrike",
               "value": 1
             }
           ]
@@ -1531,7 +1842,7 @@
           "qualities": [
             {
               "name": "Agitation",
-              "value": 8
+              "value": 5
             },
             {
               "name": "Structural Failure",
@@ -1612,20 +1923,84 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Heavy ESCF Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy ESCF Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
         }
       ]
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "KEPLER_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "KEPLER_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "KEPLER_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   },
@@ -1666,7 +2041,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       },
       {
         "name": "Wavelurker",
@@ -1688,6 +2063,10 @@
       },
       {
         "name": "Superior Void-Engine",
+        "value": null
+      },
+      {
+        "name": "TED",
         "value": null
       }
     ],
@@ -1810,20 +2189,62 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Scythe Fabrication Mount; Carrier increases to Carrier (7)",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "SCYTHE_FABRICATION_MOUNT",
+        "adds_properties": [
+          {
+            "name": "Carrier",
+            "value": 7
+          }
+        ]
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "LOEW_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "LOEW_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "LOEW_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -1870,7 +2291,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       },
       {
         "name": "Vanguard",
@@ -1884,6 +2305,10 @@
     "systems": [
       {
         "name": "Logistical Support",
+        "value": null
+      },
+      {
+        "name": "TED",
         "value": null
       }
     ],
@@ -2077,20 +2502,62 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 4 Escort tokens at +10 pts each",
+        "description": "Add up to 4 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint with a Scythe Fabrication Mount; Carrier increases to Carrier (8)",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "SCYTHE_FABRICATION_MOUNT",
+        "adds_properties": [
+          {
+            "name": "Carrier",
+            "value": 8
+          }
+        ]
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "NANSEN_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "NANSEN_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "NANSEN_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -2106,7 +2573,7 @@
     "sub_name": "Skyfortress",
     "faction": "Enlightened",
     "role": "Flagship",
-    "point_cost_per_model": 345,
+    "point_cost_per_model": 365,
     "vpr": 11,
     "models": 1,
     "tags": [
@@ -2151,17 +2618,17 @@
         "value": null
       },
       {
-        "name": "Mobile",
+        "name": "Hellion Assaulters",
         "value": null
       },
       {
-        "name": "Sky Commandos",
+        "name": "Mobile",
         "value": null
       },
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       }
     ],
     "systems": [
@@ -2179,11 +2646,15 @@
         "name": "X-Ray Laser Banks",
         "arc": "FPSA",
         "firepower": {
-          "C": 14,
-          "S": 8,
+          "C": 16,
+          "S": 10,
           "E": null
         },
         "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
           {
             "name": "Arc",
             "value": 3
@@ -2307,15 +2778,26 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Add 2 Endymion Dyad Rotors as an Attachment",
+        "cost_per_unit": 70,
+        "max": 1,
+        "tag": "ATTACHMENT_ENDYMION",
+        "attachment_unit_ids": [
+          "enlightened_endymion"
+        ],
+        "mutually_exclusive_group": "THULE_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -2362,6 +2844,10 @@
       {
         "name": "Flak Barrage",
         "value": 6
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -2515,275 +3001,47 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 3 Escort tokens at +10 pts each",
+        "description": "Add up to 3 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 3,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "XENOPHON_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "XENOPHON_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "XENOPHON_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
-  },
-  {
-    "id": "enlightened_antarctica",
-    "faction_id": "enlightened",
-    "name": "Antarctica",
-    "sub_name": "Cruiser",
-    "faction": "Enlightened",
-    "role": "Line",
-    "point_cost_per_model": 130,
-    "vpr": 3,
-    "models": "1-3",
-    "tags": [
-      "Enlightened",
-      "Surface",
-      "Line",
-      "Ship"
-    ],
-    "stats": {
-      "MAS": 3,
-      "SPD": "2\"-8\"",
-      "TRN": 2,
-      "DEF": 7,
-      "ARM": 4,
-      "HUL": 8,
-      "ACT": 3,
-      "BRD": 3,
-      "REP": 2,
-      "CRW": 8
-    },
-    "properties": [
-      {
-        "name": "Wavelurker",
-        "value": null
-      }
-    ],
-    "systems": [],
-    "weapons": [
-      {
-        "name": "Weirding Torpedo Salvo",
-        "arc": "F",
-        "firepower": {
-          "C": 6,
-          "S": 6,
-          "E": 6
-        },
-        "qualities": [
-          {
-            "name": "Submerged",
-            "value": null
-          },
-          {
-            "name": "Guided",
-            "value": 2
-          },
-          {
-            "name": "Torpedo",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Heavy Particle Cannon",
-        "arc": "F",
-        "firepower": {
-          "C": 5,
-          "S": 8,
-          "E": 4
-        },
-        "qualities": [
-          {
-            "name": "Blast",
-            "value": 3
-          },
-          {
-            "name": "Precise",
-            "value": 1
-          },
-          {
-            "name": "Sympathetic Detonation",
-            "value": null
-          }
-        ],
-        "slot": "S"
-      },
-      {
-        "name": "Particle Beamer",
-        "arc": "FPS",
-        "firepower": {
-          "C": 6,
-          "S": 5,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Precise",
-            "value": 1
-          }
-        ],
-        "slot": "H"
-      },
-      {
-        "name": "Particle Beamer",
-        "arc": "PSA",
-        "firepower": {
-          "C": 6,
-          "S": 5,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Precise",
-            "value": 1
-          }
-        ],
-        "slot": "H"
-      }
-    ],
-    "hardpoint_options": {
-      "S": [
-        {
-          "name": "Magneto Encapsulator",
-          "arc": null,
-          "firepower": {
-            "C": null,
-            "S": 5,
-            "E": 5
-          },
-          "qualities": [
-            {
-              "name": "Blast",
-              "value": 5
-            },
-            {
-              "name": "Traction",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Gravitronic Imperilator",
-          "arc": null,
-          "firepower": {
-            "C": 5,
-            "S": 7,
-            "E": 5
-          },
-          "qualities": [
-            {
-              "name": "Piercing",
-              "value": 2
-            },
-            {
-              "name": "Sky strike",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Sturginium Atomiser",
-          "arc": null,
-          "firepower": {
-            "C": 3,
-            "S": 5,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Agitation",
-              "value": 8
-            },
-            {
-              "name": "Structural Failure",
-              "value": 1
-            }
-          ]
-        }
-      ],
-      "H": [
-        {
-          "name": "Pulse Emitter",
-          "arc": null,
-          "firepower": {
-            "C": 8,
-            "S": 2,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Indiscriminate",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Caloric Oscillator",
-          "arc": null,
-          "firepower": {
-            "C": 5,
-            "S": null,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Torrent",
-              "value": 2
-            },
-            {
-              "name": "Disruption",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Sturginium Agitator",
-          "arc": null,
-          "firepower": {
-            "C": 1,
-            "S": 3,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Agitation",
-              "value": 5
-            },
-            {
-              "name": "Structural Failure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Molecular Disharmoniser",
-          "arc": null,
-          "firepower": {
-            "C": 4,
-            "S": 2,
-            "E": 1
-          },
-          "qualities": [
-            {
-              "name": "Arc",
-              "value": 1
-            },
-            {
-              "name": "Synergy",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
-    "options_and_upgrades": [],
-    "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
-    "min": 1,
-    "max": 3
   },
   {
     "id": "enlightened_copernicus",
@@ -2792,11 +3050,12 @@
     "sub_name": "Heavy Cruiser",
     "faction": "Enlightened",
     "role": "Line",
-    "point_cost_per_model": 120,
+    "point_cost_per_model": 145,
     "vpr": 3,
-    "models": "1-3",
+    "models": "1-2",
     "tags": [
       "Enlightened",
+      "ESCF",
       "Surface",
       "Line",
       "Ship"
@@ -2815,11 +3074,24 @@
     },
     "properties": [
       {
+        "name": "Ubiquitous",
+        "value": null
+      },
+      {
         "name": "Wavelurker",
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "Luminiferous Defences",
+        "value": 3
+      },
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Weirding Torpedo Salvo",
@@ -2935,7 +3207,7 @@
               "value": 2
             },
             {
-              "name": "Sky strike",
+              "name": "Skystrike",
               "value": 1
             }
           ]
@@ -2951,7 +3223,7 @@
           "qualities": [
             {
               "name": "Agitation",
-              "value": 8
+              "value": 5
             },
             {
               "name": "Structural Failure",
@@ -3032,15 +3304,91 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Heavy ESCF Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy ESCF Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Replace a Heavy Hardpoint on any number of models with one of the following: a Generator Hardpoint, a Chrono Generator (+20 pts), or a Null-Clone Generator (+20 pts)",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR_OR_CHRONO_NULL_CLONE",
+        "generator_replaces_weapon": true,
+        "choices": [
+          {
+            "name": "Generator Hardpoint",
+            "cost_per_unit": null
+          },
+          {
+            "name": "Chrono Generator",
+            "cost_per_unit": 20
+          },
+          {
+            "name": "Null-Clone Generator",
+            "cost_per_unit": 20
+          }
+        ]
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "COPERNICUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "COPERNICUS_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
-    "max": 3
+    "max": 2
   },
   {
     "id": "enlightened_lovelace",
@@ -3054,6 +3402,7 @@
     "models": "1-3",
     "tags": [
       "Enlightened",
+      "ESCF",
       "Surface",
       "Line",
       "Ship"
@@ -3072,11 +3421,20 @@
     },
     "properties": [
       {
+        "name": "Ubiquitous",
+        "value": null
+      },
+      {
         "name": "Wavelurker",
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Weirding Torpedo Salvo",
@@ -3207,34 +3565,75 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Heavy ESCF Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy ESCF Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
         }
       ]
     },
     "options_and_upgrades": [
       {
-        "description": "For +10 pts per model, every model in the unit may be upgraded with a Scythe Launcher. If so, the unit gains the Carrier trait, and the Carrier (1) and SRS (Scythe Fighters) properties.",
-        "cost_per_unit": 10,
+        "description": "Replace one Heavy Hardpoint on any number of models with a Generator Hardpoint",
+        "cost_per_unit": null,
         "max": 1,
-        "tag": "SCYTHE_LAUNCHER",
-        "adds_tags": [
-          "Carrier"
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
         ],
-        "adds_properties": [
-          {
-            "name": "Carrier",
-            "value": 1
-          },
-          {
-            "name": "SRS",
-            "value": null,
-            "detail": "Scythe Fighters"
-          }
-        ]
+        "mutually_exclusive_group": "LOVELACE_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "LOVELACE_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -3262,7 +3661,7 @@
       "ARM": 4,
       "HUL": 8,
       "ACT": 3,
-      "BRD": 3,
+      "BRD": null,
       "REP": 2,
       "CRW": 7
     },
@@ -3272,11 +3671,20 @@
         "value": 7
       },
       {
+        "name": "Reclamator Swarm",
+        "value": null
+      },
+      {
         "name": "Wavelurker",
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Weirding Torpedo Salvo",
@@ -3442,16 +3850,36 @@
     },
     "options_and_upgrades": [
       {
-        "description": "One Generator must be chosen for each model in this unit",
+        "description": "Choose one Generator from the Generator Hardpoints list for each model",
         "cost_per_unit": null,
         "max": 1,
         "tag": "MANDATORY_GENERATOR",
         "mandatory": true
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "TACITUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "TACITUS_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -3497,11 +3925,11 @@
         "value": null
       },
       {
-        "name": "Mobile",
+        "name": "Hellion Assaulters",
         "value": null
       },
       {
-        "name": "Sky Commandos",
+        "name": "Mobile",
         "value": null
       }
     ],
@@ -3521,14 +3949,18 @@
     ],
     "weapons": [
       {
-        "name": "X-Ray Laser Bank",
+        "name": "X-Ray Laser Banks",
         "arc": "FPSA",
         "firepower": {
-          "C": 8,
-          "S": 5,
+          "C": 10,
+          "S": 6,
           "E": null
         },
         "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
           {
             "name": "Arc",
             "value": 2
@@ -3627,10 +4059,10 @@
     },
     "options_and_upgrades": [
       {
-        "description": "The unit may be upgraded with a Haunebu Array at +20 pts per model. A model with a Haunebu Array gains the Broadside Cascade and Fusillade properties.",
+        "description": "Upgrade any number of models with a Kalasiris Array; gains Broadside Cascade and Fusillade",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "HAUNEBU_ARRAY",
+        "tag": "KALASIRIS_ARRAY",
         "adds_properties": [
           {
             "name": "Broadside Cascade",
@@ -3641,11 +4073,21 @@
             "value": null
           }
         ]
+      },
+      {
+        "description": "Add 2 Endymion Dyad Rotors as an Attachment",
+        "cost_per_unit": 70,
+        "max": 1,
+        "tag": "ATTACHMENT_ENDYMION",
+        "attachment_unit_ids": [
+          "enlightened_endymion"
+        ],
+        "mutually_exclusive_group": "VALTAR_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 2
   },
@@ -3701,20 +4143,24 @@
         "value": null
       },
       {
-        "name": "Interphase Generator",
+        "name": "TED",
         "value": null
       }
     ],
     "weapons": [
       {
-        "name": "X-Ray Laser Bank",
+        "name": "X-Ray Laser Banks",
         "arc": "FPSA",
         "firepower": {
-          "C": 8,
-          "S": 5,
+          "C": 10,
+          "S": 6,
           "E": null
         },
         "qualities": [
+          {
+            "name": "Singular",
+            "value": null
+          },
           {
             "name": "Arc",
             "value": 2
@@ -3727,18 +4173,29 @@
       }
     ],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Add 2 Endymion Dyad Rotors as an Attachment",
+        "cost_per_unit": 70,
+        "max": 1,
+        "tag": "ATTACHMENT_ENDYMION",
+        "attachment_unit_ids": [
+          "enlightened_endymion"
+        ],
+        "mutually_exclusive_group": "ADAMSKI_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 2
   },
   {
-    "id": "enlightened_merian",
+    "id": "enlightened_euripides",
     "faction_id": "enlightened",
-    "name": "Merian",
-    "sub_name": "Automata Frigate",
+    "name": "Euripides",
+    "sub_name": "Submarine",
     "faction": "Enlightened",
     "role": "Patrol",
     "point_cost_per_model": 30,
@@ -3746,19 +4203,19 @@
     "models": "2-6",
     "tags": [
       "Enlightened",
-      "Surface",
       "Patrol",
-      "Ship",
+      "Underwater",
+      "Submarine",
       "Automata",
       "Light Vessel"
     ],
     "stats": {
       "MAS": 1,
       "SPD": "1\"-7\"",
-      "TRN": 4,
+      "TRN": 3,
       "DEF": 5,
       "ARM": 3,
-      "HUL": 4,
+      "HUL": 3,
       "ACT": 1,
       "BRD": 1,
       "REP": 1,
@@ -3766,161 +4223,60 @@
     },
     "properties": [
       {
-        "name": "Agile",
-        "value": 1
+        "name": "Daredevil Crew",
+        "value": null
       },
       {
-        "name": "Attachment",
-        "value": null,
-        "detail": "Flagship"
+        "name": "Heavy Prow",
+        "value": 5
       },
       {
         "name": "Light Vessel",
         "value": null
       },
       {
+        "name": "Maritime Patrol",
+        "value": null
+      },
+      {
         "name": "Mechanical Soul",
-        "value": null
-      },
-      {
-        "name": "Shallow Draught",
-        "value": null
-      },
-      {
-        "name": "Wavelurker",
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "Hydrophone Relay",
+        "value": null
+      }
+    ],
     "weapons": [
       {
-        "name": "Micro Torpedo Salvo",
+        "name": "Conodontic Flenser",
         "arc": "F",
         "firepower": {
           "C": 3,
-          "S": 3,
-          "E": 3
-        },
-        "qualities": [
-          {
-            "name": "Submerged",
-            "value": null
-          },
-          {
-            "name": "Guided",
-            "value": 2
-          },
-          {
-            "name": "Torpedo",
-            "value": null
-          }
-        ]
-      },
-      {
-        "name": "Particle Beamer",
-        "arc": "FPS",
-        "firepower": {
-          "C": 5,
-          "S": 4,
+          "S": null,
           "E": null
         },
         "qualities": [
           {
-            "name": "Precise",
+            "name": "Torrent",
+            "value": 2
+          },
+          {
+            "name": "Structural Failure",
             "value": 1
           }
-        ],
-        "slot": "H"
+        ]
       }
     ],
-    "hardpoint_options": {
-      "H": [
-        {
-          "name": "Pulse Emitter",
-          "arc": null,
-          "firepower": {
-            "C": 7,
-            "S": 2,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Indiscriminate",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Caloric Oscillator",
-          "arc": null,
-          "firepower": {
-            "C": 5,
-            "S": null,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Torrent",
-              "value": 2
-            },
-            {
-              "name": "Disruption",
-              "value": null
-            }
-          ]
-        },
-        {
-          "name": "Sturginium Agitator",
-          "arc": null,
-          "firepower": {
-            "C": 0,
-            "S": 2,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Agitation",
-              "value": 4
-            },
-            {
-              "name": "Structural Failure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "name": "Molecular Disharmoniser",
-          "arc": null,
-          "firepower": {
-            "C": 2,
-            "S": 1,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Arc",
-              "value": 1
-            },
-            {
-              "name": "Synergy",
-              "value": null
-            }
-          ]
-        }
-      ]
-    },
+    "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 2,
-    "max": 6,
-    "attachment": {
-      "parent_traits": [
-        "Flagship"
-      ],
-      "max_models": 2
-    }
+    "max": 6
   },
   {
     "id": "enlightened_ketos",
@@ -3961,6 +4317,11 @@
         "value": 1
       },
       {
+        "name": "Hunter",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
         "name": "Mechanical Soul",
         "value": null
       },
@@ -3987,8 +4348,8 @@
         "name": "Harmonised Transconductive Agitator",
         "arc": "FPS",
         "firepower": {
-          "C": 7,
-          "S": null,
+          "C": 2,
+          "S": 7,
           "E": null
         },
         "qualities": [
@@ -4041,8 +4402,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -4157,43 +4518,66 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
   {
-    "id": "enlightened_stiletto",
+    "id": "enlightened_merian",
     "faction_id": "enlightened",
-    "name": "Stiletto",
-    "sub_name": "Fast Cruiser",
+    "name": "Merian",
+    "sub_name": "Automata Frigate",
     "faction": "Enlightened",
     "role": "Patrol",
-    "point_cost_per_model": 80,
-    "vpr": 2,
-    "models": "1-3",
+    "point_cost_per_model": 40,
+    "vpr": 1,
+    "models": "2-6",
     "tags": [
       "Enlightened",
       "Surface",
       "Patrol",
-      "Ship"
+      "Ship",
+      "Automata",
+      "Light Vessel"
     ],
     "stats": {
-      "MAS": 3,
-      "SPD": "2\"-9\"",
+      "MAS": 1,
+      "SPD": "1\"-7\"",
       "TRN": 4,
-      "DEF": 8,
-      "ARM": 4,
-      "HUL": 7,
-      "ACT": 2,
-      "BRD": 2,
-      "REP": 2,
-      "CRW": 7
+      "DEF": 5,
+      "ARM": 3,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
     },
     "properties": [
       {
-        "name": "Vanguard",
-        "value": 5
+        "name": "Agile",
+        "value": 1
+      },
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Flagship"
+      },
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Shallow Draught",
+        "value": null
+      },
+      {
+        "name": "Ubiquitous",
+        "value": null
       },
       {
         "name": "Wavelurker",
@@ -4202,8 +4586,248 @@
     ],
     "systems": [
       {
-        "name": "Boosted Propulsion",
+        "name": "TED",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Micro Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 3,
+          "S": 3,
+          "E": 3
+        },
+        "qualities": [
+          {
+            "name": "Submerged",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "Particle Beamer",
+        "arc": "FPS",
+        "firepower": {
+          "C": 5,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ],
+        "slot": "H"
+      }
+    ],
+    "hardpoint_options": {
+      "H": [
+        {
+          "name": "Caloric Oscillator",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Torrent",
+              "value": 2
+            },
+            {
+              "name": "Disruption",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Molecular Disharmoniser",
+          "arc": null,
+          "firepower": {
+            "C": 2,
+            "S": 1,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Synergy",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Pulse Emitter",
+          "arc": null,
+          "firepower": {
+            "C": 7,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Sturginium Agitator",
+          "arc": null,
+          "firepower": {
+            "C": 0,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Agitation",
+              "value": 4
+            },
+            {
+              "name": "Structural Failure",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "ESCF Heavy Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 3,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ESCF Heavy Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "options_and_upgrades": [
+      {
+        "description": "Replace the Heavy Hardpoint on any number of models with a Scythe Fabrication Mount; gains Carrier (1), SRS (Scythe Drones), and Carrier trait",
+        "cost_per_unit": 10,
+        "max": 1,
+        "tag": "SCYTHE_FABRICATION_MOUNT",
+        "adds_tags": [
+          "Carrier"
+        ],
+        "adds_properties": [
+          {
+            "name": "Carrier",
+            "value": 1
+          },
+          {
+            "name": "SRS",
+            "value": null,
+            "detail": "Scythe Drones"
+          }
+        ]
+      }
+    ],
+    "lore": "",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
+    "min": 2,
+    "max": 6,
+    "attachment": {
+      "parent_traits": [
+        "Flagship"
+      ],
+      "max_models": 2
+    }
+  },
+  {
+    "id": "enlightened_chatelet",
+    "faction_id": "enlightened",
+    "name": "Chatelet",
+    "sub_name": "Drone Carrier",
+    "faction": "Enlightened",
+    "role": "Support",
+    "point_cost_per_model": 120,
+    "vpr": 2,
+    "models": "1-3",
+    "tags": [
+      "Enlightened",
+      "ESCF",
+      "Surface",
+      "Support",
+      "Ship",
+      "Carrier"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-7\"",
+      "TRN": 3,
+      "DEF": 9,
+      "ARM": 4,
+      "HUL": 8,
+      "ACT": 3,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 8
+    },
+    "properties": [
+      {
+        "name": "Carrier",
         "value": 2
+      },
+      {
+        "name": "SRS",
+        "value": null,
+        "detail": "Scythe Drones"
+      },
+      {
+        "name": "Ubiquitous",
+        "value": null
+      },
+      {
+        "name": "Wavelurker",
+        "value": null
+      }
+    ],
+    "systems": [
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -4247,11 +4871,11 @@
         "slot": "H"
       },
       {
-        "name": "Advanced Aetheric Lance",
+        "name": "Particle Beamer",
         "arc": "PSA",
         "firepower": {
-          "C": 4,
-          "S": 3,
+          "C": 6,
+          "S": 5,
           "E": null
         },
         "qualities": [
@@ -4259,7 +4883,18 @@
             "name": "Precise",
             "value": 1
           }
-        ]
+        ],
+        "slot": "H"
+      }
+    ],
+    "short_range_squadrons": [
+      {
+        "name": "Scythe Drones",
+        "attack": 3,
+        "intercept": 2,
+        "support": 2,
+        "resilience": 3,
+        "properties": []
       }
     ],
     "hardpoint_options": {
@@ -4335,249 +4970,98 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Heavy ESCF Gun Battery",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Heavy ESCF Rocket Battery",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 6,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
         }
       ]
     },
     "options_and_upgrades": [
       {
-        "description": "For +10 pts per model, every model in the unit may be upgraded with a Scythe Launcher. If so, the unit gains the Carrier trait, and the Carrier (1) and SRS (Scythe Fighters) properties.",
-        "cost_per_unit": 10,
-        "max": 1,
-        "tag": "SCYTHE_LAUNCHER",
-        "adds_tags": [
-          "Carrier"
-        ],
-        "adds_properties": [
-          {
-            "name": "Carrier",
-            "value": 1
-          },
-          {
-            "name": "SRS",
-            "value": null,
-            "detail": "Scythe Fighters"
-          }
-        ]
-      }
-    ],
-    "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
-    "min": 1,
-    "max": 3
-  },
-  {
-    "id": "enlightened_amo",
-    "faction_id": "enlightened",
-    "name": "Amo",
-    "sub_name": "Carrier Frigate",
-    "faction": "Enlightened",
-    "role": "Support",
-    "point_cost_per_model": 25,
-    "vpr": 1,
-    "models": "2-4",
-    "tags": [
-      "Enlightened",
-      "Surface",
-      "Support",
-      "Ship",
-      "Automata",
-      "Carrier",
-      "Light Vessel"
-    ],
-    "stats": {
-      "MAS": 1,
-      "SPD": "1\"-7\"",
-      "TRN": 4,
-      "DEF": 5,
-      "ARM": 3,
-      "HUL": 4,
-      "ACT": 1,
-      "BRD": 1,
-      "REP": 1,
-      "CRW": 5
-    },
-    "properties": [
-      {
-        "name": "Carrier",
-        "value": 1
-      },
-      {
-        "name": "Light Vessel",
-        "value": null
-      },
-      {
-        "name": "Mechanical Soul",
-        "value": null
-      },
-      {
-        "name": "SRS",
-        "value": null,
-        "detail": "Scythe Fighters"
-      },
-      {
-        "name": "Wavelurker",
-        "value": null
-      }
-    ],
-    "systems": [],
-    "weapons": [
-      {
-        "name": "Micro Torpedo Salvo",
-        "arc": "F",
-        "firepower": {
-          "C": 3,
-          "S": 3,
-          "E": 3
-        },
-        "qualities": [
-          {
-            "name": "Submerged",
-            "value": null
-          },
-          {
-            "name": "Guided",
-            "value": 2
-          },
-          {
-            "name": "Torpedo",
-            "value": null
-          }
-        ]
-      }
-    ],
-    "hardpoint_options": {},
-    "options_and_upgrades": [],
-    "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
-    "min": 2,
-    "max": 4,
-    "short_range_squadrons": [
-      {
-        "name": "Scythe Fighters",
-        "attack": 3,
-        "intercept": 2,
-        "support": 2,
-        "resilience": 3,
-        "properties": []
-      }
-    ]
-  },
-  {
-    "id": "enlightened_newton",
-    "faction_id": "enlightened",
-    "name": "Newton",
-    "sub_name": "Cruiser",
-    "faction": "Enlightened",
-    "role": "Support",
-    "point_cost_per_model": 125,
-    "vpr": 3,
-    "models": "1-3",
-    "tags": [
-      "Enlightened",
-      "Surface",
-      "Support",
-      "Ship"
-    ],
-    "stats": {
-      "MAS": 3,
-      "SPD": "2\"-8\"",
-      "TRN": 3,
-      "DEF": 8,
-      "ARM": 4,
-      "HUL": 7,
-      "ACT": 2,
-      "BRD": 3,
-      "REP": 2,
-      "CRW": 7
-    },
-    "properties": [],
-    "systems": [
-      {
-        "name": "Recombination Nexus",
-        "value": 2
-      },
-      {
-        "name": "Superior Void-Engine",
-        "value": null
-      }
-    ],
-    "weapons": [
-      {
-        "name": "Advanced Aetheric Lance",
-        "arc": "FPS",
-        "firepower": {
-          "C": 4,
-          "S": 3,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Precise",
-            "value": 1
-          }
-        ]
-      },
-      {
-        "name": "Advanced Aetheric Lance",
-        "arc": "PSA",
-        "firepower": {
-          "C": 4,
-          "S": 3,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Precise",
-            "value": 1
-          }
-        ]
-      },
-      {
-        "name": "Void Beam",
-        "arc": "FPSA",
-        "firepower": {
-          "C": 10,
-          "S": null,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Blast",
-            "value": 3
-          },
-          {
-            "name": "Intensive",
-            "value": null
-          },
-          {
-            "name": "System Failure",
-            "value": 2
-          }
-        ]
-      }
-    ],
-    "hardpoint_options": {},
-    "options_and_upgrades": [
-      {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Replace one Heavy Hardpoint on any number of models with one of the following: a Generator Hardpoint or a Scythe Fabrication Mount (+10 pts)",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR_OR_SCYTHE_FABRICATION_MOUNT",
+        "choices": [
+          {
+            "name": "Generator Hardpoint",
+            "cost_per_unit": null
+          },
+          {
+            "name": "Scythe Fabrication Mount",
+            "cost_per_unit": 10
+          }
+        ]
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "CHATELET_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "CHATELET_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
   {
     "id": "enlightened_offshore_defence_platform",
     "faction_id": "enlightened",
-    "name": "Offshore Defence Platform",
-    "sub_name": null,
+    "name": "Defence Platform",
+    "sub_name": "Leibniz Class",
     "faction": "Enlightened",
     "role": "Support",
     "point_cost_per_model": 60,
@@ -4657,13 +5141,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
-        "cost_per_unit": 10,
-        "max": 2,
-        "tag": "ESCORT"
-      },
-      {
-        "description": "The unit can be upgraded to have Defensive Mines. This grants the unit the Auxiliary Mine Layer (3) property.",
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "DEFENSIVE_MINES",
@@ -4673,11 +5151,17 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -4685,14 +5169,14 @@
         "Platform"
       ],
       "max_models": 1,
-      "note": "No Upgrades can be purchased when taken as Attachment."
+      "note": "Escort tokens cannot be purchased when taken as Attachment."
     }
   },
   {
     "id": "enlightened_offshore_heavy_platform",
     "faction_id": "enlightened",
-    "name": "Offshore Heavy Platform",
-    "sub_name": null,
+    "name": "Heavy Platform",
+    "sub_name": "Bellerophon Class",
     "faction": "Enlightened",
     "role": "Support",
     "point_cost_per_model": 150,
@@ -4792,13 +5276,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
-        "cost_per_unit": 10,
-        "max": 2,
-        "tag": "ESCORT"
-      },
-      {
-        "description": "The unit can be upgraded to have Defensive Mines. This grants the unit the Auxiliary Mine Layer (3) property.",
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "DEFENSIVE_MINES",
@@ -4808,13 +5286,169 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Generator from the Generator Hardpoints list; this does not replace a weapon",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1
+      },
+      {
+        "description": "Add 1 Defence Platform as an Attachment",
+        "cost_per_unit": 60,
+        "max": 1,
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM",
+        "attachment_unit_ids": [
+          "enlightened_offshore_defence_platform"
+        ]
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
+  },
+  {
+    "id": "enlightened_newton",
+    "faction_id": "enlightened",
+    "name": "Newton",
+    "sub_name": "Cruiser",
+    "faction": "Enlightened",
+    "role": "Support",
+    "point_cost_per_model": 125,
+    "vpr": 3,
+    "models": "1-3",
+    "tags": [
+      "Enlightened",
+      "Surface",
+      "Support",
+      "Ship"
+    ],
+    "stats": {
+      "MAS": 3,
+      "SPD": "2\"-8\"",
+      "TRN": 3,
+      "DEF": 8,
+      "ARM": 4,
+      "HUL": 7,
+      "ACT": 2,
+      "BRD": 3,
+      "REP": 2,
+      "CRW": 7
+    },
+    "properties": [],
+    "systems": [
+      {
+        "name": "Recombination Nexus",
+        "value": 2
+      },
+      {
+        "name": "Superior Void-Engine",
+        "value": null
+      },
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Advanced Aetheric Lance",
+        "arc": "FPS",
+        "firepower": {
+          "C": 4,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Advanced Aetheric Lance",
+        "arc": "PSA",
+        "firepower": {
+          "C": 4,
+          "S": 3,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Void Beam",
+        "arc": "FPSA",
+        "firepower": {
+          "C": 10,
+          "S": null,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Blast",
+            "value": 3
+          },
+          {
+            "name": "Intensive",
+            "value": null
+          },
+          {
+            "name": "System Failure",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "hardpoint_options": {},
+    "options_and_upgrades": [
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "NEWTON_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "NEWTON_ATTACHMENT"
+      }
+    ],
+    "lore": "",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
+    "min": 1,
+    "max": 3
   },
   {
     "id": "enlightened_origen",
@@ -4860,6 +5494,10 @@
       {
         "name": "Repair Facilities",
         "value": 1
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -4882,23 +5520,23 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "attachment": {
       "parent_traits": [
-        "Enlightened"
+        "Enlightened Ship"
       ],
       "max_models": 1,
-      "note": "No Escort tokens can be purchased when taken as Attachment."
+      "note": "Escort tokens cannot be purchased when taken as Attachment."
     }
   },
   {
@@ -4926,7 +5564,7 @@
       "ARM": 4,
       "HUL": 7,
       "ACT": 2,
-      "BRD": 2,
+      "BRD": null,
       "REP": 2,
       "CRW": 7
     },
@@ -4943,14 +5581,19 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       },
       {
         "name": "Wavelurker",
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Weirding Torpedo Salvo",
@@ -5007,15 +5650,36 @@
       }
     ],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "PLINIUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "PLINIUS_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -5048,7 +5712,7 @@
       "ARM": 4,
       "HUL": 8,
       "ACT": 2,
-      "BRD": 2,
+      "BRD": null,
       "REP": 2,
       "CRW": 7
     },
@@ -5058,7 +5722,12 @@
         "value": null
       }
     ],
-    "systems": [],
+    "systems": [
+      {
+        "name": "TED",
+        "value": null
+      }
+    ],
     "weapons": [
       {
         "name": "Weirding Torpedo Salvo",
@@ -5163,16 +5832,36 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "One Generator must be chosen for each model in this unit",
+        "description": "Choose one Generator from the Generator Hardpoints list for each model",
         "cost_per_unit": null,
         "max": 1,
         "tag": "MANDATORY_GENERATOR",
         "mandatory": true
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "QUINTILIAN_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "QUINTILIAN_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 2
   },
@@ -5223,6 +5912,10 @@
       {
         "name": "Mine Sweeper",
         "value": 2
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -5245,15 +5938,35 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "VESALIUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "VESALIUS_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3,
     "short_range_squadrons": [
@@ -5331,6 +6044,10 @@
       {
         "name": "Power Transfer Generator",
         "value": null
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -5368,23 +6085,23 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1,
     "attachment": {
       "parent_traits": [
-        "Enlightened"
+        "Enlightened Ship"
       ],
       "max_models": 1,
-      "note": "No Escort tokens can be purchased when taken as Attachment."
+      "note": "Escort tokens cannot be purchased when taken as Attachment."
     }
   },
   {
@@ -5474,8 +6191,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -5486,7 +6203,7 @@
     "sub_name": "Submarine",
     "faction": "Enlightened",
     "role": "Scout",
-    "point_cost_per_model": 35,
+    "point_cost_per_model": 30,
     "vpr": 1,
     "models": "2-5",
     "tags": [
@@ -5535,12 +6252,12 @@
     "systems": [],
     "weapons": [
       {
-        "name": "Weirding Torpedo Salvo",
+        "name": "Micro Torpedo Salvo",
         "arc": "F",
         "firepower": {
-          "C": 6,
-          "S": 6,
-          "E": 6
+          "C": 3,
+          "S": 3,
+          "E": 3
         },
         "qualities": [
           {
@@ -5561,69 +6278,124 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 2,
     "max": 5
   },
   {
-    "id": "enlightened_praxilla",
+    "id": "enlightened_endymion",
     "faction_id": "enlightened",
-    "name": "Praxilla",
-    "sub_name": "Submarine",
+    "name": "Endymion",
+    "sub_name": "Dyad Rotors",
     "faction": "Enlightened",
     "role": "Scout",
-    "point_cost_per_model": 30,
+    "point_cost_per_model": 35,
     "vpr": 1,
-    "models": "2-6",
+    "models": "2-4",
     "tags": [
       "Enlightened",
-      "Underwater",
+      "Airborne",
       "Scout",
-      "Submarine",
+      "Saucer",
       "Automata",
       "Light Vessel"
     ],
     "stats": {
       "MAS": 1,
-      "SPD": "1\"-6\"",
-      "TRN": 4,
-      "DEF": 5,
+      "SPD": "0\"-9\"",
+      "TRN": "-",
+      "DEF": 4,
       "ARM": 2,
-      "HUL": 4,
+      "HUL": 3,
       "ACT": 1,
       "BRD": 1,
       "REP": 1,
-      "CRW": 5
+      "CRW": 6
     },
     "properties": [
+      {
+        "name": "Attachment",
+        "value": null,
+        "detail": "Airborne"
+      },
+      {
+        "name": "Cloud Dive",
+        "value": null
+      },
+      {
+        "name": "Landing Party Support",
+        "value": null
+      },
       {
         "name": "Light Vessel",
         "value": null
       },
       {
-        "name": "Mechanical Soul",
+        "name": "Mobile",
         "value": null
-      },
-      {
-        "name": "Raking Strike",
-        "value": 6
       }
     ],
     "systems": [
       {
-        "name": "Boosted Propulsion",
-        "value": 4
+        "name": "Hydrophone Relay",
+        "value": null
       }
     ],
-    "weapons": [],
+    "weapons": [
+      {
+        "name": "Advanced Aetheric Lance",
+        "arc": "F",
+        "firepower": {
+          "C": 4,
+          "S": 4,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Aerial Weirding Torpedo Salvo",
+        "arc": "F",
+        "firepower": {
+          "C": 4,
+          "S": 4,
+          "E": 4
+        },
+        "qualities": [
+          {
+            "name": "Aerial",
+            "value": null
+          },
+          {
+            "name": "Guided",
+            "value": 2
+          },
+          {
+            "name": "Torpedo",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "short_range_squadrons": [],
     "hardpoint_options": {},
     "options_and_upgrades": [],
+    "attachment": {
+      "parent_traits": [
+        "Airborne"
+      ],
+      "max_models": 2
+    },
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 2,
-    "max": 6
+    "max": 4
   },
   {
     "id": "enlightened_euclid",
@@ -5772,12 +6544,82 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Add 2 Endymion Dyad Rotors as an Attachment",
+        "cost_per_unit": 70,
+        "max": 1,
+        "tag": "ATTACHMENT_ENDYMION",
+        "attachment_unit_ids": [
+          "enlightened_endymion"
+        ],
+        "mutually_exclusive_group": "EUCLID_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 2,
     "max": 4
+  },
+  {
+    "id": "enlightened_praxilla",
+    "faction_id": "enlightened",
+    "name": "Praxilla",
+    "sub_name": "Submarine",
+    "faction": "Enlightened",
+    "role": "Scout",
+    "point_cost_per_model": 30,
+    "vpr": 1,
+    "models": "2-6",
+    "tags": [
+      "Enlightened",
+      "Underwater",
+      "Scout",
+      "Submarine",
+      "Automata",
+      "Light Vessel"
+    ],
+    "stats": {
+      "MAS": 1,
+      "SPD": "1\"-6\"",
+      "TRN": 4,
+      "DEF": 5,
+      "ARM": 2,
+      "HUL": 4,
+      "ACT": 1,
+      "BRD": 1,
+      "REP": 1,
+      "CRW": 5
+    },
+    "properties": [
+      {
+        "name": "Light Vessel",
+        "value": null
+      },
+      {
+        "name": "Mechanical Soul",
+        "value": null
+      },
+      {
+        "name": "Raking Strike",
+        "value": 6
+      }
+    ],
+    "systems": [
+      {
+        "name": "Boosted Propulsion",
+        "value": 4
+      }
+    ],
+    "weapons": [],
+    "hardpoint_options": {},
+    "options_and_upgrades": [],
+    "lore": "",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
+    "min": 2,
+    "max": 6
   },
   {
     "id": "enlightened_pytheus",
@@ -5825,7 +6667,7 @@
       {
         "name": "SRS",
         "value": null,
-        "detail": "Scythe Fighters"
+        "detail": "Scythe Drones"
       }
     ],
     "systems": [
@@ -5836,15 +6678,26 @@
     ],
     "weapons": [],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Add 2 Endymion Dyad Rotors as an Attachment",
+        "cost_per_unit": 70,
+        "max": 1,
+        "tag": "ATTACHMENT_ENDYMION",
+        "attachment_unit_ids": [
+          "enlightened_endymion"
+        ],
+        "mutually_exclusive_group": "PYTHEUS_ATTACHMENT"
+      }
+    ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 2,
     "max": 4,
     "short_range_squadrons": [
       {
-        "name": "Scythe Fighters",
+        "name": "Scythe Drones",
         "attack": 3,
         "intercept": 2,
         "support": 2,
@@ -5878,7 +6731,7 @@
       "ARM": 4,
       "HUL": 7,
       "ACT": 2,
-      "BRD": 2,
+      "BRD": null,
       "REP": 2,
       "CRW": 7
     },
@@ -5904,6 +6757,10 @@
       {
         "name": "Mine Sweeper",
         "value": 1
+      },
+      {
+        "name": "TED",
+        "value": null
       }
     ],
     "weapons": [
@@ -5964,22 +6821,52 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Choose one Generator from the Generator Hardpoints list for each model",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "MANDATORY_GENERATOR",
+        "mandatory": true
+      },
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
       },
       {
-        "description": "One Generator must be chosen for each model in this unit",
-        "cost_per_unit": null,
+        "description": "Add 1 Origen Lathe Ship as an Attachment",
+        "cost_per_unit": 80,
         "max": 1,
-        "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "tag": "ATTACHMENT_ORIGEN",
+        "attachment_unit_ids": [
+          "enlightened_origen"
+        ],
+        "mutually_exclusive_group": "CLAUDIUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Zumeena Capacitor Ship as an Attachment",
+        "cost_per_unit": 90,
+        "max": 1,
+        "tag": "ATTACHMENT_ZUMEENA",
+        "attachment_unit_ids": [
+          "enlightened_zumeena"
+        ],
+        "mutually_exclusive_group": "CLAUDIUS_ATTACHMENT"
+      },
+      {
+        "description": "Add 1 Hermes Supply Freighter as an Attachment",
+        "cost_per_unit": 25,
+        "max": 1,
+        "tag": "ATTACHMENT_HERMES",
+        "attachment_unit_ids": [
+          "enlightened_hermes"
+        ],
+        "mutually_exclusive_group": "CLAUDIUS_ATTACHMENT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -6078,13 +6965,13 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 4 Escort tokens at +10 pts each",
+        "description": "Add up to 4 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
       },
       {
-        "description": "Upgrade this model with a Troop Transport Bay. It gains the Ground Assault (3) property.",
+        "description": "Upgrade with a Troop Transport Bay; gains Ground Assault (3)",
         "cost_per_unit": 25,
         "max": 1,
         "tag": "TROOP_TRANSPORT_BAY",
@@ -6096,7 +6983,7 @@
         ]
       },
       {
-        "description": "For +20 pts, this model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property.",
+        "description": "Upgrade with an Olympia Levant Drive; Surface becomes Airborne and gains Low Altitude",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "OLYMPIA_LEVANT_DRIVE",
@@ -6111,12 +6998,23 @@
             "name": "Low Altitude",
             "value": null
           }
-        ]
+        ],
+        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE"
+      },
+      {
+        "description": "Add 1 Hermes Supply Freighter as an Attachment",
+        "cost_per_unit": 25,
+        "max": 1,
+        "tag": "ATTACHMENT_HERMES",
+        "attachment_unit_ids": [
+          "enlightened_hermes"
+        ],
+        "mutually_exclusive_group": "EUROPA_CHOOSE_UP_TO_ONE"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   },
@@ -6154,7 +7052,7 @@
       {
         "name": "Attachment",
         "value": null,
-        "detail": "Surface"
+        "detail": "Merchantman"
       },
       {
         "name": "Civilian Vessel",
@@ -6178,20 +7076,20 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
+        "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
         "tag": "ESCORT"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Surface"
+        "Merchantman"
       ],
       "max_models": 1,
       "note": "Escort tokens cannot be purchased when taken as Attachment."
@@ -6200,8 +7098,8 @@
   {
     "id": "enlightened_offshore_supply_platform",
     "faction_id": "enlightened",
-    "name": "Offshore Supply Platform",
-    "sub_name": null,
+    "name": "Supply Platform",
+    "sub_name": "Daimler Class",
     "faction": "Enlightened",
     "role": "Logistical",
     "point_cost_per_model": 65,
@@ -6255,13 +7153,7 @@
     "hardpoint_options": {},
     "options_and_upgrades": [
       {
-        "description": "Add up to 2 Escort tokens at +10 pts each",
-        "cost_per_unit": 10,
-        "max": 2,
-        "tag": "ESCORT"
-      },
-      {
-        "description": "The unit can be upgraded to have Defensive Mines. This grants the unit the Auxiliary Mine Layer (3) property.",
+        "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
         "tag": "DEFENSIVE_MINES",
@@ -6271,11 +7163,26 @@
             "value": 3
           }
         ]
+      },
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Defence Platform as an Attachment",
+        "cost_per_unit": 60,
+        "max": 1,
+        "tag": "ATTACHMENT_DEFENCE_PLATFORM",
+        "attachment_unit_ids": [
+          "enlightened_offshore_defence_platform"
+        ]
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 3
   },
@@ -6370,25 +7277,25 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Add up to 4 Escort tokens at +10 pts each",
+        "description": "Add up to 4 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 4,
         "tag": "ESCORT"
       },
       {
-        "description": "Upgrade this model with a Troop Transport Bay. It gains the Ground Assault (3) property.",
+        "description": "Upgrade with a Troop Transport Bay; gains Ground Assault (2)",
         "cost_per_unit": 10,
         "max": 1,
         "tag": "TROOP_TRANSPORT_BAY",
         "adds_properties": [
           {
             "name": "Ground Assault",
-            "value": 3
+            "value": 2
           }
         ]
       },
       {
-        "description": "For +15 pts, this model can have an Olympia Levant Drive. Its Surface trait is replaced with Airborne, and it gains the Low Altitude property.",
+        "description": "Upgrade with an Olympia Levant Drive; Surface becomes Airborne and gains Low Altitude",
         "cost_per_unit": 15,
         "max": 1,
         "tag": "OLYMPIA_LEVANT_DRIVE",
@@ -6403,12 +7310,23 @@
             "name": "Low Altitude",
             "value": null
           }
-        ]
+        ],
+        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE"
+      },
+      {
+        "description": "Add 1 Hermes Supply Freighter as an Attachment",
+        "cost_per_unit": 25,
+        "max": 1,
+        "tag": "ATTACHMENT_HERMES",
+        "attachment_unit_ids": [
+          "enlightened_hermes"
+        ],
+        "mutually_exclusive_group": "TITAN_CHOOSE_UP_TO_ONE"
       }
     ],
     "lore": "",
-    "version": "4.00A",
-    "date": "2026-06-28",
+    "version": "4.01 Beta",
+    "date": "2026-07-07",
     "min": 1,
     "max": 1
   }

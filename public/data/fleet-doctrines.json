@@ -485,64 +485,137 @@
   ],
   "enlightened": [
     {
-      "name": "Forward Patrol",
-      "point_cost": 15,
+      "name": "Calculated Reinforcement Sub-Unit",
+      "point_cost": 10,
       "required_role": "Flagship",
-      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once per game."
-    },
-    {
-      "name": "Orca Pod Bays",
-      "point_cost": 15,
-      "required_role": "Flagship",
-      "text": "All Descartes Control Ships in this force gain the SRS (Orca Constructs) property."
-    },
-    {
-      "name": "Strategic Reserves",
-      "point_cost": 20,
-      "required_role": "Flagship",
+      "category": "Driven by the Peer",
       "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
     },
     {
-      "name": "Chain of Command",
-      "point_cost": 25,
+      "name": "Armed Survey Detachment",
+      "point_cost": 15,
       "required_role": "Flagship",
-      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10” of a friendly Flagship. If the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
+      "category": "Driven by the Peer",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains the Vanguard (5”) property. The Admiral can only use this Doctrine once."
     },
     {
-      "name": "Devil’s Own Luck",
-      "point_cost": 25,
+      "name": "Constructs: Loyal unto Death",
+      "point_cost": 15,
       "required_role": "Flagship",
+      "category": "Driven by the Peer",
+      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model’s Crew rating for the purposes of this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+    },
+    {
+      "name": "The Things Science Cannot Predict",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "category": "Driven by the Peer",
       "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
     },
     {
-      "name": "Unstable Scythe Cargo",
-      "point_cost": 25,
+      "name": "The Respect of Meritocratic Rank",
+      "point_cost": 20,
       "required_role": "Flagship",
-      "text": "When this Admiral makes use of the Sympathetic Detonation weapon quality, each token they discard allows them to convert one Heavy Strike or Standard Strike to an Exploding Strike."
+      "category": "Driven by the Peer",
+      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their Force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10” of a friendly Flagship. If the Effect is successfully enacted, the Admiral can re-roll any number of dice in the pool."
     },
     {
-      "name": "Do Or Die",
-      "point_cost": 30,
+      "name": "Additional Incendiaries Injection",
+      "point_cost": 15,
       "required_role": "Flagship",
-      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model’s Crew rating, for the purposes of this test only. In the case of a Group Crew Check, this Modifier applies to all models in the unit."
+      "category": "Constructed by the Forge",
+      "text": "Once per game, when this Admiral activates a unit with the Colossus trait, they can attempt to enact a Special Valour Effect. If successful, the Torrent (X) value of all weapons in the unit is doubled for the duration of the Activation."
     },
     {
-      "name": "Luminiferous Defences",
-      "point_cost": 30,
+      "name": "Gyroscopic Rocket Stabilisers",
+      "point_cost": 15,
       "required_role": "Flagship",
-      "text": "Models in this force that have a Mass rating of 3 or higher are fitted with Luminiferous Defences. If one of these models is the Initial Target of an Attack action, and the Resistance Roll contains one or more Exploding Strikes, its Admiral can attempt to enact a Special Valour Effect. If it is successfully enacted, the model’s Armour rating is treated as being one higher when resolving the action. A model that is affected by a Heavy Shield Generator system cannot benefit from this rule."
+      "category": "Constructed by the Forge",
+      "text": "Once per game, when they Activate an Airborne unit, this Admiral can discard a Victory & Valour Card from their hand. They cannot do so if any models in the unit have a System Failure Critical Damage Effect. If they do so, the unit gains the Lateral Engines (6”) system for the duration of its Activation."
+    },
+    {
+      "name": "Micro-molecular Reinforcement",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, when an Underwater model in this Force is targeted by an Attack action to which Submerged weapons are Contributing, its Admiral can re-roll any Blank results in the Resistance Roll."
     },
     {
       "name": "Overcharged Capacitors",
-      "point_cost": 30,
+      "point_cost": 15,
       "required_role": "Flagship",
-      "text": "When a unit in this Force makes an Attack action, its Admiral can declare that they are Overriding Safety Protocols immediately before making the Action Roll. Make a Group Crew Check for the models that are Participating in the action. If successful, the Admiral may re-roll Standard Counters and Heavy Counters in the subsequent Action Roll. If the Check fails, the Attack action ends immediately, and each Participating model suffers 2 System Failure Critical Damage Effects and 1 Damage."
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, when a unit from this Force makes an Attack action, this Admiral can declare that they are Overriding Safety Protocols immediately before making the Action Roll, and make a Group Crew Check for all Participating models. If the Check is passed, this Admiral can re-roll Standard Counters and Heavy Counters in the Action Roll. If the Check fails, the Attack action ends immediately, and each Participating model suffers 2 System Failure Critical Damage Effects and 1 Damage."
     },
     {
-      "name": "Peer in Residence",
+      "name": "Physeter Echo Communicators",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "At the end of the Deployment step, this Admiral gains 6 Physeter Construct tokens. They can then allocate these tokens between the units in their Force, with a maximum of 3 tokens per unit."
+    },
+    {
+      "name": "Hellion Assassin Constructs",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, when a unit from this Force makes a Boarding action, the Admiral can discard a Victory & Valour Card from their hand before making the Action Roll. If they do so, they can re-roll any Blank results in the Action Roll, and the target gains an additional level of Disorder after the Action has been resolved."
+    },
+    {
+      "name": "Combat Science Pioneer",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Once per game, when activating a Flagship unit, this Admiral can attempt to enact a Special Valour Effect. If it is successfully enacted, the unit gains the Inspirational (6”) property until the End Phase of this Round."
+    },
+    {
+      "name": "Stereoscopic Distance Calculators",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, when a unit from this Force makes an Attack action and there is at least one Contributing weapon with the Barrage quality, the Admiral can discard a Victory & Valour Card from their hand before making the Action Roll. If they do so, they can re-roll any Blank results in the Action Roll."
+    },
+    {
+      "name": "“Demolisher” Scythes",
+      "point_cost": 20,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "When this Admiral makes use of the Sympathetic Detonation weapon quality, each token they discard allows them to convert one Heavy Strike or Standard Strike to an Exploding Strike."
+    },
+    {
+      "name": "Advanced Protocol Cyclers",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, before making an Action Roll for an Automata unit from this Force, this Admiral can discard a Victory & Valour Card from their hand. If they do so, they can re-roll any Blank results in the roll."
+    },
+    {
+      "name": "Self-Repairing Hull",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Whenever a Flagship model from this Force is targeted by an Attack action, this Admiral can make a Crew Check for the model at the start of the Inflict Damage step. If the Check is passed, the unit suffers 1 less Damage, to a minimum of 1."
+    },
+    {
+      "name": "Reclamator Repair Bay",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "Whenever a model from this Force with the Boarding Parties (X) property ends its Activation within Proximity of an enemy model that has at least 1 Damage, this Admiral can remove 1 Critical Damage Effect from that model."
+    },
+    {
+      "name": "To Keep the Science Secret…",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "category": "Constructed by the Forge",
+      "text": "If a model from this Force voluntarily Withdraws in the Withdrawal step of its Activation, its Admiral can elect to resolve a Catastrophic Explosion with the model before removing it from play."
+    },
+    {
+      "name": "Flenser Torpedoes",
       "point_cost": 30,
       "required_role": "Flagship",
-      "text": "Whenever this Admiral Activates a unit, they can remove a single System Failure Critical Damage Effect from one Battle-Ready model in that unit."
+      "category": "Constructed by the Forge",
+      "text": "Once per Round, when a unit from this Force makes an Attack action and there is at least one Contributing weapon with the Torpedo quality, the Admiral can discard a Victory & Valour Card from their hand before making the Action Roll. If they do so, they can re-roll any Blank results in the Action Roll."
     }
   ]
 }

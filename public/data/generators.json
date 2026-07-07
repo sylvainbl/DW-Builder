@@ -212,7 +212,11 @@
     },
     {
       "name": "Chrono Generator",
-      "point_cost": 20
+      "point_cost": 5
+    },
+    {
+      "name": "Entropic Generator",
+      "point_cost": 0
     },
     {
       "name": "Fury Generator",
@@ -228,7 +232,7 @@
     },
     {
       "name": "Null-Clone Generator",
-      "point_cost": 20
+      "point_cost": 5
     },
     {
       "name": "Repulsion Field Generator",
