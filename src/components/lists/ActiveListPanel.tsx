@@ -401,6 +401,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
     const factions = useAppStore((state) => state.factions)
     const units = useAppStore((state) => state.units)
     const glossary = useAppStore((state) => state.glossary)
+    const fleetDoctrines = useAppStore((state) => state.fleetDoctrines)
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const closeList = useAppStore((state) => state.closeList)
     const renameList = useAppStore((state) => state.renameList)
@@ -574,7 +575,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                     <button
                         type="button"
                         title="Preview printable PDF"
-                        onClick={() => previewPrintableList(currentList, units, glossary, battlefleetDefinitions)}
+                        onClick={() => previewPrintableList(currentList, units, glossary, battlefleetDefinitions, fleetDoctrines)}
                         className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                     >
                         <Printer size={14} />

@@ -1,7 +1,8 @@
-import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
+import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, FleetDoctrine, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
-import { getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries } from './battlefleets'
+import { getBattlefleetForceType, isMercenaryInForce, isUkrainianAkulaFlagship, sortBattlefleetEntries } from './battlefleets'
 import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
+import { getAvailableFleetDoctrines } from './fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
@@ -23,6 +24,7 @@ interface PrintableModel {
 interface PrintContext extends PointsContext {
     list: ArmyList
     battlefleetDefinitions: BattlefleetDefinition[]
+    fleetDoctrines: Record<string, FleetDoctrine[]>
 }
 
 function escapeHtml(value: string): string {
@@ -92,6 +94,11 @@ function printableModels(unit: Unit, entry: ArmyUnit): PrintableModel[] {
         points: computeModelPoints(unit, model.config, entry.config),
         config: model.config,
     }))
+}
+
+function unitLabel(units: Unit[], entry: ArmyUnit): string {
+    const unit = units.find((item) => item.id === entry.unitId)
+    return unit ? `${unit.name}${unit.sub_name ? `, ${unit.sub_name}` : ''}` : entry.unitId
 }
 
 function collectRulesForModel(unit: Unit, model: ArmyModel, entryConfig: UnitConfig, ruleMap: Map<string, RuleReference>): void {
@@ -403,6 +410,7 @@ function renderBattlefleetSection(
     const mercenary = definition ? isMercenaryInForce(definition, forceFactionId) : false
     const labels = [forceType, mercenary ? 'Mercenary' : null, definition?.legendary ? 'Legendary' : null].filter(Boolean).join(' · ')
     const battlefleetName = definition?.name ?? battlefleet.name
+    const details = definition ? renderBattlefleetDetails(definition, entries, units, context.fleetDoctrines) : ''
 
     return `
         <section class="battlefleet">
@@ -414,9 +422,59 @@ function renderBattlefleetSection(
                 </div>
                 <strong>${points} pts</strong>
             </div>
+            ${details}
             ${entries.length > 0 ? entries.map((entry) => renderEntry(entry, units, ruleMap, false, context)).join('') : '<div class="empty">No units assigned.</div>'}
         </section>
     `
+}
+
+function renderBattlefleetDetails(definition: BattlefleetDefinition, entries: ArmyUnit[], units: Unit[], fleetDoctrines: Record<string, FleetDoctrine[]>): string {
+    const specialRules = definition.specialRuleText ?? []
+    const doctrineBlocks = entries.flatMap((entry) => {
+        const selection = entry.config.fleetDoctrineSelection
+        const unit = units.find((item) => item.id === entry.unitId)
+        if (!selection || !unit) return []
+        const doctrineUnit = isUkrainianAkulaFlagship(definition, entries, entry)
+            ? { ...unit, role: 'Flagship', tags: unit.tags.includes('Flagship') ? unit.tags : [...unit.tags, 'Flagship'] }
+            : unit
+        const doctrine = getAvailableFleetDoctrines(doctrineUnit, fleetDoctrines).find((item) => item.name === selection.doctrineName)
+        const text = doctrine?.text ?? null
+        return [`
+            <article class="rule-note">
+                <div class="rule-note-title">
+                    <strong>${escapeHtml(selection.doctrineName)}</strong>
+                    <span class="muted">+${selection.doctrineCost} pts · ${escapeHtml(unitLabel(units, entry))}</span>
+                </div>
+                ${text ? renderMarkdown(text) : '<p class="muted">No doctrine text available.</p>'}
+            </article>
+        `]
+    })
+    const sections = [
+        specialRules.length > 0 ? `
+            <div class="battlefleet-detail-block">
+                <h4>Special Rules</h4>
+                ${specialRules.map((text) => `<article class="rule-note">${renderMarkdown(text)}</article>`).join('')}
+            </div>
+        ` : '',
+        doctrineBlocks.length > 0 ? `
+            <div class="battlefleet-detail-block">
+                <h4>Fleet Doctrine</h4>
+                ${doctrineBlocks.join('')}
+            </div>
+        ` : '',
+        definition.battlefleetBonus ? `
+            <div class="battlefleet-detail-block">
+                <h4>Battlefleet Bonus</h4>
+                <article class="rule-note">
+                    <div class="rule-note-title"><strong>${escapeHtml(definition.battlefleetBonus.name)}</strong></div>
+                    ${renderMarkdown(definition.battlefleetBonus.text)}
+                </article>
+            </div>
+        ` : '',
+    ].filter(Boolean)
+
+    if (sections.length === 0) return ''
+    return `<div class="battlefleet-details">${sections.join('')}</div>`
 }
 
 function renderGlossaryCategory(title: string, rules: RuleReference[], glossary: Glossary | null): string {
@@ -459,12 +517,12 @@ function renderGlossary(ruleMap: Map<string, RuleReference>, glossary: Glossary 
     `
 }
 
-function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary | null, battlefleetDefinitions: BattlefleetDefinition[]): string {
+function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary | null, battlefleetDefinitions: BattlefleetDefinition[], fleetDoctrines: Record<string, FleetDoctrine[]>): string {
     const totalPoints = list.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
     const ruleMap = new Map<string, RuleReference>()
     const definitions = new Map(battlefleetDefinitions.map((definition) => [definition.id, definition]))
     const battlefleets = list.battlefleets ?? []
-    const printContext = { battlefleets, list, battlefleetDefinitions }
+    const printContext = { battlefleets, list, battlefleetDefinitions, fleetDoctrines }
     const assignedIds = new Set(battlefleets.map((battlefleet) => battlefleet.instanceId))
     const entriesByBattlefleetId = new Map<string, ArmyUnit[]>(battlefleets.map((battlefleet) => [battlefleet.instanceId, []]))
     const unassignedEntries: ArmyUnit[] = []
@@ -500,7 +558,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                 <meta charset="utf-8" />
                 <title>${escapeHtml(list.name)} - Print</title>
                 <style>
-                    @page { margin: 12mm; }
+                    @page { margin: 0; }
                     * { box-sizing: border-box; }
                     body { margin: 0; color: #18181b; background: #f4f4f5; font-family: Inter, Arial, sans-serif; font-size: 12px; line-height: 1.35; }
                     main { max-width: 980px; margin: 0 auto; padding: 24px; background: white; }
@@ -515,6 +573,11 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     .muted { color: #71717a; }
                     .custom-name { color: #1f3a5f; font-weight: 700; margin-top: 1px; }
                     .battlefleet, .glossary { margin-top: 16px; }
+                    .battlefleet-details { border-left: 1px solid #d4d4d8; border-right: 1px solid #d4d4d8; padding: 8px 12px 2px; }
+                    .battlefleet-detail-block + .battlefleet-detail-block { margin-top: 8px; }
+                    .rule-note { break-inside: auto; border: 1px solid #e4e4e7; background: #fafafa; padding: 7px 8px; }
+                    .rule-note + .rule-note { margin-top: 6px; }
+                    .rule-note-title { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 3px; }
                     .section-head, .unit-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
                     .section-head { break-after: avoid; border: 1px solid #d4d4d8; background: #f4f4f5; padding: 10px 12px; }
                     .unit-card { border: 1px solid #d4d4d8; border-top: 0; padding: 10px 12px; }
@@ -554,7 +617,7 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     .print-note { margin-top: 10px; color: #71717a; font-size: 11px; }
                     @media print {
                         body { background: white; }
-                        main { max-width: none; padding: 0; }
+                        main { max-width: none; padding: 12mm; }
                         .print-note { display: none; }
                     }
                 </style>
@@ -574,22 +637,41 @@ function renderPrintableList(list: ArmyList, units: Unit[], glossary: Glossary |
                     ${battlefleetSections.length === 0 && !unassigned ? '<div class="empty">No units added.</div>' : ''}
                     ${renderGlossary(ruleMap, glossary)}
                 </main>
-                <script>
-                    window.addEventListener('load', () => {
-                        window.focus();
-                        window.print();
-                    });
-                </script>
             </body>
         </html>
     `
 }
 
-export function previewPrintableList(list: ArmyList, units: Unit[], glossary: Glossary | null, battlefleetDefinitions: BattlefleetDefinition[]): void {
-    const printWindow = window.open('', '_blank')
-    if (!printWindow) return
+export function previewPrintableList(list: ArmyList, units: Unit[], glossary: Glossary | null, battlefleetDefinitions: BattlefleetDefinition[], fleetDoctrines: Record<string, FleetDoctrine[]>): void {
+    const html = renderPrintableList(list, units, glossary, battlefleetDefinitions, fleetDoctrines)
+    const previewDocument = new DOMParser().parseFromString(html, 'text/html')
+    const printRoot = document.createElement('main')
+    const style = document.createElement('style')
+    const originalTitle = document.title
+    const cleanup = () => {
+        printRoot.remove()
+        style.remove()
+        document.title = originalTitle
+        window.removeEventListener('afterprint', cleanup)
+    }
 
-    printWindow.document.open()
-    printWindow.document.write(renderPrintableList(list, units, glossary, battlefleetDefinitions))
-    printWindow.document.close()
+    printRoot.id = 'dw-print-root'
+    printRoot.innerHTML = previewDocument.querySelector('main')?.innerHTML ?? ''
+    style.textContent = `
+        ${previewDocument.querySelector('style')?.textContent ?? ''}
+        @media screen {
+            #dw-print-root { display: none !important; }
+        }
+        @media print {
+            body > :not(#dw-print-root) { display: none !important; }
+            #dw-print-root { display: block !important; }
+        }
+    `
+
+    document.body.append(printRoot)
+    document.head.append(style)
+    document.title = ''
+    window.addEventListener('afterprint', cleanup)
+    window.print()
+    window.setTimeout(cleanup, 60_000)
 }
