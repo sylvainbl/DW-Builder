@@ -1,6 +1,6 @@
 import type { ArmyList, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
-import { getFactionSpecialRules } from './factionSpecialRules'
+import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
 import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
 
@@ -71,8 +71,6 @@ function addEntryRules(
             ruleNames.systems.add(generatorSelection.generatorName)
         }
 
-        addNamedValues(ruleNames.systems, getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName)))
-
         const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config, entry.config)
         unit.weapons.forEach((weapon, weaponIndex) => {
             if (removedWeaponNames.has(weapon.name)) return
@@ -84,6 +82,7 @@ function addEntryRules(
         addNamedValues(ruleNames.qualities, optionRuleEffects.qualities)
     }
 
+    addNamedValues(ruleNames.systems, getArmyUnitFactionSpecialRules(unit, entry))
     addNamedValues(ruleNames.properties, getBattlefleetAddedProperties(list, battlefleetDefinitions, units, entry))
     addNamedValues(ruleNames.systems, getBattlefleetAddedSystems(list, battlefleetDefinitions, units, entry))
 

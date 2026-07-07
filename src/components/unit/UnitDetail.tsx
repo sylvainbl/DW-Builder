@@ -5,7 +5,7 @@ import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
 import { computeArmyUnitVpr, computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { unitCanTakeGenerator } from '../../utils/unitHelpers'
-import { getFactionSpecialRules } from '../../utils/factionSpecialRules'
+import { getArmyUnitFactionSpecialRules, getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
@@ -449,8 +449,10 @@ export default function UnitDetail() {
     const selectedSystemGenerators = generatorSelections.filter((selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX)
     const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost) : []
     const systemGeneratorSlotCount = systemGeneratorChoices.length > 0 ? getSystemGeneratorSlotCount(unit) : 0
-    const factionSpecialRules = getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
+    const factionSpecialRules = selectedEntry
+        ? getArmyUnitFactionSpecialRules(unit, selectedEntry)
+        : getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName), optionRuleEffects.removedSystems)
     const battlefleetAddedTags = getBattlefleetAddedTags(currentList, battlefleetDefinitions, units, selectedEntry)
     const battlefleetAddedProperties = getBattlefleetAddedProperties(currentList, battlefleetDefinitions, units, selectedEntry)
     const battlefleetAddedSystems = getBattlefleetAddedSystems(currentList, battlefleetDefinitions, units, selectedEntry)

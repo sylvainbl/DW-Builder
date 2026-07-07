@@ -1,7 +1,7 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, OptionUpgrade, Unit, UnitConfig, Weapon } from '../types/index'
 import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
 import { getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries } from './battlefleets'
-import { getFactionSpecialRules } from './factionSpecialRules'
+import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
@@ -154,16 +154,12 @@ function displayedSystems(unit: Unit, entry: ArmyUnit, units: Unit[], context?: 
         const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
         return generatorSelections.map((generatorSelection) => ({ name: generatorSelection.generatorName, value: null }))
     })
-    const factionSpecialRules = entry.models.flatMap((model) => {
-        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
-        return getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))
-    })
     const effects = selectedModelRuleEffects(unit, entry)
     return mergeNamedValues(
         unit.systems.filter((system) => !effects.removedSystems.has(system.name)),
         selectedGeneratorSystems,
         effects.systems,
-        factionSpecialRules,
+        getArmyUnitFactionSpecialRules(unit, entry),
         getBattlefleetAddedSystems(context?.list, context?.battlefleetDefinitions ?? [], units, entry),
     )
 }
@@ -173,15 +169,12 @@ function collectRules(unit: Unit, entry: ArmyUnit, units: Unit[], ruleMap: Map<s
         const optionRuleEffects = getSelectedOptionRuleEffects(unit, model.config, entry.config)
         for (const property of unit.properties.filter((property) => !optionRuleEffects.removedProperties.has(property.name))) addRule(ruleMap, 'properties', property)
         for (const system of unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name))) addRule(ruleMap, 'systems', system)
-        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
-        for (const rule of getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName))) {
-            addRule(ruleMap, 'systems', rule)
-        }
         collectRulesForModel(unit, model, entry.config, ruleMap)
         for (const property of optionRuleEffects.properties) addRule(ruleMap, 'properties', property)
         for (const system of optionRuleEffects.systems) addRule(ruleMap, 'systems', system)
         for (const quality of optionRuleEffects.qualities) addRule(ruleMap, 'qualities', quality)
     }
+    for (const rule of getArmyUnitFactionSpecialRules(unit, entry)) addRule(ruleMap, 'systems', rule)
     for (const property of getBattlefleetAddedProperties(context?.list, context?.battlefleetDefinitions ?? [], units, entry)) addRule(ruleMap, 'properties', property)
     for (const system of getBattlefleetAddedSystems(context?.list, context?.battlefleetDefinitions ?? [], units, entry)) addRule(ruleMap, 'systems', system)
 }
