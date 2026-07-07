@@ -1,4 +1,5 @@
 import type { NamedValue, OptionUpgrade, Unit, UnitConfig } from '../types/index'
+import { isAttachmentOption } from './attachments'
 import { isUnitLevelOption } from './optionConfig'
 
 export const SYSTEM_GENERATOR_WEAPON_INDEX = -1
@@ -59,6 +60,7 @@ export function getSelectedOptionRuleEffects(unit: Unit, modelConfig: UnitConfig
     const effects = emptyOptionRuleEffects()
 
     for (const option of unit.options_and_upgrades) {
+        if (isAttachmentOption(option)) continue
         if (!isOptionSelected(option, modelConfig, unitConfig)) continue
 
         addNamedValues(effects.properties, option.adds_properties)
@@ -85,6 +87,7 @@ export function getSelectedRemovedWeaponNames(unit: Unit, modelConfig: UnitConfi
     const removedWeapons = new Set<string>()
 
     for (const option of unit.options_and_upgrades) {
+        if (isAttachmentOption(option)) continue
         if (!isOptionSelected(option, modelConfig, unitConfig)) continue
 
         for (const weaponName of option.removes_weapons ?? []) {

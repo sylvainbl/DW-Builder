@@ -7,6 +7,7 @@ import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections } from '../../utils/optionRuleEffects'
 import { computeArmyUnitVpr, computeEntriesVpr, computeOptionPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
 import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeEntriesGuardianPool, computeEntriesGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
+import { isAttachmentOption } from '../../utils/attachments'
 import { MarkdownText } from '../ui/MarkdownText'
 
 interface Props {
@@ -72,7 +73,7 @@ function pointBreakdown(entry: ArmyUnit, unit: Unit, battlefleet: ArmyBattleflee
         }
 
         for (const option of unit.options_and_upgrades) {
-            if (option.cost_per_unit == null || isUnitLevelOption(option.tag) || GENERATOR_OPTION_TAGS.has(option.tag)) continue
+            if (option.cost_per_unit == null || isUnitLevelOption(option.tag) || GENERATOR_OPTION_TAGS.has(option.tag) || isAttachmentOption(option)) continue
             const quantity = model.config.optionQuantities[option.tag] ?? 0
             if (quantity <= 0) continue
             addPointGroup(optionGroups, formatOptionName(option), quantity, computeOptionPoints(option, quantity) ?? 0)
@@ -85,7 +86,7 @@ function pointBreakdown(entry: ArmyUnit, unit: Unit, battlefleet: ArmyBattleflee
     }
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit == null || !isUnitLevelOption(option.tag)) continue
+        if (option.cost_per_unit == null || !isUnitLevelOption(option.tag) || isAttachmentOption(option)) continue
         const quantity = entry.config.optionQuantities[option.tag] ?? 0
         if (quantity <= 0) continue
         const points = computeOptionPoints(option, quantity, hasChitaSwarmEscortDiscount(entry, { battlefleets: [battlefleet] })) ?? 0

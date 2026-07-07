@@ -1,4 +1,4 @@
-import type { Unit } from '../types/index'
+import type { OptionUpgrade, Unit } from '../types/index'
 
 const POSITIONAL_TRAITS = new Set(['surface', 'airborne', 'airship', 'rotorcraft', 'underwater'])
 const POSITIONAL_TRAIT_ALIASES: Record<string, string> = {
@@ -12,6 +12,10 @@ export function getMinimumModelsForUnit(unit: Unit): number {
 
 export function getMaximumModelsForUnit(unit: Unit): number {
     return Math.max(getMinimumModelsForUnit(unit), unit.max ?? (typeof unit.models === 'number' ? unit.models : getMinimumModelsForUnit(unit)))
+}
+
+export function isAttachmentOption(option: Pick<OptionUpgrade, 'attachment_unit_ids'>): boolean {
+    return (option.attachment_unit_ids?.length ?? 0) > 0
 }
 
 export function getAttachmentKeyword(unit: Unit): string | null {

@@ -1,4 +1,5 @@
 import type { ArmyList, ArmyUnit, OptionUpgrade, Unit, UnitConfig } from '../types/index'
+import { isAttachmentOption } from './attachments'
 import { isUnitLevelOption } from './optionConfig'
 import { getEffectiveGeneratorSelections } from './optionRuleEffects'
 
@@ -30,7 +31,7 @@ export function computeTotalPoints(unit: Unit, config: UnitConfig): number {
     total += getEffectiveGeneratorSelections(unit, config).reduce((sum, generator) => sum + generator.generatorCost, 0)
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR') continue
+        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR' || isAttachmentOption(option)) continue
         const quantity = config.optionQuantities[option.tag] ?? 0
         total += computeOptionPoints(option, quantity) ?? 0
     }
@@ -44,7 +45,7 @@ export function computeModelPoints(unit: Unit, config: UnitConfig, unitConfig?: 
     total += getEffectiveGeneratorSelections(unit, config, unitConfig).reduce((sum, generator) => sum + generator.generatorCost, 0)
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR' || isUnitLevelOption(option.tag)) continue
+        if (option.cost_per_unit === null || option.tag === 'GENERATOR' || option.tag === 'MAGMA_CAST_GENERATOR' || isUnitLevelOption(option.tag) || isAttachmentOption(option)) continue
         const quantity = config.optionQuantities[option.tag] ?? 0
         total += computeOptionPoints(option, quantity) ?? 0
     }
@@ -60,7 +61,7 @@ function computeUnitLevelPoints(unit: Unit, config: UnitConfig, discountFirstEsc
     }
 
     for (const option of unit.options_and_upgrades) {
-        if (option.cost_per_unit === null || !isUnitLevelOption(option.tag)) continue
+        if (option.cost_per_unit === null || !isUnitLevelOption(option.tag) || isAttachmentOption(option)) continue
         const quantity = config.optionQuantities[option.tag] ?? 0
         total += computeOptionPoints(option, quantity, discountFirstEscort) ?? 0
     }

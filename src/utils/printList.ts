@@ -3,6 +3,7 @@ import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './bat
 import { getBattlefleetForceType, isMercenaryInForce, isUkrainianAkulaFlagship, sortBattlefleetEntries } from './battlefleets'
 import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
 import { getAvailableFleetDoctrines } from './fleetDoctrines'
+import { isAttachmentOption } from './attachments'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
 import { computeModelPoints, computeOptionPoints, hasChitaSwarmEscortDiscount, type PointsContext } from './pointsCalc'
 import { getVisibleSrsSquadrons } from './srs'
@@ -78,6 +79,7 @@ function selectedWeapon(unit: Unit, model: ArmyModel, index: number, weapon: Wea
 
 function optionRows(unit: Unit, config: UnitConfig, discountFirstEscort = false): Array<{ option: OptionUpgrade; quantity: number; points: number | null }> {
     return unit.options_and_upgrades.flatMap((option) => {
+        if (isAttachmentOption(option)) return []
         const quantity = config.optionQuantities[option.tag] ?? 0
         if (quantity <= 0) return []
         return [{

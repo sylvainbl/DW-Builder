@@ -9,7 +9,7 @@ import { getArmyUnitFactionSpecialRules, getFactionSpecialRules } from '../../ut
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
-import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit } from '../../utils/attachments'
+import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit, isAttachmentOption } from '../../utils/attachments'
 import { getBattlefleetAddedProperties, getBattlefleetAddedSystems, getBattlefleetAddedTags } from '../../utils/battlefleetEffects'
 import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeModelGuardianPool, computeModelGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
 import { RuleModal } from '../ui/RuleModal'
@@ -503,6 +503,7 @@ export default function UnitDetail() {
     const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
     const availableOptions = unit.options_and_upgrades.filter((option) => (
         !optionRuleEffects.removedOptions.has(option.tag)
+        && !isAttachmentOption(option)
         && !(selectedEntryParent && optionUnavailableForAttachment(option))
     ))
     const hasOptions = availableOptions.length > 0
