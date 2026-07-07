@@ -18,7 +18,12 @@ export function RuleWord({
     const glossary = useAppStore((state) => state.glossary)
     const [modalOpen, setModalOpen] = useState(false)
 
-    const ruleText = glossary?.[category]?.[name] ?? null
+    const resolvedRule = glossary?.[category]?.[name]
+        ? { category, text: glossary[category][name] }
+        : Object.entries(glossary ?? {})
+            .map(([fallbackCategory, rules]) => ({ category: fallbackCategory, text: rules[name] }))
+            .find((rule) => rule.text)
+    const ruleText = resolvedRule?.text ?? null
     const label = `${showValue && value != null ? `${name} ${value}` : name}${detail ? ` (${detail})` : ''}`
 
     if (!ruleText) {
@@ -38,7 +43,7 @@ export function RuleWord({
                 <RuleModal
                     name={name}
                     value={value}
-                    category={category}
+                    category={resolvedRule?.category ?? category}
                     text={ruleText}
                     glossary={glossary}
                     onClose={() => setModalOpen(false)}

@@ -213,7 +213,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -1250,7 +1266,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -2160,7 +2192,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -5410,7 +5458,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -6477,7 +6541,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -6846,7 +6926,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]
@@ -7184,7 +7280,23 @@
         "resilience": 2,
         "properties": [
           {
+            "name": "Talon Autogyro Special SRS Missions",
+            "value": null
+          },
+          {
             "name": "Specialist",
+            "value": null
+          },
+          {
+            "name": "Talon Assault Mission",
+            "value": null
+          },
+          {
+            "name": "Ground Support Mission",
+            "value": null
+          },
+          {
+            "name": "Supply Drop Mission",
             "value": null
           }
         ]

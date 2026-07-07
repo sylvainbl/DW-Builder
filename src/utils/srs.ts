@@ -15,12 +15,16 @@ function singularizeLastWord(value: string): string {
 }
 
 function normalizeSrsTypeName(value: string): string {
-    return singularizeLastWord(
+    const normalized = singularizeLastWord(
         value
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, ' ')
             .trim(),
     )
+
+    if (normalized === 'talon autogyro') return 'talon rotor'
+
+    return normalized
 }
 
 export function getSrsTypeNames(unit: Unit, properties: NamedValue[] = unit.properties): string[] {
