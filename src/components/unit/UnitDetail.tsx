@@ -95,7 +95,10 @@ function generatorChoiceCost(choice: unknown): number | null {
 }
 
 function isGeneratorHardpointsListChoice(name: string): boolean {
-    return name.toLowerCase().includes('generator hardpoints list')
+    const normalizedName = name.toLowerCase()
+    return normalizedName.includes('generator hardpoints list')
+        || normalizedName === 'generator hardpoint'
+        || normalizedName === 'generator hardpoints'
 }
 
 function addGeneratorChoice(choices: Generator[], generator: Generator) {
@@ -123,6 +126,7 @@ function getOptionGeneratorChoices(option: OptionUpgrade, factionGenerators: Gen
         }
 
         const factionGenerator = factionGenerators.find((generator) => generator.name === name)
+        if (!factionGenerator && !name.toLowerCase().includes('generator')) continue
         addGeneratorChoice(choices, {
             name,
             point_cost: cost ?? (freeFactionGenerators ? 0 : factionGenerator?.point_cost ?? 0),
@@ -161,6 +165,10 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
             ...filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames).map((generator) => ({ ...generator, point_cost: 0 })),
             ...filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames),
         ]
+    }
+    const explicitChoices = weaponGeneratorOptions.flatMap((option) => getOptionGeneratorChoices(option, factionGenerators, false))
+    if (explicitChoices.length > 0 && slot === 'H') {
+        return filterRestrictedGenerators([...explicitChoices, ...fixedChoices], restrictedGeneratorNames)
     }
     if (magmaCastOption && optionTags.has('GENERATOR') && slot === 'H') {
         return filterRestrictedGenerators([...factionGenerators, ...fixedChoices], restrictedGeneratorNames)
@@ -1056,6 +1064,7 @@ export default function UnitDetail() {
                                         || option.tag === 'MAGMA_CAST_GENERATOR'
                                         || option.tag === 'EMPIRE_FREE_GENERATOR'
                                         || option.tag === 'FREE_GENERATOR'
+                                        || option.generator_replaces_weapon === true
                                         || option.generator_replaces_weapon === false
 
                                     return (
