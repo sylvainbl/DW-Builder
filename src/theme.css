@@ -1,6 +1,7 @@
 :root {
     --navy: #1b3a5c;
     --navy-rgb: 27 58 92;
+    --accent-foreground: var(--navy);
     --navy-light: #2a5280;
     --navy-light-rgb: 42 82 128;
     --gold: #c8aa6e;
@@ -25,6 +26,7 @@
     color-scheme: dark;
     --navy: #0f172a;
     --navy-rgb: 15 23 42;
+    --accent-foreground: #e2e8f0;
     --navy-light: #1e293b;
     --navy-light-rgb: 30 41 59;
     --gold: #d6b66f;
@@ -45,6 +47,7 @@
 :root[data-theme='turquoise-orange'] {
     --navy: #0f766e;
     --navy-rgb: 15 118 110;
+    --accent-foreground: var(--navy);
     --navy-light: #0d9488;
     --navy-light-rgb: 13 148 136;
     --gold: #f97316;
@@ -95,7 +98,7 @@
 }
 
 .unit-detail-dark-title {
-    color: var(--navy);
+    color: var(--accent-foreground);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
@@ -137,7 +140,7 @@
     font-size: 0.6875rem;
     font-weight: 700;
     line-height: 1;
-    color: var(--navy);
+    color: var(--accent-foreground);
 }
 
 .unit-detail-rule-detail {
@@ -184,7 +187,7 @@
     border-color: rgb(var(--gold-rgb) / 0.36);
     background: var(--gold-light);
     font-weight: 700;
-    color: var(--navy);
+    color: var(--accent-foreground);
 }
 
 .unit-detail-choice-menu {
@@ -362,7 +365,7 @@
 }
 
 .rule-inline-link:hover {
-    color: var(--navy);
+    color: var(--accent-foreground);
 }
 
 :root[data-theme='dark'] [class~='bg-white'],
@@ -401,6 +404,38 @@
 :root[data-theme='dark'] [class~='text-neutral-800'],
 :root[data-theme='dark'] [class~='text-neutral-900'] {
     color: #e5e7eb;
+}
+
+:root[data-theme='dark'] [class~='text-[var(--navy)]'],
+:root[data-theme='dark'] [class~='hover:text-[var(--navy)]']:hover {
+    color: var(--accent-foreground);
+}
+
+:root[data-theme='dark'] [class~='bg-[var(--gold)]'][class~='text-[var(--navy)]'] {
+    color: #172033;
+}
+
+:root[data-theme='dark'] [class~='bg-amber-50'] {
+    background-color: #352815;
+}
+
+:root[data-theme='dark'] [class~='bg-amber-100'] {
+    background-color: #493617;
+}
+
+:root[data-theme='dark'] [class~='border-amber-200'],
+:root[data-theme='dark'] [class~='border-amber-300'],
+:root[data-theme='dark'] [class~='border-amber-400'] {
+    border-color: #9a6f24;
+}
+
+:root[data-theme='dark'] [class~='text-amber-700'],
+:root[data-theme='dark'] [class~='text-amber-900'] {
+    color: #fcd34d;
+}
+
+:root[data-theme='dark'] .unit-detail-dark-title {
+    text-shadow: none;
 }
 
 :root[data-theme='dark'] [class~='hover:bg-neutral-50']:hover,
