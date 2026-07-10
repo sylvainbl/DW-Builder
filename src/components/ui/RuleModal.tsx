@@ -39,7 +39,8 @@ export function RuleModal({
             <div
                 onClick={(event) => event.stopPropagation()}
                 style={{
-                    background: 'white',
+                    background: 'var(--detail-row)',
+                    color: 'var(--detail-ink)',
                     borderRadius: '12px',
                     padding: '28px 32px',
                     maxWidth: '760px',
@@ -49,7 +50,7 @@ export function RuleModal({
                     boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
                 }}
             >
-                <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#888', marginBottom: '4px' }}>
+                <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--muted)', marginBottom: '4px' }}>
                     {displayedCategory}
                 </p>
                 <h2 style={{ fontSize: '18px', fontWeight: 500, marginBottom: '12px' }}>
@@ -58,7 +59,7 @@ export function RuleModal({
                 <MarkdownText
                     text={displayedText}
                     className="rule-modal-body"
-                    style={{ fontSize: '14px', lineHeight: 1.6, color: '#444' }}
+                    style={{ fontSize: '14px', lineHeight: 1.6, color: 'var(--detail-ink)' }}
                     glossary={glossary}
                     currentRuleName={displayedName}
                     onRuleClick={setSelectedRule}
