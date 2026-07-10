@@ -19,6 +19,16 @@ export interface GlossaryRuleLink {
 const inlineTokenPattern = /(\*\*\*[\s\S]+?\*\*\*|\*\*[\s\S]+?\*\*|\*[\s\S]+?\*)/g
 const explicitRulePattern = /\[\[(?:(properties|systems|qualities):)?([^\]|]+)(?:\|([^\]]+))?\]\]/g
 const ruleContext = '(?:qualit(?:y|ies)|propert(?:y|ies)|systems?|rules?)'
+const criticalDamageQualityNames = new Set([
+    'Arc',
+    'Breach',
+    'Hazard',
+    'Navigation Lock',
+    'Shredded Defences',
+    'Structural Failure',
+    'System Failure',
+    'Voltaic',
+])
 
 function escapeRegExp(text: string) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -53,7 +63,11 @@ function buildGlossaryMatcher(glossary?: Glossary | null, currentRuleName?: stri
     const autoRules = rules
         .map((rule) => ({
             rule,
-            pattern: ruleNamePattern(rule.name, !rule.name.includes(' ')),
+            pattern: ruleNamePattern(
+                rule.name,
+                !rule.name.includes(' ')
+                    || (rule.category === 'qualities' && criticalDamageQualityNames.has(rule.name)),
+            ),
         }))
         .sort((a, b) => b.rule.name.length - a.rule.name.length)
 

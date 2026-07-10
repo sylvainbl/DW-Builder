@@ -5435,6 +5435,7 @@
       {
         "name": "Majestic Cannons",
         "arc": "F",
+        "slot": "H",
         "firepower": {
           "C": null,
           "S": 5,
@@ -6025,7 +6026,7 @@
       {
         "name": "Majestic Cannons",
         "arc": "FPS",
-        "slot": null,
+        "slot": "H",
         "firepower": {
           "C": null,
           "S": 5,
@@ -6096,7 +6097,7 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "description": "Replace Majestic Cannons with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"

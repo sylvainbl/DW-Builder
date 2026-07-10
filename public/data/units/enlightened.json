@@ -1381,7 +1381,15 @@
         "cost_per_unit": null,
         "max": 3,
         "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 3,
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          }
+        ]
       },
       {
         "description": "Add up to 3 Escort tokens to the unit",
@@ -3854,7 +3862,15 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1,
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          }
+        ]
       },
       {
         "description": "Add 1 Origen Lathe Ship as an Attachment",
@@ -5836,7 +5852,15 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1,
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          }
+        ]
       },
       {
         "description": "Add 1 Origen Lathe Ship as an Attachment",
@@ -6825,7 +6849,15 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "MANDATORY_GENERATOR",
-        "mandatory": true
+        "mandatory": true,
+        "generator_replaces_weapon": false,
+        "system_generator_slots": 1,
+        "choices": [
+          {
+            "name": "Generator from Generator Hardpoints list",
+            "cost_per_unit": null
+          }
+        ]
       },
       {
         "description": "Add up to 2 Escort tokens to the unit",
