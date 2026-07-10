@@ -79,6 +79,7 @@ export interface OptionUpgrade {
 export interface Generator {
     name: string
     point_cost: number
+    weapon_choices?: Weapon[]
 }
 
 export interface FleetDoctrine {
@@ -184,11 +185,13 @@ export interface UnitConfig {
         weaponIndex: number
         generatorName: string
         generatorCost: number
+        mountedWeaponName?: string
     } | null
     generatorSelections?: {
         weaponIndex: number
         generatorName: string
         generatorCost: number
+        mountedWeaponName?: string
     }[]
     fleetDoctrineSelection: {
         doctrineName: string

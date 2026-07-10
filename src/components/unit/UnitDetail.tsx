@@ -17,6 +17,7 @@ import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit, Weapon } 
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 import { isUkrainianAkulaFlagship } from '../../utils/battlefleets'
+import { getGeneratorChoicesForSlot } from '../../utils/generatorRules'
 
 const KAGUTSUCHI_BATTLEFLEET_ID = 'empire-kagutsuchi-volcanic'
 const KAGUTSUCHI_MAGMA_CAST_COST = 45
@@ -357,6 +358,7 @@ export default function UnitDetail() {
     const setHardpointSelection = useAppStore((state) => state.setHardpointSelection)
     const setGeneratorSelection = useAppStore((state) => state.setGeneratorSelection)
     const setSystemGeneratorSelection = useAppStore((state) => state.setSystemGeneratorSelection)
+    const setGeneratorMountedWeapon = useAppStore((state) => state.setGeneratorMountedWeapon)
     const setFleetDoctrineSelection = useAppStore((state) => state.setFleetDoctrineSelection)
     const setOptionQuantity = useAppStore((state) => state.setOptionQuantity)
     const selectModel = useAppStore((state) => state.selectModel)
@@ -455,6 +457,12 @@ export default function UnitDetail() {
     const generatorSelections = getEffectiveGeneratorSelections(unit, activeUnitConfig, selectedEntry?.config)
     const weaponGeneratorSelection = generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
     const selectedSystemGenerators = generatorSelections.filter((selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX)
+    const mountedGeneratorWeapons = generatorSelections.flatMap((selection, selectionIndex) => {
+        const generator = factionGenerators.find((item) => item.name === selection.generatorName)
+        if (!generator?.weapon_choices?.length) return []
+        const weapon = generator.weapon_choices.find((choice) => choice.name === selection.mountedWeaponName) ?? null
+        return [{ selection, selectionIndex, choices: generator.weapon_choices, weapon }]
+    })
     const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost) : []
     const systemGeneratorSlotCount = systemGeneratorChoices.length > 0 ? getSystemGeneratorSlotCount(unit) : 0
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
@@ -1005,6 +1013,33 @@ export default function UnitDetail() {
                                     </tr>
                                 )
                             })}
+                            {mountedGeneratorWeapons.map(({ selection, selectionIndex, choices, weapon }) => {
+                                const inheritedArc = selection.weaponIndex >= 0 ? unit.weapons[selection.weaponIndex]?.arc : null
+                                return (
+                                    <tr key={`generator-weapon-${selectionIndex}`} className="align-top unit-detail-weapon-row">
+                                        <td className="rounded-l-lg px-2 py-2">
+                                            <select
+                                                aria-label={`${selection.generatorName} weapon ${selectionIndex + 1}`}
+                                                className="w-full rounded-md border border-neutral-200 bg-white px-2 py-1 text-[11px] font-medium text-neutral-900 outline-none focus:border-[var(--navy)]"
+                                                value={selection.mountedWeaponName ?? ''}
+                                                onChange={(event) => setGeneratorMountedWeapon(selectionIndex, event.target.value)}
+                                            >
+                                                <option value="">Select Entropic weapon</option>
+                                                {choices.map((choice) => (
+                                                    <option key={choice.name} value={choice.name}>{choice.name}</option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                        <td className="px-2 py-2 text-neutral-600">{inheritedArc ?? weapon?.arc ?? '—'}</td>
+                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.C)}</td>
+                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.S)}</td>
+                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.E)}</td>
+                                        <td className="rounded-r-lg px-2 py-2 text-neutral-600">
+                                            {weapon ? <WeaponQualityChips qualities={weapon.qualities} /> : <span className="text-neutral-500">Choose one profile</span>}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -1018,7 +1053,11 @@ export default function UnitDetail() {
                             <div className="mt-2 space-y-1.5">
                                 {Array.from({ length: systemGeneratorSlotCount }, (_, slotIndex) => {
                                     const selectedSystemGenerator = selectedSystemGenerators[slotIndex] ?? null
-                                    const slotGeneratorChoices = getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost, slotIndex)
+                                    const slotGeneratorChoices = getGeneratorChoicesForSlot(
+                                        getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost, slotIndex),
+                                        selectedSystemGenerators,
+                                        slotIndex,
+                                    )
                                     return (
                                         <div key={`system-generator-${slotIndex}`} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
                                             <div className="min-w-0">

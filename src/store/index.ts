@@ -5,6 +5,7 @@ import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/b
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
 import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
 import { getSelectedTags } from '../utils/optionRuleEffects'
+import { canSelectGeneratorInSlot } from '../utils/generatorRules'
 import { uuid } from '../utils/uuid'
 
 const emptyUnitConfig: UnitConfig = {
@@ -73,6 +74,7 @@ interface AppStore {
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
     setGeneratorSelection: (selection: UnitConfig['generatorSelection']) => void
     setSystemGeneratorSelection: (slotIndex: number, selection: UnitConfig['generatorSelection']) => void
+    setGeneratorMountedWeapon: (selectionIndex: number, weaponName: string) => void
     setFleetDoctrineSelection: (selection: UnitConfig['fleetDoctrineSelection']) => void
     setOptionQuantity: (tag: string, quantity: number) => void
 }
@@ -916,6 +918,9 @@ export const useAppStore = create<AppStore>((set, get) => ({
     setSystemGeneratorSelection: (slotIndex, selection) => {
         set((state) => {
             const generatorSelections = [...(state.activeUnitConfig.generatorSelections ?? (state.activeUnitConfig.generatorSelection ? [state.activeUnitConfig.generatorSelection] : []))]
+            if (selection && !canSelectGeneratorInSlot(generatorSelections, slotIndex, selection.generatorName)) {
+                return state
+            }
             if (selection) {
                 generatorSelections[slotIndex] = selection
             } else {
@@ -926,6 +931,26 @@ export const useAppStore = create<AppStore>((set, get) => ({
                 ...state.activeUnitConfig,
                 generatorSelection: normalizedSelections[0] ?? null,
                 generatorSelections: normalizedSelections.length > 0 ? normalizedSelections : undefined,
+            }
+            return {
+                activeUnitConfig: newConfig,
+                currentList: state.selectedListInstanceId && state.currentList
+                    ? updateListUnit(state.currentList, state.selectedListInstanceId, newConfig, state.units, state.selectedModelId ?? undefined)
+                    : state.currentList,
+            }
+        })
+        get().persistLists()
+    },
+    setGeneratorMountedWeapon: (selectionIndex, weaponName) => {
+        set((state) => {
+            const generatorSelections = [...(state.activeUnitConfig.generatorSelections ?? (state.activeUnitConfig.generatorSelection ? [state.activeUnitConfig.generatorSelection] : []))]
+            const selection = generatorSelections[selectionIndex]
+            if (!selection) return state
+            generatorSelections[selectionIndex] = { ...selection, mountedWeaponName: weaponName }
+            const newConfig = {
+                ...state.activeUnitConfig,
+                generatorSelection: generatorSelections[0] ?? null,
+                generatorSelections: generatorSelections.length > 1 ? generatorSelections : undefined,
             }
             return {
                 activeUnitConfig: newConfig,

@@ -216,7 +216,58 @@
     },
     {
       "name": "Entropic Generator",
-      "point_cost": 0
+      "point_cost": 0,
+      "weapon_choices": [
+        {
+          "name": "Advanced Aetheric Lance",
+          "arc": "—",
+          "firepower": {
+            "C": 4,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Precise",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "ESCF Light Gun Battery",
+          "arc": "—",
+          "firepower": {
+            "C": 2,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ESCF Light Rocket Battery",
+          "arc": "—",
+          "firepower": {
+            "C": null,
+            "S": 4,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Barrage",
+              "value": null
+            },
+            {
+              "name": "ESCF Munitions",
+              "value": null
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Fury Generator",
