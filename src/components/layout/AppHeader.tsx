@@ -4,11 +4,51 @@ import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useAppStore } from '../../store'
 
 type Theme = 'normal' | 'dark' | 'turquoise-orange'
+type StoredTheme = Exclude<Theme, 'turquoise-orange'>
+
+const THEME_STORAGE_KEY = 'dw-builder-theme'
+const SECRET_THEME_STORAGE_KEY = 'dw-builder-secret-theme'
+
+function loadStoredTheme(): StoredTheme {
+    try {
+        return localStorage.getItem(THEME_STORAGE_KEY) === 'dark' ? 'dark' : 'normal'
+    } catch {
+        return 'normal'
+    }
+}
+
+function saveTheme(theme: StoredTheme): void {
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch {
+        console.warn('Could not save theme to localStorage')
+    }
+}
+
+function loadStoredSecretTheme(): boolean {
+    try {
+        return localStorage.getItem(SECRET_THEME_STORAGE_KEY) === 'unlocked'
+    } catch {
+        return false
+    }
+}
+
+function saveSecretTheme(active: boolean): void {
+    try {
+        if (active) {
+            localStorage.setItem(SECRET_THEME_STORAGE_KEY, 'unlocked')
+        } else {
+            localStorage.removeItem(SECRET_THEME_STORAGE_KEY)
+        }
+    } catch {
+        console.warn('Could not save secret theme to localStorage')
+    }
+}
 
 export default function AppHeader() {
-    const [builderName, setBuilderName] = useState('DYSTOPIAN WARS BUILDER')
-    const [theme, setTheme] = useState<Theme>('normal')
-    const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(false)
+    const [builderName, setBuilderName] = useState(() => loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER')
+    const [theme, setTheme] = useState<Theme>(() => loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme())
+    const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
     const [settingsOpen, setSettingsOpen] = useState(false)
     const builderNameClickCount = useRef(0)
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
@@ -19,6 +59,13 @@ export default function AppHeader() {
 
     useEffect(() => {
         document.documentElement.dataset.theme = theme
+
+        if (theme === 'turquoise-orange') {
+            saveSecretTheme(true)
+        } else {
+            saveTheme(theme)
+            saveSecretTheme(false)
+        }
     }, [theme])
 
     useEffect(() => {
