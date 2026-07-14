@@ -22,6 +22,13 @@ import { getGeneratorChoicesForSlot } from '../../utils/generatorRules'
 const KAGUTSUCHI_BATTLEFLEET_ID = 'empire-kagutsuchi-volcanic'
 const KAGUTSUCHI_MAGMA_CAST_COST = 45
 
+interface UnitDetailProps {
+    addTarget?: {
+        battlefleetInstanceId: string | null
+        label: string
+    } | null
+}
+
 function formatValue(value: number | string | null | undefined) {
     return value == null ? '—' : String(value)
 }
@@ -342,7 +349,7 @@ function GeneratorChoiceRow({
     )
 }
 
-export default function UnitDetail() {
+export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
@@ -368,6 +375,7 @@ export default function UnitDetail() {
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const renameListUnit = useAppStore((state) => state.renameListUnit)
     const renameModel = useAppStore((state) => state.renameModel)
+    const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
     const [openHardpointKey, setOpenHardpointKey] = useState<string | null>(null)
     const [openDoctrine, setOpenDoctrine] = useState<FleetDoctrine | null>(null)
     const [editingUnitName, setEditingUnitName] = useState(false)
@@ -640,6 +648,17 @@ export default function UnitDetail() {
                                 <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
                                     Guardian Pool: {guardianPool} - Guardian Surge: {guardianSurge}
                                 </div>
+                            ) : null}
+                            {currentList && !selectedEntry && addTarget ? (
+                                <button
+                                    type="button"
+                                    title={`Add ${unit.name} to ${addTarget.label}`}
+                                    onClick={() => addUnitToCurrentList(unit.id, addTarget.battlefleetInstanceId)}
+                                    className="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-[var(--gold)] px-3 py-2 text-xs font-semibold text-[var(--navy)] shadow-sm transition hover:brightness-105"
+                                >
+                                    <Plus size={15} />
+                                    Add to {addTarget.label}
+                                </button>
                             ) : null}
                         </div>
                     </div>

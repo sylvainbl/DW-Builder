@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppStore } from '../../store'
@@ -6,6 +6,12 @@ import ListsPanel from '../lists/ListsPanel'
 import UnitDetail from '../unit/UnitDetail'
 import UnitListColumn from '../unit/UnitListColumn'
 import AppHeader from './AppHeader'
+
+type AppView = 'lists' | 'builder'
+interface UnitPickerTarget {
+    battlefleetInstanceId: string | null
+    label: string
+}
 
 export default function AppShell() {
     const { factionId, unitId } = useParams()
@@ -16,8 +22,11 @@ export default function AppShell() {
     const selectedListInstanceId = useAppStore((state) => state.selectedListInstanceId)
     const selectedBattlefleetInstanceId = useAppStore((state) => state.selectedBattlefleetInstanceId)
     const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
-    const [listsCollapsed, setListsCollapsed] = useState(false)
+    const currentList = useAppStore((state) => state.currentList)
+    const [activeView, setActiveView] = useState<AppView>(() => factionId || unitId ? 'builder' : 'lists')
+    const [unitPickerTarget, setUnitPickerTarget] = useState<UnitPickerTarget | null>(null)
     const detailPaneRef = useRef<HTMLDivElement>(null)
+    const hasDetailSelection = Boolean(selectedUnitId || selectedListInstanceId || selectedBattlefleetInstanceId || selectedListGlossary)
 
     useEffect(() => {
         if (factionId && factionId !== selectedFactionId) {
@@ -37,51 +46,78 @@ export default function AppShell() {
         detailPaneRef.current?.scrollTo({ top: 0 })
     }, [selectedUnitId, selectedListInstanceId, selectedBattlefleetInstanceId, selectedListGlossary])
 
+    const showLists = () => {
+        setUnitPickerTarget(null)
+        setActiveView('lists')
+    }
+
+    const enterBuilder = () => {
+        setUnitPickerTarget(null)
+        setActiveView('builder')
+    }
+
+    const showMobileList = () => {
+        setSelectedUnitId(null)
+    }
+
     return (
-        <div className="flex h-screen flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
-            <AppHeader />
-            <div className={`grid flex-1 overflow-hidden ${listsCollapsed ? 'grid-cols-[2.25rem_24%_1fr]' : 'grid-cols-[15%_20%_65%]'}`}>
-                <div className="min-h-0 overflow-hidden border-r border-neutral-200">
-                    {listsCollapsed ? (
-                        <div className="flex h-full flex-col items-center bg-[var(--panel)] py-3">
-                            <button
-                                type="button"
-                                title="Show lists"
-                                onClick={() => setListsCollapsed(false)}
-                                className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-200 bg-white text-[var(--navy)] shadow-sm transition hover:bg-neutral-50"
-                            >
-                                <ChevronRight size={15} />
-                            </button>
-                            <div className="mt-3 rotate-180 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 [writing-mode:vertical-rl]">
-                                Lists
+        <div className="flex h-dvh flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
+            <AppHeader activeView={activeView} onShowLists={showLists} />
+
+            {activeView === 'lists' ? (
+                <div className="min-h-0 flex-1 overflow-y-auto">
+                    <ListsPanel onEnterBuilder={enterBuilder} />
+                </div>
+            ) : (
+                <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+                    <div className="flex min-h-11 flex-none items-center gap-3 border-b border-[var(--panel-border)] bg-[var(--panel)] px-3 sm:px-4">
+                        <button
+                            type="button"
+                            onClick={showLists}
+                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--panel-border)] bg-[var(--detail-row)] px-2.5 py-1.5 text-xs font-semibold text-[var(--accent-foreground)] shadow-sm transition hover:border-[var(--gold)]"
+                        >
+                            <ArrowLeft size={14} />
+                            Back to lists
+                        </button>
+                        <div className="min-w-0 truncate text-xs text-[var(--muted)]">
+                            {currentList ? (
+                                <><span className="font-semibold text-[var(--text)]">{currentList.name}</span> · {currentList.units.length} units</>
+                            ) : (
+                                'Unit browser'
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="grid min-h-0 flex-1 grid-cols-1 overflow-hidden md:grid-cols-[minmax(19rem,34%)_minmax(0,1fr)]">
+                        <div className={`${hasDetailSelection ? 'hidden' : 'flex'} min-h-0 overflow-hidden border-r border-[var(--panel-border)] bg-[var(--detail-row)] md:flex`}>
+                            <div className="min-w-0 flex-1">
+                                <UnitListColumn
+                                    unitPickerTarget={unitPickerTarget}
+                                    onUnitPickerTargetChange={setUnitPickerTarget}
+                                />
                             </div>
                         </div>
-                    ) : (
-                        <div className="relative h-full">
-                            <button
-                                type="button"
-                                title="Hide lists"
-                                onClick={() => setListsCollapsed(true)}
-                                className="absolute right-2 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md border border-neutral-200 bg-white text-[var(--navy)] shadow-sm transition hover:bg-neutral-50"
-                            >
-                                <ChevronLeft size={15} />
-                            </button>
-                            <div className="h-full overflow-y-auto">
-                                <ListsPanel />
+
+                        <div ref={detailPaneRef} className={`${hasDetailSelection ? 'block' : 'hidden'} min-h-0 overflow-y-auto bg-[var(--panel)] md:block`}>
+                            <div className="sticky top-0 z-20 border-b border-[var(--panel-border)] bg-[rgb(var(--panel-rgb)/0.96)] px-3 py-2 backdrop-blur md:hidden">
+                                <button
+                                    type="button"
+                                    onClick={showMobileList}
+                                    className="inline-flex items-center gap-1.5 rounded-md border border-[var(--panel-border)] bg-[var(--detail-row)] px-2.5 py-1.5 text-xs font-semibold text-[var(--accent-foreground)] shadow-sm"
+                                >
+                                    <ArrowLeft size={14} />
+                                    Back to builder
+                                </button>
+                            </div>
+                            <div className="p-3 sm:p-4">
+                                <UnitDetail addTarget={unitPickerTarget} />
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
+            )}
 
-                <div className="min-h-0 overflow-hidden border-r border-neutral-200 bg-white">
-                    <UnitListColumn />
-                </div>
-
-                <div ref={detailPaneRef} className="min-h-0 overflow-y-auto bg-[var(--panel)] p-4">
-                    <UnitDetail />
-                </div>
-            </div>
-            <footer className="border-t border-[var(--gold)] bg-[var(--navy)] px-4 py-2 text-center text-xs font-medium text-white">
+            <footer className="flex-none border-t border-[var(--gold)] bg-[var(--navy)] px-4 py-1.5 text-center text-[10px] font-medium text-white sm:py-2 sm:text-xs">
                 All rights belong to{' '}
                 <a
                     href="https://www.dystopianwars.com/"

@@ -14,9 +14,20 @@ interface UnitCardListProps {
     addTargetBattlefleetInstanceId?: string | null
     addTargetLabel?: string
     onClose?: () => void
+    onTargetChange?: (battlefleetInstanceId: string | null, label: string) => void
 }
 
-function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose }: UnitCardListProps) {
+interface UnitPickerTarget {
+    battlefleetInstanceId: string | null
+    label: string
+}
+
+interface UnitListColumnProps {
+    unitPickerTarget: UnitPickerTarget | null
+    onUnitPickerTargetChange: (target: UnitPickerTarget | null) => void
+}
+
+function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose, onTargetChange }: UnitCardListProps) {
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
@@ -177,7 +188,12 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
                         <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60">Add unit to</div>
                         <select
                             value={targetBattlefleetInstanceId ?? ''}
-                            onChange={(event) => setTargetBattlefleetInstanceId(event.target.value || null)}
+                            onChange={(event) => {
+                                const battlefleetInstanceId = event.target.value || null
+                                const label = destinationOptions.find((option) => option.value === event.target.value)?.label ?? 'Unassigned units'
+                                setTargetBattlefleetInstanceId(battlefleetInstanceId)
+                                onTargetChange?.(battlefleetInstanceId, label)
+                            }}
                             className="mt-1 max-w-full rounded-md border border-white/20 bg-white/10 px-2 py-1 text-sm font-semibold text-white outline-none transition hover:bg-white/15 focus:border-[var(--gold)]"
                             title={selectedDestinationLabel}
                         >
@@ -254,14 +270,12 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose 
     )
 }
 
-function OpenListUnitColumn() {
-    const [unitPickerTarget, setUnitPickerTarget] = useState<{ battlefleetInstanceId: string | null; label: string } | null>(null)
-
+function OpenListUnitColumn({ unitPickerTarget, onUnitPickerTargetChange }: UnitListColumnProps) {
     return (
         <aside className="relative flex h-full flex-col overflow-hidden bg-white">
             <div className="min-h-0 flex-1 overflow-y-auto">
                 <ActiveListPanel
-                    onOpenUnitPicker={(battlefleetInstanceId, label) => setUnitPickerTarget({ battlefleetInstanceId, label })}
+                    onOpenUnitPicker={(battlefleetInstanceId, label) => onUnitPickerTargetChange({ battlefleetInstanceId, label })}
                 />
             </div>
             {unitPickerTarget ? (
@@ -269,7 +283,8 @@ function OpenListUnitColumn() {
                     <UnitCardList
                         addTargetBattlefleetInstanceId={unitPickerTarget.battlefleetInstanceId}
                         addTargetLabel={unitPickerTarget.label}
-                        onClose={() => setUnitPickerTarget(null)}
+                        onTargetChange={(battlefleetInstanceId, label) => onUnitPickerTargetChange({ battlefleetInstanceId, label })}
+                        onClose={() => onUnitPickerTargetChange(null)}
                     />
                 </div>
             ) : null}
@@ -277,7 +292,7 @@ function OpenListUnitColumn() {
     )
 }
 
-export default function UnitListColumn() {
+export default function UnitListColumn({ unitPickerTarget, onUnitPickerTargetChange }: UnitListColumnProps) {
     const currentList = useAppStore((state) => state.currentList)
 
     if (!currentList) {
@@ -288,5 +303,11 @@ export default function UnitListColumn() {
         )
     }
 
-    return <OpenListUnitColumn key={currentList.id} />
+    return (
+        <OpenListUnitColumn
+            key={currentList.id}
+            unitPickerTarget={unitPickerTarget}
+            onUnitPickerTargetChange={onUnitPickerTargetChange}
+        />
+    )
 }

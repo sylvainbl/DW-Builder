@@ -1,10 +1,15 @@
-import { Settings } from 'lucide-react'
+import { List as ListIcon, Settings } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useAppStore } from '../../store'
 
 type Theme = 'normal' | 'dark' | 'turquoise-orange'
 type StoredTheme = Exclude<Theme, 'turquoise-orange'>
+
+interface AppHeaderProps {
+    activeView: 'lists' | 'builder'
+    onShowLists: () => void
+}
 
 const THEME_STORAGE_KEY = 'dw-builder-theme'
 const SECRET_THEME_STORAGE_KEY = 'dw-builder-secret-theme'
@@ -45,7 +50,7 @@ function saveSecretTheme(active: boolean): void {
     }
 }
 
-export default function AppHeader() {
+export default function AppHeader({ activeView, onShowLists }: AppHeaderProps) {
     const [builderName, setBuilderName] = useState(() => loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER')
     const [theme, setTheme] = useState<Theme>(() => loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme())
     const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
@@ -90,17 +95,31 @@ export default function AppHeader() {
     }
 
     return (
-        <header className="relative z-30 flex h-14 items-center justify-between border-b border-white/10 px-4 text-sm text-white" style={{ background: 'var(--navy)' }}>
-            <div className="flex min-w-0 items-center gap-2 truncate">
+        <header className="relative z-30 flex h-14 flex-none items-center justify-between border-b border-white/10 px-3 text-sm text-white sm:px-4" style={{ background: 'var(--navy)' }}>
+            <div className="flex min-w-0 items-center gap-2">
                 <span
-                    className="flex-none select-none font-semibold tracking-[0.24em] text-[var(--gold)]"
+                    className="max-w-[11rem] flex-none select-none truncate text-[11px] font-semibold tracking-[0.2em] text-[var(--gold)] sm:max-w-none sm:text-sm sm:tracking-[0.24em]"
                     onClick={handleBuilderNameClick}
                     onMouseDown={(event) => event.preventDefault()}
                 >
                     {builderName}
                 </span>
-                <span className="text-white/70">›</span>
-                <span className="truncate text-sky-100">{contextLabel}</span>
+                <button
+                    type="button"
+                    onClick={onShowLists}
+                    aria-current={activeView === 'lists' ? 'page' : undefined}
+                    title="Open saved lists"
+                    className={`inline-flex flex-none items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold shadow-sm transition ${activeView === 'lists' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                >
+                    <ListIcon size={16} />
+                    List
+                </button>
+                {activeView === 'builder' ? (
+                    <>
+                        <span className="hidden text-white/40 sm:inline">›</span>
+                        <span className="hidden truncate text-sky-100 sm:inline">{contextLabel}</span>
+                    </>
+                ) : null}
             </div>
 
             <div
