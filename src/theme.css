@@ -460,12 +460,24 @@
     border-color: var(--navy-light);
 }
 
+:root[data-theme='dark'] [class~='border-sky-500'] {
+    border-color: #38bdf8;
+}
+
 :root[data-theme='turquoise-orange'] [class~='bg-sky-50'] {
+    background-color: var(--detail-panel);
+}
+
+:root[data-theme='dark'] [class~='bg-sky-50'] {
     background-color: var(--detail-panel);
 }
 
 :root[data-theme='turquoise-orange'] [class~='ring-sky-200'] {
     --tw-ring-color: rgb(var(--navy-light-rgb) / 0.28);
+}
+
+:root[data-theme='dark'] [class~='ring-sky-200'] {
+    --tw-ring-color: rgb(56 189 248 / 0.28);
 }
 
 :root[data-theme='turquoise-orange'] [class~='hover:border-sky-200']:hover {
