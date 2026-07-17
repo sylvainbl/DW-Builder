@@ -1,0 +1,632 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "procedures": [
+    {
+      "id": "procedure.round-sequence",
+      "title": "Round Sequence",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61,
+          62,
+          63,
+          64,
+          65,
+          66
+        ],
+        "pdfPages": [
+          63,
+          64,
+          65,
+          66,
+          67,
+          68
+        ]
+      },
+      "printedPages": [
+        61,
+        66
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "The Ready Phase",
+          "ruleBlockId": "rule.1-the-ready-phase"
+        },
+        {
+          "order": 2,
+          "title": "The Launch Phase",
+          "ruleBlockId": "rule.2-the-launch-phase"
+        },
+        {
+          "order": 3,
+          "title": "The Activation Phase",
+          "ruleBlockId": "rule.3-the-activation-phase"
+        },
+        {
+          "order": 4,
+          "title": "The End Phase",
+          "ruleBlockId": "rule.4-the-end-phase"
+        }
+      ]
+    },
+    {
+      "id": "procedure.unit-activation",
+      "title": "Activating a Unit",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          67,
+          68,
+          69,
+          70,
+          71,
+          72
+        ],
+        "pdfPages": [
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ]
+      },
+      "printedPages": [
+        67,
+        72
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Withdrawal Step",
+          "ruleBlockId": "rule.1-the-withdrawal-step"
+        },
+        {
+          "order": 2,
+          "title": "Movement Step",
+          "ruleBlockId": "rule.2-the-movement-step"
+        },
+        {
+          "order": 3,
+          "title": "Action Step",
+          "ruleBlockId": "rule.3-the-action-step"
+        },
+        {
+          "order": 4,
+          "title": "Consolidation Step",
+          "ruleBlockId": "rule.4-the-consolidation-step"
+        }
+      ]
+    },
+    {
+      "id": "procedure.attack-action",
+      "title": "Resolving an Attack Action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          73,
+          74,
+          75
+        ],
+        "pdfPages": [
+          75,
+          76,
+          77
+        ]
+      },
+      "printedPages": [
+        73,
+        75
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Choose Initial Target",
+          "ruleBlockId": "rule.1-choose-initial-target"
+        },
+        {
+          "order": 2,
+          "title": "Nominate Participating Models",
+          "ruleBlockId": "rule.2-nominate-participating-models.p73"
+        },
+        {
+          "order": 3,
+          "title": "Declare Contributing Weapons",
+          "ruleBlockId": "rule.3-declare-contributing-weapons"
+        },
+        {
+          "order": 4,
+          "title": "Make the Action Roll",
+          "ruleBlockId": "rule.4-make-the-action-roll"
+        },
+        {
+          "order": 5,
+          "title": "Inflict Damage",
+          "ruleBlockId": "rule.5-inflict-damage"
+        }
+      ]
+    },
+    {
+      "id": "procedure.maintenance-action",
+      "title": "Resolving a Maintenance Action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "printedPages": [
+        95,
+        95
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Nominate Participating Models",
+          "ruleBlockId": "rule.1-nominate-participating-models.p95"
+        },
+        {
+          "order": 2,
+          "title": "Make Repair Rolls",
+          "ruleBlockId": "rule.2-make-repair-rolls"
+        }
+      ]
+    },
+    {
+      "id": "procedure.broadside-action",
+      "title": "Resolving a Broadside Action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          96,
+          97
+        ],
+        "pdfPages": [
+          98,
+          99
+        ]
+      },
+      "printedPages": [
+        96,
+        97
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Nominate Participating Models",
+          "ruleBlockId": "rule.1-nominate-participating-models.p96"
+        },
+        {
+          "order": 2,
+          "title": "Choose a Target",
+          "ruleBlockId": "rule.2-choose-a-target"
+        },
+        {
+          "order": 3,
+          "title": "Determine Contributing Batteries",
+          "ruleBlockId": "rule.3-determine-contributing-batteries"
+        },
+        {
+          "order": 4,
+          "title": "Make the Broadside Roll",
+          "ruleBlockId": "rule.4-make-the-broadside-roll"
+        },
+        {
+          "order": 5,
+          "title": "Resolve Additional Targets",
+          "ruleBlockId": "rule.5-resolve-additional-targets"
+        }
+      ]
+    },
+    {
+      "id": "procedure.boarding-action",
+      "title": "Resolving a Boarding Action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          98,
+          99,
+          100
+        ],
+        "pdfPages": [
+          100,
+          101,
+          102
+        ]
+      },
+      "printedPages": [
+        98,
+        100
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Choose Target",
+          "ruleBlockId": "rule.1-choose-target"
+        },
+        {
+          "order": 2,
+          "title": "Nominate Participating Models",
+          "ruleBlockId": "rule.2-nominate-participating-models.p98"
+        },
+        {
+          "order": 3,
+          "title": "Make the Action Roll",
+          "ruleBlockId": "rule.3-make-the-action-roll"
+        },
+        {
+          "order": 4,
+          "title": "Resolve Outcomes",
+          "ruleBlockId": "rule.4-resolve-outcomes"
+        }
+      ]
+    },
+    {
+      "id": "procedure.launch-srs",
+      "title": "Launching Short Range Squadrons",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          108
+        ],
+        "pdfPages": [
+          110
+        ]
+      },
+      "printedPages": [
+        108,
+        108
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Declare Participating Models",
+          "ruleBlockId": "rule.1-declare-participating-models"
+        },
+        {
+          "order": 2,
+          "title": "Create SRS Stack(s)",
+          "ruleBlockId": "rule.2-create-srs-stack-s"
+        },
+        {
+          "order": 3,
+          "title": "Choose SRS Mission(s)",
+          "ruleBlockId": "rule.3-choose-srs-mission-s"
+        }
+      ]
+    },
+    {
+      "id": "procedure.attack-run-mission",
+      "title": "Resolving an Attack Run Mission",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          111,
+          112,
+          113
+        ],
+        "pdfPages": [
+          113,
+          114,
+          115
+        ]
+      },
+      "printedPages": [
+        111,
+        113
+      ],
+      "ruleBlockId": "rule.resolving-an-attack-run-mission",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Nominate Attack Run Targets",
+          "ruleBlockId": "rule.resolving-an-attack-run-mission"
+        },
+        {
+          "order": 2,
+          "title": "Make an Action Roll",
+          "ruleBlockId": "rule.resolving-an-attack-run-mission"
+        },
+        {
+          "order": 3,
+          "title": "Allocate Critical Damage",
+          "ruleBlockId": "rule.resolving-an-attack-run-mission"
+        },
+        {
+          "order": 4,
+          "title": "Resolve Critical Damage",
+          "ruleBlockId": "rule.resolving-an-attack-run-mission"
+        },
+        {
+          "order": 5,
+          "title": "Disengage",
+          "ruleBlockId": "rule.resolving-an-attack-run-mission"
+        }
+      ]
+    },
+    {
+      "id": "procedure.mine-clearance-mission",
+      "title": "Resolving a Mine Clearance Mission",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          114
+        ],
+        "pdfPages": [
+          116
+        ]
+      },
+      "printedPages": [
+        114,
+        114
+      ],
+      "ruleBlockId": "rule.resolving-a-mine-clearance-mission",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Roll one Action Die per SRS token",
+          "ruleBlockId": "rule.resolving-a-mine-clearance-mission"
+        },
+        {
+          "order": 2,
+          "title": "Clear the target Minefield if at least one Exploding Strike is rolled",
+          "ruleBlockId": "rule.resolving-a-mine-clearance-mission"
+        },
+        {
+          "order": 3,
+          "title": "Use additional Exploding Strikes to clear nearby Minefields",
+          "ruleBlockId": "rule.resolving-a-mine-clearance-mission"
+        },
+        {
+          "order": 4,
+          "title": "Discard the SRS Stack",
+          "ruleBlockId": "rule.resolving-a-mine-clearance-mission"
+        }
+      ]
+    },
+    {
+      "id": "procedure.prepare-to-play",
+      "title": "Preparing to Play",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137
+        ],
+        "pdfPages": [
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139
+        ]
+      },
+      "printedPages": [
+        131,
+        137
+      ],
+      "ruleBlockId": null,
+      "steps": [
+        {
+          "order": 1,
+          "title": "Determine the Initiative",
+          "ruleBlockId": "rule.1-determine-the-initiative"
+        },
+        {
+          "order": 2,
+          "title": "Choose an Encounter",
+          "ruleBlockId": "rule.2-choose-an-encounter"
+        },
+        {
+          "order": 3,
+          "title": "Prepare the Play Area",
+          "ruleBlockId": "rule.3-prepare-the-play-area"
+        },
+        {
+          "order": 4,
+          "title": "Draw Starting Cards",
+          "ruleBlockId": "rule.4-draw-starting-cards"
+        },
+        {
+          "order": 5,
+          "title": "Deploy Forces",
+          "ruleBlockId": "rule.5-deploy-forces"
+        },
+        {
+          "order": 6,
+          "title": "Weigh Anchor!",
+          "ruleBlockId": "rule.6-weigh-anchor"
+        }
+      ]
+    },
+    {
+      "id": "procedure.action-roll",
+      "title": "Making an Action Roll",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          46,
+          47,
+          48,
+          49
+        ],
+        "pdfPages": [
+          48,
+          49,
+          50,
+          51
+        ],
+        "anchor": {
+          "page": 48,
+          "bbox": [
+            130.39,
+            53.83,
+            259.35,
+            67.58
+          ]
+        },
+        "declaredPrintedPageRange": [
+          46,
+          50
+        ]
+      },
+      "printedPages": [
+        46,
+        50
+      ],
+      "ruleBlockId": "rule.making-an-action-roll",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Roll the Dice Pool(s)",
+          "ruleBlockId": "rule.making-an-action-roll"
+        },
+        {
+          "order": 2,
+          "title": "Resolve Exploding Strikes",
+          "ruleBlockId": "rule.making-an-action-roll"
+        },
+        {
+          "order": 3,
+          "title": "Resolve Re-rolls",
+          "ruleBlockId": "rule.making-an-action-roll"
+        },
+        {
+          "order": 4,
+          "title": "Count Hits",
+          "ruleBlockId": "rule.making-an-action-roll"
+        },
+        {
+          "order": 5,
+          "title": "Resolve Outcomes",
+          "ruleBlockId": "rule.making-an-action-roll"
+        }
+      ]
+    },
+    {
+      "id": "procedure.interception-attempt",
+      "title": "Resolving an Interception Attempt",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          112,
+          113
+        ],
+        "pdfPages": [
+          114,
+          115
+        ],
+        "anchor": {
+          "page": 114,
+          "bbox": [
+            130.39,
+            53.83,
+            279.73,
+            67.58
+          ]
+        },
+        "declaredPrintedPageRange": [
+          112,
+          114
+        ]
+      },
+      "printedPages": [
+        112,
+        113
+      ],
+      "ruleBlockId": "rule.intercepting-attack-runs",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Make the Interception Action Roll",
+          "ruleBlockId": "rule.intercepting-attack-runs"
+        },
+        {
+          "order": 2,
+          "title": "Resolve Outcomes against each selected squadron type",
+          "ruleBlockId": "rule.intercepting-attack-runs"
+        },
+        {
+          "order": 3,
+          "title": "Discard intercepted SRS tokens",
+          "ruleBlockId": "rule.intercepting-attack-runs"
+        }
+      ]
+    },
+    {
+      "id": "procedure.ram",
+      "title": "Resolving a Ram",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82,
+          83
+        ],
+        "pdfPages": [
+          84,
+          85
+        ],
+        "anchor": {
+          "page": 84,
+          "bbox": [
+            130.39,
+            123.42,
+            223.73,
+            137.17
+          ]
+        }
+      },
+      "printedPages": [
+        82,
+        83
+      ],
+      "ruleBlockId": "rule.resolving-a-ram",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Make a Crew Check",
+          "ruleBlockId": "rule.resolving-a-ram"
+        },
+        {
+          "order": 2,
+          "title": "Inflict Disorder",
+          "ruleBlockId": "rule.resolving-a-ram"
+        },
+        {
+          "order": 3,
+          "title": "Make an Action Roll",
+          "ruleBlockId": "rule.resolving-a-ram"
+        },
+        {
+          "order": 4,
+          "title": "Resolve Outcomes for both models",
+          "ruleBlockId": "rule.resolving-a-ram"
+        },
+        {
+          "order": 5,
+          "title": "Disengage",
+          "ruleBlockId": "rule.resolving-a-ram"
+        }
+      ]
+    }
+  ]
+}

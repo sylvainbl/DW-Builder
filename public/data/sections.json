@@ -1,0 +1,3953 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "sections": [
+    {
+      "id": "what-is-dystopian-wars",
+      "title": "What is Dystopian Wars?",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "what-is-dystopian-wars"
+      ],
+      "childSectionIds": [
+        "dystopian-wars-toolkit",
+        "overview-of-a-game",
+        "models-and-units"
+      ],
+      "printedPageStart": 4,
+      "printedPageEnd": 33,
+      "pdfPageStart": 6,
+      "pdfPageEnd": 35,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.what-is-dystopian-wars",
+      "ruleBlockIds": [
+        "rule.chapter.what-is-dystopian-wars"
+      ],
+      "tableIds": [
+        "engagement-scale-recommendations",
+        "measurement-range-bands"
+      ]
+    },
+    {
+      "id": "dystopian-wars-toolkit",
+      "title": "Dystopian Wars Toolkit",
+      "parentId": "what-is-dystopian-wars",
+      "level": 1,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit"
+      ],
+      "childSectionIds": [
+        "miniatures",
+        "play-area-and-terrain-toolkit",
+        "dice",
+        "tokens-and-markers-toolkit",
+        "victory-and-valour-cards-toolkit",
+        "measuring-devices",
+        "orders-of-battle",
+        "rules-glossary"
+      ],
+      "printedPageStart": 9,
+      "printedPageEnd": 12,
+      "pdfPageStart": 11,
+      "pdfPageEnd": 14,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "pdfPages": [
+          11,
+          12,
+          13,
+          14
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.dystopian-wars-toolkit",
+      "ruleBlockIds": [
+        "rule.section.dystopian-wars-toolkit"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "miniatures",
+      "title": "Miniatures",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "miniatures"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 9,
+      "printedPageEnd": 9,
+      "pdfPageStart": 11,
+      "pdfPageEnd": 11,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          9
+        ],
+        "pdfPages": [
+          11
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.miniatures"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "play-area-and-terrain-toolkit",
+      "title": "Play Area & Terrain",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "play-area-and-terrain-toolkit"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 9,
+      "printedPageEnd": 9,
+      "pdfPageStart": 11,
+      "pdfPageEnd": 11,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          9
+        ],
+        "pdfPages": [
+          11
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.play-area-and-terrain-toolkit",
+      "ruleBlockIds": [
+        "rule.section.play-area-and-terrain-toolkit",
+        "rule.play-area-and-terrain"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "dice",
+      "title": "Dice",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "dice"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 9,
+      "printedPageEnd": 9,
+      "pdfPageStart": 11,
+      "pdfPageEnd": 11,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          9
+        ],
+        "pdfPages": [
+          11
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.dice",
+      "ruleBlockIds": [
+        "rule.section.dice",
+        "rule.dice"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "tokens-and-markers-toolkit",
+      "title": "Tokens and Markers",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "tokens-and-markers-toolkit"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 10,
+      "printedPageEnd": 10,
+      "pdfPageStart": 12,
+      "pdfPageEnd": 12,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          10
+        ],
+        "pdfPages": [
+          12
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.tokens-and-markers"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "victory-and-valour-cards-toolkit",
+      "title": "Victory & Valour Cards",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "victory-and-valour-cards-toolkit"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 11,
+      "printedPageEnd": 11,
+      "pdfPageStart": 13,
+      "pdfPageEnd": 13,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          11
+        ],
+        "pdfPages": [
+          13
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.victory-and-valour-cards.p11"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "measuring-devices",
+      "title": "Measuring Devices",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "measuring-devices"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 11,
+      "printedPageEnd": 11,
+      "pdfPageStart": 13,
+      "pdfPageEnd": 13,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          11
+        ],
+        "pdfPages": [
+          13
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.measuring-devices",
+      "ruleBlockIds": [
+        "rule.section.measuring-devices",
+        "rule.measuring-devices"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "orders-of-battle",
+      "title": "Orders of Battle (ORBATS)",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "orders-of-battle"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 11,
+      "printedPageEnd": 11,
+      "pdfPageStart": 13,
+      "pdfPageEnd": 13,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          11
+        ],
+        "pdfPages": [
+          13
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.orders-of-battle",
+      "ruleBlockIds": [
+        "rule.section.orders-of-battle",
+        "rule.orders-of-battle-orbats"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "rules-glossary",
+      "title": "Rules Glossary",
+      "parentId": "dystopian-wars-toolkit",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "dystopian-wars-toolkit",
+        "rules-glossary"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 11,
+      "printedPageEnd": 11,
+      "pdfPageStart": 13,
+      "pdfPageEnd": 13,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          11
+        ],
+        "pdfPages": [
+          13
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.rules-glossary",
+      "ruleBlockIds": [
+        "rule.section.rules-glossary",
+        "rule.rules-glossary"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "overview-of-a-game",
+      "title": "Overview of a Game",
+      "parentId": "what-is-dystopian-wars",
+      "level": 1,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game"
+      ],
+      "childSectionIds": [
+        "encounters-overview",
+        "points-limit-and-engagement-scale",
+        "play-area-overview",
+        "victory-and-defeat",
+        "ending-a-game"
+      ],
+      "printedPageStart": 13,
+      "printedPageEnd": 20,
+      "pdfPageStart": 15,
+      "pdfPageEnd": 22,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "pdfPages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.overview-of-a-game",
+      "ruleBlockIds": [
+        "rule.section.overview-of-a-game"
+      ],
+      "tableIds": [
+        "engagement-scale-recommendations"
+      ]
+    },
+    {
+      "id": "encounters-overview",
+      "title": "Encounters",
+      "parentId": "overview-of-a-game",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game",
+        "encounters-overview"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 13,
+      "printedPageEnd": 13,
+      "pdfPageStart": 15,
+      "pdfPageEnd": 15,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          13
+        ],
+        "pdfPages": [
+          15
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.encounters"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "points-limit-and-engagement-scale",
+      "title": "Points Limit & Engagement Scale",
+      "parentId": "overview-of-a-game",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game",
+        "points-limit-and-engagement-scale"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 14,
+      "printedPageEnd": 14,
+      "pdfPageStart": 16,
+      "pdfPageEnd": 16,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          14
+        ],
+        "pdfPages": [
+          16
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.points-limit-and-engagement-scale"
+      ],
+      "tableIds": [
+        "engagement-scale-recommendations"
+      ]
+    },
+    {
+      "id": "play-area-overview",
+      "title": "The Play Area",
+      "parentId": "overview-of-a-game",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game",
+        "play-area-overview"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 15,
+      "printedPageEnd": 17,
+      "pdfPageStart": 17,
+      "pdfPageEnd": 19,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          15,
+          16,
+          17
+        ],
+        "pdfPages": [
+          17,
+          18,
+          19
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.the-play-area",
+        "rule.edges-and-deployment-zones",
+        "rule.quadrants-and-halves",
+        "rule.terrain-features.p17"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "victory-and-defeat",
+      "title": "Victory & Defeat",
+      "parentId": "overview-of-a-game",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game",
+        "victory-and-defeat"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 18,
+      "printedPageEnd": 18,
+      "pdfPageStart": 20,
+      "pdfPageEnd": 20,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          18
+        ],
+        "pdfPages": [
+          20
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.victory-and-defeat",
+        "rule.scoring-victory-points"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "ending-a-game",
+      "title": "Ending a Game",
+      "parentId": "overview-of-a-game",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "overview-of-a-game",
+        "ending-a-game"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 19,
+      "printedPageEnd": 20,
+      "pdfPageStart": 21,
+      "pdfPageEnd": 22,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          19,
+          20
+        ],
+        "pdfPages": [
+          21,
+          22
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.ending-a-game"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "models-and-units",
+      "title": "Models and Units",
+      "parentId": "what-is-dystopian-wars",
+      "level": 1,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units"
+      ],
+      "childSectionIds": [
+        "understanding-models",
+        "understanding-units",
+        "unit-profiles",
+        "properties-and-systems",
+        "weapons"
+      ],
+      "printedPageStart": 21,
+      "printedPageEnd": 33,
+      "pdfPageStart": 23,
+      "pdfPageEnd": 35,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "pdfPages": [
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.models-and-units",
+      "ruleBlockIds": [
+        "rule.section.models-and-units"
+      ],
+      "tableIds": [
+        "measurement-range-bands"
+      ]
+    },
+    {
+      "id": "understanding-models",
+      "title": "Understanding Models",
+      "parentId": "models-and-units",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units",
+        "understanding-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 21,
+      "printedPageEnd": 23,
+      "pdfPageStart": 23,
+      "pdfPageEnd": 25,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          21,
+          22,
+          23
+        ],
+        "pdfPages": [
+          23,
+          24,
+          25
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.understanding-models",
+        "rule.centre-point",
+        "rule.arcs",
+        "rule.measuring-distances",
+        "rule.proximity"
+      ],
+      "tableIds": [
+        "measurement-range-bands"
+      ]
+    },
+    {
+      "id": "understanding-units",
+      "title": "Understanding Units",
+      "parentId": "models-and-units",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units",
+        "understanding-units"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 24,
+      "printedPageEnd": 25,
+      "pdfPageStart": 26,
+      "pdfPageEnd": 27,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          24,
+          25
+        ],
+        "pdfPages": [
+          26,
+          27
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.understanding-units",
+        "rule.unit-coherency"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "unit-profiles",
+      "title": "Unit Profiles",
+      "parentId": "models-and-units",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units",
+        "unit-profiles"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 26,
+      "printedPageEnd": 28,
+      "pdfPageStart": 28,
+      "pdfPageEnd": 30,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          26,
+          27,
+          28
+        ],
+        "pdfPages": [
+          28,
+          29,
+          30
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.unit-profiles",
+        "rule.key-information",
+        "rule.attributes"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "properties-and-systems",
+      "title": "Properties & Systems",
+      "parentId": "models-and-units",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units",
+        "properties-and-systems"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 29,
+      "printedPageEnd": 29,
+      "pdfPageStart": 31,
+      "pdfPageEnd": 31,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          29
+        ],
+        "pdfPages": [
+          31
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.properties-and-systems"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "weapons",
+      "title": "Weapons",
+      "parentId": "models-and-units",
+      "level": 2,
+      "path": [
+        "what-is-dystopian-wars",
+        "models-and-units",
+        "weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 30,
+      "printedPageEnd": 33,
+      "pdfPageStart": 32,
+      "pdfPageEnd": 35,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          30,
+          31,
+          32,
+          33
+        ],
+        "pdfPages": [
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.weapons",
+        "rule.weapon-grids"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "core-rules",
+      "title": "Core Rules",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "core-rules"
+      ],
+      "childSectionIds": [
+        "gameplay-principles",
+        "round-overview",
+        "activating-a-unit",
+        "attack-actions"
+      ],
+      "printedPageStart": 34,
+      "printedPageEnd": 75,
+      "pdfPageStart": 36,
+      "pdfPageEnd": 77,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75
+        ],
+        "pdfPages": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.core-rules",
+      "ruleBlockIds": [
+        "rule.chapter.core-rules"
+      ],
+      "tableIds": [
+        "dice-face-reference",
+        "action-roll-anatomy",
+        "hand-limits",
+        "disorder-effects",
+        "ready-phase-hand-limits",
+        "attack-action-roll"
+      ]
+    },
+    {
+      "id": "gameplay-principles",
+      "title": "Gameplay Principles",
+      "parentId": "core-rules",
+      "level": 1,
+      "path": [
+        "core-rules",
+        "gameplay-principles"
+      ],
+      "childSectionIds": [
+        "initiative",
+        "visibility",
+        "moving-models",
+        "rolling-dice",
+        "victory-and-valour-cards",
+        "tokens"
+      ],
+      "printedPageStart": 37,
+      "printedPageEnd": 60,
+      "pdfPageStart": 39,
+      "pdfPageEnd": 62,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "pdfPages": [
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.gameplay-principles",
+      "ruleBlockIds": [
+        "rule.section.gameplay-principles"
+      ],
+      "tableIds": [
+        "dice-face-reference",
+        "action-roll-anatomy",
+        "hand-limits",
+        "disorder-effects"
+      ]
+    },
+    {
+      "id": "initiative",
+      "title": "Initiative",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "initiative"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 37,
+      "printedPageEnd": 37,
+      "pdfPageStart": 39,
+      "pdfPageEnd": 39,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          37
+        ],
+        "pdfPages": [
+          39
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.initiative",
+        "rule.turn-order"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "visibility",
+      "title": "Visibility",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "visibility"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 38,
+      "printedPageEnd": 39,
+      "pdfPageStart": 40,
+      "pdfPageEnd": 41,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          38,
+          39
+        ],
+        "pdfPages": [
+          40,
+          41
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.visibility",
+        "rule.checking-visibility"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "moving-models",
+      "title": "Moving Models",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "moving-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 40,
+      "printedPageEnd": 43,
+      "pdfPageStart": 42,
+      "pdfPageEnd": 45,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          40,
+          41,
+          42,
+          43
+        ],
+        "pdfPages": [
+          42,
+          43,
+          44,
+          45
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.moving-models",
+        "rule.direction-of-travel",
+        "rule.movement-distance",
+        "rule.coming-about",
+        "rule.additional-manoeuvres",
+        "rule.other-models-and-terrain-features",
+        "rule.resolving-a-collision",
+        "rule.ramming.p43"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "rolling-dice",
+      "title": "Rolling Dice",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "rolling-dice"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 44,
+      "printedPageEnd": 49,
+      "pdfPageStart": 46,
+      "pdfPageEnd": 51,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
+        ],
+        "pdfPages": [
+          46,
+          47,
+          48,
+          49,
+          50,
+          51
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.rolling-dice",
+        "rule.modifying-dice-rolls",
+        "rule.making-an-action-roll"
+      ],
+      "tableIds": [
+        "dice-face-reference",
+        "action-roll-anatomy"
+      ]
+    },
+    {
+      "id": "victory-and-valour-cards",
+      "title": "Victory & Valour Cards",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "victory-and-valour-cards"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 50,
+      "printedPageEnd": 53,
+      "pdfPageStart": 52,
+      "pdfPageEnd": 55,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          50,
+          51,
+          52,
+          53
+        ],
+        "pdfPages": [
+          52,
+          53,
+          54,
+          55
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.victory-and-valour-cards.p50",
+        "rule.anatomy-of-a-card",
+        "rule.enacting-valour-effects",
+        "rule.claiming-minor-victories",
+        "rule.making-crew-checks"
+      ],
+      "tableIds": [
+        "hand-limits"
+      ]
+    },
+    {
+      "id": "tokens",
+      "title": "Tokens",
+      "parentId": "gameplay-principles",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "tokens"
+      ],
+      "childSectionIds": [
+        "inflicting-damage",
+        "gaining-disorder"
+      ],
+      "printedPageStart": 54,
+      "printedPageEnd": 60,
+      "pdfPageStart": 56,
+      "pdfPageEnd": 62,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "pdfPages": [
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.tokens",
+      "ruleBlockIds": [
+        "rule.section.tokens",
+        "rule.tokens"
+      ],
+      "tableIds": [
+        "disorder-effects"
+      ]
+    },
+    {
+      "id": "inflicting-damage",
+      "title": "Inflicting Damage",
+      "parentId": "tokens",
+      "level": 3,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "tokens",
+        "inflicting-damage"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 54,
+      "printedPageEnd": 55,
+      "pdfPageStart": 56,
+      "pdfPageEnd": 57,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          54,
+          55
+        ],
+        "pdfPages": [
+          56,
+          57
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.broken-spirit",
+        "rule.inflicting-damage",
+        "rule.crippling-models",
+        "rule.fighting-on"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "gaining-disorder",
+      "title": "Gaining Disorder",
+      "parentId": "tokens",
+      "level": 3,
+      "path": [
+        "core-rules",
+        "gameplay-principles",
+        "tokens",
+        "gaining-disorder"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 56,
+      "printedPageEnd": 60,
+      "pdfPageStart": 58,
+      "pdfPageEnd": 62,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "pdfPages": [
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.gaining-disorder",
+        "rule.effects-of-disorder",
+        "rule.other-disorder-effects",
+        "rule.spreading-disorder"
+      ],
+      "tableIds": [
+        "disorder-effects"
+      ]
+    },
+    {
+      "id": "round-overview",
+      "title": "Round Overview",
+      "parentId": "core-rules",
+      "level": 1,
+      "path": [
+        "core-rules",
+        "round-overview"
+      ],
+      "childSectionIds": [
+        "ready-phase",
+        "launch-phase",
+        "activation-phase",
+        "end-phase"
+      ],
+      "printedPageStart": 61,
+      "printedPageEnd": 66,
+      "pdfPageStart": 63,
+      "pdfPageEnd": 68,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61,
+          62,
+          63,
+          64,
+          65,
+          66
+        ],
+        "pdfPages": [
+          63,
+          64,
+          65,
+          66,
+          67,
+          68
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.round-overview",
+      "ruleBlockIds": [
+        "rule.section.round-overview"
+      ],
+      "tableIds": [
+        "ready-phase-hand-limits"
+      ]
+    },
+    {
+      "id": "ready-phase",
+      "title": "1. The Ready Phase",
+      "parentId": "round-overview",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "round-overview",
+        "ready-phase"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 62,
+      "printedPageEnd": 63,
+      "pdfPageStart": 64,
+      "pdfPageEnd": 65,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          62,
+          63
+        ],
+        "pdfPages": [
+          64,
+          65
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.1-the-ready-phase",
+        "rule.a-determine-initiative",
+        "rule.b-draw-cards",
+        "rule.c-deploy-reserves"
+      ],
+      "tableIds": [
+        "ready-phase-hand-limits"
+      ]
+    },
+    {
+      "id": "launch-phase",
+      "title": "2. The Launch Phase",
+      "parentId": "round-overview",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "round-overview",
+        "launch-phase"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 64,
+      "printedPageEnd": 64,
+      "pdfPageStart": 66,
+      "pdfPageEnd": 66,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          64
+        ],
+        "pdfPages": [
+          66
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.2-the-launch-phase",
+        "rule.resolving-srs-missions.p64"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "activation-phase",
+      "title": "3. The Activation Phase",
+      "parentId": "round-overview",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "round-overview",
+        "activation-phase"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 64,
+      "printedPageEnd": 64,
+      "pdfPageStart": 66,
+      "pdfPageEnd": 66,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          64
+        ],
+        "pdfPages": [
+          66
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.activation-phase",
+      "ruleBlockIds": [
+        "rule.section.activation-phase",
+        "rule.3-the-activation-phase"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "end-phase",
+      "title": "4. The End Phase",
+      "parentId": "round-overview",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "round-overview",
+        "end-phase"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 65,
+      "printedPageEnd": 66,
+      "pdfPageStart": 67,
+      "pdfPageEnd": 68,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          65,
+          66
+        ],
+        "pdfPages": [
+          67,
+          68
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.4-the-end-phase",
+        "rule.a-complete-objectives",
+        "rule.b-clean-up"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "activating-a-unit",
+      "title": "Activating a Unit",
+      "parentId": "core-rules",
+      "level": 1,
+      "path": [
+        "core-rules",
+        "activating-a-unit"
+      ],
+      "childSectionIds": [
+        "withdrawal-step",
+        "movement-step",
+        "action-step",
+        "consolidation-step"
+      ],
+      "printedPageStart": 67,
+      "printedPageEnd": 72,
+      "pdfPageStart": 69,
+      "pdfPageEnd": 74,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          67,
+          68,
+          69,
+          70,
+          71,
+          72
+        ],
+        "pdfPages": [
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.activating-a-unit",
+      "ruleBlockIds": [
+        "rule.section.activating-a-unit"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "withdrawal-step",
+      "title": "1. The Withdrawal Step",
+      "parentId": "activating-a-unit",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "activating-a-unit",
+        "withdrawal-step"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 67,
+      "printedPageEnd": 67,
+      "pdfPageStart": 69,
+      "pdfPageEnd": 69,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          67
+        ],
+        "pdfPages": [
+          69
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.1-the-withdrawal-step"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "movement-step",
+      "title": "2. The Movement Step",
+      "parentId": "activating-a-unit",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "activating-a-unit",
+        "movement-step"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 68,
+      "printedPageEnd": 68,
+      "pdfPageStart": 70,
+      "pdfPageEnd": 70,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          68
+        ],
+        "pdfPages": [
+          70
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.2-the-movement-step",
+        "rule.limping-vessels",
+        "rule.full-reverse",
+        "rule.emergency-manoeuvres",
+        "rule.breaking-coherency",
+        "rule.abandoning-models"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "action-step",
+      "title": "3. The Action Step",
+      "parentId": "activating-a-unit",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "activating-a-unit",
+        "action-step"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 69,
+      "printedPageEnd": 69,
+      "pdfPageStart": 71,
+      "pdfPageEnd": 71,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          69
+        ],
+        "pdfPages": [
+          71
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.3-the-action-step",
+        "rule.additional-actions",
+        "rule.participating-models",
+        "rule.confusion"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "consolidation-step",
+      "title": "4. The Consolidation Step",
+      "parentId": "activating-a-unit",
+      "level": 2,
+      "path": [
+        "core-rules",
+        "activating-a-unit",
+        "consolidation-step"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 70,
+      "printedPageEnd": 72,
+      "pdfPageStart": 72,
+      "pdfPageEnd": 74,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70,
+          71,
+          72
+        ],
+        "pdfPages": [
+          72,
+          73,
+          74
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.4-the-consolidation-step",
+        "rule.critical-damage-effects.p70",
+        "rule.rallying-a-model",
+        "rule.chaos"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "attack-actions",
+      "title": "Attack Actions",
+      "parentId": "core-rules",
+      "level": 1,
+      "path": [
+        "core-rules",
+        "attack-actions"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 73,
+      "printedPageEnd": 75,
+      "pdfPageStart": 75,
+      "pdfPageEnd": 77,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          73,
+          74,
+          75
+        ],
+        "pdfPages": [
+          75,
+          76,
+          77
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.resolving-an-attack-action",
+        "rule.1-choose-initial-target",
+        "rule.2-nominate-participating-models.p73",
+        "rule.3-declare-contributing-weapons",
+        "rule.4-make-the-action-roll",
+        "rule.5-inflict-damage"
+      ],
+      "tableIds": [
+        "attack-action-roll"
+      ]
+    },
+    {
+      "id": "advanced-rules",
+      "title": "Advanced Rules",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "advanced-rules"
+      ],
+      "childSectionIds": [
+        "positional-traits",
+        "advanced-movement-rules",
+        "advanced-damage-rules",
+        "special-attack-qualities",
+        "additional-actions",
+        "attachments-and-escorts",
+        "short-range-squadrons",
+        "play-area-advanced"
+      ],
+      "printedPageStart": 76,
+      "printedPageEnd": 121,
+      "pdfPageStart": 78,
+      "pdfPageEnd": 123,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121
+        ],
+        "pdfPages": [
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.advanced-rules",
+      "ruleBlockIds": [
+        "rule.chapter.advanced-rules"
+      ],
+      "tableIds": [
+        "ramming-action-roll",
+        "critical-damage-effects",
+        "boarding-action-roll",
+        "example-srs-grid",
+        "attack-run-roll",
+        "interception-attempt-roll"
+      ]
+    },
+    {
+      "id": "positional-traits",
+      "title": "Positional Traits",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "positional-traits"
+      ],
+      "childSectionIds": [
+        "airborne-models",
+        "underwater-models"
+      ],
+      "printedPageStart": 78,
+      "printedPageEnd": 80,
+      "pdfPageStart": 80,
+      "pdfPageEnd": 82,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78,
+          79,
+          80
+        ],
+        "pdfPages": [
+          80,
+          81,
+          82
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.positional-traits",
+      "ruleBlockIds": [
+        "rule.section.positional-traits"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "airborne-models",
+      "title": "Airborne Models",
+      "parentId": "positional-traits",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "positional-traits",
+        "airborne-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 78,
+      "printedPageEnd": 78,
+      "pdfPageStart": 80,
+      "pdfPageEnd": 80,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.airborne-models",
+        "rule.wide-open-skies",
+        "rule.air-support-incoming",
+        "rule.unconventional-target"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "underwater-models",
+      "title": "Underwater Models",
+      "parentId": "positional-traits",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "positional-traits",
+        "underwater-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 79,
+      "printedPageEnd": 80,
+      "pdfPageStart": 81,
+      "pdfPageEnd": 82,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          79,
+          80
+        ],
+        "pdfPages": [
+          81,
+          82
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.underwater-models",
+        "rule.diving-and-surfacing",
+        "rule.blow-the-tanks",
+        "rule.stygian-depths",
+        "rule.sealed-vessels",
+        "rule.silent-hunters"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "advanced-movement-rules",
+      "title": "Advanced Movement Rules",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "advanced-movement-rules"
+      ],
+      "childSectionIds": [
+        "pivoting",
+        "ramming"
+      ],
+      "printedPageStart": 81,
+      "printedPageEnd": 84,
+      "pdfPageStart": 83,
+      "pdfPageEnd": 86,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81,
+          82,
+          83,
+          84
+        ],
+        "pdfPages": [
+          83,
+          84,
+          85,
+          86
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.advanced-movement-rules",
+      "ruleBlockIds": [
+        "rule.section.advanced-movement-rules"
+      ],
+      "tableIds": [
+        "ramming-action-roll"
+      ]
+    },
+    {
+      "id": "pivoting",
+      "title": "Pivoting",
+      "parentId": "advanced-movement-rules",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "advanced-movement-rules",
+        "pivoting"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 81,
+      "printedPageEnd": 81,
+      "pdfPageStart": 83,
+      "pdfPageEnd": 83,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81
+        ],
+        "pdfPages": [
+          83
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.pivoting",
+        "rule.collisions-while-pivoting"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "ramming",
+      "title": "Ramming",
+      "parentId": "advanced-movement-rules",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "advanced-movement-rules",
+        "ramming"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 82,
+      "printedPageEnd": 84,
+      "pdfPageStart": 84,
+      "pdfPageEnd": 86,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82,
+          83,
+          84
+        ],
+        "pdfPages": [
+          84,
+          85,
+          86
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.ramming.p82",
+        "rule.resolving-a-ram",
+        "rule.consequences-of-ramming"
+      ],
+      "tableIds": [
+        "ramming-action-roll"
+      ]
+    },
+    {
+      "id": "advanced-damage-rules",
+      "title": "Advanced Damage Rules",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "advanced-damage-rules"
+      ],
+      "childSectionIds": [
+        "crippled-models",
+        "destroyed-models",
+        "critical-damage"
+      ],
+      "printedPageStart": 85,
+      "printedPageEnd": 90,
+      "pdfPageStart": 87,
+      "pdfPageEnd": 92,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85,
+          86,
+          87,
+          88,
+          89,
+          90
+        ],
+        "pdfPages": [
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.advanced-damage-rules",
+      "ruleBlockIds": [
+        "rule.section.advanced-damage-rules"
+      ],
+      "tableIds": [
+        "critical-damage-effects"
+      ]
+    },
+    {
+      "id": "crippled-models",
+      "title": "Crippled Models",
+      "parentId": "advanced-damage-rules",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "advanced-damage-rules",
+        "crippled-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 85,
+      "printedPageEnd": 86,
+      "pdfPageStart": 87,
+      "pdfPageEnd": 88,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85,
+          86
+        ],
+        "pdfPages": [
+          87,
+          88
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.crippled-models",
+        "rule.crippled-model-penalties"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "destroyed-models",
+      "title": "Destroyed Models",
+      "parentId": "advanced-damage-rules",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "advanced-damage-rules",
+        "destroyed-models"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 87,
+      "printedPageEnd": 87,
+      "pdfPageStart": 89,
+      "pdfPageEnd": 89,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          87
+        ],
+        "pdfPages": [
+          89
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.destroyed-models"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "critical-damage",
+      "title": "Critical Damage",
+      "parentId": "advanced-damage-rules",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "advanced-damage-rules",
+        "critical-damage"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 87,
+      "printedPageEnd": 90,
+      "pdfPageStart": 89,
+      "pdfPageEnd": 92,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          87,
+          88,
+          89,
+          90
+        ],
+        "pdfPages": [
+          89,
+          90,
+          91,
+          92
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.critical-damage",
+        "rule.critical-damage-effects.p88",
+        "rule.catastrophic-explosions"
+      ],
+      "tableIds": [
+        "critical-damage-effects"
+      ]
+    },
+    {
+      "id": "special-attack-qualities",
+      "title": "Special Attack Qualities",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities"
+      ],
+      "childSectionIds": [
+        "aerial-weapons",
+        "assault-weapons",
+        "bomb-weapons",
+        "singular-weapons",
+        "submerged-weapons",
+        "torrent-weapons"
+      ],
+      "printedPageStart": 91,
+      "printedPageEnd": 94,
+      "pdfPageStart": 93,
+      "pdfPageEnd": 96,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91,
+          92,
+          93,
+          94
+        ],
+        "pdfPages": [
+          93,
+          94,
+          95,
+          96
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.special-attack-qualities",
+      "ruleBlockIds": [
+        "rule.section.special-attack-qualities"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "aerial-weapons",
+      "title": "Aerial Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "aerial-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 91,
+      "printedPageEnd": 91,
+      "pdfPageStart": 93,
+      "pdfPageEnd": 93,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.aerial-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "assault-weapons",
+      "title": "Assault Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "assault-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 91,
+      "printedPageEnd": 91,
+      "pdfPageStart": 93,
+      "pdfPageEnd": 93,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.assault-weapons",
+      "ruleBlockIds": [
+        "rule.section.assault-weapons",
+        "rule.assault-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "bomb-weapons",
+      "title": "Bomb Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "bomb-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 91,
+      "printedPageEnd": 91,
+      "pdfPageStart": 93,
+      "pdfPageEnd": 93,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.bomb-weapons",
+      "ruleBlockIds": [
+        "rule.section.bomb-weapons",
+        "rule.bomb-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "singular-weapons",
+      "title": "Singular Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "singular-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 92,
+      "printedPageEnd": 92,
+      "pdfPageStart": 94,
+      "pdfPageEnd": 94,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.singular-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "submerged-weapons",
+      "title": "Submerged Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "submerged-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 92,
+      "printedPageEnd": 92,
+      "pdfPageStart": 94,
+      "pdfPageEnd": 94,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.submerged-weapons",
+      "ruleBlockIds": [
+        "rule.section.submerged-weapons",
+        "rule.submerged-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "torrent-weapons",
+      "title": "Torrent Weapons",
+      "parentId": "special-attack-qualities",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "special-attack-qualities",
+        "torrent-weapons"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 92,
+      "printedPageEnd": 94,
+      "pdfPageStart": 94,
+      "pdfPageEnd": 96,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92,
+          93,
+          94
+        ],
+        "pdfPages": [
+          94,
+          95,
+          96
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.torrent-weapons",
+      "ruleBlockIds": [
+        "rule.section.torrent-weapons",
+        "rule.torrent-weapons"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "additional-actions",
+      "title": "Additional Actions",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "additional-actions"
+      ],
+      "childSectionIds": [
+        "maintenance-action",
+        "broadside-action",
+        "boarding-action"
+      ],
+      "printedPageStart": 95,
+      "printedPageEnd": 100,
+      "pdfPageStart": 97,
+      "pdfPageEnd": 102,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95,
+          96,
+          97,
+          98,
+          99,
+          100
+        ],
+        "pdfPages": [
+          97,
+          98,
+          99,
+          100,
+          101,
+          102
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.additional-actions",
+      "ruleBlockIds": [
+        "rule.special-actions",
+        "rule.section.additional-actions"
+      ],
+      "tableIds": [
+        "boarding-action-roll"
+      ]
+    },
+    {
+      "id": "maintenance-action",
+      "title": "Resolving a Maintenance Action",
+      "parentId": "additional-actions",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "additional-actions",
+        "maintenance-action"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 95,
+      "printedPageEnd": 95,
+      "pdfPageStart": 97,
+      "pdfPageEnd": 97,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.resolving-a-maintenance-action",
+        "rule.1-nominate-participating-models.p95",
+        "rule.2-make-repair-rolls"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "broadside-action",
+      "title": "Resolving a Broadside Action",
+      "parentId": "additional-actions",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "additional-actions",
+        "broadside-action"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 96,
+      "printedPageEnd": 97,
+      "pdfPageStart": 98,
+      "pdfPageEnd": 99,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          96,
+          97
+        ],
+        "pdfPages": [
+          98,
+          99
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.resolving-a-broadside-action",
+        "rule.1-nominate-participating-models.p96",
+        "rule.2-choose-a-target",
+        "rule.3-determine-contributing-batteries",
+        "rule.4-make-the-broadside-roll",
+        "rule.5-resolve-additional-targets"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "boarding-action",
+      "title": "Resolving a Boarding Action",
+      "parentId": "additional-actions",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "additional-actions",
+        "boarding-action"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 98,
+      "printedPageEnd": 100,
+      "pdfPageStart": 100,
+      "pdfPageEnd": 102,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          98,
+          99,
+          100
+        ],
+        "pdfPages": [
+          100,
+          101,
+          102
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.resolving-a-boarding-action",
+        "rule.1-choose-target",
+        "rule.2-nominate-participating-models.p98",
+        "rule.3-make-the-action-roll",
+        "rule.4-resolve-outcomes"
+      ],
+      "tableIds": [
+        "boarding-action-roll"
+      ]
+    },
+    {
+      "id": "attachments-and-escorts",
+      "title": "Attachments & Escorts",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "attachments-and-escorts"
+      ],
+      "childSectionIds": [
+        "attachments",
+        "escorts"
+      ],
+      "printedPageStart": 101,
+      "printedPageEnd": 104,
+      "pdfPageStart": 103,
+      "pdfPageEnd": 106,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          101,
+          102,
+          103,
+          104
+        ],
+        "pdfPages": [
+          103,
+          104,
+          105,
+          106
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.attachments-and-escorts",
+      "ruleBlockIds": [
+        "rule.section.attachments-and-escorts"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "attachments",
+      "title": "Attachments",
+      "parentId": "attachments-and-escorts",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "attachments-and-escorts",
+        "attachments"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 101,
+      "printedPageEnd": 101,
+      "pdfPageStart": 103,
+      "pdfPageEnd": 103,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          101
+        ],
+        "pdfPages": [
+          103
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.attachments",
+        "rule.attachment-action-limits",
+        "rule.withdrawing-attachments"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "escorts",
+      "title": "Escorts",
+      "parentId": "attachments-and-escorts",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "attachments-and-escorts",
+        "escorts"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 102,
+      "printedPageEnd": 104,
+      "pdfPageStart": 104,
+      "pdfPageEnd": 106,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          102,
+          103,
+          104
+        ],
+        "pdfPages": [
+          104,
+          105,
+          106
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.escorts",
+        "rule.defensive-fire",
+        "rule.collateral-damage",
+        "rule.raiding-parties"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "short-range-squadrons",
+      "title": "Short Range Squadrons",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons"
+      ],
+      "childSectionIds": [
+        "srs-in-play",
+        "launching-srs",
+        "air-support",
+        "resolving-srs-missions",
+        "aerial-reconnaissance"
+      ],
+      "printedPageStart": 105,
+      "printedPageEnd": 116,
+      "pdfPageStart": 107,
+      "pdfPageEnd": 118,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116
+        ],
+        "pdfPages": [
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.short-range-squadrons",
+      "ruleBlockIds": [
+        "rule.section.short-range-squadrons"
+      ],
+      "tableIds": [
+        "example-srs-grid",
+        "attack-run-roll",
+        "interception-attempt-roll"
+      ]
+    },
+    {
+      "id": "srs-in-play",
+      "title": "Short Range Squadrons in Play",
+      "parentId": "short-range-squadrons",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons",
+        "srs-in-play"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 105,
+      "printedPageEnd": 107,
+      "pdfPageStart": 107,
+      "pdfPageEnd": 109,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          105,
+          106,
+          107
+        ],
+        "pdfPages": [
+          107,
+          108,
+          109
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.short-range-squadrons-in-play",
+        "rule.srs-tokens",
+        "rule.squadron-grids",
+        "rule.srs-stacks"
+      ],
+      "tableIds": [
+        "example-srs-grid"
+      ]
+    },
+    {
+      "id": "launching-srs",
+      "title": "Launching Short Range Squadrons",
+      "parentId": "short-range-squadrons",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons",
+        "launching-srs"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 108,
+      "printedPageEnd": 108,
+      "pdfPageStart": 110,
+      "pdfPageEnd": 110,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          108
+        ],
+        "pdfPages": [
+          110
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.launching-short-range-squadrons",
+        "rule.1-declare-participating-models",
+        "rule.2-create-srs-stack-s",
+        "rule.3-choose-srs-mission-s"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "air-support",
+      "title": "Air Support",
+      "parentId": "short-range-squadrons",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons",
+        "air-support"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 109,
+      "printedPageEnd": 109,
+      "pdfPageStart": 111,
+      "pdfPageEnd": 111,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          109
+        ],
+        "pdfPages": [
+          111
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.air-support"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "resolving-srs-missions",
+      "title": "Resolving SRS Missions",
+      "parentId": "short-range-squadrons",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons",
+        "resolving-srs-missions"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 110,
+      "printedPageEnd": 114,
+      "pdfPageStart": 112,
+      "pdfPageEnd": 116,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          110,
+          111,
+          112,
+          113,
+          114
+        ],
+        "pdfPages": [
+          112,
+          113,
+          114,
+          115,
+          116
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.resolving-srs-missions.p110",
+        "rule.resolving-an-attack-run-mission",
+        "rule.intercepting-attack-runs",
+        "rule.resolving-a-mine-clearance-mission"
+      ],
+      "tableIds": [
+        "attack-run-roll",
+        "interception-attempt-roll"
+      ]
+    },
+    {
+      "id": "aerial-reconnaissance",
+      "title": "Aerial Reconnaissance",
+      "parentId": "short-range-squadrons",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "short-range-squadrons",
+        "aerial-reconnaissance"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 115,
+      "printedPageEnd": 116,
+      "pdfPageStart": 117,
+      "pdfPageEnd": 118,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          115,
+          116
+        ],
+        "pdfPages": [
+          117,
+          118
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.aerial-reconnaissance"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "play-area-advanced",
+      "title": "The Play Area",
+      "parentId": "advanced-rules",
+      "level": 1,
+      "path": [
+        "advanced-rules",
+        "play-area-advanced"
+      ],
+      "childSectionIds": [
+        "environmental-features",
+        "terrain-features",
+        "markers"
+      ],
+      "printedPageStart": 117,
+      "printedPageEnd": 121,
+      "pdfPageStart": 119,
+      "pdfPageEnd": 123,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117,
+          118,
+          119,
+          120,
+          121
+        ],
+        "pdfPages": [
+          119,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.play-area-advanced",
+      "ruleBlockIds": [
+        "rule.section.play-area-advanced"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "environmental-features",
+      "title": "Environmental Features",
+      "parentId": "play-area-advanced",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "play-area-advanced",
+        "environmental-features"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 117,
+      "printedPageEnd": 117,
+      "pdfPageStart": 119,
+      "pdfPageEnd": 119,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.environmental-features",
+        "rule.impeded-movement",
+        "rule.hampered-visibility"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "terrain-features",
+      "title": "Terrain Features",
+      "parentId": "play-area-advanced",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "play-area-advanced",
+        "terrain-features"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 118,
+      "printedPageEnd": 120,
+      "pdfPageStart": 120,
+      "pdfPageEnd": 122,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          118,
+          119,
+          120
+        ],
+        "pdfPages": [
+          120,
+          121,
+          122
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.terrain-features.p118",
+        "rule.grounding-hazards",
+        "rule.structures",
+        "rule.icebergs"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "markers",
+      "title": "Markers",
+      "parentId": "play-area-advanced",
+      "level": 2,
+      "path": [
+        "advanced-rules",
+        "play-area-advanced",
+        "markers"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 121,
+      "printedPageEnd": 121,
+      "pdfPageStart": 123,
+      "pdfPageEnd": 123,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          121
+        ],
+        "pdfPages": [
+          123
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.markers"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "playing-a-game",
+      "title": "Playing a Game",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "playing-a-game"
+      ],
+      "childSectionIds": [
+        "force-creation",
+        "preparing-to-play"
+      ],
+      "printedPageStart": 122,
+      "printedPageEnd": 137,
+      "pdfPageStart": 124,
+      "pdfPageEnd": 139,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137
+        ],
+        "pdfPages": [
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.playing-a-game",
+      "ruleBlockIds": [
+        "rule.chapter.playing-a-game"
+      ],
+      "tableIds": [
+        "random-encounter-selection",
+        "recommended-play-area",
+        "starting-card-count"
+      ]
+    },
+    {
+      "id": "force-creation",
+      "title": "Force Creation",
+      "parentId": "playing-a-game",
+      "level": 1,
+      "path": [
+        "playing-a-game",
+        "force-creation"
+      ],
+      "childSectionIds": [
+        "battlefleets",
+        "force-restrictions",
+        "choosing-units",
+        "attached-units",
+        "writing-a-force-list"
+      ],
+      "printedPageStart": 125,
+      "printedPageEnd": 130,
+      "pdfPageStart": 127,
+      "pdfPageEnd": 132,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          125,
+          126,
+          127,
+          128,
+          129,
+          130
+        ],
+        "pdfPages": [
+          127,
+          128,
+          129,
+          130,
+          131,
+          132
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.force-creation",
+      "ruleBlockIds": [
+        "rule.section.force-creation"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "battlefleets",
+      "title": "Battlefleets",
+      "parentId": "force-creation",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "force-creation",
+        "battlefleets"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 125,
+      "printedPageEnd": 125,
+      "pdfPageStart": 127,
+      "pdfPageEnd": 127,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          125
+        ],
+        "pdfPages": [
+          127
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.battlefleets",
+        "rule.battlefleet-types"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "force-restrictions",
+      "title": "Force Restrictions",
+      "parentId": "force-creation",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "force-creation",
+        "force-restrictions"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 126,
+      "printedPageEnd": 126,
+      "pdfPageStart": 128,
+      "pdfPageEnd": 128,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          126
+        ],
+        "pdfPages": [
+          128
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.force-restrictions",
+        "rule.points-limit",
+        "rule.battlefleet-organisation",
+        "rule.flagship-limits",
+        "rule.duplicate-classes",
+        "rule.unique-units"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "choosing-units",
+      "title": "Choosing Units",
+      "parentId": "force-creation",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "force-creation",
+        "choosing-units"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 127,
+      "printedPageEnd": 127,
+      "pdfPageStart": 129,
+      "pdfPageEnd": 129,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          127
+        ],
+        "pdfPages": [
+          129
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.choosing-units",
+        "rule.model-count",
+        "rule.hardpoint-options",
+        "rule.upgrades"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "attached-units",
+      "title": "Attached Units",
+      "parentId": "force-creation",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "force-creation",
+        "attached-units"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 128,
+      "printedPageEnd": 128,
+      "pdfPageStart": 130,
+      "pdfPageEnd": 130,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          128
+        ],
+        "pdfPages": [
+          130
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.attached-units"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "writing-a-force-list",
+      "title": "Writing a Force List",
+      "parentId": "force-creation",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "force-creation",
+        "writing-a-force-list"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 129,
+      "printedPageEnd": 130,
+      "pdfPageStart": 131,
+      "pdfPageEnd": 132,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          129,
+          130
+        ],
+        "pdfPages": [
+          131,
+          132
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.writing-a-force-list"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "preparing-to-play",
+      "title": "Preparing to Play",
+      "parentId": "playing-a-game",
+      "level": 1,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play"
+      ],
+      "childSectionIds": [
+        "determine-initiative",
+        "choose-an-encounter",
+        "prepare-the-play-area",
+        "draw-starting-cards",
+        "deploy-forces",
+        "weigh-anchor"
+      ],
+      "printedPageStart": 131,
+      "printedPageEnd": 137,
+      "pdfPageStart": 133,
+      "pdfPageEnd": 139,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137
+        ],
+        "pdfPages": [
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139
+        ]
+      },
+      "descriptionRuleBlockId": "rule.section.preparing-to-play",
+      "ruleBlockIds": [
+        "rule.section.preparing-to-play"
+      ],
+      "tableIds": [
+        "random-encounter-selection",
+        "recommended-play-area",
+        "starting-card-count"
+      ]
+    },
+    {
+      "id": "determine-initiative",
+      "title": "1. Determine the Initiative",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "determine-initiative"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 131,
+      "printedPageEnd": 131,
+      "pdfPageStart": 133,
+      "pdfPageEnd": 133,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          131
+        ],
+        "pdfPages": [
+          133
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.1-determine-the-initiative"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "choose-an-encounter",
+      "title": "2. Choose an Encounter",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "choose-an-encounter"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 132,
+      "printedPageEnd": 132,
+      "pdfPageStart": 134,
+      "pdfPageEnd": 134,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          132
+        ],
+        "pdfPages": [
+          134
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.2-choose-an-encounter"
+      ],
+      "tableIds": [
+        "random-encounter-selection"
+      ]
+    },
+    {
+      "id": "prepare-the-play-area",
+      "title": "3. Prepare the Play Area",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "prepare-the-play-area"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 133,
+      "printedPageEnd": 134,
+      "pdfPageStart": 135,
+      "pdfPageEnd": 136,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          133,
+          134
+        ],
+        "pdfPages": [
+          135,
+          136
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.3-prepare-the-play-area",
+        "rule.placing-terrain"
+      ],
+      "tableIds": [
+        "recommended-play-area"
+      ]
+    },
+    {
+      "id": "draw-starting-cards",
+      "title": "4. Draw Starting Cards",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "draw-starting-cards"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 135,
+      "printedPageEnd": 135,
+      "pdfPageStart": 137,
+      "pdfPageEnd": 137,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          135
+        ],
+        "pdfPages": [
+          137
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.4-draw-starting-cards",
+        "rule.deploying-to-the-reserve"
+      ],
+      "tableIds": [
+        "starting-card-count"
+      ]
+    },
+    {
+      "id": "deploy-forces",
+      "title": "5. Deploy Forces",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "deploy-forces"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 135,
+      "printedPageEnd": 136,
+      "pdfPageStart": 137,
+      "pdfPageEnd": 138,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          135,
+          136
+        ],
+        "pdfPages": [
+          137,
+          138
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.5-deploy-forces",
+        "rule.special-deployment-actions",
+        "rule.deployment-order"
+      ],
+      "tableIds": [
+        "starting-card-count"
+      ]
+    },
+    {
+      "id": "weigh-anchor",
+      "title": "6. Weigh Anchor!",
+      "parentId": "preparing-to-play",
+      "level": 2,
+      "path": [
+        "playing-a-game",
+        "preparing-to-play",
+        "weigh-anchor"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 137,
+      "printedPageEnd": 137,
+      "pdfPageStart": 139,
+      "pdfPageEnd": 139,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          137
+        ],
+        "pdfPages": [
+          139
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.6-weigh-anchor"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "common-encounters",
+      "title": "Common Encounters",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "common-encounters"
+      ],
+      "childSectionIds": [
+        "meeting-engagement",
+        "salvage-rights",
+        "the-oil-fields",
+        "blockade-run",
+        "the-archipelago",
+        "recon-duty"
+      ],
+      "printedPageStart": 138,
+      "printedPageEnd": 151,
+      "pdfPageStart": 140,
+      "pdfPageEnd": 153,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151
+        ],
+        "pdfPages": [
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.common-encounters",
+      "ruleBlockIds": [
+        "rule.chapter.common-encounters"
+      ],
+      "tableIds": [
+        "salvage-rights-results",
+        "archipelago-victory-points"
+      ]
+    },
+    {
+      "id": "meeting-engagement",
+      "title": "Meeting Engagement",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "meeting-engagement"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 140,
+      "printedPageEnd": 141,
+      "pdfPageStart": 142,
+      "pdfPageEnd": 143,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140,
+          141
+        ],
+        "pdfPages": [
+          142,
+          143
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p141",
+        "rule.objectives.p141"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "salvage-rights",
+      "title": "Salvage Rights",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "salvage-rights"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 142,
+      "printedPageEnd": 143,
+      "pdfPageStart": 144,
+      "pdfPageEnd": 145,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142,
+          143
+        ],
+        "pdfPages": [
+          144,
+          145
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p143",
+        "rule.additional-rule-flotsam",
+        "rule.objectives.p143"
+      ],
+      "tableIds": [
+        "salvage-rights-results"
+      ]
+    },
+    {
+      "id": "the-oil-fields",
+      "title": "The Oil Fields",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "the-oil-fields"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 144,
+      "printedPageEnd": 145,
+      "pdfPageStart": 146,
+      "pdfPageEnd": 147,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144,
+          145
+        ],
+        "pdfPages": [
+          146,
+          147
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p145",
+        "rule.additional-rule-hazardous-environment",
+        "rule.objectives.p145"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "blockade-run",
+      "title": "Blockade Run",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "blockade-run"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 146,
+      "printedPageEnd": 147,
+      "pdfPageStart": 148,
+      "pdfPageEnd": 149,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146,
+          147
+        ],
+        "pdfPages": [
+          148,
+          149
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p147",
+        "rule.deployment",
+        "rule.additional-rule-blockade-runners",
+        "rule.objectives.p147"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "the-archipelago",
+      "title": "The Archipelago",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "the-archipelago"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 148,
+      "printedPageEnd": 149,
+      "pdfPageStart": 150,
+      "pdfPageEnd": 151,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          148,
+          149
+        ],
+        "pdfPages": [
+          150,
+          151
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p149",
+        "rule.objectives.p149"
+      ],
+      "tableIds": [
+        "archipelago-victory-points"
+      ]
+    },
+    {
+      "id": "recon-duty",
+      "title": "Recon Duty",
+      "parentId": "common-encounters",
+      "level": 1,
+      "path": [
+        "common-encounters",
+        "recon-duty"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 150,
+      "printedPageEnd": 151,
+      "pdfPageStart": 152,
+      "pdfPageEnd": 153,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150,
+          151
+        ],
+        "pdfPages": [
+          152,
+          153
+        ]
+      },
+      "descriptionRuleBlockId": null,
+      "ruleBlockIds": [
+        "rule.play-area.p151",
+        "rule.additional-rule-engage-with-caution",
+        "rule.objectives.p151"
+      ],
+      "tableIds": []
+    },
+    {
+      "id": "index",
+      "title": "Index",
+      "parentId": null,
+      "level": 0,
+      "path": [
+        "index"
+      ],
+      "childSectionIds": [],
+      "printedPageStart": 152,
+      "printedPageEnd": 155,
+      "pdfPageStart": 154,
+      "pdfPageEnd": 157,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152,
+          153,
+          154,
+          155
+        ],
+        "pdfPages": [
+          154,
+          155,
+          156,
+          157
+        ]
+      },
+      "descriptionRuleBlockId": "rule.chapter.index",
+      "ruleBlockIds": [
+        "rule.chapter.index"
+      ],
+      "tableIds": []
+    }
+  ]
+}

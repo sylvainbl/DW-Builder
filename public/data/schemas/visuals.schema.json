@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/dystopian-wars/visuals.schema.json",
+  "title": "Curated Rulebook Visuals",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "visuals"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "assetPolicy": {
+      "type": "object"
+    },
+    "visuals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "assetReference",
+          "altText",
+          "source"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^visual\\."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assetReference": {
+            "type": "string",
+            "pattern": "^assets/rules/.+\\.webp$"
+          },
+          "altText": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredForUnderstanding": {
+            "const": true
+          },
+          "source": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

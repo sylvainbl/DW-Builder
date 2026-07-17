@@ -1,0 +1,655 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "encounters": [
+    {
+      "id": "encounter.meeting-engagement",
+      "number": 1,
+      "name": "Meeting Engagement",
+      "source": {
+        "printedPages": [
+          140,
+          141
+        ],
+        "pdfPages": [
+          142,
+          143
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "The deck takes on a deadly hush, the seriousness of the coming engagement stilling the voices of even the rowdiest sailors. The enemy’s chimneys have been spied over the horizon. Soon enough, the cacophony of war will be shouting loud enough for them all.",
+      "playArea": "Terrain is set up following the standard rules.\nIn Large Engagements only, once Terrain Features have been set up, four\nStrategic Objective markers numbered 1 to 4 are shuffled face-down. Starting\nwith the First Admiral, the Admirals take turns placing a face-down Marker in\nthe Play Area, without looking at its number. A Marker cannot be placed in a\nQuadrant that already has one, and cannot be placed in a Deployment Zone.",
+      "deployment": {
+        "description": null,
+        "diagram": {
+          "visualId": "visual.encounter-meeting-engagement-map",
+          "assetReference": "assets/rules/encounter-meeting-engagement-map.webp"
+        }
+      },
+      "additionalRules": [],
+      "objectives": [
+        {
+          "id": "encounter.meeting-engagement.objective-1",
+          "tier": "primary",
+          "role": "both",
+          "name": "Forge Ahead",
+          "availability": "all",
+          "text": "In the Complete Objectives step of the End Phase, both Admirals score\n10 Victory Points for each Quadrant in the opposing Admiral’s Half\nthat they are Contesting.\nTo Contest a Quadrant, an Admiral must have at least one unit entirely\nwithin that Quadrant, and at least half of the models in the unit must\nbe Scoring Models.",
+          "source": {
+            "printedPages": [
+              140,
+              141
+            ],
+            "pdfPages": [
+              142,
+              143
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.meeting-engagement.objective-2",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Own the Skies",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nWhenever an Attack Run mission results in at least one Critical\nDamage being inflicted, the active Admiral scores 5 Victory Points.",
+          "source": {
+            "printedPages": [
+              140,
+              141
+            ],
+            "pdfPages": [
+              142,
+              143
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.meeting-engagement.objective-3",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "A Poisoned Chalice",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\nIf a Surface unit has at least one model in contact with a Strategic\nObjective marker, it can make a Special Action to retrieve it. The\nactive Admiral flips the Marker over. If its number is odd, each model\nin Proximity of the Marker gains a level of Disorder. The Marker is\nresolved in the same way as a Minefield Detonation marker, and then\nremoved.\nIf its number is even, the active Admiral scores 15 Victory Points. In\neither case, the Marker is removed.",
+          "source": {
+            "printedPages": [
+              140,
+              141
+            ],
+            "pdfPages": [
+              142,
+              143
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "The deck takes on a deadly hush, the seriousness of the coming engagement stilling the voices of even the rowdiest sailors. The enemy’s chimneys have been spied over the horizon. Soon enough, the cacophony of war will be shouting loud enough for them all.\n\nPLAY AREA\n\nTerrain is set up following the standard rules.\nIn Large Engagements only, once Terrain Features have been set up, four\nStrategic Objective markers numbered 1 to 4 are shuffled face-down. Starting\nwith the First Admiral, the Admirals take turns placing a face-down Marker in\nthe Play Area, without looking at its number. A Marker cannot be placed in a\nQuadrant 4 that already has one, and cannot be placed in a Deployment Zone.\n\nOBJECTIVES\n\nPRIMARY Objective: Forge Ahead\n\nIn the Complete Objectives step of the End Phase, both Admirals score\n10 Victory Points for each Quadrant in the opposing Admiral’s Half\nthat they are Contesting.\nTo Contest a Quadrant, an Admiral must have at least one unit entirely\nwithin that Quadrant, and at least half of the models in the unit must\nbe Scoring Models.\n\nSECONDARY Objective: Own the Skies\n\nThis Objective is for use in Medium and Large Engagements only.\nWhenever an Attack Run mission results in at least one Critical\nDamage being inflicted, the active Admiral scores 5 Victory Points.\n\nTERTIARY Objective: A Poisoned Chalice\n\nThis Objective is for use in Large Engagements only.\nIf a Surface unit has at least one model in contact with a Strategic\nObjective marker, it can make a Special Action to retrieve it. The\nactive Admiral flips the Marker over. If its number is odd, each model\nin Proximity of the Marker gains a level of Disorder. The Marker is\nresolved in the same way as a Minefield Detonation marker, and then\nremoved.\nIf its number is even, the active Admiral scores 15 Victory Points. In\neither case, the Marker is removed."
+    },
+    {
+      "id": "encounter.salvage-rights",
+      "number": 2,
+      "name": "Salvage Rights",
+      "source": {
+        "printedPages": [
+          142,
+          143
+        ],
+        "pdfPages": [
+          144,
+          145
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "Something terrible happened here. The remains of great vessels litter the sea, some of them seemingly worth the lives of their crews. Salvage and rescue parties from opposing sides have gathered to perform their morbid duties. Will anyone be sent to search for their remains in turn?",
+      "playArea": "Terrain is set up following the standard rules.\nIn a Medium or Large Engagement, place a Island Terrain feature with a Mass of 3 or more in each Half of\nthe Play Area. These are Salvageable Islands.\nOnce Terrain Features have been set up, the Admirals take turns placing a Strategic Objective marker in\nthe Play Area, starting with the First Admiral, until four have been placed. A Marker cannot be placed in a",
+      "deployment": {
+        "description": null,
+        "diagram": {
+          "visualId": "visual.encounter-salvage-rights-map",
+          "assetReference": "assets/rules/encounter-salvage-rights-map.webp"
+        }
+      },
+      "additionalRules": [
+        {
+          "id": "encounter.salvage-rights.additional-rule-1",
+          "name": "Flotsam",
+          "text": "Each Strategic Objective marker counts as Treacherous Water.\nWhen an Admiral is instructed to Reposition a Marker (see below), they can move it up to 4” in any direction; it\nmust end this move in Open Water, at least 4” away from any other Strategic Objective markers.",
+          "source": {
+            "printedPages": [
+              142,
+              143
+            ],
+            "pdfPages": [
+              144,
+              145
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "id": "encounter.salvage-rights.objective-1",
+          "tier": "primary",
+          "role": "both",
+          "name": "Search for Loot",
+          "availability": "all",
+          "text": "Both Admirals are attempting to secure valuable salvage from the water.\nIf a Scoring Model is in Proximity of a Strategic Objective marker, its unit can make a Special Action\nto comb the wreckage. A unit can only make this Special Action once per Activation.\nWhen a unit makes this Action, the active Admiral rolls an Action Die on the table below.\nFace\nThe salvage slips beneath the waves. Remove the Strategic Objective\nmarker.\nNothing of value is found. The active Admiral repositions the\nStrategic Objective marker.\nA haul of cargo is secured. The active Admiral scores 5 Victory Points,\nthen the opposing Admiral repositions the Strategic Objective\nmarker.\nA veritable bounty is reclaimed from the waves. The active Admiral\nscores 10 Victory Points, then the opposing Admiral repositions the\nStrategic Objective marker.",
+          "source": {
+            "printedPages": [
+              142,
+              143
+            ],
+            "pdfPages": [
+              144,
+              145
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.salvage-rights.objective-2",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Washed Ashore",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nThere is a chance that some salvage has come to rest on nearby islands.\nThe two Salvageable Islands can also be searched, as though they were Strategic Objective markers.\nUnlike Strategic Objective markers, islands cannot be repositioned. If a Blank is rolled, the Island\ncannot be searched by either Admiral for the rest of the game.",
+          "source": {
+            "printedPages": [
+              142,
+              143
+            ],
+            "pdfPages": [
+              144,
+              145
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.salvage-rights.objective-3",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "Prisoners of War",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\n\nIf a model is Destroyed while within 4” of an opposing model, the opposing Admiral rolls a number of Action Dice equal to the Destroyed model’s Mass rating. They score 1 Victory Point for every Standard Strike they roll, and 2 Victory Points for every Heavy Strike or Exploding Strike.",
+          "source": {
+            "printedPages": [
+              142,
+              143
+            ],
+            "pdfPages": [
+              144,
+              145
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "Something terrible happened here. The remains of great vessels litter the sea, some of them seemingly worth the lives of their crews. Salvage and rescue parties from opposing sides have gathered to perform their morbid duties. Will anyone be sent to search for their remains in turn?\n\nPLAY AREA\n\nTerrain is set up following the standard rules.\nIn a Medium or Large Engagement, place a Island Terrain feature with a Mass of 3 or more in each Half of\nthe Play Area. These are Salvageable Islands.\nOnce Terrain Features have been set up, the Admirals take turns placing a Strategic Objective marker in\nthe Play Area, starting with the First Admiral, until four have been placed. A Marker cannot be placed in a\n\nADDITIONAL RULE: FLOTSAM\n\nEach Strategic Objective marker counts as Treacherous Water 4.\nWhen an Admiral is instructed to Reposition a Marker (see below), they can move it up to 4” in any direction; it\nmust end this move in Open Water 5, at least 4” away from any other Strategic Objective markers.\n\nOBJECTIVES\n\nPRIMARY Objective: Search for Loot\n\nBoth Admirals are attempting to secure valuable salvage from the water.\nIf a Scoring Model is in Proximity of a Strategic Objective marker, its unit can make a Special Action\nto comb the wreckage. A unit can only make this Special Action once per Activation.\nWhen a unit makes this Action, the active Admiral rolls an Action Die on the table below.\nFace\nThe salvage slips beneath the waves. Remove the Strategic Objective\nmarker.\nNothing of value is found. The active Admiral repositions the\nStrategic Objective marker.\nA haul of cargo is secured. The active Admiral scores 5 Victory Points,\nthen the opposing Admiral repositions the Strategic Objective\nmarker.\nA veritable bounty is reclaimed from the waves. The active Admiral\nscores 10 Victory Points, then the opposing Admiral repositions the\nStrategic Objective marker.\n\nSECONDARY Objective: Washed Ashore\n\nThis Objective is for use in Medium and Large Engagements only.\nThere is a chance that some salvage has come to rest on nearby islands.\nThe two Salvageable Islands can also be searched, as though they were Strategic Objective markers.\nUnlike Strategic Objective markers, islands cannot be repositioned. If a Blank is rolled, the Island\ncannot be searched by either Admiral for the rest of the game.\n\nTERTIARY Objective: Prisoners of War\n\nThis Objective is for use in Large Engagements only.\n\nIf a model is Destroyed while within 4” of an opposing model, the opposing Admiral rolls a number of Action Dice equal to the Destroyed model’s Mass rating. They score 1 Victory Point for every Standard Strike they roll, and 2 Victory Points for every Heavy Strike or Exploding Strike."
+    },
+    {
+      "id": "encounter.the-oil-fields",
+      "number": 3,
+      "name": "The Oil Fields",
+      "source": {
+        "printedPages": [
+          144,
+          145
+        ],
+        "pdfPages": [
+          146,
+          147
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "The most valuable natural resources are the ones that the Great Powers fight the hardest to claim. The value of a trove such as this could be incalculable. Claiming it would be more than worth the lives of a few thousand sailors. The Powers would not think it too many.",
+      "playArea": "Two Oil Platforms must be placed as indicated on the map, represented by\nsuitable miniatures or Terrain Features.\nThe rest of the Terrain is set up following the standard rules.",
+      "deployment": {
+        "description": null,
+        "diagram": {
+          "visualId": "visual.encounter-oil-fields-map",
+          "assetReference": "assets/rules/encounter-oil-fields-map.webp"
+        }
+      },
+      "additionalRules": [
+        {
+          "id": "encounter.the-oil-fields.additional-rule-1",
+          "name": "Hazardous Environment",
+          "text": "If a model in Proximity of an Oil Platform suffers a Catastrophic Explosion,\nits Admiral rolls an Action Die after the explosion has been resolved. If\nthey roll a Strike, each model within Proximity of the Oil Platform suffers 2\nDamage and gains 1 level of Disorder. In addition, the Oil Platform is now\nAblaze for the rest of the game.\nAn Oil Platform that is Ablaze Blocks Visibility to and from all Surface and\nAirborne models, regardless of Mass. In addition, a model cannot Rally while\nit is within 4” of the Platform. A Platform that is Ablaze still counts as an Oil\nPlatform for all rules purposes.",
+          "source": {
+            "printedPages": [
+              144,
+              145
+            ],
+            "pdfPages": [
+              146,
+              147
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "id": "encounter.the-oil-fields.objective-1",
+          "tier": "primary",
+          "role": "both",
+          "name": "Black Gold",
+          "availability": "all",
+          "text": "In the Complete Objectives step of the End Phase, both Admirals score\n10 Victory Points for each Oil Platform that is within 4” of at least one\nof their Scoring Models.",
+          "source": {
+            "printedPages": [
+              144,
+              145
+            ],
+            "pdfPages": [
+              146,
+              147
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.the-oil-fields.objective-2",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Seabed Interference",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nOnce per Activation, a Scoring Flagship unit that is within 4” of an Oil\nPlatform can make a Special Action to sabotage or defend deep-sea\npipelines.\nThe active Admiral makes a Group Crew Check for the unit. If the\ncheck passes, they score Victory Points equal to the Value of the card\nthey drew. If the check fails, nothing happens.",
+          "source": {
+            "printedPages": [
+              144,
+              145
+            ],
+            "pdfPages": [
+              146,
+              147
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.the-oil-fields.objective-3",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "Watch the Fireworks",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\nWhenever a model within Proximity of an Oil Platform suffers a\nCatastrophic Explosion, the opposing Admiral scores Victory Points\nequal to the model’s Mass rating.",
+          "source": {
+            "printedPages": [
+              144,
+              145
+            ],
+            "pdfPages": [
+              146,
+              147
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "The most valuable natural resources are the ones that the Great Powers fight the hardest to claim. The value of a trove such as this could be incalculable. Claiming it would be more than worth the lives of a few thousand sailors. The Powers would not think it too many.\n\nPLAY AREA\n\nTwo Oil Platforms must be placed as indicated on the map, represented by\nsuitable miniatures or Terrain Features.\nThe rest of the Terrain is set up following the standard rules.\n\nADDITIONAL RULE: HAZARDOUS ENVIRONMENT\n\nIf a model in Proximity of an Oil Platform suffers a Catastrophic Explosion,\nits Admiral rolls an Action Die after the explosion has been resolved. If\nthey roll a Strike, each model within Proximity of the Oil Platform suffers 2\nDamage and gains 1 level of Disorder. In addition, the Oil Platform is now\nAblaze for the rest of the game.\nAn Oil Platform that is Ablaze Blocks Visibility to and from all Surface and\nAirborne models, regardless of Mass. In addition, a model cannot Rally while\nit is within 4” of the Platform. A Platform that is Ablaze still counts as an Oil\nPlatform for all rules purposes.\n\nOBJECTIVES\n\nPRIMARY Objective: Black Gold\n\nIn the Complete Objectives step of the End Phase, both Admirals score\n10 Victory Points for each Oil Platform that is within 4” of at least one\nof their Scoring Models.\n\nSECONDARY Objective: Seabed Interference\n\nThis Objective is for use in Medium and Large Engagements only.\nOnce per Activation, a Scoring Flagship unit that is within 4” of an Oil\nPlatform can make a Special Action to sabotage or defend deep-sea\npipelines.\nThe active Admiral makes a Group Crew Check for the unit. If the\ncheck passes, they score Victory Points equal to the Value of the card\nthey drew. If the check fails, nothing happens.\n\nTERTIARY Objective: Watch the Fireworks\n\nThis Objective is for use in Large Engagements only.\nWhenever a model within Proximity of an Oil Platform suffers a\nCatastrophic Explosion, the opposing Admiral scores Victory Points\nequal to the model’s Mass rating."
+    },
+    {
+      "id": "encounter.blockade-run",
+      "number": 4,
+      "name": "Blockade Run",
+      "source": {
+        "printedPages": [
+          146,
+          147
+        ],
+        "pdfPages": [
+          148,
+          149
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "The only hope is to think of where they are going, not of where they are, and certainly not of what lies in front of them. Punch through, and the fighting could end. For a time, at least. Until then, there is just one more battle. One more reload. One more volley. One more mile. Then rest.",
+      "playArea": "Terrain is set up following the standard rules.",
+      "deployment": {
+        "description": "At the start of the Deploy Fleets step, the First Admiral chooses whether they will be the Attacker or the Defender.\nInstead of the First Admiral choosing a Controlled Edge and deploying the first unit, the Defender does both.",
+        "diagram": {
+          "visualId": "visual.encounter-blockade-run-map",
+          "assetReference": "assets/rules/encounter-blockade-run-map.webp"
+        }
+      },
+      "additionalRules": [
+        {
+          "id": "encounter.blockade-run.additional-rule-1",
+          "name": "Blockade Runners",
+          "text": "Before any units are Deployed, the Attacker secretly chooses three Surface units from their Force to be\nBlockade Runners, and notes them down clearly on a piece of paper. Immobile units, and units that have been\ndeployed to the Reserve, cannot be Blockade Runners.",
+          "source": {
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "id": "encounter.blockade-run.objective-1",
+          "tier": "primary",
+          "role": "attacker",
+          "name": "Break Out",
+          "availability": "all",
+          "text": "If a Blockade Runner unit has all of its models within 4” of the Defender’s Edge at the end of its Movement\nStep, the Attacker can reveal that it is a Blockade Runner, and declare that it is Breaking Out.\nAll models in the unit are removed from play; this does not count as them being Destroyed and the\nAttacker scores Victory Points equal to the total Victory Points Rating of all models that Break Out.",
+          "source": {
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ],
+            "documentId": "dw-rulebook-4.00"
+          },
+          "sourceRoleLabel": "Attacker’s"
+        },
+        {
+          "id": "encounter.blockade-run.objective-2",
+          "tier": "primary",
+          "role": "defender",
+          "name": "Bar the Way",
+          "availability": "all",
+          "text": "When the game ends, the Attacker reveals any remaining Blockade Runner units.\nThe Defender scores Victory Points equal to the total Victory Points Rating of all models in Blockade Runner\nunits that failed to Break Out (whether they were Destroyed, Withdrew, or are still in the Play Area).",
+          "source": {
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ],
+            "documentId": "dw-rulebook-4.00"
+          },
+          "sourceRoleLabel": "Defender’s"
+        },
+        {
+          "id": "encounter.blockade-run.objective-3",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Marked for Death",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nOnce Deployment is complete, the First Admiral nominates a single model in the Second Admiral’s Force. This\ncan be a unit in the Play Area, or one that has been Deployed to the Reserve. This unit is the first Admiral’s\nQuarry. The Second Admiral then does the same, nominating a Quarry in the First Admiral’s Force.\nThe Quarry is open information, and can be marked with a Token if desired.\nIf an Admiral’s Quarry is Crippled, they score double the normal number of Victory Points. Then, in\nthe End Phase of the current Round, they choose an enemy model to be their new Quarry. This model\nmust be Battle-Ready when it is chosen.",
+          "source": {
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.blockade-run.objective-4",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "The Intelligence Agent",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\nAfter selecting their Blockade Runners and deploying their Force, the Attacker chooses one model in their Force\n(this can also be a Blockade Runner but does not have to be). This model must, however, have been deployed to\nthe Play Area. It is carrying an important Intelligence Agent, who cannot be allowed to fall into enemy hands.\nIf the model carrying the Intelligence Agent is Crippled, the Attacker must declare that the Intelligence\nAgent was aboard. The Intelligence Agent is moved to the closest friendly Battle-Ready model within\n4” (this can be marked with a spare token or miniature). If there are no suitable models within 4”, the\nIntelligence Agent is lost, and removed from play.\nIf a model carrying the Intelligence Agent is the target of a Boarding action, the Attacker must declare that\nthey are aboard, if they have not already done so. If the Boarding action inflicts at least one Critical Damage\nEffect, the active Admiral can choose to inflict one less effect and seize the Intelligence Agent instead. When\nthey do so, they move the Intelligence Agent to one of the models (of their choice) that Participated in the Action.\nIf the Intelligence Agent is being carried by a model when the game ends, that model’s Admiral scores 30 Victory Points.",
+          "source": {
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "The only hope is to think of where they are going, not of where they are, and certainly not of what lies in front of them. Punch through, and the fighting could end. For a time, at least. Until then, there is just one more battle. One more reload. One more volley. One more mile. Then rest.\n\nPLAY AREA\n\nTerrain is set up following the standard rules.\n\nDEPLOYMENT\n\nAt the start of the Deploy Fleets step, the First Admiral chooses whether they will be the Attacker or the Defender.\nInstead of the First Admiral choosing a Controlled Edge and deploying the first unit, the Defender does both.\n\nADDITIONAL RULE: BLOCKADE RUNNERS\n\nBefore any units are Deployed, the Attacker secretly chooses three Surface units from their Force to be\nBlockade Runners, and notes them down clearly on a piece of paper. Immobile units, and units that have been\ndeployed to the Reserve, cannot be Blockade Runners.\n\nOBJECTIVES\n\nATTACKER PRIMARY Objective: Break Out\n\nIf a Blockade Runner unit has all of its models within 4” of the Defender’s Edge at the end of its Movement\nStep, the Attacker can reveal that it is a Blockade Runner, and declare that it is Breaking Out.\nAll models in the unit are removed from play; this does not count as them being Destroyed and the\nAttacker scores Victory Points equal to the total Victory Points Rating of all models that Break Out.\n\nDEFENDER PRIMARY Objective: Bar the Way\n\nWhen the game ends, the Attacker reveals any remaining Blockade Runner units.\nThe Defender scores Victory Points equal to the total Victory Points Rating of all models in Blockade Runner\nunits that failed to Break Out (whether they were Destroyed, Withdrew 5, or are still in the Play Area).\n\nSECONDARY Objective: Marked for Death\n\nThis Objective is for use in Medium and Large Engagements only.\nOnce Deployment is complete, the First Admiral nominates a single model in the Second Admiral’s Force. This\ncan be a unit in the Play Area, or one that has been Deployed to the Reserve. This unit is the first Admiral’s\nQuarry. The Second Admiral then does the same, nominating a Quarry in the First Admiral’s Force.\nThe Quarry is open information, and can be marked with a Token if desired.\nIf an Admiral’s Quarry is Crippled, they score double the normal number of Victory Points. Then, in\nthe End Phase of the current Round, they choose an enemy model to be their new Quarry. This model\nmust be Battle-Ready when it is chosen.\n\nTERTIARY Objective: The Intelligence Agent\n\nThis Objective is for use in Large Engagements only.\nAfter selecting their Blockade Runners and deploying their Force, the Attacker chooses one model in their Force\n(this can also be a Blockade Runner but does not have to be). This model must, however, have been deployed to\nthe Play Area. It is carrying an important Intelligence Agent, who cannot be allowed to fall into enemy hands.\nIf the model carrying the Intelligence Agent is Crippled, the Attacker must declare that the Intelligence\nAgent was aboard. The Intelligence Agent is moved to the closest friendly Battle-Ready model within\n4” (this can be marked with a spare token or miniature). If there are no suitable models within 4”, the\nIntelligence Agent is lost, and removed from play.\nIf a model carrying the Intelligence Agent is the target of a Boarding action, the Attacker must declare that\nthey are aboard, if they have not already done so. If the Boarding action inflicts at least one Critical Damage\nEffect, the active Admiral can choose to inflict one less effect and seize the Intelligence Agent instead. When\nthey do so, they move the Intelligence Agent to one of the models (of their choice) that Participated in the Action.\nIf the Intelligence Agent is being carried by a model when the game ends, that model’s Admiral scores 30 Victory Points."
+    },
+    {
+      "id": "encounter.the-archipelago",
+      "number": 5,
+      "name": "The Archipelago",
+      "source": {
+        "printedPages": [
+          148,
+          149
+        ],
+        "pdfPages": [
+          150,
+          151
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "This land was a paradise once, nothing but the lapping of waves and the blissful calls of seabirds as yet unknown to science. Strange fruit grew that must have drifted as seeds from the mainland in ages past. Now, the fire and thunder of war have reduced it to a desolate Hell.",
+      "playArea": "This Encounter requires a number of Island Terrain Features, each of which\nmust have a Mass of 3 or more.\nThe first Island is placed in the centre of the Play Area. This is the Main\nIsland, and the only Island in a Small Engagement.\nIn a Medium or Large Engagement, there are also four Secondary Islands,\none in each Quadrant. Secondary Islands are set up during the normal\nprocess for setting up terrain, and must be placed before any other Terrain\nFeatures are added.",
+      "deployment": {
+        "description": null,
+        "diagram": {
+          "visualId": "visual.encounter-archipelago-map",
+          "assetReference": "assets/rules/encounter-archipelago-map.webp"
+        }
+      },
+      "additionalRules": [],
+      "objectives": [
+        {
+          "id": "encounter.the-archipelago.objective-1",
+          "tier": "primary",
+          "role": "both",
+          "name": "Captain of the Crest",
+          "availability": "all",
+          "text": "In the Complete Objectives step of the End Phase, each Admiral\ncalculates the total Mass rating of all their Scoring Models within 4”\nof the Main Island. The Admiral with the highest total scores Victory\nPoints based on the Round Number, as shown by the Primary Objective\ncolumn of the table below. In the event of a tie, neither Admiral scores\nVictory Points this Round.",
+          "source": {
+            "printedPages": [
+              148,
+              149
+            ],
+            "pdfPages": [
+              150,
+              151
+            ],
+            "documentId": "dw-rulebook-4.00"
+          },
+          "sourceRoleLabel": "Attacker’s",
+          "sourceLabelConflict": true
+        },
+        {
+          "id": "encounter.the-archipelago.objective-2",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Island Hopping",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nIn the Complete Objectives step of the End Phase, each Admiral\ncalculates the total Mass rating of all their Scoring Models within\n4” of each Secondary Island. The Admiral with the highest total\nscores Victory Points based on the Round Number, as shown by the\nSecondary Objective column of the table below. In the event of a tie,\nneither Admiral scores Victory Points this Round.",
+          "source": {
+            "printedPages": [
+              148,
+              149
+            ],
+            "pdfPages": [
+              150,
+              151
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.the-archipelago.objective-3",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "Field Testing",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\n\nAt the start of the first Round, the First Admiral rolls a Critical Damage Die.\n\nDuring the game, each time an Admiral inflicts a Critical Damage Effect of that type on an enemy model during their turn, they score 3 Victory Points.\n\nIn addition, each time an Admiral removes a Critical Damage Effect of that type from a friendly model during their turn, they score 3 Victory Points.",
+          "source": {
+            "printedPages": [
+              148,
+              149
+            ],
+            "pdfPages": [
+              150,
+              151
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "This land was a paradise once, nothing but the lapping of waves and the blissful calls of seabirds as yet unknown to science. Strange fruit grew that must have drifted as seeds from the mainland in ages past. Now, the fire and thunder of war have reduced it to a desolate Hell.\n\nPLAY AREA\n\nThis Encounter requires a number of Island Terrain Features, each of which\nmust have a Mass of 3 or more.\nThe first Island is placed in the centre of the Play Area. This is the Main\nIsland, and the only Island in a Small Engagement.\nIn a Medium or Large Engagement, there are also four Secondary Islands,\none in each Quadrant. Secondary Islands are set up during the normal\nprocess for setting up terrain, and must be placed before any other Terrain\nFeatures are added.\n\nOBJECTIVES\n\nPRIMARY Objective: Captain of the Crest\n\nIn the Complete Objectives step of the End Phase, each Admiral\ncalculates the total Mass rating of all their Scoring Models within 4”\nof the Main Island. The Admiral with the highest total scores Victory\nPoints based on the Round Number, as shown by the Primary Objective\ncolumn of the table below. In the event of a tie, neither Admiral scores\nVictory Points this Round.\n\nSECONDARY Objective: Island Hopping\n\nThis Objective is for use in Medium and Large Engagements only.\nIn the Complete Objectives step of the End Phase, each Admiral\ncalculates the total Mass rating of all their Scoring Models within\n4” of each Secondary Island. The Admiral with the highest total\nscores Victory Points based on the Round Number, as shown by the\nSecondary Objective column of the table below. In the event of a tie,\nneither Admiral scores Victory Points this Round.\n\nTERTIARY Objective: Field Testing\n\nThis Objective is for use in Large Engagements only.\n\nAt the start of the first Round, the First Admiral rolls a Critical Damage Die.\n\nDuring the game, each time an Admiral inflicts a Critical Damage Effect of that type on an enemy model during their turn, they score 3 Victory Points.\n\nIn addition, each time an Admiral removes a Critical Damage Effect of that type from a friendly model during their turn, they score 3 Victory Points."
+    },
+    {
+      "id": "encounter.recon-duty",
+      "number": 6,
+      "name": "Recon Duty",
+      "source": {
+        "printedPages": [
+          150,
+          151
+        ],
+        "pdfPages": [
+          152,
+          153
+        ],
+        "documentId": "dw-rulebook-4.00"
+      },
+      "narrative": "Knowledge is power. True enough in peace, this is especially true in war. Weaknesses are there to be exploited. To understand the enemy is to crush them utterly. Sometimes, it is necessary to look them in the eye first. Just don’t let empathy creep its way in.",
+      "playArea": "Terrain is set up following the standard rules.",
+      "deployment": {
+        "description": null,
+        "diagram": {
+          "visualId": "visual.encounter-recon-duty-map",
+          "assetReference": "assets/rules/encounter-recon-duty-map.webp"
+        }
+      },
+      "additionalRules": [
+        {
+          "id": "encounter.recon-duty.additional-rule-1",
+          "name": "Engage With Caution",
+          "text": "Both forces are attempting to Survey enemy units. After Deployment, each\nAdmiral should make a list of all units in the opposing Force, and mark them\noff when they are Surveyed.\nIn the Complete Objectives step of the End Phase, an Admiral marks a unit as\nSurveyed if one of their units is within 10” of it, with the following exceptions:\n• An Airborne unit cannot survey an Underwater unit, or vice versa.\n• If a model’s Visibility of an enemy model is Hampered, it must be within 5” of\nthat model (rather than 10”) in order to Survey it.\nIf a model is Crippled before its unit has been Surveyed, the opposing\nAdmiral only scores Victory Points equal to half its Victory Points Rating,\nrounding up.",
+          "source": {
+            "printedPages": [
+              150,
+              151
+            ],
+            "pdfPages": [
+              152,
+              153
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "id": "encounter.recon-duty.objective-1",
+          "tier": "primary",
+          "role": "both",
+          "name": "Survey Enemy Positions",
+          "availability": "all",
+          "text": "In the Complete Objectives step of the End Phase, an Admiral scores\n10 Victory Points for each of their units that has at least one Scoring\nModel in the opposing Admiral’s Deployment Zone. If there are\nno enemy models within 10” of the unit, they score 20 Victory Points\ninstead.",
+          "source": {
+            "printedPages": [
+              150,
+              151
+            ],
+            "pdfPages": [
+              152,
+              153
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.recon-duty.objective-2",
+          "tier": "secondary",
+          "role": "both",
+          "name": "Focused Fire",
+          "availability": "medium_and_large",
+          "text": "This Objective is for use in Medium and Large Engagements only.\nEach time an Admiral inflicts a Critical Damage Effect on an enemy\nmodel, they score 2 Victory Points.",
+          "source": {
+            "printedPages": [
+              150,
+              151
+            ],
+            "pdfPages": [
+              152,
+              153
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        },
+        {
+          "id": "encounter.recon-duty.objective-3",
+          "tier": "tertiary",
+          "role": "both",
+          "name": "Take the Prize",
+          "availability": "large_only",
+          "text": "This Objective is for use in Large Engagements only.\nIf a Flagship model is Destroyed during a Boarding action, the\nopposing Admiral immediately scores Victory Points equal to its\nVictory Points Rating. This is in addition to the points they score for\nCrippling the model.",
+          "source": {
+            "printedPages": [
+              150,
+              151
+            ],
+            "pdfPages": [
+              152,
+              153
+            ],
+            "documentId": "dw-rulebook-4.00"
+          }
+        }
+      ],
+      "verification": {
+        "pdfText": "checked",
+        "alternateExtraction": "checked",
+        "renderedPages": "checked",
+        "objectiveCompleteness": "checked",
+        "status": "verified"
+      },
+      "fullRulesText": "Knowledge is power. True enough in peace, this is especially true in war. Weaknesses are there to be exploited. To understand the enemy is to crush them utterly. Sometimes, it is necessary to look them in the eye first. Just don’t let empathy creep its way in.\n\nPLAY AREA\n\nTerrain is set up following the standard rules.\n\nADDITIONAL RULE: ENGAGE WITH CAUTION\n\nBoth forces are attempting to Survey enemy units. After Deployment, each\nAdmiral should make a list of all units in the opposing Force, and mark them\noff when they are Surveyed.\nIn the Complete Objectives step of the End Phase, an Admiral marks a unit as\nSurveyed if one of their units is within 10” of it, with the following exceptions:\n• An Airborne unit cannot survey an Underwater unit, or vice versa.\n• If a model’s Visibility of an enemy model is Hampered, it must be within 5” of\nthat model (rather than 10”) in order to Survey it.\nIf a model is Crippled 4 before its unit has been Surveyed, the opposing\nAdmiral only scores Victory Points equal to half its Victory Points Rating,\nrounding up.\n\nOBJECTIVES\n\nPRIMARY Objective: Survey Enemy Positions\n\nIn the Complete Objectives step of the End Phase, an Admiral scores\n10 Victory Points for each of their units that has at least one Scoring\nModel 4 in the opposing Admiral’s Deployment Zone. If there are\nno enemy models within 10” of the unit, they score 20 Victory Points\ninstead.\n\nSECONDARY Objective: Focused Fire\n\nThis Objective is for use in Medium and Large Engagements only.\nEach time an Admiral inflicts a Critical Damage Effect 5 on an enemy\nmodel, they score 2 Victory Points.\n\nTERTIARY Objective: Take the Prize\n\nThis Objective is for use in Large Engagements only.\nIf a Flagship model is Destroyed during a Boarding action, the\nopposing Admiral immediately scores Victory Points equal to its\nVictory Points Rating. This is in addition to the points they score for\nCrippling the model."
+    }
+  ]
+}

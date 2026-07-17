@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/dystopian-wars/actions.schema.json",
+  "title": "Actions",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "actions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

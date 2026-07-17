@@ -1,0 +1,1762 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "tables": [
+    {
+      "id": "engagement-scale-recommendations",
+      "title": "Engagement Scale Recommendations",
+      "printedPage": 14,
+      "pdfPage": 16,
+      "rows": [
+        [
+          "Engagement Scale",
+          "Recommended Force Size"
+        ],
+        [
+          "Small Engagement",
+          "Under 1000 Points"
+        ],
+        [
+          "Standard Engagement",
+          "1000-2000 Points"
+        ],
+        [
+          "Large Engagement",
+          "Over 2000 Points"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          14
+        ],
+        "pdfPages": [
+          16
+        ],
+        "bbox": null
+      },
+      "columns": [
+        {
+          "id": "engagement-scale",
+          "title": "Engagement Scale",
+          "type": "string"
+        },
+        {
+          "id": "recommended-force-size",
+          "title": "Recommended Force Size",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "engagement-scale": "Small Engagement",
+          "recommended-force-size": "Under 1000 Points"
+        },
+        {
+          "engagement-scale": "Standard Engagement",
+          "recommended-force-size": "1000-2000 Points"
+        },
+        {
+          "engagement-scale": "Large Engagement",
+          "recommended-force-size": "Over 2000 Points"
+        }
+      ]
+    },
+    {
+      "id": "measurement-range-bands",
+      "title": "Measurement Range Bands",
+      "printedPage": 22,
+      "pdfPage": 24,
+      "bbox": [
+        130.58,
+        288.68,
+        363.14,
+        320.44
+      ],
+      "rows": [
+        [
+          "UP TO 10”",
+          "10” - 30”",
+          "MORE THAN 30”"
+        ],
+        [
+          "CLOSE RANGE",
+          "STANDARD RANGE",
+          "EXTREME RANGE"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          22
+        ],
+        "pdfPages": [
+          24
+        ],
+        "bbox": [
+          130.58,
+          288.68,
+          363.14,
+          320.44
+        ]
+      },
+      "columns": [
+        {
+          "id": "up-to-10",
+          "title": "UP TO 10”",
+          "type": "string"
+        },
+        {
+          "id": "10-30",
+          "title": "10” - 30”",
+          "type": "string"
+        },
+        {
+          "id": "more-than-30",
+          "title": "MORE THAN 30”",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "up-to-10": "CLOSE RANGE",
+          "10-30": "STANDARD RANGE",
+          "more-than-30": "EXTREME RANGE"
+        }
+      ]
+    },
+    {
+      "id": "dice-face-reference",
+      "title": "Action Dice and Critical Damage Dice Faces",
+      "printedPage": 44,
+      "pdfPage": 46,
+      "bbox": [
+        34.01,
+        110.42,
+        362.4,
+        252.15
+      ],
+      "rows": [
+        [
+          "Action\nDice",
+          "Blank",
+          "Standard\nCounter",
+          "Heavy\nCounter",
+          "Standard\nStrike",
+          "Heavy\nStrike",
+          "Exploding\nStrike"
+        ],
+        [
+          "Critical\nDamage\nDice",
+          "Breach",
+          "Structural\nFailure",
+          "Hazard",
+          "Shredded\nDefences",
+          "Navigation\nLock",
+          "System\nFailure"
+        ]
+      ],
+      "hasGraphicCells": true,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "checked"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          44
+        ],
+        "pdfPages": [
+          46
+        ],
+        "bbox": [
+          34.01,
+          110.42,
+          362.4,
+          252.15
+        ]
+      },
+      "columns": [
+        {
+          "id": "action-dice",
+          "title": "Action\nDice",
+          "type": "string"
+        },
+        {
+          "id": "blank",
+          "title": "Blank",
+          "type": "string"
+        },
+        {
+          "id": "standard-counter",
+          "title": "Standard\nCounter",
+          "type": "string"
+        },
+        {
+          "id": "heavy-counter",
+          "title": "Heavy\nCounter",
+          "type": "string"
+        },
+        {
+          "id": "standard-strike",
+          "title": "Standard\nStrike",
+          "type": "string"
+        },
+        {
+          "id": "heavy-strike",
+          "title": "Heavy\nStrike",
+          "type": "string"
+        },
+        {
+          "id": "exploding-strike",
+          "title": "Exploding\nStrike",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "action-dice": "Critical\nDamage\nDice",
+          "blank": "Breach",
+          "standard-counter": "Structural\nFailure",
+          "heavy-counter": "Hazard",
+          "standard-strike": "Shredded\nDefences",
+          "heavy-strike": "Navigation\nLock",
+          "exploding-strike": "System\nFailure"
+        }
+      ],
+      "graphicMapping": {
+        "actionDiceFaces": [
+          "blank",
+          "standard-counter",
+          "heavy-counter",
+          "standard-strike",
+          "heavy-strike",
+          "exploding-strike"
+        ],
+        "criticalDamageDiceFaces": [
+          "breach",
+          "structural-failure",
+          "hazard",
+          "shredded-defences",
+          "navigation-lock",
+          "system-failure"
+        ]
+      }
+    },
+    {
+      "id": "action-roll-anatomy",
+      "title": "Anatomy of an Action Roll",
+      "printedPage": 46,
+      "pdfPage": 48,
+      "bbox": [
+        130.39,
+        153.09,
+        362.83,
+        274.98
+      ],
+      "rows": [
+        [
+          "Action\nPool",
+          "This box shows how many dice are rolled by the\nactive Admiral."
+        ],
+        [
+          "Resistance\nPool",
+          "This box shows how many dice are rolled by\nthe opposing Admiral. If the Action Roll in\nquestion does not allow a Resistance Roll, this\nbox will be omitted."
+        ],
+        [
+          "Success\nThreshold",
+          "This box shows a value that will be used to\ndetermine how many Successes have been\nscored."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          46
+        ],
+        "pdfPages": [
+          48
+        ],
+        "bbox": [
+          130.39,
+          153.09,
+          362.83,
+          274.98
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Action\nPool",
+          "value": "This box shows how many dice are rolled by the\nactive Admiral."
+        },
+        {
+          "label": "Resistance\nPool",
+          "value": "This box shows how many dice are rolled by\nthe opposing Admiral. If the Action Roll in\nquestion does not allow a Resistance Roll, this\nbox will be omitted."
+        },
+        {
+          "label": "Success\nThreshold",
+          "value": "This box shows a value that will be used to\ndetermine how many Successes have been\nscored."
+        }
+      ]
+    },
+    {
+      "id": "hand-limits",
+      "title": "Victory & Valour Hand Limits",
+      "printedPage": 50,
+      "pdfPage": 52,
+      "bbox": [
+        130.39,
+        247.01,
+        363.08,
+        320.65
+      ],
+      "rows": [
+        [
+          "Engagement Scale",
+          "Hand Limit"
+        ],
+        [
+          "Small Engagement",
+          "5"
+        ],
+        [
+          "Medium Engagement",
+          "6"
+        ],
+        [
+          "Large Engagement",
+          "7"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          50
+        ],
+        "pdfPages": [
+          52
+        ],
+        "bbox": [
+          130.39,
+          247.01,
+          363.08,
+          320.65
+        ]
+      },
+      "columns": [
+        {
+          "id": "engagement-scale",
+          "title": "Engagement Scale",
+          "type": "string"
+        },
+        {
+          "id": "hand-limit",
+          "title": "Hand Limit",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "engagement-scale": "Small Engagement",
+          "hand-limit": "5"
+        },
+        {
+          "engagement-scale": "Medium Engagement",
+          "hand-limit": "6"
+        },
+        {
+          "engagement-scale": "Large Engagement",
+          "hand-limit": "7"
+        }
+      ]
+    },
+    {
+      "id": "disorder-effects",
+      "title": "Effects of Disorder",
+      "printedPage": 57,
+      "pdfPage": 59,
+      "bbox": [
+        56.69,
+        98.44,
+        289.13,
+        290.66
+      ],
+      "rows": [
+        [
+          "Demoralised\nAll Levels",
+          "Each level of Disorder a model has imposes a\n-1 Modifier on its Crew rating.\nFor example, a model with a Crew rating of 7 has 2 levels\nof Disorder, so its Crew rating is treated as being 5."
+        ],
+        [
+          "Panicking\nLevel 2",
+          "If an Action Roll3 is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted4 to Standard Strikes after\nRe-rolls5 have been resolved."
+        ],
+        [
+          "Mutinous\nLevel 3",
+          "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse6 or\nEmergency Manoeuvre6, it gains a point of\nDamage instead of a level of Disorder."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          57
+        ],
+        "pdfPages": [
+          59
+        ],
+        "bbox": [
+          56.69,
+          98.44,
+          289.13,
+          290.66
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Demoralised\nAll Levels",
+          "value": "Each level of Disorder a model has imposes a\n-1 Modifier on its Crew rating.\nFor example, a model with a Crew rating of 7 has 2 levels\nof Disorder, so its Crew rating is treated as being 5."
+        },
+        {
+          "label": "Panicking\nLevel 2",
+          "value": "If an Action Roll3 is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted4 to Standard Strikes after\nRe-rolls5 have been resolved."
+        },
+        {
+          "label": "Mutinous\nLevel 3",
+          "value": "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse6 or\nEmergency Manoeuvre6, it gains a point of\nDamage instead of a level of Disorder."
+        }
+      ]
+    },
+    {
+      "id": "ready-phase-hand-limits",
+      "title": "Ready Phase Hand Limits",
+      "printedPage": 62,
+      "pdfPage": 64,
+      "bbox": [
+        226.33,
+        465.44,
+        362.39,
+        564.66
+      ],
+      "rows": [
+        [
+          "Engagement\nScale",
+          "Hand\nLimit"
+        ],
+        [
+          "Small Engagement",
+          "5"
+        ],
+        [
+          "Medium Engagement",
+          "6"
+        ],
+        [
+          "Large Engagement",
+          "7"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          62
+        ],
+        "pdfPages": [
+          64
+        ],
+        "bbox": [
+          226.33,
+          465.44,
+          362.39,
+          564.66
+        ]
+      },
+      "columns": [
+        {
+          "id": "engagement-scale",
+          "title": "Engagement\nScale",
+          "type": "string"
+        },
+        {
+          "id": "hand-limit",
+          "title": "Hand\nLimit",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "engagement-scale": "Small Engagement",
+          "hand-limit": "5"
+        },
+        {
+          "engagement-scale": "Medium Engagement",
+          "hand-limit": "6"
+        },
+        {
+          "engagement-scale": "Large Engagement",
+          "hand-limit": "7"
+        }
+      ]
+    },
+    {
+      "id": "attack-action-roll",
+      "title": "Attack Action Roll",
+      "printedPage": 74,
+      "pdfPage": 76,
+      "bbox": [
+        33.44,
+        172.75,
+        362.83,
+        500.77
+      ],
+      "rows": [
+        [
+          null,
+          "Action\nPool",
+          "Each Contributing Weapon adds Action Dice\nto the pool equal to its Firepower rating,\ndepending on the range from its model to the\nInitial Target."
+        ],
+        [
+          null,
+          "Resistance\nPool",
+          "The Resistance Pool starts with a number of\ndice equal to the Initial Target’s Defences\nrating."
+        ],
+        [
+          null,
+          null,
+          "For each Participating model that has\nObscured2 Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature3."
+        ],
+        [
+          "ADVANCED RULES\nEscorts, SRS Stacks\nand Fog are not used\nin the Core Rules, so these\nrows are ignored.",
+          null,
+          "Add 2 dice for each Participating model whose\nVisibility is Hampered4 by Fog."
+        ],
+        [
+          null,
+          null,
+          "Add 1 die for each Escort5 accompanying the\nInitial Target’s unit."
+        ],
+        [
+          null,
+          null,
+          "If the opposing Admiral has an SRS Stack\nSupporting6 the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
+        ],
+        [
+          null,
+          "Success\nThreshold",
+          "The Initial Target’s Armour rating."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          74
+        ],
+        "pdfPages": [
+          76
+        ],
+        "bbox": [
+          33.44,
+          172.75,
+          362.83,
+          500.77
+        ]
+      },
+      "columns": [
+        {
+          "id": "note",
+          "title": "Note",
+          "type": "string"
+        },
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "note": null,
+          "label": "Action\nPool",
+          "value": "Each Contributing Weapon adds Action Dice\nto the pool equal to its Firepower rating,\ndepending on the range from its model to the\nInitial Target."
+        },
+        {
+          "note": null,
+          "label": "Resistance\nPool",
+          "value": "The Resistance Pool starts with a number of\ndice equal to the Initial Target’s Defences\nrating."
+        },
+        {
+          "note": null,
+          "label": null,
+          "value": "For each Participating model that has\nObscured2 Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature3."
+        },
+        {
+          "note": "ADVANCED RULES\nEscorts, SRS Stacks\nand Fog are not used\nin the Core Rules, so these\nrows are ignored.",
+          "label": null,
+          "value": "Add 2 dice for each Participating model whose\nVisibility is Hampered4 by Fog."
+        },
+        {
+          "note": null,
+          "label": null,
+          "value": "Add 1 die for each Escort5 accompanying the\nInitial Target’s unit."
+        },
+        {
+          "note": null,
+          "label": null,
+          "value": "If the opposing Admiral has an SRS Stack\nSupporting6 the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
+        },
+        {
+          "note": null,
+          "label": "Success\nThreshold",
+          "value": "The Initial Target’s Armour rating."
+        }
+      ]
+    },
+    {
+      "id": "ramming-action-roll",
+      "title": "Ramming Action Roll",
+      "printedPage": 82,
+      "pdfPage": 84,
+      "bbox": [
+        130.39,
+        341.27,
+        362.83,
+        483.01
+      ],
+      "rows": [
+        [
+          "Action Pool",
+          "Add a number of Action Dice equal to\nthe Ramming Model’s Hull rating."
+        ],
+        [
+          null,
+          "Add 1 Bonus Die for each full inch the\nmodel moved before the Ram. This\ncannot add more than 5 Bonus Dice."
+        ],
+        [
+          "Success Threshold\n(Target Model)",
+          "The Target Model’s Mass rating."
+        ],
+        [
+          "Success Threshold\n(Ramming Model)",
+          "The Ramming Model’s Mass rating."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82
+        ],
+        "pdfPages": [
+          84
+        ],
+        "bbox": [
+          130.39,
+          341.27,
+          362.83,
+          483.01
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Action Pool",
+          "value": "Add a number of Action Dice equal to\nthe Ramming Model’s Hull rating."
+        },
+        {
+          "label": null,
+          "value": "Add 1 Bonus Die for each full inch the\nmodel moved before the Ram. This\ncannot add more than 5 Bonus Dice."
+        },
+        {
+          "label": "Success Threshold\n(Target Model)",
+          "value": "The Target Model’s Mass rating."
+        },
+        {
+          "label": "Success Threshold\n(Ramming Model)",
+          "value": "The Ramming Model’s Mass rating."
+        }
+      ]
+    },
+    {
+      "id": "critical-damage-effects",
+      "title": "Critical Damage Effects",
+      "printedPage": 88,
+      "pdfPage": 90,
+      "bbox": [
+        130.39,
+        116.59,
+        362.83,
+        551.71
+      ],
+      "rows": [
+        [
+          null,
+          "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled2, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
+        ],
+        [
+          null,
+          "Structural Failure\nThe model’s Armour rating has a -1 Modifier\nfor each Structural Failure token it has."
+        ],
+        [
+          null,
+          "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally3."
+        ],
+        [
+          null,
+          "Shredded Defences\nThe model’s Defences rating has a -2 Modifier\nfor each Shredded Defences token it has."
+        ],
+        [
+          null,
+          "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About4 or engage Full\nReverse5."
+        ],
+        [
+          null,
+          "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits6 provided by\nSystems on other models."
+        ]
+      ],
+      "hasGraphicCells": true,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          88
+        ],
+        "pdfPages": [
+          90
+        ],
+        "bbox": [
+          130.39,
+          116.59,
+          362.83,
+          551.71
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": null,
+          "value": "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled2, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
+        },
+        {
+          "label": null,
+          "value": "Structural Failure\nThe model’s Armour rating has a -1 Modifier\nfor each Structural Failure token it has."
+        },
+        {
+          "label": null,
+          "value": "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally3."
+        },
+        {
+          "label": null,
+          "value": "Shredded Defences\nThe model’s Defences rating has a -2 Modifier\nfor each Shredded Defences token it has."
+        },
+        {
+          "label": null,
+          "value": "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About4 or engage Full\nReverse5."
+        },
+        {
+          "label": null,
+          "value": "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits6 provided by\nSystems on other models."
+        }
+      ]
+    },
+    {
+      "id": "boarding-action-roll",
+      "title": "Boarding Action Roll",
+      "printedPage": 98,
+      "pdfPage": 100,
+      "bbox": [
+        130.39,
+        306.22,
+        362.83,
+        510.62
+      ],
+      "rows": [
+        [
+          "Action\nPool",
+          "Each Participating model adds a number of\nAction Dice as determined by the Property that\npermits Boarding actions."
+        ],
+        [
+          "Resistance\nPool",
+          "The Resistance Pool starts with a number of\ndice equal to the Target’s Defences rating."
+        ],
+        [
+          null,
+          "Add 1 die for each Escort5 token accompanying\nthe Target’s unit."
+        ],
+        [
+          null,
+          "If there is an SRS Stack Supporting6 the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
+        ],
+        [
+          "Success\nThreshold",
+          "The Target’s Crew rating."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          98
+        ],
+        "pdfPages": [
+          100
+        ],
+        "bbox": [
+          130.39,
+          306.22,
+          362.83,
+          510.62
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Action\nPool",
+          "value": "Each Participating model adds a number of\nAction Dice as determined by the Property that\npermits Boarding actions."
+        },
+        {
+          "label": "Resistance\nPool",
+          "value": "The Resistance Pool starts with a number of\ndice equal to the Target’s Defences rating."
+        },
+        {
+          "label": null,
+          "value": "Add 1 die for each Escort5 token accompanying\nthe Target’s unit."
+        },
+        {
+          "label": null,
+          "value": "If there is an SRS Stack Supporting6 the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
+        },
+        {
+          "label": "Success\nThreshold",
+          "value": "The Target’s Crew rating."
+        }
+      ]
+    },
+    {
+      "id": "example-srs-grid",
+      "title": "Example Short Range Squadron Grid",
+      "printedPage": 106,
+      "pdfPage": 108,
+      "bbox": [
+        130.39,
+        142.34,
+        361.83,
+        212.79
+      ],
+      "rows": [
+        [
+          "Squadron Type",
+          "Atk",
+          "Int",
+          "Spt",
+          "Res",
+          "SRS Properties"
+        ],
+        [
+          "Kometa\nInterceptors",
+          "2",
+          "3",
+          "3",
+          "3",
+          "-"
+        ],
+        [
+          "Szpada\nSwordwings",
+          "4",
+          "3",
+          "2",
+          "4",
+          "Swordwing\nSrike"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          106
+        ],
+        "pdfPages": [
+          108
+        ],
+        "bbox": [
+          130.39,
+          142.34,
+          361.83,
+          212.79
+        ]
+      },
+      "columns": [
+        {
+          "id": "squadron-type",
+          "title": "Squadron Type",
+          "type": "string"
+        },
+        {
+          "id": "atk",
+          "title": "Atk",
+          "type": "string"
+        },
+        {
+          "id": "int",
+          "title": "Int",
+          "type": "string"
+        },
+        {
+          "id": "spt",
+          "title": "Spt",
+          "type": "string"
+        },
+        {
+          "id": "res",
+          "title": "Res",
+          "type": "string"
+        },
+        {
+          "id": "srs-properties",
+          "title": "SRS Properties",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "squadron-type": "Kometa\nInterceptors",
+          "atk": "2",
+          "int": "3",
+          "spt": "3",
+          "res": "3",
+          "srs-properties": "-"
+        },
+        {
+          "squadron-type": "Szpada\nSwordwings",
+          "atk": "4",
+          "int": "3",
+          "spt": "2",
+          "res": "4",
+          "srs-properties": "Swordwing\nSrike"
+        }
+      ]
+    },
+    {
+      "id": "attack-run-roll",
+      "title": "Attack Run Action Roll",
+      "printedPage": 111,
+      "pdfPage": 113,
+      "bbox": [
+        56.69,
+        191.68,
+        289.13,
+        311.23
+      ],
+      "rows": [
+        [
+          "Action\nPool",
+          "Each SRS token in the Stack adds a number of\nAction Dice equal to its Attack rating."
+        ],
+        [
+          "Resistance\nPool",
+          "Each Attack Run Target adds a number of dice\nequal to its Defences rating."
+        ],
+        [
+          null,
+          "Add 1 Bonus Die for each Escort6 token\naccompanying the target unit."
+        ],
+        [
+          "Success\nThreshold",
+          "The highest Armour rating among the Targets."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          111
+        ],
+        "pdfPages": [
+          113
+        ],
+        "bbox": [
+          56.69,
+          191.68,
+          289.13,
+          311.23
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Action\nPool",
+          "value": "Each SRS token in the Stack adds a number of\nAction Dice equal to its Attack rating."
+        },
+        {
+          "label": "Resistance\nPool",
+          "value": "Each Attack Run Target adds a number of dice\nequal to its Defences rating."
+        },
+        {
+          "label": null,
+          "value": "Add 1 Bonus Die for each Escort6 token\naccompanying the target unit."
+        },
+        {
+          "label": "Success\nThreshold",
+          "value": "The highest Armour rating among the Targets."
+        }
+      ]
+    },
+    {
+      "id": "interception-attempt-roll",
+      "title": "Interception Attempt Action Roll",
+      "printedPage": 112,
+      "pdfPage": 114,
+      "bbox": [
+        130.39,
+        143.09,
+        362.83,
+        213.96
+      ],
+      "rows": [
+        [
+          "Action\nPool",
+          "Each SRS token in the Supporting Stack adds\na number of Action Dice equal to its Intercept\nrating."
+        ],
+        [
+          "Success\nThreshold",
+          "The Stack’s Resilience rating."
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          112
+        ],
+        "pdfPages": [
+          114
+        ],
+        "bbox": [
+          130.39,
+          143.09,
+          362.83,
+          213.96
+        ]
+      },
+      "columns": [
+        {
+          "id": "label",
+          "title": "Label",
+          "type": "string"
+        },
+        {
+          "id": "value",
+          "title": "Value",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "label": "Action\nPool",
+          "value": "Each SRS token in the Supporting Stack adds\na number of Action Dice equal to its Intercept\nrating."
+        },
+        {
+          "label": "Success\nThreshold",
+          "value": "The Stack’s Resilience rating."
+        }
+      ]
+    },
+    {
+      "id": "random-encounter-selection",
+      "title": "Random Encounter Selection",
+      "printedPage": 132,
+      "pdfPage": 134,
+      "bbox": [
+        130.39,
+        110.42,
+        362.83,
+        371.21
+      ],
+      "rows": [
+        [
+          "Face",
+          "Action Roll"
+        ],
+        [
+          null,
+          "Use Common Encounter 1:\nMeeting Engagement (page 140)."
+        ],
+        [
+          null,
+          "Use Common Encounter 2:\nSalvage Rights (page 142)."
+        ],
+        [
+          null,
+          "Use Common Encounter 3:\nThe Oil Fields (page 144)."
+        ],
+        [
+          null,
+          "Use Common Encounter 4:\nBlockade Run (page 146)."
+        ],
+        [
+          null,
+          "Use Common Encounter 5:\nThe Archipelago (page 148)."
+        ],
+        [
+          null,
+          "Use Common Encounter 6:\nRecon Duty (page 150)."
+        ]
+      ],
+      "hasGraphicCells": true,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "checked"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          132
+        ],
+        "pdfPages": [
+          134
+        ],
+        "bbox": [
+          130.39,
+          110.42,
+          362.83,
+          371.21
+        ]
+      },
+      "columns": [
+        {
+          "id": "face",
+          "title": "Face",
+          "type": "string"
+        },
+        {
+          "id": "action-roll",
+          "title": "Action Roll",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 1:\nMeeting Engagement (page 140)."
+        },
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 2:\nSalvage Rights (page 142)."
+        },
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 3:\nThe Oil Fields (page 144)."
+        },
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 4:\nBlockade Run (page 146)."
+        },
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 5:\nThe Archipelago (page 148)."
+        },
+        {
+          "face": null,
+          "action-roll": "Use Common Encounter 6:\nRecon Duty (page 150)."
+        }
+      ],
+      "graphicMapping": [
+        {
+          "face": "blank",
+          "encounterId": "encounter.meeting-engagement"
+        },
+        {
+          "face": "standard-counter",
+          "encounterId": "encounter.salvage-rights"
+        },
+        {
+          "face": "heavy-counter",
+          "encounterId": "encounter.the-oil-fields"
+        },
+        {
+          "face": "standard-strike",
+          "encounterId": "encounter.blockade-run"
+        },
+        {
+          "face": "heavy-strike",
+          "encounterId": "encounter.the-archipelago"
+        },
+        {
+          "face": "exploding-strike",
+          "encounterId": "encounter.recon-duty"
+        }
+      ]
+    },
+    {
+      "id": "recommended-play-area",
+      "title": "Recommended Play Area Dimensions",
+      "printedPage": 133,
+      "pdfPage": 135,
+      "bbox": [
+        56.69,
+        124.67,
+        289.13,
+        226.75
+      ],
+      "rows": [
+        [
+          "Engagement Scale",
+          "Neutral\nEdges",
+          "Controlled\nEdges"
+        ],
+        [
+          "Small Engagement",
+          "48”",
+          "36”"
+        ],
+        [
+          "Medium Engagement",
+          "48”",
+          "48”"
+        ],
+        [
+          "Large Engagement",
+          "48”",
+          "72”"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          133
+        ],
+        "pdfPages": [
+          135
+        ],
+        "bbox": [
+          56.69,
+          124.67,
+          289.13,
+          226.75
+        ]
+      },
+      "columns": [
+        {
+          "id": "engagement-scale",
+          "title": "Engagement Scale",
+          "type": "string"
+        },
+        {
+          "id": "neutral-edges",
+          "title": "Neutral\nEdges",
+          "type": "string"
+        },
+        {
+          "id": "controlled-edges",
+          "title": "Controlled\nEdges",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "engagement-scale": "Small Engagement",
+          "neutral-edges": "48”",
+          "controlled-edges": "36”"
+        },
+        {
+          "engagement-scale": "Medium Engagement",
+          "neutral-edges": "48”",
+          "controlled-edges": "48”"
+        },
+        {
+          "engagement-scale": "Large Engagement",
+          "neutral-edges": "48”",
+          "controlled-edges": "72”"
+        }
+      ]
+    },
+    {
+      "id": "starting-card-count",
+      "title": "Starting Cards",
+      "printedPage": 135,
+      "pdfPage": 137,
+      "bbox": [
+        56.69,
+        110.42,
+        289.13,
+        201.13
+      ],
+      "rows": [
+        [
+          "Engagement Scale",
+          "Cards in Hand"
+        ],
+        [
+          "Small Engagement",
+          "5"
+        ],
+        [
+          "Medium Engagement",
+          "6"
+        ],
+        [
+          "Large Engagement",
+          "7"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          135
+        ],
+        "pdfPages": [
+          137
+        ],
+        "bbox": [
+          56.69,
+          110.42,
+          289.13,
+          201.13
+        ]
+      },
+      "columns": [
+        {
+          "id": "engagement-scale",
+          "title": "Engagement Scale",
+          "type": "string"
+        },
+        {
+          "id": "cards-in-hand",
+          "title": "Cards in Hand",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "engagement-scale": "Small Engagement",
+          "cards-in-hand": "5"
+        },
+        {
+          "engagement-scale": "Medium Engagement",
+          "cards-in-hand": "6"
+        },
+        {
+          "engagement-scale": "Large Engagement",
+          "cards-in-hand": "7"
+        }
+      ]
+    },
+    {
+      "id": "salvage-rights-results",
+      "title": "Salvage Rights Result Table",
+      "printedPage": 143,
+      "pdfPage": 145,
+      "bbox": [
+        75.34,
+        264.44,
+        385.58,
+        417.51
+      ],
+      "rows": [
+        [
+          "Face",
+          "Result"
+        ],
+        [
+          null,
+          "The salvage slips beneath the waves. Remove the Strategic Objective\nmarker."
+        ],
+        [
+          null,
+          "Nothing of value is found. The active Admiral repositions the\nStrategic Objective marker."
+        ],
+        [
+          null,
+          "A haul of cargo is secured. The active Admiral scores 5 Victory Points,\nthen the opposing Admiral repositions the Strategic Objective\nmarker."
+        ],
+        [
+          null,
+          "A veritable bounty is reclaimed from the waves. The active Admiral\nscores 10 Victory Points, then the opposing Admiral repositions the\nStrategic Objective marker."
+        ]
+      ],
+      "hasGraphicCells": true,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "checked"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          143
+        ],
+        "pdfPages": [
+          145
+        ],
+        "bbox": [
+          75.34,
+          264.44,
+          385.58,
+          417.51
+        ]
+      },
+      "columns": [
+        {
+          "id": "face",
+          "title": "Face",
+          "type": "string"
+        },
+        {
+          "id": "result",
+          "title": "Result",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "face": null,
+          "result": "The salvage slips beneath the waves. Remove the Strategic Objective\nmarker."
+        },
+        {
+          "face": null,
+          "result": "Nothing of value is found. The active Admiral repositions the\nStrategic Objective marker."
+        },
+        {
+          "face": null,
+          "result": "A haul of cargo is secured. The active Admiral scores 5 Victory Points,\nthen the opposing Admiral repositions the Strategic Objective\nmarker."
+        },
+        {
+          "face": null,
+          "result": "A veritable bounty is reclaimed from the waves. The active Admiral\nscores 10 Victory Points, then the opposing Admiral repositions the\nStrategic Objective marker."
+        }
+      ],
+      "graphicMapping": [
+        {
+          "faces": [
+            "blank"
+          ],
+          "resultType": "remove_marker",
+          "victoryPoints": 0
+        },
+        {
+          "faces": [
+            "standard-counter",
+            "heavy-counter"
+          ],
+          "resultType": "active_admiral_repositions",
+          "victoryPoints": 0
+        },
+        {
+          "faces": [
+            "standard-strike",
+            "heavy-strike"
+          ],
+          "resultType": "opponent_repositions",
+          "victoryPoints": 5
+        },
+        {
+          "faces": [
+            "exploding-strike"
+          ],
+          "resultType": "opponent_repositions",
+          "victoryPoints": 10
+        }
+      ]
+    },
+    {
+      "id": "archipelago-victory-points",
+      "title": "Archipelago Objective Victory Points",
+      "printedPage": 149,
+      "pdfPage": 151,
+      "bbox": [
+        75.66,
+        331.02,
+        289.2,
+        468.5
+      ],
+      "rows": [
+        [
+          "Round",
+          "Primary\nObjective",
+          "Secondary\nObjective"
+        ],
+        [
+          "1",
+          "8",
+          "2"
+        ],
+        [
+          "2",
+          "16",
+          "4"
+        ],
+        [
+          "3",
+          "24",
+          "6"
+        ],
+        [
+          "4",
+          "32",
+          "8"
+        ],
+        [
+          "5",
+          "40",
+          "10"
+        ]
+      ],
+      "hasGraphicCells": false,
+      "verification": {
+        "textLayer": "checked",
+        "tableGeometry": "checked",
+        "renderedPage": "checked",
+        "status": "verified",
+        "semanticMapping": "not_required"
+      },
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          149
+        ],
+        "pdfPages": [
+          151
+        ],
+        "bbox": [
+          75.66,
+          331.02,
+          289.2,
+          468.5
+        ]
+      },
+      "columns": [
+        {
+          "id": "round",
+          "title": "Round",
+          "type": "string"
+        },
+        {
+          "id": "primary-objective",
+          "title": "Primary\nObjective",
+          "type": "string"
+        },
+        {
+          "id": "secondary-objective",
+          "title": "Secondary\nObjective",
+          "type": "string"
+        }
+      ],
+      "records": [
+        {
+          "round": "1",
+          "primary-objective": "8",
+          "secondary-objective": "2"
+        },
+        {
+          "round": "2",
+          "primary-objective": "16",
+          "secondary-objective": "4"
+        },
+        {
+          "round": "3",
+          "primary-objective": "24",
+          "secondary-objective": "6"
+        },
+        {
+          "round": "4",
+          "primary-objective": "32",
+          "secondary-objective": "8"
+        },
+        {
+          "round": "5",
+          "primary-objective": "40",
+          "secondary-objective": "10"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "actions": [
+    {
+      "id": "action.attack",
+      "name": "Attack Action",
+      "category": "core_action",
+      "phase": "Action Step",
+      "procedureId": "procedure.attack-action",
+      "ruleBlockId": "rule.resolving-an-attack-action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          73
+        ],
+        "pdfPages": [
+          75
+        ],
+        "anchor": {
+          "page": 75,
+          "bbox": [
+            59.24,
+            244.44,
+            247.7,
+            260.94
+          ]
+        }
+      },
+      "printedPages": [
+        73
+      ],
+      "text": "When a unit makes an Attack action, its Admiral uses the following process.",
+      "limits": {
+        "perActivation": null
+      }
+    },
+    {
+      "id": "action.maintenance",
+      "name": "Maintenance Action",
+      "category": "additional_action",
+      "phase": "Action Step",
+      "procedureId": "procedure.maintenance-action",
+      "ruleBlockId": "rule.resolving-a-maintenance-action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ],
+        "anchor": {
+          "page": 97,
+          "bbox": [
+            59.24,
+            241.63,
+            280.15,
+            258.13
+          ]
+        }
+      },
+      "printedPages": [
+        95
+      ],
+      "text": "Maintenance actions allow models in the unit to repair Critical Damage they have suffered. When a unit makes a Maintenance action, use the following process:",
+      "limits": {
+        "specialAction": false
+      }
+    },
+    {
+      "id": "action.broadside",
+      "name": "Broadside Action",
+      "category": "additional_action",
+      "phase": "Action Step",
+      "procedureId": "procedure.broadside-action",
+      "ruleBlockId": "rule.resolving-a-broadside-action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          96
+        ],
+        "pdfPages": [
+          98
+        ],
+        "anchor": {
+          "page": 98,
+          "bbox": [
+            133.22,
+            54.26,
+            336.15,
+            70.76
+          ]
+        }
+      },
+      "printedPages": [
+        96
+      ],
+      "text": "Broadside actions let units bring their close-range flank batteries to bear with devastating effect. A unit can only make one Broadside action per Activation.\n\nWhen a unit makes a Broadside action, use the following process:",
+      "limits": {
+        "maximumPerActivation": 1
+      }
+    },
+    {
+      "id": "action.boarding",
+      "name": "Boarding Action",
+      "category": "additional_action",
+      "phase": "Action Step",
+      "procedureId": "procedure.boarding-action",
+      "ruleBlockId": "rule.resolving-a-boarding-action",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          98
+        ],
+        "pdfPages": [
+          100
+        ],
+        "anchor": {
+          "page": 100,
+          "bbox": [
+            133.22,
+            54.26,
+            329.18,
+            70.76
+          ]
+        }
+      },
+      "printedPages": [
+        98
+      ],
+      "text": "Boarding actions represent daring raids on enemy vessels to strike at vital weak points.\n\nA unit can only make a Boarding action if it has a Property that specifically allows it to do so. When a unit makes a Boarding action, use the following process:",
+      "limits": {
+        "requiresPropertyPermission": true
+      }
+    },
+    {
+      "id": "manoeuvre.come-about",
+      "name": "Coming About",
+      "category": "movement_manoeuvre",
+      "phase": "Movement Step",
+      "procedureId": null,
+      "ruleBlockId": "rule.coming-about",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          41
+        ],
+        "pdfPages": [
+          43
+        ],
+        "anchor": {
+          "page": 43,
+          "bbox": [
+            56.69,
+            53.83,
+            133.92,
+            67.58
+          ]
+        },
+        "declaredPrintedPageRange": [
+          41,
+          42
+        ]
+      },
+      "printedPages": [
+        41
+      ],
+      "text": "A model can change its heading by Coming About. Each model can normally Come About once during its move, and cannot Come About until it has moved its Minimum Speed; otherwise, it can be done at any point during the model’s move.\n\nWhen a model Comes About, its Admiral places a Turning Template to the left or right of the model. The diagram below shows a model Coming About to starboard, so the template is placed to its right.\n\nThe template must be placed in contact with the model, so that the Navigation Mark at one end is level with the model’s Centre Point, and the first Segment is closer to the front of the model.\n\nThen, the Admiral moves the model forwards to the end of the first Segment, then rotates it to align with the next Segment. They can repeat this a number of times up to the model’s Turn Limit rating, with each Segment costing 1” of movement.",
+      "limits": {
+        "normalMaximumPerMove": 1
+      }
+    },
+    {
+      "id": "manoeuvre.full-reverse",
+      "name": "Full Reverse",
+      "category": "movement_manoeuvre",
+      "phase": "Movement Step",
+      "procedureId": null,
+      "ruleBlockId": "rule.full-reverse",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          68
+        ],
+        "pdfPages": [
+          70
+        ],
+        "anchor": {
+          "page": 70,
+          "bbox": [
+            130.39,
+            212.94,
+            206.45,
+            226.69
+          ]
+        }
+      },
+      "printedPages": [
+        68
+      ],
+      "text": "Instead of moving a model normally, the Admiral can declare that the model will engage Full Reverse. When a model engages Full Reverse, it gains a level of Disorder. A model with 3 levels of Disorder suffers a point of Damage instead. For the duration of the Movement Step, the model moves backwards instead of forwards, and is subject to the following Modifiers:\n\n• Its Minimum Speed rating is reduced to 0.\n\n• Its Maximum Speed rating is halved (rounding up to the nearest inch).\n\n• Its Turn Limit is increased by 2 (to a maximum of 4).",
+      "limits": {
+        "replacesNormalMovement": true
+      }
+    },
+    {
+      "id": "manoeuvre.emergency",
+      "name": "Emergency Manoeuvres",
+      "category": "movement_manoeuvre",
+      "phase": "Movement Step",
+      "procedureId": null,
+      "ruleBlockId": "rule.emergency-manoeuvres",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          68
+        ],
+        "pdfPages": [
+          70
+        ],
+        "anchor": {
+          "page": 70,
+          "bbox": [
+            130.39,
+            338.04,
+            266.78,
+            351.79
+          ]
+        }
+      },
+      "printedPages": [
+        68
+      ],
+      "text": "The Admiral can declare that a model will make an Emergency Manoeuvre at any point during its move. The model can make an Additional Manoeuvre, but gains a level of Disorder. If the model has 3 levels of Disorder, it suffers a point of Damage instead. A model can make Emergency Manoeuvres multiple times during the same move.",
+      "limits": {
+        "trigger": "come_about_more_than_once"
+      }
+    },
+    {
+      "id": "manoeuvre.pivot",
+      "name": "Pivoting",
+      "category": "advanced_movement",
+      "phase": "Movement Step",
+      "procedureId": null,
+      "ruleBlockId": "rule.pivoting",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81
+        ],
+        "pdfPages": [
+          83
+        ],
+        "anchor": {
+          "page": 83,
+          "bbox": [
+            59.52,
+            237.54,
+            117.39,
+            254.04
+          ]
+        }
+      },
+      "printedPages": [
+        81
+      ],
+      "text": "Some models have a rule that allows them to Pivot when they Come About. This may be either optional or mandatory, depending on the rule.\n\nWhen a model Pivots, the Turning Template is not used. Instead, the active Admiral rotates the model up to 90° about its Centre Point.\n\nPivoting costs 2” of the model’s movement, even if the model rotates less than 90°. As such, a model cannot Pivot if it has less than 2” of movement remaining.",
+      "limits": {
+        "countsAsComingAbout": true
+      }
+    },
+    {
+      "id": "manoeuvre.ram",
+      "name": "Ramming",
+      "category": "advanced_movement",
+      "phase": "Movement Step",
+      "procedureId": "procedure.ram",
+      "ruleBlockId": "rule.ramming.p82",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82
+        ],
+        "pdfPages": [
+          84
+        ],
+        "anchor": {
+          "page": 84,
+          "bbox": [
+            133.22,
+            54.26,
+            193.1,
+            70.76
+          ]
+        }
+      },
+      "printedPages": [
+        82
+      ],
+      "text": "If a moving model Collides with an enemy model after moving at least 3”, and the point of contact between the two models is in the moving model’s Fore arc, the active Admiral can declare a Ram.\n\nA model can only attempt a Ram during its own Movement Step.",
+      "limits": {
+        "requiresCrewCheck": true
+      }
+    },
+    {
+      "id": "action.launch-srs",
+      "name": "Launch Short Range Squadrons",
+      "category": "launch_phase_action",
+      "phase": "Launch Phase",
+      "procedureId": "procedure.launch-srs",
+      "ruleBlockId": "rule.launching-short-range-squadrons",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          108
+        ],
+        "pdfPages": [
+          110
+        ],
+        "anchor": {
+          "page": 110,
+          "bbox": [
+            133.22,
+            54.26,
+            360.73,
+            70.76
+          ]
+        }
+      },
+      "printedPages": [
+        108
+      ],
+      "text": "On an Admiral’s turn, they nominate one of their units in the Play Area that contains one or more Carrier models, and resolve an SRS Launch using the process below. A unit cannot be nominated if it has already resolved an SRS Launch this Round.",
+      "limits": {
+        "phase": "Launch Phase"
+      }
+    },
+    {
+      "id": "action.aerial-reconnaissance",
+      "name": "Aerial Reconnaissance",
+      "category": "end_phase_resolution",
+      "phase": "End Phase",
+      "procedureId": null,
+      "ruleBlockId": "rule.aerial-reconnaissance",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          115,
+          116,
+          117
+        ],
+        "pdfPages": [
+          117,
+          118,
+          119
+        ],
+        "anchor": {
+          "page": 117,
+          "bbox": [
+            59.52,
+            54.26,
+            217.57,
+            70.76
+          ]
+        }
+      },
+      "printedPages": [
+        115,
+        116,
+        117
+      ],
+      "text": "In the Clean Up step of the End Phase, each SRS Stack that is still in play (i.e. that has not resolved an SRS Mission) performs Aerial Reconnaissance.\n\nBoth Admirals roll an Action Die for every SRS token they still have in play. For each Exploding Strike result, one Squadron has successfully completed an Aerial Reconnaissance mission and will grant its Admiral a Bonus Card in the Draw Cards step of next Round’s Ready Phase. The maximum number of Bonus Cards that an Admiral can receive from Aerial Reconnaissance is equal to their Hand Limit.\n\nAs a reminder, each Admiral can place an SRS token next to their Victory & Valour deck for each Bonus Card they will receive.\n\nAny remaining SRS tokens are then removed from play.\n\nFor example, in the End Phase, an Admiral has a single SRS Stack still in play, consisting of 8 SRS tokens. They roll 8 Action Dice, and are lucky enough to score 3 Exploding Strikes. They will gain 3 Bonus Cards in the next Ready Phase.",
+      "limits": {
+        "specialAction": true
+      }
+    },
+    {
+      "id": "action.special",
+      "name": "Special Action",
+      "category": "special_action",
+      "phase": "Action Step",
+      "procedureId": null,
+      "ruleBlockId": "rule.special-actions",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ],
+        "anchor": {
+          "page": 97,
+          "bbox": null
+        },
+        "syntheticBoundary": true
+      },
+      "printedPages": [
+        95
+      ],
+      "text": "Some rules (such as Properties or Encounter rules) allow units to make Special Actions. A Special Action counts towards a unit’s Action Limit, just like any other Action. Unless otherwise stated, a model cannot Participate in a specific Special Action more than once during a single Activation.",
+      "limits": {
+        "countsTowardActionLimit": true,
+        "maximumParticipationPerSpecificActionPerActivation": 1
+      }
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { List as ListIcon, Settings, Ship } from 'lucide-react'
+import { BookOpen, List as ListIcon, Settings, Ship } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useAppStore } from '../../store'
@@ -7,8 +7,9 @@ type Theme = 'normal' | 'dark' | 'turquoise-orange'
 type StoredTheme = Exclude<Theme, 'turquoise-orange'>
 
 interface AppHeaderProps {
-    activeView: 'lists' | 'builder' | 'units'
+    activeView: 'lists' | 'builder' | 'units' | 'rules'
     onShowLists: () => void
+    onShowRules: () => void
     onShowUnits: () => void
 }
 
@@ -51,7 +52,7 @@ function saveSecretTheme(active: boolean): void {
     }
 }
 
-export default function AppHeader({ activeView, onShowLists, onShowUnits }: AppHeaderProps) {
+export default function AppHeader({ activeView, onShowLists, onShowRules, onShowUnits }: AppHeaderProps) {
     const [builderName, setBuilderName] = useState(() => loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER')
     const [theme, setTheme] = useState<Theme>(() => loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme())
     const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
@@ -96,10 +97,10 @@ export default function AppHeader({ activeView, onShowLists, onShowUnits }: AppH
     }
 
     return (
-        <header className="relative z-30 flex h-14 flex-none items-center justify-between border-b border-white/10 px-3 text-sm text-white sm:px-4" style={{ background: 'var(--navy)' }}>
-            <div className="flex min-w-0 items-center gap-2">
+        <header className="relative z-30 grid h-14 flex-none grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border-b border-white/10 px-3 text-sm text-white sm:px-4" style={{ background: 'var(--navy)' }}>
+            <div className="min-w-0 items-center gap-2 lg:flex">
                 <span
-                    className="max-w-[6rem] flex-none select-none truncate text-[11px] font-semibold tracking-[0.2em] text-[var(--gold)] sm:max-w-none sm:text-sm sm:tracking-[0.24em]"
+                    className="hidden max-w-none flex-none select-none truncate text-sm font-semibold tracking-[0.24em] text-[var(--gold)] lg:block"
                     onClick={handleBuilderNameClick}
                     onMouseDown={(event) => event.preventDefault()}
                 >
@@ -113,23 +114,34 @@ export default function AppHeader({ activeView, onShowLists, onShowUnits }: AppH
                 ) : null}
             </div>
 
-            <nav aria-label="Main navigation" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1.5 sm:gap-2">
+            <nav aria-label="Main navigation" className="flex flex-none items-center gap-1.5 sm:gap-2">
                 <button
                     type="button"
                     onClick={onShowLists}
                     aria-current={activeView === 'lists' ? 'page' : undefined}
                     title="Open saved lists"
-                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'lists' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-2 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'lists' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
                 >
                     <ListIcon size={16} />
                     List
                 </button>
                 <button
                     type="button"
+                    onClick={onShowRules}
+                    aria-current={activeView === 'rules' ? 'page' : undefined}
+                    title="Open the core rules"
+                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-2 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'rules' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                >
+                    <BookOpen size={16} />
+                    <span className="sm:hidden">Rules</span>
+                    <span className="hidden sm:inline">Core Rules</span>
+                </button>
+                <button
+                    type="button"
                     onClick={onShowUnits}
                     aria-current={activeView === 'units' ? 'page' : undefined}
                     title="Browse all units"
-                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'units' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-2 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'units' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
                 >
                     <Ship size={16} />
                     Units
@@ -137,7 +149,7 @@ export default function AppHeader({ activeView, onShowLists, onShowUnits }: AppH
             </nav>
 
             <div
-                className="relative ml-3 flex-none"
+                className="relative ml-2 flex-none justify-self-end sm:ml-3"
                 onClick={(event) => {
                     event.stopPropagation()
                     builderNameClickCount.current = 0

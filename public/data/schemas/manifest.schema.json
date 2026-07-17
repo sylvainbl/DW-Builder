@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dystopian Wars Rulebook Dataset Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "id",
+    "source",
+    "modules",
+    "counts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "datasetVersion": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "fileName",
+        "pageCount",
+        "sha256"
+      ]
+    },
+    "modules": {
+      "type": "object"
+    },
+    "counts": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

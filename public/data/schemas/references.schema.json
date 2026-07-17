@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "References",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "pageReferenceLinks",
+    "semanticLinks"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "pageReferenceLinks": {
+      "type": "array"
+    },
+    "semanticLinks": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

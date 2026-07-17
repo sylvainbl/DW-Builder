@@ -1,0 +1,5631 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "pageReferenceLinks": [
+    {
+      "sourcePrintedPage": 13,
+      "label": "Encounter",
+      "targetPrintedPage": 138,
+      "targetSectionId": "common-encounters",
+      "id": "page-reference-001",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          13
+        ],
+        "pdfPages": [
+          15
+        ]
+      },
+      "targetPdfPage": 140,
+      "targetRuleBlockId": "rule.chapter.common-encounters"
+    },
+    {
+      "sourcePrintedPage": 14,
+      "label": "Points Limit",
+      "targetPrintedPage": 126,
+      "targetSectionId": "force-restrictions",
+      "id": "page-reference-002",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          14
+        ],
+        "pdfPages": [
+          16
+        ]
+      },
+      "targetPdfPage": 128,
+      "targetRuleBlockId": "rule.force-restrictions"
+    },
+    {
+      "sourcePrintedPage": 14,
+      "label": "Reserve",
+      "targetPrintedPage": 63,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-003",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          14
+        ],
+        "pdfPages": [
+          16
+        ]
+      },
+      "targetPdfPage": 65,
+      "targetRuleBlockId": "rule.b-draw-cards"
+    },
+    {
+      "sourcePrintedPage": 16,
+      "label": "Terrain Features",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-004",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          16
+        ],
+        "pdfPages": [
+          18
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 16,
+      "label": "Visibility",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-005",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          16
+        ],
+        "pdfPages": [
+          18
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 18,
+      "label": "Crippled",
+      "targetPrintedPage": 85,
+      "targetSectionId": "crippled-models",
+      "id": "page-reference-006",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          18
+        ],
+        "pdfPages": [
+          20
+        ]
+      },
+      "targetPdfPage": 87,
+      "targetRuleBlockId": "rule.crippled-models"
+    },
+    {
+      "sourcePrintedPage": 18,
+      "label": "Rating",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-007",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          18
+        ],
+        "pdfPages": [
+          20
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 18,
+      "label": "cards",
+      "targetPrintedPage": 50,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-008",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          18
+        ],
+        "pdfPages": [
+          20
+        ]
+      },
+      "targetPdfPage": 52,
+      "targetRuleBlockId": "rule.victory-and-valour-cards.p50"
+    },
+    {
+      "sourcePrintedPage": 21,
+      "label": "Terrain Feature",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-009",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          21
+        ],
+        "pdfPages": [
+          23
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 21,
+      "label": "Escorts",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-010",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          21
+        ],
+        "pdfPages": [
+          23
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 21,
+      "label": "Wrecks",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-011",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          21
+        ],
+        "pdfPages": [
+          23
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 23,
+      "label": "Terrain Features",
+      "targetPrintedPage": 17,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-012",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          23
+        ],
+        "pdfPages": [
+          25
+        ]
+      },
+      "targetPdfPage": 19,
+      "targetRuleBlockId": "rule.terrain-features.p17"
+    },
+    {
+      "sourcePrintedPage": 23,
+      "label": "Attack actions",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-013",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          23
+        ],
+        "pdfPages": [
+          25
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 25,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-014",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          25
+        ],
+        "pdfPages": [
+          27
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 26,
+      "label": "Targets",
+      "targetPrintedPage": 39,
+      "targetSectionId": "visibility",
+      "id": "page-reference-015",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          26
+        ],
+        "pdfPages": [
+          28
+        ]
+      },
+      "targetPdfPage": 41,
+      "targetRuleBlockId": "rule.checking-visibility"
+    },
+    {
+      "sourcePrintedPage": 28,
+      "label": "Effect",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-016",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          28
+        ],
+        "pdfPages": [
+          30
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 31,
+      "label": "Attack actions",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-017",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          31
+        ],
+        "pdfPages": [
+          33
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 31,
+      "label": "Unit Profile",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-018",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          31
+        ],
+        "pdfPages": [
+          33
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 31,
+      "label": "Arcs",
+      "targetPrintedPage": 21,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-019",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          31
+        ],
+        "pdfPages": [
+          33
+        ]
+      },
+      "targetPdfPage": 23,
+      "targetRuleBlockId": "rule.understanding-models"
+    },
+    {
+      "sourcePrintedPage": 31,
+      "label": "Range Bands",
+      "targetPrintedPage": 22,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-020",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          31
+        ],
+        "pdfPages": [
+          33
+        ]
+      },
+      "targetPdfPage": 24,
+      "targetRuleBlockId": "rule.measuring-distances"
+    },
+    {
+      "sourcePrintedPage": 31,
+      "label": "Properties",
+      "targetPrintedPage": 29,
+      "targetSectionId": "properties-and-systems",
+      "id": "page-reference-021",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          31
+        ],
+        "pdfPages": [
+          33
+        ]
+      },
+      "targetPdfPage": 31,
+      "targetRuleBlockId": "rule.properties-and-systems"
+    },
+    {
+      "sourcePrintedPage": 37,
+      "label": "Victory & Valour",
+      "targetPrintedPage": 50,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-022",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          37
+        ],
+        "pdfPages": [
+          39
+        ]
+      },
+      "targetPdfPage": 52,
+      "targetRuleBlockId": "rule.victory-and-valour-cards.p50"
+    },
+    {
+      "sourcePrintedPage": 37,
+      "label": "Activation Phase",
+      "targetPrintedPage": 64,
+      "targetSectionId": "launch-phase",
+      "id": "page-reference-023",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          37
+        ],
+        "pdfPages": [
+          39
+        ]
+      },
+      "targetPdfPage": 66,
+      "targetRuleBlockId": "rule.2-the-launch-phase"
+    },
+    {
+      "sourcePrintedPage": 40,
+      "label": "Abandoned",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-024",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          40
+        ],
+        "pdfPages": [
+          42
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 40,
+      "label": "Maximum Speed",
+      "targetPrintedPage": 27,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-025",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          40
+        ],
+        "pdfPages": [
+          42
+        ]
+      },
+      "targetPdfPage": 29,
+      "targetRuleBlockId": "rule.key-information"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Manoeuvres",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-026",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Come About",
+      "targetPrintedPage": 41,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-027",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 43,
+      "targetRuleBlockId": "rule.coming-about"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Positional Traits",
+      "targetPrintedPage": 78,
+      "targetSectionId": "airborne-models",
+      "id": "page-reference-028",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 80,
+      "targetRuleBlockId": "rule.airborne-models"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Collision",
+      "targetPrintedPage": 43,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-029",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 45,
+      "targetRuleBlockId": "rule.resolving-a-collision"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Terrain Feature",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-030",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-031",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Damage",
+      "targetPrintedPage": 54,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-032",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 56,
+      "targetRuleBlockId": "rule.broken-spirit"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Strike",
+      "targetPrintedPage": 45,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-033",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 47,
+      "targetRuleBlockId": "rule.rolling-dice"
+    },
+    {
+      "sourcePrintedPage": 42,
+      "label": "Full Reverse",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-034",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          42
+        ],
+        "pdfPages": [
+          44
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 51,
+      "label": "Scale",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-035",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          51
+        ],
+        "pdfPages": [
+          53
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 53,
+      "label": "The Four Phases",
+      "targetPrintedPage": 61,
+      "targetSectionId": "round-overview",
+      "id": "page-reference-036",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          53
+        ],
+        "pdfPages": [
+          55
+        ]
+      },
+      "targetPdfPage": 63,
+      "targetRuleBlockId": "rule.section.round-overview"
+    },
+    {
+      "sourcePrintedPage": 53,
+      "label": "Modifiers",
+      "targetPrintedPage": 27,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-037",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          53
+        ],
+        "pdfPages": [
+          55
+        ]
+      },
+      "targetPdfPage": 29,
+      "targetRuleBlockId": "rule.key-information"
+    },
+    {
+      "sourcePrintedPage": 54,
+      "label": "Initiative",
+      "targetPrintedPage": 62,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-038",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          54
+        ],
+        "pdfPages": [
+          56
+        ]
+      },
+      "targetPdfPage": 64,
+      "targetRuleBlockId": "rule.1-the-ready-phase"
+    },
+    {
+      "sourcePrintedPage": 54,
+      "label": "Movement",
+      "targetPrintedPage": 40,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-039",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          54
+        ],
+        "pdfPages": [
+          56
+        ]
+      },
+      "targetPdfPage": 42,
+      "targetRuleBlockId": "rule.moving-models"
+    },
+    {
+      "sourcePrintedPage": 54,
+      "label": "Rating",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-040",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          54
+        ],
+        "pdfPages": [
+          56
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 56,
+      "label": "Action Roll",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-041",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          56
+        ],
+        "pdfPages": [
+          58
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 56,
+      "label": "Converted",
+      "targetPrintedPage": 45,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-042",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          56
+        ],
+        "pdfPages": [
+          58
+        ]
+      },
+      "targetPdfPage": 47,
+      "targetRuleBlockId": "rule.rolling-dice"
+    },
+    {
+      "sourcePrintedPage": 56,
+      "label": "Manoeuvres",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-043",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          56
+        ],
+        "pdfPages": [
+          58
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 58,
+      "label": "Participating",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-044",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          58
+        ],
+        "pdfPages": [
+          60
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 58,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-045",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          58
+        ],
+        "pdfPages": [
+          60
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 61,
+      "label": "Initiative",
+      "targetPrintedPage": 62,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-046",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61
+        ],
+        "pdfPages": [
+          63
+        ]
+      },
+      "targetPdfPage": 64,
+      "targetRuleBlockId": "rule.1-the-ready-phase"
+    },
+    {
+      "sourcePrintedPage": 61,
+      "label": "Reserve",
+      "targetPrintedPage": 63,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-047",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61
+        ],
+        "pdfPages": [
+          63
+        ]
+      },
+      "targetPdfPage": 65,
+      "targetRuleBlockId": "rule.b-draw-cards"
+    },
+    {
+      "sourcePrintedPage": 61,
+      "label": "Squadrons",
+      "targetPrintedPage": 105,
+      "targetSectionId": "srs-in-play",
+      "id": "page-reference-048",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61
+        ],
+        "pdfPages": [
+          63
+        ]
+      },
+      "targetPdfPage": 107,
+      "targetRuleBlockId": "rule.short-range-squadrons-in-play"
+    },
+    {
+      "sourcePrintedPage": 61,
+      "label": "Turn Order",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-049",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61
+        ],
+        "pdfPages": [
+          63
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 61,
+      "label": "Objectives",
+      "targetPrintedPage": 18,
+      "targetSectionId": "victory-and-defeat",
+      "id": "page-reference-050",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          61
+        ],
+        "pdfPages": [
+          63
+        ]
+      },
+      "targetPdfPage": 20,
+      "targetRuleBlockId": "rule.victory-and-defeat"
+    },
+    {
+      "sourcePrintedPage": 63,
+      "label": "Scale",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-051",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          63
+        ],
+        "pdfPages": [
+          65
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 63,
+      "label": "Zone",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-052",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          63
+        ],
+        "pdfPages": [
+          65
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 63,
+      "label": "Pass Through",
+      "targetPrintedPage": 42,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-053",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          63
+        ],
+        "pdfPages": [
+          65
+        ]
+      },
+      "targetPdfPage": 44,
+      "targetRuleBlockId": "rule.additional-manoeuvres"
+    },
+    {
+      "sourcePrintedPage": 65,
+      "label": "Turn Order",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-054",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          65
+        ],
+        "pdfPages": [
+          67
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 68,
+      "label": "Coherency",
+      "targetPrintedPage": 24,
+      "targetSectionId": "understanding-units",
+      "id": "page-reference-055",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          68
+        ],
+        "pdfPages": [
+          70
+        ]
+      },
+      "targetPdfPage": 26,
+      "targetRuleBlockId": "rule.understanding-units"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Effects",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-056",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Coherency",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-057",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Proximity",
+      "targetPrintedPage": 23,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-058",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 25,
+      "targetRuleBlockId": "rule.proximity"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Terrain Feature",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-059",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-060",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 70,
+      "label": "Crippled",
+      "targetPrintedPage": 85,
+      "targetSectionId": "crippled-models",
+      "id": "page-reference-061",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          70
+        ],
+        "pdfPages": [
+          72
+        ]
+      },
+      "targetPdfPage": 87,
+      "targetRuleBlockId": "rule.crippled-models"
+    },
+    {
+      "sourcePrintedPage": 73,
+      "label": "Visible",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-062",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          73
+        ],
+        "pdfPages": [
+          75
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 74,
+      "label": "Obscured",
+      "targetPrintedPage": 39,
+      "targetSectionId": "visibility",
+      "id": "page-reference-063",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          74
+        ],
+        "pdfPages": [
+          76
+        ]
+      },
+      "targetPdfPage": 41,
+      "targetRuleBlockId": "rule.checking-visibility"
+    },
+    {
+      "sourcePrintedPage": 74,
+      "label": "Escort",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-064",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          74
+        ],
+        "pdfPages": [
+          76
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 74,
+      "label": "Supporting",
+      "targetPrintedPage": 109,
+      "targetSectionId": "air-support",
+      "id": "page-reference-065",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          74
+        ],
+        "pdfPages": [
+          76
+        ]
+      },
+      "targetPdfPage": 111,
+      "targetRuleBlockId": "rule.air-support"
+    },
+    {
+      "sourcePrintedPage": 74,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-066",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          74
+        ],
+        "pdfPages": [
+          76
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Trait",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-067",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Terrain Feature",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-068",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Open Water",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-069",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Collides",
+      "targetPrintedPage": 43,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-070",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 45,
+      "targetRuleBlockId": "rule.resolving-a-collision"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Blocked",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-071",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Obscured",
+      "targetPrintedPage": 39,
+      "targetSectionId": "visibility",
+      "id": "page-reference-072",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 41,
+      "targetRuleBlockId": "rule.checking-visibility"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Reserve Roll",
+      "targetPrintedPage": 63,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-073",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 65,
+      "targetRuleBlockId": "rule.b-draw-cards"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Deployed",
+      "targetPrintedPage": 135,
+      "targetSectionId": "draw-starting-cards",
+      "id": "page-reference-074",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 137,
+      "targetRuleBlockId": "rule.4-draw-starting-cards"
+    },
+    {
+      "sourcePrintedPage": 78,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-075",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          78
+        ],
+        "pdfPages": [
+          80
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 81,
+      "label": "Come About",
+      "targetPrintedPage": 41,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-076",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81
+        ],
+        "pdfPages": [
+          83
+        ]
+      },
+      "targetPdfPage": 43,
+      "targetRuleBlockId": "rule.coming-about"
+    },
+    {
+      "sourcePrintedPage": 81,
+      "label": "Collides",
+      "targetPrintedPage": 43,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-077",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81
+        ],
+        "pdfPages": [
+          83
+        ]
+      },
+      "targetPdfPage": 45,
+      "targetRuleBlockId": "rule.resolving-a-collision"
+    },
+    {
+      "sourcePrintedPage": 81,
+      "label": "Manoeuvres",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-078",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          81
+        ],
+        "pdfPages": [
+          83
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 82,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-079",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82
+        ],
+        "pdfPages": [
+          84
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 82,
+      "label": "Participate",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-080",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          82
+        ],
+        "pdfPages": [
+          84
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 85,
+      "label": "Critical Damage",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-081",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85
+        ],
+        "pdfPages": [
+          87
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 85,
+      "label": "Explosion",
+      "targetPrintedPage": 89,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-082",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85
+        ],
+        "pdfPages": [
+          87
+        ]
+      },
+      "targetPdfPage": 91,
+      "targetRuleBlockId": "rule.catastrophic-explosions"
+    },
+    {
+      "sourcePrintedPage": 85,
+      "label": "Victory Points",
+      "targetPrintedPage": 18,
+      "targetSectionId": "victory-and-defeat",
+      "id": "page-reference-083",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85
+        ],
+        "pdfPages": [
+          87
+        ]
+      },
+      "targetPdfPage": 20,
+      "targetRuleBlockId": "rule.victory-and-defeat"
+    },
+    {
+      "sourcePrintedPage": 85,
+      "label": "Rating",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-084",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          85
+        ],
+        "pdfPages": [
+          87
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 86,
+      "label": "Models",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-085",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          86
+        ],
+        "pdfPages": [
+          88
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 86,
+      "label": "SRS Launch",
+      "targetPrintedPage": 108,
+      "targetSectionId": "launching-srs",
+      "id": "page-reference-086",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          86
+        ],
+        "pdfPages": [
+          88
+        ]
+      },
+      "targetPdfPage": 110,
+      "targetRuleBlockId": "rule.launching-short-range-squadrons"
+    },
+    {
+      "sourcePrintedPage": 86,
+      "label": "Scoring Model",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-087",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          86
+        ],
+        "pdfPages": [
+          88
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 88,
+      "label": "Rally",
+      "targetPrintedPage": 70,
+      "targetSectionId": "consolidation-step",
+      "id": "page-reference-088",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          88
+        ],
+        "pdfPages": [
+          90
+        ]
+      },
+      "targetPdfPage": 72,
+      "targetRuleBlockId": "rule.4-the-consolidation-step"
+    },
+    {
+      "sourcePrintedPage": 88,
+      "label": "Come About",
+      "targetPrintedPage": 41,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-089",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          88
+        ],
+        "pdfPages": [
+          90
+        ]
+      },
+      "targetPdfPage": 43,
+      "targetRuleBlockId": "rule.coming-about"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Contribute",
+      "targetPrintedPage": 74,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-090",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 76,
+      "targetRuleBlockId": "rule.3-declare-contributing-weapons"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Attack action",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-091",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Target",
+      "targetPrintedPage": 78,
+      "targetSectionId": "airborne-models",
+      "id": "page-reference-092",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 80,
+      "targetRuleBlockId": "rule.airborne-models"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Participate",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-093",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Positional Trait",
+      "targetPrintedPage": 78,
+      "targetSectionId": "airborne-models",
+      "id": "page-reference-094",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 80,
+      "targetRuleBlockId": "rule.airborne-models"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Vulnerable Stern",
+      "targetPrintedPage": 75,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-095",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 77,
+      "targetRuleBlockId": "rule.4-make-the-action-roll"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Visibility",
+      "targetPrintedPage": 39,
+      "targetSectionId": "visibility",
+      "id": "page-reference-096",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 41,
+      "targetRuleBlockId": "rule.checking-visibility"
+    },
+    {
+      "sourcePrintedPage": 91,
+      "label": "Escort tokens",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-097",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          91
+        ],
+        "pdfPages": [
+          93
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Initial Target",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-098",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Attack action",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-099",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Action Roll",
+      "targetPrintedPage": 74,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-100",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 76,
+      "targetRuleBlockId": "rule.3-declare-contributing-weapons"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Escorts",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-101",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "SRS Air Support",
+      "targetPrintedPage": 109,
+      "targetSectionId": "air-support",
+      "id": "page-reference-102",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 111,
+      "targetRuleBlockId": "rule.air-support"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Inflict Damage",
+      "targetPrintedPage": 75,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-103",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 77,
+      "targetRuleBlockId": "rule.4-make-the-action-roll"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Positional Trait",
+      "targetPrintedPage": 78,
+      "targetSectionId": "airborne-models",
+      "id": "page-reference-104",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 80,
+      "targetRuleBlockId": "rule.airborne-models"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-105",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 92,
+      "label": "Under Fire",
+      "targetPrintedPage": 75,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-106",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          92
+        ],
+        "pdfPages": [
+          94
+        ]
+      },
+      "targetPdfPage": 77,
+      "targetRuleBlockId": "rule.4-make-the-action-roll"
+    },
+    {
+      "sourcePrintedPage": 95,
+      "label": "Critical Damage",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-107",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 95,
+      "label": "Participate",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-108",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 95,
+      "label": "Escort tokens",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-109",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 95,
+      "label": "Underwater units",
+      "targetPrintedPage": 79,
+      "targetSectionId": "underwater-models",
+      "id": "page-reference-110",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          95
+        ],
+        "pdfPages": [
+          97
+        ]
+      },
+      "targetPdfPage": 81,
+      "targetRuleBlockId": "rule.underwater-models"
+    },
+    {
+      "sourcePrintedPage": 96,
+      "label": "Arc",
+      "targetPrintedPage": 21,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-111",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          96
+        ],
+        "pdfPages": [
+          98
+        ]
+      },
+      "targetPdfPage": 23,
+      "targetRuleBlockId": "rule.understanding-models"
+    },
+    {
+      "sourcePrintedPage": 96,
+      "label": "Visible",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-112",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          96
+        ],
+        "pdfPages": [
+          98
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 98,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-113",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          98
+        ],
+        "pdfPages": [
+          100
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 101,
+      "label": "Force Selection",
+      "targetPrintedPage": 125,
+      "targetSectionId": "battlefleets",
+      "id": "page-reference-114",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          101
+        ],
+        "pdfPages": [
+          103
+        ]
+      },
+      "targetPdfPage": 127,
+      "targetRuleBlockId": "rule.battlefleets"
+    },
+    {
+      "sourcePrintedPage": 101,
+      "label": "Participate",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-115",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          101
+        ],
+        "pdfPages": [
+          103
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 103,
+      "label": "Missions",
+      "targetPrintedPage": 111,
+      "targetSectionId": "resolving-srs-missions",
+      "id": "page-reference-116",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          103
+        ],
+        "pdfPages": [
+          105
+        ]
+      },
+      "targetPdfPage": 113,
+      "targetRuleBlockId": "rule.resolving-an-attack-run-mission"
+    },
+    {
+      "sourcePrintedPage": 103,
+      "label": "Resistance Pool",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-117",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          103
+        ],
+        "pdfPages": [
+          105
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 105,
+      "label": "Launch Phase",
+      "targetPrintedPage": 64,
+      "targetSectionId": "launch-phase",
+      "id": "page-reference-118",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          105
+        ],
+        "pdfPages": [
+          107
+        ]
+      },
+      "targetPdfPage": 66,
+      "targetRuleBlockId": "rule.2-the-launch-phase"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "Action Roll",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-119",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "the existing Stack of Kometa Interceptors,            Mission",
+      "targetPrintedPage": 111,
+      "targetSectionId": "resolving-srs-missions",
+      "id": "page-reference-120",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 113,
+      "targetRuleBlockId": "rule.resolving-an-attack-run-mission"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "each type is allocated to the unit, but the           Attempt",
+      "targetPrintedPage": 112,
+      "targetSectionId": "resolving-srs-missions",
+      "id": "page-reference-121",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 114,
+      "targetRuleBlockId": "rule.intercepting-attack-runs"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "Air Support",
+      "targetPrintedPage": 109,
+      "targetSectionId": "air-support",
+      "id": "page-reference-122",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 111,
+      "targetRuleBlockId": "rule.air-support"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "Minefield marker",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-123",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 107,
+      "label": "Tokens",
+      "targetPrintedPage": 54,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-124",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          107
+        ],
+        "pdfPages": [
+          109
+        ]
+      },
+      "targetPdfPage": 56,
+      "targetRuleBlockId": "rule.broken-spirit"
+    },
+    {
+      "sourcePrintedPage": 109,
+      "label": "Property",
+      "targetPrintedPage": 29,
+      "targetSectionId": "properties-and-systems",
+      "id": "page-reference-125",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          109
+        ],
+        "pdfPages": [
+          111
+        ]
+      },
+      "targetPdfPage": 31,
+      "targetRuleBlockId": "rule.properties-and-systems"
+    },
+    {
+      "sourcePrintedPage": 109,
+      "label": "Markers",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-126",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          109
+        ],
+        "pdfPages": [
+          111
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 109,
+      "label": "Clear",
+      "targetPrintedPage": 114,
+      "targetSectionId": "resolving-srs-missions",
+      "id": "page-reference-127",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          109
+        ],
+        "pdfPages": [
+          111
+        ]
+      },
+      "targetPdfPage": 116,
+      "targetRuleBlockId": "rule.resolving-a-mine-clearance-mission"
+    },
+    {
+      "sourcePrintedPage": 109,
+      "label": "MISSING TARGETS                                      14 Withdraws",
+      "targetPrintedPage": 67,
+      "targetSectionId": "withdrawal-step",
+      "id": "page-reference-128",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          109
+        ],
+        "pdfPages": [
+          111
+        ]
+      },
+      "targetPdfPage": 69,
+      "targetRuleBlockId": "rule.1-the-withdrawal-step"
+    },
+    {
+      "sourcePrintedPage": 111,
+      "label": "Action Roll",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-129",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          111
+        ],
+        "pdfPages": [
+          113
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 111,
+      "label": "Escort",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-130",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          111
+        ],
+        "pdfPages": [
+          113
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 111,
+      "label": "Critical Damage",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-131",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          111
+        ],
+        "pdfPages": [
+          113
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 112,
+      "label": "Action Roll",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-132",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          112
+        ],
+        "pdfPages": [
+          114
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Collide",
+      "targetPrintedPage": 43,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-133",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 45,
+      "targetRuleBlockId": "rule.resolving-a-collision"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Obscure Visibility",
+      "targetPrintedPage": 39,
+      "targetSectionId": "visibility",
+      "id": "page-reference-134",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 41,
+      "targetRuleBlockId": "rule.checking-visibility"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-135",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Attack action",
+      "targetPrintedPage": 73,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-136",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 75,
+      "targetRuleBlockId": "rule.resolving-an-attack-action"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Participating",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-137",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Centre Point",
+      "targetPrintedPage": 21,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-138",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 23,
+      "targetRuleBlockId": "rule.understanding-models"
+    },
+    {
+      "sourcePrintedPage": 117,
+      "label": "Resistance Roll",
+      "targetPrintedPage": 74,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-139",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "targetPdfPage": 76,
+      "targetRuleBlockId": "rule.3-declare-contributing-weapons"
+    },
+    {
+      "sourcePrintedPage": 118,
+      "label": "Proximity",
+      "targetPrintedPage": 23,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-140",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          118
+        ],
+        "pdfPages": [
+          120
+        ]
+      },
+      "targetPdfPage": 25,
+      "targetRuleBlockId": "rule.proximity"
+    },
+    {
+      "sourcePrintedPage": 118,
+      "label": "Impeded",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-141",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          118
+        ],
+        "pdfPages": [
+          120
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 120,
+      "label": "Damage",
+      "targetPrintedPage": 54,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-142",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ]
+      },
+      "targetPdfPage": 56,
+      "targetRuleBlockId": "rule.broken-spirit"
+    },
+    {
+      "sourcePrintedPage": 120,
+      "label": "Block",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-143",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 120,
+      "label": "Encounter",
+      "targetPrintedPage": 132,
+      "targetSectionId": "choose-an-encounter",
+      "id": "page-reference-144",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ]
+      },
+      "targetPdfPage": 134,
+      "targetRuleBlockId": "rule.2-choose-an-encounter"
+    },
+    {
+      "sourcePrintedPage": 120,
+      "label": "Critical Damage",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-145",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 126,
+      "label": "Points Limit",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-146",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          126
+        ],
+        "pdfPages": [
+          128
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 126,
+      "label": "Class",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-147",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          126
+        ],
+        "pdfPages": [
+          128
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 126,
+      "label": "Weapon Grid",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-148",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          126
+        ],
+        "pdfPages": [
+          128
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    },
+    {
+      "sourcePrintedPage": 126,
+      "label": "Escort tokens",
+      "targetPrintedPage": 102,
+      "targetSectionId": "escorts",
+      "id": "page-reference-149",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          126
+        ],
+        "pdfPages": [
+          128
+        ]
+      },
+      "targetPdfPage": 104,
+      "targetRuleBlockId": "rule.escorts"
+    },
+    {
+      "sourcePrintedPage": 131,
+      "label": "Deck",
+      "targetPrintedPage": 50,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-150",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          131
+        ],
+        "pdfPages": [
+          133
+        ]
+      },
+      "targetPdfPage": 52,
+      "targetRuleBlockId": "rule.victory-and-valour-cards.p50"
+    },
+    {
+      "sourcePrintedPage": 131,
+      "label": "Initiative",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-151",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          131
+        ],
+        "pdfPages": [
+          133
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 135,
+      "label": "Deployment Zone",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-152",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          135
+        ],
+        "pdfPages": [
+          137
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 135,
+      "label": "Controlled Edges",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-153",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          135
+        ],
+        "pdfPages": [
+          137
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 136,
+      "label": "Reserves",
+      "targetPrintedPage": 135,
+      "targetSectionId": "draw-starting-cards",
+      "id": "page-reference-154",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          136
+        ],
+        "pdfPages": [
+          138
+        ]
+      },
+      "targetPdfPage": 137,
+      "targetRuleBlockId": "rule.4-draw-starting-cards"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Terrain Features",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-155",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "markers",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-156",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "First Admiral",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-157",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Quadrant",
+      "targetPrintedPage": 16,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-158",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 18,
+      "targetRuleBlockId": "rule.quadrants-and-halves"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Scoring Models",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-159",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "mission",
+      "targetPrintedPage": 111,
+      "targetSectionId": "resolving-srs-missions",
+      "id": "page-reference-160",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 113,
+      "targetRuleBlockId": "rule.resolving-an-attack-run-mission"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Critical Damage",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-161",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Special Action",
+      "targetPrintedPage": 95,
+      "targetSectionId": "maintenance-action",
+      "id": "page-reference-162",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 97,
+      "targetRuleBlockId": "rule.resolving-a-maintenance-action"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Proximity",
+      "targetPrintedPage": 23,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-163",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 25,
+      "targetRuleBlockId": "rule.proximity"
+    },
+    {
+      "sourcePrintedPage": 140,
+      "label": "Detonation",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-164",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          140
+        ],
+        "pdfPages": [
+          142
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Island Terrain",
+      "targetPrintedPage": 119,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-165",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 121,
+      "targetRuleBlockId": "rule.grounding-hazards"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "markers",
+      "targetPrintedPage": 121,
+      "targetSectionId": "markers",
+      "id": "page-reference-166",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 123,
+      "targetRuleBlockId": "rule.markers"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "First Admiral",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-167",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Treacherous Water",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-168",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Open Water",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-169",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Scoring Models",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-170",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Proximity",
+      "targetPrintedPage": 23,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-171",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 25,
+      "targetRuleBlockId": "rule.proximity"
+    },
+    {
+      "sourcePrintedPage": 142,
+      "label": "Special Action",
+      "targetPrintedPage": 95,
+      "targetSectionId": "maintenance-action",
+      "id": "page-reference-172",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          142
+        ],
+        "pdfPages": [
+          144
+        ]
+      },
+      "targetPdfPage": 97,
+      "targetRuleBlockId": "rule.resolving-a-maintenance-action"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Terrain Features",
+      "targetPrintedPage": 118,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-173",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 120,
+      "targetRuleBlockId": "rule.terrain-features.p118"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Proximity",
+      "targetPrintedPage": 23,
+      "targetSectionId": "understanding-models",
+      "id": "page-reference-174",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 25,
+      "targetRuleBlockId": "rule.proximity"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Explosion",
+      "targetPrintedPage": 89,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-175",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 91,
+      "targetRuleBlockId": "rule.catastrophic-explosions"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Damage",
+      "targetPrintedPage": 54,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-176",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 56,
+      "targetRuleBlockId": "rule.broken-spirit"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Disorder",
+      "targetPrintedPage": 56,
+      "targetSectionId": "gaining-disorder",
+      "id": "page-reference-177",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 58,
+      "targetRuleBlockId": "rule.gaining-disorder"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Blocked Visibility",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-178",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Rallying",
+      "targetPrintedPage": 70,
+      "targetSectionId": "consolidation-step",
+      "id": "page-reference-179",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 72,
+      "targetRuleBlockId": "rule.4-the-consolidation-step"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Scoring Models",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-180",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Special Action",
+      "targetPrintedPage": 95,
+      "targetSectionId": "maintenance-action",
+      "id": "page-reference-181",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 97,
+      "targetRuleBlockId": "rule.resolving-a-maintenance-action"
+    },
+    {
+      "sourcePrintedPage": 144,
+      "label": "Checks",
+      "targetPrintedPage": 53,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-182",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          144
+        ],
+        "pdfPages": [
+          146
+        ]
+      },
+      "targetPdfPage": 55,
+      "targetRuleBlockId": "rule.claiming-minor-victories"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "First Admiral",
+      "targetPrintedPage": 37,
+      "targetSectionId": "initiative",
+      "id": "page-reference-183",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 39,
+      "targetRuleBlockId": "rule.initiative"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Controlled Edge",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-184",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Reserve",
+      "targetPrintedPage": 135,
+      "targetSectionId": "draw-starting-cards",
+      "id": "page-reference-185",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 137,
+      "targetRuleBlockId": "rule.4-draw-starting-cards"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Destroyed",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-186",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Withdrawing",
+      "targetPrintedPage": 67,
+      "targetSectionId": "withdrawal-step",
+      "id": "page-reference-187",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 69,
+      "targetRuleBlockId": "rule.1-the-withdrawal-step"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Battle-Ready",
+      "targetPrintedPage": 55,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-188",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 57,
+      "targetRuleBlockId": "rule.crippling-models"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Crippled",
+      "targetPrintedPage": 85,
+      "targetSectionId": "crippled-models",
+      "id": "page-reference-189",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 87,
+      "targetRuleBlockId": "rule.crippled-models"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Boarding action",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-190",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 146,
+      "label": "Critical Damage",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-191",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          146
+        ],
+        "pdfPages": [
+          148
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 148,
+      "label": "Islands",
+      "targetPrintedPage": 119,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-192",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          148
+        ],
+        "pdfPages": [
+          150
+        ]
+      },
+      "targetPdfPage": 121,
+      "targetRuleBlockId": "rule.grounding-hazards"
+    },
+    {
+      "sourcePrintedPage": 148,
+      "label": "Quadrant",
+      "targetPrintedPage": 16,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-193",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          148
+        ],
+        "pdfPages": [
+          150
+        ]
+      },
+      "targetPdfPage": 18,
+      "targetRuleBlockId": "rule.quadrants-and-halves"
+    },
+    {
+      "sourcePrintedPage": 148,
+      "label": "Scoring Model",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-194",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          148
+        ],
+        "pdfPages": [
+          150
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 148,
+      "label": "Effect",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-195",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          148
+        ],
+        "pdfPages": [
+          150
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Deployment",
+      "targetPrintedPage": 135,
+      "targetSectionId": "draw-starting-cards",
+      "id": "page-reference-196",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 137,
+      "targetRuleBlockId": "rule.4-draw-starting-cards"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Visibility",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-197",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Hampered",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-198",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Crippled",
+      "targetPrintedPage": 85,
+      "targetSectionId": "crippled-models",
+      "id": "page-reference-199",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 87,
+      "targetRuleBlockId": "rule.crippled-models"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Scoring Model",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-200",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Critical Damage",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-201",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Destroyed",
+      "targetPrintedPage": 87,
+      "targetSectionId": "destroyed-models",
+      "id": "page-reference-202",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 89,
+      "targetRuleBlockId": "rule.destroyed-models"
+    },
+    {
+      "sourcePrintedPage": 150,
+      "label": "Boarding action",
+      "targetPrintedPage": 96,
+      "targetSectionId": "broadside-action",
+      "id": "page-reference-203",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          150
+        ],
+        "pdfPages": [
+          152
+        ]
+      },
+      "targetPdfPage": 98,
+      "targetRuleBlockId": "rule.resolving-a-broadside-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Action Roll Chart",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-204",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": ") Roll the Dice Pool(s)",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-205",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": ") Resolve Exploding Strikes",
+      "targetPrintedPage": 46,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-206",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 48,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": ") Resolve Re-Rolls",
+      "targetPrintedPage": 47,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-207",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 49,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": ") Count Hits",
+      "targetPrintedPage": 48,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-208",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 50,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": ") Resolve Outcomes",
+      "targetPrintedPage": 49,
+      "targetSectionId": "rolling-dice",
+      "id": "page-reference-209",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 51,
+      "targetRuleBlockId": "rule.making-an-action-roll"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Action Step",
+      "targetPrintedPage": 69,
+      "targetSectionId": "action-step",
+      "id": "page-reference-210",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 71,
+      "targetRuleBlockId": "rule.3-the-action-step"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Boarding action",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-211",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Choose a Target",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-212",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Models",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-213",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Make the Action Roll",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-214",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Boarding Actions",
+      "targetPrintedPage": 98,
+      "targetSectionId": "boarding-action",
+      "id": "page-reference-215",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 100,
+      "targetRuleBlockId": "rule.resolving-a-boarding-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Broadside Actions",
+      "targetPrintedPage": 96,
+      "targetSectionId": "broadside-action",
+      "id": "page-reference-216",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 98,
+      "targetRuleBlockId": "rule.resolving-a-broadside-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Maintenance Actions",
+      "targetPrintedPage": 95,
+      "targetSectionId": "maintenance-action",
+      "id": "page-reference-217",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 97,
+      "targetRuleBlockId": "rule.resolving-a-maintenance-action"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Additional Manoeuvres",
+      "targetPrintedPage": 42,
+      "targetSectionId": "moving-models",
+      "id": "page-reference-218",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 44,
+      "targetRuleBlockId": "rule.additional-manoeuvres"
+    },
+    {
+      "sourcePrintedPage": 152,
+      "label": "Admiral’s Half",
+      "targetPrintedPage": 16,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-219",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152
+        ],
+        "pdfPages": [
+          154
+        ]
+      },
+      "targetPdfPage": 18,
+      "targetRuleBlockId": "rule.quadrants-and-halves"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Special Deployment Actions",
+      "targetPrintedPage": 136,
+      "targetSectionId": "deploy-forces",
+      "id": "page-reference-220",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 138,
+      "targetRuleBlockId": "rule.special-deployment-actions"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Deployment Zone",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-221",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Deploying Reserves",
+      "targetPrintedPage": 63,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-222",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 65,
+      "targetRuleBlockId": "rule.b-draw-cards"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Incoming Units",
+      "targetPrintedPage": 63,
+      "targetSectionId": "ready-phase",
+      "id": "page-reference-223",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 65,
+      "targetRuleBlockId": "rule.b-draw-cards"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Choosing Units",
+      "targetPrintedPage": 127,
+      "targetSectionId": "choosing-units",
+      "id": "page-reference-224",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 129,
+      "targetRuleBlockId": "rule.choosing-units"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Complete Objectives Step",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-225",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Diving",
+      "targetPrintedPage": 79,
+      "targetSectionId": "underwater-models",
+      "id": "page-reference-226",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 81,
+      "targetRuleBlockId": "rule.underwater-models"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Edges",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-227",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Controlled Edge",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-228",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Activating a Unit",
+      "targetPrintedPage": 67,
+      "targetSectionId": "withdrawal-step",
+      "id": "page-reference-229",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 69,
+      "targetRuleBlockId": "rule.1-the-withdrawal-step"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "First Admiral’s Edge",
+      "targetPrintedPage": 15,
+      "targetSectionId": "play-area-overview",
+      "id": "page-reference-230",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 17,
+      "targetRuleBlockId": "rule.the-play-area"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "B. Clean Up Step",
+      "targetPrintedPage": 65,
+      "targetSectionId": "end-phase",
+      "id": "page-reference-231",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 67,
+      "targetRuleBlockId": "rule.4-the-end-phase"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Engagement Scales",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-232",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Hazard",
+      "targetPrintedPage": 88,
+      "targetSectionId": "critical-damage",
+      "id": "page-reference-233",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 90,
+      "targetRuleBlockId": "rule.critical-damage-effects.p88"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Small Engagement",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-234",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Standard Engagement",
+      "targetPrintedPage": 14,
+      "targetSectionId": "points-limit-and-engagement-scale",
+      "id": "page-reference-235",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 16,
+      "targetRuleBlockId": "rule.points-limit-and-engagement-scale"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Impassable Ground",
+      "targetPrintedPage": 119,
+      "targetSectionId": "terrain-features",
+      "id": "page-reference-236",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 121,
+      "targetRuleBlockId": "rule.grounding-hazards"
+    },
+    {
+      "sourcePrintedPage": 153,
+      "label": "Impeded Movement",
+      "targetPrintedPage": 117,
+      "targetSectionId": "environmental-features",
+      "id": "page-reference-237",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          153
+        ],
+        "pdfPages": [
+          155
+        ]
+      },
+      "targetPdfPage": 119,
+      "targetRuleBlockId": "rule.environmental-features"
+    },
+    {
+      "sourcePrintedPage": 154,
+      "label": "Emergency Manoeuvres",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-238",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          154
+        ],
+        "pdfPages": [
+          156
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 154,
+      "label": "Squadrons",
+      "targetPrintedPage": 108,
+      "targetSectionId": "launching-srs",
+      "id": "page-reference-239",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          154
+        ],
+        "pdfPages": [
+          156
+        ]
+      },
+      "targetPdfPage": 110,
+      "targetRuleBlockId": "rule.launching-short-range-squadrons"
+    },
+    {
+      "sourcePrintedPage": 154,
+      "label": "Inflict Damage",
+      "targetPrintedPage": 82,
+      "targetSectionId": "ramming",
+      "id": "page-reference-240",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          154
+        ],
+        "pdfPages": [
+          156
+        ]
+      },
+      "targetPdfPage": 84,
+      "targetRuleBlockId": "rule.ramming.p82"
+    },
+    {
+      "sourcePrintedPage": 154,
+      "label": "Models",
+      "targetPrintedPage": 108,
+      "targetSectionId": "launching-srs",
+      "id": "page-reference-241",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          154
+        ],
+        "pdfPages": [
+          156
+        ]
+      },
+      "targetPdfPage": 110,
+      "targetRuleBlockId": "rule.launching-short-range-squadrons"
+    },
+    {
+      "sourcePrintedPage": 154,
+      "label": "Create SRS Stack(s)",
+      "targetPrintedPage": 108,
+      "targetSectionId": "launching-srs",
+      "id": "page-reference-242",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          154
+        ],
+        "pdfPages": [
+          156
+        ]
+      },
+      "targetPdfPage": 110,
+      "targetRuleBlockId": "rule.launching-short-range-squadrons"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Broken Spirit",
+      "targetPrintedPage": 54,
+      "targetSectionId": "inflicting-damage",
+      "id": "page-reference-243",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 56,
+      "targetRuleBlockId": "rule.broken-spirit"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Claiming Minor Victories",
+      "targetPrintedPage": 53,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-244",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 55,
+      "targetRuleBlockId": "rule.claiming-minor-victories"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Hand Limits",
+      "targetPrintedPage": 50,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-245",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 52,
+      "targetRuleBlockId": "rule.victory-and-valour-cards.p50"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Making Crew Checks",
+      "targetPrintedPage": 53,
+      "targetSectionId": "victory-and-valour-cards",
+      "id": "page-reference-246",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 55,
+      "targetRuleBlockId": "rule.claiming-minor-victories"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Resilience",
+      "targetPrintedPage": 106,
+      "targetSectionId": "srs-in-play",
+      "id": "page-reference-247",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 108,
+      "targetRuleBlockId": "rule.srs-tokens"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Victory Points Rating (VPR)",
+      "targetPrintedPage": 26,
+      "targetSectionId": "unit-profiles",
+      "id": "page-reference-248",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 28,
+      "targetRuleBlockId": "rule.unit-profiles"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Visibility",
+      "targetPrintedPage": 38,
+      "targetSectionId": "visibility",
+      "id": "page-reference-249",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 40,
+      "targetRuleBlockId": "rule.visibility"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Vulnerable Stern",
+      "targetPrintedPage": 75,
+      "targetSectionId": "attack-actions",
+      "id": "page-reference-250",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 77,
+      "targetRuleBlockId": "rule.4-make-the-action-roll"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Weapons",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-251",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Attack Ranges",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-252",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Qualities",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-253",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Targeting Arcs",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-254",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Breaking Coherency",
+      "targetPrintedPage": 68,
+      "targetSectionId": "movement-step",
+      "id": "page-reference-255",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 70,
+      "targetRuleBlockId": "rule.2-the-movement-step"
+    },
+    {
+      "sourcePrintedPage": 155,
+      "label": "Weapon Grids",
+      "targetPrintedPage": 30,
+      "targetSectionId": "weapons",
+      "id": "page-reference-256",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          155
+        ],
+        "pdfPages": [
+          157
+        ]
+      },
+      "targetPdfPage": 32,
+      "targetRuleBlockId": "rule.weapons"
+    }
+  ],
+  "semanticLinks": [
+    {
+      "id": "semantic-link-001",
+      "from": "action.attack",
+      "to": "visibility",
+      "relation": "uses",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-002",
+      "from": "action.attack",
+      "to": "weapons",
+      "relation": "uses",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-003",
+      "from": "action.attack",
+      "to": "inflicting-damage",
+      "relation": "resolves_into",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-004",
+      "from": "action.maintenance",
+      "to": "critical-damage",
+      "relation": "can_remove",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-005",
+      "from": "action.boarding",
+      "to": "escorts",
+      "relation": "interacts_with",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-006",
+      "from": "action.launch-srs",
+      "to": "short-range-squadrons",
+      "relation": "uses",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-007",
+      "from": "token.disorder",
+      "to": "consolidation-step",
+      "relation": "can_be_removed_during",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-008",
+      "from": "environment.fog",
+      "to": "visibility",
+      "relation": "modifies",
+      "source": "original_corrected"
+    },
+    {
+      "id": "semantic-link-009",
+      "from": "terrain.grounding-hazard",
+      "to": "moving-models",
+      "relation": "modifies",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-010",
+      "from": "marker.minefield",
+      "to": "resolving-srs-missions",
+      "relation": "can_be_cleared_by",
+      "source": "original"
+    },
+    {
+      "id": "semantic-link-011",
+      "from": "action.attack",
+      "to": "rule.resolving-an-attack-action",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-012",
+      "from": "action.attack",
+      "to": "procedure.attack-action",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-013",
+      "from": "action.maintenance",
+      "to": "rule.resolving-a-maintenance-action",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-014",
+      "from": "action.maintenance",
+      "to": "procedure.maintenance-action",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-015",
+      "from": "action.broadside",
+      "to": "rule.resolving-a-broadside-action",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-016",
+      "from": "action.broadside",
+      "to": "procedure.broadside-action",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-017",
+      "from": "action.boarding",
+      "to": "rule.resolving-a-boarding-action",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-018",
+      "from": "action.boarding",
+      "to": "procedure.boarding-action",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-019",
+      "from": "manoeuvre.come-about",
+      "to": "rule.coming-about",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-020",
+      "from": "manoeuvre.full-reverse",
+      "to": "rule.full-reverse",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-021",
+      "from": "manoeuvre.emergency",
+      "to": "rule.emergency-manoeuvres",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-022",
+      "from": "manoeuvre.pivot",
+      "to": "rule.pivoting",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-023",
+      "from": "manoeuvre.ram",
+      "to": "rule.ramming.p82",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-024",
+      "from": "manoeuvre.ram",
+      "to": "procedure.ram",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-025",
+      "from": "action.launch-srs",
+      "to": "rule.launching-short-range-squadrons",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-026",
+      "from": "action.launch-srs",
+      "to": "procedure.launch-srs",
+      "relation": "uses_procedure",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-027",
+      "from": "action.aerial-reconnaissance",
+      "to": "rule.aerial-reconnaissance",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-028",
+      "from": "action.special",
+      "to": "rule.special-actions",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-029",
+      "from": "procedure.round-sequence",
+      "to": "rule.1-the-ready-phase",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-030",
+      "from": "procedure.round-sequence",
+      "to": "rule.2-the-launch-phase",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-031",
+      "from": "procedure.round-sequence",
+      "to": "rule.3-the-activation-phase",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-032",
+      "from": "procedure.round-sequence",
+      "to": "rule.4-the-end-phase",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-033",
+      "from": "procedure.unit-activation",
+      "to": "rule.1-the-withdrawal-step",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-034",
+      "from": "procedure.unit-activation",
+      "to": "rule.2-the-movement-step",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-035",
+      "from": "procedure.unit-activation",
+      "to": "rule.3-the-action-step",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-036",
+      "from": "procedure.unit-activation",
+      "to": "rule.4-the-consolidation-step",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-037",
+      "from": "procedure.attack-action",
+      "to": "rule.1-choose-initial-target",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-038",
+      "from": "procedure.attack-action",
+      "to": "rule.2-nominate-participating-models.p73",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-039",
+      "from": "procedure.attack-action",
+      "to": "rule.3-declare-contributing-weapons",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-040",
+      "from": "procedure.attack-action",
+      "to": "rule.4-make-the-action-roll",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-041",
+      "from": "procedure.attack-action",
+      "to": "rule.5-inflict-damage",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-042",
+      "from": "procedure.maintenance-action",
+      "to": "rule.1-nominate-participating-models.p95",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-043",
+      "from": "procedure.maintenance-action",
+      "to": "rule.2-make-repair-rolls",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-044",
+      "from": "procedure.broadside-action",
+      "to": "rule.1-nominate-participating-models.p96",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-045",
+      "from": "procedure.broadside-action",
+      "to": "rule.2-choose-a-target",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-046",
+      "from": "procedure.broadside-action",
+      "to": "rule.3-determine-contributing-batteries",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-047",
+      "from": "procedure.broadside-action",
+      "to": "rule.4-make-the-broadside-roll",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-048",
+      "from": "procedure.broadside-action",
+      "to": "rule.5-resolve-additional-targets",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-049",
+      "from": "procedure.boarding-action",
+      "to": "rule.1-choose-target",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-050",
+      "from": "procedure.boarding-action",
+      "to": "rule.2-nominate-participating-models.p98",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-051",
+      "from": "procedure.boarding-action",
+      "to": "rule.3-make-the-action-roll",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-052",
+      "from": "procedure.boarding-action",
+      "to": "rule.4-resolve-outcomes",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-053",
+      "from": "procedure.launch-srs",
+      "to": "rule.1-declare-participating-models",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-054",
+      "from": "procedure.launch-srs",
+      "to": "rule.2-create-srs-stack-s",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-055",
+      "from": "procedure.launch-srs",
+      "to": "rule.3-choose-srs-mission-s",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-056",
+      "from": "procedure.attack-run-mission",
+      "to": "rule.resolving-an-attack-run-mission",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-057",
+      "from": "procedure.attack-run-mission",
+      "to": "rule.resolving-an-attack-run-mission",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-058",
+      "from": "procedure.mine-clearance-mission",
+      "to": "rule.resolving-a-mine-clearance-mission",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-059",
+      "from": "procedure.mine-clearance-mission",
+      "to": "rule.resolving-a-mine-clearance-mission",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-060",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.1-determine-the-initiative",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-061",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.2-choose-an-encounter",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-062",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.3-prepare-the-play-area",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-063",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.4-draw-starting-cards",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-064",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.5-deploy-forces",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-065",
+      "from": "procedure.prepare-to-play",
+      "to": "rule.6-weigh-anchor",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-066",
+      "from": "procedure.action-roll",
+      "to": "rule.making-an-action-roll",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-067",
+      "from": "procedure.action-roll",
+      "to": "rule.making-an-action-roll",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-068",
+      "from": "procedure.interception-attempt",
+      "to": "rule.intercepting-attack-runs",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-069",
+      "from": "procedure.interception-attempt",
+      "to": "rule.intercepting-attack-runs",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-070",
+      "from": "procedure.ram",
+      "to": "rule.resolving-a-ram",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-071",
+      "from": "procedure.ram",
+      "to": "rule.resolving-a-ram",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-072",
+      "from": "rule.section.overview-of-a-game",
+      "to": "engagement-scale-recommendations",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-073",
+      "from": "rule.points-limit-and-engagement-scale",
+      "to": "engagement-scale-recommendations",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-074",
+      "from": "rule.section.models-and-units",
+      "to": "measurement-range-bands",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-075",
+      "from": "rule.measuring-distances",
+      "to": "measurement-range-bands",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-076",
+      "from": "rule.section.gameplay-principles",
+      "to": "dice-face-reference",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-077",
+      "from": "rule.section.gameplay-principles",
+      "to": "action-roll-anatomy",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-078",
+      "from": "rule.section.gameplay-principles",
+      "to": "hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-079",
+      "from": "rule.section.gameplay-principles",
+      "to": "disorder-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-080",
+      "from": "rule.rolling-dice",
+      "to": "dice-face-reference",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-081",
+      "from": "rule.making-an-action-roll",
+      "to": "action-roll-anatomy",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-082",
+      "from": "rule.victory-and-valour-cards.p50",
+      "to": "hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-083",
+      "from": "rule.section.tokens",
+      "to": "disorder-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-084",
+      "from": "rule.effects-of-disorder",
+      "to": "disorder-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-085",
+      "from": "rule.section.round-overview",
+      "to": "ready-phase-hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-086",
+      "from": "rule.1-the-ready-phase",
+      "to": "ready-phase-hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-087",
+      "from": "rule.a-determine-initiative",
+      "to": "ready-phase-hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-088",
+      "from": "rule.b-draw-cards",
+      "to": "ready-phase-hand-limits",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-089",
+      "from": "rule.3-declare-contributing-weapons",
+      "to": "attack-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-090",
+      "from": "rule.4-make-the-action-roll",
+      "to": "attack-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-091",
+      "from": "rule.section.advanced-movement-rules",
+      "to": "ramming-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-092",
+      "from": "rule.ramming.p82",
+      "to": "ramming-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-093",
+      "from": "rule.resolving-a-ram",
+      "to": "ramming-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-094",
+      "from": "rule.section.advanced-damage-rules",
+      "to": "critical-damage-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-095",
+      "from": "rule.critical-damage-effects.p88",
+      "to": "critical-damage-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-096",
+      "from": "rule.section.additional-actions",
+      "to": "boarding-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-097",
+      "from": "rule.resolving-a-boarding-action",
+      "to": "boarding-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-098",
+      "from": "rule.1-choose-target",
+      "to": "boarding-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-099",
+      "from": "rule.2-nominate-participating-models.p98",
+      "to": "boarding-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-100",
+      "from": "rule.3-make-the-action-roll",
+      "to": "boarding-action-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-101",
+      "from": "rule.section.short-range-squadrons",
+      "to": "example-srs-grid",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-102",
+      "from": "rule.section.short-range-squadrons",
+      "to": "attack-run-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-103",
+      "from": "rule.section.short-range-squadrons",
+      "to": "interception-attempt-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-104",
+      "from": "rule.srs-tokens",
+      "to": "example-srs-grid",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-105",
+      "from": "rule.squadron-grids",
+      "to": "example-srs-grid",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-106",
+      "from": "rule.resolving-an-attack-run-mission",
+      "to": "attack-run-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-107",
+      "from": "rule.intercepting-attack-runs",
+      "to": "interception-attempt-roll",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-108",
+      "from": "rule.section.preparing-to-play",
+      "to": "random-encounter-selection",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-109",
+      "from": "rule.section.preparing-to-play",
+      "to": "recommended-play-area",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-110",
+      "from": "rule.section.preparing-to-play",
+      "to": "starting-card-count",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-111",
+      "from": "rule.2-choose-an-encounter",
+      "to": "random-encounter-selection",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-112",
+      "from": "rule.3-prepare-the-play-area",
+      "to": "recommended-play-area",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-113",
+      "from": "rule.placing-terrain",
+      "to": "recommended-play-area",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-114",
+      "from": "rule.4-draw-starting-cards",
+      "to": "starting-card-count",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-115",
+      "from": "rule.5-deploy-forces",
+      "to": "starting-card-count",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-116",
+      "from": "rule.deploying-to-the-reserve",
+      "to": "starting-card-count",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-117",
+      "from": "rule.play-area.p143",
+      "to": "salvage-rights-results",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-118",
+      "from": "rule.additional-rule-flotsam",
+      "to": "salvage-rights-results",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-119",
+      "from": "rule.objectives.p143",
+      "to": "salvage-rights-results",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-120",
+      "from": "rule.play-area.p149",
+      "to": "archipelago-victory-points",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-121",
+      "from": "rule.objectives.p149",
+      "to": "archipelago-victory-points",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-122",
+      "from": "token.damage",
+      "to": "rule.inflicting-damage",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-123",
+      "from": "token.damage",
+      "to": "rule.crippling-models",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-124",
+      "from": "token.disorder",
+      "to": "rule.gaining-disorder",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-125",
+      "from": "token.disorder",
+      "to": "rule.effects-of-disorder",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-126",
+      "from": "token.disorder",
+      "to": "rule.other-disorder-effects",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-127",
+      "from": "token.disorder",
+      "to": "rule.spreading-disorder",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-128",
+      "from": "token.disorder",
+      "to": "disorder-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-129",
+      "from": "token.activated",
+      "to": "rule.3-the-activation-phase",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-130",
+      "from": "token.srs",
+      "to": "rule.srs-tokens",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-131",
+      "from": "token.srs",
+      "to": "rule.srs-stacks",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-132",
+      "from": "token.critical-damage",
+      "to": "rule.critical-damage",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-133",
+      "from": "token.critical-damage",
+      "to": "rule.critical-damage-effects.p88",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-134",
+      "from": "token.critical-damage",
+      "to": "critical-damage-effects",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-135",
+      "from": "terrain.grounding-hazard",
+      "to": "rule.grounding-hazards",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-136",
+      "from": "terrain.structure",
+      "to": "rule.structures",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-137",
+      "from": "terrain.iceberg",
+      "to": "rule.icebergs",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-138",
+      "from": "marker.strategic-objective",
+      "to": "rule.markers",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-139",
+      "from": "marker.minefield",
+      "to": "rule.markers",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-140",
+      "from": "marker.wreck",
+      "to": "rule.markers",
+      "relation": "defined_by",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-141",
+      "from": "environment.treacherous-water",
+      "to": "terrain-rule.impeded-movement",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-142",
+      "from": "environment.fog",
+      "to": "terrain-rule.impeded-movement",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-143",
+      "from": "environment.fog",
+      "to": "terrain-rule.hampered-visibility",
+      "relation": "uses_rule",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-144",
+      "from": "encounter.salvage-rights",
+      "to": "salvage-rights-results",
+      "relation": "uses_table",
+      "source": "generated"
+    },
+    {
+      "id": "semantic-link-145",
+      "from": "encounter.the-archipelago",
+      "to": "archipelago-victory-points",
+      "relation": "uses_table",
+      "source": "generated"
+    }
+  ]
+}

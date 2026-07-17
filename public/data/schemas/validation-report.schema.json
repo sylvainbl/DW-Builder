@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Validation Report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "status",
+    "checks"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

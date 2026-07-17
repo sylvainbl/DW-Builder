@@ -29,6 +29,8 @@ function App() {
         <Route path="/" element={<AppShell />} />
         <Route path="/faction/:factionId" element={<AppShell />} />
         <Route path="/faction/:factionId/unit/:unitId" element={<AppShell />} />
+        <Route path="/rules" element={<AppShell />} />
+        <Route path="/rules/:sectionId" element={<AppShell />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

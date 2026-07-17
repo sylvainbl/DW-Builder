@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "sharedRules": [
+    {
+      "id": "terrain-rule.impeded-movement",
+      "name": "Impeded Movement",
+      "ruleBlockId": "rule.impeded-movement",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ],
+        "anchor": {
+          "page": 119,
+          "bbox": [
+            56.4,
+            370.33,
+            164.9,
+            384.08
+          ]
+        }
+      },
+      "text": "Treacherous Water Impedes the Movement of Surface and Underwater models, while Fog Impedes the Movement of Surface and Airborne models. During the Movement step, if a model comes into contact with one or more features that Impede its movement, it gains 1 level of Disorder. This is applied at the end of the model’s move, and is only applied once, even if it came into contact with multiple features.",
+      "structuredEffect": {
+        "disorderAtEndOfMove": 1,
+        "maximumApplicationsPerMove": 1
+      }
+    },
+    {
+      "id": "terrain-rule.hampered-visibility",
+      "name": "Hampered Visibility",
+      "ruleBlockId": "rule.hampered-visibility",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ],
+        "anchor": {
+          "page": 119,
+          "bbox": [
+            56.4,
+            465.5,
+            177.52,
+            479.25
+          ]
+        },
+        "declaredPrintedPageRange": [
+          117,
+          118
+        ]
+      },
+      "text": "During an Attack action, a Participating model’s Visibility is Hampered if it is not possible to draw a line from the model’s Centre Point to every part of the Target without passing through at least one patch of Fog. This applies even if the Participating model or Target is Airborne.\n\nThe opposing Admiral adds 2 Bonus Dice to the Resistance Roll for each Participating model that has Hampered Visibility.",
+      "structuredEffect": {
+        "resistanceBonusDicePerParticipatingModel": 2
+      }
+    }
+  ],
+  "environmentalFeatures": [
+    {
+      "id": "environment.treacherous-water",
+      "name": "Treacherous Water",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "impedes": [
+        "Surface",
+        "Underwater"
+      ],
+      "hampersVisibility": false,
+      "text": "Treacherous Water Impedes the Movement of Surface and Underwater models.",
+      "sharedRuleIds": [
+        "terrain-rule.impeded-movement"
+      ]
+    },
+    {
+      "id": "environment.fog",
+      "name": "Fog",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "impedes": [
+        "Surface",
+        "Airborne"
+      ],
+      "hampersVisibility": true,
+      "text": "Fog Impedes the Movement of Surface and Airborne models and can Hamper Visibility.",
+      "sharedRuleIds": [
+        "terrain-rule.impeded-movement",
+        "terrain-rule.hampered-visibility"
+      ]
+    },
+    {
+      "id": "environment.open-water",
+      "name": "Open Water",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          117
+        ],
+        "pdfPages": [
+          119
+        ]
+      },
+      "impedes": [],
+      "hampersVisibility": false,
+      "specialRules": [],
+      "text": "Open Water has no additional rules.",
+      "sharedRuleIds": []
+    }
+  ],
+  "terrainFeatures": [
+    {
+      "id": "terrain.grounding-hazard",
+      "name": "Grounding Hazard",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          118,
+          119
+        ],
+        "pdfPages": [
+          120,
+          121
+        ]
+      },
+      "examples": [
+        "sandbank",
+        "large coral reef"
+      ],
+      "visibilityMass": 0,
+      "ruleBlockId": "rule.grounding-hazards",
+      "text": "A Grounding Hazard might represent a sandbank, a large coral reef or similar.\n\nA Grounding Hazard can be Collided with as normal, but treats its Mass as 0 for determining whether it Blocks or Obscures Visibility.\n\nCertain Properties and Systems may allow a model to Pass Through Grounding Hazards without Colliding."
+    },
+    {
+      "id": "terrain.island",
+      "name": "Island",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          119
+        ],
+        "pdfPages": [
+          121
+        ]
+      },
+      "treacherousWaterBandInches": 1,
+      "canContainImpassableGround": true,
+      "text": "Island is a catch-all term for islands, peninsulas, atolls and shorelines.\n\nAll parts of the Play Area within 1” of an Island count as Treacherous Water.\n\nCertain Properties may allow models to move across Islands as though they were Open Water.",
+      "impassableGround": {
+        "description": "Some or all of an Island can be designated as Impassable Ground.",
+        "canNormallyMoveThrough": false,
+        "terrainIgnoringModelsCanMoveThrough": true
+      }
+    },
+    {
+      "id": "terrain.territory",
+      "name": "Territory",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          119
+        ],
+        "pdfPages": [
+          121
+        ]
+      },
+      "minimumSizeAcrossInches": 6,
+      "inheritsTerrainFeatureId": "terrain.island",
+      "definition": "A large Island at least 6” across is referred to as a Territory. Territories follow all of the rules for Islands, but other rules might interact with them in a specific way."
+    },
+    {
+      "id": "terrain.structure",
+      "name": "Structure",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ],
+        "anchor": {
+          "page": 122,
+          "bbox": [
+            130.39,
+            53.83,
+            196.46,
+            67.58
+          ]
+        }
+      },
+      "treacherousWaterBandInches": 1,
+      "defaultArmour": 3,
+      "destroyedAtDamageEqualMass": true,
+      "destroyedReplacementMarkerId": "marker.wreck",
+      "ruleBlockId": "rule.structures",
+      "text": "A Structure is a man-made terrain feature, such as a maintenance platform or drilling rig.\n\nAll parts of the play area within 1” of a Structure count as Treacherous Water.\n\nSTRUCTURES UNDER FIRE\n\nA Structure can be chosen as the target of an Attack action, as though it were an enemy model, and is treated as having an Armour rating of 3, unless the Admirals agree otherwise. If a Structure accumulates Damage equal to its Mass, it is removed from play and replaced with a Wreck Marker."
+    },
+    {
+      "id": "terrain.iceberg",
+      "name": "Iceberg",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          120
+        ],
+        "pdfPages": [
+          122
+        ],
+        "anchor": {
+          "page": 122,
+          "bbox": [
+            130.39,
+            280.55,
+            181.54,
+            294.3
+          ]
+        },
+        "declaredPrintedPageRange": [
+          120,
+          121
+        ]
+      },
+      "treacherousWaterBandInches": 1,
+      "defaultArmour": 3,
+      "massReducedPerDamage": 1,
+      "removedAtMass": 0,
+      "ruleBlockId": "rule.icebergs",
+      "text": "Icebergs are a common sight in certain parts of the ocean, but can appear elsewhere thanks to the strange technologies of the Dystopian Age.\n\nAll parts of the play area that are within 1” of an Iceberg count as Treacherous Water.\n\nICEBERGS UNDER FIRE\n\nAn Iceberg can be chosen as the target of an Attack action, as though it were an enemy model, and is treated as having an Armour rating of 3 unless the Admirals agree otherwise. An Iceberg’s Mass is reduced by 1 for each point of Damage it suffers; this can be represented with Damage tokens, or by replacing the Iceberg with a smaller scenery piece. If its Mass reaches 0, the Iceberg is removed from play."
+    }
+  ],
+  "markers": [
+    {
+      "id": "marker.strategic-objective",
+      "name": "Strategic Objective Marker",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          121
+        ],
+        "pdfPages": [
+          123
+        ]
+      },
+      "sectionId": "markers",
+      "ruleBlockId": "rule.markers",
+      "text": "A Strategic Objective marker represents something in the play area that is of strategic importance to one or both Admirals.\n\nStrategic Objective Markers can be Controlled by an Admiral, which usually results in that Admiral scoring Victory Points in the End Phase.\n\nAn Admiral is Controlling a Strategic Objective marker if they have at least one Scoring Model in contact with it, and there are no enemy Scoring Models in contact with it.\n\nStrategic Objective Markers have a number on one side. The number is only relevant when specifically noted in an Encounter’s rules.",
+      "controlCondition": {
+        "friendlyScoringModelInContact": true,
+        "enemyScoringModelInContact": false
+      }
+    },
+    {
+      "id": "marker.minefield",
+      "name": "Minefield Marker",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          121
+        ],
+        "pdfPages": [
+          123
+        ]
+      },
+      "sectionId": "markers",
+      "ruleBlockId": "rule.markers",
+      "text": "A Minefield marker represents an area that has been littered with proximity-triggered explosives.\n\nA Minefield marker is Triggered if a Surface or Underwater model moves into contact with it. When a Minefield Marker is Triggered, each model within its Proximity immediately gains a level of Disorder. The closest model to the marker (usually the moving model) is then subject to a Minefield Detonation. The opposing Admiral rolls a number of Action Dice equal to the model’s Mass rating. The model suffers 1 Damage for each Standard Strike rolled, and 2 Damage for each Heavy Strike or Exploding Strike. The model then continues its move if applicable.\n\nA Minefield marker is removed after it is Triggered, or if a rule states that it is Cleared.",
+      "triggeredByTraits": [
+        "Surface",
+        "Underwater"
+      ],
+      "onTrigger": {
+        "disorderToModelsInProximity": 1,
+        "detonationTarget": "closest_model",
+        "removed": true
+      }
+    },
+    {
+      "id": "marker.wreck",
+      "name": "Wreck Marker",
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          121
+        ],
+        "pdfPages": [
+          123
+        ]
+      },
+      "sectionId": "markers",
+      "ruleBlockId": "rule.markers",
+      "text": "A Wreck marker represents an area of tangled wreckage, which can pose a threat to vessels that move through it.\n\nIf a Surface model moves into contact with a Wreck marker during its Movement Step, the active Admiral rolls a Critical Damage Die at the end of its move. If the result is a Breach or Navigation Lock, that Effect is immediately inflicted on the moving model and the Wreck marker removed from play. On any other result, there is no effect.",
+      "triggeredByTraits": [
+        "Surface"
+      ],
+      "criticalDamageResultsThatRemoveMarker": [
+        "breach",
+        "navigation-lock"
+      ]
+    }
+  ],
+  "markerGeneralRules": "The Admirals may be instructed by the rules for an Encounter to add certain Markers to the Play Area. Their Force might also contain units whose Properties allow them to add additional Markers.\n\nUnless otherwise stated, Markers do not have a Mass rating, and do not Block or Obscure Visibility. Models cannot Collide with a Marker but may interact with them in other ways.\n\nEach type of Marker has its own additional rules:"
+}

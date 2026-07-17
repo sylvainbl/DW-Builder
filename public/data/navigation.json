@@ -1,0 +1,3035 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "chapters": [
+    {
+      "id": "what-is-dystopian-wars",
+      "sectionId": "what-is-dystopian-wars",
+      "title": "What is Dystopian Wars?",
+      "path": [
+        "what-is-dystopian-wars"
+      ],
+      "printedPageStart": 4,
+      "printedPageEnd": 33,
+      "pdfPageStart": 6,
+      "pdfPageEnd": 35,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      "children": [
+        {
+          "id": "dystopian-wars-toolkit",
+          "sectionId": "dystopian-wars-toolkit",
+          "title": "Dystopian Wars Toolkit",
+          "path": [
+            "what-is-dystopian-wars",
+            "dystopian-wars-toolkit"
+          ],
+          "printedPageStart": 9,
+          "printedPageEnd": 12,
+          "pdfPageStart": 11,
+          "pdfPageEnd": 14,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              9,
+              10,
+              11,
+              12
+            ],
+            "pdfPages": [
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "children": [
+            {
+              "id": "miniatures",
+              "sectionId": "miniatures",
+              "title": "Miniatures",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "miniatures"
+              ],
+              "printedPageStart": 9,
+              "printedPageEnd": 9,
+              "pdfPageStart": 11,
+              "pdfPageEnd": 11,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  9
+                ],
+                "pdfPages": [
+                  11
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "play-area-and-terrain-toolkit",
+              "sectionId": "play-area-and-terrain-toolkit",
+              "title": "Play Area & Terrain",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "play-area-and-terrain-toolkit"
+              ],
+              "printedPageStart": 9,
+              "printedPageEnd": 9,
+              "pdfPageStart": 11,
+              "pdfPageEnd": 11,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  9
+                ],
+                "pdfPages": [
+                  11
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "dice",
+              "sectionId": "dice",
+              "title": "Dice",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "dice"
+              ],
+              "printedPageStart": 9,
+              "printedPageEnd": 9,
+              "pdfPageStart": 11,
+              "pdfPageEnd": 11,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  9
+                ],
+                "pdfPages": [
+                  11
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "tokens-and-markers-toolkit",
+              "sectionId": "tokens-and-markers-toolkit",
+              "title": "Tokens and Markers",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "tokens-and-markers-toolkit"
+              ],
+              "printedPageStart": 10,
+              "printedPageEnd": 10,
+              "pdfPageStart": 12,
+              "pdfPageEnd": 12,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  10
+                ],
+                "pdfPages": [
+                  12
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "victory-and-valour-cards-toolkit",
+              "sectionId": "victory-and-valour-cards-toolkit",
+              "title": "Victory & Valour Cards",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "victory-and-valour-cards-toolkit"
+              ],
+              "printedPageStart": 11,
+              "printedPageEnd": 11,
+              "pdfPageStart": 13,
+              "pdfPageEnd": 13,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  11
+                ],
+                "pdfPages": [
+                  13
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "measuring-devices",
+              "sectionId": "measuring-devices",
+              "title": "Measuring Devices",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "measuring-devices"
+              ],
+              "printedPageStart": 11,
+              "printedPageEnd": 11,
+              "pdfPageStart": 13,
+              "pdfPageEnd": 13,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  11
+                ],
+                "pdfPages": [
+                  13
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "orders-of-battle",
+              "sectionId": "orders-of-battle",
+              "title": "Orders of Battle (ORBATS)",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "orders-of-battle"
+              ],
+              "printedPageStart": 11,
+              "printedPageEnd": 11,
+              "pdfPageStart": 13,
+              "pdfPageEnd": 13,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  11
+                ],
+                "pdfPages": [
+                  13
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "rules-glossary",
+              "sectionId": "rules-glossary",
+              "title": "Rules Glossary",
+              "path": [
+                "what-is-dystopian-wars",
+                "dystopian-wars-toolkit",
+                "rules-glossary"
+              ],
+              "printedPageStart": 11,
+              "printedPageEnd": 11,
+              "pdfPageStart": 13,
+              "pdfPageEnd": 13,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  11
+                ],
+                "pdfPages": [
+                  13
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "overview-of-a-game",
+          "sectionId": "overview-of-a-game",
+          "title": "Overview of a Game",
+          "path": [
+            "what-is-dystopian-wars",
+            "overview-of-a-game"
+          ],
+          "printedPageStart": 13,
+          "printedPageEnd": 20,
+          "pdfPageStart": 15,
+          "pdfPageEnd": 22,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "pdfPages": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "children": [
+            {
+              "id": "encounters-overview",
+              "sectionId": "encounters-overview",
+              "title": "Encounters",
+              "path": [
+                "what-is-dystopian-wars",
+                "overview-of-a-game",
+                "encounters-overview"
+              ],
+              "printedPageStart": 13,
+              "printedPageEnd": 13,
+              "pdfPageStart": 15,
+              "pdfPageEnd": 15,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  13
+                ],
+                "pdfPages": [
+                  15
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "points-limit-and-engagement-scale",
+              "sectionId": "points-limit-and-engagement-scale",
+              "title": "Points Limit & Engagement Scale",
+              "path": [
+                "what-is-dystopian-wars",
+                "overview-of-a-game",
+                "points-limit-and-engagement-scale"
+              ],
+              "printedPageStart": 14,
+              "printedPageEnd": 14,
+              "pdfPageStart": 16,
+              "pdfPageEnd": 16,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  14
+                ],
+                "pdfPages": [
+                  16
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "play-area-overview",
+              "sectionId": "play-area-overview",
+              "title": "The Play Area",
+              "path": [
+                "what-is-dystopian-wars",
+                "overview-of-a-game",
+                "play-area-overview"
+              ],
+              "printedPageStart": 15,
+              "printedPageEnd": 17,
+              "pdfPageStart": 17,
+              "pdfPageEnd": 19,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  15,
+                  16,
+                  17
+                ],
+                "pdfPages": [
+                  17,
+                  18,
+                  19
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "victory-and-defeat",
+              "sectionId": "victory-and-defeat",
+              "title": "Victory & Defeat",
+              "path": [
+                "what-is-dystopian-wars",
+                "overview-of-a-game",
+                "victory-and-defeat"
+              ],
+              "printedPageStart": 18,
+              "printedPageEnd": 18,
+              "pdfPageStart": 20,
+              "pdfPageEnd": 20,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  18
+                ],
+                "pdfPages": [
+                  20
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "ending-a-game",
+              "sectionId": "ending-a-game",
+              "title": "Ending a Game",
+              "path": [
+                "what-is-dystopian-wars",
+                "overview-of-a-game",
+                "ending-a-game"
+              ],
+              "printedPageStart": 19,
+              "printedPageEnd": 20,
+              "pdfPageStart": 21,
+              "pdfPageEnd": 22,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  19,
+                  20
+                ],
+                "pdfPages": [
+                  21,
+                  22
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "models-and-units",
+          "sectionId": "models-and-units",
+          "title": "Models and Units",
+          "path": [
+            "what-is-dystopian-wars",
+            "models-and-units"
+          ],
+          "printedPageStart": 21,
+          "printedPageEnd": 33,
+          "pdfPageStart": 23,
+          "pdfPageEnd": 35,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33
+            ],
+            "pdfPages": [
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35
+            ]
+          },
+          "children": [
+            {
+              "id": "understanding-models",
+              "sectionId": "understanding-models",
+              "title": "Understanding Models",
+              "path": [
+                "what-is-dystopian-wars",
+                "models-and-units",
+                "understanding-models"
+              ],
+              "printedPageStart": 21,
+              "printedPageEnd": 23,
+              "pdfPageStart": 23,
+              "pdfPageEnd": 25,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  21,
+                  22,
+                  23
+                ],
+                "pdfPages": [
+                  23,
+                  24,
+                  25
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "understanding-units",
+              "sectionId": "understanding-units",
+              "title": "Understanding Units",
+              "path": [
+                "what-is-dystopian-wars",
+                "models-and-units",
+                "understanding-units"
+              ],
+              "printedPageStart": 24,
+              "printedPageEnd": 25,
+              "pdfPageStart": 26,
+              "pdfPageEnd": 27,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  24,
+                  25
+                ],
+                "pdfPages": [
+                  26,
+                  27
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "unit-profiles",
+              "sectionId": "unit-profiles",
+              "title": "Unit Profiles",
+              "path": [
+                "what-is-dystopian-wars",
+                "models-and-units",
+                "unit-profiles"
+              ],
+              "printedPageStart": 26,
+              "printedPageEnd": 28,
+              "pdfPageStart": 28,
+              "pdfPageEnd": 30,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  26,
+                  27,
+                  28
+                ],
+                "pdfPages": [
+                  28,
+                  29,
+                  30
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "properties-and-systems",
+              "sectionId": "properties-and-systems",
+              "title": "Properties & Systems",
+              "path": [
+                "what-is-dystopian-wars",
+                "models-and-units",
+                "properties-and-systems"
+              ],
+              "printedPageStart": 29,
+              "printedPageEnd": 29,
+              "pdfPageStart": 31,
+              "pdfPageEnd": 31,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  29
+                ],
+                "pdfPages": [
+                  31
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "weapons",
+              "sectionId": "weapons",
+              "title": "Weapons",
+              "path": [
+                "what-is-dystopian-wars",
+                "models-and-units",
+                "weapons"
+              ],
+              "printedPageStart": 30,
+              "printedPageEnd": 33,
+              "pdfPageStart": 32,
+              "pdfPageEnd": 35,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  30,
+                  31,
+                  32,
+                  33
+                ],
+                "pdfPages": [
+                  32,
+                  33,
+                  34,
+                  35
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-rules",
+      "sectionId": "core-rules",
+      "title": "Core Rules",
+      "path": [
+        "core-rules"
+      ],
+      "printedPageStart": 34,
+      "printedPageEnd": 75,
+      "pdfPageStart": 36,
+      "pdfPageEnd": 77,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75
+        ],
+        "pdfPages": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77
+        ]
+      },
+      "children": [
+        {
+          "id": "gameplay-principles",
+          "sectionId": "gameplay-principles",
+          "title": "Gameplay Principles",
+          "path": [
+            "core-rules",
+            "gameplay-principles"
+          ],
+          "printedPageStart": 37,
+          "printedPageEnd": 60,
+          "pdfPageStart": 39,
+          "pdfPageEnd": 62,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "pdfPages": [
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62
+            ]
+          },
+          "children": [
+            {
+              "id": "initiative",
+              "sectionId": "initiative",
+              "title": "Initiative",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "initiative"
+              ],
+              "printedPageStart": 37,
+              "printedPageEnd": 37,
+              "pdfPageStart": 39,
+              "pdfPageEnd": 39,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  37
+                ],
+                "pdfPages": [
+                  39
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "visibility",
+              "sectionId": "visibility",
+              "title": "Visibility",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "visibility"
+              ],
+              "printedPageStart": 38,
+              "printedPageEnd": 39,
+              "pdfPageStart": 40,
+              "pdfPageEnd": 41,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  38,
+                  39
+                ],
+                "pdfPages": [
+                  40,
+                  41
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "moving-models",
+              "sectionId": "moving-models",
+              "title": "Moving Models",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "moving-models"
+              ],
+              "printedPageStart": 40,
+              "printedPageEnd": 43,
+              "pdfPageStart": 42,
+              "pdfPageEnd": 45,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  40,
+                  41,
+                  42,
+                  43
+                ],
+                "pdfPages": [
+                  42,
+                  43,
+                  44,
+                  45
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "rolling-dice",
+              "sectionId": "rolling-dice",
+              "title": "Rolling Dice",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "rolling-dice"
+              ],
+              "printedPageStart": 44,
+              "printedPageEnd": 49,
+              "pdfPageStart": 46,
+              "pdfPageEnd": 51,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  44,
+                  45,
+                  46,
+                  47,
+                  48,
+                  49
+                ],
+                "pdfPages": [
+                  46,
+                  47,
+                  48,
+                  49,
+                  50,
+                  51
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "victory-and-valour-cards",
+              "sectionId": "victory-and-valour-cards",
+              "title": "Victory & Valour Cards",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "victory-and-valour-cards"
+              ],
+              "printedPageStart": 50,
+              "printedPageEnd": 53,
+              "pdfPageStart": 52,
+              "pdfPageEnd": 55,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  50,
+                  51,
+                  52,
+                  53
+                ],
+                "pdfPages": [
+                  52,
+                  53,
+                  54,
+                  55
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "tokens",
+              "sectionId": "tokens",
+              "title": "Tokens",
+              "path": [
+                "core-rules",
+                "gameplay-principles",
+                "tokens"
+              ],
+              "printedPageStart": 54,
+              "printedPageEnd": 60,
+              "pdfPageStart": 56,
+              "pdfPageEnd": 62,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  54,
+                  55,
+                  56,
+                  57,
+                  58,
+                  59,
+                  60
+                ],
+                "pdfPages": [
+                  56,
+                  57,
+                  58,
+                  59,
+                  60,
+                  61,
+                  62
+                ]
+              },
+              "children": [
+                {
+                  "id": "inflicting-damage",
+                  "sectionId": "inflicting-damage",
+                  "title": "Inflicting Damage",
+                  "path": [
+                    "core-rules",
+                    "gameplay-principles",
+                    "tokens",
+                    "inflicting-damage"
+                  ],
+                  "printedPageStart": 54,
+                  "printedPageEnd": 55,
+                  "pdfPageStart": 56,
+                  "pdfPageEnd": 57,
+                  "source": {
+                    "documentId": "dw-rulebook-4.00",
+                    "printedPages": [
+                      54,
+                      55
+                    ],
+                    "pdfPages": [
+                      56,
+                      57
+                    ]
+                  },
+                  "children": []
+                },
+                {
+                  "id": "gaining-disorder",
+                  "sectionId": "gaining-disorder",
+                  "title": "Gaining Disorder",
+                  "path": [
+                    "core-rules",
+                    "gameplay-principles",
+                    "tokens",
+                    "gaining-disorder"
+                  ],
+                  "printedPageStart": 56,
+                  "printedPageEnd": 60,
+                  "pdfPageStart": 58,
+                  "pdfPageEnd": 62,
+                  "source": {
+                    "documentId": "dw-rulebook-4.00",
+                    "printedPages": [
+                      56,
+                      57,
+                      58,
+                      59,
+                      60
+                    ],
+                    "pdfPages": [
+                      58,
+                      59,
+                      60,
+                      61,
+                      62
+                    ]
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "round-overview",
+          "sectionId": "round-overview",
+          "title": "Round Overview",
+          "path": [
+            "core-rules",
+            "round-overview"
+          ],
+          "printedPageStart": 61,
+          "printedPageEnd": 66,
+          "pdfPageStart": 63,
+          "pdfPageEnd": 68,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              61,
+              62,
+              63,
+              64,
+              65,
+              66
+            ],
+            "pdfPages": [
+              63,
+              64,
+              65,
+              66,
+              67,
+              68
+            ]
+          },
+          "children": [
+            {
+              "id": "ready-phase",
+              "sectionId": "ready-phase",
+              "title": "1. The Ready Phase",
+              "path": [
+                "core-rules",
+                "round-overview",
+                "ready-phase"
+              ],
+              "printedPageStart": 62,
+              "printedPageEnd": 63,
+              "pdfPageStart": 64,
+              "pdfPageEnd": 65,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  62,
+                  63
+                ],
+                "pdfPages": [
+                  64,
+                  65
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "launch-phase",
+              "sectionId": "launch-phase",
+              "title": "2. The Launch Phase",
+              "path": [
+                "core-rules",
+                "round-overview",
+                "launch-phase"
+              ],
+              "printedPageStart": 64,
+              "printedPageEnd": 64,
+              "pdfPageStart": 66,
+              "pdfPageEnd": 66,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  64
+                ],
+                "pdfPages": [
+                  66
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "activation-phase",
+              "sectionId": "activation-phase",
+              "title": "3. The Activation Phase",
+              "path": [
+                "core-rules",
+                "round-overview",
+                "activation-phase"
+              ],
+              "printedPageStart": 64,
+              "printedPageEnd": 64,
+              "pdfPageStart": 66,
+              "pdfPageEnd": 66,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  64
+                ],
+                "pdfPages": [
+                  66
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "end-phase",
+              "sectionId": "end-phase",
+              "title": "4. The End Phase",
+              "path": [
+                "core-rules",
+                "round-overview",
+                "end-phase"
+              ],
+              "printedPageStart": 65,
+              "printedPageEnd": 66,
+              "pdfPageStart": 67,
+              "pdfPageEnd": 68,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  65,
+                  66
+                ],
+                "pdfPages": [
+                  67,
+                  68
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "activating-a-unit",
+          "sectionId": "activating-a-unit",
+          "title": "Activating a Unit",
+          "path": [
+            "core-rules",
+            "activating-a-unit"
+          ],
+          "printedPageStart": 67,
+          "printedPageEnd": 72,
+          "pdfPageStart": 69,
+          "pdfPageEnd": 74,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              67,
+              68,
+              69,
+              70,
+              71,
+              72
+            ],
+            "pdfPages": [
+              69,
+              70,
+              71,
+              72,
+              73,
+              74
+            ]
+          },
+          "children": [
+            {
+              "id": "withdrawal-step",
+              "sectionId": "withdrawal-step",
+              "title": "1. The Withdrawal Step",
+              "path": [
+                "core-rules",
+                "activating-a-unit",
+                "withdrawal-step"
+              ],
+              "printedPageStart": 67,
+              "printedPageEnd": 67,
+              "pdfPageStart": 69,
+              "pdfPageEnd": 69,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  67
+                ],
+                "pdfPages": [
+                  69
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "movement-step",
+              "sectionId": "movement-step",
+              "title": "2. The Movement Step",
+              "path": [
+                "core-rules",
+                "activating-a-unit",
+                "movement-step"
+              ],
+              "printedPageStart": 68,
+              "printedPageEnd": 68,
+              "pdfPageStart": 70,
+              "pdfPageEnd": 70,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  68
+                ],
+                "pdfPages": [
+                  70
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "action-step",
+              "sectionId": "action-step",
+              "title": "3. The Action Step",
+              "path": [
+                "core-rules",
+                "activating-a-unit",
+                "action-step"
+              ],
+              "printedPageStart": 69,
+              "printedPageEnd": 69,
+              "pdfPageStart": 71,
+              "pdfPageEnd": 71,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  69
+                ],
+                "pdfPages": [
+                  71
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "consolidation-step",
+              "sectionId": "consolidation-step",
+              "title": "4. The Consolidation Step",
+              "path": [
+                "core-rules",
+                "activating-a-unit",
+                "consolidation-step"
+              ],
+              "printedPageStart": 70,
+              "printedPageEnd": 72,
+              "pdfPageStart": 72,
+              "pdfPageEnd": 74,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  70,
+                  71,
+                  72
+                ],
+                "pdfPages": [
+                  72,
+                  73,
+                  74
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "attack-actions",
+          "sectionId": "attack-actions",
+          "title": "Attack Actions",
+          "path": [
+            "core-rules",
+            "attack-actions"
+          ],
+          "printedPageStart": 73,
+          "printedPageEnd": 75,
+          "pdfPageStart": 75,
+          "pdfPageEnd": 77,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              73,
+              74,
+              75
+            ],
+            "pdfPages": [
+              75,
+              76,
+              77
+            ]
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "advanced-rules",
+      "sectionId": "advanced-rules",
+      "title": "Advanced Rules",
+      "path": [
+        "advanced-rules"
+      ],
+      "printedPageStart": 76,
+      "printedPageEnd": 121,
+      "pdfPageStart": 78,
+      "pdfPageEnd": 123,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121
+        ],
+        "pdfPages": [
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      "children": [
+        {
+          "id": "positional-traits",
+          "sectionId": "positional-traits",
+          "title": "Positional Traits",
+          "path": [
+            "advanced-rules",
+            "positional-traits"
+          ],
+          "printedPageStart": 78,
+          "printedPageEnd": 80,
+          "pdfPageStart": 80,
+          "pdfPageEnd": 82,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              78,
+              79,
+              80
+            ],
+            "pdfPages": [
+              80,
+              81,
+              82
+            ]
+          },
+          "children": [
+            {
+              "id": "airborne-models",
+              "sectionId": "airborne-models",
+              "title": "Airborne Models",
+              "path": [
+                "advanced-rules",
+                "positional-traits",
+                "airborne-models"
+              ],
+              "printedPageStart": 78,
+              "printedPageEnd": 78,
+              "pdfPageStart": 80,
+              "pdfPageEnd": 80,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  78
+                ],
+                "pdfPages": [
+                  80
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "underwater-models",
+              "sectionId": "underwater-models",
+              "title": "Underwater Models",
+              "path": [
+                "advanced-rules",
+                "positional-traits",
+                "underwater-models"
+              ],
+              "printedPageStart": 79,
+              "printedPageEnd": 80,
+              "pdfPageStart": 81,
+              "pdfPageEnd": 82,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  79,
+                  80
+                ],
+                "pdfPages": [
+                  81,
+                  82
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "advanced-movement-rules",
+          "sectionId": "advanced-movement-rules",
+          "title": "Advanced Movement Rules",
+          "path": [
+            "advanced-rules",
+            "advanced-movement-rules"
+          ],
+          "printedPageStart": 81,
+          "printedPageEnd": 84,
+          "pdfPageStart": 83,
+          "pdfPageEnd": 86,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              81,
+              82,
+              83,
+              84
+            ],
+            "pdfPages": [
+              83,
+              84,
+              85,
+              86
+            ]
+          },
+          "children": [
+            {
+              "id": "pivoting",
+              "sectionId": "pivoting",
+              "title": "Pivoting",
+              "path": [
+                "advanced-rules",
+                "advanced-movement-rules",
+                "pivoting"
+              ],
+              "printedPageStart": 81,
+              "printedPageEnd": 81,
+              "pdfPageStart": 83,
+              "pdfPageEnd": 83,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  81
+                ],
+                "pdfPages": [
+                  83
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "ramming",
+              "sectionId": "ramming",
+              "title": "Ramming",
+              "path": [
+                "advanced-rules",
+                "advanced-movement-rules",
+                "ramming"
+              ],
+              "printedPageStart": 82,
+              "printedPageEnd": 84,
+              "pdfPageStart": 84,
+              "pdfPageEnd": 86,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  82,
+                  83,
+                  84
+                ],
+                "pdfPages": [
+                  84,
+                  85,
+                  86
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "advanced-damage-rules",
+          "sectionId": "advanced-damage-rules",
+          "title": "Advanced Damage Rules",
+          "path": [
+            "advanced-rules",
+            "advanced-damage-rules"
+          ],
+          "printedPageStart": 85,
+          "printedPageEnd": 90,
+          "pdfPageStart": 87,
+          "pdfPageEnd": 92,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              85,
+              86,
+              87,
+              88,
+              89,
+              90
+            ],
+            "pdfPages": [
+              87,
+              88,
+              89,
+              90,
+              91,
+              92
+            ]
+          },
+          "children": [
+            {
+              "id": "crippled-models",
+              "sectionId": "crippled-models",
+              "title": "Crippled Models",
+              "path": [
+                "advanced-rules",
+                "advanced-damage-rules",
+                "crippled-models"
+              ],
+              "printedPageStart": 85,
+              "printedPageEnd": 86,
+              "pdfPageStart": 87,
+              "pdfPageEnd": 88,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  85,
+                  86
+                ],
+                "pdfPages": [
+                  87,
+                  88
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "destroyed-models",
+              "sectionId": "destroyed-models",
+              "title": "Destroyed Models",
+              "path": [
+                "advanced-rules",
+                "advanced-damage-rules",
+                "destroyed-models"
+              ],
+              "printedPageStart": 87,
+              "printedPageEnd": 87,
+              "pdfPageStart": 89,
+              "pdfPageEnd": 89,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  87
+                ],
+                "pdfPages": [
+                  89
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "critical-damage",
+              "sectionId": "critical-damage",
+              "title": "Critical Damage",
+              "path": [
+                "advanced-rules",
+                "advanced-damage-rules",
+                "critical-damage"
+              ],
+              "printedPageStart": 87,
+              "printedPageEnd": 90,
+              "pdfPageStart": 89,
+              "pdfPageEnd": 92,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  87,
+                  88,
+                  89,
+                  90
+                ],
+                "pdfPages": [
+                  89,
+                  90,
+                  91,
+                  92
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "special-attack-qualities",
+          "sectionId": "special-attack-qualities",
+          "title": "Special Attack Qualities",
+          "path": [
+            "advanced-rules",
+            "special-attack-qualities"
+          ],
+          "printedPageStart": 91,
+          "printedPageEnd": 94,
+          "pdfPageStart": 93,
+          "pdfPageEnd": 96,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              91,
+              92,
+              93,
+              94
+            ],
+            "pdfPages": [
+              93,
+              94,
+              95,
+              96
+            ]
+          },
+          "children": [
+            {
+              "id": "aerial-weapons",
+              "sectionId": "aerial-weapons",
+              "title": "Aerial Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "aerial-weapons"
+              ],
+              "printedPageStart": 91,
+              "printedPageEnd": 91,
+              "pdfPageStart": 93,
+              "pdfPageEnd": 93,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  91
+                ],
+                "pdfPages": [
+                  93
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "assault-weapons",
+              "sectionId": "assault-weapons",
+              "title": "Assault Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "assault-weapons"
+              ],
+              "printedPageStart": 91,
+              "printedPageEnd": 91,
+              "pdfPageStart": 93,
+              "pdfPageEnd": 93,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  91
+                ],
+                "pdfPages": [
+                  93
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "bomb-weapons",
+              "sectionId": "bomb-weapons",
+              "title": "Bomb Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "bomb-weapons"
+              ],
+              "printedPageStart": 91,
+              "printedPageEnd": 91,
+              "pdfPageStart": 93,
+              "pdfPageEnd": 93,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  91
+                ],
+                "pdfPages": [
+                  93
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "singular-weapons",
+              "sectionId": "singular-weapons",
+              "title": "Singular Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "singular-weapons"
+              ],
+              "printedPageStart": 92,
+              "printedPageEnd": 92,
+              "pdfPageStart": 94,
+              "pdfPageEnd": 94,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  92
+                ],
+                "pdfPages": [
+                  94
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "submerged-weapons",
+              "sectionId": "submerged-weapons",
+              "title": "Submerged Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "submerged-weapons"
+              ],
+              "printedPageStart": 92,
+              "printedPageEnd": 92,
+              "pdfPageStart": 94,
+              "pdfPageEnd": 94,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  92
+                ],
+                "pdfPages": [
+                  94
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "torrent-weapons",
+              "sectionId": "torrent-weapons",
+              "title": "Torrent Weapons",
+              "path": [
+                "advanced-rules",
+                "special-attack-qualities",
+                "torrent-weapons"
+              ],
+              "printedPageStart": 92,
+              "printedPageEnd": 94,
+              "pdfPageStart": 94,
+              "pdfPageEnd": 96,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  92,
+                  93,
+                  94
+                ],
+                "pdfPages": [
+                  94,
+                  95,
+                  96
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "additional-actions",
+          "sectionId": "additional-actions",
+          "title": "Additional Actions",
+          "path": [
+            "advanced-rules",
+            "additional-actions"
+          ],
+          "printedPageStart": 95,
+          "printedPageEnd": 100,
+          "pdfPageStart": 97,
+          "pdfPageEnd": 102,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              95,
+              96,
+              97,
+              98,
+              99,
+              100
+            ],
+            "pdfPages": [
+              97,
+              98,
+              99,
+              100,
+              101,
+              102
+            ]
+          },
+          "children": [
+            {
+              "id": "maintenance-action",
+              "sectionId": "maintenance-action",
+              "title": "Resolving a Maintenance Action",
+              "path": [
+                "advanced-rules",
+                "additional-actions",
+                "maintenance-action"
+              ],
+              "printedPageStart": 95,
+              "printedPageEnd": 95,
+              "pdfPageStart": 97,
+              "pdfPageEnd": 97,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  95
+                ],
+                "pdfPages": [
+                  97
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "broadside-action",
+              "sectionId": "broadside-action",
+              "title": "Resolving a Broadside Action",
+              "path": [
+                "advanced-rules",
+                "additional-actions",
+                "broadside-action"
+              ],
+              "printedPageStart": 96,
+              "printedPageEnd": 97,
+              "pdfPageStart": 98,
+              "pdfPageEnd": 99,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  96,
+                  97
+                ],
+                "pdfPages": [
+                  98,
+                  99
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "boarding-action",
+              "sectionId": "boarding-action",
+              "title": "Resolving a Boarding Action",
+              "path": [
+                "advanced-rules",
+                "additional-actions",
+                "boarding-action"
+              ],
+              "printedPageStart": 98,
+              "printedPageEnd": 100,
+              "pdfPageStart": 100,
+              "pdfPageEnd": 102,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  98,
+                  99,
+                  100
+                ],
+                "pdfPages": [
+                  100,
+                  101,
+                  102
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "attachments-and-escorts",
+          "sectionId": "attachments-and-escorts",
+          "title": "Attachments & Escorts",
+          "path": [
+            "advanced-rules",
+            "attachments-and-escorts"
+          ],
+          "printedPageStart": 101,
+          "printedPageEnd": 104,
+          "pdfPageStart": 103,
+          "pdfPageEnd": 106,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              101,
+              102,
+              103,
+              104
+            ],
+            "pdfPages": [
+              103,
+              104,
+              105,
+              106
+            ]
+          },
+          "children": [
+            {
+              "id": "attachments",
+              "sectionId": "attachments",
+              "title": "Attachments",
+              "path": [
+                "advanced-rules",
+                "attachments-and-escorts",
+                "attachments"
+              ],
+              "printedPageStart": 101,
+              "printedPageEnd": 101,
+              "pdfPageStart": 103,
+              "pdfPageEnd": 103,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  101
+                ],
+                "pdfPages": [
+                  103
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "escorts",
+              "sectionId": "escorts",
+              "title": "Escorts",
+              "path": [
+                "advanced-rules",
+                "attachments-and-escorts",
+                "escorts"
+              ],
+              "printedPageStart": 102,
+              "printedPageEnd": 104,
+              "pdfPageStart": 104,
+              "pdfPageEnd": 106,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  102,
+                  103,
+                  104
+                ],
+                "pdfPages": [
+                  104,
+                  105,
+                  106
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "short-range-squadrons",
+          "sectionId": "short-range-squadrons",
+          "title": "Short Range Squadrons",
+          "path": [
+            "advanced-rules",
+            "short-range-squadrons"
+          ],
+          "printedPageStart": 105,
+          "printedPageEnd": 116,
+          "pdfPageStart": 107,
+          "pdfPageEnd": 118,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115,
+              116
+            ],
+            "pdfPages": [
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115,
+              116,
+              117,
+              118
+            ]
+          },
+          "children": [
+            {
+              "id": "srs-in-play",
+              "sectionId": "srs-in-play",
+              "title": "Short Range Squadrons in Play",
+              "path": [
+                "advanced-rules",
+                "short-range-squadrons",
+                "srs-in-play"
+              ],
+              "printedPageStart": 105,
+              "printedPageEnd": 107,
+              "pdfPageStart": 107,
+              "pdfPageEnd": 109,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  105,
+                  106,
+                  107
+                ],
+                "pdfPages": [
+                  107,
+                  108,
+                  109
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "launching-srs",
+              "sectionId": "launching-srs",
+              "title": "Launching Short Range Squadrons",
+              "path": [
+                "advanced-rules",
+                "short-range-squadrons",
+                "launching-srs"
+              ],
+              "printedPageStart": 108,
+              "printedPageEnd": 108,
+              "pdfPageStart": 110,
+              "pdfPageEnd": 110,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  108
+                ],
+                "pdfPages": [
+                  110
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "air-support",
+              "sectionId": "air-support",
+              "title": "Air Support",
+              "path": [
+                "advanced-rules",
+                "short-range-squadrons",
+                "air-support"
+              ],
+              "printedPageStart": 109,
+              "printedPageEnd": 109,
+              "pdfPageStart": 111,
+              "pdfPageEnd": 111,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  109
+                ],
+                "pdfPages": [
+                  111
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "resolving-srs-missions",
+              "sectionId": "resolving-srs-missions",
+              "title": "Resolving SRS Missions",
+              "path": [
+                "advanced-rules",
+                "short-range-squadrons",
+                "resolving-srs-missions"
+              ],
+              "printedPageStart": 110,
+              "printedPageEnd": 114,
+              "pdfPageStart": 112,
+              "pdfPageEnd": 116,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  110,
+                  111,
+                  112,
+                  113,
+                  114
+                ],
+                "pdfPages": [
+                  112,
+                  113,
+                  114,
+                  115,
+                  116
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "aerial-reconnaissance",
+              "sectionId": "aerial-reconnaissance",
+              "title": "Aerial Reconnaissance",
+              "path": [
+                "advanced-rules",
+                "short-range-squadrons",
+                "aerial-reconnaissance"
+              ],
+              "printedPageStart": 115,
+              "printedPageEnd": 116,
+              "pdfPageStart": 117,
+              "pdfPageEnd": 118,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  115,
+                  116
+                ],
+                "pdfPages": [
+                  117,
+                  118
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "play-area-advanced",
+          "sectionId": "play-area-advanced",
+          "title": "The Play Area",
+          "path": [
+            "advanced-rules",
+            "play-area-advanced"
+          ],
+          "printedPageStart": 117,
+          "printedPageEnd": 121,
+          "pdfPageStart": 119,
+          "pdfPageEnd": 123,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              117,
+              118,
+              119,
+              120,
+              121
+            ],
+            "pdfPages": [
+              119,
+              120,
+              121,
+              122,
+              123
+            ]
+          },
+          "children": [
+            {
+              "id": "environmental-features",
+              "sectionId": "environmental-features",
+              "title": "Environmental Features",
+              "path": [
+                "advanced-rules",
+                "play-area-advanced",
+                "environmental-features"
+              ],
+              "printedPageStart": 117,
+              "printedPageEnd": 117,
+              "pdfPageStart": 119,
+              "pdfPageEnd": 119,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  117
+                ],
+                "pdfPages": [
+                  119
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "terrain-features",
+              "sectionId": "terrain-features",
+              "title": "Terrain Features",
+              "path": [
+                "advanced-rules",
+                "play-area-advanced",
+                "terrain-features"
+              ],
+              "printedPageStart": 118,
+              "printedPageEnd": 120,
+              "pdfPageStart": 120,
+              "pdfPageEnd": 122,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  118,
+                  119,
+                  120
+                ],
+                "pdfPages": [
+                  120,
+                  121,
+                  122
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "markers",
+              "sectionId": "markers",
+              "title": "Markers",
+              "path": [
+                "advanced-rules",
+                "play-area-advanced",
+                "markers"
+              ],
+              "printedPageStart": 121,
+              "printedPageEnd": 121,
+              "pdfPageStart": 123,
+              "pdfPageEnd": 123,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  121
+                ],
+                "pdfPages": [
+                  123
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "playing-a-game",
+      "sectionId": "playing-a-game",
+      "title": "Playing a Game",
+      "path": [
+        "playing-a-game"
+      ],
+      "printedPageStart": 122,
+      "printedPageEnd": 137,
+      "pdfPageStart": 124,
+      "pdfPageEnd": 139,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137
+        ],
+        "pdfPages": [
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139
+        ]
+      },
+      "children": [
+        {
+          "id": "force-creation",
+          "sectionId": "force-creation",
+          "title": "Force Creation",
+          "path": [
+            "playing-a-game",
+            "force-creation"
+          ],
+          "printedPageStart": 125,
+          "printedPageEnd": 130,
+          "pdfPageStart": 127,
+          "pdfPageEnd": 132,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              125,
+              126,
+              127,
+              128,
+              129,
+              130
+            ],
+            "pdfPages": [
+              127,
+              128,
+              129,
+              130,
+              131,
+              132
+            ]
+          },
+          "children": [
+            {
+              "id": "battlefleets",
+              "sectionId": "battlefleets",
+              "title": "Battlefleets",
+              "path": [
+                "playing-a-game",
+                "force-creation",
+                "battlefleets"
+              ],
+              "printedPageStart": 125,
+              "printedPageEnd": 125,
+              "pdfPageStart": 127,
+              "pdfPageEnd": 127,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  125
+                ],
+                "pdfPages": [
+                  127
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "force-restrictions",
+              "sectionId": "force-restrictions",
+              "title": "Force Restrictions",
+              "path": [
+                "playing-a-game",
+                "force-creation",
+                "force-restrictions"
+              ],
+              "printedPageStart": 126,
+              "printedPageEnd": 126,
+              "pdfPageStart": 128,
+              "pdfPageEnd": 128,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  126
+                ],
+                "pdfPages": [
+                  128
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "choosing-units",
+              "sectionId": "choosing-units",
+              "title": "Choosing Units",
+              "path": [
+                "playing-a-game",
+                "force-creation",
+                "choosing-units"
+              ],
+              "printedPageStart": 127,
+              "printedPageEnd": 127,
+              "pdfPageStart": 129,
+              "pdfPageEnd": 129,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  127
+                ],
+                "pdfPages": [
+                  129
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "attached-units",
+              "sectionId": "attached-units",
+              "title": "Attached Units",
+              "path": [
+                "playing-a-game",
+                "force-creation",
+                "attached-units"
+              ],
+              "printedPageStart": 128,
+              "printedPageEnd": 128,
+              "pdfPageStart": 130,
+              "pdfPageEnd": 130,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  128
+                ],
+                "pdfPages": [
+                  130
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "writing-a-force-list",
+              "sectionId": "writing-a-force-list",
+              "title": "Writing a Force List",
+              "path": [
+                "playing-a-game",
+                "force-creation",
+                "writing-a-force-list"
+              ],
+              "printedPageStart": 129,
+              "printedPageEnd": 130,
+              "pdfPageStart": 131,
+              "pdfPageEnd": 132,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  129,
+                  130
+                ],
+                "pdfPages": [
+                  131,
+                  132
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "preparing-to-play",
+          "sectionId": "preparing-to-play",
+          "title": "Preparing to Play",
+          "path": [
+            "playing-a-game",
+            "preparing-to-play"
+          ],
+          "printedPageStart": 131,
+          "printedPageEnd": 137,
+          "pdfPageStart": 133,
+          "pdfPageEnd": 139,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137
+            ],
+            "pdfPages": [
+              133,
+              134,
+              135,
+              136,
+              137,
+              138,
+              139
+            ]
+          },
+          "children": [
+            {
+              "id": "determine-initiative",
+              "sectionId": "determine-initiative",
+              "title": "1. Determine the Initiative",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "determine-initiative"
+              ],
+              "printedPageStart": 131,
+              "printedPageEnd": 131,
+              "pdfPageStart": 133,
+              "pdfPageEnd": 133,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  131
+                ],
+                "pdfPages": [
+                  133
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "choose-an-encounter",
+              "sectionId": "choose-an-encounter",
+              "title": "2. Choose an Encounter",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "choose-an-encounter"
+              ],
+              "printedPageStart": 132,
+              "printedPageEnd": 132,
+              "pdfPageStart": 134,
+              "pdfPageEnd": 134,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  132
+                ],
+                "pdfPages": [
+                  134
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "prepare-the-play-area",
+              "sectionId": "prepare-the-play-area",
+              "title": "3. Prepare the Play Area",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "prepare-the-play-area"
+              ],
+              "printedPageStart": 133,
+              "printedPageEnd": 134,
+              "pdfPageStart": 135,
+              "pdfPageEnd": 136,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  133,
+                  134
+                ],
+                "pdfPages": [
+                  135,
+                  136
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "draw-starting-cards",
+              "sectionId": "draw-starting-cards",
+              "title": "4. Draw Starting Cards",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "draw-starting-cards"
+              ],
+              "printedPageStart": 135,
+              "printedPageEnd": 135,
+              "pdfPageStart": 137,
+              "pdfPageEnd": 137,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  135
+                ],
+                "pdfPages": [
+                  137
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "deploy-forces",
+              "sectionId": "deploy-forces",
+              "title": "5. Deploy Forces",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "deploy-forces"
+              ],
+              "printedPageStart": 135,
+              "printedPageEnd": 136,
+              "pdfPageStart": 137,
+              "pdfPageEnd": 138,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  135,
+                  136
+                ],
+                "pdfPages": [
+                  137,
+                  138
+                ]
+              },
+              "children": []
+            },
+            {
+              "id": "weigh-anchor",
+              "sectionId": "weigh-anchor",
+              "title": "6. Weigh Anchor!",
+              "path": [
+                "playing-a-game",
+                "preparing-to-play",
+                "weigh-anchor"
+              ],
+              "printedPageStart": 137,
+              "printedPageEnd": 137,
+              "pdfPageStart": 139,
+              "pdfPageEnd": 139,
+              "source": {
+                "documentId": "dw-rulebook-4.00",
+                "printedPages": [
+                  137
+                ],
+                "pdfPages": [
+                  139
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "common-encounters",
+      "sectionId": "common-encounters",
+      "title": "Common Encounters",
+      "path": [
+        "common-encounters"
+      ],
+      "printedPageStart": 138,
+      "printedPageEnd": 151,
+      "pdfPageStart": 140,
+      "pdfPageEnd": 153,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151
+        ],
+        "pdfPages": [
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153
+        ]
+      },
+      "children": [
+        {
+          "id": "meeting-engagement",
+          "sectionId": "meeting-engagement",
+          "title": "Meeting Engagement",
+          "path": [
+            "common-encounters",
+            "meeting-engagement"
+          ],
+          "printedPageStart": 140,
+          "printedPageEnd": 141,
+          "pdfPageStart": 142,
+          "pdfPageEnd": 143,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              140,
+              141
+            ],
+            "pdfPages": [
+              142,
+              143
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "salvage-rights",
+          "sectionId": "salvage-rights",
+          "title": "Salvage Rights",
+          "path": [
+            "common-encounters",
+            "salvage-rights"
+          ],
+          "printedPageStart": 142,
+          "printedPageEnd": 143,
+          "pdfPageStart": 144,
+          "pdfPageEnd": 145,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              142,
+              143
+            ],
+            "pdfPages": [
+              144,
+              145
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "the-oil-fields",
+          "sectionId": "the-oil-fields",
+          "title": "The Oil Fields",
+          "path": [
+            "common-encounters",
+            "the-oil-fields"
+          ],
+          "printedPageStart": 144,
+          "printedPageEnd": 145,
+          "pdfPageStart": 146,
+          "pdfPageEnd": 147,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              144,
+              145
+            ],
+            "pdfPages": [
+              146,
+              147
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "blockade-run",
+          "sectionId": "blockade-run",
+          "title": "Blockade Run",
+          "path": [
+            "common-encounters",
+            "blockade-run"
+          ],
+          "printedPageStart": 146,
+          "printedPageEnd": 147,
+          "pdfPageStart": 148,
+          "pdfPageEnd": 149,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              146,
+              147
+            ],
+            "pdfPages": [
+              148,
+              149
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "the-archipelago",
+          "sectionId": "the-archipelago",
+          "title": "The Archipelago",
+          "path": [
+            "common-encounters",
+            "the-archipelago"
+          ],
+          "printedPageStart": 148,
+          "printedPageEnd": 149,
+          "pdfPageStart": 150,
+          "pdfPageEnd": 151,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              148,
+              149
+            ],
+            "pdfPages": [
+              150,
+              151
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "recon-duty",
+          "sectionId": "recon-duty",
+          "title": "Recon Duty",
+          "path": [
+            "common-encounters",
+            "recon-duty"
+          ],
+          "printedPageStart": 150,
+          "printedPageEnd": 151,
+          "pdfPageStart": 152,
+          "pdfPageEnd": 153,
+          "source": {
+            "documentId": "dw-rulebook-4.00",
+            "printedPages": [
+              150,
+              151
+            ],
+            "pdfPages": [
+              152,
+              153
+            ]
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "index",
+      "sectionId": "index",
+      "title": "Index",
+      "path": [
+        "index"
+      ],
+      "printedPageStart": 152,
+      "printedPageEnd": 155,
+      "pdfPageStart": 154,
+      "pdfPageEnd": 157,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "printedPages": [
+          152,
+          153,
+          154,
+          155
+        ],
+        "pdfPages": [
+          154,
+          155,
+          156,
+          157
+        ]
+      },
+      "children": []
+    }
+  ]
+}

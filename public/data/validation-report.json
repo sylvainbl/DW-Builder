@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "generatedAt": "2026-07-14T00:00:00+02:00",
+  "status": "passed",
+  "sourceFile": "DW-Rule-Book-4.00_Full_W (2).pdf",
+  "sourceSha256": "e063ba47f8e2798873743999716452f91bebaae250906a0ccb094c87820f6fbc",
+  "pageCount": 159,
+  "checks": [
+    {
+      "id": "rule_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "section_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "action_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "procedure_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "table_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "token_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "encounter_ids_unique",
+      "status": "passed"
+    },
+    {
+      "id": "page_count_159",
+      "status": "passed"
+    },
+    {
+      "id": "figure_pages_157",
+      "status": "passed"
+    },
+    {
+      "id": "all_rules_have_valid_section",
+      "status": "passed"
+    },
+    {
+      "id": "all_section_rule_links_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "action_rule_links_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "action_procedure_links_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "procedure_rule_links_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "page_reference_targets_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "critical_encounter_repairs_present",
+      "status": "passed"
+    },
+    {
+      "id": "action_texts_clean",
+      "status": "passed"
+    },
+    {
+      "id": "all_atomic_rules_have_text",
+      "status": "passed"
+    },
+    {
+      "id": "all_atomic_rules_end_cleanly",
+      "status": "passed"
+    },
+    {
+      "id": "semantic_links_resolve",
+      "status": "passed"
+    },
+    {
+      "id": "json_schemas_included",
+      "status": "passed"
+    },
+    {
+      "id": "all_declared_modules_present",
+      "status": "passed"
+    }
+  ],
+  "counts": {
+    "sections": 100,
+    "ruleBlocks": 235,
+    "tables": 19,
+    "procedures": 13,
+    "actions": 12,
+    "tokens": 5,
+    "criticalDamageEffects": 6,
+    "environmentalFeatures": 3,
+    "terrainFeatures": 5,
+    "markers": 3,
+    "encounters": 6,
+    "pageReferenceLinks": 256,
+    "semanticLinks": 145,
+    "sourcePages": 159,
+    "figurePages": 157,
+    "figureImageBlocks": 735,
+    "figureCaptions": 743
+  },
+  "corrections": [
+    {
+      "category": "completeness",
+      "description": "Integrated tokens.json and figures.json into the manifest and package."
+    },
+    {
+      "category": "encounters",
+      "description": "Restored the missing Prisoners of War scoring clause in Salvage Rights."
+    },
+    {
+      "category": "encounters",
+      "description": "Restored the missing 30 Victory Points clause for The Intelligence Agent in Blockade Run."
+    },
+    {
+      "category": "encounters",
+      "description": "Restored the friendly Critical Damage removal scoring clause for Field Testing in The Archipelago."
+    },
+    {
+      "category": "encounters",
+      "description": "Removed the leaked objective-table heading from Island Hopping and normalized encounter fields."
+    },
+    {
+      "category": "actions",
+      "description": "Re-extracted all action and manoeuvre introductions from the main text column, excluding page references, captions and adjacent sections."
+    },
+    {
+      "category": "actions",
+      "description": "Added the generic Special Action definition omitted from the original module."
+    },
+    {
+      "category": "rules",
+      "description": "Recomputed rule-block boundaries from positioned PDF text and added one missing canonical Special Actions block."
+    },
+    {
+      "category": "rules",
+      "description": "Corrected rule-to-section assignments for same-page sibling headings."
+    },
+    {
+      "category": "rules",
+      "description": "Separated Designers’ Notes from canonical rule text and replaced truncated summaries with sentence-safe summaries."
+    },
+    {
+      "category": "terrain",
+      "description": "Separated environmental effects, terrain features, markers, Impeded Movement and Hampered Visibility into explicit structured records."
+    },
+    {
+      "category": "tokens",
+      "description": "Removed sidebars, labels and figure captions from token rules and added structured Critical Damage effects."
+    },
+    {
+      "category": "tables",
+      "description": "Added typed columns/records and explicit dice-face mappings for graphic tables."
+    },
+    {
+      "category": "procedures",
+      "description": "Normalized every procedure to ordered steps and added Action Roll, Interception Attempt and Ram procedures."
+    },
+    {
+      "category": "references",
+      "description": "Fixed terrain.fog to environment.fog, assigned stable link IDs, and expanded semantic links."
+    },
+    {
+      "category": "figures",
+      "description": "Added stable IDs, de-duplicated repeated image layers, classified blocks and normalized duplicated overlay text in captions."
+    },
+    {
+      "category": "source-pages",
+      "description": "Preserved raw page text while adding cleaner main-column text and hashes."
+    },
+    {
+      "category": "validation",
+      "description": "Replaced the overly broad passed status with explicit structural checks and documented limitations."
+    },
+    "Replaced 159 full-page renders with 29 useful cropped rule visuals and encounter maps; five non-essential source crops remain archived but are no longer exposed by visuals.json."
+  ],
+  "warnings": [
+    {
+      "id": "visual-geometry-not-semantic",
+      "description": "Figures and deployment diagrams are indexed with page and bounding-box geometry, but diagrams have not been converted into a complete vector rules model."
+    },
+    {
+      "id": "archipelago-source-label-conflict",
+      "description": "The Archipelago source visually labels Captain of the Crest as an Attacker’s Primary Objective, while the body explicitly applies to each Admiral. The normalized role is both and the original label is preserved in sourceRoleLabel."
+    },
+    {
+      "id": "machine-assisted-segmentation",
+      "description": "All pages were processed with positioned text and cross-extraction checks. Critical pages and known failure cases were visually checked, but the dataset remains a machine-assisted transcription rather than an official digital rules API."
+    },
+    {
+      "id": "raw-source-preserved",
+      "description": "Obvious extraction artefacts are normalized in canonical modules; source-pages.json retains the original raw extraction for auditability."
+    }
+  ],
+  "knownSourceIssues": [
+    "The PDF text layer contains duplicated overlay words on some pages. Canonical text uses pdftotext layout extraction, cross-checked against alternate extraction and rendered pages.",
+    "Some table cells contain dice-face graphics rather than text. Those tables are marked with hasGraphicCells=true and retain their source page/bounding box.",
+    "Illustrations and diagrams are indexed in figures.json and source-pages.json; their full visual geometry is not converted into gameplay rules unless the page also contains explicit textual rules."
+  ],
+  "tokenAgreement": {
+    "mean": 0.9074,
+    "median": 0.9305,
+    "minimum": 0.6667,
+    "pagesBelow0_80": [
+      7,
+      38,
+      68,
+      73,
+      74,
+      78,
+      86,
+      92,
+      96,
+      106,
+      124,
+      126,
+      149,
+      150,
+      159
+    ],
+    "note": "Low agreement usually reflects different reading order on multi-column or image-heavy pages, not conflicting rules text."
+  },
+  "visualReview": {
+    "renderCount": 159,
+    "allPagesRepresented": true,
+    "criticalPagesCrossChecked": 88,
+    "scope": "Critical rules, tables, encounters and known low-agreement pages; not a claim of manual word-by-word review of every page."
+  },
+  "datasetVersion": "2.1.0",
+  "assetValidation": {
+    "fullPageRendersIncluded": false,
+    "curatedVisualCount": 29,
+    "curatedAssetFilesFound": 34,
+    "allCuratedAssetsReadable": true,
+    "allVisualIdsUnique": true,
+    "allAssetsHaveAltText": true,
+    "allAssetsHaveSourceGeometry": true
+  }
+}

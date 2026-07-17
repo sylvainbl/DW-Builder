@@ -1,0 +1,1469 @@
+{
+  "schemaVersion": "2.0.0",
+  "documentId": "dw-rulebook-4.00",
+  "assetPolicy": {
+    "fullPageRendersIncluded": false,
+    "selectionRule": "Include only diagrams, examples, token references and encounter maps whose visual layout materially improves understanding beyond the structured text.",
+    "normalApplicationUse": "Use visuals.json. figures.json and source-pages.json are provenance and audit modules and should not be loaded for the normal rules UI."
+  },
+  "visuals": [
+    {
+      "id": "visual.play-area-edges-and-deployment-zones",
+      "title": "Play Area Edges and Deployment Zones",
+      "category": "play_area",
+      "description": "Diagram identifying controlled edges, neutral edges and the two deployment zones.",
+      "altText": "Rectangular play area with the first and second Admirals’ controlled edges and deployment zones, plus neutral side edges.",
+      "assetReference": "assets/rules/play-area-edges-and-deployment-zones.webp",
+      "mimeType": "image/webp",
+      "width": 532,
+      "height": 682,
+      "sha256": "e1088559d5f04102d9f1b7d0ba708862491017593ee6747d72f3595a01851aac",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          17
+        ],
+        "printedPages": [
+          15
+        ],
+        "sourceFigurePageId": "figure-page-017",
+        "sourceFigureIds": [],
+        "cropPixelBbox": [
+          78,
+          240,
+          344,
+          581
+        ],
+        "cropPdfBbox": [
+          63.86,
+          201.41,
+          281.64,
+          487.58
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.the-play-area"
+      ],
+      "relatedSectionIds": [
+        "play-area-overview"
+      ]
+    },
+    {
+      "id": "visual.quadrants-and-halves",
+      "title": "Quadrants and Halves",
+      "category": "play_area",
+      "description": "Diagram dividing the play area into four quadrants and two Admirals’ halves.",
+      "altText": "Play area divided by a horizontal centre line and a vertical centre line into four labelled quadrants.",
+      "assetReference": "assets/rules/quadrants-and-halves.webp",
+      "mimeType": "image/webp",
+      "width": 584,
+      "height": 514,
+      "sha256": "6a23644f80fba3a64ab32873f431b3c51e23d0d249bceae74445db32785c261a",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          18
+        ],
+        "printedPages": [
+          16
+        ],
+        "sourceFigurePageId": "figure-page-018",
+        "sourceFigureIds": [],
+        "cropPixelBbox": [
+          113,
+          246,
+          405,
+          503
+        ],
+        "cropPdfBbox": [
+          92.51,
+          206.45,
+          331.58,
+          422.12
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.quadrants-and-halves"
+      ],
+      "relatedSectionIds": [
+        "play-area-overview"
+      ]
+    },
+    {
+      "id": "visual.model-centre-point-and-arcs",
+      "title": "Model Centre Point and Arcs",
+      "category": "models",
+      "description": "Reference diagrams showing a model’s centre point and its fore, aft, port and starboard arcs.",
+      "altText": "Top-down ship diagrams marking the centre point and the four firing arcs around the model.",
+      "assetReference": "assets/rules/model-centre-point-and-arcs.webp",
+      "mimeType": "image/webp",
+      "width": 280,
+      "height": 574,
+      "sha256": "82d8a5cd38b176ee2b0095fa03c6ce15369210b7033120d5ce725df4c8e9a9ea",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          23
+        ],
+        "printedPages": [
+          21
+        ],
+        "sourceFigurePageId": "figure-page-023",
+        "sourceFigureIds": [
+          "figure.page-023.image-02",
+          "figure.page-023.image-04",
+          "figure.page-023.image-05",
+          "figure.page-023.image-06"
+        ],
+        "cropPixelBbox": [
+          220,
+          338,
+          360,
+          625
+        ],
+        "cropPdfBbox": [
+          180.12,
+          283.65,
+          294.74,
+          524.51
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.arcs"
+      ],
+      "relatedSectionIds": [
+        "understanding-models"
+      ]
+    },
+    {
+      "id": "visual.range-bands",
+      "title": "Range Bands",
+      "category": "measurement",
+      "description": "Visual example of close, standard and extreme range measured from a model.",
+      "altText": "Two ships and a range ruler showing up to 10 inches as close range, 10 to 30 inches as standard range, and more than 30 inches as extreme range.",
+      "assetReference": "assets/rules/range-bands.webp",
+      "mimeType": "image/webp",
+      "width": 700,
+      "height": 732,
+      "sha256": "332c4323f17c144ff43ed6947182920cd1fb8c8a0be9861b733d17ce275c9ad7",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          24
+        ],
+        "printedPages": [
+          22
+        ],
+        "sourceFigurePageId": "figure-page-024",
+        "sourceFigureIds": [
+          "figure.page-024.image-02"
+        ],
+        "cropPixelBbox": [
+          150,
+          302,
+          500,
+          668
+        ],
+        "cropPdfBbox": [
+          122.81,
+          253.44,
+          409.36,
+          560.59
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.measuring-distances"
+      ],
+      "relatedSectionIds": [
+        "understanding-models"
+      ],
+      "relatedTableIds": [
+        "measurement-range-bands"
+      ]
+    },
+    {
+      "id": "visual.proximity",
+      "title": "Proximity",
+      "category": "measurement",
+      "description": "Example showing how proximity and range are measured between models.",
+      "altText": "Ships connected by dashed measurement lines labelled close, standard and extreme range, illustrating proximity.",
+      "assetReference": "assets/rules/proximity.webp",
+      "mimeType": "image/webp",
+      "width": 850,
+      "height": 944,
+      "sha256": "b7f1ba4e388cdf9c62f48f68543c76ac99489b3e69f06fdcbcb0923e49336b6f",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          25
+        ],
+        "printedPages": [
+          23
+        ],
+        "sourceFigurePageId": "figure-page-025",
+        "sourceFigureIds": [
+          "figure.page-025.image-02"
+        ],
+        "cropPixelBbox": [
+          55,
+          190,
+          480,
+          662
+        ],
+        "cropPdfBbox": [
+          45.03,
+          159.45,
+          392.98,
+          555.56
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.proximity"
+      ],
+      "relatedSectionIds": [
+        "understanding-models"
+      ]
+    },
+    {
+      "id": "visual.unit-coherency-examples",
+      "title": "Unit Coherency Examples",
+      "category": "units",
+      "description": "Four examples showing units in one formation and units split into multiple formations.",
+      "altText": "Four top-down diagrams labelled A to D showing coherent and out-of-coherency groups of ships.",
+      "assetReference": "assets/rules/unit-coherency-examples.webp",
+      "mimeType": "image/webp",
+      "width": 612,
+      "height": 850,
+      "sha256": "4a57af71a3f881e169810884f90c4001ce70253d9aef30bcce5d45e7e76ad55b",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          27
+        ],
+        "printedPages": [
+          25
+        ],
+        "sourceFigurePageId": "figure-page-027",
+        "sourceFigureIds": [
+          "figure.page-027.image-02",
+          "figure.page-027.image-03",
+          "figure.page-027.image-04",
+          "figure.page-027.image-05",
+          "figure.page-027.image-06",
+          "figure.page-027.image-07",
+          "figure.page-027.image-08",
+          "figure.page-027.image-09",
+          "figure.page-027.image-10",
+          "figure.page-027.image-11",
+          "figure.page-027.image-12",
+          "figure.page-027.image-13",
+          "figure.page-027.image-14",
+          "figure.page-027.image-15",
+          "figure.page-027.image-16",
+          "figure.page-027.image-17",
+          "figure.page-027.image-18",
+          "figure.page-027.image-19",
+          "figure.page-027.image-20",
+          "figure.page-027.image-21",
+          "figure.page-027.image-22",
+          "figure.page-027.image-23",
+          "figure.page-027.image-24",
+          "figure.page-027.image-25",
+          "figure.page-027.image-26",
+          "figure.page-027.image-27",
+          "figure.page-027.image-28",
+          "figure.page-027.image-29",
+          "figure.page-027.image-30",
+          "figure.page-027.image-31",
+          "figure.page-027.image-32",
+          "figure.page-027.image-33",
+          "figure.page-027.image-34",
+          "figure.page-027.image-35",
+          "figure.page-027.image-36",
+          "figure.page-027.image-37",
+          "figure.page-027.image-38",
+          "figure.page-027.image-39",
+          "figure.page-027.image-40",
+          "figure.page-027.image-41",
+          "figure.page-027.image-42",
+          "figure.page-027.image-43",
+          "figure.page-027.image-44",
+          "figure.page-027.image-45",
+          "figure.page-027.image-46",
+          "figure.page-027.image-47",
+          "figure.page-027.image-48"
+        ],
+        "cropPixelBbox": [
+          65,
+          96,
+          371,
+          521
+        ],
+        "cropPdfBbox": [
+          53.22,
+          80.56,
+          303.74,
+          437.23
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.unit-coherency"
+      ],
+      "relatedSectionIds": [
+        "understanding-units"
+      ]
+    },
+    {
+      "id": "visual.visibility-blocked-and-clear",
+      "title": "Visibility: Clear, Blocked and Obscured",
+      "category": "visibility",
+      "description": "Three examples illustrating clear visibility, blocked visibility and obscured visibility.",
+      "altText": "Three diagrams tracing lines from an active model to target models around intervening ships of different Mass.",
+      "assetReference": "assets/rules/visibility-blocked-and-clear.webp",
+      "mimeType": "image/webp",
+      "width": 526,
+      "height": 802,
+      "sha256": "98e8976b4105b05ed23d4941c3ac7c2050ef240b43d8c68ab371619a26dd7884",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          40
+        ],
+        "printedPages": [
+          38
+        ],
+        "sourceFigurePageId": "figure-page-040",
+        "sourceFigureIds": [
+          "figure.page-040.image-02",
+          "figure.page-040.image-03",
+          "figure.page-040.image-04",
+          "figure.page-040.image-05",
+          "figure.page-040.image-06",
+          "figure.page-040.image-07",
+          "figure.page-040.image-08",
+          "figure.page-040.image-09",
+          "figure.page-040.image-10",
+          "figure.page-040.image-11",
+          "figure.page-040.image-12"
+        ],
+        "cropPixelBbox": [
+          145,
+          205,
+          408,
+          606
+        ],
+        "cropPdfBbox": [
+          118.71,
+          172.04,
+          334.04,
+          508.56
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.visibility",
+        "rule.checking-visibility"
+      ],
+      "relatedSectionIds": [
+        "visibility"
+      ]
+    },
+    {
+      "id": "visual.visibility-multiple-participants",
+      "title": "Visibility with Multiple Participating Models",
+      "category": "visibility",
+      "description": "Example of an attack in which different participating models have different lines of visibility.",
+      "altText": "Three attacking frigates tracing visibility lines to a target, with one line obscured by another model.",
+      "assetReference": "assets/rules/visibility-multiple-participants.webp",
+      "mimeType": "image/webp",
+      "width": 598,
+      "height": 526,
+      "sha256": "9e21683dad29150eb4993475cc9bfc014bf84393b57e0a2c98838aba9e60d43f",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          41
+        ],
+        "printedPages": [
+          39
+        ],
+        "sourceFigurePageId": "figure-page-041",
+        "sourceFigureIds": [
+          "figure.page-041.image-02",
+          "figure.page-041.image-03",
+          "figure.page-041.image-04",
+          "figure.page-041.image-05",
+          "figure.page-041.image-06",
+          "figure.page-041.image-07",
+          "figure.page-041.image-08",
+          "figure.page-041.image-09",
+          "figure.page-041.image-11"
+        ],
+        "cropPixelBbox": [
+          66,
+          247,
+          365,
+          510
+        ],
+        "cropPdfBbox": [
+          54.04,
+          207.28,
+          298.83,
+          428.0
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.checking-visibility"
+      ],
+      "relatedSectionIds": [
+        "visibility"
+      ]
+    },
+    {
+      "id": "visual.coming-about-and-turning-template",
+      "title": "Coming About and the Turning Template",
+      "category": "movement",
+      "description": "Illustrations showing placement and use of the turning template when a model comes about.",
+      "altText": "Ship aligned with a segmented turning template, with centre point, forward direction and navigation marks labelled.",
+      "assetReference": "assets/rules/coming-about-and-turning-template.webp",
+      "mimeType": "image/webp",
+      "width": 660,
+      "height": 876,
+      "sha256": "9ccabf34736ad64244a48ddf36e5f62d958ab9362067742d024b3658f0b6129b",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          43
+        ],
+        "printedPages": [
+          41
+        ],
+        "sourceFigurePageId": "figure-page-043",
+        "sourceFigureIds": [
+          "figure.page-043.image-02",
+          "figure.page-043.image-03",
+          "figure.page-043.image-04",
+          "figure.page-043.image-05"
+        ],
+        "cropPixelBbox": [
+          128,
+          174,
+          458,
+          612
+        ],
+        "cropPdfBbox": [
+          104.8,
+          146.02,
+          374.97,
+          513.6
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.coming-about"
+      ],
+      "relatedSectionIds": [
+        "moving-models"
+      ]
+    },
+    {
+      "id": "visual.dice-faces",
+      "title": "Action Dice and Critical Damage Dice Faces",
+      "category": "dice",
+      "description": "Icon reference for the six faces of Action Dice and Critical Damage Dice.",
+      "altText": "Two-row dice-face reference with Action Dice results and matching Critical Damage results.",
+      "assetReference": "assets/rules/dice-faces.webp",
+      "mimeType": "image/webp",
+      "width": 764,
+      "height": 408,
+      "sha256": "34bda4f618a80b9f9488c23e9d794e5801a10da7e020285f934e7a751e8ff833",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          46
+        ],
+        "printedPages": [
+          44
+        ],
+        "sourceFigurePageId": "figure-page-046",
+        "sourceFigureIds": [
+          "figure.page-046.image-02",
+          "figure.page-046.image-03",
+          "figure.page-046.image-04",
+          "figure.page-046.image-05",
+          "figure.page-046.image-06",
+          "figure.page-046.image-07",
+          "figure.page-046.image-08",
+          "figure.page-046.image-09",
+          "figure.page-046.image-10",
+          "figure.page-046.image-11",
+          "figure.page-046.image-12",
+          "figure.page-046.image-13"
+        ],
+        "cropPixelBbox": [
+          68,
+          98,
+          450,
+          302
+        ],
+        "cropPdfBbox": [
+          55.67,
+          82.24,
+          368.42,
+          253.44
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.rolling-dice"
+      ],
+      "relatedSectionIds": [
+        "rolling-dice"
+      ],
+      "relatedTableIds": [
+        "dice-face-reference"
+      ]
+    },
+    {
+      "id": "visual.exploding-strikes-and-rerolls",
+      "title": "Exploding Strikes and Re-rolls",
+      "category": "action_roll",
+      "description": "Worked examples showing additional dice from Exploding Strikes and the timing of re-rolls.",
+      "altText": "Two sequences of dice results labelled A to E, including an example Victory and Valour card.",
+      "assetReference": "assets/rules/exploding-strikes-and-rerolls.webp",
+      "mimeType": "image/webp",
+      "width": 740,
+      "height": 1106,
+      "sha256": "abd71bc19ff04a770691dd8b69a860839042f56eb038a5dab3561768542b39ad",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          49
+        ],
+        "printedPages": [
+          47
+        ],
+        "sourceFigurePageId": "figure-page-049",
+        "sourceFigureIds": [
+          "figure.page-049.image-02",
+          "figure.page-049.image-03",
+          "figure.page-049.image-04",
+          "figure.page-049.image-05",
+          "figure.page-049.image-06",
+          "figure.page-049.image-07",
+          "figure.page-049.image-08",
+          "figure.page-049.image-09",
+          "figure.page-049.image-10"
+        ],
+        "cropPixelBbox": [
+          63,
+          65,
+          433,
+          618
+        ],
+        "cropPdfBbox": [
+          51.58,
+          54.55,
+          354.5,
+          518.63
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.making-an-action-roll"
+      ],
+      "relatedProcedureIds": [
+        "procedure.action-roll"
+      ]
+    },
+    {
+      "id": "visual.counting-hits-and-counters",
+      "title": "Counting Hits and Counters",
+      "category": "action_roll",
+      "description": "Worked example showing how counters remove Hits from an Action Roll.",
+      "altText": "Three dice groups labelled F, G and H showing an Action Roll, Resistance Roll and remaining dice after counters are applied.",
+      "assetReference": "assets/rules/counting-hits-and-counters.webp",
+      "mimeType": "image/webp",
+      "width": 766,
+      "height": 476,
+      "sha256": "9adb07ac105914aa579cb17ad8236a5d9fc06e55425378b8314dd3603a7b8bfc",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          50
+        ],
+        "printedPages": [
+          48
+        ],
+        "sourceFigurePageId": "figure-page-050",
+        "sourceFigureIds": [
+          "figure.page-050.image-02",
+          "figure.page-050.image-03",
+          "figure.page-050.image-04",
+          "figure.page-050.image-05"
+        ],
+        "cropPixelBbox": [
+          55,
+          234,
+          438,
+          472
+        ],
+        "cropPdfBbox": [
+          45.03,
+          196.38,
+          358.6,
+          396.11
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.making-an-action-roll"
+      ],
+      "relatedProcedureIds": [
+        "procedure.action-roll"
+      ]
+    },
+    {
+      "id": "visual.grouping-hits-into-successes",
+      "title": "Grouping Hits into Successes",
+      "category": "action_roll",
+      "description": "Worked example grouping Hits according to a Success Threshold.",
+      "altText": "Dice results labelled I and J, with coloured groups showing how Hits become Successes.",
+      "assetReference": "assets/rules/grouping-hits-into-successes.webp",
+      "mimeType": "image/webp",
+      "width": 568,
+      "height": 546,
+      "sha256": "eb6a5cc03fcf7d7a315949ae38c964686c0e5b6a7862477693d29e0f860ab733",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          51
+        ],
+        "printedPages": [
+          49
+        ],
+        "sourceFigurePageId": "figure-page-051",
+        "sourceFigureIds": [
+          "figure.page-051.image-02",
+          "figure.page-051.image-03",
+          "figure.page-051.image-04",
+          "figure.page-051.image-05",
+          "figure.page-051.image-06"
+        ],
+        "cropPixelBbox": [
+          66,
+          205,
+          350,
+          478
+        ],
+        "cropPdfBbox": [
+          54.04,
+          172.04,
+          286.55,
+          401.14
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.making-an-action-roll"
+      ],
+      "relatedProcedureIds": [
+        "procedure.action-roll"
+      ]
+    },
+    {
+      "id": "visual.damage-tokens",
+      "title": "Damage Tokens",
+      "category": "tokens",
+      "description": "Damage token values and an example of replacing a token as Damage increases.",
+      "altText": "Damage tokens numbered 1, 2 and 3 beside two ship examples labelled A and B.",
+      "assetReference": "assets/rules/damage-tokens.webp",
+      "mimeType": "image/webp",
+      "width": 692,
+      "height": 674,
+      "sha256": "b8336ca7e1a1735a830f0e402326d5311625cb76444709b12dfa9a4ed3a9b6f2",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          56
+        ],
+        "printedPages": [
+          54
+        ],
+        "sourceFigurePageId": "figure-page-056",
+        "sourceFigureIds": [
+          "figure.page-056.image-02",
+          "figure.page-056.image-03",
+          "figure.page-056.image-04",
+          "figure.page-056.image-06",
+          "figure.page-056.image-07",
+          "figure.page-056.image-08",
+          "figure.page-056.image-09"
+        ],
+        "cropPixelBbox": [
+          68,
+          326,
+          414,
+          663
+        ],
+        "cropPdfBbox": [
+          55.67,
+          273.58,
+          338.95,
+          556.4
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.inflicting-damage"
+      ],
+      "relatedSectionIds": [
+        "inflicting-damage"
+      ],
+      "relatedTokenIds": [
+        "token.damage"
+      ]
+    },
+    {
+      "id": "visual.disorder-tokens",
+      "title": "Disorder Tokens",
+      "category": "tokens",
+      "description": "The three Disorder levels and an example of increasing a model’s Disorder.",
+      "altText": "Level 1, Level 2 and Level 3 Disorder tokens above two ship examples labelled C and D.",
+      "assetReference": "assets/rules/disorder-tokens.webp",
+      "mimeType": "image/webp",
+      "width": 592,
+      "height": 782,
+      "sha256": "3b28fc69b40a9bc5ae223193073ec750b2d8a589546e457400b3f9cd0830e0e5",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          58
+        ],
+        "printedPages": [
+          56
+        ],
+        "sourceFigurePageId": "figure-page-058",
+        "sourceFigureIds": [
+          "figure.page-058.image-02",
+          "figure.page-058.image-03",
+          "figure.page-058.image-04",
+          "figure.page-058.image-05",
+          "figure.page-058.image-06",
+          "figure.page-058.image-07",
+          "figure.page-058.image-08",
+          "figure.page-058.image-09",
+          "figure.page-058.image-10",
+          "figure.page-058.image-11"
+        ],
+        "cropPixelBbox": [
+          120,
+          114,
+          416,
+          505
+        ],
+        "cropPdfBbox": [
+          98.25,
+          95.67,
+          340.58,
+          423.8
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.gaining-disorder"
+      ],
+      "relatedSectionIds": [
+        "gaining-disorder"
+      ],
+      "relatedTokenIds": [
+        "token.disorder"
+      ]
+    },
+    {
+      "id": "visual.ramming-worked-example",
+      "title": "Ramming Worked Example",
+      "category": "movement",
+      "description": "Worked example of a Ram, including movement, Action Dice and outcomes for both models.",
+      "altText": "Five panels labelled A to E showing a destroyer ramming a cruiser and the dice rolled for the collision.",
+      "assetReference": "assets/rules/ramming-worked-example.webp",
+      "mimeType": "image/webp",
+      "width": 782,
+      "height": 826,
+      "sha256": "7ddd4224c8507e4ef6543e69396cfc59f59b932f51abc4d81aa39b81971e1ce9",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          85
+        ],
+        "printedPages": [
+          83
+        ],
+        "sourceFigurePageId": "figure-page-085",
+        "sourceFigureIds": [
+          "figure.page-085.image-02",
+          "figure.page-085.image-03",
+          "figure.page-085.image-04",
+          "figure.page-085.image-05",
+          "figure.page-085.image-06",
+          "figure.page-085.image-07",
+          "figure.page-085.image-08",
+          "figure.page-085.image-09",
+          "figure.page-085.image-10",
+          "figure.page-085.image-11",
+          "figure.page-085.image-12",
+          "figure.page-085.image-13",
+          "figure.page-085.image-14",
+          "figure.page-085.image-15",
+          "figure.page-085.image-16"
+        ],
+        "cropPixelBbox": [
+          60,
+          190,
+          451,
+          603
+        ],
+        "cropPdfBbox": [
+          49.12,
+          159.45,
+          369.24,
+          506.04
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.ramming.p82",
+        "rule.consequences-of-ramming"
+      ],
+      "relatedSectionIds": [
+        "ramming"
+      ],
+      "relatedProcedureIds": [
+        "procedure.ram"
+      ]
+    },
+    {
+      "id": "visual.critical-damage-token-icons",
+      "title": "Critical Damage Token Icons",
+      "category": "tokens",
+      "description": "Visual reference for the six Critical Damage token types.",
+      "altText": "Vertical list of Shredded Defences, Breach, Structural Failure, Hazard, Navigation Lock and System Failure tokens.",
+      "assetReference": "assets/rules/critical-damage-token-icons.webp",
+      "mimeType": "image/webp",
+      "width": 250,
+      "height": 1044,
+      "sha256": "691246d10591bf6b4c2205ea118e6f539adc6bd047fe94249a145650c74c05ed",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          89
+        ],
+        "printedPages": [
+          87
+        ],
+        "sourceFigurePageId": "figure-page-089",
+        "sourceFigureIds": [
+          "figure.page-089.image-02",
+          "figure.page-089.image-04",
+          "figure.page-089.image-05",
+          "figure.page-089.image-06",
+          "figure.page-089.image-07",
+          "figure.page-089.image-08",
+          "figure.page-089.image-09",
+          "figure.page-089.image-10"
+        ],
+        "cropPixelBbox": [
+          368,
+          72,
+          493,
+          594
+        ],
+        "cropPdfBbox": [
+          301.29,
+          60.42,
+          403.63,
+          498.49
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.critical-damage"
+      ],
+      "relatedSectionIds": [
+        "critical-damage"
+      ],
+      "relatedTokenIds": [
+        "token.critical-damage"
+      ]
+    },
+    {
+      "id": "visual.aerial-weapon-target-sequence",
+      "title": "Aerial Weapon Target Sequence",
+      "category": "attack",
+      "description": "Example showing repeated Aerial weapon targeting along a line of models.",
+      "altText": "Aerial weapon attack diagram with successive targets labelled L1 to L3 and B1 to B4 along a measured line.",
+      "assetReference": "assets/rules/aerial-weapon-target-sequence.webp",
+      "mimeType": "image/webp",
+      "width": 470,
+      "height": 532,
+      "sha256": "452906602ea097c3148fbdb2ef04c31a279a110c2501bad08029bded999862d1",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          95
+        ],
+        "printedPages": [
+          93
+        ],
+        "sourceFigurePageId": "figure-page-095",
+        "sourceFigureIds": [
+          "figure.page-095.image-02",
+          "figure.page-095.image-03",
+          "figure.page-095.image-04",
+          "figure.page-095.image-05",
+          "figure.page-095.image-06",
+          "figure.page-095.image-07",
+          "figure.page-095.image-08"
+        ],
+        "cropPixelBbox": [
+          48,
+          394,
+          283,
+          660
+        ],
+        "cropPdfBbox": [
+          39.3,
+          330.65,
+          231.7,
+          553.88
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.aerial-weapons"
+      ],
+      "relatedSectionIds": [
+        "aerial-weapons"
+      ]
+    },
+    {
+      "id": "visual.srs-stack-examples",
+      "title": "SRS Stack Examples",
+      "category": "srs",
+      "description": "Examples of valid and invalid Short Range Squadron stacks, including mixed stacks.",
+      "altText": "Five diagrams labelled A to E showing SRS tokens stacked beside ships, with valid and invalid arrangements.",
+      "assetReference": "assets/rules/srs-stack-examples.webp",
+      "mimeType": "image/webp",
+      "width": 764,
+      "height": 792,
+      "sha256": "17aab0524841aae1c56d71fbe18956a92e30968886dbb07abdeddd6c71c886c1",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          109
+        ],
+        "printedPages": [
+          107
+        ],
+        "sourceFigurePageId": "figure-page-109",
+        "sourceFigureIds": [
+          "figure.page-109.image-02",
+          "figure.page-109.image-03",
+          "figure.page-109.image-04",
+          "figure.page-109.image-05",
+          "figure.page-109.image-06",
+          "figure.page-109.image-07",
+          "figure.page-109.image-08"
+        ],
+        "cropPixelBbox": [
+          58,
+          207,
+          440,
+          603
+        ],
+        "cropPdfBbox": [
+          47.49,
+          173.72,
+          360.23,
+          506.04
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.srs-stacks"
+      ],
+      "relatedSectionIds": [
+        "srs-in-play"
+      ]
+    },
+    {
+      "id": "visual.interception-worked-example",
+      "title": "Interception Worked Example",
+      "category": "srs",
+      "description": "Worked example of an Interception Attempt and the resulting SRS tokens.",
+      "altText": "Three panels labelled E to G showing SRS tokens, dice and the surviving tokens after an Interception Attempt.",
+      "assetReference": "assets/rules/interception-worked-example.webp",
+      "mimeType": "image/webp",
+      "width": 706,
+      "height": 548,
+      "sha256": "b3b011e4f2229cb5f9911e15bcd12911fc7fcc6d24ce762f49f7526735b10c1d",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          115
+        ],
+        "printedPages": [
+          113
+        ],
+        "sourceFigurePageId": "figure-page-115",
+        "sourceFigureIds": [
+          "figure.page-115.image-03",
+          "figure.page-115.image-04",
+          "figure.page-115.image-05",
+          "figure.page-115.image-06"
+        ],
+        "cropPixelBbox": [
+          84,
+          300,
+          437,
+          574
+        ],
+        "cropPdfBbox": [
+          68.77,
+          251.76,
+          357.78,
+          481.71
+        ]
+      },
+      "relatedSectionIds": [
+        "resolving-srs-missions"
+      ],
+      "relatedProcedureIds": [
+        "procedure.interception-attempt"
+      ]
+    },
+    {
+      "id": "visual.treacherous-water-and-terrain-proximity",
+      "title": "Treacherous Water and Terrain Proximity",
+      "category": "terrain",
+      "description": "Example distinguishing the Treacherous Water band from a Terrain Feature’s Proximity area.",
+      "altText": "Island surrounded by coloured bands with two cruisers labelled K1 and K2 at different distances.",
+      "assetReference": "assets/rules/treacherous-water-and-terrain-proximity.webp",
+      "mimeType": "image/webp",
+      "width": 722,
+      "height": 552,
+      "sha256": "9261bbc21233748c80c23f25048d8aa293ddde16f760c35c5cbc1dbda9cd9556",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          121
+        ],
+        "printedPages": [
+          119
+        ],
+        "sourceFigurePageId": "figure-page-121",
+        "sourceFigureIds": [
+          "figure.page-121.image-02",
+          "figure.page-121.image-03"
+        ],
+        "cropPixelBbox": [
+          119,
+          348,
+          480,
+          624
+        ],
+        "cropPdfBbox": [
+          97.43,
+          292.05,
+          392.98,
+          523.67
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.hampered-visibility"
+      ],
+      "relatedSectionIds": [
+        "terrain-features"
+      ]
+    },
+    {
+      "id": "visual.marker-types",
+      "title": "Strategic Objective, Minefield and Wreck Markers",
+      "category": "terrain",
+      "description": "Visual reference for numbered Strategic Objective markers, a Minefield marker and a Wreck marker.",
+      "altText": "Four numbered objective markers above circular Minefield and Wreck markers.",
+      "assetReference": "assets/rules/marker-types.webp",
+      "mimeType": "image/webp",
+      "width": 390,
+      "height": 1210,
+      "sha256": "751267288c41becdf7e433ac804013016f3a2f1db0c8124ad684a735c3acaf90",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          123
+        ],
+        "printedPages": [
+          121
+        ],
+        "sourceFigurePageId": "figure-page-123",
+        "sourceFigureIds": [
+          "figure.page-123.image-02",
+          "figure.page-123.image-03",
+          "figure.page-123.image-04",
+          "figure.page-123.image-05",
+          "figure.page-123.image-06",
+          "figure.page-123.image-07",
+          "figure.page-123.image-08",
+          "figure.page-123.image-09"
+        ],
+        "cropPixelBbox": [
+          300,
+          62,
+          495,
+          667
+        ],
+        "cropPdfBbox": [
+          245.61,
+          52.03,
+          405.26,
+          559.75
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.markers"
+      ],
+      "relatedSectionIds": [
+        "markers"
+      ],
+      "relatedMarkerIds": [
+        "marker.strategic-objective",
+        "marker.minefield",
+        "marker.wreck"
+      ]
+    },
+    {
+      "id": "visual.terrain-placement-example",
+      "title": "Terrain Placement Example",
+      "category": "setup",
+      "description": "Example terrain area showing legal terrain placement relative to deployment zones.",
+      "altText": "Rectangular play area with deployment zones and terrain pieces placed within the central terrain area.",
+      "assetReference": "assets/rules/terrain-placement-example.webp",
+      "mimeType": "image/webp",
+      "width": 506,
+      "height": 632,
+      "sha256": "75804620456a979c9bc1d5237cb53ed63e76acf219f4e1ffd8206e4e7661cea1",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          136
+        ],
+        "printedPages": [
+          134
+        ],
+        "sourceFigurePageId": "figure-page-136",
+        "sourceFigureIds": [
+          "figure.page-136.image-02",
+          "figure.page-136.image-03"
+        ],
+        "cropPixelBbox": [
+          155,
+          339,
+          408,
+          655
+        ],
+        "cropPdfBbox": [
+          126.9,
+          284.49,
+          334.04,
+          549.68
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.3-prepare-the-play-area"
+      ],
+      "relatedSectionIds": [
+        "prepare-the-play-area"
+      ]
+    },
+    {
+      "id": "visual.encounter-meeting-engagement-map",
+      "title": "Meeting Engagement Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 1: Meeting Engagement.",
+      "altText": "Meeting Engagement map with controlled edges, deployment zones, centre line and distance arrows.",
+      "assetReference": "assets/rules/encounter-meeting-engagement-map.webp",
+      "mimeType": "image/webp",
+      "width": 584,
+      "height": 604,
+      "sha256": "f7bb74a594907cd770741c52da54ab010ac389061dfd97469582f912fd04f95b",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          142
+        ],
+        "printedPages": [
+          140
+        ],
+        "sourceFigurePageId": "figure-page-142",
+        "sourceFigureIds": [
+          "figure.page-142.image-02",
+          "figure.page-142.image-03"
+        ],
+        "cropPixelBbox": [
+          166,
+          322,
+          458,
+          624
+        ],
+        "cropPdfBbox": [
+          135.91,
+          270.23,
+          374.97,
+          523.67
+        ]
+      },
+      "relatedSectionIds": [
+        "meeting-engagement"
+      ],
+      "relatedEncounterIds": [
+        "encounter.meeting-engagement"
+      ]
+    },
+    {
+      "id": "visual.encounter-salvage-rights-map",
+      "title": "Salvage Rights Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 2: Salvage Rights.",
+      "altText": "Salvage Rights map with controlled edges, deployment zones, centre line and distance arrows.",
+      "assetReference": "assets/rules/encounter-salvage-rights-map.webp",
+      "mimeType": "image/webp",
+      "width": 586,
+      "height": 600,
+      "sha256": "e0f17106119a10b29eef5de57b14df84269e2e0d5d199426eb0d729867bfef30",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          144
+        ],
+        "printedPages": [
+          142
+        ],
+        "sourceFigurePageId": "figure-page-144",
+        "sourceFigureIds": [
+          "figure.page-144.image-02",
+          "figure.page-144.image-03"
+        ],
+        "cropPixelBbox": [
+          158,
+          326,
+          451,
+          626
+        ],
+        "cropPdfBbox": [
+          129.36,
+          273.58,
+          369.24,
+          525.35
+        ]
+      },
+      "relatedSectionIds": [
+        "salvage-rights"
+      ],
+      "relatedEncounterIds": [
+        "encounter.salvage-rights"
+      ]
+    },
+    {
+      "id": "visual.encounter-oil-fields-map",
+      "title": "The Oil Fields Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 3: The Oil Fields, including oil-platform areas.",
+      "altText": "Oil Fields map with controlled edges, deployment zones, centre line, distance arrows and two orange platform areas.",
+      "assetReference": "assets/rules/encounter-oil-fields-map.webp",
+      "mimeType": "image/webp",
+      "width": 596,
+      "height": 624,
+      "sha256": "c11d075d6dd7e693d7b6944cd5e1f441d37c457d75b2eb6698c54c778a888e66",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          146
+        ],
+        "printedPages": [
+          144
+        ],
+        "sourceFigurePageId": "figure-page-146",
+        "sourceFigureIds": [
+          "figure.page-146.image-02",
+          "figure.page-146.image-03"
+        ],
+        "cropPixelBbox": [
+          161,
+          318,
+          459,
+          630
+        ],
+        "cropPdfBbox": [
+          131.81,
+          266.87,
+          375.79,
+          528.7
+        ]
+      },
+      "relatedSectionIds": [
+        "the-oil-fields"
+      ],
+      "relatedEncounterIds": [
+        "encounter.the-oil-fields"
+      ]
+    },
+    {
+      "id": "visual.encounter-blockade-run-map",
+      "title": "Blockade Run Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 4: Blockade Run.",
+      "altText": "Blockade Run map with controlled edges, deployment zones, centre line and distance arrows.",
+      "assetReference": "assets/rules/encounter-blockade-run-map.webp",
+      "mimeType": "image/webp",
+      "width": 560,
+      "height": 568,
+      "sha256": "9cbd64ba214c2dd4071c6d2ba366925a80587cb9acdc74c44afd267fe51bd86e",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          148
+        ],
+        "printedPages": [
+          146
+        ],
+        "sourceFigurePageId": "figure-page-148",
+        "sourceFigureIds": [
+          "figure.page-148.image-02"
+        ],
+        "cropPixelBbox": [
+          176,
+          344,
+          456,
+          628
+        ],
+        "cropPdfBbox": [
+          144.09,
+          288.69,
+          373.33,
+          527.02
+        ]
+      },
+      "relatedSectionIds": [
+        "blockade-run"
+      ],
+      "relatedEncounterIds": [
+        "encounter.blockade-run"
+      ]
+    },
+    {
+      "id": "visual.encounter-archipelago-map",
+      "title": "The Archipelago Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 5: The Archipelago, including the central Island area.",
+      "altText": "Archipelago map with controlled edges, deployment zones, centre line, distance arrows and a central orange Island area.",
+      "assetReference": "assets/rules/encounter-archipelago-map.webp",
+      "mimeType": "image/webp",
+      "width": 578,
+      "height": 572,
+      "sha256": "7ad34dacc91bb573b64749582db0c12f0abb83922f44e900af4ad060aa664281",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          150
+        ],
+        "printedPages": [
+          148
+        ],
+        "sourceFigurePageId": "figure-page-150",
+        "sourceFigureIds": [
+          "figure.page-150.image-02",
+          "figure.page-150.image-03"
+        ],
+        "cropPixelBbox": [
+          169,
+          344,
+          458,
+          630
+        ],
+        "cropPdfBbox": [
+          138.36,
+          288.69,
+          374.97,
+          528.7
+        ]
+      },
+      "relatedSectionIds": [
+        "the-archipelago"
+      ],
+      "relatedEncounterIds": [
+        "encounter.the-archipelago"
+      ]
+    },
+    {
+      "id": "visual.encounter-recon-duty-map",
+      "title": "Recon Duty Deployment Map",
+      "category": "encounter",
+      "description": "Deployment map for Common Encounter 6: Recon Duty.",
+      "altText": "Recon Duty map with controlled edges, deployment zones, centre line and distance arrows.",
+      "assetReference": "assets/rules/encounter-recon-duty-map.webp",
+      "mimeType": "image/webp",
+      "width": 584,
+      "height": 580,
+      "sha256": "aeb992657af8bbfe3d8ca8449b6fe866effa7f357ad268738ea2aeec019ab562",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          152
+        ],
+        "printedPages": [
+          150
+        ],
+        "sourceFigurePageId": "figure-page-152",
+        "sourceFigureIds": [
+          "figure.page-152.image-02",
+          "figure.page-152.image-03"
+        ],
+        "cropPixelBbox": [
+          159,
+          337,
+          451,
+          627
+        ],
+        "cropPdfBbox": [
+          130.18,
+          282.81,
+          369.24,
+          526.18
+        ]
+      },
+      "relatedSectionIds": [
+        "recon-duty"
+      ],
+      "relatedEncounterIds": [
+        "encounter.recon-duty"
+      ]
+    }
+  ]
+}

@@ -1,13 +1,14 @@
 import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAppStore } from '../../store'
 import ListsPanel from '../lists/ListsPanel'
+import RulebookPage from '../rules/RulebookPage'
 import UnitDetail from '../unit/UnitDetail'
 import UnitListColumn from '../unit/UnitListColumn'
 import AppHeader from './AppHeader'
 
-type AppView = 'lists' | 'builder' | 'units'
+type AppView = 'lists' | 'builder' | 'units' | 'rules'
 interface UnitPickerTarget {
     battlefleetInstanceId: string | null
     label: string
@@ -15,6 +16,8 @@ interface UnitPickerTarget {
 
 export default function AppShell() {
     const { factionId, unitId } = useParams()
+    const location = useLocation()
+    const navigate = useNavigate()
     const selectedFactionId = useAppStore((state) => state.selectedFactionId)
     const setSelectedFactionId = useAppStore((state) => state.setSelectedFactionId)
     const setSelectedUnitId = useAppStore((state) => state.setSelectedUnitId)
@@ -24,10 +27,18 @@ export default function AppShell() {
     const selectedListGlossary = useAppStore((state) => state.selectedListGlossary)
     const currentList = useAppStore((state) => state.currentList)
     const closeList = useAppStore((state) => state.closeList)
-    const [activeView, setActiveView] = useState<AppView>(() => factionId || unitId ? 'units' : 'lists')
+    const [activeView, setActiveView] = useState<AppView>(() => {
+        if (location.pathname.startsWith('/rules')) return 'rules'
+        return factionId || unitId ? 'units' : 'lists'
+    })
     const [unitPickerTarget, setUnitPickerTarget] = useState<UnitPickerTarget | null>(null)
     const detailPaneRef = useRef<HTMLDivElement>(null)
     const hasDetailSelection = Boolean(selectedUnitId || selectedListInstanceId || selectedBattlefleetInstanceId || selectedListGlossary)
+    const currentView: AppView = location.pathname.startsWith('/rules')
+        ? 'rules'
+        : activeView === 'rules'
+            ? (factionId || unitId ? 'units' : 'lists')
+            : activeView
 
     useEffect(() => {
         if (factionId && factionId !== selectedFactionId) {
@@ -50,6 +61,7 @@ export default function AppShell() {
     const showLists = () => {
         setUnitPickerTarget(null)
         setActiveView('lists')
+        if (location.pathname.startsWith('/rules')) navigate('/')
     }
 
     const enterBuilder = () => {
@@ -61,6 +73,13 @@ export default function AppShell() {
         setUnitPickerTarget(null)
         closeList()
         setActiveView('units')
+        if (location.pathname.startsWith('/rules')) navigate('/')
+    }
+
+    const showRules = () => {
+        setUnitPickerTarget(null)
+        setActiveView('rules')
+        navigate('/rules')
     }
 
     const showMobileList = () => {
@@ -69,15 +88,19 @@ export default function AppShell() {
 
     return (
         <div className="flex h-dvh flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
-            <AppHeader activeView={activeView} onShowLists={showLists} onShowUnits={showUnits} />
+            <AppHeader activeView={currentView} onShowLists={showLists} onShowRules={showRules} onShowUnits={showUnits} />
 
-            {activeView === 'lists' ? (
+            {currentView === 'rules' ? (
+                <div className="min-h-0 flex-1 overflow-hidden">
+                    <RulebookPage />
+                </div>
+            ) : currentView === 'lists' ? (
                 <div className="min-h-0 flex-1 overflow-y-auto">
                     <ListsPanel onEnterBuilder={enterBuilder} />
                 </div>
             ) : (
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                    {activeView === 'builder' ? (
+                    {currentView === 'builder' ? (
                         <div className="flex min-h-11 flex-none items-center gap-3 border-b border-[var(--panel-border)] bg-[var(--panel)] px-3 sm:px-4">
                             <button
                                 type="button"
@@ -99,7 +122,7 @@ export default function AppShell() {
                         <div className={`${hasDetailSelection ? 'hidden' : 'flex'} min-h-0 overflow-hidden border-r border-[var(--panel-border)] bg-[var(--detail-row)] md:flex`}>
                             <div className="min-w-0 flex-1">
                                 <UnitListColumn
-                                    unitPickerTarget={activeView === 'builder' ? unitPickerTarget : null}
+                                    unitPickerTarget={currentView === 'builder' ? unitPickerTarget : null}
                                     onUnitPickerTargetChange={setUnitPickerTarget}
                                 />
                             </div>
@@ -113,13 +136,13 @@ export default function AppShell() {
                                     className="inline-flex items-center gap-1.5 rounded-md border border-[var(--panel-border)] bg-[var(--detail-row)] px-2.5 py-1.5 text-xs font-semibold text-[var(--accent-foreground)] shadow-sm"
                                 >
                                     <ArrowLeft size={14} />
-                                    Back to {activeView === 'units' ? 'units' : 'builder'}
+                                    Back to {currentView === 'units' ? 'units' : 'builder'}
                                 </button>
                             </div>
                             <div className="p-3 sm:p-4">
                                 <UnitDetail
-                                    addTarget={activeView === 'builder' ? unitPickerTarget : null}
-                                    showReadOnlyAttachments={activeView === 'units'}
+                                    addTarget={currentView === 'builder' ? unitPickerTarget : null}
+                                    showReadOnlyAttachments={currentView === 'units'}
                                 />
                             </div>
                         </div>

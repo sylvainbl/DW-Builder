@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Terrain and Markers",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "environmentalFeatures",
+    "terrainFeatures",
+    "markers"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "sharedRules": {
+      "type": "array"
+    },
+    "environmentalFeatures": {
+      "type": "array"
+    },
+    "terrainFeatures": {
+      "type": "array"
+    },
+    "markers": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

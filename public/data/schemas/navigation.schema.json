@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Navigation",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "chapters"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "chapters": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

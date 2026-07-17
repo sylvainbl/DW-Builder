@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "2.0.0",
+  "datasetVersion": "2.1.0",
+  "id": "dw-rulebook-4.00",
+  "title": "Dystopian Wars - The Rules",
+  "version": "4.00",
+  "language": "en",
+  "generatedAt": "2026-07-15T00:00:00+02:00",
+  "generator": {
+    "name": "OpenAI rulebook dataset correction pipeline",
+    "version": "2.0",
+    "methods": [
+      "pdftotext-tsv-layout",
+      "pdftotext-layout",
+      "pdftotext-raw",
+      "PyMuPDF blocks/tables",
+      "rendered-page cross-checks"
+    ]
+  },
+  "source": {
+    "fileName": "DW-Rule-Book-4.00_Full_W (2).pdf",
+    "pageCount": 159,
+    "firstPrinted": "September 2025",
+    "sha256": "e063ba47f8e2798873743999716452f91bebaae250906a0ccb094c87820f6fbc"
+  },
+  "modules": {
+    "navigation": "navigation.json",
+    "sections": "sections.json",
+    "ruleBlocks": "rule-blocks.json",
+    "procedures": "procedures.json",
+    "tables": "tables.json",
+    "actions": "actions.json",
+    "tokens": "tokens.json",
+    "terrain": "terrain.json",
+    "encounters": "encounters.json",
+    "references": "references.json",
+    "sourcePages": "source-pages.json",
+    "figures": "figures.json",
+    "validationReport": "validation-report.json",
+    "visuals": "visuals.json"
+  },
+  "schemas": {
+    "manifest.schema": "schemas/manifest.schema.json",
+    "navigation.schema": "schemas/navigation.schema.json",
+    "sections.schema": "schemas/sections.schema.json",
+    "rule-blocks.schema": "schemas/rule-blocks.schema.json",
+    "procedures.schema": "schemas/procedures.schema.json",
+    "tables.schema": "schemas/tables.schema.json",
+    "actions.schema": "schemas/actions.schema.json",
+    "tokens.schema": "schemas/tokens.schema.json",
+    "terrain.schema": "schemas/terrain.schema.json",
+    "encounters.schema": "schemas/encounters.schema.json",
+    "references.schema": "schemas/references.schema.json",
+    "source-pages.schema": "schemas/source-pages.schema.json",
+    "figures.schema": "schemas/figures.schema.json",
+    "validation-report.schema": "schemas/validation-report.schema.json",
+    "visuals.schema": "schemas/visuals.schema.json"
+  },
+  "counts": {
+    "sections": 100,
+    "ruleBlocks": 235,
+    "tables": 19,
+    "procedures": 13,
+    "actions": 12,
+    "tokens": 5,
+    "criticalDamageEffects": 6,
+    "environmentalFeatures": 3,
+    "terrainFeatures": 5,
+    "markers": 3,
+    "encounters": 6,
+    "pageReferenceLinks": 256,
+    "semanticLinks": 145,
+    "sourcePages": 159,
+    "figurePages": 157,
+    "figureImageBlocks": 735,
+    "figureCaptions": 743,
+    "curatedVisuals": 29,
+    "fullPageRenders": 0,
+    "visualAssetFiles": 34
+  },
+  "compatibility": {
+    "stableIdsPreserved": true,
+    "schemaMajorChange": true,
+    "legacyFieldsRetainedWherePractical": true,
+    "canonicalRuleTextModule": "rule-blocks.json"
+  },
+  "assetPolicy": {
+    "fullPageRendersIncluded": false,
+    "curatedVisualDirectory": "assets/rules",
+    "curatedVisualModule": "visuals.json"
+  }
+}
