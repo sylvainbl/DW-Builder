@@ -27,6 +27,7 @@ interface UnitDetailProps {
         battlefleetInstanceId: string | null
         label: string
     } | null
+    showReadOnlyAttachments?: boolean
 }
 
 function formatValue(value: number | string | null | undefined) {
@@ -349,7 +350,7 @@ function GeneratorChoiceRow({
     )
 }
 
-export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
+export default function UnitDetail({ addTarget = null, showReadOnlyAttachments = false }: UnitDetailProps) {
     const selectedUnitId = useAppStore((state) => state.selectedUnitId)
     const units = useAppStore((state) => state.units)
     const generators = useAppStore((state) => state.generators)
@@ -583,6 +584,17 @@ export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
             })
             .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
         : []
+    const readOnlyAttachmentChoices = showReadOnlyAttachments && !selectedEntry
+        ? units
+            .filter((candidate) => canAttachToParent(candidate, unit, { parentTags: displayedTags }))
+            .map((candidate) => ({
+                unit: candidate,
+                keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
+                minModels: getMinimumModelsForUnit(candidate),
+                maxModels: getAttachmentModelLimitForUnit(candidate),
+            }))
+            .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
+        : []
     const commitUnitName = () => {
         if (selectedEntry) renameListUnit(selectedEntry.instanceId, unitDraftName)
         setEditingUnitName(false)
@@ -630,7 +642,9 @@ export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
                             <p className="truncate text-sm font-semibold text-white/90">{selectedEntry.customName}</p>
                         ) : null}
                         <p className="text-sm text-white/78">{unit.sub_name}</p>
-                        <p className="mt-1 text-[11px] font-medium text-white/65">Models: {modelInfo} · VPR: {detailModelCount} x {unit.vpr} = {detailModelCount * unit.vpr}</p>
+                        <p className="mt-1 text-[11px] font-medium text-white/65">
+                            Models: {modelInfo} · {showReadOnlyAttachments && !selectedEntry ? `VPR/model: ${unit.vpr}` : `VPR: ${detailModelCount} x ${unit.vpr} = ${detailModelCount * unit.vpr}`}
+                        </p>
                     </div>
                     <div className="flex flex-col items-end text-right">
                         <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? '—'} pts · {unit.vpr} VPR</div>
@@ -642,8 +656,12 @@ export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
                                     ))}
                                 </>
                             ) : null}
-                            <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
-                            <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalVpr} VPR</div>
+                            {!showReadOnlyAttachments ? (
+                                <>
+                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
+                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalVpr} VPR</div>
+                                </>
+                            ) : null}
                             {showGuardianPool ? (
                                 <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
                                     Guardian Pool: {guardianPool} - Guardian Surge: {guardianSurge}
@@ -669,6 +687,32 @@ export default function UnitDetail({ addTarget = null }: UnitDetailProps) {
                         <span key={tag} className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{tag}</span>
                     ))}
                 </div>
+                {showReadOnlyAttachments && !selectedEntry ? (
+                    <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
+                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Potential attachments</div>
+                        {readOnlyAttachmentChoices.length > 0 ? (
+                            <div className="mt-2 grid gap-1.5 md:grid-cols-2">
+                                {readOnlyAttachmentChoices.map(({ unit: attachment, keyword, minModels, maxModels }) => (
+                                    <div
+                                        key={attachment.id}
+                                        className="min-h-14 rounded-lg border border-white/35 bg-white/90 px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm"
+                                    >
+                                        <div className="truncate text-[12px] font-semibold text-neutral-900">
+                                            {attachment.name} ({keyword})
+                                        </div>
+                                        <div className="mt-0.5 text-[11px] text-[var(--detail-ink)]/75">
+                                            {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {attachment.vpr} VPR · {minModels === maxModels ? `${maxModels} ${maxModels === 1 ? 'model' : 'models'}` : `${minModels}-${maxModels} models`}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="mt-2 rounded-lg border border-dashed border-white/35 bg-white/10 p-2 text-[12px] text-white/70">
+                                No eligible attachments.
+                            </div>
+                        )}
+                    </div>
+                ) : null}
                 {selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
                         <div className={`grid gap-3 ${canManageAttachments ? 'lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)]' : ''}`}>

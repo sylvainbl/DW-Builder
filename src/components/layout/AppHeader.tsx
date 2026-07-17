@@ -1,4 +1,4 @@
-import { List as ListIcon, Settings } from 'lucide-react'
+import { List as ListIcon, Settings, Ship } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useAppStore } from '../../store'
@@ -7,8 +7,9 @@ type Theme = 'normal' | 'dark' | 'turquoise-orange'
 type StoredTheme = Exclude<Theme, 'turquoise-orange'>
 
 interface AppHeaderProps {
-    activeView: 'lists' | 'builder'
+    activeView: 'lists' | 'builder' | 'units'
     onShowLists: () => void
+    onShowUnits: () => void
 }
 
 const THEME_STORAGE_KEY = 'dw-builder-theme'
@@ -50,7 +51,7 @@ function saveSecretTheme(active: boolean): void {
     }
 }
 
-export default function AppHeader({ activeView, onShowLists }: AppHeaderProps) {
+export default function AppHeader({ activeView, onShowLists, onShowUnits }: AppHeaderProps) {
     const [builderName, setBuilderName] = useState(() => loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER')
     const [theme, setTheme] = useState<Theme>(() => loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme())
     const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
@@ -60,7 +61,7 @@ export default function AppHeader({ activeView, onShowLists }: AppHeaderProps) {
     const currentList = useAppStore((state) => state.currentList)
     const factions = useAppStore((state) => state.factions)
     const activeFaction = factions.find((item) => item.id === selectedFactionId)
-    const contextLabel = currentList?.name ?? activeFaction?.name ?? 'Select a faction'
+    const contextLabel = currentList?.name ?? activeFaction?.name ?? 'All factions'
 
     useEffect(() => {
         document.documentElement.dataset.theme = theme
@@ -98,29 +99,42 @@ export default function AppHeader({ activeView, onShowLists }: AppHeaderProps) {
         <header className="relative z-30 flex h-14 flex-none items-center justify-between border-b border-white/10 px-3 text-sm text-white sm:px-4" style={{ background: 'var(--navy)' }}>
             <div className="flex min-w-0 items-center gap-2">
                 <span
-                    className="max-w-[11rem] flex-none select-none truncate text-[11px] font-semibold tracking-[0.2em] text-[var(--gold)] sm:max-w-none sm:text-sm sm:tracking-[0.24em]"
+                    className="max-w-[6rem] flex-none select-none truncate text-[11px] font-semibold tracking-[0.2em] text-[var(--gold)] sm:max-w-none sm:text-sm sm:tracking-[0.24em]"
                     onClick={handleBuilderNameClick}
                     onMouseDown={(event) => event.preventDefault()}
                 >
                     {builderName}
                 </span>
+                {activeView === 'builder' ? (
+                    <>
+                        <span className="hidden text-white/40 lg:inline">›</span>
+                        <span className="hidden max-w-64 truncate text-sky-100 lg:inline">{contextLabel}</span>
+                    </>
+                ) : null}
+            </div>
+
+            <nav aria-label="Main navigation" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1.5 sm:gap-2">
                 <button
                     type="button"
                     onClick={onShowLists}
                     aria-current={activeView === 'lists' ? 'page' : undefined}
                     title="Open saved lists"
-                    className={`inline-flex flex-none items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold shadow-sm transition ${activeView === 'lists' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'lists' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
                 >
                     <ListIcon size={16} />
                     List
                 </button>
-                {activeView === 'builder' ? (
-                    <>
-                        <span className="hidden text-white/40 sm:inline">›</span>
-                        <span className="hidden truncate text-sky-100 sm:inline">{contextLabel}</span>
-                    </>
-                ) : null}
-            </div>
+                <button
+                    type="button"
+                    onClick={onShowUnits}
+                    aria-current={activeView === 'units' ? 'page' : undefined}
+                    title="Browse all units"
+                    className={`inline-flex flex-none items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm transition sm:gap-2 sm:px-4 ${activeView === 'units' ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)] ring-2 ring-[rgb(var(--gold-rgb)/0.2)]' : 'border-white/25 bg-white/10 text-white hover:border-[var(--gold)] hover:bg-white/20'}`}
+                >
+                    <Ship size={16} />
+                    Units
+                </button>
+            </nav>
 
             <div
                 className="relative ml-3 flex-none"

@@ -106,7 +106,7 @@ export default function FactionAndSearchHeader({
                             }}
                             className="min-w-0 max-w-[16rem] flex-1 rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
                         >
-                            <option value="">Select a faction</option>
+                            <option value="">All factions</option>
                             {availableFactions.map((faction) => (
                                 <option key={faction.id} value={faction.id}>{faction.name}</option>
                             ))}
