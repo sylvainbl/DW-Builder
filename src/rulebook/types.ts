@@ -242,6 +242,7 @@ export interface CuratedVisual {
     mimeType: string
     width: number
     height: number
+    sha256: string
     requiredForUnderstanding: boolean
     relatedRuleIds?: string[]
     relatedSectionIds?: string[]

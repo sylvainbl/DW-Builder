@@ -1,27 +1,97 @@
 import { ChevronDown, Maximize2, X } from 'lucide-react'
-import { useEffect } from 'react'
-import { findNormalizedMatch, getRuleTextBlocks } from '../../rulebook/data'
+import { createContext, useContext, useEffect, useRef } from 'react'
+import type { ReactNode } from 'react'
+import { findNormalizedMatch, getRuleInlineSegments, getRuleTextBlocks } from '../../rulebook/data'
 import type { CuratedVisual, RuleTable } from '../../rulebook/types'
+
+const RulebookTextContext = createContext<string[]>([])
+
+export function RulebookTextProvider({ terms, children }: { terms: string[], children: ReactNode }) {
+    return (
+        <RulebookTextContext.Provider value={terms}>
+            {children}
+        </RulebookTextContext.Provider>
+    )
+}
 
 interface RuleTextProps {
     text: string
     className?: string
+    headingLevel?: 3 | 4 | 5
 }
 
-export function RuleText({ text, className = '' }: RuleTextProps) {
+export function RuleText({ text, className = '', headingLevel = 3 }: RuleTextProps) {
+    const terms = useContext(RulebookTextContext)
+    const emphasizedTerms = new Set<string>()
+    const renderInlineText = (textValue: string) => {
+        const availableTerms = terms.filter((term) => !emphasizedTerms.has(term.toLocaleLowerCase('en')))
+        const segments = getRuleInlineSegments(textValue, availableTerms)
+        for (const segment of segments) {
+            if (segment.kind === 'strong') emphasizedTerms.add(segment.text.toLocaleLowerCase('en'))
+        }
+        return segments.map((segment, index) => (
+            segment.kind === 'strong'
+                ? <strong key={`${segment.text}-${index}`} className="font-bold">{segment.text}</strong>
+                : <span key={`${segment.text}-${index}`}>{segment.text}</span>
+        ))
+    }
+    const renderHeading = (textValue: string, key: string) => {
+        const classNames = 'pt-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]'
+        if (headingLevel === 5) return <h5 key={key} className={classNames}>{renderInlineText(textValue)}</h5>
+        if (headingLevel === 4) return <h4 key={key} className={classNames}>{renderInlineText(textValue)}</h4>
+        return <h3 key={key} className={classNames}>{renderInlineText(textValue)}</h3>
+    }
+
     return (
         <div className={`space-y-3 text-[15px] leading-7 text-[var(--text)] [text-wrap:pretty] ${className}`}>
             {getRuleTextBlocks(text).map((block, index) => {
                 if (block.kind === 'heading') {
+                    return renderHeading(block.text, `${block.text}-${index}`)
+                }
+                if (block.kind === 'unordered-list') {
                     return (
-                        <h4 key={`${block.text}-${index}`} className="pt-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]">
-                            {block.text}
-                        </h4>
+                        <ul key={index} className="list-disc space-y-2 pl-6 marker:text-[var(--gold)]">
+                            {block.items.map((item, itemIndex) => (
+                                <li key={`${item}-${itemIndex}`} className="pl-1">
+                                    {renderInlineText(item)}
+                                </li>
+                            ))}
+                        </ul>
+                    )
+                }
+                if (block.kind === 'ordered-list') {
+                    return (
+                        <ol
+                            key={index}
+                            type={block.style === 'lower-alpha' ? 'a' : '1'}
+                            className={`list-outside space-y-3 pl-7 marker:font-bold marker:text-[var(--gold)] ${block.style === 'lower-alpha'
+                                ? '[list-style-type:lower-alpha]'
+                                : 'list-decimal'}`}
+                        >
+                            {block.items.map((item) => (
+                                <li key={`${item.marker}-${item.title}`} className="pl-1">
+                                    {item.paragraphs.length > 0 ? (
+                                        <>
+                                            <strong className="font-bold text-[var(--accent-foreground)]">
+                                                {renderInlineText(item.title)}
+                                            </strong>
+                                            <div className="mt-1 space-y-2">
+                                                {item.paragraphs.map((paragraph, paragraphIndex) => (
+                                                    <p key={`${paragraph}-${paragraphIndex}`}>
+                                                        {renderInlineText(paragraph)}
+                                                    </p>
+                                                ))}
+                                            </div>
+                                        </>
+                                    ) : renderInlineText(item.title)}
+                                </li>
+                            ))}
+                        </ol>
                     )
                 }
                 return (
                     <p key={index}>
-                        {block.text}
+                        {renderInlineText(block.text)}
                     </p>
                 )
             })}
@@ -115,17 +185,43 @@ export function CuratedVisualFigure({ visual, onOpen, compact = false, collapsed
 interface VisualLightboxProps {
     visual: CuratedVisual | null
     onClose: () => void
+    returnFocusTo: HTMLElement | null
 }
 
-export function VisualLightbox({ visual, onClose }: VisualLightboxProps) {
+export function VisualLightbox({ visual, onClose, returnFocusTo }: VisualLightboxProps) {
+    const dialogRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         if (!visual) return
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') onClose()
+            if (event.key === 'Escape') {
+                event.preventDefault()
+                onClose()
+                return
+            }
+            if (event.key !== 'Tab' || !dialogRef.current) return
+
+            const focusableElements = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+            )).filter((element) => !element.hasAttribute('disabled'))
+            if (focusableElements.length === 0) return
+
+            const first = focusableElements[0]
+            const last = focusableElements.at(-1) ?? first
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault()
+                last.focus()
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault()
+                first.focus()
+            }
         }
         document.addEventListener('keydown', handleKeyDown)
-        return () => document.removeEventListener('keydown', handleKeyDown)
-    }, [onClose, visual])
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown)
+            returnFocusTo?.focus()
+        }
+    }, [onClose, returnFocusTo, visual])
 
     if (!visual) return null
 
@@ -139,7 +235,7 @@ export function VisualLightbox({ visual, onClose }: VisualLightboxProps) {
                 if (event.target === event.currentTarget) onClose()
             }}
         >
-            <div className="relative max-h-full max-w-6xl overflow-auto rounded-xl bg-white p-3 shadow-2xl">
+            <div ref={dialogRef} className="relative max-h-full max-w-6xl overflow-auto rounded-xl bg-white p-3 shadow-2xl">
                 <button
                     type="button"
                     onClick={onClose}
@@ -147,7 +243,7 @@ export function VisualLightbox({ visual, onClose }: VisualLightboxProps) {
                     className="sticky right-0 top-0 z-10 ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-[var(--navy)] text-white shadow"
                     aria-label="Close diagram"
                 >
-                    <X size={18} />
+                    <X size={18} aria-hidden="true" />
                 </button>
                 <img
                     src={`/data/${visual.assetReference}`}

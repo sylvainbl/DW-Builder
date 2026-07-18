@@ -194,8 +194,8 @@
       "assetReference": "assets/rules/proximity.webp",
       "mimeType": "image/webp",
       "width": 850,
-      "height": 944,
-      "sha256": "b7f1ba4e388cdf9c62f48f68543c76ac99489b3e69f06fdcbcb0923e49336b6f",
+      "height": 910,
+      "sha256": "81f1866cf1150ae0f59f2346323cccdd73f1a36e09def1efaa066570f85c28a7",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -237,9 +237,9 @@
       "altText": "Four top-down diagrams labelled A to D showing coherent and out-of-coherency groups of ships.",
       "assetReference": "assets/rules/unit-coherency-examples.webp",
       "mimeType": "image/webp",
-      "width": 612,
-      "height": 850,
-      "sha256": "4a57af71a3f881e169810884f90c4001ce70253d9aef30bcce5d45e7e76ad55b",
+      "width": 492,
+      "height": 498,
+      "sha256": "91d77d44389da903a3b3d0e765774a9ff065fa14b36d9b6bd03ccc81494fa63c",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -416,7 +416,7 @@
           54.04,
           207.28,
           298.83,
-          428.0
+          428
         ]
       },
       "relatedRuleIds": [
@@ -427,6 +427,56 @@
       ]
     },
     {
+      "id": "visual.moving-models",
+      "title": "Moving Models",
+      "category": "movement",
+      "description": "Examples of moving directly forwards and moving within an arc.",
+      "altText": "Top-down ships with arrows showing straight movement and movement within a starboard arc.",
+      "assetReference": "assets/rules/moving-models.webp",
+      "mimeType": "image/webp",
+      "width": 500,
+      "height": 640,
+      "sha256": "8e9728063066f1b2688e6f0659d81451d4b835b75509e14be3d0ba0713bf6e16",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          42
+        ],
+        "printedPages": [
+          40
+        ],
+        "sourceFigurePageId": "figure-page-042",
+        "sourceFigureIds": [
+          "figure.page-042.image-02",
+          "figure.page-042.image-03",
+          "figure.page-042.image-04",
+          "figure.page-042.image-05",
+          "figure.page-042.image-06",
+          "figure.page-042.image-07",
+          "figure.page-042.image-08"
+        ],
+        "cropPixelBbox": [
+          145,
+          245,
+          395,
+          565
+        ],
+        "cropPdfBbox": [
+          118.71,
+          205.61,
+          323.39,
+          474.15
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.moving-models"
+      ],
+      "relatedSectionIds": [
+        "moving-models"
+      ]
+    },
+    {
       "id": "visual.coming-about-and-turning-template",
       "title": "Coming About and the Turning Template",
       "category": "movement",
@@ -434,9 +484,9 @@
       "altText": "Ship aligned with a segmented turning template, with centre point, forward direction and navigation marks labelled.",
       "assetReference": "assets/rules/coming-about-and-turning-template.webp",
       "mimeType": "image/webp",
-      "width": 660,
-      "height": 876,
-      "sha256": "9ccabf34736ad64244a48ddf36e5f62d958ab9362067742d024b3658f0b6129b",
+      "width": 520,
+      "height": 630,
+      "sha256": "bfa2b4c2f44faef358cf3a71b412b465e6bb62a05666586367b9db19832ad4a5",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -911,9 +961,9 @@
       "altText": "Aerial weapon attack diagram with successive targets labelled L1 to L3 and B1 to B4 along a measured line.",
       "assetReference": "assets/rules/aerial-weapon-target-sequence.webp",
       "mimeType": "image/webp",
-      "width": 470,
-      "height": 532,
-      "sha256": "452906602ea097c3148fbdb2ef04c31a279a110c2501bad08029bded999862d1",
+      "width": 376,
+      "height": 385,
+      "sha256": "400135a801f73c7875c4554921dc91323676832656b2857d3a2d76abbc5cad8b",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -954,6 +1004,151 @@
       ]
     },
     {
+      "id": "visual.broadside-additional-targets",
+      "title": "Broadside Additional Targets",
+      "category": "actions",
+      "description": "Example showing how a Broadside action can resolve against several eligible targets.",
+      "altText": "Top-down ships labelled K1 to K4 and S1 to S3 showing primary and additional Broadside targets.",
+      "assetReference": "assets/rules/broadside-additional-targets.webp",
+      "mimeType": "image/webp",
+      "width": 740,
+      "height": 654,
+      "sha256": "92633e755c184669105206352078ac3010f971275e45adb5cbdc84b69a695b03",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          99
+        ],
+        "printedPages": [
+          97
+        ],
+        "sourceFigurePageId": "figure-page-099",
+        "sourceFigureIds": [
+          "figure.page-099.image-02",
+          "figure.page-099.image-03",
+          "figure.page-099.image-04",
+          "figure.page-099.image-05",
+          "figure.page-099.image-06",
+          "figure.page-099.image-07"
+        ],
+        "cropPixelBbox": [
+          65,
+          252,
+          435,
+          579
+        ],
+        "cropPdfBbox": [
+          53.22,
+          211.48,
+          356.14,
+          485.9
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.resolving-a-broadside-action",
+        "rule.5-resolve-additional-targets"
+      ],
+      "relatedSectionIds": [
+        "broadside-action"
+      ],
+      "relatedProcedureIds": [
+        "procedure.broadside-action"
+      ]
+    },
+    {
+      "id": "visual.escort-tokens",
+      "title": "Escort Tokens",
+      "category": "attachments",
+      "description": "Example showing Escort tokens positioned around a parent model.",
+      "altText": "Large ship with two smaller Escort tokens on a blue background.",
+      "assetReference": "assets/rules/escort-tokens.webp",
+      "mimeType": "image/webp",
+      "width": 640,
+      "height": 658,
+      "sha256": "46df969d1ed5fdb246d708616c61729ed6cb42487efa119d4914183814727efb",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          104
+        ],
+        "printedPages": [
+          102
+        ],
+        "sourceFigurePageId": "figure-page-104",
+        "sourceFigureIds": [
+          "figure.page-104.image-02",
+          "figure.page-104.image-03"
+        ],
+        "cropPixelBbox": [
+          160,
+          86,
+          480,
+          415
+        ],
+        "cropPdfBbox": [
+          130.99,
+          72.17,
+          392.98,
+          348.27
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.escorts"
+      ],
+      "relatedSectionIds": [
+        "escorts"
+      ]
+    },
+    {
+      "id": "visual.raiding-parties",
+      "title": "Raiding Parties",
+      "category": "attachments",
+      "description": "Example illustrating the destination and intervening models for a Raiding Party action.",
+      "altText": "One large ship and a line of smaller ships with a marked point indicating a Raiding Party destination.",
+      "assetReference": "assets/rules/raiding-parties.webp",
+      "mimeType": "image/webp",
+      "width": 480,
+      "height": 552,
+      "sha256": "caab3d619b2e2af192c766ce21f858afe45ba3e4d0353de516aa51ae0a1ef1af",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          105
+        ],
+        "printedPages": [
+          103
+        ],
+        "sourceFigurePageId": "figure-page-105",
+        "sourceFigureIds": [
+          "figure.page-105.image-02",
+          "figure.page-105.image-03",
+          "figure.page-105.image-04",
+          "figure.page-105.image-05"
+        ],
+        "cropPixelBbox": [
+          71,
+          248,
+          311,
+          524
+        ],
+        "cropPdfBbox": [
+          58.13,
+          208.12,
+          254.62,
+          439.75
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.raiding-parties"
+      ],
+      "relatedSectionIds": [
+        "attachments-and-escorts"
+      ]
+    },
+    {
       "id": "visual.srs-stack-examples",
       "title": "SRS Stack Examples",
       "category": "srs",
@@ -961,9 +1156,9 @@
       "altText": "Five diagrams labelled A to E showing SRS tokens stacked beside ships, with valid and invalid arrangements.",
       "assetReference": "assets/rules/srs-stack-examples.webp",
       "mimeType": "image/webp",
-      "width": 764,
-      "height": 792,
-      "sha256": "17aab0524841aae1c56d71fbe18956a92e30968886dbb07abdeddd6c71c886c1",
+      "width": 696,
+      "height": 477,
+      "sha256": "c9c423cb90b6dd4ae76577312d16fc618460a1442a08ce0602727e1e9969997a",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -1011,9 +1206,9 @@
       "altText": "Three panels labelled E to G showing SRS tokens, dice and the surviving tokens after an Interception Attempt.",
       "assetReference": "assets/rules/interception-worked-example.webp",
       "mimeType": "image/webp",
-      "width": 706,
-      "height": 548,
-      "sha256": "b3b011e4f2229cb5f9911e15bcd12911fc7fcc6d24ce762f49f7526735b10c1d",
+      "width": 690,
+      "height": 235,
+      "sha256": "fdc020d7f4f01b793158a44b9aae78769cfdd0e6d764a25b1e86b773ab4d639f",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -1103,9 +1298,9 @@
       "altText": "Four numbered objective markers above circular Minefield and Wreck markers.",
       "assetReference": "assets/rules/marker-types.webp",
       "mimeType": "image/webp",
-      "width": 390,
-      "height": 1210,
-      "sha256": "751267288c41becdf7e433ac804013016f3a2f1db0c8124ad684a735c3acaf90",
+      "width": 650,
+      "height": 885,
+      "sha256": "21abf52c24b4fa2894edc27fdf3a7b01e34cb81abf37c54341313a803dd8a52d",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",
@@ -1194,6 +1389,50 @@
       ],
       "relatedSectionIds": [
         "prepare-the-play-area"
+      ]
+    },
+    {
+      "id": "visual.deployment-order-example",
+      "title": "Deployment Order Example",
+      "category": "setup",
+      "description": "Example of a deployment order, with units positioned behind a flagship.",
+      "altText": "Several ships shown in formation behind a central flagship during fleet deployment.",
+      "assetReference": "assets/rules/deployment-order-example.webp",
+      "mimeType": "image/webp",
+      "width": 540,
+      "height": 676,
+      "sha256": "950ad6a41846a1232e0eac3ad9a6413b593f5188dfa77629dc256a9abf1a4ce9",
+      "requiredForUnderstanding": true,
+      "source": {
+        "documentId": "dw-rulebook-4.00",
+        "pdfPages": [
+          138
+        ],
+        "printedPages": [
+          136
+        ],
+        "sourceFigurePageId": "figure-page-138",
+        "sourceFigureIds": [
+          "figure.page-138.image-02"
+        ],
+        "cropPixelBbox": [
+          202,
+          267,
+          472,
+          605
+        ],
+        "cropPdfBbox": [
+          165.38,
+          224.07,
+          386.43,
+          507.72
+        ]
+      },
+      "relatedRuleIds": [
+        "rule.5-deploy-forces"
+      ],
+      "relatedSectionIds": [
+        "deploy-forces"
       ]
     },
     {
@@ -1294,9 +1533,9 @@
       "altText": "Oil Fields map with controlled edges, deployment zones, centre line, distance arrows and two orange platform areas.",
       "assetReference": "assets/rules/encounter-oil-fields-map.webp",
       "mimeType": "image/webp",
-      "width": 596,
-      "height": 624,
-      "sha256": "c11d075d6dd7e693d7b6944cd5e1f441d37c457d75b2eb6698c54c778a888e66",
+      "width": 505,
+      "height": 505,
+      "sha256": "beba294f9bca4df699ec82c77ebc4b1b4cdce9233611c7df5d19a45945715b5f",
       "requiredForUnderstanding": true,
       "source": {
         "documentId": "dw-rulebook-4.00",

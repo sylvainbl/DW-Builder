@@ -3,7 +3,7 @@
   "documentId": "dw-rulebook-4.00",
   "generatedAt": "2026-07-14T00:00:00+02:00",
   "status": "passed",
-  "sourceFile": "DW-Rule-Book-4.00_Full_W (2).pdf",
+  "sourceFile": "DW-Rule-Book-4.00_Full_W.pdf",
   "sourceSha256": "e063ba47f8e2798873743999716452f91bebaae250906a0ccb094c87820f6fbc",
   "pageCount": 159,
   "checks": [
@@ -188,7 +188,7 @@
       "category": "validation",
       "description": "Replaced the overly broad passed status with explicit structural checks and documented limitations."
     },
-    "Replaced 159 full-page renders with 29 useful cropped rule visuals and encounter maps; five non-essential source crops remain archived but are no longer exposed by visuals.json."
+    "Replaced 159 full-page renders with 34 curated rule visuals and encounter maps; every source crop marked as required for understanding is exposed by visuals.json."
   ],
   "warnings": [
     {
@@ -242,10 +242,10 @@
     "criticalPagesCrossChecked": 88,
     "scope": "Critical rules, tables, encounters and known low-agreement pages; not a claim of manual word-by-word review of every page."
   },
-  "datasetVersion": "2.1.0",
+  "datasetVersion": "2.2.0",
   "assetValidation": {
     "fullPageRendersIncluded": false,
-    "curatedVisualCount": 29,
+    "curatedVisualCount": 34,
     "curatedAssetFilesFound": 34,
     "allCuratedAssetsReadable": true,
     "allVisualIdsUnique": true,

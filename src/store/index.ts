@@ -6,6 +6,7 @@ import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateLi
 import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
 import { getSelectedTags } from '../utils/optionRuleEffects'
 import { canSelectGeneratorInSlot } from '../utils/generatorRules'
+import { normalizeSavedListsIndependently } from '../utils/listNormalization'
 import { uuid } from '../utils/uuid'
 
 const emptyUnitConfig: UnitConfig = {
@@ -334,20 +335,22 @@ async function loadUnitsFromIndex(unitsIndex: unknown): Promise<Unit[]> {
 }
 
 function normalizeLists(lists: ArmyList[], units: Unit[], definitions: BattlefleetDefinition[]): ArmyList[] {
-    return lists.map((list) => {
-        const normalizedList = {
-            ...list,
-            faction_id: normalizeFactionId(list.faction_id),
-            battlefleets: normalizeBattlefleets(list, definitions),
-            units: list.units.flatMap((entry) => {
-                const normalizedEntry = normalizeArmyUnit(entry, units)
-                return normalizedEntry ? [normalizedEntry] : []
-            }),
-        }
-        return {
-            ...syncListGeneratedOptionAttachments(normalizedList, units),
-        }
-    })
+    return normalizeSavedListsIndependently(
+        lists.map((list) => ({ ...list, faction_id: normalizeFactionId(list.faction_id) })),
+        (list) => {
+            const normalizedList = {
+                ...list,
+                battlefleets: normalizeBattlefleets(list, definitions),
+                units: list.units.flatMap((entry) => {
+                    const normalizedEntry = normalizeArmyUnit(entry, units)
+                    return normalizedEntry ? [normalizedEntry] : []
+                }),
+            }
+            return {
+                ...syncListGeneratedOptionAttachments(normalizedList, units),
+            }
+        },
+    )
 }
 
 function recalculateListUnitTotals(list: ArmyList, units: Unit[]): ArmyList {
@@ -478,7 +481,8 @@ export const useAppStore = create<AppStore>((set, get) => ({
             ])
             const savedLists = normalizeLists(loadListsFromStorage(), units, battlefleetDefinitions)
             set({ factions, glossary, generators, fleetDoctrines, battlefleetDefinitions, units, dataLoaded: true, savedLists })
-        } catch {
+        } catch (error) {
+            console.error('Could not load builder data.', error)
             set({ dataLoaded: true, savedLists: loadListsFromStorage() })
         }
     },

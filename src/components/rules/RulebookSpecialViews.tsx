@@ -1,6 +1,6 @@
 import { BookOpen, ChevronDown, ChevronRight, Compass, Map as MapIcon, ShieldCheck, ShipWheel } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { formatIdentifier, getRulebookHref } from '../../rulebook/data'
+import { formatIdentifier, getProcedureStepText, getRulebookHref } from '../../rulebook/data'
 import type { RulebookIndexes } from '../../rulebook/data'
 import type {
     CuratedVisual,
@@ -77,17 +77,27 @@ function StructuredValues({ values }: { values: Record<string, RuleTableValue> }
     )
 }
 
-function InlineRuleContent({ rule, fallbackText }: { rule: RuleBlock | null, fallbackText?: string }) {
-    const text = rule?.text ?? fallbackText
+function InlineRuleContent({
+    rule,
+    fallbackText,
+    preferFallback = false,
+    headingLevel = 3,
+}: {
+    rule: RuleBlock | null
+    fallbackText?: string
+    preferFallback?: boolean
+    headingLevel?: 3 | 4 | 5
+}) {
+    const text = preferFallback ? fallbackText ?? rule?.text : rule?.text ?? fallbackText
     if (!text) return null
 
     return (
         <>
-            <RuleText text={text} />
+            <RuleText text={text} headingLevel={headingLevel} />
             {rule?.notes.map((note) => (
                 <aside key={note.id} className="mt-4 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] p-3">
                     {note.title ? <h4 className="mb-1 text-sm font-bold text-[var(--text)]">{note.title}</h4> : null}
-                    <RuleText text={note.text} className="text-[var(--muted)]" />
+                    <RuleText text={note.text} className="text-[var(--muted)]" headingLevel={5} />
                 </aside>
             ))}
         </>
@@ -96,12 +106,19 @@ function InlineRuleContent({ rule, fallbackText }: { rule: RuleBlock | null, fal
 
 function ProcedureStepDetails({
     step,
+    procedure,
     indexes,
 }: {
     step: RuleProcedureStep
+    procedure: RuleProcedure
     indexes: RulebookIndexes
 }) {
     const rule = step.ruleBlockId ? indexes.ruleById.get(step.ruleBlockId) ?? null : null
+    const text = getProcedureStepText(step, procedure, indexes)
+    const ruleIsShared = Boolean(
+        step.ruleBlockId
+        && procedure.steps.filter((item) => item.ruleBlockId === step.ruleBlockId).length > 1,
+    )
 
     return (
         <li>
@@ -118,7 +135,12 @@ function ProcedureStepDetails({
                     />
                 </summary>
                 <div className="border-t border-[var(--panel-border)] bg-[var(--detail-row)] p-4">
-                    <InlineRuleContent rule={rule} fallbackText={step.text} />
+                    <InlineRuleContent
+                        rule={ruleIsShared ? null : rule}
+                        fallbackText={text ?? undefined}
+                        preferFallback
+                        headingLevel={4}
+                    />
                 </div>
             </details>
         </li>
@@ -148,13 +170,19 @@ function ProcedureCard({ procedure, indexes, onOpenVisual }: { procedure: RulePr
                     <ProcedureStepDetails
                         key={`${procedure.id}-${step.order}`}
                         step={step}
+                        procedure={procedure}
                         indexes={indexes}
                     />
                 ))}
             </ol>
 
             {(indexes.visualsByProcedureId.get(procedure.id) ?? []).map((visual) => (
-                <CuratedVisualFigure key={visual.id} visual={visual} onOpen={onOpenVisual} collapsed />
+                <CuratedVisualFigure
+                    key={visual.id}
+                    visual={visual}
+                    onOpen={onOpenVisual}
+                    collapsed={!visual.requiredForUnderstanding}
+                />
             ))}
         </article>
     )
@@ -213,9 +241,8 @@ export function ActionsView({ data, indexes }: SpecialViewProps) {
                                             />
                                         </summary>
                                         <div className="border-t border-[var(--panel-border)] bg-[var(--detail-panel)] p-4">
-                                            <InlineRuleContent rule={rule} fallbackText={action.text} />
                                             {procedure ? (
-                                                <section className="mt-5">
+                                                <section>
                                                     <h4 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]">
                                                         {procedure.title}
                                                     </h4>
@@ -224,12 +251,13 @@ export function ActionsView({ data, indexes }: SpecialViewProps) {
                                                             <ProcedureStepDetails
                                                                 key={`${procedure.id}-${step.order}`}
                                                                 step={step}
+                                                                procedure={procedure}
                                                                 indexes={indexes}
                                                             />
                                                         ))}
                                                     </ol>
                                                 </section>
-                                            ) : null}
+                                            ) : <InlineRuleContent rule={rule} fallbackText={action.text} headingLevel={4} />}
                                         </div>
                                     </details>
                                 )
@@ -262,6 +290,7 @@ export function TokensView({ data, indexes, onOpenVisual }: SpecialViewProps) {
                                 </div>
                                 <ShieldCheck size={22} className="text-[var(--accent-foreground)]" />
                             </div>
+                            <RuleText text={token.text} className="mt-4" />
                             <StructuredValues values={{
                                 stacking: formatIdentifier(token.stacking),
                                 maximumLevel: token.maximumLevel ?? token.tracking?.maximum ?? null,
@@ -271,7 +300,13 @@ export function TokensView({ data, indexes, onOpenVisual }: SpecialViewProps) {
                                 {token.ruleBlockIds.map((ruleId) => <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />)}
                             </div>
                             {(indexes.visualsByTokenId.get(token.id) ?? []).map((visual) => (
-                                <CuratedVisualFigure key={visual.id} visual={visual} onOpen={onOpenVisual} compact collapsed />
+                                <CuratedVisualFigure
+                                    key={visual.id}
+                                    visual={visual}
+                                    onOpen={onOpenVisual}
+                                    compact
+                                    collapsed={!visual.requiredForUnderstanding}
+                                />
                             ))}
                             {tokenTable ? <RuleTableView table={tokenTable} /> : null}
                         </article>
@@ -306,16 +341,13 @@ function TerrainCard({
     ruleIds: string[]
     indexes: RulebookIndexes
 }) {
-    const hasMetadata = Object.values(metadata).some((value) => value !== null && value !== false && value !== '')
     const fallbackText = 'text' in item ? item.text : item.definition
 
     return (
         <article id={item.id} className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm">
             <h3 className="text-lg font-bold text-[var(--text)]">{item.name}</h3>
             <StructuredValues values={metadata} />
-            {!hasMetadata && ruleIds.length === 0 && fallbackText ? (
-                <RuleText text={fallbackText} className="mt-3 text-[var(--muted)]" />
-            ) : null}
+            {fallbackText ? <RuleText text={fallbackText} className="mt-3 text-[var(--muted)]" headingLevel={4} /> : null}
             <div className="mt-4 flex flex-wrap gap-2">
                 {ruleIds.map((ruleId) => <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />)}
             </div>
@@ -411,7 +443,12 @@ export function TerrainView({ data, indexes, onOpenVisual }: SpecialViewProps) {
                     ))}
                 </div>
                 {markerVisuals.map((visual) => (
-                    <CuratedVisualFigure key={visual.id} visual={visual} onOpen={onOpenVisual} collapsed />
+                    <CuratedVisualFigure
+                        key={visual.id}
+                        visual={visual}
+                        onOpen={onOpenVisual}
+                        collapsed={!visual.requiredForUnderstanding}
+                    />
                 ))}
             </section>
         </div>

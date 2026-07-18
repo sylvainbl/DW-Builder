@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
-import { existsSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 import actionsDocument from '../../public/data/actions.json' with { type: 'json' }
 import encountersDocument from '../../public/data/encounters.json' with { type: 'json' }
@@ -18,7 +19,9 @@ import {
     flattenNavigation,
     flattenSectionTree,
     formatIdentifier,
+    getProcedureStepText,
     getRulebookHref,
+    getRuleInlineSegments,
     getRuleTextBlocks,
     hasRenderableRuleContent,
     hasSamePageRange,
@@ -48,6 +51,27 @@ const data: RulebookData = {
 
 function assertUniqueIds(label: string, ids: string[]): void {
     assert.equal(new Set(ids).size, ids.length, `${label} IDs must stay unique so links remain stable`)
+}
+
+function readWebpDimensions(assetUrl: URL): { width: number, height: number } {
+    const content = readFileSync(assetUrl)
+    assert.equal(content.toString('ascii', 0, 4), 'RIFF')
+    assert.equal(content.toString('ascii', 8, 12), 'WEBP')
+
+    let offset = 12
+    while (offset + 8 <= content.length) {
+        const chunkType = content.toString('ascii', offset, offset + 4)
+        const chunkLength = content.readUInt32LE(offset + 4)
+        const dataOffset = offset + 8
+        if (chunkType === 'VP8 ') {
+            return {
+                width: content.readUInt16LE(dataOffset + 6) & 0x3fff,
+                height: content.readUInt16LE(dataOffset + 8) & 0x3fff,
+            }
+        }
+        offset = dataOffset + chunkLength + (chunkLength % 2)
+    }
+    throw new Error(`${assetUrl.pathname} does not contain a supported VP8 image chunk`)
 }
 
 test('canonical rulebook entities keep unique stable IDs', () => {
@@ -111,7 +135,7 @@ test('section rendering deduplicates canonical rules even if an index repeats an
     assert.deepEqual(resolveSectionRuleBlocks(duplicatedSection, indexes).map((rule) => rule.id), [firstRuleId])
 })
 
-test('leaf sections resolve to a consolidated parent reading page', () => {
+test('each section remains an independent reading page while hierarchy helpers stay intact', () => {
     const indexes = buildRulebookIndexes(data)
     const miniatures = indexes.sectionById.get('miniatures')
     const toolkit = indexes.sectionById.get('dystopian-wars-toolkit')
@@ -120,9 +144,9 @@ test('leaf sections resolve to a consolidated parent reading page', () => {
     const index = indexes.sectionById.get('index')
     assert.ok(miniatures && toolkit && gainingDisorder && tokens && index)
 
-    assert.equal(resolveReadingSection(miniatures, indexes).id, toolkit.id)
-    assert.equal(resolveReadingSection(gainingDisorder, indexes).id, tokens.id)
-    assert.equal(resolveReadingSection(index, indexes).id, index.id)
+    assert.equal(resolveReadingSection(miniatures).id, miniatures.id)
+    assert.equal(resolveReadingSection(gainingDisorder).id, gainingDisorder.id)
+    assert.equal(resolveReadingSection(index).id, index.id)
     assert.deepEqual(
         flattenSectionTree(toolkit, indexes).map((section) => section.id),
         ['dystopian-wars-toolkit', ...toolkit.childSectionIds],
@@ -140,9 +164,21 @@ test('leaf sections resolve to a consolidated parent reading page', () => {
     assert.equal(hasSamePageRange(dice, tokensAndMarkers), false)
 })
 
-test('every encounter uses its curated cropped map and every visual asset is present', () => {
+test('all 34 official visuals are exposed and every referenced asset is present', () => {
     const indexes = buildRulebookIndexes(data)
+    const restoredVisualIds = [
+        'visual.moving-models',
+        'visual.broadside-additional-targets',
+        'visual.escort-tokens',
+        'visual.raiding-parties',
+        'visual.deployment-order-example',
+    ]
 
+    assert.equal(data.visuals.length, 34)
+    assert.equal(manifestDocument.counts.curatedVisuals, 34)
+    for (const visualId of restoredVisualIds) {
+        assert.ok(indexes.visualById.has(visualId), `${visualId} must remain exposed to the reader`)
+    }
     for (const encounter of data.encounters) {
         const visual = indexes.visualById.get(encounter.deployment.diagram.visualId)
         assert.ok(visual, `${encounter.name} must use a visual from visuals.json`)
@@ -150,9 +186,20 @@ test('every encounter uses its curated cropped map and every visual asset is pre
         assert.ok(visual.relatedEncounterIds?.includes(encounter.id))
     }
     for (const visual of data.visuals) {
+        const assetUrl = new URL(`../../public/data/${visual.assetReference}`, import.meta.url)
         assert.ok(
-            existsSync(new URL(`../../public/data/${visual.assetReference}`, import.meta.url)),
+            existsSync(assetUrl),
             `${visual.assetReference} must be shipped with the public dataset`,
+        )
+        assert.deepEqual(
+            readWebpDimensions(assetUrl),
+            { width: visual.width, height: visual.height },
+            `${visual.id} metadata must match its real asset dimensions`,
+        )
+        assert.equal(
+            createHash('sha256').update(readFileSync(assetUrl)).digest('hex'),
+            visual.sha256,
+            `${visual.id} checksum must match the shipped asset`,
         )
     }
 })
@@ -172,16 +219,60 @@ test('deep links preserve section, specialised view and canonical rule anchor', 
     assert.equal(url.hash, '#rule.checking-visibility')
 })
 
-test('rule text formatting joins extracted line-wrap fragments without merging headings', () => {
+test('rule text formatting repairs line wraps and emits semantic headings and lists', () => {
     assert.deepEqual(
         getRuleTextBlocks('2. The Launch Phase, in which Carrier units launch Short Range\n\nSquadrons 4.\n\nNEXT STEP\n\nResolve the next rule.'),
         [
-            { kind: 'paragraph', text: '2. The Launch Phase, in which Carrier units launch Short Range Squadrons 4.' },
+            {
+                kind: 'ordered-list',
+                style: 'decimal',
+                items: [{
+                    marker: '2',
+                    title: 'The Launch Phase, in which Carrier units launch Short Range Squadrons 4.',
+                    paragraphs: [],
+                }],
+            },
             { kind: 'heading', text: 'NEXT STEP' },
             { kind: 'paragraph', text: 'Resolve the next rule.' },
         ],
     )
+    assert.deepEqual(
+        getRuleTextBlocks('- First condition.\n\n- Second condition.'),
+        [{ kind: 'unordered-list', items: ['First condition.', 'Second condition.'] }],
+    )
     assert.equal(formatIdentifier('requiresPropertyPermission'), 'Requires Property Permission')
+})
+
+test('rule terms are emphasised once without partial-word or overlapping matches', () => {
+    const indexes = buildRulebookIndexes(data)
+    const segments = getRuleInlineSegments(
+        'Make an Action Roll, then resolve another Action Roll without rerolling.',
+        ['Action Roll', 'Roll'],
+    )
+
+    assert.ok(indexes.ruleTerms.includes('Action Roll'))
+    assert.ok(indexes.ruleTerms.includes('Bonus Dice'))
+    assert.ok(indexes.ruleTerms.includes('Exploding Strike'))
+    assert.deepEqual(
+        segments.filter((segment) => segment.kind === 'strong').map((segment) => segment.text),
+        ['Action Roll'],
+    )
+})
+
+test('procedure steps expose only their relevant rule segment', () => {
+    const indexes = buildRulebookIndexes(data)
+    const actionRoll = data.procedures.find((procedure) => procedure.id === 'procedure.action-roll')
+    const mineClearance = data.procedures.find((procedure) => procedure.id === 'procedure.mine-clearance-mission')
+    const interception = data.procedures.find((procedure) => procedure.id === 'procedure.interception-attempt')
+    assert.ok(actionRoll && mineClearance && interception)
+
+    const explodingStrikes = getProcedureStepText(actionRoll.steps[1], actionRoll, indexes)
+    const discardMineStack = getProcedureStepText(mineClearance.steps[3], mineClearance, indexes)
+    const discardInterceptors = getProcedureStepText(interception.steps[2], interception, indexes)
+    assert.match(explodingStrikes ?? '', /counts the number of dice.+Exploding Strike/s)
+    assert.doesNotMatch(explodingStrikes ?? '', /3\) RESOLVE RE-ROLLS/)
+    assert.match(discardMineStack ?? '', /SRS tokens.+discarded/i)
+    assert.match(discardInterceptors ?? '', /token.+discarded/i)
 })
 
 test('canonical rules stay free of verified PDF extraction artefacts', () => {
@@ -201,6 +292,14 @@ test('canonical rules stay free of verified PDF extraction artefacts', () => {
         'In this example,a',
         'alchemic al',
         'Critical Damage Effect5 4',
+        'Initiative Initiative Dial',
+        'Fig. each D Frigate',
+        'Target unit unit',
+        'level of Disorder it has:3',
+        'Action Roll3',
+        'Engagement Scale.4',
+        'Terrain Feature3',
+        'Full Reverse5',
     ]
 
     for (const artefact of knownArtefacts) {
@@ -209,6 +308,35 @@ test('canonical rules stay free of verified PDF extraction artefacts', () => {
 
     const chaos = data.ruleBlocks.find((rule) => rule.id === 'rule.chaos')
     assert.equal(chaos?.text, 'A model cannot Rally if its unit contains one or more Crippled models.')
+})
+
+test('verified high-impact rules retain the complete wording and numerical values from the PDF', () => {
+    const rule = (id: string) => {
+        const match = data.ruleBlocks.find((item) => item.id === id)
+        assert.ok(match, `${id} must exist`)
+        return match
+    }
+    const actionRoll = rule('rule.making-an-action-roll')
+    const makeAttackRoll = rule('rule.4-make-the-action-roll')
+    const disorder = rule('rule.effects-of-disorder')
+    const ram = rule('rule.resolving-a-ram')
+    const criticalDamage = rule('rule.critical-damage')
+    const weaponGrids = rule('rule.weapon-grids')
+    const arcs = rule('rule.arcs')
+    const coherency = rule('rule.unit-coherency')
+
+    assert.match(actionRoll.text ?? '', /Rules that call for an Action Roll will be accompanied by an Action Roll Chart/)
+    assert.match(actionRoll.text ?? '', /For example, the active Admiral has made the Action Roll, scoring 2 Exploding Strikes/)
+    assert.match(actionRoll.text ?? '', /The Action Roll \(fig\. F\) shows a total of 17 Hits/)
+    assert.match(actionRoll.text ?? '', /the Action Roll has scored 2 Successes/)
+    assert.match(makeAttackRoll.text ?? '', /makes a Resistance Roll:/)
+    assert.match(disorder.text ?? '', /level of Disorder it has:/)
+    assert.match(ram.text ?? '', /moves 1” directly backwards/)
+    assert.match(criticalDamage.notes[0]?.text ?? '', /reverse \(marked “x2”\)/)
+    assert.equal(weaponGrids.notes[0]?.type, 'flavour_text')
+    assert.doesNotMatch(weaponGrids.text ?? '', /Dear Diary/)
+    assert.match(arcs.text ?? '', /four 90° Arcs/)
+    assert.doesNotMatch(coherency.text ?? '', /\n\n4”\n\n/)
 })
 
 test('every prose rule finishes a complete statement or introduces a list', () => {
@@ -245,5 +373,25 @@ test('curated prose removes page-reference markers without removing game values'
             .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
             .join('\\s+')
         assert.doesNotMatch(canonicalProse, new RegExp(`\\b${pattern}\\s+\\d{1,2}(?=\\b)`, 'iu'), `${label} must not keep a page-reference number`)
+    }
+})
+
+test('structured tables and token text do not retain page-reference suffix digits', () => {
+    const structuredText = JSON.stringify({
+        tables: data.tables,
+        tokens: data.tokens,
+        terrain: data.terrain,
+    })
+    const knownStructuredArtefacts = [
+        'Action Roll3',
+        'Damage Limit4',
+        'Attack Run Target unit6',
+        'Initiative Initiative Dial',
+        'Terrain\\nFeature3',
+        'Full\\nReverse5',
+    ]
+
+    for (const artefact of knownStructuredArtefacts) {
+        assert.ok(!structuredText.includes(artefact), `structured data must not contain "${artefact}"`)
     }
 })

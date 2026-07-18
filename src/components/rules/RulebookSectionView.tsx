@@ -1,12 +1,10 @@
 import { Check, Copy } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-    flattenSectionTree,
     formatPageRange,
     getRulebookHref,
     hasRenderableRuleContent,
-    hasSamePageRange,
     normalizeSearchText,
     resolveReadingSection,
     resolveSectionRuleBlocks,
@@ -70,7 +68,7 @@ function RuleBlockCard({
 }: RuleBlockCardProps) {
     const hasHeading = showPage || !hideTitle
 
-    const tables = rule.tableIds
+    const tables = (rule.contentMode === 'container' ? [] : rule.tableIds)
         .filter((id) => !renderedTableIds.has(id))
         .flatMap((id) => {
             const table = indexes.tableById.get(id)
@@ -119,7 +117,12 @@ function RuleBlockCard({
 
             {tables.map((table) => <RuleTableView key={table.id} table={table} />)}
             {visuals.map((visual) => (
-                <CuratedVisualFigure key={visual.id} visual={visual} onOpen={onOpenVisual} collapsed />
+                <CuratedVisualFigure
+                    key={visual.id}
+                    visual={visual}
+                    onOpen={onOpenVisual}
+                    collapsed={!visual.requiredForUnderstanding}
+                />
             ))}
 
         </article>
@@ -134,22 +137,16 @@ interface RulebookSectionViewProps {
 }
 
 export default function RulebookSectionView({ section, data, indexes, onOpenVisual }: RulebookSectionViewProps) {
-    const readingSection = resolveReadingSection(section, indexes)
-    const readingSections = flattenSectionTree(readingSection, indexes)
-    const nestedSections = readingSections.slice(1)
+    const readingSection = resolveReadingSection(section)
+    const childSections = readingSection.childSectionIds
+        .map((id) => indexes.sectionById.get(id))
+        .filter((item): item is RulebookSection => Boolean(item))
     const renderedTableIds = new Set<string>()
     const renderedVisualIds = new Set<string>()
     const renderedRuleIds = new Set<string>()
     const breadcrumbSections = readingSection.path
         .map((id) => indexes.sectionById.get(id))
         .filter((item): item is RulebookSection => Boolean(item))
-
-    useEffect(() => {
-        if (section.id === readingSection.id || window.location.hash) return
-        window.requestAnimationFrame(() => {
-            document.getElementById(`section-${section.id}`)?.scrollIntoView({ block: 'start' })
-        })
-    }, [readingSection.id, section.id])
 
     const renderSectionContent = (currentSection: RulebookSection) => {
         const rules = resolveSectionRuleBlocks(currentSection, indexes)
@@ -159,7 +156,7 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                 renderedRuleIds.add(rule.id)
                 return true
             })
-        const sectionTables = currentSection.tableIds.flatMap((id) => {
+        const sectionTables = (currentSection.childSectionIds.length > 0 ? [] : currentSection.tableIds).flatMap((id) => {
             if (renderedTableIds.has(id)) return []
             const table = indexes.tableById.get(id)
             if (!table) return []
@@ -197,7 +194,12 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
 
                 {sectionTables.map((table) => <RuleTableView key={table.id} table={table} />)}
                 {sectionVisuals.map((visual) => (
-                    <CuratedVisualFigure key={visual.id} visual={visual} onOpen={onOpenVisual} collapsed />
+                    <CuratedVisualFigure
+                        key={visual.id}
+                        visual={visual}
+                        onOpen={onOpenVisual}
+                        collapsed={!visual.requiredForUnderstanding}
+                    />
                 ))}
             </div>
         )
@@ -236,20 +238,20 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                 </p>
             </header>
 
-            {nestedSections.length > 0 ? (
-                <nav aria-label="On this page" className="mb-7 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-5">
-                    <h2 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">On this page</h2>
+            {childSections.length > 0 ? (
+                <nav aria-label="In this section" className="mb-7 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-5">
+                    <h2 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">In this section</h2>
                     <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                        {nestedSections.map((nestedSection) => (
+                        {childSections.map((childSection) => (
                             <Link
-                                key={nestedSection.id}
-                                to={getRulebookHref(nestedSection.id, `section-${nestedSection.id}`)}
-                                style={{ paddingLeft: `${12 + Math.max(0, nestedSection.level - readingSection.level - 1) * 12}px` }}
-                                className={`flex items-center justify-between gap-3 rounded-xl border bg-[var(--detail-row)] py-3 pr-3 text-sm font-semibold transition hover:border-[var(--gold)] hover:text-[var(--accent-foreground)] ${nestedSection.id === section.id
-                                    ? 'border-[var(--gold)] text-[var(--accent-foreground)]'
-                                    : 'border-[var(--panel-border)] text-[var(--text)]'}`}
+                                key={childSection.id}
+                                to={getRulebookHref(childSection.id)}
+                                className="flex items-center justify-between gap-3 rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] px-3 py-3 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--gold)] hover:text-[var(--accent-foreground)]"
                             >
-                                <span>{nestedSection.title}</span>
+                                <span>{childSection.title}</span>
+                                <span className="flex-none text-[10px] font-bold uppercase tracking-wide text-[var(--muted)]">
+                                    {formatPageRange(childSection.printedPageStart, childSection.printedPageEnd)}
+                                </span>
                             </Link>
                         ))}
                     </div>
@@ -257,40 +259,6 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
             ) : null}
 
             {renderSectionContent(readingSection)}
-
-            {nestedSections.map((nestedSection, index) => {
-                const relativeDepth = nestedSection.level - readingSection.level
-                const Heading = relativeDepth > 1 ? 'h3' : 'h2'
-                const previousSection = index > 0 ? nestedSections[index - 1] : null
-                const showPage = !previousSection || !hasSamePageRange(previousSection, nestedSection)
-                return (
-                    <section
-                        key={nestedSection.id}
-                        id={`section-${nestedSection.id}`}
-                        className="scroll-mt-32 pt-10"
-                    >
-                        <header className={`mb-5 border-b pb-3 ${nestedSection.id === section.id
-                            ? 'border-[var(--gold)]'
-                            : 'border-[var(--panel-border)]'}`}>
-                            {showPage ? (
-                                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
-                                    {formatPageRange(nestedSection.printedPageStart, nestedSection.printedPageEnd)}
-                                </p>
-                            ) : null}
-                            <div className={`group/title inline-flex items-center gap-1.5 text-[var(--accent-foreground)] ${showPage ? 'mt-1' : ''}`}>
-                                <Heading className={`${relativeDepth > 1 ? 'text-xl' : 'text-2xl'} font-bold`}>
-                                    {nestedSection.title}
-                                </Heading>
-                                <CopyLinkIcon
-                                    relativeUrl={getRulebookHref(nestedSection.id)}
-                                    label={`Copy a direct link to ${nestedSection.title}`}
-                                />
-                            </div>
-                        </header>
-                        {renderSectionContent(nestedSection)}
-                    </section>
-                )
-            })}
         </div>
     )
 }

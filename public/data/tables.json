@@ -433,11 +433,11 @@
         ],
         [
           "Panicking\nLevel 2",
-          "If an Action Roll3 is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted4 to Standard Strikes after\nRe-rolls5 have been resolved."
+          "If an Action Roll is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted to Standard Strikes after\nRe-rolls have been resolved."
         ],
         [
           "Mutinous\nLevel 3",
-          "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse6 or\nEmergency Manoeuvre6, it gains a point of\nDamage instead of a level of Disorder."
+          "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse or\nEmergency Manoeuvre, it gains a point of\nDamage instead of a level of Disorder."
         ]
       ],
       "hasGraphicCells": false,
@@ -482,11 +482,11 @@
         },
         {
           "label": "Panicking\nLevel 2",
-          "value": "If an Action Roll3 is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted4 to Standard Strikes after\nRe-rolls5 have been resolved."
+          "value": "If an Action Roll is made for a model with 2\nlevels of Disorder, any Heavy Strikes in the\nroll are Converted to Standard Strikes after\nRe-rolls have been resolved."
         },
         {
           "label": "Mutinous\nLevel 3",
-          "value": "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse6 or\nEmergency Manoeuvre6, it gains a point of\nDamage instead of a level of Disorder."
+          "value": "If an Action Roll is made for a model with 3\nlevels of Disorder, any Heavy and Exploding\nStrikes in the roll are Converted to Standard\nStrikes after Re-rolls have been resolved.\nIf the model makes a Full Reverse or\nEmergency Manoeuvre, it gains a point of\nDamage instead of a level of Disorder."
         }
       ]
     },
@@ -594,22 +594,22 @@
         [
           null,
           null,
-          "For each Participating model that has\nObscured2 Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature3."
+          "For each Participating model that has\nObscured Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature."
         ],
         [
           "ADVANCED RULES\nEscorts, SRS Stacks\nand Fog are not used\nin the Core Rules, so these\nrows are ignored.",
           null,
-          "Add 2 dice for each Participating model whose\nVisibility is Hampered4 by Fog."
+          "Add 2 dice for each Participating model whose\nVisibility is Hampered by Fog."
         ],
         [
           null,
           null,
-          "Add 1 die for each Escort5 accompanying the\nInitial Target’s unit."
+          "Add 1 die for each Escort accompanying the\nInitial Target’s unit."
         ],
         [
           null,
           null,
-          "If the opposing Admiral has an SRS Stack\nSupporting6 the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
+          "If the opposing Admiral has an SRS Stack\nSupporting the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
         ],
         [
           null,
@@ -671,22 +671,22 @@
         {
           "note": null,
           "label": null,
-          "value": "For each Participating model that has\nObscured2 Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature3."
+          "value": "For each Participating model that has\nObscured Visibility to the Initial Target,\nadd a number of dice equal to the Mass rating\nof the largest Obscuring model or Terrain\nFeature."
         },
         {
           "note": "ADVANCED RULES\nEscorts, SRS Stacks\nand Fog are not used\nin the Core Rules, so these\nrows are ignored.",
           "label": null,
-          "value": "Add 2 dice for each Participating model whose\nVisibility is Hampered4 by Fog."
+          "value": "Add 2 dice for each Participating model whose\nVisibility is Hampered by Fog."
         },
         {
           "note": null,
           "label": null,
-          "value": "Add 1 die for each Escort5 accompanying the\nInitial Target’s unit."
+          "value": "Add 1 die for each Escort accompanying the\nInitial Target’s unit."
         },
         {
           "note": null,
           "label": null,
-          "value": "If the opposing Admiral has an SRS Stack\nSupporting6 the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
+          "value": "If the opposing Admiral has an SRS Stack\nSupporting the Initial Target’s unit, they can\ndiscard any number of Tokens from the Stack.\nEach discarded Token adds Bonus Dice equal\nto its Support rating."
         },
         {
           "note": null,
@@ -792,7 +792,7 @@
       "rows": [
         [
           null,
-          "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled2, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
+          "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
         ],
         [
           null,
@@ -800,7 +800,7 @@
         ],
         [
           null,
-          "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally3."
+          "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally."
         ],
         [
           null,
@@ -808,11 +808,11 @@
         ],
         [
           null,
-          "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About4 or engage Full\nReverse5."
+          "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About or engage Full\nReverse."
         ],
         [
           null,
-          "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits6 provided by\nSystems on other models."
+          "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits provided by\nSystems on other models."
         ]
       ],
       "hasGraphicCells": true,
@@ -853,7 +853,7 @@
       "records": [
         {
           "label": null,
-          "value": "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled2, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
+          "value": "Breach\nIn the Consolidation Step of this model’s\nActivation, it suffers 1 Damage for each Breach\ntoken it has.\nIf the model is Crippled, this Damage is\ninflicted as Critical Damage, as normal; if\nthis causes a further Breach (or a Hazard),\nit is not resolved until the model’s next\nConsolidation Step."
         },
         {
           "label": null,
@@ -861,7 +861,7 @@
         },
         {
           "label": null,
-          "value": "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally3."
+          "value": "Hazard\nIn the Consolidation Step of this model’s\nActivation, it gains 1 level of Disorder for each\nHazard token it has.\nIn addition, a model with a Hazard token\ncannot Rally."
         },
         {
           "label": null,
@@ -869,11 +869,11 @@
         },
         {
           "label": null,
-          "value": "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About4 or engage Full\nReverse5."
+          "value": "Navigation Lock\nWhile a model has at least one Navigation Lock\ntoken, it cannot Come About or engage Full\nReverse."
         },
         {
           "label": null,
-          "value": "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits6 provided by\nSystems on other models."
+          "value": "System Failure\nWhile a model has at least one System Failure\ntoken, all of its Systems are negated, and it is\nnot affected by any Unit Benefits provided by\nSystems on other models."
         }
       ]
     },
@@ -899,11 +899,11 @@
         ],
         [
           null,
-          "Add 1 die for each Escort5 token accompanying\nthe Target’s unit."
+          "Add 1 die for each Escort token accompanying\nthe Target’s unit."
         ],
         [
           null,
-          "If there is an SRS Stack Supporting6 the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
+          "If there is an SRS Stack Supporting the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
         ],
         [
           "Success\nThreshold",
@@ -956,11 +956,11 @@
         },
         {
           "label": null,
-          "value": "Add 1 die for each Escort5 token accompanying\nthe Target’s unit."
+          "value": "Add 1 die for each Escort token accompanying\nthe Target’s unit."
         },
         {
           "label": null,
-          "value": "If there is an SRS Stack Supporting6 the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
+          "value": "If there is an SRS Stack Supporting the\nTarget unit, the opposing Admiral can discard\nany number of tokens from the Stack. Each\ndiscarded token adds a number of dice equal to\nthe Stack’s Support rating."
         },
         {
           "label": "Success\nThreshold",
@@ -1101,7 +1101,7 @@
         ],
         [
           null,
-          "Add 1 Bonus Die for each Escort6 token\naccompanying the target unit."
+          "Add 1 Bonus Die for each Escort token\naccompanying the target unit."
         ],
         [
           "Success\nThreshold",
@@ -1154,7 +1154,7 @@
         },
         {
           "label": null,
-          "value": "Add 1 Bonus Die for each Escort6 token\naccompanying the target unit."
+          "value": "Add 1 Bonus Die for each Escort token\naccompanying the target unit."
         },
         {
           "label": "Success\nThreshold",

@@ -1,9 +1,8 @@
 import { BookOpen, ChevronRight, Menu, Search, X } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
     buildRulebookIndexes,
-    flattenSectionTree,
     getRulebookHref,
     getViewForSearchResult,
     loadRulebookData,
@@ -27,7 +26,7 @@ import {
     TerrainView,
     TokensView,
 } from './RulebookSpecialViews'
-import { HighlightedText, VisualLightbox } from './RulebookPrimitives'
+import { HighlightedText, RulebookTextProvider, VisualLightbox } from './RulebookPrimitives'
 
 const VIEW_OPTIONS: { value: RulebookView, label: string }[] = [
     { value: 'sections', label: 'Rules' },
@@ -162,9 +161,8 @@ interface ReferenceRailProps {
 }
 
 function ReferenceRail({ data, indexes, section }: ReferenceRailProps) {
-    const readingSection = resolveReadingSection(section, indexes)
-    const readingSections = flattenSectionTree(readingSection, indexes)
-    const sourcePages = new Set(readingSections.flatMap((item) => item.source.printedPages))
+    const readingSection = resolveReadingSection(section)
+    const sourcePages = new Set(readingSection.source.printedPages)
     const referenceKeys = new Set<string>()
     const references = data.pageReferenceLinks.filter((reference) => {
         if (!sourcePages.has(reference.sourcePrintedPage)) return false
@@ -174,7 +172,7 @@ function ReferenceRail({ data, indexes, section }: ReferenceRailProps) {
         return indexes.sectionById.has(reference.targetSectionId)
     }).slice(0, 14)
 
-    const sourceIds = new Set(readingSections.flatMap((item) => [item.id, ...item.ruleBlockIds]))
+    const sourceIds = new Set([readingSection.id, ...readingSection.ruleBlockIds])
     const semanticKeys = new Set<string>()
     const related = data.semanticLinks.flatMap((link) => {
         if (!sourceIds.has(link.from)) return []
@@ -264,6 +262,9 @@ export default function RulebookPage() {
     const [searchFocused, setSearchFocused] = useState(false)
     const [mobileNavigationOpen, setMobileNavigationOpen] = useState(false)
     const [activeVisual, setActiveVisual] = useState<CuratedVisual | null>(null)
+    const [visualTrigger, setVisualTrigger] = useState<HTMLElement | null>(null)
+    const mobileNavigationDialogRef = useRef<HTMLDivElement>(null)
+    const mobileNavigationButtonRef = useRef<HTMLButtonElement>(null)
     const view = parseView(location.search)
     const indexes = useMemo(() => data ? buildRulebookIndexes(data) : null, [data])
     const searchResults = useMemo(() => data ? searchRulebook(data, searchQuery) : [], [data, searchQuery])
@@ -302,6 +303,41 @@ export default function RulebookPage() {
             element.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
         })
     }, [data, location.hash, view])
+
+    useEffect(() => {
+        if (!mobileNavigationOpen) return
+        const navigationButton = mobileNavigationButtonRef.current
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                event.preventDefault()
+                setMobileNavigationOpen(false)
+                return
+            }
+            if (event.key !== 'Tab' || !mobileNavigationDialogRef.current) return
+
+            const focusableElements = Array.from(mobileNavigationDialogRef.current.querySelectorAll<HTMLElement>(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+            )).filter((element) => !element.hasAttribute('disabled'))
+            if (focusableElements.length === 0) return
+
+            const first = focusableElements[0]
+            const last = focusableElements.at(-1) ?? first
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault()
+                last.focus()
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault()
+                first.focus()
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyDown)
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown)
+            navigationButton?.focus()
+        }
+    }, [mobileNavigationOpen])
 
     if (error) {
         return (
@@ -342,12 +378,20 @@ export default function RulebookPage() {
         setSearchFocused(false)
         setMobileNavigationOpen(false)
     }
+    const openVisual = (visual: CuratedVisual) => {
+        setVisualTrigger(document.activeElement instanceof HTMLElement
+            ? document.activeElement
+            : null)
+        setActiveVisual(visual)
+    }
 
     return (
+        <RulebookTextProvider terms={indexes.ruleTerms}>
         <div className="flex h-full min-h-0 flex-col bg-[var(--panel)] text-[var(--text)]">
             <div className="relative z-30 flex flex-none flex-col gap-2 border-b border-[var(--panel-border)] bg-[rgb(var(--panel-rgb)/0.97)] px-3 py-2 shadow-sm backdrop-blur sm:px-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="flex min-w-0 items-center gap-2">
                     <button
+                        ref={mobileNavigationButtonRef}
                         type="button"
                         onClick={() => setMobileNavigationOpen(true)}
                         className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] text-[var(--accent-foreground)] lg:hidden"
@@ -411,7 +455,7 @@ export default function RulebookPage() {
                         section={selectedSection}
                         data={data}
                         indexes={indexes}
-                        onOpenVisual={setActiveVisual}
+                        onOpenVisual={openVisual}
                     />
                 </main>
 
@@ -423,7 +467,16 @@ export default function RulebookPage() {
             </div>
 
             {mobileNavigationOpen ? (
-                <div className="fixed inset-0 z-50 bg-slate-950/60 lg:hidden" role="dialog" aria-modal="true" aria-label="Rulebook contents">
+                <div
+                    ref={mobileNavigationDialogRef}
+                    className="fixed inset-0 z-50 bg-slate-950/60 lg:hidden"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Rulebook contents"
+                    onMouseDown={(event) => {
+                        if (event.target === event.currentTarget) setMobileNavigationOpen(false)
+                    }}
+                >
                     <aside className="h-full w-[min(22rem,88vw)] overflow-y-auto bg-[var(--detail-row)] shadow-2xl">
                         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[var(--panel-border)] bg-[var(--detail-row)] px-3 py-3">
                             <span className="text-sm font-bold text-[var(--accent-foreground)]">Rulebook contents</span>
@@ -434,7 +487,7 @@ export default function RulebookPage() {
                                 aria-label="Close rulebook contents"
                                 autoFocus
                             >
-                                <X size={18} />
+                                <X size={18} aria-hidden="true" />
                             </button>
                         </div>
                         <RulebookNavigation
@@ -448,7 +501,12 @@ export default function RulebookPage() {
                 </div>
             ) : null}
 
-            <VisualLightbox visual={activeVisual} onClose={() => setActiveVisual(null)} />
+            <VisualLightbox
+                visual={activeVisual}
+                onClose={() => setActiveVisual(null)}
+                returnFocusTo={visualTrigger}
+            />
         </div>
+        </RulebookTextProvider>
     )
 }

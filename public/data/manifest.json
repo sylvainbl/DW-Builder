@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "datasetVersion": "2.1.0",
+  "datasetVersion": "2.2.0",
   "id": "dw-rulebook-4.00",
   "title": "Dystopian Wars - The Rules",
   "version": "4.00",
@@ -18,7 +18,7 @@
     ]
   },
   "source": {
-    "fileName": "DW-Rule-Book-4.00_Full_W (2).pdf",
+    "fileName": "DW-Rule-Book-4.00_Full_W.pdf",
     "pageCount": 159,
     "firstPrinted": "September 2025",
     "sha256": "e063ba47f8e2798873743999716452f91bebaae250906a0ccb094c87820f6fbc"
@@ -74,7 +74,7 @@
     "figurePages": 157,
     "figureImageBlocks": 735,
     "figureCaptions": 743,
-    "curatedVisuals": 29,
+    "curatedVisuals": 34,
     "fullPageRenders": 0,
     "visualAssetFiles": 34
   },
