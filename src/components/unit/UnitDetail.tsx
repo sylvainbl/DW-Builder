@@ -3,17 +3,49 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
 import { RuleWord } from '../ui/RuleWord'
-import { computeArmyUnitVpr, computeModelPoints, computeOptionPoints, computeTotalPoints, hasChitaSwarmEscortDiscount, isUnitLevelOption } from '../../utils/pointsCalc'
-import { unitCanTakeGenerator } from '../../utils/unitHelpers'
+import {
+    computeArmyUnitVpr,
+    computeModelPoints,
+    computeOptionPoints,
+    computeTotalPoints,
+    hasChitaSwarmEscortDiscount,
+    isUnitLevelOption,
+} from '../../utils/pointsCalc'
+import { formatUnitPointCost, unitCanTakeGenerator } from '../../utils/unitHelpers'
 import { getArmyUnitFactionSpecialRules, getFactionSpecialRules } from '../../utils/factionSpecialRules'
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
-import { formatOptionName, getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, getSelectedTags, getSystemGeneratorSlotCount, mergeNamedValues, SYSTEM_GENERATOR_WEAPON_INDEX } from '../../utils/optionRuleEffects'
+import {
+    formatOptionName,
+    getEffectiveGeneratorSelections,
+    getSelectedOptionRuleEffects,
+    getSelectedRemovedWeaponNames,
+    getSelectedTags,
+    getSystemGeneratorSlotCount,
+    mergeNamedValues,
+    SYSTEM_GENERATOR_WEAPON_INDEX,
+} from '../../utils/optionRuleEffects'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
-import { canAttachToParent, getAttachmentKeyword, getAttachmentModelLimitForUnit, getMinimumModelsForUnit, isAttachmentOption } from '../../utils/attachments'
-import { getBattlefleetAddedProperties, getBattlefleetAddedSystems, getBattlefleetAddedTags } from '../../utils/battlefleetEffects'
-import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeModelGuardianPool, computeModelGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
+import {
+    canAttachToParent,
+    getAttachmentKeyword,
+    getAttachmentModelLimitForUnit,
+    getMinimumModelsForUnit,
+    isAttachmentOption,
+} from '../../utils/attachments'
+import {
+    getBattlefleetAddedProperties,
+    getBattlefleetAddedSystems,
+    getBattlefleetAddedTags,
+} from '../../utils/battlefleetEffects'
+import {
+    computeArmyUnitGuardianPool,
+    computeArmyUnitGuardianSurge,
+    computeModelGuardianPool,
+    computeModelGuardianSurge,
+    isCrownFaction,
+} from '../../utils/guardianPool'
 import { RuleModal } from '../ui/RuleModal'
-import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Unit, Weapon } from '../../types/index'
+import type { ArmyUnit, FleetDoctrine, Generator, OptionUpgrade, Stat, Unit, Weapon } from '../../types/index'
 import BattlefleetDetail from '../lists/BattlefleetDetail'
 import ListGlossaryDetail from '../lists/ListGlossaryDetail'
 import { isUkrainianAkulaFlagship } from '../../utils/battlefleets'
@@ -21,6 +53,7 @@ import { getGeneratorChoicesForSlot } from '../../utils/generatorRules'
 
 const KAGUTSUCHI_BATTLEFLEET_ID = 'empire-kagutsuchi-volcanic'
 const KAGUTSUCHI_MAGMA_CAST_COST = 45
+const STAT_KEYS: (keyof Stat)[] = ['MAS', 'SPD', 'TRN', 'DEF', 'ARM', 'HUL', 'ACT', 'BRD', 'REP', 'CRW']
 
 interface UnitDetailProps {
     addTarget?: {
@@ -87,7 +120,11 @@ function getOptionChoices(option: OptionUpgrade): unknown[] {
 }
 
 function getGeneratorChoiceNames(options: OptionUpgrade[]): Set<string> {
-    return new Set(options.flatMap((option) => getOptionChoices(option).filter((choice): choice is string => typeof choice === 'string')))
+    return new Set(
+        options.flatMap((option) =>
+            getOptionChoices(option).filter((choice): choice is string => typeof choice === 'string'),
+        ),
+    )
 }
 
 function generatorChoiceName(choice: unknown): string | null {
@@ -105,9 +142,11 @@ function generatorChoiceCost(choice: unknown): number | null {
 
 function isGeneratorHardpointsListChoice(name: string): boolean {
     const normalizedName = name.toLowerCase()
-    return normalizedName.includes('generator hardpoints list')
-        || normalizedName === 'generator hardpoint'
-        || normalizedName === 'generator hardpoints'
+    return (
+        normalizedName.includes('generator hardpoints list') ||
+        normalizedName === 'generator hardpoint' ||
+        normalizedName === 'generator hardpoints'
+    )
 }
 
 function addGeneratorChoice(choices: Generator[], generator: Generator) {
@@ -119,7 +158,11 @@ function addGeneratorChoice(choices: Generator[], generator: Generator) {
     choices.push(generator)
 }
 
-function getOptionGeneratorChoices(option: OptionUpgrade, factionGenerators: Generator[], freeFactionGenerators: boolean): Generator[] {
+function getOptionGeneratorChoices(
+    option: OptionUpgrade,
+    factionGenerators: Generator[],
+    freeFactionGenerators: boolean,
+): Generator[] {
     const choices: Generator[] = []
 
     for (const choice of getOptionChoices(option)) {
@@ -129,7 +172,10 @@ function getOptionGeneratorChoices(option: OptionUpgrade, factionGenerators: Gen
         const cost = generatorChoiceCost(choice)
         if (isGeneratorHardpointsListChoice(name)) {
             for (const generator of factionGenerators) {
-                addGeneratorChoice(choices, { ...generator, point_cost: freeFactionGenerators || cost === 0 ? 0 : generator.point_cost })
+                addGeneratorChoice(choices, {
+                    ...generator,
+                    point_cost: freeFactionGenerators || cost === 0 ? 0 : generator.point_cost,
+                })
             }
             continue
         }
@@ -138,26 +184,37 @@ function getOptionGeneratorChoices(option: OptionUpgrade, factionGenerators: Gen
         if (!factionGenerator && !name.toLowerCase().includes('generator')) continue
         addGeneratorChoice(choices, {
             name,
-            point_cost: cost ?? (freeFactionGenerators ? 0 : factionGenerator?.point_cost ?? 0),
+            point_cost: cost ?? (freeFactionGenerators ? 0 : (factionGenerator?.point_cost ?? 0)),
         })
     }
 
     return choices
 }
 
-function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: string | undefined, extraMagmaCastCost: number | null = null): Generator[] {
-    const weaponGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon !== false)
+function getGeneratorChoices(
+    unit: Unit,
+    factionGenerators: Generator[],
+    slot: string | undefined,
+    extraMagmaCastCost: number | null = null,
+): Generator[] {
+    const weaponGeneratorOptions = unit.options_and_upgrades.filter(
+        (option) => option.generator_replaces_weapon !== false,
+    )
     const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
     const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
     const fixedChoices: Generator[] = []
     const magmaCastOption = weaponGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const freeGeneratorOption = weaponGeneratorOptions.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR')
-        ?? weaponGeneratorOptions.find((option) => option.tag === 'FREE_GENERATOR')
+    const freeGeneratorOption =
+        weaponGeneratorOptions.find((option) => option.tag === 'EMPIRE_FREE_GENERATOR') ??
+        weaponGeneratorOptions.find((option) => option.tag === 'FREE_GENERATOR')
 
     if (optionTags.has('TRIDENT_GENERATOR') && slot === 'H') {
         fixedChoices.push({ name: 'Trident Generator', point_cost: 0 })
     }
-    if ((optionTags.has('GUARDIAN_GENERATOR') && slot === 'L') || (optionTags.has('ADDITIONAL_GUARDIAN_GENERATOR') && slot === 'H')) {
+    if (
+        (optionTags.has('GUARDIAN_GENERATOR') && slot === 'L') ||
+        (optionTags.has('ADDITIONAL_GUARDIAN_GENERATOR') && slot === 'H')
+    ) {
         fixedChoices.push({ name: 'Guardian Generator', point_cost: 0 })
     }
     if (optionTags.has('FREYA_ARRAY') && slot === 'L') {
@@ -171,11 +228,16 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     }
     if (freeGeneratorOption && slot === 'H') {
         return [
-            ...filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames).map((generator) => ({ ...generator, point_cost: 0 })),
+            ...filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames).map((generator) => ({
+                ...generator,
+                point_cost: 0,
+            })),
             ...filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames),
         ]
     }
-    const explicitChoices = weaponGeneratorOptions.flatMap((option) => getOptionGeneratorChoices(option, factionGenerators, false))
+    const explicitChoices = weaponGeneratorOptions.flatMap((option) =>
+        getOptionGeneratorChoices(option, factionGenerators, false),
+    )
     if (explicitChoices.length > 0 && slot === 'H') {
         return filterRestrictedGenerators([...explicitChoices, ...fixedChoices], restrictedGeneratorNames)
     }
@@ -184,42 +246,70 @@ function getGeneratorChoices(unit: Unit, factionGenerators: Generator[], slot: s
     }
     if (fixedChoices.length > 0) return filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames)
 
-    return optionTags.has('GENERATOR') && slot === 'H' ? filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames) : []
+    return optionTags.has('GENERATOR') && slot === 'H'
+        ? filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames)
+        : []
 }
 
-function getSystemGeneratorOptionForSlot(systemGeneratorOptions: OptionUpgrade[], slotIndex: number): OptionUpgrade | null {
+function getSystemGeneratorOptionForSlot(
+    systemGeneratorOptions: OptionUpgrade[],
+    slotIndex: number,
+): OptionUpgrade | null {
     const mandatoryOptions = systemGeneratorOptions.filter((option) => option.mandatory)
     if (mandatoryOptions.length > 1) return mandatoryOptions[slotIndex] ?? null
     return null
 }
 
-function getSystemGeneratorChoices(unit: Unit, factionGenerators: Generator[], extraMagmaCastCost: number | null = null, slotIndex: number | null = null): Generator[] {
-    const systemGeneratorOptions = unit.options_and_upgrades.filter((option) => option.generator_replaces_weapon === false)
+function getSystemGeneratorChoices(
+    unit: Unit,
+    factionGenerators: Generator[],
+    extraMagmaCastCost: number | null = null,
+    slotIndex: number | null = null,
+): Generator[] {
+    const systemGeneratorOptions = unit.options_and_upgrades.filter(
+        (option) => option.generator_replaces_weapon === false,
+    )
     const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
     if (systemGeneratorOptions.length === 0) {
-        return extraMagmaCastCost != null ? filterRestrictedGenerators([{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }], restrictedGeneratorNames) : []
+        return extraMagmaCastCost != null
+            ? filterRestrictedGenerators(
+                  [{ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost }],
+                  restrictedGeneratorNames,
+              )
+            : []
     }
 
-    const relevantOptions = slotIndex == null
-        ? systemGeneratorOptions
-        : [getSystemGeneratorOptionForSlot(systemGeneratorOptions, slotIndex)].filter((option): option is OptionUpgrade => option != null)
+    const relevantOptions =
+        slotIndex == null
+            ? systemGeneratorOptions
+            : [getSystemGeneratorOptionForSlot(systemGeneratorOptions, slotIndex)].filter(
+                  (option): option is OptionUpgrade => option != null,
+              )
     const optionsForChoices = relevantOptions.length > 0 ? relevantOptions : systemGeneratorOptions
     const optionTags = new Set(optionsForChoices.map((option) => option.tag))
     const freeFactionGenerators = optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR')
-    const explicitChoices = optionsForChoices.flatMap((option) => getOptionGeneratorChoices(option, factionGenerators, freeFactionGenerators))
+    const explicitChoices = optionsForChoices.flatMap((option) =>
+        getOptionGeneratorChoices(option, factionGenerators, freeFactionGenerators),
+    )
     const generatorChoiceNames = getGeneratorChoiceNames(optionsForChoices)
-    const availableFactionGenerators = explicitChoices.length > 0
-        ? explicitChoices
-        : generatorChoiceNames.size > 0
-            ? factionGenerators.filter((generator) => generatorChoiceNames.has(generator.name))
-            : factionGenerators
+    const availableFactionGenerators =
+        explicitChoices.length > 0
+            ? explicitChoices
+            : generatorChoiceNames.size > 0
+              ? factionGenerators.filter((generator) => generatorChoiceNames.has(generator.name))
+              : factionGenerators
     const magmaCastOption = systemGeneratorOptions.find((option) => option.tag === 'MAGMA_CAST_GENERATOR')
-    const choices = optionTags.has('GENERATOR') || optionTags.has('EMPIRE_FREE_GENERATOR') || optionTags.has('FREE_GENERATOR') || generatorChoiceNames.size > 0 || explicitChoices.length > 0
-        ? availableFactionGenerators.map((generator) => ({
-            ...generator,
-            point_cost: freeFactionGenerators ? 0 : generator.point_cost,
-        }))
-        : []
+    const choices =
+        optionTags.has('GENERATOR') ||
+        optionTags.has('EMPIRE_FREE_GENERATOR') ||
+        optionTags.has('FREE_GENERATOR') ||
+        generatorChoiceNames.size > 0 ||
+        explicitChoices.length > 0
+            ? availableFactionGenerators.map((generator) => ({
+                  ...generator,
+                  point_cost: freeFactionGenerators ? 0 : generator.point_cost,
+              }))
+            : []
 
     if (magmaCastOption) {
         choices.push({ name: 'Magma Cast Generator', point_cost: magmaCastOption.cost_per_unit ?? 0 })
@@ -268,12 +358,7 @@ function WeaponChoiceRow({
 
     return (
         <label className={`unit-detail-choice-row ${checked ? 'unit-detail-choice-row-selected' : ''}`}>
-            <input
-                type="radio"
-                name={name}
-                checked={checked}
-                onChange={onChange}
-            />
+            <input type="radio" name={name} checked={checked} onChange={onChange} />
             <span className="unit-detail-choice-main">
                 <span className="unit-detail-choice-name">{weapon.name}</span>
                 <span className="unit-detail-choice-kind">{label}</span>
@@ -314,12 +399,7 @@ function GeneratorChoiceRow({
 }) {
     return (
         <label className={`unit-detail-choice-row ${checked ? 'unit-detail-choice-row-selected' : ''}`}>
-            <input
-                type="radio"
-                name={name}
-                checked={checked}
-                onChange={onChange}
-            />
+            <input type="radio" name={name} checked={checked} onChange={onChange} />
             <span className="unit-detail-choice-main">
                 <span className="unit-detail-choice-name">{generator.name}</span>
                 <span className="unit-detail-choice-kind">Generator</span>
@@ -386,7 +466,10 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
 
     const unit = useMemo(() => units.find((item) => item.id === selectedUnitId), [units, selectedUnitId])
     const selectedBattlefleet = useMemo(
-        () => currentList?.battlefleets?.find((battlefleet) => battlefleet.instanceId === selectedBattlefleetInstanceId) ?? null,
+        () =>
+            currentList?.battlefleets?.find(
+                (battlefleet) => battlefleet.instanceId === selectedBattlefleetInstanceId,
+            ) ?? null,
         [currentList?.battlefleets, selectedBattlefleetInstanceId],
     )
     const selectedBattlefleetDefinition = useMemo(
@@ -394,17 +477,18 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         [battlefleetDefinitions, selectedBattlefleet],
     )
     const selectedBattlefleetEntries = useMemo(
-        () => currentList && selectedBattlefleet
-            ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedBattlefleet.instanceId)
-            : [],
+        () =>
+            currentList && selectedBattlefleet
+                ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedBattlefleet.instanceId)
+                : [],
         [currentList, selectedBattlefleet],
     )
     const selectedEntry = useMemo(
-        () => currentList ? findEntry(currentList.units, selectedListInstanceId) : null,
+        () => (currentList ? findEntry(currentList.units, selectedListInstanceId) : null),
         [currentList, selectedListInstanceId],
     )
     const selectedEntryParent = useMemo(
-        () => currentList ? findParent(currentList.units, selectedListInstanceId) : null,
+        () => (currentList ? findParent(currentList.units, selectedListInstanceId) : null),
         [currentList, selectedListInstanceId],
     )
     const selectedModel = useMemo(
@@ -445,42 +529,76 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         )
     }
 
-    const statEntries = Object.entries(unit.stats)
+    const statEntries = STAT_KEYS.map((key) => [key, unit.stats[key]] as const)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
-    const selectedEntryBattlefleet = currentList?.battlefleets?.find((battlefleet) => battlefleet.instanceId === selectedEntry?.battlefleetInstanceId) ?? null
-    const selectedEntryBattlefleetDefinition = battlefleetDefinitions.find((definition) => definition.id === selectedEntryBattlefleet?.definitionId) ?? null
-    const selectedEntryBattlefleetEntries = currentList && selectedEntryBattlefleet
-        ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedEntryBattlefleet.instanceId)
-        : []
-    const promotedAkulaFlagship = isUkrainianAkulaFlagship(selectedEntryBattlefleetDefinition, selectedEntryBattlefleetEntries, selectedEntry)
+    const selectedEntryBattlefleet =
+        currentList?.battlefleets?.find(
+            (battlefleet) => battlefleet.instanceId === selectedEntry?.battlefleetInstanceId,
+        ) ?? null
+    const selectedEntryBattlefleetDefinition =
+        battlefleetDefinitions.find((definition) => definition.id === selectedEntryBattlefleet?.definitionId) ?? null
+    const selectedEntryBattlefleetEntries =
+        currentList && selectedEntryBattlefleet
+            ? currentList.units.filter((entry) => entry.battlefleetInstanceId === selectedEntryBattlefleet.instanceId)
+            : []
+    const promotedAkulaFlagship = isUkrainianAkulaFlagship(
+        selectedEntryBattlefleetDefinition,
+        selectedEntryBattlefleetEntries,
+        selectedEntry,
+    )
     const effectiveDoctrineUnit = promotedAkulaFlagship
         ? { ...unit, role: 'Flagship', tags: unit.tags.includes('Flagship') ? unit.tags : [...unit.tags, 'Flagship'] }
         : unit
     const availableFleetDoctrines = getAvailableFleetDoctrines(effectiveDoctrineUnit, fleetDoctrines)
     const isKagutsuchiEntry = selectedEntryBattlefleet?.definitionId === KAGUTSUCHI_BATTLEFLEET_ID
-    const extraMagmaCastCost = isKagutsuchiEntry && !unitHasNativeMagmaCastOption(unit) ? KAGUTSUCHI_MAGMA_CAST_COST : null
+    const extraMagmaCastCost =
+        isKagutsuchiEntry && !unitHasNativeMagmaCastOption(unit) ? KAGUTSUCHI_MAGMA_CAST_COST : null
     const hasNativeGeneratorAccess = unitCanTakeGenerator(unit)
-    const usesSystemGeneratorMount = unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
-    const extraSystemMagmaCastCost = extraMagmaCastCost != null && (!hasNativeGeneratorAccess || usesSystemGeneratorMount) ? extraMagmaCastCost : null
+    const usesSystemGeneratorMount = unit.options_and_upgrades.some(
+        (option) => option.generator_replaces_weapon === false,
+    )
+    const extraSystemMagmaCastCost =
+        extraMagmaCastCost != null && (!hasNativeGeneratorAccess || usesSystemGeneratorMount)
+            ? extraMagmaCastCost
+            : null
     const canTakeGenerator = hasNativeGeneratorAccess || usesSystemGeneratorMount || extraMagmaCastCost != null
     const generatorSelections = getEffectiveGeneratorSelections(unit, activeUnitConfig, selectedEntry?.config)
-    const weaponGeneratorSelection = generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
-    const selectedSystemGenerators = generatorSelections.filter((selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX)
+    const weaponGeneratorSelection =
+        generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
+    const selectedSystemGenerators = generatorSelections.filter(
+        (selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX,
+    )
     const mountedGeneratorWeapons = generatorSelections.flatMap((selection, selectionIndex) => {
         const generator = factionGenerators.find((item) => item.name === selection.generatorName)
         if (!generator?.weapon_choices?.length) return []
         const weapon = generator.weapon_choices.find((choice) => choice.name === selection.mountedWeaponName) ?? null
         return [{ selection, selectionIndex, choices: generator.weapon_choices, weapon }]
     })
-    const systemGeneratorChoices = canTakeGenerator ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost) : []
+    const systemGeneratorChoices = canTakeGenerator
+        ? getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost)
+        : []
     const systemGeneratorSlotCount = systemGeneratorChoices.length > 0 ? getSystemGeneratorSlotCount(unit) : 0
     const optionRuleEffects = getSelectedOptionRuleEffects(unit, activeUnitConfig, selectedEntry?.config)
     const factionSpecialRules = selectedEntry
         ? getArmyUnitFactionSpecialRules(unit, selectedEntry)
-        : getFactionSpecialRules(unit, generatorSelections.map((selection) => selection.generatorName), optionRuleEffects.removedSystems)
+        : getFactionSpecialRules(
+              unit,
+              generatorSelections.map((selection) => selection.generatorName),
+              optionRuleEffects.removedSystems,
+          )
     const battlefleetAddedTags = getBattlefleetAddedTags(currentList, battlefleetDefinitions, units, selectedEntry)
-    const battlefleetAddedProperties = getBattlefleetAddedProperties(currentList, battlefleetDefinitions, units, selectedEntry)
-    const battlefleetAddedSystems = getBattlefleetAddedSystems(currentList, battlefleetDefinitions, units, selectedEntry)
+    const battlefleetAddedProperties = getBattlefleetAddedProperties(
+        currentList,
+        battlefleetDefinitions,
+        units,
+        selectedEntry,
+    )
+    const battlefleetAddedSystems = getBattlefleetAddedSystems(
+        currentList,
+        battlefleetDefinitions,
+        units,
+        selectedEntry,
+    )
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, activeUnitConfig, selectedEntry?.config)
     const displayedWeapons = unit.weapons
         .map((weapon, index) => ({ weapon, index }))
@@ -498,7 +616,8 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         battlefleetAddedSystems,
     )
     const fleetDoctrineSelection = selectedEntry?.config.fleetDoctrineSelection ?? null
-    const selectedDoctrine = availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
+    const selectedDoctrine =
+        availableFleetDoctrines.find((doctrine) => doctrine.name === fleetDoctrineSelection?.doctrineName) ?? null
     const totalCost = selectedEntry ? selectedEntry.totalPoints : computeTotalPoints(unit, activeUnitConfig)
     const selectedModelCost = computeModelPoints(unit, activeUnitConfig, selectedEntry?.config)
     const showGuardianPool = isCrownFaction(unit.faction_id)
@@ -516,27 +635,53 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
     const detailModelCount = selectedEntry?.models.length ?? minModels
     const totalVpr = selectedEntry ? computeArmyUnitVpr(selectedEntry, units) : detailModelCount * unit.vpr
     const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
-    const siblingAttachmentModels = selectedEntryParent && selectedEntry
-        ? (selectedEntryParent.attachedUnits ?? [])
-            .filter((attachment) => attachment.unitId === unit.id && attachment.instanceId !== selectedEntry.instanceId)
-            .reduce((sum, attachment) => sum + attachment.models.length, 0)
-        : 0
+    const siblingAttachmentModels =
+        selectedEntryParent && selectedEntry
+            ? (selectedEntryParent.attachedUnits ?? [])
+                  .filter(
+                      (attachment) =>
+                          attachment.unitId === unit.id && attachment.instanceId !== selectedEntry.instanceId,
+                  )
+                  .reduce((sum, attachment) => sum + attachment.models.length, 0)
+            : 0
     const maxModels = selectedEntryGeneratedByOption
-        ? selectedEntry?.models.length ?? normalMaxModels
-        : selectedEntryParent ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels : normalMaxModels
-    const canAddModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels)
-    const canRemoveModel = Boolean(selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels)
-    const availableOptions = unit.options_and_upgrades.filter((option) => (
-        !optionRuleEffects.removedOptions.has(option.tag)
-        && !isAttachmentOption(option)
-        && !(selectedEntryParent && optionUnavailableForAttachment(option))
-    ))
+        ? (selectedEntry?.models.length ?? normalMaxModels)
+        : selectedEntryParent
+          ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels
+          : normalMaxModels
+    const canAddModel = Boolean(
+        selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels,
+    )
+    const canRemoveModel = Boolean(
+        selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels,
+    )
+    const availableOptions = unit.options_and_upgrades.filter(
+        (option) =>
+            !optionRuleEffects.removedOptions.has(option.tag) &&
+            !isAttachmentOption(option) &&
+            !(selectedEntryParent && optionUnavailableForAttachment(option)),
+    )
     const hasOptions = availableOptions.length > 0
-    const displayedTags = Array.from(new Set(promotedAkulaFlagship
-        ? [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), ...battlefleetAddedTags, 'Flagship']
-        : [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), ...battlefleetAddedTags]))
+    const displayedTags = Array.from(
+        new Set(
+            promotedAkulaFlagship
+                ? [
+                      ...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config),
+                      ...battlefleetAddedTags,
+                      'Flagship',
+                  ]
+                : [...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config), ...battlefleetAddedTags],
+        ),
+    )
     const visibleSquadrons = getVisibleSrsSquadrons(unit, displayedProperties)
-    const hasCarrierSrs = displayedProperties.some((property) => property.name === 'Carrier' || property.name === 'Underwater Carrier' || property.name === 'Flight Deck' || property.name === 'SRS') && visibleSquadrons.length > 0
+    const hasCarrierSrs =
+        displayedProperties.some(
+            (property) =>
+                property.name === 'Carrier' ||
+                property.name === 'Underwater Carrier' ||
+                property.name === 'Flight Deck' ||
+                property.name === 'SRS',
+        ) && visibleSquadrons.length > 0
     const attachmentPoints = selectedEntry
         ? (selectedEntry.attachedUnits ?? []).reduce((sum, attachment) => sum + attachment.totalPoints, 0)
         : 0
@@ -545,56 +690,75 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         : `${formatModelRange(unit)} ${modelLabel(unit)}`
     const costBreakdown = [
         ...(selectedEntry ? [`Selected model: ${selectedModelCost} pts`] : []),
-        ...(fleetDoctrineSelection ? [`Doctrine (${fleetDoctrineSelection.doctrineName}): +${fleetDoctrineSelection.doctrineCost} pts`] : []),
-        ...generatorSelections.map((selection, index) => [`Generator${generatorSelections.length > 1 ? ` ${index + 1}` : ''} (${selection.generatorName}): +${selection.generatorCost} pts`]).flat(),
+        ...(fleetDoctrineSelection
+            ? [`Doctrine (${fleetDoctrineSelection.doctrineName}): +${fleetDoctrineSelection.doctrineCost} pts`]
+            : []),
+        ...generatorSelections
+            .map((selection, index) => [
+                `Generator${generatorSelections.length > 1 ? ` ${index + 1}` : ''} (${selection.generatorName}): +${selection.generatorCost} pts`,
+            ])
+            .flat(),
         ...availableOptions.flatMap((option) => {
             const config = isUnitLevelOption(option.tag) && selectedEntry ? selectedEntry.config : activeUnitConfig
             const qty = config.optionQuantities[option.tag] ?? 0
             if (qty <= 0 || option.cost_per_unit == null) {
                 return []
             }
-            const points = computeOptionPoints(option, qty, Boolean(selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined))) ?? 0
+            const points =
+                computeOptionPoints(
+                    option,
+                    qty,
+                    Boolean(selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined)),
+                ) ?? 0
             return [`${formatOptionName(option)} ×${qty}: +${points} pts`]
         }),
     ]
     const canManageAttachments = Boolean(selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption)
-    const hasNormalAttachment = Boolean(selectedEntry?.attachedUnits?.some((attachment) => !attachment.generatedByOption))
-    const attachmentChoices = canManageAttachments && selectedEntry
-        ? units
-            .filter((candidate) => {
-                const isAttached = (selectedEntry.attachedUnits ?? []).some((attachment) => attachment.unitId === candidate.id)
-                return isAttached || canAttachToParent(candidate, unit, { parentTags: displayedTags })
-            })
-            .map((candidate) => {
-                const attachedEntries = (selectedEntry.attachedUnits ?? []).filter((attachment) => attachment.unitId === candidate.id)
-                const removableEntries = attachedEntries.filter((attachment) => !attachment.generatedByOption)
-                const usedModels = attachedEntries
-                    .reduce((sum, attachment) => sum + attachment.models.length, 0)
-                const remainingModels = getAttachmentModelLimitForUnit(candidate) - usedModels
-                const eligible = canAttachToParent(candidate, unit, { parentTags: displayedTags })
-                return {
-                    unit: candidate,
-                    removableEntry: removableEntries.at(-1) ?? null,
-                    keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
-                    usedModels,
-                    remainingModels,
-                    eligible,
-                    canAdd: eligible && !hasNormalAttachment && remainingModels >= getMinimumModelsForUnit(candidate),
-                }
-            })
-            .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
-        : []
-    const readOnlyAttachmentChoices = showReadOnlyAttachments && !selectedEntry
-        ? units
-            .filter((candidate) => canAttachToParent(candidate, unit, { parentTags: displayedTags }))
-            .map((candidate) => ({
-                unit: candidate,
-                keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
-                minModels: getMinimumModelsForUnit(candidate),
-                maxModels: getAttachmentModelLimitForUnit(candidate),
-            }))
-            .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
-        : []
+    const hasNormalAttachment = Boolean(
+        selectedEntry?.attachedUnits?.some((attachment) => !attachment.generatedByOption),
+    )
+    const attachmentChoices =
+        canManageAttachments && selectedEntry
+            ? units
+                  .filter((candidate) => {
+                      const isAttached = (selectedEntry.attachedUnits ?? []).some(
+                          (attachment) => attachment.unitId === candidate.id,
+                      )
+                      return isAttached || canAttachToParent(candidate, unit, { parentTags: displayedTags })
+                  })
+                  .map((candidate) => {
+                      const attachedEntries = (selectedEntry.attachedUnits ?? []).filter(
+                          (attachment) => attachment.unitId === candidate.id,
+                      )
+                      const removableEntries = attachedEntries.filter((attachment) => !attachment.generatedByOption)
+                      const usedModels = attachedEntries.reduce((sum, attachment) => sum + attachment.models.length, 0)
+                      const remainingModels = getAttachmentModelLimitForUnit(candidate) - usedModels
+                      const eligible = canAttachToParent(candidate, unit, { parentTags: displayedTags })
+                      return {
+                          unit: candidate,
+                          removableEntry: removableEntries.at(-1) ?? null,
+                          keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
+                          usedModels,
+                          remainingModels,
+                          eligible,
+                          canAdd:
+                              eligible && !hasNormalAttachment && remainingModels >= getMinimumModelsForUnit(candidate),
+                      }
+                  })
+                  .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
+            : []
+    const readOnlyAttachmentChoices =
+        showReadOnlyAttachments && !selectedEntry
+            ? units
+                  .filter((candidate) => canAttachToParent(candidate, unit, { parentTags: displayedTags }))
+                  .map((candidate) => ({
+                      unit: candidate,
+                      keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
+                      minModels: getMinimumModelsForUnit(candidate),
+                      maxModels: getAttachmentModelLimitForUnit(candidate),
+                  }))
+                  .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
+            : []
     const commitUnitName = () => {
         if (selectedEntry) renameListUnit(selectedEntry.instanceId, unitDraftName)
         setEditingUnitName(false)
@@ -609,7 +773,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
             <section className="unit-detail-section unit-detail-hero rounded-xl p-3 shadow-sm">
                 <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
-                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">Detail</div>
+                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                            Detail
+                        </div>
                         <div className="mt-1 flex min-w-0 items-center gap-2">
                             <h2 className="truncate text-lg font-semibold text-white">{unit.name}</h2>
                             {selectedEntry ? (
@@ -643,11 +809,16 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                         ) : null}
                         <p className="text-sm text-white/78">{unit.sub_name}</p>
                         <p className="mt-1 text-[11px] font-medium text-white/65">
-                            Models: {modelInfo} · {showReadOnlyAttachments && !selectedEntry ? `VPR/model: ${unit.vpr}` : `VPR: ${detailModelCount} x ${unit.vpr} = ${detailModelCount * unit.vpr}`}
+                            Models: {modelInfo} ·{' '}
+                            {showReadOnlyAttachments && !selectedEntry
+                                ? `VPR/model: ${unit.vpr}`
+                                : `VPR: ${detailModelCount} x ${unit.vpr} = ${detailModelCount * unit.vpr}`}
                         </p>
                     </div>
                     <div className="flex flex-col items-end text-right">
-                        <div className="text-sm font-medium text-white">{unit.point_cost_per_model ?? '—'} pts · {unit.vpr} VPR</div>
+                        <div className="text-sm font-medium text-white">
+                            {formatUnitPointCost(unit)} · {unit.vpr} VPR
+                        </div>
                         <div className="mt-2 flex flex-col items-end gap-1 text-[11px] text-white/75">
                             {costBreakdown.length > 0 ? (
                                 <>
@@ -658,8 +829,12 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                             ) : null}
                             {!showReadOnlyAttachments ? (
                                 <>
-                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalCost} pts</div>
-                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">Total: {totalVpr} VPR</div>
+                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
+                                        Total: {totalCost} pts
+                                    </div>
+                                    <div className="rounded-full border border-white/20 bg-[var(--navy)] px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
+                                        Total: {totalVpr} VPR
+                                    </div>
                                 </>
                             ) : null}
                             {showGuardianPool ? (
@@ -684,27 +859,37 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
 
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-[var(--navy)]">
                     {displayedTags.map((tag) => (
-                        <span key={tag} className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">{tag}</span>
+                        <span key={tag} className="rounded-full bg-white px-2.5 py-1 font-medium shadow-sm">
+                            {tag}
+                        </span>
                     ))}
                 </div>
                 {showReadOnlyAttachments && !selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
-                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Potential attachments</div>
+                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">
+                            Potential attachments
+                        </div>
                         {readOnlyAttachmentChoices.length > 0 ? (
                             <div className="mt-2 grid gap-1.5 md:grid-cols-2">
-                                {readOnlyAttachmentChoices.map(({ unit: attachment, keyword, minModels, maxModels }) => (
-                                    <div
-                                        key={attachment.id}
-                                        className="min-h-14 rounded-lg border border-white/35 bg-white/90 px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm"
-                                    >
-                                        <div className="truncate text-[12px] font-semibold text-neutral-900">
-                                            {attachment.name} ({keyword})
+                                {readOnlyAttachmentChoices.map(
+                                    ({ unit: attachment, keyword, minModels, maxModels }) => (
+                                        <div
+                                            key={attachment.id}
+                                            className="min-h-14 rounded-lg border border-white/35 bg-white/90 px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm"
+                                        >
+                                            <div className="truncate text-[12px] font-semibold text-neutral-900">
+                                                {attachment.name} ({keyword})
+                                            </div>
+                                            <div className="mt-0.5 text-[11px] text-[var(--detail-ink)]/75">
+                                                {attachment.sub_name} · {formatUnitPointCost(attachment)} ·{' '}
+                                                {attachment.vpr} VPR ·{' '}
+                                                {minModels === maxModels
+                                                    ? `${maxModels} ${maxModels === 1 ? 'model' : 'models'}`
+                                                    : `${minModels}-${maxModels} models`}
+                                            </div>
                                         </div>
-                                        <div className="mt-0.5 text-[11px] text-[var(--detail-ink)]/75">
-                                            {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {attachment.vpr} VPR · {minModels === maxModels ? `${maxModels} ${maxModels === 1 ? 'model' : 'models'}` : `${minModels}-${maxModels} models`}
-                                        </div>
-                                    </div>
-                                ))}
+                                    ),
+                                )}
                             </div>
                         ) : (
                             <div className="mt-2 rounded-lg border border-dashed border-white/35 bg-white/10 p-2 text-[12px] text-white/70">
@@ -715,11 +900,15 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                 ) : null}
                 {selectedEntry ? (
                     <div className="mt-3 rounded-lg border border-white/20 bg-white/12 p-2">
-                        <div className={`grid gap-3 ${canManageAttachments ? 'lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)]' : ''}`}>
+                        <div
+                            className={`grid gap-3 ${canManageAttachments ? 'lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)]' : ''}`}
+                        >
                             <div className="min-w-0">
                                 <div className="flex items-center justify-between gap-2">
                                     <div className="flex min-w-0 items-center gap-2">
-                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Models</div>
+                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">
+                                            Models
+                                        </div>
                                         {selectedModel ? (
                                             <button
                                                 type="button"
@@ -738,7 +927,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                         <button
                                             type="button"
                                             className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                            onClick={() => removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')}
+                                            onClick={() =>
+                                                removeModelFromListUnit(selectedEntry.instanceId, selectedModelId ?? '')
+                                            }
                                             disabled={!canRemoveModel || !selectedModelId}
                                             title="Remove selected model"
                                         >
@@ -791,7 +982,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                             {canManageAttachments ? (
                                 <div className="min-w-0 rounded-lg border border-white/15 bg-white/10 p-2">
                                     <div className="flex items-center justify-between gap-2">
-                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">Attachments</div>
+                                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.16em]">
+                                            Attachments
+                                        </div>
                                         {attachmentPoints > 0 ? (
                                             <span className="rounded-full border border-white/25 bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white">
                                                 +{attachmentPoints}
@@ -800,53 +993,80 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                     </div>
                                     {attachmentChoices.length > 0 ? (
                                         <div className="mt-2 grid gap-1.5">
-                                            {attachmentChoices.map(({ unit: attachment, removableEntry, keyword, usedModels, remainingModels, eligible, canAdd }) => {
-                                                const isSelected = usedModels > 0
-                                                return (
-                                                    <div
-                                                        key={attachment.id}
-                                                        className={`grid min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-lg border px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm transition ${isSelected ? 'border-[var(--gold)] bg-[var(--gold-light)]' : 'border-white/35 bg-white/90'}`}
-                                                    >
-                                                        <span className="min-w-0">
-                                                            <span className="flex min-w-0 items-center gap-1.5">
-                                                                <span className="truncate text-[12px] font-semibold text-neutral-900">
-                                                                    {attachment.name} ({keyword})
-                                                                </span>
-                                                                {isSelected ? (
-                                                                    <span className="flex-none rounded-full border border-[var(--gold)] bg-white px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--navy)]">
-                                                                        Selected
+                                            {attachmentChoices.map(
+                                                ({
+                                                    unit: attachment,
+                                                    removableEntry,
+                                                    keyword,
+                                                    usedModels,
+                                                    remainingModels,
+                                                    eligible,
+                                                    canAdd,
+                                                }) => {
+                                                    const isSelected = usedModels > 0
+                                                    return (
+                                                        <div
+                                                            key={attachment.id}
+                                                            className={`grid min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-lg border px-2.5 py-2 text-left text-[var(--detail-ink)] shadow-sm transition ${isSelected ? 'border-[var(--gold)] bg-[var(--gold-light)]' : 'border-white/35 bg-white/90'}`}
+                                                        >
+                                                            <span className="min-w-0">
+                                                                <span className="flex min-w-0 items-center gap-1.5">
+                                                                    <span className="truncate text-[12px] font-semibold text-neutral-900">
+                                                                        {attachment.name} ({keyword})
                                                                     </span>
-                                                                ) : null}
+                                                                    {isSelected ? (
+                                                                        <span className="flex-none rounded-full border border-[var(--gold)] bg-white px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--navy)]">
+                                                                            Selected
+                                                                        </span>
+                                                                    ) : null}
+                                                                </span>
+                                                                <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
+                                                                    {attachment.sub_name} ·{' '}
+                                                                    {formatUnitPointCost(attachment)} · {attachment.vpr}{' '}
+                                                                    VPR · {usedModels}/
+                                                                    {getAttachmentModelLimitForUnit(attachment)}{' '}
+                                                                    selected ·{' '}
+                                                                    {!eligible
+                                                                        ? 'position mismatch'
+                                                                        : hasNormalAttachment && !isSelected
+                                                                          ? 'attachment limit reached'
+                                                                          : `${remainingModels} available`}
+                                                                </span>
                                                             </span>
-                                                            <span className="block truncate text-[11px] text-[var(--detail-ink)]/75">
-                                                                {attachment.sub_name} · {attachment.point_cost_per_model ?? '—'} pts · {attachment.vpr} VPR · {usedModels}/{getAttachmentModelLimitForUnit(attachment)} selected · {!eligible ? 'position mismatch' : hasNormalAttachment && !isSelected ? 'attachment limit reached' : `${remainingModels} available`}
+                                                            <span className="flex items-center gap-1">
+                                                                <button
+                                                                    type="button"
+                                                                    title={`Remove ${attachment.name}`}
+                                                                    onClick={() => {
+                                                                        if (removableEntry)
+                                                                            removeUnitFromList(
+                                                                                removableEntry.instanceId,
+                                                                            )
+                                                                    }}
+                                                                    disabled={!removableEntry}
+                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-white text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                                >
+                                                                    <Minus size={14} />
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    title={`Add ${attachment.name}`}
+                                                                    onClick={() =>
+                                                                        addAttachmentToListUnit(
+                                                                            selectedEntry.instanceId,
+                                                                            attachment.id,
+                                                                        )
+                                                                    }
+                                                                    disabled={!canAdd}
+                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-[var(--navy)] text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                                                >
+                                                                    <Plus size={14} />
+                                                                </button>
                                                             </span>
-                                                        </span>
-                                                        <span className="flex items-center gap-1">
-                                                            <button
-                                                                type="button"
-                                                                title={`Remove ${attachment.name}`}
-                                                                onClick={() => {
-                                                                    if (removableEntry) removeUnitFromList(removableEntry.instanceId)
-                                                                }}
-                                                                disabled={!removableEntry}
-                                                                className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-white text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                                            >
-                                                                <Minus size={14} />
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                title={`Add ${attachment.name}`}
-                                                                onClick={() => addAttachmentToListUnit(selectedEntry.instanceId, attachment.id)}
-                                                                disabled={!canAdd}
-                                                                className="flex h-7 w-7 items-center justify-center rounded-full border border-white bg-[var(--navy)] text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                                            >
-                                                                <Plus size={14} />
-                                                            </button>
-                                                        </span>
-                                                    </div>
-                                                )
-                                            })}
+                                                        </div>
+                                                    )
+                                                },
+                                            )}
                                         </div>
                                     ) : (
                                         <div className="mt-2 rounded-lg border border-dashed border-white/35 bg-white/10 p-2 text-[12px] text-white/70">
@@ -867,15 +1087,22 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                         <tbody>
                             <tr>
                                 {statEntries.map(([key, value]) => (
-                                    <td key={key} className="w-16 border-r border-neutral-200 px-1 py-1 last:border-r-0">
-                                        <div className="text-[13px] font-medium leading-none text-neutral-900">{formatValue(value)}</div>
+                                    <td
+                                        key={key}
+                                        className="w-16 border-r border-neutral-200 px-1 py-1 last:border-r-0"
+                                    >
+                                        <div className="text-[13px] font-medium leading-none text-neutral-900">
+                                            {formatValue(value)}
+                                        </div>
                                     </td>
                                 ))}
                             </tr>
                             <tr>
                                 {statEntries.map(([key]) => (
                                     <td key={key} className="border-r border-neutral-200 px-1 pb-1 last:border-r-0">
-                                        <div className="text-[9px] uppercase tracking-[0.16em] text-neutral-400">{key}</div>
+                                        <div className="text-[9px] uppercase tracking-[0.16em] text-neutral-400">
+                                            {key}
+                                        </div>
                                     </td>
                                 ))}
                             </tr>
@@ -886,16 +1113,30 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
 
             <section className="grid items-start gap-2 md:grid-cols-2">
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
-                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Properties</div>
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                        Properties
+                    </div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                         {displayedProperties.length > 0 ? (
                             displayedProperties.map((property) => (
-                                <div key={`${property.name}-${property.value ?? ''}-${property.detail ?? ''}`} className="unit-detail-rule-row">
+                                <div
+                                    key={`${property.name}-${property.value ?? ''}-${property.detail ?? ''}`}
+                                    className="unit-detail-rule-row"
+                                >
                                     <span className="min-w-0 font-medium text-neutral-900">
-                                        <RuleWord category="properties" name={property.name} value={property.value} showValue={false} />
+                                        <RuleWord
+                                            category="properties"
+                                            name={property.name}
+                                            value={property.value}
+                                            showValue={false}
+                                        />
                                     </span>
-                                    {property.detail ? <span className="unit-detail-rule-detail">{property.detail}</span> : null}
-                                    {property.value != null ? <span className="unit-detail-rule-value">{property.value}</span> : null}
+                                    {property.detail ? (
+                                        <span className="unit-detail-rule-detail">{property.detail}</span>
+                                    ) : null}
+                                    {property.value != null ? (
+                                        <span className="unit-detail-rule-value">{property.value}</span>
+                                    ) : null}
                                 </div>
                             ))
                         ) : (
@@ -905,16 +1146,30 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                 </div>
 
                 <div className="unit-detail-section unit-detail-panel rounded-xl p-2.5 shadow-sm">
-                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Systems</div>
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                        Systems
+                    </div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                         {displayedSystems.length > 0 ? (
                             displayedSystems.map((system) => (
-                                <div key={`${system.name}-${system.value ?? ''}-${system.detail ?? ''}`} className="unit-detail-rule-row">
+                                <div
+                                    key={`${system.name}-${system.value ?? ''}-${system.detail ?? ''}`}
+                                    className="unit-detail-rule-row"
+                                >
                                     <span className="min-w-0 font-medium text-neutral-900">
-                                        <RuleWord category="systems" name={system.name} value={system.value} showValue={false} />
+                                        <RuleWord
+                                            category="systems"
+                                            name={system.name}
+                                            value={system.value}
+                                            showValue={false}
+                                        />
                                     </span>
-                                    {system.detail ? <span className="unit-detail-rule-detail">{system.detail}</span> : null}
-                                    {system.value != null ? <span className="unit-detail-rule-value">{system.value}</span> : null}
+                                    {system.detail ? (
+                                        <span className="unit-detail-rule-detail">{system.detail}</span>
+                                    ) : null}
+                                    {system.value != null ? (
+                                        <span className="unit-detail-rule-value">{system.value}</span>
+                                    ) : null}
                                 </div>
                             ))
                         ) : (
@@ -925,7 +1180,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
             </section>
 
             <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Weapons</div>
+                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                    Weapons
+                </div>
                 <div className="mt-2 overflow-x-auto">
                     <table className="min-w-full border-separate border-spacing-y-1.5 text-sm">
                         <thead>
@@ -942,16 +1199,24 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                             {displayedWeapons.map(({ weapon, index }) => {
                                 const weaponKey = `${unit.id}-${index}-${weapon.slot ?? 'base'}`
                                 const selectedName = activeUnitConfig.hardpointSelections[index] ?? weapon.name
-                                const options = weapon.slot && !weapon.hardpoint_locked
-                                    ? (unit.hardpoint_options?.[weapon.slot] ?? []).filter((option) => option.name !== weapon.name)
-                                    : []
+                                const options =
+                                    weapon.slot && !weapon.hardpoint_locked
+                                        ? (unit.hardpoint_options?.[weapon.slot] ?? []).filter(
+                                              (option) => option.name !== weapon.name,
+                                          )
+                                        : []
                                 const displayWeapon = options.find((option) => option.name === selectedName) ?? weapon
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
                                 const radioName = `slot-${selectedModelId ?? 'preview'}-${index}`
                                 const isGeneratorSlot = weaponGeneratorSelection?.weaponIndex === index
-                                const generatorChoices = canTakeGenerator && !weapon.hardpoint_locked ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost) : []
-                                const canShowGeneratorSection = generatorChoices.length > 0 && (weaponGeneratorSelection == null || weaponGeneratorSelection.weaponIndex === index)
+                                const generatorChoices =
+                                    canTakeGenerator && !weapon.hardpoint_locked
+                                        ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost)
+                                        : []
+                                const canShowGeneratorSection =
+                                    generatorChoices.length > 0 &&
+                                    (weaponGeneratorSelection == null || weaponGeneratorSelection.weaponIndex === index)
                                 const showGeneratorRow = Boolean(weapon.slot) && isGeneratorSlot
 
                                 if (showGeneratorRow && weaponGeneratorSelection) {
@@ -959,8 +1224,12 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                         <tr key={weaponKey} className="align-top unit-detail-weapon-row">
                                             <td className="rounded-l-lg px-2 py-2">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-medium text-neutral-900">{weaponGeneratorSelection.generatorName}</span>
-                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">+{weaponGeneratorSelection.generatorCost} pts</span>
+                                                    <span className="font-medium text-neutral-900">
+                                                        {weaponGeneratorSelection.generatorName}
+                                                    </span>
+                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-700">
+                                                        +{weaponGeneratorSelection.generatorCost} pts
+                                                    </span>
                                                     <button
                                                         type="button"
                                                         className="text-[10px] font-medium text-neutral-500 underline-offset-2 hover:underline"
@@ -977,9 +1246,15 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                             <td className="rounded-r-lg px-2 py-2 text-neutral-600">
                                                 <div className="flex flex-wrap gap-1">
                                                     <span className="unit-detail-chip">
-                                                        <RuleWord category="systems" name={weaponGeneratorSelection.generatorName} showValue={false} />
+                                                        <RuleWord
+                                                            category="systems"
+                                                            name={weaponGeneratorSelection.generatorName}
+                                                            showValue={false}
+                                                        />
                                                     </span>
-                                                    <span className="unit-detail-chip unit-detail-chip-cost">Generator</span>
+                                                    <span className="unit-detail-chip unit-detail-chip-cost">
+                                                        Generator
+                                                    </span>
                                                 </div>
                                             </td>
                                         </tr>
@@ -988,13 +1263,20 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
 
                                 return (
                                     <tr key={weaponKey} className="align-top unit-detail-weapon-row">
-                                        <td colSpan={isOpen ? 6 : undefined} className={`${isOpen ? 'rounded-lg' : 'rounded-l-lg'} px-2 py-2`}>
+                                        <td
+                                            colSpan={isOpen ? 6 : undefined}
+                                            className={`${isOpen ? 'rounded-lg' : 'rounded-l-lg'} px-2 py-2`}
+                                        >
                                             {options.length > 0 || canShowGeneratorSection ? (
                                                 <div className="space-y-1">
                                                     <button
                                                         type="button"
                                                         className="flex items-center gap-1 rounded-md border border-neutral-200 bg-white px-2 py-1 text-left text-[11px] font-medium text-neutral-900"
-                                                        onClick={() => setOpenHardpointKey((current) => (current === weaponKey ? null : weaponKey))}
+                                                        onClick={() =>
+                                                            setOpenHardpointKey((current) =>
+                                                                current === weaponKey ? null : weaponKey,
+                                                            )
+                                                        }
                                                     >
                                                         <span>{displayWeapon.name}</span>
                                                         <span className="text-[10px] text-neutral-400">▾</span>
@@ -1011,14 +1293,18 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                                 onChange={() => {
                                                                     setHardpointSelection(index, weapon.name)
                                                                     setOpenHardpointKey(null)
-                                                                    if (weaponGeneratorSelection?.weaponIndex === index) {
+                                                                    if (
+                                                                        weaponGeneratorSelection?.weaponIndex === index
+                                                                    ) {
                                                                         setGeneratorSelection(null)
                                                                     }
                                                                 }}
                                                             />
                                                             {options.length > 0 ? (
                                                                 <>
-                                                                    <div className="unit-detail-choice-heading mt-2">Hardpoint Alternatives</div>
+                                                                    <div className="unit-detail-choice-heading mt-2">
+                                                                        Hardpoint Alternatives
+                                                                    </div>
                                                                     {options.map((option) => (
                                                                         <WeaponChoiceRow
                                                                             key={option.name}
@@ -1028,9 +1314,15 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                                             checked={selectedName === option.name}
                                                                             name={radioName}
                                                                             onChange={() => {
-                                                                                setHardpointSelection(index, option.name)
+                                                                                setHardpointSelection(
+                                                                                    index,
+                                                                                    option.name,
+                                                                                )
                                                                                 setOpenHardpointKey(null)
-                                                                                if (weaponGeneratorSelection?.weaponIndex === index) {
+                                                                                if (
+                                                                                    weaponGeneratorSelection?.weaponIndex ===
+                                                                                    index
+                                                                                ) {
                                                                                     setGeneratorSelection(null)
                                                                                 }
                                                                             }}
@@ -1040,15 +1332,26 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                             ) : null}
                                                             {canShowGeneratorSection ? (
                                                                 <>
-                                                                    <div className="unit-detail-choice-heading mt-2">Generators</div>
+                                                                    <div className="unit-detail-choice-heading mt-2">
+                                                                        Generators
+                                                                    </div>
                                                                     {generatorChoices.map((generator) => (
                                                                         <GeneratorChoiceRow
                                                                             key={generator.name}
                                                                             generator={generator}
-                                                                            checked={weaponGeneratorSelection?.weaponIndex === index && weaponGeneratorSelection?.generatorName === generator.name}
+                                                                            checked={
+                                                                                weaponGeneratorSelection?.weaponIndex ===
+                                                                                    index &&
+                                                                                weaponGeneratorSelection?.generatorName ===
+                                                                                    generator.name
+                                                                            }
                                                                             name={radioName}
                                                                             onChange={() => {
-                                                                                setGeneratorSelection({ weaponIndex: index, generatorName: generator.name, generatorCost: generator.point_cost })
+                                                                                setGeneratorSelection({
+                                                                                    weaponIndex: index,
+                                                                                    generatorName: generator.name,
+                                                                                    generatorCost: generator.point_cost,
+                                                                                })
                                                                                 setOpenHardpointKey(null)
                                                                             }}
                                                                         />
@@ -1059,15 +1362,23 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                     ) : null}
                                                 </div>
                                             ) : (
-                                                <span className="font-medium text-neutral-900">{displayWeapon.name}</span>
+                                                <span className="font-medium text-neutral-900">
+                                                    {displayWeapon.name}
+                                                </span>
                                             )}
                                         </td>
                                         {!isOpen ? (
                                             <>
                                                 <td className="px-2 py-2 text-neutral-600">{displayArc}</td>
-                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.C)}</td>
-                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.S)}</td>
-                                                <td className="px-2 py-2 text-neutral-600">{formatValue(displayWeapon.firepower.E)}</td>
+                                                <td className="px-2 py-2 text-neutral-600">
+                                                    {formatValue(displayWeapon.firepower.C)}
+                                                </td>
+                                                <td className="px-2 py-2 text-neutral-600">
+                                                    {formatValue(displayWeapon.firepower.S)}
+                                                </td>
+                                                <td className="px-2 py-2 text-neutral-600">
+                                                    {formatValue(displayWeapon.firepower.E)}
+                                                </td>
                                                 <td className="rounded-r-lg px-2 py-2 text-neutral-600">
                                                     <WeaponQualityChips qualities={displayWeapon.qualities} />
                                                 </td>
@@ -1077,28 +1388,48 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                 )
                             })}
                             {mountedGeneratorWeapons.map(({ selection, selectionIndex, choices, weapon }) => {
-                                const inheritedArc = selection.weaponIndex >= 0 ? unit.weapons[selection.weaponIndex]?.arc : null
+                                const inheritedArc =
+                                    selection.weaponIndex >= 0 ? unit.weapons[selection.weaponIndex]?.arc : null
                                 return (
-                                    <tr key={`generator-weapon-${selectionIndex}`} className="align-top unit-detail-weapon-row">
+                                    <tr
+                                        key={`generator-weapon-${selectionIndex}`}
+                                        className="align-top unit-detail-weapon-row"
+                                    >
                                         <td className="rounded-l-lg px-2 py-2">
                                             <select
                                                 aria-label={`${selection.generatorName} weapon ${selectionIndex + 1}`}
                                                 className="w-full rounded-md border border-neutral-200 bg-white px-2 py-1 text-[11px] font-medium text-neutral-900 outline-none focus:border-[var(--navy)]"
                                                 value={selection.mountedWeaponName ?? ''}
-                                                onChange={(event) => setGeneratorMountedWeapon(selectionIndex, event.target.value)}
+                                                onChange={(event) =>
+                                                    setGeneratorMountedWeapon(selectionIndex, event.target.value)
+                                                }
                                             >
                                                 <option value="">Select Entropic weapon</option>
                                                 {choices.map((choice) => (
-                                                    <option key={choice.name} value={choice.name}>{choice.name}</option>
+                                                    <option key={choice.name} value={choice.name}>
+                                                        {choice.name}
+                                                    </option>
                                                 ))}
                                             </select>
                                         </td>
-                                        <td className="px-2 py-2 text-neutral-600">{inheritedArc ?? weapon?.arc ?? '—'}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.C)}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.S)}</td>
-                                        <td className="px-2 py-2 text-neutral-600">{formatValue(weapon?.firepower.E)}</td>
+                                        <td className="px-2 py-2 text-neutral-600">
+                                            {inheritedArc ?? weapon?.arc ?? '—'}
+                                        </td>
+                                        <td className="px-2 py-2 text-neutral-600">
+                                            {formatValue(weapon?.firepower.C)}
+                                        </td>
+                                        <td className="px-2 py-2 text-neutral-600">
+                                            {formatValue(weapon?.firepower.S)}
+                                        </td>
+                                        <td className="px-2 py-2 text-neutral-600">
+                                            {formatValue(weapon?.firepower.E)}
+                                        </td>
                                         <td className="rounded-r-lg px-2 py-2 text-neutral-600">
-                                            {weapon ? <WeaponQualityChips qualities={weapon.qualities} /> : <span className="text-neutral-500">Choose one profile</span>}
+                                            {weapon ? (
+                                                <WeaponQualityChips qualities={weapon.qualities} />
+                                            ) : (
+                                                <span className="text-neutral-500">Choose one profile</span>
+                                            )}
                                         </td>
                                     </tr>
                                 )
@@ -1108,34 +1439,55 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                 </div>
             </section>
 
-            {hasOptions || systemGeneratorChoices.length > 0 || (selectedEntry && availableFleetDoctrines.length > 0) ? (
+            {hasOptions ||
+            systemGeneratorChoices.length > 0 ||
+            (selectedEntry && availableFleetDoctrines.length > 0) ? (
                 <section className="grid items-start gap-2 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.55fr)]">
                     {hasOptions || systemGeneratorChoices.length > 0 ? (
                         <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                            <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Options & Upgrades</div>
+                            <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                                Options & Upgrades
+                            </div>
                             <div className="mt-2 space-y-1.5">
                                 {Array.from({ length: systemGeneratorSlotCount }, (_, slotIndex) => {
                                     const selectedSystemGenerator = selectedSystemGenerators[slotIndex] ?? null
                                     const slotGeneratorChoices = getGeneratorChoicesForSlot(
-                                        getSystemGeneratorChoices(unit, factionGenerators, extraSystemMagmaCastCost, slotIndex),
+                                        getSystemGeneratorChoices(
+                                            unit,
+                                            factionGenerators,
+                                            extraSystemMagmaCastCost,
+                                            slotIndex,
+                                        ),
                                         selectedSystemGenerators,
                                         slotIndex,
                                     )
                                     return (
-                                        <div key={`system-generator-${slotIndex}`} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
+                                        <div
+                                            key={`system-generator-${slotIndex}`}
+                                            className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]"
+                                        >
                                             <div className="min-w-0">
-                                                <div className="text-[12px] font-semibold text-neutral-900">Generator{systemGeneratorSlotCount > 1 ? ` ${slotIndex + 1}` : ''}</div>
+                                                <div className="text-[12px] font-semibold text-neutral-900">
+                                                    Generator{systemGeneratorSlotCount > 1 ? ` ${slotIndex + 1}` : ''}
+                                                </div>
                                             </div>
                                             <select
                                                 className="w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)] md:w-56"
                                                 value={selectedSystemGenerator?.generatorName ?? ''}
                                                 onChange={(event) => {
-                                                    const generator = slotGeneratorChoices.find((item) => item.name === event.target.value)
-                                                    setSystemGeneratorSelection(slotIndex, generator ? {
-                                                        weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
-                                                        generatorName: generator.name,
-                                                        generatorCost: generator.point_cost,
-                                                    } : null)
+                                                    const generator = slotGeneratorChoices.find(
+                                                        (item) => item.name === event.target.value,
+                                                    )
+                                                    setSystemGeneratorSelection(
+                                                        slotIndex,
+                                                        generator
+                                                            ? {
+                                                                  weaponIndex: SYSTEM_GENERATOR_WEAPON_INDEX,
+                                                                  generatorName: generator.name,
+                                                                  generatorCost: generator.point_cost,
+                                                              }
+                                                            : null,
+                                                    )
                                                 }}
                                             >
                                                 <option value="">Select</option>
@@ -1146,7 +1498,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                 ))}
                                             </select>
                                             <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
-                                                {selectedSystemGenerator ? `${selectedSystemGenerator.generatorCost} pts` : '—'}
+                                                {selectedSystemGenerator
+                                                    ? `${selectedSystemGenerator.generatorCost} pts`
+                                                    : '—'}
                                             </div>
                                         </div>
                                     )
@@ -1155,28 +1509,46 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                     const unitLevel = isUnitLevelOption(option.tag)
                                     const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
                                     const qty = config.optionQuantities[option.tag] ?? 0
-                                    const max = unitLevel ? option.max : option.max ?? 1
+                                    const max = unitLevel ? option.max : (option.max ?? 1)
                                     const canIncrease = max == null || qty < max
-                                    const optionPoints = computeOptionPoints(option, qty, Boolean(unitLevel && selectedEntry && hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined)))
-                                    const isGeneratorOption = option.tag === 'GENERATOR'
-                                        || option.tag === 'TRIDENT_GENERATOR'
-                                        || option.tag === 'GUARDIAN_GENERATOR'
-                                        || option.tag === 'ADDITIONAL_GUARDIAN_GENERATOR'
-                                        || option.tag === 'FREYA_ARRAY'
-                                        || option.tag === 'MAGMA_CAST_GENERATOR'
-                                        || option.tag === 'EMPIRE_FREE_GENERATOR'
-                                        || option.tag === 'FREE_GENERATOR'
-                                        || option.generator_replaces_weapon === true
-                                        || option.generator_replaces_weapon === false
+                                    const optionPoints = computeOptionPoints(
+                                        option,
+                                        qty,
+                                        Boolean(
+                                            unitLevel &&
+                                            selectedEntry &&
+                                            hasChitaSwarmEscortDiscount(selectedEntry, currentList ?? undefined),
+                                        ),
+                                    )
+                                    const isGeneratorOption =
+                                        option.tag === 'GENERATOR' ||
+                                        option.tag === 'TRIDENT_GENERATOR' ||
+                                        option.tag === 'GUARDIAN_GENERATOR' ||
+                                        option.tag === 'ADDITIONAL_GUARDIAN_GENERATOR' ||
+                                        option.tag === 'FREYA_ARRAY' ||
+                                        option.tag === 'MAGMA_CAST_GENERATOR' ||
+                                        option.tag === 'EMPIRE_FREE_GENERATOR' ||
+                                        option.tag === 'FREE_GENERATOR' ||
+                                        option.generator_replaces_weapon === true ||
+                                        option.generator_replaces_weapon === false
 
                                     return (
-                                        <div key={option.tag} className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]">
+                                        <div
+                                            key={option.tag}
+                                            className="grid items-center gap-3 rounded-lg border border-white/80 bg-white/55 px-2.5 py-2 text-[var(--detail-ink)] md:grid-cols-[minmax(0,1fr)_minmax(10rem,auto)_5rem]"
+                                        >
                                             <div className="min-w-0">
-                                                <div className="text-[12px] font-semibold text-neutral-900">{formatOptionName(option)}</div>
-                                                <div className="text-[11px] leading-tight text-[var(--detail-ink)]">{option.description}</div>
+                                                <div className="text-[12px] font-semibold text-neutral-900">
+                                                    {formatOptionName(option)}
+                                                </div>
+                                                <div className="text-[11px] leading-tight text-[var(--detail-ink)]">
+                                                    {option.description}
+                                                </div>
                                             </div>
                                             {isGeneratorOption ? (
-                                                <div className="justify-self-start text-[11px] text-[var(--detail-ink)]/70 md:justify-self-end">—</div>
+                                                <div className="justify-self-start text-[11px] text-[var(--detail-ink)]/70 md:justify-self-end">
+                                                    —
+                                                </div>
                                             ) : (
                                                 <div className="flex items-center justify-start gap-2 md:justify-end">
                                                     <button
@@ -1187,7 +1559,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                     >
                                                         −
                                                     </button>
-                                                    <div className="min-w-6 text-center text-sm font-semibold text-neutral-900">{qty}</div>
+                                                    <div className="min-w-6 text-center text-sm font-semibold text-neutral-900">
+                                                        {qty}
+                                                    </div>
                                                     <button
                                                         type="button"
                                                         className="h-6 w-6 rounded-full border border-white/70 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
@@ -1200,7 +1574,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                     >
                                                         +
                                                     </button>
-                                                    <div className="w-16 text-[11px] text-[var(--detail-ink)]/75">{max != null ? `Max ${max}` : 'Unlimited'}</div>
+                                                    <div className="w-16 text-[11px] text-[var(--detail-ink)]/75">
+                                                        {max != null ? `Max ${max}` : 'Unlimited'}
+                                                    </div>
                                                 </div>
                                             )}
                                             <div className="text-left text-[11px] font-semibold text-[var(--navy)] md:text-right">
@@ -1216,7 +1592,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                     {selectedEntry && availableFleetDoctrines.length > 0 ? (
                         <div className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
                             <div className="flex items-center justify-between gap-2">
-                                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Fleet Doctrine</div>
+                                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                                    Fleet Doctrine
+                                </div>
                                 {fleetDoctrineSelection ? (
                                     <span className="rounded-full border border-white/70 bg-white px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
                                         +{fleetDoctrineSelection.doctrineCost}
@@ -1227,8 +1605,14 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                 className="mt-2 w-full rounded-md border border-white/80 bg-white px-2 py-1.5 text-sm font-medium text-neutral-900 shadow-sm outline-none focus:border-[var(--navy)]"
                                 value={fleetDoctrineSelection?.doctrineName ?? ''}
                                 onChange={(event) => {
-                                    const doctrine = availableFleetDoctrines.find((item) => item.name === event.target.value)
-                                    setFleetDoctrineSelection(doctrine ? { doctrineName: doctrine.name, doctrineCost: doctrine.point_cost } : null)
+                                    const doctrine = availableFleetDoctrines.find(
+                                        (item) => item.name === event.target.value,
+                                    )
+                                    setFleetDoctrineSelection(
+                                        doctrine
+                                            ? { doctrineName: doctrine.name, doctrineCost: doctrine.point_cost }
+                                            : null,
+                                    )
                                 }}
                             >
                                 <option value="">None</option>
@@ -1247,7 +1631,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                     {selectedDoctrine.name}
                                 </button>
                             ) : (
-                                <div className="mt-2 text-[11px] text-[var(--detail-ink)]/60">No doctrine selected.</div>
+                                <div className="mt-2 text-[11px] text-[var(--detail-ink)]/60">
+                                    No doctrine selected.
+                                </div>
                             )}
                         </div>
                     ) : null}
@@ -1256,7 +1642,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
 
             {hasCarrierSrs ? (
                 <section className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
-                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">Short Range Squadrons</div>
+                    <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                        Short Range Squadrons
+                    </div>
                     <div className="mt-2 overflow-x-auto">
                         <table className="unit-detail-srs-table min-w-full text-sm">
                             <thead>
@@ -1281,8 +1669,16 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                             {squadron.properties.length > 0 ? (
                                                 <div className="flex flex-wrap gap-1">
                                                     {squadron.properties.map((property) => (
-                                                        <span key={`${squadron.name}-${property.name}`} className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600">
-                                                            <RuleWord category="properties" name={property.name} value={property.value} detail={property.detail} />
+                                                        <span
+                                                            key={`${squadron.name}-${property.name}`}
+                                                            className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[10px] text-neutral-600"
+                                                        >
+                                                            <RuleWord
+                                                                category="properties"
+                                                                name={property.name}
+                                                                value={property.value}
+                                                                detail={property.detail}
+                                                            />
                                                         </span>
                                                     ))}
                                                 </div>

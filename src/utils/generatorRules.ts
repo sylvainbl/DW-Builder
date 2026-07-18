@@ -7,8 +7,10 @@ export function canSelectGeneratorInSlot(
     slotIndex: number,
     generatorName: string,
 ): boolean {
-    return REPEATABLE_GENERATOR_NAMES.has(generatorName)
-        || !selections.some((selection, index) => index !== slotIndex && selection.generatorName === generatorName)
+    return (
+        REPEATABLE_GENERATOR_NAMES.has(generatorName) ||
+        !selections.some((selection, index) => index !== slotIndex && selection.generatorName === generatorName)
+    )
 }
 
 export function getGeneratorChoicesForSlot(

@@ -18,12 +18,19 @@ test('an Entropic Generator remains selectable once one is already mounted', () 
 })
 
 test('the current ordinary generator remains available in its own slot', () => {
-    const choices = getGeneratorChoicesForSlot([
-        { name: 'Atomic Generator', point_cost: 5 },
-        { name: 'Fury Generator', point_cost: 20 },
-    ], selections, 0)
+    const choices = getGeneratorChoicesForSlot(
+        [
+            { name: 'Atomic Generator', point_cost: 5 },
+            { name: 'Fury Generator', point_cost: 20 },
+        ],
+        selections,
+        0,
+    )
 
-    assert.deepEqual(choices.map((generator) => generator.name), ['Atomic Generator', 'Fury Generator'])
+    assert.deepEqual(
+        choices.map((generator) => generator.name),
+        ['Atomic Generator', 'Fury Generator'],
+    )
 })
 
 test('each Entropic Generator offers the three weapon profiles required by its rule', () => {

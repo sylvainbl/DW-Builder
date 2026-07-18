@@ -43,7 +43,7 @@ function ruleNamePattern(name: string, withContext: boolean) {
     const markedName = words.map(markedWordPattern).join('\\s+')
     const lookahead = withContext
         ? `(?=(?:\\s+(?:\\*{1,3})?\\([^)]+\\)(?:\\*{1,3})?(?:\\s+${ruleContext}\\b)?|\\s+${ruleContext}\\b))`
-        : '(?=$|[^\\p{L}\\p{N}\'-])'
+        : "(?=$|[^\\p{L}\\p{N}'-])"
 
     return new RegExp(`(^|[^\\p{L}\\p{N}'-])(${markedName})${lookahead}`, 'giu')
 }
@@ -65,8 +65,8 @@ function buildGlossaryMatcher(glossary?: Glossary | null, currentRuleName?: stri
             rule,
             pattern: ruleNamePattern(
                 rule.name,
-                !rule.name.includes(' ')
-                    || (rule.category === 'qualities' && criticalDamageQualityNames.has(rule.name)),
+                !rule.name.includes(' ') ||
+                    (rule.category === 'qualities' && criticalDamageQualityNames.has(rule.name)),
             ),
         }))
         .sort((a, b) => b.rule.name.length - a.rule.name.length)
@@ -102,7 +102,9 @@ function findRuleSegments(
     const explicitRanges: Array<{ start: number; end: number }> = []
 
     for (const match of text.matchAll(explicitRulePattern)) {
-        const rule = resolveExplicitRule(matcher, match[1], match[2])
+        const name = match[2]
+        if (!name) continue
+        const rule = resolveExplicitRule(matcher, match[1], name)
         const matchIndex = match.index ?? 0
         const end = matchIndex + match[0].length
         explicitRanges.push({ start: matchIndex, end })
@@ -121,7 +123,7 @@ function findRuleSegments(
         pattern.lastIndex = 0
 
         for (const match of text.matchAll(pattern)) {
-            const leading = match[1]
+            const leading = match[1] ?? ''
             const matchIndex = match.index ?? 0
             const start = matchIndex + leading.length
             const end = matchIndex + match[0].length
@@ -140,10 +142,7 @@ function findRuleSegments(
     return segments.sort((a, b) => a.start - b.start || b.end - a.end)
 }
 
-function renderInline(
-    text: string,
-    keyPrefix = 'inline',
-): ReactNode[] {
+function renderInline(text: string, keyPrefix = 'inline'): ReactNode[] {
     const nodes: ReactNode[] = []
     let lastIndex = 0
 
@@ -162,17 +161,9 @@ function renderInline(
                 </strong>,
             )
         } else if (token.startsWith('**')) {
-            nodes.push(
-                <strong key={`${keyPrefix}-${matchIndex}`}>
-                    {token.slice(2, -2)}
-                </strong>,
-            )
+            nodes.push(<strong key={`${keyPrefix}-${matchIndex}`}>{token.slice(2, -2)}</strong>)
         } else {
-            nodes.push(
-                <em key={`${keyPrefix}-${matchIndex}`}>
-                    {token.slice(1, -1)}
-                </em>,
-            )
+            nodes.push(<em key={`${keyPrefix}-${matchIndex}`}>{token.slice(1, -1)}</em>)
         }
 
         lastIndex = matchIndex + token.length
@@ -198,7 +189,12 @@ function renderParagraph(
 
         segments.forEach((segment, segmentIndex) => {
             if (segment.start > lastIndex) {
-                nodes.push(...renderInline(line.slice(lastIndex, segment.start), `${paragraphIndex}-${lineIndex}-${lastIndex}`))
+                nodes.push(
+                    ...renderInline(
+                        line.slice(lastIndex, segment.start),
+                        `${paragraphIndex}-${lineIndex}-${lastIndex}`,
+                    ),
+                )
             }
 
             nodes.push(
@@ -233,9 +229,7 @@ export function MarkdownText({ text, className, style, glossary, currentRuleName
     return (
         <div className={className} style={style}>
             {text.split(/\n{2,}/).map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>
-                    {renderParagraph(paragraph, matcher, onRuleClick, paragraphIndex)}
-                </p>
+                <p key={paragraphIndex}>{renderParagraph(paragraph, matcher, onRuleClick, paragraphIndex)}</p>
             ))}
         </div>
     )

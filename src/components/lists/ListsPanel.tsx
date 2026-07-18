@@ -29,6 +29,21 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
         onEnterBuilder()
     }
 
+    const importFile = async (file: File) => {
+        try {
+            const data: unknown = JSON.parse(await file.text())
+            const importedList = parseImportedList(data, units)
+            if (!importedList) {
+                window.alert('This file is not a valid Dystopian Wars list.')
+                return
+            }
+            importList(importedList)
+            onEnterBuilder()
+        } catch {
+            window.alert('Could not read this list file.')
+        }
+    }
+
     return (
         <main className="min-h-full bg-[var(--panel)]">
             <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
@@ -36,9 +51,15 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                     <div className="border-b border-[var(--panel-border)] bg-[linear-gradient(135deg,var(--navy),var(--navy-light))] px-5 py-6 text-white sm:px-7 sm:py-7">
                         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                             <div>
-                                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--gold)]">Fleet command</div>
-                                <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">Your army lists</h1>
-                                <p className="mt-2 max-w-xl text-sm leading-6 text-white/70">Create a fleet, reopen a saved build, or load one from a file.</p>
+                                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--gold)]">
+                                    Fleet command
+                                </div>
+                                <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
+                                    Your army lists
+                                </h1>
+                                <p className="mt-2 max-w-xl text-sm leading-6 text-white/70">
+                                    Create a fleet, reopen a saved build, or load one from a file.
+                                </p>
                             </div>
                             <div className="flex flex-col gap-2 min-[420px]:flex-row">
                                 <button
@@ -66,23 +87,11 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                         type="file"
                         accept="application/json,.json"
                         className="hidden"
-                        onChange={async (event) => {
+                        onChange={(event) => {
                             const file = event.target.files?.[0]
                             event.target.value = ''
                             if (!file) return
-
-                            try {
-                                const data = JSON.parse(await file.text())
-                                const importedList = parseImportedList(data, units)
-                                if (!importedList) {
-                                    window.alert('This file is not a valid Dystopian Wars list.')
-                                    return
-                                }
-                                importList(importedList)
-                                onEnterBuilder()
-                            } catch {
-                                window.alert('Could not read this list file.')
-                            }
+                            void importFile(file)
                         }}
                     />
 
@@ -103,7 +112,9 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                 <div className="mb-3 flex items-center justify-between gap-3">
                                     <div>
                                         <h2 className="text-sm font-semibold text-[var(--text)]">Create a new list</h2>
-                                        <p className="mt-0.5 text-xs text-[var(--muted)]">Choose a name and starting faction.</p>
+                                        <p className="mt-0.5 text-xs text-[var(--muted)]">
+                                            Choose a name and starting faction.
+                                        </p>
                                     </div>
                                     <button
                                         type="button"
@@ -132,10 +143,15 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                     >
                                         <option value="">Select faction</option>
                                         {factions.map((faction) => (
-                                            <option key={faction.id} value={faction.id}>{faction.name}</option>
+                                            <option key={faction.id} value={faction.id}>
+                                                {faction.name}
+                                            </option>
                                         ))}
                                     </select>
-                                    <button type="submit" className="rounded-lg bg-[var(--navy)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--navy-light)]">
+                                    <button
+                                        type="submit"
+                                        className="rounded-lg bg-[var(--navy)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--navy-light)]"
+                                    >
                                         Create
                                     </button>
                                 </div>
@@ -143,14 +159,20 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                         ) : null}
 
                         <div className="mb-3 flex items-center justify-between gap-3">
-                            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">My lists</h2>
-                            <span className="rounded-full bg-[var(--detail-panel)] px-2.5 py-1 text-xs font-semibold text-[var(--accent-foreground)]">{savedLists.length}</span>
+                            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                                My lists
+                            </h2>
+                            <span className="rounded-full bg-[var(--detail-panel)] px-2.5 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
+                                {savedLists.length}
+                            </span>
                         </div>
 
                         {savedLists.length === 0 ? (
                             <div className="rounded-xl border border-dashed border-[var(--panel-border)] bg-[var(--panel)] px-5 py-12 text-center">
                                 <div className="text-base font-semibold text-[var(--text)]">No saved lists yet</div>
-                                <p className="mt-1 text-sm text-[var(--muted)]">Create your first fleet to start building.</p>
+                                <p className="mt-1 text-sm text-[var(--muted)]">
+                                    Create your first fleet to start building.
+                                </p>
                                 <button
                                     type="button"
                                     onClick={() => setShowForm(true)}
@@ -180,28 +202,43 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                             <div className="pointer-events-none relative z-10 flex h-full flex-1 flex-col">
                                                 <div className="flex items-start justify-between gap-3">
                                                     <div className="min-w-0 flex-1 text-left">
-                                                    <div className="flex items-center gap-2">
-                                                        <h3 className="truncate text-base font-semibold text-[var(--text)]">{list.name}</h3>
-                                                        {active ? <span className="flex-none rounded-full bg-[var(--navy)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">Open</span> : null}
+                                                        <div className="flex items-center gap-2">
+                                                            <h3 className="truncate text-base font-semibold text-[var(--text)]">
+                                                                {list.name}
+                                                            </h3>
+                                                            {active ? (
+                                                                <span className="flex-none rounded-full bg-[var(--navy)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+                                                                    Open
+                                                                </span>
+                                                            ) : null}
+                                                        </div>
+                                                        <p className="mt-1 text-xs text-[var(--muted)]">
+                                                            {factionNames.get(list.faction_id) ?? list.faction_id} ·{' '}
+                                                            {list.units.length}{' '}
+                                                            {list.units.length === 1 ? 'unit' : 'units'}
+                                                        </p>
                                                     </div>
-                                                    <p className="mt-1 text-xs text-[var(--muted)]">{factionNames.get(list.faction_id) ?? list.faction_id} · {list.units.length} {list.units.length === 1 ? 'unit' : 'units'}</p>
+                                                    <button
+                                                        type="button"
+                                                        title={`Delete ${list.name}`}
+                                                        aria-label={`Delete ${list.name}`}
+                                                        onClick={() => {
+                                                            if (window.confirm(`Delete "${list.name}"?`))
+                                                                deleteList(list.id)
+                                                        }}
+                                                        className="pointer-events-auto rounded-md p-1.5 text-[var(--muted)] transition hover:bg-rose-50 hover:text-rose-600"
+                                                    >
+                                                        <X size={15} />
+                                                    </button>
                                                 </div>
-                                                <button
-                                                    type="button"
-                                                    title={`Delete ${list.name}`}
-                                                    aria-label={`Delete ${list.name}`}
-                                                    onClick={() => {
-                                                        if (window.confirm(`Delete "${list.name}"?`)) deleteList(list.id)
-                                                    }}
-                                                    className="pointer-events-auto rounded-md p-1.5 text-[var(--muted)] transition hover:bg-rose-50 hover:text-rose-600"
-                                                >
-                                                    <X size={15} />
-                                                </button>
-                                            </div>
                                                 <div className="mt-auto flex items-end justify-between gap-3 pt-6">
                                                     <div>
-                                                        <div className="text-lg font-semibold tabular-nums text-[var(--accent-foreground)]">{total.toLocaleString('fr-FR')} pts</div>
-                                                        <div className="text-xs font-medium text-[var(--muted)]">{totalVpr.toLocaleString('fr-FR')} VPR</div>
+                                                        <div className="text-lg font-semibold tabular-nums text-[var(--accent-foreground)]">
+                                                            {total.toLocaleString('fr-FR')} pts
+                                                        </div>
+                                                        <div className="text-xs font-medium text-[var(--muted)]">
+                                                            {totalVpr.toLocaleString('fr-FR')} VPR
+                                                        </div>
                                                     </div>
                                                     <span className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] px-3 py-2 text-xs font-semibold text-[var(--accent-foreground)] transition group-hover:border-[var(--gold)]">
                                                         Build

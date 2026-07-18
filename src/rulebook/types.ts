@@ -58,7 +58,7 @@ export interface RulebookSection {
 
 export interface RuleNote {
     id: string
-    type: 'designers_note' | 'flavour_text' | string
+    type: string
     title: string | null
     text: string
 }
@@ -77,7 +77,8 @@ export interface RuleBlock {
     notes: RuleNote[]
 }
 
-export type RuleTableValue = string | number | boolean | null
+export type RuleTableValue = string | number | boolean | null | undefined
+export type RuleStructuredValue = RuleTableValue | string[]
 
 export interface RuleTableColumn {
     id: string
@@ -121,7 +122,7 @@ export interface RuleAction {
     source: RuleSource
     printedPages: number[]
     text: string
-    limits: Record<string, RuleTableValue>
+    limits: Record<string, RuleStructuredValue>
 }
 
 export interface RuleToken {
@@ -133,7 +134,7 @@ export interface RuleToken {
     ruleBlockIds: string[]
     effectsTableId?: string
     text: string
-    tracking?: Record<string, RuleTableValue>
+    tracking?: Record<string, RuleStructuredValue>
 }
 
 export interface CriticalDamageEffect {
@@ -141,7 +142,7 @@ export interface CriticalDamageEffect {
     name: string
     source: RuleSource
     text: string
-    structuredEffect: Record<string, RuleTableValue>
+    structuredEffect: Record<string, RuleStructuredValue>
 }
 
 export interface TerrainSharedRule {
@@ -149,7 +150,7 @@ export interface TerrainSharedRule {
     name: string
     ruleBlockId: string
     text: string
-    structuredEffect: Record<string, RuleTableValue>
+    structuredEffect: Record<string, RuleStructuredValue>
 }
 
 export interface EnvironmentalFeature {
@@ -181,7 +182,11 @@ export interface TerrainFeature {
     removedAtMass?: number
     ruleBlockId?: string
     text?: string
-    impassableGround?: string
+    impassableGround?: {
+        description: string
+        canNormallyMoveThrough: boolean
+        terrainIgnoringModelsCanMoveThrough: boolean
+    }
 }
 
 export interface TerrainMarker {
@@ -191,10 +196,10 @@ export interface TerrainMarker {
     sectionId: string
     ruleBlockId: string
     text: string
-    controlCondition?: Record<string, RuleTableValue>
+    controlCondition?: Record<string, RuleStructuredValue>
     triggeredByTraits?: string[]
     criticalDamageResultsThatRemoveMarker?: string[]
-    onTrigger?: Record<string, RuleTableValue>
+    onTrigger?: Record<string, RuleStructuredValue>
 }
 
 export interface EncounterDiagram {
@@ -204,7 +209,7 @@ export interface EncounterDiagram {
 
 export interface EncounterObjective {
     id: string
-    tier: 'primary' | 'secondary' | 'tertiary' | string
+    tier: string
     role: string
     name: string
     availability: string

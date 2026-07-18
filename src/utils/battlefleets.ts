@@ -16,9 +16,7 @@ function normalizeTrait(value: string): string {
 }
 
 function getUnitTraits(unit: Unit, entry?: ArmyUnit): Set<string> {
-    const tags = entry
-        ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config)
-        : unit.tags
+    const tags = entry ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config) : unit.tags
     const factionTraits = unit.faction_id === 'union' ? [] : [unit.faction_id, unit.faction]
     return new Set(
         [...factionTraits, unit.name, unit.sub_name, unit.role, ...tags]
@@ -64,7 +62,11 @@ function matchesElement(entry: ArmyUnit, unit: Unit, element: BattlefleetElement
     return element.requirements.some((requirement) => matchesRequirement(entry, unit, requirement))
 }
 
-export function getMatchingBattlefleetElement(definition: BattlefleetDefinition, entry: ArmyUnit, unit: Unit): BattlefleetElement | null {
+export function getMatchingBattlefleetElement(
+    definition: BattlefleetDefinition,
+    entry: ArmyUnit,
+    unit: Unit,
+): BattlefleetElement | null {
     return definition.elements.find((element) => matchesElement(entry, unit, element)) ?? null
 }
 
@@ -79,17 +81,23 @@ function potentialUnitMatchesRequirement(unit: Unit, requirement: BattlefleetReq
 }
 
 function unitPotentiallyMatchesBattlefleetElement(definition: BattlefleetDefinition, unit: Unit): boolean {
-    return definition.elements.some((element) => (
-        element.requirements.some((requirement) => potentialUnitMatchesRequirement(unit, requirement))
-    ))
+    return definition.elements.some((element) =>
+        element.requirements.some((requirement) => potentialUnitMatchesRequirement(unit, requirement)),
+    )
 }
 
 function passesCategoricalSpecialRules(definition: BattlefleetDefinition, unit: Unit): boolean {
     const rules = definition.specialRules ?? []
-    if (rules.includes('empire-airborne-only') && (!hasTrait(unit, 'Airborne') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Underwater'))) {
+    if (
+        rules.includes('empire-airborne-only') &&
+        (!hasTrait(unit, 'Airborne') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Underwater'))
+    ) {
         return false
     }
-    if (rules.includes('empire-underwater-only') && (!hasTrait(unit, 'Underwater') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Airborne'))) {
+    if (
+        rules.includes('empire-underwater-only') &&
+        (!hasTrait(unit, 'Underwater') || hasTrait(unit, 'Surface') || hasTrait(unit, 'Airborne'))
+    ) {
         return false
     }
     return true
@@ -124,8 +132,17 @@ function battlefleetRoleRank(unit: Unit | null): number {
     return index === -1 ? battlefleetRoleOrder.length : index
 }
 
-export function isUkrainianAkulaFlagship(definition: BattlefleetDefinition | null | undefined, entries: ArmyUnit[], entry: ArmyUnit | null | undefined): boolean {
-    if (!definition?.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE) || !entry || entry.unitId !== COMMONWEALTH_AKULA_UNIT_ID) return false
+export function isUkrainianAkulaFlagship(
+    definition: BattlefleetDefinition | null | undefined,
+    entries: ArmyUnit[],
+    entry: ArmyUnit | null | undefined,
+): boolean {
+    if (
+        !definition?.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE) ||
+        !entry ||
+        entry.unitId !== COMMONWEALTH_AKULA_UNIT_ID
+    )
+        return false
     return entries.find((candidate) => candidate.unitId === COMMONWEALTH_AKULA_UNIT_ID)?.instanceId === entry.instanceId
 }
 
@@ -145,16 +162,25 @@ function battlefleetLabel(battlefleet: ArmyBattlefleet, definition?: Battlefleet
     return battlefleet.customName ? `${typeName} (${battlefleet.customName})` : typeName
 }
 
-export function isBattlefleetAvailableForFaction(definition: BattlefleetDefinition, factionId: string | null | undefined): boolean {
+export function isBattlefleetAvailableForFaction(
+    definition: BattlefleetDefinition,
+    factionId: string | null | undefined,
+): boolean {
     if (!factionId) return false
     return definition.faction_id === factionId || definition.mercenary === true
 }
 
-export function isMercenaryInForce(definition: BattlefleetDefinition, forceFactionId: string | null | undefined): boolean {
+export function isMercenaryInForce(
+    definition: BattlefleetDefinition,
+    forceFactionId: string | null | undefined,
+): boolean {
     return Boolean(forceFactionId && definition.mercenary && definition.faction_id !== forceFactionId)
 }
 
-export function getBattlefleetForceType(definition: BattlefleetDefinition, forceFactionId: string | null | undefined): BattlefleetType {
+export function getBattlefleetForceType(
+    definition: BattlefleetDefinition,
+    forceFactionId: string | null | undefined,
+): BattlefleetType {
     return isMercenaryInForce(definition, forceFactionId) ? 'specialist' : definition.type
 }
 
@@ -183,7 +209,9 @@ function solveElementCounts(
         }
     })
 
-    const unassigned = candidates.filter((candidate) => candidate.elements.length === 0).map((candidate) => candidate.entry)
+    const unassigned = candidates
+        .filter((candidate) => candidate.elements.length === 0)
+        .map((candidate) => candidate.entry)
     if (unassigned.length > 0) {
         return { valid: false, counts: initialCounts, unassigned }
     }
@@ -191,16 +219,19 @@ function solveElementCounts(
     const ordered = [...candidates].sort((a, b) => a.elements.length - b.elements.length)
     const search = (index: number, counts: Record<string, number>): Record<string, number> | null => {
         if (index >= ordered.length) {
-            const hasMinimums = definition.elements.every((element) => counts[element.id] >= element.min)
+            const hasMinimums = definition.elements.every((element) => (counts[element.id] ?? 0) >= element.min)
             return hasMinimums ? { ...counts } : null
         }
 
-        for (const element of ordered[index].elements) {
-            if (counts[element.id] >= element.max) continue
-            counts[element.id] += 1
+        const candidate = ordered[index]
+        if (!candidate) return null
+        for (const element of candidate.elements) {
+            const currentCount = counts[element.id] ?? 0
+            if (currentCount >= element.max) continue
+            counts[element.id] = currentCount + 1
             const result = search(index + 1, counts)
             if (result) return result
-            counts[element.id] -= 1
+            counts[element.id] = currentCount
         }
 
         return null
@@ -212,9 +243,9 @@ function solveElementCounts(
     const greedyCounts = { ...initialCounts }
     const greedyUnassigned: ArmyUnit[] = []
     for (const candidate of candidates) {
-        const element = candidate.elements.find((item) => greedyCounts[item.id] < item.max)
+        const element = candidate.elements.find((item) => (greedyCounts[item.id] ?? 0) < item.max)
         if (element) {
-            greedyCounts[element.id] += 1
+            greedyCounts[element.id] = (greedyCounts[element.id] ?? 0) + 1
         } else {
             greedyUnassigned.push(candidate.entry)
         }
@@ -240,17 +271,17 @@ function validateDuplicateClasses(
         const unit = findUnit(units, entry)
         if (!unit) continue
         if (
-            definition.specialRules?.includes('barbudos-cruiser-flagship')
-            && exemptBarbudosFlagshipIds.has(unit.id)
-            && !barbudosFlagshipExemptionUsed
+            definition.specialRules?.includes('barbudos-cruiser-flagship') &&
+            exemptBarbudosFlagshipIds.has(unit.id) &&
+            !barbudosFlagshipExemptionUsed
         ) {
             barbudosFlagshipExemptionUsed = true
             continue
         }
         if (
-            definition.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE)
-            && unit.id === COMMONWEALTH_AKULA_UNIT_ID
-            && !ukrainianAkulaFlagshipExemptionUsed
+            definition.specialRules?.includes(UKRAINIAN_AKULA_FLAGSHIP_RULE) &&
+            unit.id === COMMONWEALTH_AKULA_UNIT_ID &&
+            !ukrainianAkulaFlagshipExemptionUsed
         ) {
             ukrainianAkulaFlagshipExemptionUsed = true
             continue
@@ -261,12 +292,18 @@ function validateDuplicateClasses(
     }
 
     for (const [className, { label, count }] of classCounts) {
-        const dragonWrathTianlongLimit = definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE) && className === normalizeTrait('Tianlong') ? 2 : null
+        const dragonWrathTianlongLimit =
+            definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE) && className === normalizeTrait('Tianlong')
+                ? 2
+                : null
         const limit = dragonWrathTianlongLimit ?? (mainstayClasses.has(className) ? 2 : 1)
         if (count > limit) {
-            const limitText = dragonWrathTianlongLimit != null
-                ? 'Dragon\'s Wrath allows up to two Tianlong units'
-                : mainstayClasses.has(className) ? 'mainstay classes are limited to two' : 'duplicate classes are limited to one'
+            const limitText =
+                dragonWrathTianlongLimit != null
+                    ? "Dragon's Wrath allows up to two Tianlong units"
+                    : mainstayClasses.has(className)
+                      ? 'mainstay classes are limited to two'
+                      : 'duplicate classes are limited to one'
             issues.push({
                 severity: 'error',
                 battlefleetInstanceId: battlefleet.instanceId,
@@ -291,19 +328,22 @@ function validateFlagshipLimit(
     const exemptTianlongCount = definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE)
         ? Math.min(1, Math.max(0, entries.filter((entry) => entry.unitId === EMPIRE_TIANLONG_UNIT_ID).length - 1))
         : 0
-    const exemptEastIndiaPalashiCount = definition.specialRules?.includes('east-india-palashi-line')
-        && entries.some((entry) => entry.unitId === CROWN_ADVENTURER_UNIT_ID)
-        ? Math.min(1, entries.filter((entry) => entry.unitId === CROWN_PALASHI_UNIT_ID).length)
-        : 0
+    const exemptEastIndiaPalashiCount =
+        definition.specialRules?.includes('east-india-palashi-line') &&
+        entries.some((entry) => entry.unitId === CROWN_ADVENTURER_UNIT_ID)
+            ? Math.min(1, entries.filter((entry) => entry.unitId === CROWN_PALASHI_UNIT_ID).length)
+            : 0
     const flagshipCount = rawFlagshipCount - exemptTianlongCount - exemptEastIndiaPalashiCount
 
     if (flagshipCount <= 1) return []
 
-    return [{
-        severity: 'error',
-        battlefleetInstanceId: battlefleet.instanceId,
-        message: `${battlefleet.name} has ${flagshipCount} Flagship units; a Battlefleet can contain only one.`,
-    }]
+    return [
+        {
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} has ${flagshipCount} Flagship units; a Battlefleet can contain only one.`,
+        },
+    ]
 }
 
 function validateCommonwealthMainSpecial(
@@ -435,20 +475,24 @@ function validateEastIndiaPrivateersSpecial(
     })
 
     if (hasAdventurer && palashiCount > 1) {
-        return [{
-            severity: 'error',
-            battlefleetInstanceId: battlefleet.instanceId,
-            message: `${battlefleet.name} can include only one Palashi as a Line unit when Adventurer is its Flagship.`,
-        }]
+        return [
+            {
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                message: `${battlefleet.name} can include only one Palashi as a Line unit when Adventurer is its Flagship.`,
+            },
+        ]
     }
 
     if (!hasOtherFlagship || hasAdventurer) return []
 
-    return [{
-        severity: 'error',
-        battlefleetInstanceId: battlefleet.instanceId,
-        message: `${battlefleet.name} can include Palashi as a Line unit only when Adventurer is its Flagship.`,
-    }]
+    return [
+        {
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            message: `${battlefleet.name} can include Palashi as a Line unit only when Adventurer is its Flagship.`,
+        },
+    ]
 }
 
 function validateFlagshipNoDoctrine(
@@ -459,20 +503,18 @@ function validateFlagshipNoDoctrine(
     return entries.flatMap((entry) => {
         const unit = findUnit(units, entry)
         if (!unit || !hasTrait(unit, 'Flagship') || !entry.config.fleetDoctrineSelection) return []
-        return [{
-            severity: 'error' as const,
-            battlefleetInstanceId: battlefleet.instanceId,
-            unitInstanceId: entry.instanceId,
-            message: `${unit.name} cannot purchase a Fleet Doctrine while assigned as the ${battlefleet.name} Flagship.`,
-        }]
+        return [
+            {
+                severity: 'error' as const,
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${unit.name} cannot purchase a Fleet Doctrine while assigned as the ${battlefleet.name} Flagship.`,
+            },
+        ]
     })
 }
 
-function validateEmpireMainLimit(
-    battlefleet: ArmyBattlefleet,
-    entries: ArmyUnit[],
-    units: Unit[],
-): BattlefleetIssue[] {
+function validateEmpireMainLimit(battlefleet: ArmyBattlefleet, entries: ArmyUnit[], units: Unit[]): BattlefleetIssue[] {
     const countedEntries = entries.filter((entry) => {
         const unit = findUnit(units, entry)
         return unit ? !hasTrait(unit, 'Flagship') : false
@@ -550,19 +592,18 @@ function validateUnionManifestDestinyFlagship(
     entries: ArmyUnit[],
     units: Unit[],
 ): BattlefleetIssue[] {
-    const validFlagshipIds = new Set([
-        'union_america_special_operations_vessel',
-        'union_senator_command_cruiser',
-    ])
+    const validFlagshipIds = new Set(['union_america_special_operations_vessel', 'union_senator_command_cruiser'])
     return entries.flatMap((entry) => {
         const unit = findUnit(units, entry)
         if (!unit || !hasTrait(unit, 'Flagship') || validFlagshipIds.has(entry.unitId)) return []
-        return [{
-            severity: 'error' as const,
-            battlefleetInstanceId: battlefleet.instanceId,
-            unitInstanceId: entry.instanceId,
-            message: `${battlefleet.name} Flagship must be an America Special Operations Vessel or Senator Command Cruiser unit.`,
-        }]
+        return [
+            {
+                severity: 'error' as const,
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${battlefleet.name} Flagship must be an America Special Operations Vessel or Senator Command Cruiser unit.`,
+            },
+        ]
     })
 }
 
@@ -645,13 +686,16 @@ function validateEmpireAirborneOnly(
 ): BattlefleetIssue[] {
     return entries.flatMap((entry) => {
         const unit = findUnit(units, entry)
-        if (!unit || (hasTrait(unit, 'Airborne') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Underwater'))) return []
-        return [{
-            severity: 'error' as const,
-            battlefleetInstanceId: battlefleet.instanceId,
-            unitInstanceId: entry.instanceId,
-            message: `${battlefleet.name} cannot include Surface or Underwater units.`,
-        }]
+        if (!unit || (hasTrait(unit, 'Airborne') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Underwater')))
+            return []
+        return [
+            {
+                severity: 'error' as const,
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${battlefleet.name} cannot include Surface or Underwater units.`,
+            },
+        ]
     })
 }
 
@@ -662,37 +706,41 @@ function validateEmpireUnderwaterOnly(
 ): BattlefleetIssue[] {
     return entries.flatMap((entry) => {
         const unit = findUnit(units, entry)
-        if (!unit || (hasTrait(unit, 'Underwater') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Airborne'))) return []
-        return [{
-            severity: 'error' as const,
-            battlefleetInstanceId: battlefleet.instanceId,
-            unitInstanceId: entry.instanceId,
-            message: `${battlefleet.name} cannot include Airborne or Surface units.`,
-        }]
-    })
-}
-
-function validateEmpireTianlongNoDoctrine(
-    battlefleet: ArmyBattlefleet,
-    entries: ArmyUnit[],
-): BattlefleetIssue[] {
-    return entries.flatMap((entry) => (
-        entry.unitId === EMPIRE_TIANLONG_UNIT_ID && entry.config.fleetDoctrineSelection
-            ? [{
+        if (!unit || (hasTrait(unit, 'Underwater') && !hasTrait(unit, 'Surface') && !hasTrait(unit, 'Airborne')))
+            return []
+        return [
+            {
                 severity: 'error' as const,
                 battlefleetInstanceId: battlefleet.instanceId,
                 unitInstanceId: entry.instanceId,
-                message: `Tianlong Draconic Colossus cannot purchase a Fleet Doctrine while assigned to ${battlefleet.name}.`,
-            }]
-            : []
-    ))
+                message: `${battlefleet.name} cannot include Airborne or Surface units.`,
+            },
+        ]
+    })
+}
+
+function validateEmpireTianlongNoDoctrine(battlefleet: ArmyBattlefleet, entries: ArmyUnit[]): BattlefleetIssue[] {
+    return entries.flatMap((entry) =>
+        entry.unitId === EMPIRE_TIANLONG_UNIT_ID && entry.config.fleetDoctrineSelection
+            ? [
+                  {
+                      severity: 'error' as const,
+                      battlefleetInstanceId: battlefleet.instanceId,
+                      unitInstanceId: entry.instanceId,
+                      message: `Tianlong Draconic Colossus cannot purchase a Fleet Doctrine while assigned to ${battlefleet.name}.`,
+                  },
+              ]
+            : [],
+    )
 }
 
 function unitHasMagmaGenerator(unit: Unit, entry: ArmyUnit): boolean {
     if (unit.systems.some((system) => MAGMA_GENERATOR_NAMES.has(system.name))) return true
     return entry.models.some((model) => {
         const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
-        return generatorSelections.some((generatorSelection) => MAGMA_GENERATOR_NAMES.has(generatorSelection.generatorName))
+        return generatorSelections.some((generatorSelection) =>
+            MAGMA_GENERATOR_NAMES.has(generatorSelection.generatorName),
+        )
     })
 }
 
@@ -704,12 +752,14 @@ function validateEmpireKagutsuchiMagmaFlagship(
     return entries.flatMap((entry) => {
         const unit = findUnit(units, entry)
         if (!unit || !hasTrait(unit, 'Flagship') || unitHasMagmaGenerator(unit, entry)) return []
-        return [{
-            severity: 'error' as const,
-            battlefleetInstanceId: battlefleet.instanceId,
-            unitInstanceId: entry.instanceId,
-            message: `${battlefleet.name} Flagship must have a Magma Cast Generator or Magma Tower Generator.`,
-        }]
+        return [
+            {
+                severity: 'error' as const,
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${battlefleet.name} Flagship must have a Magma Cast Generator or Magma Tower Generator.`,
+            },
+        ]
     })
 }
 
@@ -734,17 +784,25 @@ function validateSpecialRules(
         if (rule === 'east-india-palashi-line') {
             issues.push(...validateEastIndiaPrivateersSpecial(battlefleet, entries, units))
         }
-        if (rule === 'scions-flagship-no-doctrine' || rule === 'sultanate-crimson-flagship-no-doctrine' || rule === 'union-hec-flagship-no-doctrine') {
+        if (
+            rule === 'scions-flagship-no-doctrine' ||
+            rule === 'sultanate-crimson-flagship-no-doctrine' ||
+            rule === 'union-hec-flagship-no-doctrine'
+        ) {
             issues.push(...validateFlagshipNoDoctrine(battlefleet, entries, units))
         }
         if (rule === 'empire-main-airborne-underwater-limit') {
             issues.push(...validateEmpireMainLimit(battlefleet, entries, units))
         }
         if (rule === 'union-main-airborne-underwater-limit') {
-            issues.push(...validateUnionMainstayExemptAirborneUnderwaterLimit(definition, battlefleet, entries, units, 2, 1))
+            issues.push(
+                ...validateUnionMainstayExemptAirborneUnderwaterLimit(definition, battlefleet, entries, units, 2, 1),
+            )
         }
         if (rule === 'union-airborne-underwater-limit') {
-            issues.push(...validateUnionMainstayExemptAirborneUnderwaterLimit(definition, battlefleet, entries, units, 1, 1))
+            issues.push(
+                ...validateUnionMainstayExemptAirborneUnderwaterLimit(definition, battlefleet, entries, units, 1, 1),
+            )
         }
         if (rule === 'union-manifest-flagship') {
             issues.push(...validateUnionManifestDestinyFlagship(battlefleet, entries, units))
@@ -831,14 +889,16 @@ function validateUniqueUnits(list: ArmyList, units: Unit[]): BattlefleetIssue[] 
         counts.set(unit.id, { unit, count: current.count + 1 })
     }
 
-    return [...counts.values()].flatMap(({ unit, count }) => (
+    return [...counts.values()].flatMap(({ unit, count }) =>
         count > 1
-            ? [{
-                severity: 'error' as const,
-                message: `${unit.name} is Unique and can only be included once in a Force.`,
-            }]
-            : []
-    ))
+            ? [
+                  {
+                      severity: 'error' as const,
+                      message: `${unit.name} is Unique and can only be included once in a Force.`,
+                  },
+              ]
+            : [],
+    )
 }
 
 export function validateBattlefleetOrganisation(
@@ -849,16 +909,19 @@ export function validateBattlefleetOrganisation(
     if (!list) return []
 
     const issues: BattlefleetIssue[] = []
-    const availableDefinitions = definitions.filter((definition) => isBattlefleetAvailableForFaction(definition, list.faction_id))
+    const availableDefinitions = definitions.filter((definition) =>
+        isBattlefleetAvailableForFaction(definition, list.faction_id),
+    )
     const definitionById = new Map(availableDefinitions.map((definition) => [definition.id, definition]))
     const battlefleets = list.battlefleets ?? []
 
     if (battlefleets.length === 0) {
         issues.push({
             severity: 'error',
-            message: list.units.length > 0
-                ? 'Add at least one Battlefleet and assign every unit to it.'
-                : 'A Force must contain at least one Main Battlefleet.',
+            message:
+                list.units.length > 0
+                    ? 'Add at least one Battlefleet and assign every unit to it.'
+                    : 'A Force must contain at least one Main Battlefleet.',
         })
     }
 
@@ -875,14 +938,24 @@ export function validateBattlefleetOrganisation(
         return [{ battlefleet, definition }]
     })
 
-    const hasEmpireZhanmadao = knownBattlefleets.some(({ definition }) => definition.id === EMPIRE_ZHANMADAO_BATTLEFLEET_ID)
-    const mainCount = knownBattlefleets.filter(({ definition }) => getBattlefleetForceType(definition, list.faction_id) === 'main').length
-    const specialistCount = knownBattlefleets.filter(({ definition }) => (
-        getBattlefleetForceType(definition, list.faction_id) === 'specialist'
-        && !(definition.specialRules?.includes('mercenary-does-not-count') && !isMercenaryInForce(definition, list.faction_id))
-        && !(definition.id === EMPIRE_GWISIN_BATTLEFLEET_ID && hasEmpireZhanmadao)
-    )).length
-    const mercenaryCount = knownBattlefleets.filter(({ definition }) => isMercenaryInForce(definition, list.faction_id)).length
+    const hasEmpireZhanmadao = knownBattlefleets.some(
+        ({ definition }) => definition.id === EMPIRE_ZHANMADAO_BATTLEFLEET_ID,
+    )
+    const mainCount = knownBattlefleets.filter(
+        ({ definition }) => getBattlefleetForceType(definition, list.faction_id) === 'main',
+    ).length
+    const specialistCount = knownBattlefleets.filter(
+        ({ definition }) =>
+            getBattlefleetForceType(definition, list.faction_id) === 'specialist' &&
+            !(
+                definition.specialRules?.includes('mercenary-does-not-count') &&
+                !isMercenaryInForce(definition, list.faction_id)
+            ) &&
+            !(definition.id === EMPIRE_GWISIN_BATTLEFLEET_ID && hasEmpireZhanmadao),
+    ).length
+    const mercenaryCount = knownBattlefleets.filter(({ definition }) =>
+        isMercenaryInForce(definition, list.faction_id),
+    ).length
     if (knownBattlefleets.length > 0 && mainCount === 0) {
         issues.push({ severity: 'error', message: 'A Force must contain at least one Main Battlefleet.' })
     }
@@ -907,7 +980,10 @@ export function validateBattlefleetOrganisation(
     }
     for (const { name, count } of legendaryCounts.values()) {
         if (count > 1) {
-            issues.push({ severity: 'error', message: `${name} is Legendary and can only be included once in a Force.` })
+            issues.push({
+                severity: 'error',
+                message: `${name} is Legendary and can only be included once in a Force.`,
+            })
         }
     }
 

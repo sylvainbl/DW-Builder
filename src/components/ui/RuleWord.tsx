@@ -21,8 +21,8 @@ export function RuleWord({
     const resolvedRule = glossary?.[category]?.[name]
         ? { category, text: glossary[category][name] }
         : Object.entries(glossary ?? {})
-            .map(([fallbackCategory, rules]) => ({ category: fallbackCategory, text: rules[name] }))
-            .find((rule) => rule.text)
+              .map(([fallbackCategory, rules]) => ({ category: fallbackCategory, text: rules[name] }))
+              .find((rule) => rule.text)
     const ruleText = resolvedRule?.text ?? null
     const label = `${showValue && value != null ? `${name} ${value}` : name}${detail ? ` (${detail})` : ''}`
 
@@ -32,12 +32,13 @@ export function RuleWord({
 
     return (
         <>
-            <span
+            <button
+                type="button"
                 onClick={() => setModalOpen(true)}
-                style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}
+                className="inline border-0 bg-transparent p-0 text-inherit underline decoration-dotted underline-offset-2"
             >
                 {label}
-            </span>
+            </button>
 
             {modalOpen && (
                 <RuleModal

@@ -75,7 +75,9 @@
     border-color: var(--navy);
     background: linear-gradient(135deg, var(--detail-hero), var(--detail-hero-soft));
     color: white;
-    box-shadow: 0 0 0 2px rgb(var(--gold-rgb) / 0.18), 0 2px 8px rgb(var(--navy-rgb) / 0.16);
+    box-shadow:
+        0 0 0 2px rgb(var(--gold-rgb) / 0.18),
+        0 2px 8px rgb(var(--navy-rgb) / 0.16);
 }
 
 .unit-detail-stat {
@@ -412,7 +414,8 @@
     color: var(--accent-foreground);
 }
 
-:root:is([data-theme='dark'], [data-theme='turquoise-orange']) [class~='bg-[var(--gold)]'][class~='text-[var(--navy)]'] {
+:root:is([data-theme='dark'], [data-theme='turquoise-orange'])
+    [class~='bg-[var(--gold)]'][class~='text-[var(--navy)]'] {
     color: #172033;
 }
 

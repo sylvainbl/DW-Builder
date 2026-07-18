@@ -24,5 +24,5 @@ test('one incompatible saved list does not prevent the other lists from being up
         { name: 'Older list', version: 0 },
     ])
     assert.equal(warnings.length, 1)
-    assert.match(String(warnings[0][0]), /Older list/)
+    assert.match(String(warnings[0]?.[0]), /Older list/)
 })

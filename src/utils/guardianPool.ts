@@ -1,5 +1,9 @@
 import type { ArmyUnit, Unit, UnitConfig } from '../types/index'
-import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, SYSTEM_GENERATOR_WEAPON_INDEX } from './optionRuleEffects'
+import {
+    getEffectiveGeneratorSelections,
+    getSelectedOptionRuleEffects,
+    SYSTEM_GENERATOR_WEAPON_INDEX,
+} from './optionRuleEffects'
 
 const CROWN_FACTION_ID = 'crown'
 const GUARDIAN_GENERATOR_NAME = 'Guardian Generator'
@@ -44,8 +48,10 @@ export function computeArmyUnitGuardianPool(entry: ArmyUnit, allUnits: Unit[]): 
     const ownGuardianPool = unit
         ? entry.models.reduce((sum, model) => sum + computeModelGuardianPool(unit, model.config, entry.config), 0)
         : 0
-    const attachmentGuardianPool = (entry.attachedUnits ?? [])
-        .reduce((sum, attachment) => sum + computeArmyUnitGuardianPool(attachment, allUnits), 0)
+    const attachmentGuardianPool = (entry.attachedUnits ?? []).reduce(
+        (sum, attachment) => sum + computeArmyUnitGuardianPool(attachment, allUnits),
+        0,
+    )
 
     return ownGuardianPool + attachmentGuardianPool
 }
@@ -55,8 +61,10 @@ export function computeArmyUnitGuardianSurge(entry: ArmyUnit, allUnits: Unit[]):
     const ownGuardianSurge = unit
         ? entry.models.reduce((sum, model) => sum + computeModelGuardianSurge(unit, model.config, entry.config), 0)
         : 0
-    const attachmentGuardianSurge = (entry.attachedUnits ?? [])
-        .reduce((sum, attachment) => sum + computeArmyUnitGuardianSurge(attachment, allUnits), 0)
+    const attachmentGuardianSurge = (entry.attachedUnits ?? []).reduce(
+        (sum, attachment) => sum + computeArmyUnitGuardianSurge(attachment, allUnits),
+        0,
+    )
 
     return ownGuardianSurge + attachmentGuardianSurge
 }

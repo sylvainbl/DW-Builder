@@ -31,24 +31,24 @@ Les corrections portent sur les modules canoniques affichés par l’application
 
 ## 3. Corrections du texte canonique
 
-| Pages imprimées | Bloc | Correction |
-|---|---|---|
-| 21 | `rule.arcs` | Suppression des libellés de diagramme `FORE`, `PORT`, `STARBOARD`, `AFT` qui avaient été insérés au milieu des phrases ; reconstitution des trois paragraphes. |
-| 24–25 | `rule.unit-coherency` | Suppression du `4''` isolé provenant du diagramme, sans supprimer les valeurs de portée de 4” présentes dans la règle. |
-| 30–33 | `rule.weapon-grids` | Retrait d’une légende d’illustration étrangère au texte de règle ; déplacement du passage « Dear Diary » dans une note `flavour_text` distincte. |
-| 34–37 | `rule.chapter.core-rules` | Retrait de la pseudo-légende `Image: Mighty fleets…` ajoutée à la note des concepteurs. |
-| 37 | `rule.initiative` | Correction de `Initiative Initiative Dial` en `Initiative`. |
-| 38–39 | `rule.checking-visibility` | Suppression de l’intrusion de légende `Fig. each D Frigate` ; restitution de `each Frigate has a Mass of 1`. |
-| 44–45 | `rule.rolling-dice` | Restitution de la fin de phrase manquante : `icon, as summarised in the table below.` |
-| 46–49 | `rule.making-an-action-roll` | Retranscription complète des cinq étapes ; restauration des introductions tronquées et des exemples A à J, dont l’exemple complet de la page 48. |
-| 57–58 | `rule.effects-of-disorder` | Restitution de `depending on the level of Disorder it has:` avant la liste des effets. |
-| 62–63 | `rule.b-draw-cards` | Suppression de fragments d’en-tête de tableau (`Engagement`, `Hand`) injectés dans la prose. |
-| 74–75 | `rule.4-make-the-action-roll` | Restitution de `the opposing Admiral makes a Resistance Roll:`. |
-| 82–83 | `rule.resolving-a-ram` | Restitution de la distance manquante : le modèle cible recule de `1”`. |
-| 87 | `rule.critical-damage` | Correction de la face de token `x2`, auparavant extraite sous la forme incomplète `x `. |
-| 125 | `rule.section.force-creation` | Réunion du titre cassé `FORCE` / `SELECTION`. |
-| 128 | `rule.attached-units` | Suppression du mot `unit` dupliqué dans l’exemple du Crown Flagship. |
-| 135 | `rule.4-draw-starting-cards` | Restitution de `determined by the Engagement Scale.` |
+| Pages imprimées | Bloc                          | Correction                                                                                                                                                     |
+| --------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 21              | `rule.arcs`                   | Suppression des libellés de diagramme `FORE`, `PORT`, `STARBOARD`, `AFT` qui avaient été insérés au milieu des phrases ; reconstitution des trois paragraphes. |
+| 24–25           | `rule.unit-coherency`         | Suppression du `4''` isolé provenant du diagramme, sans supprimer les valeurs de portée de 4” présentes dans la règle.                                         |
+| 30–33           | `rule.weapon-grids`           | Retrait d’une légende d’illustration étrangère au texte de règle ; déplacement du passage « Dear Diary » dans une note `flavour_text` distincte.               |
+| 34–37           | `rule.chapter.core-rules`     | Retrait de la pseudo-légende `Image: Mighty fleets…` ajoutée à la note des concepteurs.                                                                        |
+| 37              | `rule.initiative`             | Correction de `Initiative Initiative Dial` en `Initiative`.                                                                                                    |
+| 38–39           | `rule.checking-visibility`    | Suppression de l’intrusion de légende `Fig. each D Frigate` ; restitution de `each Frigate has a Mass of 1`.                                                   |
+| 44–45           | `rule.rolling-dice`           | Restitution de la fin de phrase manquante : `icon, as summarised in the table below.`                                                                          |
+| 46–49           | `rule.making-an-action-roll`  | Retranscription complète des cinq étapes ; restauration des introductions tronquées et des exemples A à J, dont l’exemple complet de la page 48.               |
+| 57–58           | `rule.effects-of-disorder`    | Restitution de `depending on the level of Disorder it has:` avant la liste des effets.                                                                         |
+| 62–63           | `rule.b-draw-cards`           | Suppression de fragments d’en-tête de tableau (`Engagement`, `Hand`) injectés dans la prose.                                                                   |
+| 74–75           | `rule.4-make-the-action-roll` | Restitution de `the opposing Admiral makes a Resistance Roll:`.                                                                                                |
+| 82–83           | `rule.resolving-a-ram`        | Restitution de la distance manquante : le modèle cible recule de `1”`.                                                                                         |
+| 87              | `rule.critical-damage`        | Correction de la face de token `x2`, auparavant extraite sous la forme incomplète `x `.                                                                        |
+| 125             | `rule.section.force-creation` | Réunion du titre cassé `FORCE` / `SELECTION`.                                                                                                                  |
+| 128             | `rule.attached-units`         | Suppression du mot `unit` dupliqué dans l’exemple du Crown Flagship.                                                                                           |
+| 135             | `rule.4-draw-starting-cards`  | Restitution de `determined by the Engagement Scale.`                                                                                                           |
 
 ### Action Roll
 
@@ -114,13 +114,13 @@ Les nombres de jeu réels ont été conservés. Des tests ciblés protègent not
 
 Cinq visuels officiels présents dans les assets mais absents de `visuals.json` ont été rétablis :
 
-| Page imprimée | Visuel |
-|---|---|
-| 40 | `visual.moving-models` |
-| 97 | `visual.broadside-additional-targets` |
-| 102 | `visual.escort-tokens` |
-| 103 | `visual.raiding-parties` |
-| 136 | `visual.deployment-order-example` |
+| Page imprimée | Visuel                                |
+| ------------- | ------------------------------------- |
+| 40            | `visual.moving-models`                |
+| 97            | `visual.broadside-additional-targets` |
+| 102           | `visual.escort-tokens`                |
+| 103           | `visual.raiding-parties`              |
+| 136           | `visual.deployment-order-example`     |
 
 Le manifeste et le rapport de validation déclarent maintenant 34 visuels, au lieu de 29.
 
@@ -128,16 +128,16 @@ Le manifeste et le rapport de validation déclarent maintenant 34 visuels, au li
 
 Huit images ont été recadrées ou recomposées à partir des ressources officielles :
 
-| Page imprimée | Asset | Nouveau cadrage |
-|---|---|---|
-| 23 | `proximity.webp` | Retrait de l’encart `PAGE REFERENCES` et du numéro de page ; navires, gabarit, flèches et distances inchangés. |
-| 25 | `unit-coherency-examples.webp` | Conservation exclusive des quatre exemples A à D ; retrait de la prose voisine et du personnage latéral. |
-| 41 | `coming-about-and-turning-template.webp` | Réunion des deux schémas de rotation et du rappel du gabarit ; retrait des paragraphes environnants. |
-| 93 | `aerial-weapon-target-sequence.webp` | Conservation du diagramme tactique seul. |
-| 107 | `srs-stack-examples.webp` | Conservation des figures A à D et de l’explication utile de la pile mixte ; retrait du bloc de références. |
-| 113 | `interception-worked-example.webp` | Conservation des trois panneaux E à G ; retrait du texte supérieur et de l’illustration maritime inférieure. |
-| 121 | `marker-types.webp` | Extraction propre des quatre marqueurs d’objectif, du Minefield et du Wreck, sans colonne de texte. |
-| 144 | `encounter-oil-fields-map.webp` | Conservation de la carte de déploiement carrée seule. |
+| Page imprimée | Asset                                    | Nouveau cadrage                                                                                                |
+| ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 23            | `proximity.webp`                         | Retrait de l’encart `PAGE REFERENCES` et du numéro de page ; navires, gabarit, flèches et distances inchangés. |
+| 25            | `unit-coherency-examples.webp`           | Conservation exclusive des quatre exemples A à D ; retrait de la prose voisine et du personnage latéral.       |
+| 41            | `coming-about-and-turning-template.webp` | Réunion des deux schémas de rotation et du rappel du gabarit ; retrait des paragraphes environnants.           |
+| 93            | `aerial-weapon-target-sequence.webp`     | Conservation du diagramme tactique seul.                                                                       |
+| 107           | `srs-stack-examples.webp`                | Conservation des figures A à D et de l’explication utile de la pile mixte ; retrait du bloc de références.     |
+| 113           | `interception-worked-example.webp`       | Conservation des trois panneaux E à G ; retrait du texte supérieur et de l’illustration maritime inférieure.   |
+| 121           | `marker-types.webp`                      | Extraction propre des quatre marqueurs d’objectif, du Minefield et du Wreck, sans colonne de texte.            |
+| 144           | `encounter-oil-fields-map.webp`          | Conservation de la carte de déploiement carrée seule.                                                          |
 
 Pour `proximity.webp`, l’encart de références chevauchait une zone maritime qui ne pouvait pas être supprimée par un rectangle sans laisser un vide visible. Une retouche localisée a généré uniquement un petit échantillon de texture d’océan, ensuite composité dans l’image officielle. La variante complète générée n’a pas été utilisée : tous les éléments de jeu et tous les pixels hors de cette zone restent ceux de l’original.
 
@@ -281,4 +281,3 @@ Application :
 ## 11. Modification locale préexistante préservée
 
 Le bloc `rule.rallying-a-model` contenait déjà une modification locale transformant trois puces hétérogènes en trois puces `-` cohérentes. Cette modification ne fait pas partie de cette intervention ; elle a été expressément préservée et les nouvelles listes sémantiques la rendent correctement.
-

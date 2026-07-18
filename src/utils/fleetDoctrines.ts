@@ -8,7 +8,11 @@ export function getAvailableFleetDoctrines(unit: Unit, doctrines: Record<string,
     if (!unitCanTakeFleetDoctrine(unit)) return []
 
     return (doctrines[unit.faction_id] ?? []).filter((doctrine) => {
-        if (doctrine.required_role && unit.role !== doctrine.required_role && !unit.tags.includes(doctrine.required_role)) {
+        if (
+            doctrine.required_role &&
+            unit.role !== doctrine.required_role &&
+            !unit.tags.includes(doctrine.required_role)
+        ) {
             return false
         }
 

@@ -1,4 +1,12 @@
-import type { ArmyList, ArmyUnit, BattlefleetDefinition, BattlefleetEffect, BattlefleetRequirement, NamedValue, Unit } from '../types/index'
+import type {
+    ArmyList,
+    ArmyUnit,
+    BattlefleetDefinition,
+    BattlefleetEffect,
+    BattlefleetRequirement,
+    NamedValue,
+    Unit,
+} from '../types/index'
 import { getSelectedTags, mergeNamedValues } from './optionRuleEffects'
 
 function normalizeTrait(value: string): string {
@@ -6,9 +14,7 @@ function normalizeTrait(value: string): string {
 }
 
 function getUnitTraits(unit: Unit, entry?: ArmyUnit): Set<string> {
-    const tags = entry
-        ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config)
-        : unit.tags
+    const tags = entry ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config) : unit.tags
     const factionTraits = unit.faction_id === 'union' ? [] : [unit.faction_id, unit.faction]
     return new Set(
         [...factionTraits, unit.name, unit.sub_name, unit.role, ...tags]
@@ -28,10 +34,17 @@ function unitMatchesRequirement(unit: Unit, requirement: BattlefleetRequirement,
 }
 
 function effectAppliesToEntry(effect: BattlefleetEffect, unit: Unit, entry: ArmyUnit): boolean {
-    return !effect.requirements?.length || effect.requirements.some((requirement) => unitMatchesRequirement(unit, requirement, entry))
+    return (
+        !effect.requirements?.length ||
+        effect.requirements.some((requirement) => unitMatchesRequirement(unit, requirement, entry))
+    )
 }
 
-function isEntryInBattlefleetScope(effect: BattlefleetEffect, entry: ArmyUnit, sourceBattlefleetInstanceId: string): boolean {
+function isEntryInBattlefleetScope(
+    effect: BattlefleetEffect,
+    entry: ArmyUnit,
+    sourceBattlefleetInstanceId: string,
+): boolean {
     return effect.scope === 'force' || entry.battlefleetInstanceId === sourceBattlefleetInstanceId
 }
 
@@ -48,10 +61,11 @@ function getBattlefleetEffectsForEntry(
 
     return (list.battlefleets ?? []).flatMap((battlefleet) => {
         const definition = definitionById.get(battlefleet.definitionId)
-        return (definition?.effects ?? []).filter((effect) => (
-            isEntryInBattlefleetScope(effect, entry, battlefleet.instanceId)
-            && effectAppliesToEntry(effect, unit, entry)
-        ))
+        return (definition?.effects ?? []).filter(
+            (effect) =>
+                isEntryInBattlefleetScope(effect, entry, battlefleet.instanceId) &&
+                effectAppliesToEntry(effect, unit, entry),
+        )
     })
 }
 
@@ -76,7 +90,9 @@ export function getBattlefleetAddedProperties(
     units: Unit[],
     entry: ArmyUnit | null | undefined,
 ): NamedValue[] {
-    return mergeNamedValues(...getBattlefleetEffectsForEntry(list, definitions, units, entry).map((effect) => effect.addProperties ?? []))
+    return mergeNamedValues(
+        ...getBattlefleetEffectsForEntry(list, definitions, units, entry).map((effect) => effect.addProperties ?? []),
+    )
 }
 
 export function getBattlefleetAddedSystems(
@@ -85,5 +101,7 @@ export function getBattlefleetAddedSystems(
     units: Unit[],
     entry: ArmyUnit | null | undefined,
 ): NamedValue[] {
-    return mergeNamedValues(...getBattlefleetEffectsForEntry(list, definitions, units, entry).map((effect) => effect.addSystems ?? []))
+    return mergeNamedValues(
+        ...getBattlefleetEffectsForEntry(list, definitions, units, entry).map((effect) => effect.addSystems ?? []),
+    )
 }

@@ -30,17 +30,22 @@ function normalizeSrsTypeName(value: string): string {
 export function getSrsTypeNames(unit: Unit, properties: NamedValue[] = unit.properties): string[] {
     return properties
         .filter((property) => property.name === 'SRS' || property.name === 'Flight Deck')
-        .flatMap((property) => property.detail
-        ?.split(/[,/]/)
-        .map((name) => name.trim())
-            .filter(Boolean) ?? [])
+        .flatMap(
+            (property) =>
+                property.detail
+                    ?.split(/[,/]/)
+                    .map((name) => name.trim())
+                    .filter(Boolean) ?? [],
+        )
 }
 
 export function getVisibleSrsSquadrons(unit: Unit, properties: NamedValue[] = unit.properties): ShortRangeSquadron[] {
     const srsTypeNames = getSrsTypeNames(unit, properties)
     const normalizedTypes = new Set(srsTypeNames.map(normalizeSrsTypeName))
 
-    return unit.short_range_squadrons?.filter((squadron) => (
-        srsTypeNames.length === 0 || normalizedTypes.has(normalizeSrsTypeName(squadron.name))
-    )) ?? []
+    return (
+        unit.short_range_squadrons?.filter(
+            (squadron) => srsTypeNames.length === 0 || normalizedTypes.has(normalizeSrsTypeName(squadron.name)),
+        ) ?? []
+    )
 }

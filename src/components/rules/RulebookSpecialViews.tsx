@@ -8,6 +8,7 @@ import type {
     RuleBlock,
     RuleProcedure,
     RuleProcedureStep,
+    RuleStructuredValue,
     RuleTableValue,
     RulebookData,
     RuleEncounter,
@@ -38,7 +39,7 @@ function ViewHeader({ eyebrow, title, description }: ViewHeaderProps) {
     )
 }
 
-function RuleAnchorLink({ ruleId, indexes }: { ruleId: string, indexes: RulebookIndexes }) {
+function RuleAnchorLink({ ruleId, indexes }: { ruleId: string; indexes: RulebookIndexes }) {
     const rule = indexes.ruleById.get(ruleId)
     if (!rule) return null
     return (
@@ -52,22 +53,27 @@ function RuleAnchorLink({ ruleId, indexes }: { ruleId: string, indexes: Rulebook
     )
 }
 
-function StructuredValues({ values }: { values: Record<string, RuleTableValue> }) {
-    const entries = Object.entries(values).filter(([, value]) => (
-        value !== null
-        && value !== false
-        && value !== ''
-    ))
+function StructuredValues({ values }: { values: Record<string, RuleStructuredValue> }) {
+    const entries = Object.entries(values).filter(
+        ([, value]) => value !== undefined && value !== null && value !== false && value !== '',
+    )
     if (entries.length === 0) return null
     return (
         <dl className="mt-3 flex flex-wrap gap-1.5">
             {entries.map(([key, value]) => (
-                <div key={key} className="inline-flex min-w-0 items-baseline gap-1 rounded-md border border-[var(--panel-border)] bg-[var(--detail-panel)] px-2 py-1">
-                    <dt className="text-[10px] font-bold uppercase tracking-wide text-[var(--muted)]">{formatIdentifier(key)}</dt>
+                <div
+                    key={key}
+                    className="inline-flex min-w-0 items-baseline gap-1 rounded-md border border-[var(--panel-border)] bg-[var(--detail-panel)] px-2 py-1"
+                >
+                    <dt className="text-[10px] font-bold uppercase tracking-wide text-[var(--muted)]">
+                        {formatIdentifier(key)}
+                    </dt>
                     <dd className="text-xs font-semibold text-[var(--text)]">
-                        {typeof value === 'boolean'
-                            ? 'Yes'
-                            : typeof value === 'string' && value.includes('_')
+                        {Array.isArray(value)
+                            ? value.join(', ')
+                            : typeof value === 'boolean'
+                              ? 'Yes'
+                              : typeof value === 'string' && value.includes('_')
                                 ? formatIdentifier(value)
                                 : value}
                     </dd>
@@ -88,14 +94,17 @@ function InlineRuleContent({
     preferFallback?: boolean
     headingLevel?: 3 | 4 | 5
 }) {
-    const text = preferFallback ? fallbackText ?? rule?.text : rule?.text ?? fallbackText
+    const text = preferFallback ? (fallbackText ?? rule?.text) : (rule?.text ?? fallbackText)
     if (!text) return null
 
     return (
         <>
             <RuleText text={text} headingLevel={headingLevel} />
             {rule?.notes.map((note) => (
-                <aside key={note.id} className="mt-4 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] p-3">
+                <aside
+                    key={note.id}
+                    className="mt-4 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] p-3"
+                >
                     {note.title ? <h4 className="mb-1 text-sm font-bold text-[var(--text)]">{note.title}</h4> : null}
                     <RuleText text={note.text} className="text-[var(--muted)]" headingLevel={5} />
                 </aside>
@@ -113,11 +122,10 @@ function ProcedureStepDetails({
     procedure: RuleProcedure
     indexes: RulebookIndexes
 }) {
-    const rule = step.ruleBlockId ? indexes.ruleById.get(step.ruleBlockId) ?? null : null
+    const rule = step.ruleBlockId ? (indexes.ruleById.get(step.ruleBlockId) ?? null) : null
     const text = getProcedureStepText(step, procedure, indexes)
     const ruleIsShared = Boolean(
-        step.ruleBlockId
-        && procedure.steps.filter((item) => item.ruleBlockId === step.ruleBlockId).length > 1,
+        step.ruleBlockId && procedure.steps.filter((item) => item.ruleBlockId === step.ruleBlockId).length > 1,
     )
 
     return (
@@ -147,12 +155,23 @@ function ProcedureStepDetails({
     )
 }
 
-function ProcedureCard({ procedure, indexes, onOpenVisual }: { procedure: RuleProcedure, indexes: RulebookIndexes, onOpenVisual: (visual: CuratedVisual) => void }) {
+function ProcedureCard({
+    procedure,
+    indexes,
+    onOpenVisual,
+}: {
+    procedure: RuleProcedure
+    indexes: RulebookIndexes
+    onOpenVisual: (visual: CuratedVisual) => void
+}) {
     const pageStart = Math.min(...procedure.source.printedPages)
     const pageEnd = Math.max(...procedure.source.printedPages)
 
     return (
-        <article id={procedure.id} className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
+        <article
+            id={procedure.id}
+            className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm"
+        >
             <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                     <p className="text-xs font-bold uppercase tracking-wide text-[var(--gold)]">
@@ -198,7 +217,12 @@ export function ProceduresView({ data, indexes, onOpenVisual }: SpecialViewProps
             />
             <div className="space-y-5">
                 {data.procedures.map((procedure) => (
-                    <ProcedureCard key={procedure.id} procedure={procedure} indexes={indexes} onOpenVisual={onOpenVisual} />
+                    <ProcedureCard
+                        key={procedure.id}
+                        procedure={procedure}
+                        indexes={indexes}
+                        onOpenVisual={onOpenVisual}
+                    />
                 ))}
             </div>
         </div>
@@ -223,45 +247,65 @@ export function ActionsView({ data, indexes }: SpecialViewProps) {
                             {formatIdentifier(category)}
                         </h2>
                         <div className="grid gap-4 sm:grid-cols-2">
-                            {data.actions.filter((action) => action.category === category).map((action) => {
-                                const procedure = action.procedureId ? indexes.procedureById.get(action.procedureId) : null
-                                const rule = action.ruleBlockId ? indexes.ruleById.get(action.ruleBlockId) ?? null : null
-                                return (
-                                    <details key={action.id} id={action.id} className="group/action scroll-mt-32 overflow-hidden rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm">
-                                        <summary className="flex cursor-pointer list-none items-start gap-3 p-4 [&::-webkit-details-marker]:hidden">
-                                            <div className="min-w-0 flex-1">
-                                                <p className="text-xs font-semibold text-[var(--gold)]">{action.phase}</p>
-                                                <h3 className="mt-1 text-lg font-bold text-[var(--text)]">{action.name}</h3>
-                                                <StructuredValues values={action.limits} />
+                            {data.actions
+                                .filter((action) => action.category === category)
+                                .map((action) => {
+                                    const procedure = action.procedureId
+                                        ? indexes.procedureById.get(action.procedureId)
+                                        : null
+                                    const rule = action.ruleBlockId
+                                        ? (indexes.ruleById.get(action.ruleBlockId) ?? null)
+                                        : null
+                                    return (
+                                        <details
+                                            key={action.id}
+                                            id={action.id}
+                                            className="group/action scroll-mt-32 overflow-hidden rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm"
+                                        >
+                                            <summary className="flex cursor-pointer list-none items-start gap-3 p-4 [&::-webkit-details-marker]:hidden">
+                                                <div className="min-w-0 flex-1">
+                                                    <p className="text-xs font-semibold text-[var(--gold)]">
+                                                        {action.phase}
+                                                    </p>
+                                                    <h3 className="mt-1 text-lg font-bold text-[var(--text)]">
+                                                        {action.name}
+                                                    </h3>
+                                                    <StructuredValues values={action.limits} />
+                                                </div>
+                                                <ChevronDown
+                                                    size={18}
+                                                    aria-hidden="true"
+                                                    className="mt-1 flex-none text-[var(--accent-foreground)] transition-transform group-open/action:rotate-180"
+                                                />
+                                            </summary>
+                                            <div className="border-t border-[var(--panel-border)] bg-[var(--detail-panel)] p-4">
+                                                {procedure ? (
+                                                    <section>
+                                                        <h4 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]">
+                                                            {procedure.title}
+                                                        </h4>
+                                                        <ol className="space-y-2">
+                                                            {procedure.steps.map((step) => (
+                                                                <ProcedureStepDetails
+                                                                    key={`${procedure.id}-${step.order}`}
+                                                                    step={step}
+                                                                    procedure={procedure}
+                                                                    indexes={indexes}
+                                                                />
+                                                            ))}
+                                                        </ol>
+                                                    </section>
+                                                ) : (
+                                                    <InlineRuleContent
+                                                        rule={rule}
+                                                        fallbackText={action.text}
+                                                        headingLevel={4}
+                                                    />
+                                                )}
                                             </div>
-                                            <ChevronDown
-                                                size={18}
-                                                aria-hidden="true"
-                                                className="mt-1 flex-none text-[var(--accent-foreground)] transition-transform group-open/action:rotate-180"
-                                            />
-                                        </summary>
-                                        <div className="border-t border-[var(--panel-border)] bg-[var(--detail-panel)] p-4">
-                                            {procedure ? (
-                                                <section>
-                                                    <h4 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]">
-                                                        {procedure.title}
-                                                    </h4>
-                                                    <ol className="space-y-2">
-                                                        {procedure.steps.map((step) => (
-                                                            <ProcedureStepDetails
-                                                                key={`${procedure.id}-${step.order}`}
-                                                                step={step}
-                                                                procedure={procedure}
-                                                                indexes={indexes}
-                                                            />
-                                                        ))}
-                                                    </ol>
-                                                </section>
-                                            ) : <InlineRuleContent rule={rule} fallbackText={action.text} headingLevel={4} />}
-                                        </div>
-                                    </details>
-                                )
-                            })}
+                                        </details>
+                                    )
+                                })}
                         </div>
                     </section>
                 ))}
@@ -282,22 +326,32 @@ export function TokensView({ data, indexes, onOpenVisual }: SpecialViewProps) {
                 {data.tokens.map((token) => {
                     const tokenTable = token.effectsTableId ? indexes.tableById.get(token.effectsTableId) : null
                     return (
-                        <article key={token.id} id={token.id} className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
+                        <article
+                            key={token.id}
+                            id={token.id}
+                            className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm"
+                        >
                             <div className="flex items-start justify-between gap-3">
                                 <div>
-                                    <p className="text-xs font-bold uppercase tracking-wide text-[var(--gold)]">{formatIdentifier(token.scope)}</p>
+                                    <p className="text-xs font-bold uppercase tracking-wide text-[var(--gold)]">
+                                        {formatIdentifier(token.scope)}
+                                    </p>
                                     <h2 className="mt-1 text-xl font-bold text-[var(--text)]">{token.name}</h2>
                                 </div>
                                 <ShieldCheck size={22} className="text-[var(--accent-foreground)]" />
                             </div>
                             <RuleText text={token.text} className="mt-4" />
-                            <StructuredValues values={{
-                                stacking: formatIdentifier(token.stacking),
-                                maximumLevel: token.maximumLevel ?? token.tracking?.maximum ?? null,
-                                ...(token.tracking ?? {}),
-                            }} />
+                            <StructuredValues
+                                values={{
+                                    stacking: formatIdentifier(token.stacking),
+                                    maximumLevel: token.maximumLevel ?? token.tracking?.maximum ?? null,
+                                    ...(token.tracking ?? {}),
+                                }}
+                            />
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {token.ruleBlockIds.map((ruleId) => <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />)}
+                                {token.ruleBlockIds.map((ruleId) => (
+                                    <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />
+                                ))}
                             </div>
                             {(indexes.visualsByTokenId.get(token.id) ?? []).map((visual) => (
                                 <CuratedVisualFigure
@@ -315,10 +369,15 @@ export function TokensView({ data, indexes, onOpenVisual }: SpecialViewProps) {
             </div>
 
             <section className="mt-8">
-                <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">Critical Damage effects</h2>
+                <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">
+                    Critical Damage effects
+                </h2>
                 <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {data.criticalDamageEffects.map((effect) => (
-                        <article key={effect.id} className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm">
+                        <article
+                            key={effect.id}
+                            className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm"
+                        >
                             <h3 className="font-bold text-[var(--text)]">{effect.name}</h3>
                             <RuleText text={effect.text} className="mt-3" />
                             <StructuredValues values={effect.structuredEffect} />
@@ -344,21 +403,32 @@ function TerrainCard({
     const fallbackText = 'text' in item ? item.text : item.definition
 
     return (
-        <article id={item.id} className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm">
+        <article
+            id={item.id}
+            className="scroll-mt-32 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm"
+        >
             <h3 className="text-lg font-bold text-[var(--text)]">{item.name}</h3>
             <StructuredValues values={metadata} />
-            {fallbackText ? <RuleText text={fallbackText} className="mt-3 text-[var(--muted)]" headingLevel={4} /> : null}
+            {fallbackText ? (
+                <RuleText text={fallbackText} className="mt-3 text-[var(--muted)]" headingLevel={4} />
+            ) : null}
             <div className="mt-4 flex flex-wrap gap-2">
-                {ruleIds.map((ruleId) => <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />)}
+                {ruleIds.map((ruleId) => (
+                    <RuleAnchorLink key={ruleId} ruleId={ruleId} indexes={indexes} />
+                ))}
             </div>
         </article>
     )
 }
 
 export function TerrainView({ data, indexes, onOpenVisual }: SpecialViewProps) {
-    const markerVisuals = Array.from(new Map(
-        data.terrain.markers.flatMap((marker) => indexes.visualsByMarkerId.get(marker.id) ?? []).map((visual) => [visual.id, visual]),
-    ).values())
+    const markerVisuals = Array.from(
+        new Map(
+            data.terrain.markers
+                .flatMap((marker) => indexes.visualsByMarkerId.get(marker.id) ?? [])
+                .map((visual) => [visual.id, visual]),
+        ).values(),
+    )
 
     return (
         <div className="mx-auto max-w-5xl">
@@ -425,7 +495,10 @@ export function TerrainView({ data, indexes, onOpenVisual }: SpecialViewProps) {
                     <BookOpen size={17} />
                     Markers
                 </h2>
-                <RuleText text={data.terrain.markerGeneralRules} className="mb-4 rounded-xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-4" />
+                <RuleText
+                    text={data.terrain.markerGeneralRules}
+                    className="mb-4 rounded-xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-4"
+                />
                 <div className="grid gap-4 sm:grid-cols-3">
                     {data.terrain.markers.map((item) => (
                         <TerrainCard
@@ -462,47 +535,72 @@ function availabilityLabel(value: string): string {
     return formatIdentifier(value)
 }
 
-function EncounterDetail({ encounter, indexes, onOpenVisual }: { encounter: RuleEncounter, indexes: RulebookIndexes, onOpenVisual: (visual: CuratedVisual) => void }) {
+function EncounterDetail({
+    encounter,
+    indexes,
+    onOpenVisual,
+}: {
+    encounter: RuleEncounter
+    indexes: RulebookIndexes
+    onOpenVisual: (visual: CuratedVisual) => void
+}) {
     const mapVisual = indexes.visualById.get(encounter.deployment.diagram.visualId)
 
     return (
         <article id={encounter.id} className="scroll-mt-32">
             <header className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--gold)]">Encounter {encounter.number}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
+                    Encounter {encounter.number}
+                </p>
                 <h2 className="mt-1 text-2xl font-bold text-[var(--accent-foreground)]">{encounter.name}</h2>
-                <RuleText text={encounter.narrative} className="mt-4 border-l-2 border-[var(--gold)] pl-4 italic text-[var(--muted)]" />
+                <RuleText
+                    text={encounter.narrative}
+                    className="mt-4 border-l-2 border-[var(--gold)] pl-4 italic text-[var(--muted)]"
+                />
             </header>
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,0.72fr)]">
                 <div className="space-y-5">
                     <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
-                        <h3 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">Play Area</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">
+                            Play Area
+                        </h3>
                         <RuleText text={encounter.playArea} className="mt-3" />
                     </section>
                     {encounter.deployment.description ? (
                         <section className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
-                            <h3 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">Deployment</h3>
+                            <h3 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">
+                                Deployment
+                            </h3>
                             <RuleText text={encounter.deployment.description} className="mt-3" />
                         </section>
                     ) : null}
                     {encounter.additionalRules.map((rule) => (
-                        <section key={rule.id} className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm">
-                            <p className="text-xs font-bold uppercase tracking-[0.13em] text-[var(--gold)]">Additional Rule</p>
+                        <section
+                            key={rule.id}
+                            className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-5 shadow-sm"
+                        >
+                            <p className="text-xs font-bold uppercase tracking-[0.13em] text-[var(--gold)]">
+                                Additional Rule
+                            </p>
                             <h3 className="mt-1 font-bold text-[var(--text)]">{rule.name}</h3>
                             <RuleText text={rule.text} className="mt-3" />
                         </section>
                     ))}
                 </div>
-                <div>
-                    {mapVisual ? <CuratedVisualFigure visual={mapVisual} onOpen={onOpenVisual} compact /> : null}
-                </div>
+                <div>{mapVisual ? <CuratedVisualFigure visual={mapVisual} onOpen={onOpenVisual} compact /> : null}</div>
             </div>
 
             <section className="mt-6">
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">Objectives</h3>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">
+                    Objectives
+                </h3>
                 <div className="grid gap-4 lg:grid-cols-3">
                     {encounter.objectives.map((objective) => (
-                        <article key={objective.id} className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm">
+                        <article
+                            key={objective.id}
+                            className="rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] p-4 shadow-sm"
+                        >
                             <div className="flex flex-wrap gap-2">
                                 <span className="rounded-full bg-[var(--navy)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
                                     {objective.tier}
@@ -530,7 +628,8 @@ export function EncountersView({ data, indexes, onOpenVisual }: SpecialViewProps
     const location = useLocation()
     const navigate = useNavigate()
     const selectedEncounterId = decodeURIComponent(location.hash.slice(1))
-    const selectedEncounter = data.encounters.find((encounter) => encounter.id === selectedEncounterId) ?? data.encounters[0]
+    const selectedEncounter =
+        data.encounters.find((encounter) => encounter.id === selectedEncounterId) ?? data.encounters[0]
 
     if (!selectedEncounter) return null
 
@@ -546,13 +645,19 @@ export function EncountersView({ data, indexes, onOpenVisual }: SpecialViewProps
                     <button
                         key={encounter.id}
                         type="button"
-                        onClick={() => navigate(`${location.pathname}${location.search}#${encodeURIComponent(encounter.id)}`)}
+                        onClick={() =>
+                            void navigate(`${location.pathname}${location.search}#${encodeURIComponent(encounter.id)}`)
+                        }
                         aria-pressed={encounter.id === selectedEncounter.id}
-                        className={`rounded-xl border px-3 py-3 text-left text-xs font-semibold transition ${encounter.id === selectedEncounter.id
-                            ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]'
-                            : 'border-[var(--panel-border)] bg-[var(--detail-row)] text-[var(--text)] hover:border-[var(--gold)]'}`}
+                        className={`rounded-xl border px-3 py-3 text-left text-xs font-semibold transition ${
+                            encounter.id === selectedEncounter.id
+                                ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy)]'
+                                : 'border-[var(--panel-border)] bg-[var(--detail-row)] text-[var(--text)] hover:border-[var(--gold)]'
+                        }`}
                     >
-                        <span className="block text-[10px] uppercase tracking-wide opacity-70">Encounter {encounter.number}</span>
+                        <span className="block text-[10px] uppercase tracking-wide opacity-70">
+                            Encounter {encounter.number}
+                        </span>
                         <span className="mt-1 block">{encounter.name}</span>
                     </button>
                 ))}

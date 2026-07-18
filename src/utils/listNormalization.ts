@@ -2,10 +2,7 @@ interface NamedSavedList {
     name: string
 }
 
-export function normalizeSavedListsIndependently<T extends NamedSavedList>(
-    lists: T[],
-    normalize: (list: T) => T,
-): T[] {
+export function normalizeSavedListsIndependently<T extends NamedSavedList>(lists: T[], normalize: (list: T) => T): T[] {
     return lists.map((list) => {
         try {
             return normalize(list)

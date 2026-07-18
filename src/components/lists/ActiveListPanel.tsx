@@ -2,11 +2,22 @@ import { AlertTriangle, BookOpenText, ChevronDown, ChevronRight, Download, Minus
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
-import { getBattlefleetDefinitionsForFaction, getBattlefleetForceType, isMercenaryInForce, sortBattlefleetEntries, validateBattlefleetOrganisation } from '../../utils/battlefleets'
+import {
+    getBattlefleetDefinitionsForFaction,
+    getBattlefleetForceType,
+    isMercenaryInForce,
+    sortBattlefleetEntries,
+    validateBattlefleetOrganisation,
+} from '../../utils/battlefleets'
 import { getListGlossary, getListGlossaryCount } from '../../utils/listGlossary'
 import { downloadList } from '../../utils/localStorage'
-import { previewPrintableList } from '../../utils/printList'
-import { computeArmyUnitGuardianPool, computeArmyUnitGuardianSurge, computeEntriesGuardianPool, computeEntriesGuardianSurge, isCrownFaction } from '../../utils/guardianPool'
+import {
+    computeArmyUnitGuardianPool,
+    computeArmyUnitGuardianSurge,
+    computeEntriesGuardianPool,
+    computeEntriesGuardianSurge,
+    isCrownFaction,
+} from '../../utils/guardianPool'
 import { computeArmyUnitVpr, computeEntriesVpr } from '../../utils/pointsCalc'
 
 interface UnitRowProps {
@@ -63,14 +74,28 @@ interface UnitGroupProps {
     unitIssuesByInstanceId: Map<string, BattlefleetIssue[]>
 }
 
-function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, showGuardianPool, guardianPool, guardianSurge, vpr, onSelect, onRemove, onBattlefleetChange }: UnitRowProps) {
+function UnitRow({
+    entry,
+    unit,
+    active,
+    nested = false,
+    battlefleets,
+    issues,
+    showGuardianPool,
+    guardianPool,
+    guardianSurge,
+    vpr,
+    onSelect,
+    onRemove,
+    onBattlefleetChange,
+}: UnitRowProps) {
     const rowClasses = nested
         ? active
             ? 'ml-4 w-[calc(100%-1rem)] border-amber-400 bg-amber-100 shadow-sm ring-1 ring-amber-300'
             : 'ml-4 w-[calc(100%-1rem)] border-amber-200 bg-amber-50 hover:bg-amber-100'
         : active
-            ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm ring-2 ring-[var(--gold)]/40'
-            : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
+          ? 'border-[var(--navy)] bg-[var(--navy)] text-white shadow-sm ring-2 ring-[var(--gold)]/40'
+          : 'border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50'
     const customName = entry.customName?.trim()
     const generated = Boolean(entry.generatedByOption)
 
@@ -78,32 +103,49 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, sh
         <div className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}>
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
-                    <button
-                        type="button"
-                        onClick={onSelect}
-                        className="block w-full text-left"
-                    >
+                    <button type="button" onClick={onSelect} className="block w-full text-left">
                         <span className="flex items-center gap-1.5">
-                            {nested ? <span className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}>{generated ? 'Tethered' : 'Attachment'}</span> : null}
-                            <span className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}>{unit?.name ?? entry.unitId}</span>
-                        </span>
-                    {customName ? (
-                            <span className={`block truncate text-[11px] font-semibold ${active && !nested ? 'text-white/85' : 'text-[var(--navy)]'}`}>{customName}</span>
-                    ) : null}
-                        <span className={`block text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}>
-                        {unit?.role ?? 'Unit'} · {entry.models.length} {entry.models.length === 1 ? 'model' : 'models'}
-                        </span>
-                    {entry.config.fleetDoctrineSelection ? (
-                            <span className={`mt-0.5 block text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}>
-                            {entry.config.fleetDoctrineSelection.doctrineName}
+                            {nested ? (
+                                <span
+                                    className={`text-[10px] font-medium uppercase tracking-[0.16em] ${active ? 'text-amber-900' : 'text-amber-700'}`}
+                                >
+                                    {generated ? 'Tethered' : 'Attachment'}
+                                </span>
+                            ) : null}
+                            <span
+                                className={`truncate text-sm font-medium ${active && !nested ? 'text-white' : 'text-neutral-900'}`}
+                            >
+                                {unit?.name ?? entry.unitId}
                             </span>
-                    ) : null}
-                    {issues.length > 0 ? (
-                            <span className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${active && !nested ? 'text-amber-100' : 'text-rose-700'}`}>
-                            <AlertTriangle size={11} />
-                            <span>{issues[0].message}</span>
+                        </span>
+                        {customName ? (
+                            <span
+                                className={`block truncate text-[11px] font-semibold ${active && !nested ? 'text-white/85' : 'text-[var(--navy)]'}`}
+                            >
+                                {customName}
                             </span>
-                    ) : null}
+                        ) : null}
+                        <span
+                            className={`block text-[11px] ${active && !nested ? 'text-white/70' : 'text-neutral-500'}`}
+                        >
+                            {unit?.role ?? 'Unit'} · {entry.models.length}{' '}
+                            {entry.models.length === 1 ? 'model' : 'models'}
+                        </span>
+                        {entry.config.fleetDoctrineSelection ? (
+                            <span
+                                className={`mt-0.5 block text-[10px] font-medium ${active && !nested ? 'text-white/70' : 'text-[var(--navy)]'}`}
+                            >
+                                {entry.config.fleetDoctrineSelection.doctrineName}
+                            </span>
+                        ) : null}
+                        {issues.length > 0 ? (
+                            <span
+                                className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${active && !nested ? 'text-amber-100' : 'text-rose-700'}`}
+                            >
+                                <AlertTriangle size={11} />
+                                <span>{issues[0]?.message}</span>
+                            </span>
+                        ) : null}
                     </button>
                     {!nested && onBattlefleetChange ? (
                         <select
@@ -114,7 +156,9 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, sh
                             <option value="">No Battlefleet</option>
                             {battlefleets.map((battlefleet) => (
                                 <option key={battlefleet.instanceId} value={battlefleet.instanceId}>
-                                    {battlefleet.customName ? `${battlefleet.name} - ${battlefleet.customName}` : battlefleet.name}
+                                    {battlefleet.customName
+                                        ? `${battlefleet.name} - ${battlefleet.customName}`
+                                        : battlefleet.name}
                                 </option>
                             ))}
                         </select>
@@ -122,10 +166,20 @@ function UnitRow({ entry, unit, active, nested = false, battlefleets, issues, sh
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="flex flex-wrap items-center justify-end gap-1">
-                        <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-[var(--gold-light)] text-[var(--navy)]'}`}>{entry.totalPoints} pts</span>
-                        <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>{vpr} VPR</span>
+                        <span
+                            className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-[var(--gold-light)] text-[var(--navy)]'}`}
+                        >
+                            {entry.totalPoints} pts
+                        </span>
+                        <span
+                            className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}
+                        >
+                            {vpr} VPR
+                        </span>
                         {showGuardianPool ? (
-                            <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
+                            <span
+                                className={`whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium ${active && !nested ? 'bg-white/10 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}
+                            >
                                 GP {guardianPool} - GS {guardianSurge}
                             </span>
                         ) : null}
@@ -238,8 +292,12 @@ function BattlefleetSection({
     const typeName = definition?.name ?? battlefleet.name
 
     return (
-        <section className={`rounded-lg border bg-white shadow-sm ${active ? 'border-[var(--navy)] ring-2 ring-[var(--gold)]/40' : hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}>
-            <div className={`border-b px-2.5 py-2 ${hasIssues ? 'border-rose-100 bg-rose-50/70' : 'border-neutral-200 bg-neutral-50'}`}>
+        <section
+            className={`rounded-lg border bg-white shadow-sm ${active ? 'border-[var(--navy)] ring-2 ring-[var(--gold)]/40' : hasIssues ? 'border-rose-200' : 'border-neutral-200'}`}
+        >
+            <div
+                className={`border-b px-2.5 py-2 ${hasIssues ? 'border-rose-100 bg-rose-50/70' : 'border-neutral-200 bg-neutral-50'}`}
+            >
                 <div className="flex items-start justify-between gap-2">
                     <button
                         type="button"
@@ -249,18 +307,18 @@ function BattlefleetSection({
                     >
                         {collapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
                     </button>
-                    <button
-                        type="button"
-                        onClick={onSelectBattlefleet}
-                        className="min-w-0 flex-1 text-left"
-                    >
+                    <button type="button" onClick={onSelectBattlefleet} className="min-w-0 flex-1 text-left">
                         <div className="truncate text-[13px] font-semibold text-neutral-900">{typeName}</div>
-                        {customName ? <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{customName}</div> : null}
+                        {customName ? (
+                            <div className="truncate text-[11px] font-semibold text-[var(--navy)]">{customName}</div>
+                        ) : null}
                         <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                             <span>{forceType ?? 'Unknown'}</span>
                             {mercenary ? <span>Mercenary</span> : null}
                             {definition?.legendary ? <span>Legendary</span> : null}
-                            <span>{entries.length} {entries.length === 1 ? 'unit' : 'units'}</span>
+                            <span>
+                                {entries.length} {entries.length === 1 ? 'unit' : 'units'}
+                            </span>
                         </div>
                     </button>
                     <div className="flex flex-none items-start gap-1">
@@ -273,7 +331,8 @@ function BattlefleetSection({
                             </div>
                             {showGuardianPool ? (
                                 <div className="rounded-md border border-neutral-200 bg-white px-2 py-1 text-right text-[12px] font-bold leading-none text-[var(--navy)] shadow-sm">
-                                    GP {guardianPool.toLocaleString('fr-FR')} - GS {guardianSurge.toLocaleString('fr-FR')}
+                                    GP {guardianPool.toLocaleString('fr-FR')} - GS{' '}
+                                    {guardianSurge.toLocaleString('fr-FR')}
                                 </div>
                             ) : null}
                         </div>
@@ -295,7 +354,9 @@ function BattlefleetSection({
                                 <span>{issue.message}</span>
                             </div>
                         ))}
-                        {issues.length > 3 ? <div className="pl-5 text-rose-700">+{issues.length - 3} more issues</div> : null}
+                        {issues.length > 3 ? (
+                            <div className="pl-5 text-rose-700">+{issues.length - 3} more issues</div>
+                        ) : null}
                     </div>
                 ) : null}
                 {issues.length > 0 && collapsed ? (
@@ -359,8 +420,12 @@ function UnitGroup({
     const warning = tone === 'warning'
 
     return (
-        <section className={`rounded-lg border shadow-sm ${warning ? 'border-amber-300 bg-amber-50' : 'border-neutral-200 bg-white'}`}>
-            <div className={`border-b px-2.5 py-2 ${warning ? 'border-amber-200' : 'border-neutral-200 bg-neutral-50'}`}>
+        <section
+            className={`rounded-lg border shadow-sm ${warning ? 'border-amber-300 bg-amber-50' : 'border-neutral-200 bg-white'}`}
+        >
+            <div
+                className={`border-b px-2.5 py-2 ${warning ? 'border-amber-200' : 'border-neutral-200 bg-neutral-50'}`}
+            >
                 <div className="text-[13px] font-semibold text-neutral-900">{title}</div>
                 <div className="text-[11px] text-neutral-500">{subtitle}</div>
                 {issues.length > 0 ? (
@@ -424,20 +489,20 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
         return factions.find((faction) => faction.id === currentList.faction_id)?.name ?? currentList.faction_id
     }, [currentList, factions])
     const unitById = useMemo(() => new Map(units.map((unit) => [unit.id, unit])), [units])
-    const definitionById = useMemo(() => new Map(battlefleetDefinitions.map((definition) => [definition.id, definition])), [battlefleetDefinitions])
-    const availableBattlefleetDefinitions = useMemo(
-        () => {
-            const definitions = getBattlefleetDefinitionsForFaction(battlefleetDefinitions, currentList?.faction_id)
-            const hasMercenary = (currentList?.battlefleets ?? []).some((battlefleet) => {
-                const definition = battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
-                return definition ? isMercenaryInForce(definition, currentList?.faction_id) : false
-            })
-            return definitions.filter((definition) => (
-                !hasMercenary || !isMercenaryInForce(definition, currentList?.faction_id)
-            ))
-        },
-        [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id],
+    const definitionById = useMemo(
+        () => new Map(battlefleetDefinitions.map((definition) => [definition.id, definition])),
+        [battlefleetDefinitions],
     )
+    const availableBattlefleetDefinitions = useMemo(() => {
+        const definitions = getBattlefleetDefinitionsForFaction(battlefleetDefinitions, currentList?.faction_id)
+        const hasMercenary = (currentList?.battlefleets ?? []).some((battlefleet) => {
+            const definition = battlefleetDefinitions.find((item) => item.id === battlefleet.definitionId)
+            return definition ? isMercenaryInForce(definition, currentList?.faction_id) : false
+        })
+        return definitions.filter(
+            (definition) => !hasMercenary || !isMercenaryInForce(definition, currentList?.faction_id),
+        )
+    }, [battlefleetDefinitions, currentList?.battlefleets, currentList?.faction_id])
     const battlefleetIssues = useMemo(
         () => validateBattlefleetOrganisation(currentList, units, battlefleetDefinitions),
         [battlefleetDefinitions, currentList, units],
@@ -463,7 +528,10 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
         [battlefleetIssues],
     )
     const regularBattlefleetDefinitions = useMemo(
-        () => availableBattlefleetDefinitions.filter((definition) => !isMercenaryInForce(definition, currentList?.faction_id)),
+        () =>
+            availableBattlefleetDefinitions.filter(
+                (definition) => !isMercenaryInForce(definition, currentList?.faction_id),
+            ),
         [availableBattlefleetDefinitions, currentList?.faction_id],
     )
     const mainBattlefleetDefinitions = useMemo(
@@ -475,7 +543,10 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
         [regularBattlefleetDefinitions],
     )
     const mercenaryBattlefleetDefinitions = useMemo(
-        () => availableBattlefleetDefinitions.filter((definition) => isMercenaryInForce(definition, currentList?.faction_id)),
+        () =>
+            availableBattlefleetDefinitions.filter((definition) =>
+                isMercenaryInForce(definition, currentList?.faction_id),
+            ),
         [availableBattlefleetDefinitions, currentList?.faction_id],
     )
     const listGlossary = useMemo(
@@ -512,97 +583,115 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
         setEditingName(false)
     }
     const toggleBattlefleetCollapsed = (battlefleetInstanceId: string) => {
-        setCollapsedBattlefleetIds((ids) => (
+        setCollapsedBattlefleetIds((ids) =>
             ids.includes(battlefleetInstanceId)
                 ? ids.filter((id) => id !== battlefleetInstanceId)
-                : [...ids, battlefleetInstanceId]
-        ))
+                : [...ids, battlefleetInstanceId],
+        )
+    }
+    const previewPrint = async () => {
+        try {
+            const { previewPrintableList } = await import('../../utils/printList')
+            previewPrintableList(currentList, units, glossary, battlefleetDefinitions, fleetDoctrines)
+        } catch {
+            window.alert('Could not open the print preview.')
+        }
     }
 
     return (
         <div className="border-b border-neutral-200 bg-neutral-100 p-3">
             <div className="rounded-lg border border-neutral-200 bg-white p-2.5 shadow-sm">
                 <div className="flex items-start justify-between gap-2">
-                <div className="min-w-0">
-                    {editingName ? (
-                        <input
-                            value={draftName}
-                            autoFocus
-                            onChange={(event) => setDraftName(event.target.value)}
-                            onBlur={commitName}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') commitName()
-                                if (event.key === 'Escape') setEditingName(false)
-                            }}
-                            className="w-full rounded border border-blue-200 px-2 py-1 text-sm font-semibold outline-none"
-                        />
-                    ) : (
+                    <div className="min-w-0">
+                        {editingName ? (
+                            <input
+                                value={draftName}
+                                autoFocus
+                                onChange={(event) => setDraftName(event.target.value)}
+                                onBlur={commitName}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') commitName()
+                                    if (event.key === 'Escape') setEditingName(false)
+                                }}
+                                className="w-full rounded border border-blue-200 px-2 py-1 text-sm font-semibold outline-none"
+                            />
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setDraftName(currentList.name)
+                                    setEditingName(true)
+                                }}
+                                className="max-w-full truncate text-left text-sm font-semibold text-neutral-900 hover:underline"
+                            >
+                                {currentList.name}
+                            </button>
+                        )}
+                        <div className="mt-1 text-[11px] text-neutral-500">{factionName}</div>
+                        <div className="mt-2 inline-flex flex-wrap items-center gap-1">
+                            <span className="rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                                Total: {totalPoints.toLocaleString('fr-FR')} pts
+                            </span>
+                            <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                                {totalVpr.toLocaleString('fr-FR')} VPR
+                            </span>
+                            {showGuardianPool ? (
+                                <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
+                                    GP {guardianPool.toLocaleString('fr-FR')} - GS{' '}
+                                    {guardianSurge.toLocaleString('fr-FR')}
+                                </span>
+                            ) : null}
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-1">
                         <button
                             type="button"
-                            onClick={() => {
-                                setDraftName(currentList.name)
-                                setEditingName(true)
-                            }}
-                            className="max-w-full truncate text-left text-sm font-semibold text-neutral-900 hover:underline"
+                            title="Download"
+                            aria-label="Download list"
+                            onClick={() => downloadList(currentList, units)}
+                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                         >
-                            {currentList.name}
+                            <Download size={14} />
                         </button>
-                    )}
-                    <div className="mt-1 text-[11px] text-neutral-500">{factionName}</div>
-                    <div className="mt-2 inline-flex flex-wrap items-center gap-1">
-                        <span className="rounded-md border border-[var(--gold)]/70 bg-[var(--gold-light)] px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
-                            Total: {totalPoints.toLocaleString('fr-FR')} pts
-                        </span>
-                        <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
-                            {totalVpr.toLocaleString('fr-FR')} VPR
-                        </span>
-                        {showGuardianPool ? (
-                            <span className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-[13px] font-bold text-[var(--navy)] shadow-sm">
-                                GP {guardianPool.toLocaleString('fr-FR')} - GS {guardianSurge.toLocaleString('fr-FR')}
-                            </span>
-                        ) : null}
+                        <button
+                            type="button"
+                            title="Preview printable PDF"
+                            aria-label="Preview printable PDF"
+                            onClick={() => void previewPrint()}
+                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                        >
+                            <Printer size={14} />
+                        </button>
+                        <button
+                            type="button"
+                            title="Close"
+                            aria-label="Close list"
+                            onClick={closeList}
+                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                        >
+                            <X size={14} />
+                        </button>
                     </div>
                 </div>
-                <div className="flex items-center gap-1">
-                    <button
-                        type="button"
-                        title="Download"
-                        onClick={() => downloadList(currentList, units)}
-                        className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
-                    >
-                        <Download size={14} />
-                    </button>
-                    <button
-                        type="button"
-                        title="Preview printable PDF"
-                        onClick={() => previewPrintableList(currentList, units, glossary, battlefleetDefinitions, fleetDoctrines)}
-                        className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
-                    >
-                        <Printer size={14} />
-                    </button>
-                    <button
-                        type="button"
-                        title="Close"
-                        onClick={closeList}
-                        className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
-                    >
-                        <X size={14} />
-                    </button>
-                </div>
-            </div>
             </div>
 
             <div className="mt-3 rounded-lg border border-neutral-200 bg-white p-2.5 shadow-sm">
                 <div className="flex items-center justify-between gap-2">
                     <div>
-                        <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--navy)]">Battlefleets</div>
+                        <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--navy)]">
+                            Battlefleets
+                        </div>
                         <div className="text-[11px] text-neutral-500">
-                            {battlefleets.length} {battlefleets.length === 1 ? 'formation' : 'formations'} · {currentList.units.length} {currentList.units.length === 1 ? 'unit' : 'units'}
+                            {battlefleets.length} {battlefleets.length === 1 ? 'formation' : 'formations'} ·{' '}
+                            {currentList.units.length} {currentList.units.length === 1 ? 'unit' : 'units'}
                         </div>
                     </div>
                     {availableBattlefleetDefinitions.length > 0 ? (
                         <div className="relative flex-none">
-                            <Plus className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-[var(--navy)]" size={12} />
+                            <Plus
+                                className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-[var(--navy)]"
+                                size={12}
+                            />
                             <select
                                 aria-label="Add Battlefleet"
                                 value=""
@@ -640,7 +729,9 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                     </optgroup>
                                 ) : null}
                             </select>
-                            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-neutral-500">▾</span>
+                            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-neutral-500">
+                                ▾
+                            </span>
                         </div>
                     ) : null}
                 </div>
@@ -695,7 +786,12 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 onToggleCollapsed={() => toggleBattlefleetCollapsed(battlefleet.instanceId)}
                                 onRemoveBattlefleet={() => removeBattlefleetFromCurrentList(battlefleet.instanceId)}
                                 onSelectBattlefleet={() => selectBattlefleet(battlefleet.instanceId)}
-                                onAddUnit={() => onOpenUnitPicker(battlefleet.instanceId, definitionById.get(battlefleet.definitionId)?.name ?? battlefleet.name)}
+                                onAddUnit={() =>
+                                    onOpenUnitPicker(
+                                        battlefleet.instanceId,
+                                        definitionById.get(battlefleet.definitionId)?.name ?? battlefleet.name,
+                                    )
+                                }
                                 onSelectUnit={selectListUnit}
                                 onRemoveUnit={removeUnitFromList}
                                 onMoveUnit={setUnitBattlefleet}
@@ -707,7 +803,9 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 title="Unassigned"
                                 subtitle={`${unassignedEntries.length} ${unassignedEntries.length === 1 ? 'unit needs' : 'units need'} a Battlefleet`}
                                 entries={unassignedEntries}
-                                issues={battlefleetIssues.filter((issue) => issue.unitInstanceId && !issue.battlefleetInstanceId)}
+                                issues={battlefleetIssues.filter(
+                                    (issue) => issue.unitInstanceId && !issue.battlefleetInstanceId,
+                                )}
                                 unitById={unitById}
                                 battlefleets={battlefleets}
                                 selectedListInstanceId={selectedListInstanceId}
@@ -737,17 +835,27 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                 className={`mt-3 flex w-full items-center justify-between gap-3 rounded-lg border p-2.5 text-left shadow-sm transition ${selectedListGlossary ? 'border-[var(--navy)] bg-[var(--navy)] text-white ring-2 ring-[var(--gold)]/40' : 'border-neutral-200 bg-white hover:border-neutral-300 hover:bg-neutral-50'}`}
             >
                 <span className="flex min-w-0 items-center gap-2">
-                    <span className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-[var(--detail-panel)] text-[var(--navy)]'}`}>
+                    <span
+                        className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-[var(--detail-panel)] text-[var(--navy)]'}`}
+                    >
                         <BookOpenText size={15} />
                     </span>
                     <span className="min-w-0">
-                        <span className={`block text-[13px] font-semibold ${selectedListGlossary ? 'text-white' : 'text-neutral-900'}`}>Glossary</span>
-                        <span className={`block text-[11px] ${selectedListGlossary ? 'text-white/70' : 'text-neutral-500'}`}>
+                        <span
+                            className={`block text-[13px] font-semibold ${selectedListGlossary ? 'text-white' : 'text-neutral-900'}`}
+                        >
+                            Glossary
+                        </span>
+                        <span
+                            className={`block text-[11px] ${selectedListGlossary ? 'text-white/70' : 'text-neutral-500'}`}
+                        >
                             {listGlossaryCount} {listGlossaryCount === 1 ? 'rule' : 'rules'} used by this list
                         </span>
                     </span>
                 </span>
-                <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}>
+                <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}
+                >
                     View
                 </span>
             </button>

@@ -6,7 +6,6 @@ import {
     getRulebookHref,
     hasRenderableRuleContent,
     normalizeSearchText,
-    resolveReadingSection,
     resolveSectionRuleBlocks,
 } from '../../rulebook/data'
 import type { RulebookIndexes } from '../../rulebook/data'
@@ -46,7 +45,7 @@ function CopyLinkIcon({ relativeUrl, label }: CopyLinkIconProps) {
     return (
         <button
             type="button"
-            onClick={copyLink}
+            onClick={() => void copyLink()}
             className="inline-flex size-7 flex-none items-center justify-center rounded-md border border-transparent bg-transparent opacity-0 transition hover:border-[var(--panel-border)] hover:bg-[var(--detail-panel)] focus:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold)] group-hover/title:opacity-100 group-focus-within/title:opacity-100"
             title={copied ? 'Link copied' : label}
             aria-label={copied ? 'Link copied' : label}
@@ -78,7 +77,10 @@ function RuleBlockCard({
         })
 
     return (
-        <article id={rule.id} className="relative scroll-mt-32 rounded-2xl border border-l-4 border-[var(--panel-border)] border-l-[var(--navy)] bg-[var(--detail-row)] p-4 shadow-sm sm:p-6">
+        <article
+            id={rule.id}
+            className="relative scroll-mt-32 rounded-2xl border border-l-4 border-[var(--panel-border)] border-l-[var(--navy)] bg-[var(--detail-row)] p-4 shadow-sm sm:p-6"
+        >
             {hasHeading ? (
                 <div>
                     {showPage ? (
@@ -88,7 +90,9 @@ function RuleBlockCard({
                     ) : null}
                     {!hideTitle ? (
                         <div className="group/title inline-flex items-center gap-1.5 text-[var(--accent-foreground)]">
-                            <h2 className="text-xl font-bold leading-tight text-[var(--accent-foreground)] sm:text-2xl">{rule.title}</h2>
+                            <h2 className="text-xl font-bold leading-tight text-[var(--accent-foreground)] sm:text-2xl">
+                                {rule.title}
+                            </h2>
                             <CopyLinkIcon
                                 relativeUrl={getRulebookHref(sectionId, rule.id)}
                                 label={`Copy a direct link to ${rule.title}`}
@@ -103,9 +107,11 @@ function RuleBlockCard({
             {rule.notes.map((note) => (
                 <aside
                     key={note.id}
-                    className={`mt-5 rounded-xl border p-4 ${note.type === 'designers_note'
-                        ? 'border-[rgb(var(--gold-rgb)/0.55)] bg-[var(--gold-light)]'
-                        : 'border-[var(--panel-border)] bg-[var(--detail-panel)] italic'}`}
+                    className={`mt-5 rounded-xl border p-4 ${
+                        note.type === 'designers_note'
+                            ? 'border-[rgb(var(--gold-rgb)/0.55)] bg-[var(--gold-light)]'
+                            : 'border-[var(--panel-border)] bg-[var(--detail-panel)] italic'
+                    }`}
                 >
                     <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent-foreground)]">
                         {note.type === 'designers_note' ? 'Designers’ Note' : 'From the Dystopian Age'}
@@ -115,7 +121,9 @@ function RuleBlockCard({
                 </aside>
             ))}
 
-            {tables.map((table) => <RuleTableView key={table.id} table={table} />)}
+            {tables.map((table) => (
+                <RuleTableView key={table.id} table={table} />
+            ))}
             {visuals.map((visual) => (
                 <CuratedVisualFigure
                     key={visual.id}
@@ -124,7 +132,6 @@ function RuleBlockCard({
                     collapsed={!visual.requiredForUnderstanding}
                 />
             ))}
-
         </article>
     )
 }
@@ -137,14 +144,13 @@ interface RulebookSectionViewProps {
 }
 
 export default function RulebookSectionView({ section, data, indexes, onOpenVisual }: RulebookSectionViewProps) {
-    const readingSection = resolveReadingSection(section)
-    const childSections = readingSection.childSectionIds
+    const childSections = section.childSectionIds
         .map((id) => indexes.sectionById.get(id))
         .filter((item): item is RulebookSection => Boolean(item))
     const renderedTableIds = new Set<string>()
     const renderedVisualIds = new Set<string>()
     const renderedRuleIds = new Set<string>()
-    const breadcrumbSections = readingSection.path
+    const breadcrumbSections = section.path
         .map((id) => indexes.sectionById.get(id))
         .filter((item): item is RulebookSection => Boolean(item))
 
@@ -156,13 +162,15 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                 renderedRuleIds.add(rule.id)
                 return true
             })
-        const sectionTables = (currentSection.childSectionIds.length > 0 ? [] : currentSection.tableIds).flatMap((id) => {
-            if (renderedTableIds.has(id)) return []
-            const table = indexes.tableById.get(id)
-            if (!table) return []
-            renderedTableIds.add(id)
-            return [table]
-        })
+        const sectionTables = (currentSection.childSectionIds.length > 0 ? [] : currentSection.tableIds).flatMap(
+            (id) => {
+                if (renderedTableIds.has(id)) return []
+                const table = indexes.tableById.get(id)
+                if (!table) return []
+                renderedTableIds.add(id)
+                return [table]
+            },
+        )
         const sectionVisuals = (indexes.visualsBySectionId.get(currentSection.id) ?? []).filter((visual) => {
             if (renderedVisualIds.has(visual.id)) return false
             renderedVisualIds.add(visual.id)
@@ -192,7 +200,9 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                     )
                 })}
 
-                {sectionTables.map((table) => <RuleTableView key={table.id} table={table} />)}
+                {sectionTables.map((table) => (
+                    <RuleTableView key={table.id} table={table} />
+                ))}
                 {sectionVisuals.map((visual) => (
                     <CuratedVisualFigure
                         key={visual.id}
@@ -211,10 +221,13 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                 {breadcrumbSections.map((item, index) => (
                     <span key={item.id} className="inline-flex items-center gap-1">
                         {index > 0 ? <span aria-hidden="true">›</span> : null}
-                        {item.id === readingSection.id ? (
+                        {item.id === section.id ? (
                             <span aria-current="page">{item.title}</span>
                         ) : (
-                            <Link to={getRulebookHref(item.id)} className="hover:text-[var(--accent-foreground)] hover:underline">
+                            <Link
+                                to={getRulebookHref(item.id)}
+                                className="hover:text-[var(--accent-foreground)] hover:underline"
+                            >
                                 {item.title}
                             </Link>
                         )}
@@ -224,13 +237,13 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
 
             <header className="mb-6 overflow-hidden rounded-2xl border border-[var(--navy)] bg-gradient-to-br from-[var(--detail-hero)] to-[var(--detail-hero-soft)] p-5 text-white shadow-lg sm:p-7">
                 <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)]">
-                    {formatPageRange(readingSection.printedPageStart, readingSection.printedPageEnd)}
+                    {formatPageRange(section.printedPageStart, section.printedPageEnd)}
                 </p>
                 <div className="group/title inline-flex items-center gap-1.5">
-                    <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{readingSection.title}</h1>
+                    <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{section.title}</h1>
                     <CopyLinkIcon
-                        relativeUrl={getRulebookHref(readingSection.id)}
-                        label={`Copy a direct link to ${readingSection.title}`}
+                        relativeUrl={getRulebookHref(section.id)}
+                        label={`Copy a direct link to ${section.title}`}
                     />
                 </div>
                 <p className="mt-2 text-sm text-white/70">
@@ -239,8 +252,13 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
             </header>
 
             {childSections.length > 0 ? (
-                <nav aria-label="In this section" className="mb-7 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-5">
-                    <h2 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">In this section</h2>
+                <nav
+                    aria-label="In this section"
+                    className="mb-7 rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-panel)] p-5"
+                >
+                    <h2 className="text-sm font-bold uppercase tracking-[0.13em] text-[var(--accent-foreground)]">
+                        In this section
+                    </h2>
                     <div className="mt-3 grid gap-2 sm:grid-cols-2">
                         {childSections.map((childSection) => (
                             <Link
@@ -258,7 +276,7 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
                 </nav>
             ) : null}
 
-            {renderSectionContent(readingSection)}
+            {renderSectionContent(section)}
         </div>
     )
 }

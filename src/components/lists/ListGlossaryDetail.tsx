@@ -17,7 +17,15 @@ const categoryLabels: Record<GlossaryCategory, string> = {
     qualities: 'Qualities',
 }
 
-function RuleBlock({ rule, glossary, onRuleClick }: { rule: ListGlossaryRule; glossary: Glossary | null; onRuleClick: (rule: GlossaryRuleLink) => void }) {
+function RuleBlock({
+    rule,
+    glossary,
+    onRuleClick,
+}: {
+    rule: ListGlossaryRule
+    glossary: Glossary | null
+    onRuleClick: (rule: GlossaryRuleLink) => void
+}) {
     return (
         <div className="rounded-lg border border-white/80 bg-white/65 p-2.5">
             <div className="text-sm font-semibold text-neutral-900">{rule.name}</div>
@@ -46,7 +54,9 @@ export default function ListGlossaryDetail({ list, units, glossary, battlefleetD
             <section className="unit-detail-section unit-detail-hero rounded-xl p-3 shadow-sm">
                 <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
-                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">Glossary</div>
+                        <div className="unit-detail-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                            Glossary
+                        </div>
                         <h2 className="mt-1 text-lg font-semibold text-white">{list.name}</h2>
                         <p className="text-sm text-white/78">Rules used by this list</p>
                     </div>
@@ -61,9 +71,14 @@ export default function ListGlossaryDetail({ list, units, glossary, battlefleetD
                     const rules = listGlossary[category]
 
                     return (
-                        <div key={category} className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm">
+                        <div
+                            key={category}
+                            className="unit-detail-section unit-detail-panel-alt rounded-xl p-2.5 shadow-sm"
+                        >
                             <div className="flex items-center justify-between gap-2">
-                                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">{categoryLabels[category]}</div>
+                                <div className="unit-detail-dark-title text-[11px] font-semibold uppercase tracking-[0.2em]">
+                                    {categoryLabels[category]}
+                                </div>
                                 <span className="rounded-full border border-white/70 bg-white px-2 py-0.5 text-[10px] font-semibold text-[var(--navy)]">
                                     {rules.length}
                                 </span>

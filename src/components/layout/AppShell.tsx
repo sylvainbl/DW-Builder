@@ -1,12 +1,13 @@
 import { ArrowLeft } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAppStore } from '../../store'
 import ListsPanel from '../lists/ListsPanel'
-import RulebookPage from '../rules/RulebookPage'
 import UnitDetail from '../unit/UnitDetail'
 import UnitListColumn from '../unit/UnitListColumn'
 import AppHeader from './AppHeader'
+
+const RulebookPage = lazy(() => import('../rules/RulebookPage'))
 
 type AppView = 'lists' | 'builder' | 'units' | 'rules'
 interface UnitPickerTarget {
@@ -33,12 +34,16 @@ export default function AppShell() {
     })
     const [unitPickerTarget, setUnitPickerTarget] = useState<UnitPickerTarget | null>(null)
     const detailPaneRef = useRef<HTMLDivElement>(null)
-    const hasDetailSelection = Boolean(selectedUnitId || selectedListInstanceId || selectedBattlefleetInstanceId || selectedListGlossary)
+    const hasDetailSelection = Boolean(
+        selectedUnitId || selectedListInstanceId || selectedBattlefleetInstanceId || selectedListGlossary,
+    )
     const currentView: AppView = location.pathname.startsWith('/rules')
         ? 'rules'
         : activeView === 'rules'
-            ? (factionId || unitId ? 'units' : 'lists')
-            : activeView
+          ? factionId || unitId
+              ? 'units'
+              : 'lists'
+          : activeView
 
     useEffect(() => {
         if (factionId && factionId !== selectedFactionId) {
@@ -61,7 +66,7 @@ export default function AppShell() {
     const showLists = () => {
         setUnitPickerTarget(null)
         setActiveView('lists')
-        if (location.pathname.startsWith('/rules')) navigate('/')
+        if (location.pathname.startsWith('/rules')) void navigate('/')
     }
 
     const enterBuilder = () => {
@@ -73,13 +78,13 @@ export default function AppShell() {
         setUnitPickerTarget(null)
         closeList()
         setActiveView('units')
-        if (location.pathname.startsWith('/rules')) navigate('/')
+        if (location.pathname.startsWith('/rules')) void navigate('/')
     }
 
     const showRules = () => {
         setUnitPickerTarget(null)
         setActiveView('rules')
-        navigate('/rules')
+        void navigate('/rules')
     }
 
     const showMobileList = () => {
@@ -88,11 +93,24 @@ export default function AppShell() {
 
     return (
         <div className="flex h-dvh flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
-            <AppHeader activeView={currentView} onShowLists={showLists} onShowRules={showRules} onShowUnits={showUnits} />
+            <AppHeader
+                activeView={currentView}
+                onShowLists={showLists}
+                onShowRules={showRules}
+                onShowUnits={showUnits}
+            />
 
             {currentView === 'rules' ? (
                 <div className="min-h-0 flex-1 overflow-hidden">
-                    <RulebookPage />
+                    <Suspense
+                        fallback={
+                            <div className="flex h-full items-center justify-center text-sm font-semibold text-[var(--muted)]">
+                                Loading core rules…
+                            </div>
+                        }
+                    >
+                        <RulebookPage />
+                    </Suspense>
                 </div>
             ) : currentView === 'lists' ? (
                 <div className="min-h-0 flex-1 overflow-y-auto">
@@ -112,14 +130,19 @@ export default function AppShell() {
                             </button>
                             <div className="min-w-0 truncate text-xs text-[var(--muted)]">
                                 {currentList ? (
-                                    <><span className="font-semibold text-[var(--text)]">{currentList.name}</span> · {currentList.units.length} units</>
+                                    <>
+                                        <span className="font-semibold text-[var(--text)]">{currentList.name}</span> ·{' '}
+                                        {currentList.units.length} units
+                                    </>
                                 ) : null}
                             </div>
                         </div>
                     ) : null}
 
                     <div className="grid min-h-0 flex-1 grid-cols-1 overflow-hidden md:grid-cols-[minmax(19rem,34%)_minmax(0,1fr)]">
-                        <div className={`${hasDetailSelection ? 'hidden' : 'flex'} min-h-0 overflow-hidden border-r border-[var(--panel-border)] bg-[var(--detail-row)] md:flex`}>
+                        <div
+                            className={`${hasDetailSelection ? 'hidden' : 'flex'} min-h-0 overflow-hidden border-r border-[var(--panel-border)] bg-[var(--detail-row)] md:flex`}
+                        >
                             <div className="min-w-0 flex-1">
                                 <UnitListColumn
                                     unitPickerTarget={currentView === 'builder' ? unitPickerTarget : null}
@@ -128,7 +151,10 @@ export default function AppShell() {
                             </div>
                         </div>
 
-                        <div ref={detailPaneRef} className={`${hasDetailSelection ? 'block' : 'hidden'} min-h-0 overflow-y-auto bg-[var(--panel)] md:block`}>
+                        <div
+                            ref={detailPaneRef}
+                            className={`${hasDetailSelection ? 'block' : 'hidden'} min-h-0 overflow-y-auto bg-[var(--panel)] md:block`}
+                        >
                             <div className="sticky top-0 z-20 border-b border-[var(--panel-border)] bg-[rgb(var(--panel-rgb)/0.96)] px-3 py-2 backdrop-blur md:hidden">
                                 <button
                                     type="button"

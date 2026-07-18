@@ -1,7 +1,21 @@
-import type { ArmyList, ArmyUnit, BattlefleetDefinition, Glossary, NamedValue, Unit, UnitConfig, Weapon } from '../types/index'
+import type {
+    ArmyList,
+    ArmyUnit,
+    BattlefleetDefinition,
+    Glossary,
+    NamedValue,
+    Unit,
+    UnitConfig,
+    Weapon,
+} from '../types/index'
 import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './battlefleetEffects'
 import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
-import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects, getSelectedRemovedWeaponNames, mergeNamedValues } from './optionRuleEffects'
+import {
+    getEffectiveGeneratorSelections,
+    getSelectedOptionRuleEffects,
+    getSelectedRemovedWeaponNames,
+    mergeNamedValues,
+} from './optionRuleEffects'
 import { getVisibleSrsSquadrons } from './srs'
 
 export type GlossaryCategory = 'systems' | 'properties' | 'qualities'
@@ -31,11 +45,15 @@ function addNamedValues(target: Set<string>, values: NamedValue[] | undefined) {
 
 function getDisplayedWeapon(unit: Unit, weapon: Weapon, weaponIndex: number, config: UnitConfig): Weapon {
     const selectedName = config.hardpointSelections[weaponIndex] ?? weapon.name
-    const options = weapon.slot && !weapon.hardpoint_locked ? unit.hardpoint_options?.[weapon.slot] ?? [] : []
+    const options = weapon.slot && !weapon.hardpoint_locked ? (unit.hardpoint_options?.[weapon.slot] ?? []) : []
     return options.find((option) => option.name === selectedName) ?? weapon
 }
 
-function addSrsProperties(ruleNames: Record<GlossaryCategory, Set<string>>, unit: Unit, properties: NamedValue[] = unit.properties) {
+function addSrsProperties(
+    ruleNames: Record<GlossaryCategory, Set<string>>,
+    unit: Unit,
+    properties: NamedValue[] = unit.properties,
+) {
     for (const squadron of getVisibleSrsSquadrons(unit, properties)) {
         addNamedValues(ruleNames.properties, squadron.properties)
     }
@@ -52,9 +70,7 @@ function addEntryRules(
     if (!unit) return
     const units = [...unitsById.values()]
 
-    const modelConfigs = entry.models.length > 0
-        ? entry.models.map((model) => model.config)
-        : [entry.config]
+    const modelConfigs = entry.models.length > 0 ? entry.models.map((model) => model.config) : [entry.config]
 
     for (const config of modelConfigs) {
         const optionRuleEffects = getSelectedOptionRuleEffects(unit, config, entry.config)
@@ -63,7 +79,10 @@ function addEntryRules(
             optionRuleEffects.properties,
         )
         addNamedValues(ruleNames.properties, effectiveProperties)
-        addNamedValues(ruleNames.systems, unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)))
+        addNamedValues(
+            ruleNames.systems,
+            unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)),
+        )
         addSrsProperties(ruleNames, unit, effectiveProperties)
 
         const generatorSelections = getEffectiveGeneratorSelections(unit, config, entry.config)
@@ -105,15 +124,17 @@ export function getListGlossary(
         addEntryRules(ruleNames, entry, unitsById, list, battlefleetDefinitions)
     }
 
-    return Object.fromEntries(categories.map((category) => [
-        category,
-        Array.from(ruleNames[category])
-            .sort((a, b) => a.localeCompare(b))
-            .map((name) => ({
-                name,
-                text: glossary?.[category]?.[name] ?? null,
-            })),
-    ])) as ListGlossary
+    return Object.fromEntries(
+        categories.map((category) => [
+            category,
+            Array.from(ruleNames[category])
+                .sort((a, b) => a.localeCompare(b))
+                .map((name) => ({
+                    name,
+                    text: glossary?.[category]?.[name] ?? null,
+                })),
+        ]),
+    ) as ListGlossary
 }
 
 export function getListGlossaryCount(glossary: ListGlossary): number {

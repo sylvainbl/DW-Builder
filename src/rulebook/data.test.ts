@@ -17,43 +17,40 @@ import visualsDocument from '../../public/data/visuals.json' with { type: 'json'
 import {
     buildRulebookIndexes,
     flattenNavigation,
-    flattenSectionTree,
     formatIdentifier,
     getProcedureStepText,
     getRulebookHref,
     getRuleInlineSegments,
     getRuleTextBlocks,
     hasRenderableRuleContent,
-    hasSamePageRange,
     normalizeSearchText,
     resolveSectionRuleBlocks,
-    resolveReadingSection,
     searchRulebook,
 } from './data.ts'
 import type { RulebookData } from './types.ts'
 
 const data: RulebookData = {
-    manifest: manifestDocument as unknown as RulebookData['manifest'],
-    navigation: navigationDocument.chapters as unknown as RulebookData['navigation'],
-    sections: sectionsDocument.sections as unknown as RulebookData['sections'],
-    ruleBlocks: ruleBlocksDocument.ruleBlocks as unknown as RulebookData['ruleBlocks'],
-    tables: tablesDocument.tables as unknown as RulebookData['tables'],
-    procedures: proceduresDocument.procedures as unknown as RulebookData['procedures'],
-    actions: actionsDocument.actions as unknown as RulebookData['actions'],
-    tokens: tokensDocument.tokens as unknown as RulebookData['tokens'],
-    criticalDamageEffects: tokensDocument.criticalDamageEffects as unknown as RulebookData['criticalDamageEffects'],
-    terrain: terrainDocument as unknown as RulebookData['terrain'],
-    encounters: encountersDocument.encounters as unknown as RulebookData['encounters'],
-    pageReferenceLinks: referencesDocument.pageReferenceLinks as unknown as RulebookData['pageReferenceLinks'],
-    semanticLinks: referencesDocument.semanticLinks as unknown as RulebookData['semanticLinks'],
-    visuals: visualsDocument.visuals as unknown as RulebookData['visuals'],
+    manifest: manifestDocument,
+    navigation: navigationDocument.chapters,
+    sections: sectionsDocument.sections,
+    ruleBlocks: ruleBlocksDocument.ruleBlocks,
+    tables: tablesDocument.tables,
+    procedures: proceduresDocument.procedures,
+    actions: actionsDocument.actions,
+    tokens: tokensDocument.tokens,
+    criticalDamageEffects: tokensDocument.criticalDamageEffects,
+    terrain: terrainDocument,
+    encounters: encountersDocument.encounters,
+    pageReferenceLinks: referencesDocument.pageReferenceLinks,
+    semanticLinks: referencesDocument.semanticLinks,
+    visuals: visualsDocument.visuals,
 }
 
 function assertUniqueIds(label: string, ids: string[]): void {
     assert.equal(new Set(ids).size, ids.length, `${label} IDs must stay unique so links remain stable`)
 }
 
-function readWebpDimensions(assetUrl: URL): { width: number, height: number } {
+function readWebpDimensions(assetUrl: URL): { width: number; height: number } {
     const content = readFileSync(assetUrl)
     assert.equal(content.toString('ascii', 0, 4), 'RIFF')
     assert.equal(content.toString('ascii', 8, 12), 'WEBP')
@@ -75,14 +72,38 @@ function readWebpDimensions(assetUrl: URL): { width: number, height: number } {
 }
 
 test('canonical rulebook entities keep unique stable IDs', () => {
-    assertUniqueIds('section', data.sections.map((item) => item.id))
-    assertUniqueIds('rule', data.ruleBlocks.map((item) => item.id))
-    assertUniqueIds('table', data.tables.map((item) => item.id))
-    assertUniqueIds('procedure', data.procedures.map((item) => item.id))
-    assertUniqueIds('action', data.actions.map((item) => item.id))
-    assertUniqueIds('token', data.tokens.map((item) => item.id))
-    assertUniqueIds('encounter', data.encounters.map((item) => item.id))
-    assertUniqueIds('visual', data.visuals.map((item) => item.id))
+    assertUniqueIds(
+        'section',
+        data.sections.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'rule',
+        data.ruleBlocks.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'table',
+        data.tables.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'procedure',
+        data.procedures.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'action',
+        data.actions.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'token',
+        data.tokens.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'encounter',
+        data.encounters.map((item) => item.id),
+    )
+    assertUniqueIds(
+        'visual',
+        data.visuals.map((item) => item.id),
+    )
 })
 
 test('navigation and gameplay modules only reference canonical entities that exist', () => {
@@ -97,31 +118,44 @@ test('navigation and gameplay modules only reference canonical entities that exi
         assert.ok(indexes.sectionById.has(item.sectionId), `navigation target ${item.sectionId} must resolve`)
     }
     for (const section of data.sections) {
-        for (const ruleId of section.ruleBlockIds) assert.ok(indexes.ruleById.has(ruleId), `${section.id} rule ${ruleId} must resolve`)
-        for (const tableId of section.tableIds) assert.ok(indexes.tableById.has(tableId), `${section.id} table ${tableId} must resolve`)
+        for (const ruleId of section.ruleBlockIds)
+            assert.ok(indexes.ruleById.has(ruleId), `${section.id} rule ${ruleId} must resolve`)
+        for (const tableId of section.tableIds)
+            assert.ok(indexes.tableById.has(tableId), `${section.id} table ${tableId} must resolve`)
     }
     for (const procedure of data.procedures) {
         if (procedure.ruleBlockId) assert.ok(indexes.ruleById.has(procedure.ruleBlockId))
         for (const step of procedure.steps) {
-            if (step.ruleBlockId) assert.ok(indexes.ruleById.has(step.ruleBlockId), `${procedure.id} step ${step.order} must resolve`)
+            if (step.ruleBlockId)
+                assert.ok(indexes.ruleById.has(step.ruleBlockId), `${procedure.id} step ${step.order} must resolve`)
         }
     }
     for (const action of data.actions) {
-        if (action.ruleBlockId) assert.ok(indexes.ruleById.has(action.ruleBlockId), `${action.id} canonical rule must resolve`)
-        if (action.procedureId) assert.ok(indexes.procedureById.has(action.procedureId), `${action.id} procedure must resolve`)
+        if (action.ruleBlockId)
+            assert.ok(indexes.ruleById.has(action.ruleBlockId), `${action.id} canonical rule must resolve`)
+        if (action.procedureId)
+            assert.ok(indexes.procedureById.has(action.procedureId), `${action.id} procedure must resolve`)
     }
     for (const reference of data.pageReferenceLinks) {
         assert.ok(indexes.sectionById.has(reference.targetSectionId), `${reference.id} section target must resolve`)
-        if (reference.targetRuleBlockId) assert.ok(indexes.ruleById.has(reference.targetRuleBlockId), `${reference.id} rule target must resolve`)
+        if (reference.targetRuleBlockId)
+            assert.ok(indexes.ruleById.has(reference.targetRuleBlockId), `${reference.id} rule target must resolve`)
     }
     for (const visual of data.visuals) {
-        for (const id of visual.relatedRuleIds ?? []) assert.ok(indexes.ruleById.has(id), `${visual.id} rule target must resolve`)
-        for (const id of visual.relatedSectionIds ?? []) assert.ok(indexes.sectionById.has(id), `${visual.id} section target must resolve`)
-        for (const id of visual.relatedProcedureIds ?? []) assert.ok(indexes.procedureById.has(id), `${visual.id} procedure target must resolve`)
-        for (const id of visual.relatedActionIds ?? []) assert.ok(actionIds.has(id), `${visual.id} action target must resolve`)
-        for (const id of visual.relatedTokenIds ?? []) assert.ok(tokenIds.has(id), `${visual.id} token target must resolve`)
-        for (const id of visual.relatedMarkerIds ?? []) assert.ok(markerIds.has(id), `${visual.id} marker target must resolve`)
-        for (const id of visual.relatedEncounterIds ?? []) assert.ok(encounterIds.has(id), `${visual.id} encounter target must resolve`)
+        for (const id of visual.relatedRuleIds ?? [])
+            assert.ok(indexes.ruleById.has(id), `${visual.id} rule target must resolve`)
+        for (const id of visual.relatedSectionIds ?? [])
+            assert.ok(indexes.sectionById.has(id), `${visual.id} section target must resolve`)
+        for (const id of visual.relatedProcedureIds ?? [])
+            assert.ok(indexes.procedureById.has(id), `${visual.id} procedure target must resolve`)
+        for (const id of visual.relatedActionIds ?? [])
+            assert.ok(actionIds.has(id), `${visual.id} action target must resolve`)
+        for (const id of visual.relatedTokenIds ?? [])
+            assert.ok(tokenIds.has(id), `${visual.id} token target must resolve`)
+        for (const id of visual.relatedMarkerIds ?? [])
+            assert.ok(markerIds.has(id), `${visual.id} marker target must resolve`)
+        for (const id of visual.relatedEncounterIds ?? [])
+            assert.ok(encounterIds.has(id), `${visual.id} encounter target must resolve`)
     }
 })
 
@@ -130,26 +164,30 @@ test('section rendering deduplicates canonical rules even if an index repeats an
     const section = data.sections.find((item) => item.ruleBlockIds.length > 0)
     assert.ok(section)
     const firstRuleId = section.ruleBlockIds[0]
+    assert.ok(firstRuleId)
     const duplicatedSection = { ...section, ruleBlockIds: [firstRuleId, firstRuleId] }
 
-    assert.deepEqual(resolveSectionRuleBlocks(duplicatedSection, indexes).map((rule) => rule.id), [firstRuleId])
+    assert.deepEqual(
+        resolveSectionRuleBlocks(duplicatedSection, indexes).map((rule) => rule.id),
+        [firstRuleId],
+    )
 })
 
-test('each section remains an independent reading page while hierarchy helpers stay intact', () => {
+test('each section keeps its own content while the explicit hierarchy stays intact', () => {
     const indexes = buildRulebookIndexes(data)
     const miniatures = indexes.sectionById.get('miniatures')
     const toolkit = indexes.sectionById.get('dystopian-wars-toolkit')
     const gainingDisorder = indexes.sectionById.get('gaining-disorder')
-    const tokens = indexes.sectionById.get('tokens')
     const index = indexes.sectionById.get('index')
-    assert.ok(miniatures && toolkit && gainingDisorder && tokens && index)
+    assert.ok(miniatures && toolkit && gainingDisorder && index)
 
-    assert.equal(resolveReadingSection(miniatures).id, miniatures.id)
-    assert.equal(resolveReadingSection(gainingDisorder).id, gainingDisorder.id)
-    assert.equal(resolveReadingSection(index).id, index.id)
+    assert.equal(miniatures.parentId, toolkit.id)
+    assert.equal(gainingDisorder.parentId, 'tokens')
+    assert.equal(index.parentId, null)
+    assert.equal(index.childSectionIds.length, 0)
     assert.deepEqual(
-        flattenSectionTree(toolkit, indexes).map((section) => section.id),
-        ['dystopian-wars-toolkit', ...toolkit.childSectionIds],
+        toolkit.childSectionIds,
+        data.sections.filter((section) => section.parentId === toolkit.id).map((section) => section.id),
     )
 
     const miniaturesRule = indexes.ruleById.get('rule.miniatures')
@@ -160,8 +198,14 @@ test('each section remains an independent reading page while hierarchy helpers s
     assert.ok(miniaturesRule && emptyDiceContainer && playAreaAndTerrain && dice && tokensAndMarkers)
     assert.equal(hasRenderableRuleContent(miniaturesRule, indexes), true)
     assert.equal(hasRenderableRuleContent(emptyDiceContainer, indexes), false)
-    assert.equal(hasSamePageRange(playAreaAndTerrain, dice), true)
-    assert.equal(hasSamePageRange(dice, tokensAndMarkers), false)
+    assert.deepEqual(
+        [playAreaAndTerrain.printedPageStart, playAreaAndTerrain.printedPageEnd],
+        [dice.printedPageStart, dice.printedPageEnd],
+    )
+    assert.notDeepEqual(
+        [dice.printedPageStart, dice.printedPageEnd],
+        [tokensAndMarkers.printedPageStart, tokensAndMarkers.printedPageEnd],
+    )
 })
 
 test('all 34 official visuals are exposed and every referenced asset is present', () => {
@@ -187,10 +231,7 @@ test('all 34 official visuals are exposed and every referenced asset is present'
     }
     for (const visual of data.visuals) {
         const assetUrl = new URL(`../../public/data/${visual.assetReference}`, import.meta.url)
-        assert.ok(
-            existsSync(assetUrl),
-            `${visual.assetReference} must be shipped with the public dataset`,
-        )
+        assert.ok(existsSync(assetUrl), `${visual.assetReference} must be shipped with the public dataset`)
         assert.deepEqual(
             readWebpDimensions(assetUrl),
             { width: visual.width, height: visual.height },
@@ -206,7 +247,11 @@ test('all 34 official visuals are exposed and every referenced asset is present'
 
 test('search finds canonical rules by title and body while normalizing apostrophes and diacritics', () => {
     assert.ok(searchRulebook(data, 'Hampered Visibility').some((result) => result.id === 'rule.hampered-visibility'))
-    assert.ok(searchRulebook(data, 'adds 2 Bonus Dice to the Resistance Roll').some((result) => result.id === 'rule.hampered-visibility'))
+    assert.ok(
+        searchRulebook(data, 'adds 2 Bonus Dice to the Resistance Roll').some(
+            (result) => result.id === 'rule.hampered-visibility',
+        ),
+    )
     assert.equal(normalizeSearchText('L’Amirál'), normalizeSearchText("l'amiral"))
 })
 
@@ -221,34 +266,37 @@ test('deep links preserve section, specialised view and canonical rule anchor', 
 
 test('rule text formatting repairs line wraps and emits semantic headings and lists', () => {
     assert.deepEqual(
-        getRuleTextBlocks('2. The Launch Phase, in which Carrier units launch Short Range\n\nSquadrons 4.\n\nNEXT STEP\n\nResolve the next rule.'),
+        getRuleTextBlocks(
+            '2. The Launch Phase, in which Carrier units launch Short Range\n\nSquadrons 4.\n\nNEXT STEP\n\nResolve the next rule.',
+        ),
         [
             {
                 kind: 'ordered-list',
                 style: 'decimal',
-                items: [{
-                    marker: '2',
-                    title: 'The Launch Phase, in which Carrier units launch Short Range Squadrons 4.',
-                    paragraphs: [],
-                }],
+                items: [
+                    {
+                        marker: '2',
+                        title: 'The Launch Phase, in which Carrier units launch Short Range Squadrons 4.',
+                        paragraphs: [],
+                    },
+                ],
             },
             { kind: 'heading', text: 'NEXT STEP' },
             { kind: 'paragraph', text: 'Resolve the next rule.' },
         ],
     )
-    assert.deepEqual(
-        getRuleTextBlocks('- First condition.\n\n- Second condition.'),
-        [{ kind: 'unordered-list', items: ['First condition.', 'Second condition.'] }],
-    )
+    assert.deepEqual(getRuleTextBlocks('- First condition.\n\n- Second condition.'), [
+        { kind: 'unordered-list', items: ['First condition.', 'Second condition.'] },
+    ])
     assert.equal(formatIdentifier('requiresPropertyPermission'), 'Requires Property Permission')
 })
 
 test('rule terms are emphasised once without partial-word or overlapping matches', () => {
     const indexes = buildRulebookIndexes(data)
-    const segments = getRuleInlineSegments(
-        'Make an Action Roll, then resolve another Action Roll without rerolling.',
-        ['Action Roll', 'Roll'],
-    )
+    const segments = getRuleInlineSegments('Make an Action Roll, then resolve another Action Roll without rerolling.', [
+        'Action Roll',
+        'Roll',
+    ])
 
     assert.ok(indexes.ruleTerms.includes('Action Roll'))
     assert.ok(indexes.ruleTerms.includes('Bonus Dice'))
@@ -265,6 +313,7 @@ test('procedure steps expose only their relevant rule segment', () => {
     const mineClearance = data.procedures.find((procedure) => procedure.id === 'procedure.mine-clearance-mission')
     const interception = data.procedures.find((procedure) => procedure.id === 'procedure.interception-attempt')
     assert.ok(actionRoll && mineClearance && interception)
+    assert.ok(actionRoll.steps[1] && mineClearance.steps[3] && interception.steps[2])
 
     const explodingStrikes = getProcedureStepText(actionRoll.steps[1], actionRoll, indexes)
     const discardMineStack = getProcedureStepText(mineClearance.steps[3], mineClearance, indexes)
@@ -303,7 +352,10 @@ test('canonical rules stay free of verified PDF extraction artefacts', () => {
     ]
 
     for (const artefact of knownArtefacts) {
-        assert.ok(!canonicalText.includes(artefact), `canonical rules must not contain the extraction artefact "${artefact}"`)
+        assert.ok(
+            !canonicalText.includes(artefact),
+            `canonical rules must not contain the extraction artefact "${artefact}"`,
+        )
     }
 
     const chaos = data.ruleBlocks.find((rule) => rule.id === 'rule.chaos')
@@ -325,8 +377,14 @@ test('verified high-impact rules retain the complete wording and numerical value
     const arcs = rule('rule.arcs')
     const coherency = rule('rule.unit-coherency')
 
-    assert.match(actionRoll.text ?? '', /Rules that call for an Action Roll will be accompanied by an Action Roll Chart/)
-    assert.match(actionRoll.text ?? '', /For example, the active Admiral has made the Action Roll, scoring 2 Exploding Strikes/)
+    assert.match(
+        actionRoll.text ?? '',
+        /Rules that call for an Action Roll will be accompanied by an Action Roll Chart/,
+    )
+    assert.match(
+        actionRoll.text ?? '',
+        /For example, the active Admiral has made the Action Roll, scoring 2 Exploding Strikes/,
+    )
     assert.match(actionRoll.text ?? '', /The Action Roll \(fig\. F\) shows a total of 17 Hits/)
     assert.match(actionRoll.text ?? '', /the Action Roll has scored 2 Successes/)
     assert.match(makeAttackRoll.text ?? '', /makes a Resistance Roll:/)
@@ -364,15 +422,20 @@ test('curated prose removes page-reference markers without removing game values'
         .filter((rule) => rule.id !== 'rule.chapter.index')
         .flatMap((rule) => [rule.text ?? '', rule.summary ?? '', ...rule.notes.map((note) => note.text)])
         .join('\n')
-    const referenceLabels = [...new Set(referencesDocument.pageReferenceLinks.map((reference) => reference.label.trim()))]
-        .filter((label) => label && label.length < 55 && !/[\n\d]/.test(label) && label !== 'Resilience')
+    const referenceLabels = [
+        ...new Set(referencesDocument.pageReferenceLinks.map((reference) => reference.label.trim())),
+    ].filter((label) => label && label.length < 55 && !/[\n\d]/.test(label) && label !== 'Resilience')
 
     for (const label of referenceLabels) {
         const pattern = label
             .split(/\s+/)
             .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
             .join('\\s+')
-        assert.doesNotMatch(canonicalProse, new RegExp(`\\b${pattern}\\s+\\d{1,2}(?=\\b)`, 'iu'), `${label} must not keep a page-reference number`)
+        assert.doesNotMatch(
+            canonicalProse,
+            new RegExp(`\\b${pattern}\\s+\\d{1,2}(?=\\b)`, 'iu'),
+            `${label} must not keep a page-reference number`,
+        )
     }
 })
 

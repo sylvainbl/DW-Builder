@@ -1,75 +1,53 @@
-# React + TypeScript + Vite
+# Dystopian Wars Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application web locale pour consulter les unités et les règles de Dystopian Wars, composer des listes de flotte, puis les exporter ou les imprimer.
 
-Currently, two official plugins are available:
+## Prérequis
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 24 ou plus récent
+- npm
 
-## React Compiler
+## Démarrage
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Vite affiche l'adresse locale de l'application dans le terminal. Les listes sont enregistrées dans le `localStorage` du navigateur ; aucun serveur applicatif n'est requis.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Vérifications
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm run format:check
+npm run lint
+npm test
+npm run build
 ```
+
+- Prettier contrôle le formatage de tous les fichiers maintenus.
+- ESLint analyse TypeScript avec les informations de types.
+- Les tests couvrent la logique métier, les migrations de stockage et l'intégrité des données du builder et du livre de règles.
+- Le build TypeScript/Vite vérifie la compilation de production.
+
+Utiliser `npm run format` pour appliquer automatiquement le formatage.
+
+## Organisation
+
+- `src/components` : interface React, organisée par domaine.
+- `src/store` : état Zustand et chargement des données.
+- `src/utils` : logique métier pure, persistance, export et impression.
+- `src/rulebook` : modèle, indexation et tests du livre de règles.
+- `public/data` : factions, unités, Battlefleets, doctrines et contenu du livre de règles.
+- `public/assets` : illustrations et ressources statiques.
+
+Les identifiants des entités de `public/data` sont persistés dans les listes des utilisateurs. Toute modification d'identifiant ou de structure doit donc être accompagnée d'une migration et de tests adaptés.
+
+## Production
+
+```sh
+npm run build
+npm run preview
+```
+
+Le résultat statique est généré dans `dist/`. Les vues lourdes du livre de règles et de l'impression sont chargées à la demande afin de réduire le JavaScript initial.

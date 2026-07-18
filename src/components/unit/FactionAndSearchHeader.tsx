@@ -26,6 +26,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
         <button
             type="button"
             onClick={onClick}
+            aria-pressed={active}
             className={`rounded-full border px-2 py-0.5 text-[10px] transition ${active ? 'border-[var(--navy)] bg-[var(--navy)] text-white' : 'border-neutral-300 bg-white text-neutral-600 hover:border-[var(--navy-light)]'}`}
         >
             {label}
@@ -73,9 +74,7 @@ export default function FactionAndSearchHeader({
     )
     const keywords = useMemo(() => {
         const excluded = new Set([...domainTags, ...roles])
-        return Array.from(new Set(
-            filterUnits.flatMap((unit) => unit.tags.filter((tag) => !excluded.has(tag))),
-        )).sort()
+        return Array.from(new Set(filterUnits.flatMap((unit) => unit.tags.filter((tag) => !excluded.has(tag))))).sort()
     }, [filterUnits, roles])
 
     return (
@@ -88,17 +87,23 @@ export default function FactionAndSearchHeader({
                 <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
                     {currentList ? (
                         <select
+                            aria-label="Unit source"
                             value={sourceMode}
                             disabled={sourceOptions.length <= 1}
-                            onChange={(event) => onSourceModeChange(event.target.value as 'force' | 'mercenary' | 'both')}
+                            onChange={(event) =>
+                                onSourceModeChange(event.target.value as 'force' | 'mercenary' | 'both')
+                            }
                             className="min-w-0 max-w-[16rem] flex-1 rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none disabled:bg-neutral-100 disabled:text-neutral-500"
                         >
                             {sourceOptions.map((option) => (
-                                <option key={option.value} value={option.value}>{option.label}</option>
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
                             ))}
                         </select>
                     ) : (
                         <select
+                            aria-label="Faction"
                             value={factionId ?? ''}
                             onChange={(event) => {
                                 setSelectedFactionId(event.target.value || null)
@@ -108,13 +113,18 @@ export default function FactionAndSearchHeader({
                         >
                             <option value="">All factions</option>
                             {availableFactions.map((faction) => (
-                                <option key={faction.id} value={faction.id}>{faction.name}</option>
+                                <option key={faction.id} value={faction.id}>
+                                    {faction.name}
+                                </option>
                             ))}
                         </select>
                     )}
                     <select
+                        aria-label="Sort units"
                         value={sortMode}
-                        onChange={(event) => onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc' | 'type')}
+                        onChange={(event) =>
+                            onSortModeChange(event.target.value as 'name' | 'points-asc' | 'points-desc' | 'type')
+                        }
                         className="flex-none rounded border border-neutral-200 bg-white px-2 py-1.5 text-[11px] text-neutral-600 outline-none"
                     >
                         <option value="name">Name A-Z</option>
@@ -128,6 +138,7 @@ export default function FactionAndSearchHeader({
             <label className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm">
                 <Search size={14} className="text-neutral-400" />
                 <input
+                    aria-label="Search units"
                     value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)}
                     placeholder="Search"
@@ -156,6 +167,7 @@ export default function FactionAndSearchHeader({
                     <button
                         type="button"
                         onClick={() => setShowDomains((value) => !value)}
+                        aria-expanded={showDomains}
                         className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
                     >
                         {showDomains ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
@@ -181,6 +193,7 @@ export default function FactionAndSearchHeader({
                     <button
                         type="button"
                         onClick={() => setShowKeywords((value) => !value)}
+                        aria-expanded={showKeywords}
                         className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
                     >
                         {showKeywords ? <ChevronDown size={12} /> : <ChevronRight size={12} />}

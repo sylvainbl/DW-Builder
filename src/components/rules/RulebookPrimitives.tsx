@@ -6,12 +6,8 @@ import type { CuratedVisual, RuleTable } from '../../rulebook/types'
 
 const RulebookTextContext = createContext<string[]>([])
 
-export function RulebookTextProvider({ terms, children }: { terms: string[], children: ReactNode }) {
-    return (
-        <RulebookTextContext.Provider value={terms}>
-            {children}
-        </RulebookTextContext.Provider>
-    )
+export function RulebookTextProvider({ terms, children }: { terms: string[]; children: ReactNode }) {
+    return <RulebookTextContext.Provider value={terms}>{children}</RulebookTextContext.Provider>
 }
 
 interface RuleTextProps {
@@ -29,17 +25,35 @@ export function RuleText({ text, className = '', headingLevel = 3 }: RuleTextPro
         for (const segment of segments) {
             if (segment.kind === 'strong') emphasizedTerms.add(segment.text.toLocaleLowerCase('en'))
         }
-        return segments.map((segment, index) => (
-            segment.kind === 'strong'
-                ? <strong key={`${segment.text}-${index}`} className="font-bold">{segment.text}</strong>
-                : <span key={`${segment.text}-${index}`}>{segment.text}</span>
-        ))
+        return segments.map((segment, index) =>
+            segment.kind === 'strong' ? (
+                <strong key={`${segment.text}-${index}`} className="font-bold">
+                    {segment.text}
+                </strong>
+            ) : (
+                <span key={`${segment.text}-${index}`}>{segment.text}</span>
+            ),
+        )
     }
     const renderHeading = (textValue: string, key: string) => {
         const classNames = 'pt-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-foreground)]'
-        if (headingLevel === 5) return <h5 key={key} className={classNames}>{renderInlineText(textValue)}</h5>
-        if (headingLevel === 4) return <h4 key={key} className={classNames}>{renderInlineText(textValue)}</h4>
-        return <h3 key={key} className={classNames}>{renderInlineText(textValue)}</h3>
+        if (headingLevel === 5)
+            return (
+                <h5 key={key} className={classNames}>
+                    {renderInlineText(textValue)}
+                </h5>
+            )
+        if (headingLevel === 4)
+            return (
+                <h4 key={key} className={classNames}>
+                    {renderInlineText(textValue)}
+                </h4>
+            )
+        return (
+            <h3 key={key} className={classNames}>
+                {renderInlineText(textValue)}
+            </h3>
+        )
     }
 
     return (
@@ -64,9 +78,9 @@ export function RuleText({ text, className = '', headingLevel = 3 }: RuleTextPro
                         <ol
                             key={index}
                             type={block.style === 'lower-alpha' ? 'a' : '1'}
-                            className={`list-outside space-y-3 pl-7 marker:font-bold marker:text-[var(--gold)] ${block.style === 'lower-alpha'
-                                ? '[list-style-type:lower-alpha]'
-                                : 'list-decimal'}`}
+                            className={`list-outside space-y-3 pl-7 marker:font-bold marker:text-[var(--gold)] ${
+                                block.style === 'lower-alpha' ? '[list-style-type:lower-alpha]' : 'list-decimal'
+                            }`}
                         >
                             {block.items.map((item) => (
                                 <li key={`${item.marker}-${item.title}`} className="pl-1">
@@ -83,17 +97,15 @@ export function RuleText({ text, className = '', headingLevel = 3 }: RuleTextPro
                                                 ))}
                                             </div>
                                         </>
-                                    ) : renderInlineText(item.title)}
+                                    ) : (
+                                        renderInlineText(item.title)
+                                    )}
                                 </li>
                             ))}
                         </ol>
                     )
                 }
-                return (
-                    <p key={index}>
-                        {renderInlineText(block.text)}
-                    </p>
-                )
+                return <p key={index}>{renderInlineText(block.text)}</p>
             })}
         </div>
     )
@@ -128,9 +140,13 @@ interface CuratedVisualFigureProps {
 
 export function CuratedVisualFigure({ visual, onOpen, compact = false, collapsed = false }: CuratedVisualFigureProps) {
     const figure = (
-        <figure className={collapsed
-            ? 'overflow-hidden bg-[var(--detail-row)]'
-            : `overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm ${compact ? '' : 'my-5'}`}>
+        <figure
+            className={
+                collapsed
+                    ? 'overflow-hidden bg-[var(--detail-row)]'
+                    : `overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm ${compact ? '' : 'my-5'}`
+            }
+        >
             <button
                 type="button"
                 onClick={() => onOpen(visual)}
@@ -150,8 +166,12 @@ export function CuratedVisualFigure({ visual, onOpen, compact = false, collapsed
                 </span>
             </button>
             <figcaption className="border-t border-[var(--panel-border)] px-4 py-3">
-                {!collapsed ? <div className="text-sm font-semibold text-[var(--accent-foreground)]">{visual.title}</div> : null}
-                {visual.description ? <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{visual.description}</p> : null}
+                {!collapsed ? (
+                    <div className="text-sm font-semibold text-[var(--accent-foreground)]">{visual.title}</div>
+                ) : null}
+                {visual.description ? (
+                    <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{visual.description}</p>
+                ) : null}
             </figcaption>
         </figure>
     )
@@ -159,11 +179,17 @@ export function CuratedVisualFigure({ visual, onOpen, compact = false, collapsed
     if (!collapsed) return figure
 
     return (
-        <details className={`group/visual overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm ${compact ? 'mt-4' : 'my-5'}`}>
+        <details
+            className={`group/visual overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm ${compact ? 'mt-4' : 'my-5'}`}
+        >
             <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
                 <span className="min-w-0 flex-1">
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.13em] text-[var(--gold)]">Diagram</span>
-                    <span className="mt-0.5 block text-sm font-semibold text-[var(--accent-foreground)]">{visual.title}</span>
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.13em] text-[var(--gold)]">
+                        Diagram
+                    </span>
+                    <span className="mt-0.5 block text-sm font-semibold text-[var(--accent-foreground)]">
+                        {visual.title}
+                    </span>
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--muted)]">
                     <span className="group-open/visual:hidden">Show</span>
@@ -175,9 +201,7 @@ export function CuratedVisualFigure({ visual, onOpen, compact = false, collapsed
                     />
                 </span>
             </summary>
-            <div className="border-t border-[var(--panel-border)]">
-                {figure}
-            </div>
+            <div className="border-t border-[var(--panel-border)]">{figure}</div>
         </details>
     )
 }
@@ -201,12 +225,15 @@ export function VisualLightbox({ visual, onClose, returnFocusTo }: VisualLightbo
             }
             if (event.key !== 'Tab' || !dialogRef.current) return
 
-            const focusableElements = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(
-                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-            )).filter((element) => !element.hasAttribute('disabled'))
+            const focusableElements = Array.from(
+                dialogRef.current.querySelectorAll<HTMLElement>(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+                ),
+            ).filter((element) => !element.hasAttribute('disabled'))
             if (focusableElements.length === 0) return
 
             const first = focusableElements[0]
+            if (!first) return
             const last = focusableElements.at(-1) ?? first
             if (event.shiftKey && document.activeElement === first) {
                 event.preventDefault()
@@ -235,7 +262,10 @@ export function VisualLightbox({ visual, onClose, returnFocusTo }: VisualLightbo
                 if (event.target === event.currentTarget) onClose()
             }}
         >
-            <div ref={dialogRef} className="relative max-h-full max-w-6xl overflow-auto rounded-xl bg-white p-3 shadow-2xl">
+            <div
+                ref={dialogRef}
+                className="relative max-h-full max-w-6xl overflow-auto rounded-xl bg-white p-3 shadow-2xl"
+            >
                 <button
                     type="button"
                     onClick={onClose}
@@ -254,7 +284,9 @@ export function VisualLightbox({ visual, onClose, returnFocusTo }: VisualLightbo
                 />
                 <div className="max-w-3xl px-3 pb-3 pt-4 text-slate-900">
                     <div className="font-semibold">{visual.title}</div>
-                    {visual.description ? <p className="mt-1 text-sm leading-6 text-slate-600">{visual.description}</p> : null}
+                    {visual.description ? (
+                        <p className="mt-1 text-sm leading-6 text-slate-600">{visual.description}</p>
+                    ) : null}
                 </div>
             </div>
         </div>
@@ -273,14 +305,17 @@ function renderCell(value: RuleTable['rows'][number][number]) {
 export function RuleTableView({ table }: RuleTableViewProps) {
     const hasTypedRecords = Boolean(table.columns?.length && table.records?.length)
     const columns = hasTypedRecords
-        ? table.columns ?? []
+        ? (table.columns ?? [])
         : (table.rows[0] ?? []).map((title, index) => ({ id: String(index), title: String(title), type: 'string' }))
     const records = hasTypedRecords
-        ? table.records ?? []
+        ? (table.records ?? [])
         : table.rows.slice(1).map((row) => Object.fromEntries(row.map((value, index) => [String(index), value])))
 
     return (
-        <section id={`table-${table.id}`} className="my-5 overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm">
+        <section
+            id={`table-${table.id}`}
+            className="my-5 overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm"
+        >
             <div className="border-b border-[var(--panel-border)] bg-[var(--detail-panel)] px-4 py-3">
                 <h3 className="font-semibold text-[var(--accent-foreground)]">{table.title}</h3>
                 <p className="mt-0.5 text-xs text-[var(--muted)]">Printed page {table.printedPage}</p>
@@ -290,7 +325,11 @@ export function RuleTableView({ table }: RuleTableViewProps) {
                     <thead>
                         <tr className="bg-[var(--detail-row)]">
                             {columns.map((column) => (
-                                <th key={column.id} scope="col" className="border-b border-[var(--panel-border)] px-4 py-3 text-xs font-bold tracking-wide text-[var(--accent-foreground)]">
+                                <th
+                                    key={column.id}
+                                    scope="col"
+                                    className="border-b border-[var(--panel-border)] px-4 py-3 text-xs font-bold tracking-wide text-[var(--accent-foreground)]"
+                                >
                                     <span className="whitespace-pre-line">{column.title}</span>
                                 </th>
                             ))}
@@ -300,7 +339,10 @@ export function RuleTableView({ table }: RuleTableViewProps) {
                         {records.map((record, rowIndex) => (
                             <tr key={rowIndex} className="odd:bg-[var(--detail-panel)]">
                                 {columns.map((column) => (
-                                    <td key={column.id} className="border-b border-[var(--panel-border)] px-4 py-3 align-top text-[var(--text)] last:border-r-0">
+                                    <td
+                                        key={column.id}
+                                        className="border-b border-[var(--panel-border)] px-4 py-3 align-top text-[var(--text)] last:border-r-0"
+                                    >
                                         <span className="whitespace-pre-line">{renderCell(record[column.id])}</span>
                                     </td>
                                 ))}

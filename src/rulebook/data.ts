@@ -68,11 +68,11 @@ function parseManifest(value: unknown): RulebookManifest {
     }
 
     if (
-        typeof value.id !== 'string'
-        || typeof value.title !== 'string'
-        || typeof value.version !== 'string'
-        || typeof value.datasetVersion !== 'string'
-        || typeof value.schemaVersion !== 'string'
+        typeof value.id !== 'string' ||
+        typeof value.title !== 'string' ||
+        typeof value.version !== 'string' ||
+        typeof value.datasetVersion !== 'string' ||
+        typeof value.schemaVersion !== 'string'
     ) {
         throw new Error('The rulebook manifest metadata is invalid.')
     }
@@ -112,10 +112,15 @@ export function loadRulebookData(): Promise<RulebookData> {
             fetchJson<{ tables: RulebookData['tables'] }>(manifest.modules.tables),
             fetchJson<{ procedures: RuleProcedure[] }>(manifest.modules.procedures),
             fetchJson<{ actions: RuleAction[] }>(manifest.modules.actions),
-            fetchJson<{ tokens: RuleToken[], criticalDamageEffects: RulebookData['criticalDamageEffects'] }>(manifest.modules.tokens),
+            fetchJson<{ tokens: RuleToken[]; criticalDamageEffects: RulebookData['criticalDamageEffects'] }>(
+                manifest.modules.tokens,
+            ),
             fetchJson<RulebookData['terrain']>(manifest.modules.terrain),
             fetchJson<{ encounters: RuleEncounter[] }>(manifest.modules.encounters),
-            fetchJson<{ pageReferenceLinks: RulebookData['pageReferenceLinks'], semanticLinks: RulebookData['semanticLinks'] }>(manifest.modules.references),
+            fetchJson<{
+                pageReferenceLinks: RulebookData['pageReferenceLinks']
+                semanticLinks: RulebookData['semanticLinks']
+            }>(manifest.modules.references),
             fetchJson<{ visuals: CuratedVisual[] }>(manifest.modules.visuals),
         ])
 
@@ -154,10 +159,7 @@ export interface FlatNavigationItem extends RulebookNavigationItem {
 }
 
 export function flattenNavigation(items: RulebookNavigationItem[], depth = 0): FlatNavigationItem[] {
-    return items.flatMap((item) => [
-        { ...item, depth },
-        ...flattenNavigation(item.children, depth + 1),
-    ])
+    return items.flatMap((item) => [{ ...item, depth }, ...flattenNavigation(item.children, depth + 1)])
 }
 
 export interface RulebookIndexes {
@@ -223,19 +225,20 @@ export function buildRulebookIndexes(data: RulebookData): RulebookIndexes {
         entityTitleById.set(entity.id, entity.title)
     }
 
-    const ruleTerms = [...new Set([
-        ...data.pageReferenceLinks.map((reference) => reference.label),
-        ...RULE_TERM_ALIASES,
-    ]
-        .map((label) => label.replace(/\s+/g, ' ').trim())
-        .filter((label) => (
-            label.length >= 3
-            && label.length <= 55
-            && !label.includes('MISSING')
-            && !/^\W/.test(label)
-            && !/\s{2,}/.test(label)
-        )))]
-        .sort((left, right) => right.length - left.length || left.localeCompare(right))
+    const ruleTerms = [
+        ...new Set(
+            [...data.pageReferenceLinks.map((reference) => reference.label), ...RULE_TERM_ALIASES]
+                .map((label) => label.replace(/\s+/g, ' ').trim())
+                .filter(
+                    (label) =>
+                        label.length >= 3 &&
+                        label.length <= 55 &&
+                        !label.includes('MISSING') &&
+                        !/^\W/.test(label) &&
+                        !/\s{2,}/.test(label),
+                ),
+        ),
+    ].sort((left, right) => right.length - left.length || left.localeCompare(right))
 
     return {
         sectionById,
@@ -269,30 +272,11 @@ export function resolveSectionRuleBlocks(section: RulebookSection, indexes: Rule
 
 export function hasRenderableRuleContent(rule: RuleBlock, indexes: RulebookIndexes): boolean {
     return Boolean(
-        rule.text?.trim()
-        || rule.notes.some((note) => note.text.trim() || note.title?.trim())
-        || rule.tableIds.some((id) => indexes.tableById.has(id))
-        || indexes.visualsByRuleId.get(rule.id)?.length,
+        rule.text?.trim() ||
+        rule.notes.some((note) => note.text.trim() || note.title?.trim()) ||
+        rule.tableIds.some((id) => indexes.tableById.has(id)) ||
+        indexes.visualsByRuleId.get(rule.id)?.length,
     )
-}
-
-export function hasSamePageRange(left: RulebookSection, right: RulebookSection): boolean {
-    return left.printedPageStart === right.printedPageStart
-        && left.printedPageEnd === right.printedPageEnd
-}
-
-export function resolveReadingSection(section: RulebookSection): RulebookSection {
-    return section
-}
-
-export function flattenSectionTree(section: RulebookSection, indexes: RulebookIndexes): RulebookSection[] {
-    return [
-        section,
-        ...section.childSectionIds.flatMap((id) => {
-            const child = indexes.sectionById.get(id)
-            return child ? flattenSectionTree(child, indexes) : []
-        }),
-    ]
 }
 
 export function normalizeSearchText(value: string): string {
@@ -338,9 +322,12 @@ export function findNormalizedMatch(text: string, query: string): TextMatch | nu
     if (matchIndex < 0) return null
 
     const lastIndex = matchIndex + normalizedQuery.length - 1
+    const start = starts[matchIndex]
+    const end = ends[lastIndex]
+    if (start === undefined || end === undefined) return null
     return {
-        start: starts[matchIndex],
-        end: ends[lastIndex],
+        start,
+        end,
     }
 }
 
@@ -352,18 +339,18 @@ export interface RuleTextListItem {
 
 export type RuleTextBlock =
     | {
-        kind: 'heading' | 'paragraph'
-        text: string
-    }
+          kind: 'heading' | 'paragraph'
+          text: string
+      }
     | {
-        kind: 'unordered-list'
-        items: string[]
-    }
+          kind: 'unordered-list'
+          items: string[]
+      }
     | {
-        kind: 'ordered-list'
-        style: 'decimal' | 'lower-alpha'
-        items: RuleTextListItem[]
-    }
+          kind: 'ordered-list'
+          style: 'decimal' | 'lower-alpha'
+          items: RuleTextListItem[]
+      }
 
 export interface RuleInlineSegment {
     kind: 'text' | 'strong'
@@ -372,12 +359,10 @@ export interface RuleInlineSegment {
 
 function isRuleTextHeading(value: string): boolean {
     return (
-        (/^[A-Z]/.test(value)
-            && value.length < 80
-            && value === value.toLocaleUpperCase('en'))
-        || /^Level \d+$/i.test(value)
-        || /^(?:(?:Attacker’s|Defender’s)\s+)?(?:PRIMARY|SECONDARY|TERTIARY) Objective:/i.test(value)
-        || /^(?:Legendary Battlefleets|Mainstay Classes|Heavy Hardpoint|Light Hardpoint|Special Hardpoint)$/i.test(value)
+        (/^[A-Z]/.test(value) && value.length < 80 && value === value.toLocaleUpperCase('en')) ||
+        /^Level \d+$/i.test(value) ||
+        /^(?:(?:Attacker’s|Defender’s)\s+)?(?:PRIMARY|SECONDARY|TERTIARY) Objective:/i.test(value) ||
+        /^(?:Legendary Battlefleets|Mainstay Classes|Heavy Hardpoint|Light Hardpoint|Special Hardpoint)$/i.test(value)
     )
 }
 
@@ -393,9 +378,9 @@ interface OrderedMarker {
 
 function parseOrderedMarker(value: string): OrderedMarker | null {
     const decimal = value.match(/^(\d+)[.)]\s+(.+)$/s)
-    if (decimal) return { marker: decimal[1], style: 'decimal', content: decimal[2] }
+    if (decimal?.[1] && decimal[2]) return { marker: decimal[1], style: 'decimal', content: decimal[2] }
     const alpha = value.match(/^([a-z])\.\s+(.+)$/s)
-    if (alpha) return { marker: alpha[1], style: 'lower-alpha', content: alpha[2] }
+    if (alpha?.[1] && alpha[2]) return { marker: alpha[1], style: 'lower-alpha', content: alpha[2] }
     return null
 }
 
@@ -404,12 +389,12 @@ function parseBullet(value: string): string | null {
     return match?.[1] ?? null
 }
 
-function splitOrderedContent(marker: OrderedMarker): { title: string, paragraph?: string } {
+function splitOrderedContent(marker: OrderedMarker): { title: string; paragraph?: string } {
     if (marker.style === 'lower-alpha') {
         const knownTitle = marker.content.match(
             /^(Check Encounter Rules|Define Terrain Areas|Place Terrain Features|Finish Placing Terrain)\s+(.+)$/s,
         )
-        if (knownTitle) return { title: knownTitle[1], paragraph: knownTitle[2] }
+        if (knownTitle?.[1] && knownTitle[2]) return { title: knownTitle[1], paragraph: knownTitle[2] }
     }
     return { title: marker.content }
 }
@@ -417,7 +402,12 @@ function splitOrderedContent(marker: OrderedMarker): { title: string, paragraph?
 function normalizeRuleTextChunks(text: string): string[] {
     const sourceChunks = text
         .split(/\n{2,}/)
-        .map((chunk) => chunk.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim())
+        .map((chunk) =>
+            chunk
+                .replace(/\s*\n\s*/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim(),
+        )
         .filter(Boolean)
     const chunks: string[] = []
 
@@ -430,25 +420,25 @@ function normalizeRuleTextChunks(text: string): string[] {
 
         const previousMarker = parseOrderedMarker(previous)
         if (
-            previousMarker
-            && !isTerminalStatement(previousMarker.content)
-            && previousMarker.content !== previousMarker.content.toLocaleUpperCase('en')
-            && !isRuleTextHeading(chunk)
-            && !parseOrderedMarker(chunk)
-            && parseBullet(chunk) === null
+            previousMarker &&
+            !isTerminalStatement(previousMarker.content) &&
+            previousMarker.content !== previousMarker.content.toLocaleUpperCase('en') &&
+            !isRuleTextHeading(chunk) &&
+            !parseOrderedMarker(chunk) &&
+            parseBullet(chunk) === null
         ) {
             chunks[chunks.length - 1] = `${previous} ${chunk}`
             continue
         }
 
         if (
-            !isTerminalStatement(previous)
-            && !isRuleTextHeading(previous)
-            && !parseOrderedMarker(previous)
-            && parseBullet(previous) === null
-            && !isRuleTextHeading(chunk)
-            && !parseOrderedMarker(chunk)
-            && parseBullet(chunk) === null
+            !isTerminalStatement(previous) &&
+            !isRuleTextHeading(previous) &&
+            !parseOrderedMarker(previous) &&
+            parseBullet(previous) === null &&
+            !isRuleTextHeading(chunk) &&
+            !parseOrderedMarker(chunk) &&
+            parseBullet(chunk) === null
         ) {
             chunks[chunks.length - 1] = `${previous} ${chunk}`
             continue
@@ -466,12 +456,15 @@ export function getRuleTextBlocks(text: string): RuleTextBlock[] {
 
     for (let index = 0; index < chunks.length;) {
         const chunk = chunks[index]
+        if (chunk === undefined) break
 
         const bullet = parseBullet(chunk)
         if (bullet !== null) {
             const items: string[] = []
             while (index < chunks.length) {
-                const item = parseBullet(chunks[index])
+                const currentChunk = chunks[index]
+                if (currentChunk === undefined) break
+                const item = parseBullet(currentChunk)
                 if (item === null) break
                 items.push(item)
                 index += 1
@@ -485,7 +478,9 @@ export function getRuleTextBlocks(text: string): RuleTextBlock[] {
             const items: RuleTextListItem[] = []
             const style = marker.style
             while (index < chunks.length) {
-                const itemMarker = parseOrderedMarker(chunks[index])
+                const currentChunk = chunks[index]
+                if (currentChunk === undefined) break
+                const itemMarker = parseOrderedMarker(currentChunk)
                 if (!itemMarker || itemMarker.style !== style) break
                 const content = splitOrderedContent(itemMarker)
                 const item: RuleTextListItem = {
@@ -494,13 +489,16 @@ export function getRuleTextBlocks(text: string): RuleTextBlock[] {
                     paragraphs: content.paragraph ? [content.paragraph] : [],
                 }
                 index += 1
-                while (
-                    index < chunks.length
-                    && !parseOrderedMarker(chunks[index])
-                    && parseBullet(chunks[index]) === null
-                    && !isRuleTextHeading(chunks[index])
-                ) {
-                    item.paragraphs.push(chunks[index])
+                while (index < chunks.length) {
+                    const paragraph = chunks[index]
+                    if (
+                        paragraph === undefined ||
+                        parseOrderedMarker(paragraph) ||
+                        parseBullet(paragraph) !== null ||
+                        isRuleTextHeading(paragraph)
+                    )
+                        break
+                    item.paragraphs.push(paragraph)
                     index += 1
                 }
                 items.push(item)
@@ -526,7 +524,7 @@ function isWordCharacter(value: string | undefined): boolean {
 
 export function getRuleInlineSegments(text: string, terms: string[]): RuleInlineSegment[] {
     const lowerText = text.toLocaleLowerCase('en')
-    const ranges: { start: number, end: number }[] = []
+    const ranges: { start: number; end: number }[] = []
 
     for (const term of terms) {
         const lowerTerm = term.toLocaleLowerCase('en')
@@ -635,13 +633,18 @@ export function searchRulebook(data: RulebookData, query: string): RuleSearchRes
             title: rule.title,
             sectionId: rule.sectionId,
             snippet: makeSnippet(rule.text ?? rule.summary ?? '', query),
-            printedPages: Array.from({ length: rule.printedPageEnd - rule.printedPageStart + 1 }, (_, index) => rule.printedPageStart + index),
+            printedPages: Array.from(
+                { length: rule.printedPageEnd - rule.printedPageStart + 1 },
+                (_, index) => rule.printedPageStart + index,
+            ),
         })),
         ...data.procedures.map((procedure): RuleSearchResult => ({
             id: procedure.id,
             kind: 'procedure',
             title: procedure.title,
-            sectionId: procedure.ruleBlockId ? data.ruleBlocks.find((rule) => rule.id === procedure.ruleBlockId)?.sectionId : undefined,
+            sectionId: procedure.ruleBlockId
+                ? data.ruleBlocks.find((rule) => rule.id === procedure.ruleBlockId)?.sectionId
+                : undefined,
             snippet: procedure.steps.map((step) => step.title).join(' · '),
             printedPages: procedure.source.printedPages,
         })),
@@ -649,7 +652,9 @@ export function searchRulebook(data: RulebookData, query: string): RuleSearchRes
             id: action.id,
             kind: 'action',
             title: action.name,
-            sectionId: action.ruleBlockId ? data.ruleBlocks.find((rule) => rule.id === action.ruleBlockId)?.sectionId : undefined,
+            sectionId: action.ruleBlockId
+                ? data.ruleBlocks.find((rule) => rule.id === action.ruleBlockId)?.sectionId
+                : undefined,
             snippet: `${action.phase} · ${action.category.replaceAll('_', ' ')}`,
             printedPages: action.printedPages,
         })),
@@ -657,33 +662,37 @@ export function searchRulebook(data: RulebookData, query: string): RuleSearchRes
             id: token.id,
             kind: 'token',
             title: token.name,
-            sectionId: token.ruleBlockIds[0] ? data.ruleBlocks.find((rule) => rule.id === token.ruleBlockIds[0])?.sectionId : undefined,
+            sectionId: token.ruleBlockIds[0]
+                ? data.ruleBlocks.find((rule) => rule.id === token.ruleBlockIds[0])?.sectionId
+                : undefined,
             snippet: makeSnippet(token.text, query),
         })),
-        ...[
-            ...data.terrain.environmentalFeatures,
-            ...data.terrain.terrainFeatures,
-            ...data.terrain.markers,
-        ].map((item): RuleSearchResult => ({
-            id: item.id,
-            kind: 'terrain',
-            title: item.name,
-            sectionId: 'ruleBlockId' in item && item.ruleBlockId
-                ? data.ruleBlocks.find((rule) => rule.id === item.ruleBlockId)?.sectionId
-                : undefined,
-            snippet: makeSnippet(('text' in item ? item.text : item.definition) ?? '', query),
-            printedPages: item.source.printedPages,
-        })),
+        ...[...data.terrain.environmentalFeatures, ...data.terrain.terrainFeatures, ...data.terrain.markers].map(
+            (item): RuleSearchResult => ({
+                id: item.id,
+                kind: 'terrain',
+                title: item.name,
+                sectionId:
+                    'ruleBlockId' in item && item.ruleBlockId
+                        ? data.ruleBlocks.find((rule) => rule.id === item.ruleBlockId)?.sectionId
+                        : undefined,
+                snippet: makeSnippet(('text' in item ? item.text : item.definition) ?? '', query),
+                printedPages: item.source.printedPages,
+            }),
+        ),
         ...data.encounters.map((encounter): RuleSearchResult => ({
             id: encounter.id,
             kind: 'encounter',
             title: encounter.name,
-            snippet: makeSnippet([
-                encounter.narrative,
-                encounter.playArea,
-                ...encounter.additionalRules.flatMap((rule) => [rule.name, rule.text]),
-                ...encounter.objectives.flatMap((objective) => [objective.name, objective.text]),
-            ].join(' '), query),
+            snippet: makeSnippet(
+                [
+                    encounter.narrative,
+                    encounter.playArea,
+                    ...encounter.additionalRules.flatMap((rule) => [rule.name, rule.text]),
+                    ...encounter.objectives.flatMap((objective) => [objective.name, objective.text]),
+                ].join(' '),
+                query,
+            ),
             printedPages: encounter.source.printedPages,
         })),
     ]

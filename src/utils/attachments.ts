@@ -11,7 +11,10 @@ export function getMinimumModelsForUnit(unit: Unit): number {
 }
 
 export function getMaximumModelsForUnit(unit: Unit): number {
-    return Math.max(getMinimumModelsForUnit(unit), unit.max ?? (typeof unit.models === 'number' ? unit.models : getMinimumModelsForUnit(unit)))
+    return Math.max(
+        getMinimumModelsForUnit(unit),
+        unit.max ?? (typeof unit.models === 'number' ? unit.models : getMinimumModelsForUnit(unit)),
+    )
 }
 
 export function isAttachmentOption(option: Pick<OptionUpgrade, 'attachment_unit_ids'>): boolean {
@@ -20,7 +23,10 @@ export function isAttachmentOption(option: Pick<OptionUpgrade, 'attachment_unit_
 
 export function getAttachmentKeyword(unit: Unit): string | null {
     const attachmentProperty = unit.properties.find((property) => property.name === 'Attachment')
-    return attachmentProperty?.detail ?? (unit.attachment?.parent_traits.length ? unit.attachment.parent_traits.join(', ') : null)
+    return (
+        attachmentProperty?.detail ??
+        (unit.attachment?.parent_traits.length ? unit.attachment.parent_traits.join(', ') : null)
+    )
 }
 
 export function getAttachmentModelLimitForUnit(unit: Unit): number {
@@ -47,10 +53,12 @@ function parseAttachmentRequirement(rawRequirement: string): AttachmentRequireme
         .split(',')
         .map((part) => part.trim())
         .filter(Boolean)
-        .map((part) => part
-            .split('/')
-            .map((option) => option.trim())
-            .filter(Boolean))
+        .map((part) =>
+            part
+                .split('/')
+                .map((option) => option.trim())
+                .filter(Boolean),
+        )
         .filter((options) => options.length > 0)
 }
 
@@ -64,9 +72,11 @@ function getAttachmentRequirements(unit: Unit): AttachmentRequirement[] {
 }
 
 function getParentAttachmentTargetIds(parent: Unit): Set<string> {
-    return new Set(parent.options_and_upgrades
-        .filter((option) => option.max !== 0)
-        .flatMap((option) => option.attachment_unit_ids ?? []))
+    return new Set(
+        parent.options_and_upgrades
+            .filter((option) => option.max !== 0)
+            .flatMap((option) => option.attachment_unit_ids ?? []),
+    )
 }
 
 function parentMatchesTrait(parentTraits: string[], requiredTrait: string): boolean {
@@ -110,7 +120,7 @@ export function canAttachToParent(
     if (explicitEligibility != null) return explicitEligibility
     const requirements = getAttachmentRequirements(attachment)
     if (requirements.length === 0) return false
-    return requirements.every((requirement) => (
-        requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait))
-    ))
+    return requirements.every((requirement) =>
+        requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait)),
+    )
 }

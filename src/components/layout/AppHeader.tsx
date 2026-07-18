@@ -1,6 +1,5 @@
 import { BookOpen, List as ListIcon, Settings, Ship } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useAppStore } from '../../store'
 
 type Theme = 'normal' | 'dark' | 'turquoise-orange'
@@ -53,8 +52,10 @@ function saveSecretTheme(active: boolean): void {
 }
 
 export default function AppHeader({ activeView, onShowLists, onShowRules, onShowUnits }: AppHeaderProps) {
-    const [builderName, setBuilderName] = useState(() => loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER')
-    const [theme, setTheme] = useState<Theme>(() => loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme())
+    const [builderName, setBuilderName] = useState(() =>
+        loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DYSTOPIAN WARS BUILDER',
+    )
+    const [theme, setTheme] = useState<Theme>(() => (loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme()))
     const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
     const [settingsOpen, setSettingsOpen] = useState(false)
     const builderNameClickCount = useRef(0)
@@ -85,7 +86,7 @@ export default function AppHeader({ activeView, onShowLists, onShowRules, onShow
         return () => document.removeEventListener('click', handleOutsideClick)
     }, [])
 
-    const handleBuilderNameClick = (event: ReactMouseEvent<HTMLSpanElement>) => {
+    const handleBuilderNameClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation()
         builderNameClickCount.current += 1
 
@@ -97,15 +98,18 @@ export default function AppHeader({ activeView, onShowLists, onShowRules, onShow
     }
 
     return (
-        <header className="relative z-30 grid h-14 flex-none grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border-b border-white/10 px-3 text-sm text-white sm:px-4" style={{ background: 'var(--navy)' }}>
+        <header
+            className="relative z-30 grid h-14 flex-none grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border-b border-white/10 px-3 text-sm text-white sm:px-4"
+            style={{ background: 'var(--navy)' }}
+        >
             <div className="min-w-0 items-center gap-2 lg:flex">
-                <span
-                    className="hidden max-w-none flex-none select-none truncate text-sm font-semibold tracking-[0.24em] text-[var(--gold)] lg:block"
+                <button
+                    type="button"
+                    className="hidden max-w-none flex-none select-none truncate border-0 bg-transparent p-0 text-left text-sm font-semibold tracking-[0.24em] text-[var(--gold)] lg:block"
                     onClick={handleBuilderNameClick}
-                    onMouseDown={(event) => event.preventDefault()}
                 >
                     {builderName}
-                </span>
+                </button>
                 {activeView === 'builder' ? (
                     <>
                         <span className="hidden text-white/40 lg:inline">›</span>
@@ -179,7 +183,9 @@ export default function AppHeader({ activeView, onShowLists, onShowRules, onShow
                         >
                             <option value="normal">Normal</option>
                             <option value="dark">Dark theme</option>
-                            {turquoiseThemeUnlocked ? <option value="turquoise-orange">Turquoise &amp; orange</option> : null}
+                            {turquoiseThemeUnlocked ? (
+                                <option value="turquoise-orange">Turquoise &amp; orange</option>
+                            ) : null}
                         </select>
                     </div>
                 ) : null}
