@@ -611,101 +611,113 @@ function makeSnippet(text: string, query: string): string {
     return `${start > 0 ? '…' : ''}${cleaned.slice(start, end)}${end < cleaned.length ? '…' : ''}`
 }
 
-function resultMatches(result: RuleSearchResult, query: string): boolean {
-    return Boolean(findNormalizedMatch(`${result.title} ${result.snippet}`, query))
+interface RulebookSearchEntry extends Omit<RuleSearchResult, 'snippet'> {
+    snippetSource: string
+    normalizedTitle: string
+    normalizedText: string
 }
 
-export function searchRulebook(data: RulebookData, query: string): RuleSearchResult[] {
-    if (!normalizeSearchText(query)) return []
+export type RulebookSearchIndex = RulebookSearchEntry[]
+type RulebookSearchSourceEntry = Omit<RulebookSearchEntry, 'normalizedTitle' | 'normalizedText'>
 
-    const results: RuleSearchResult[] = [
-        ...data.sections.map((section): RuleSearchResult => ({
+export function buildRulebookSearchIndex(data: RulebookData): RulebookSearchIndex {
+    const sectionIdByRuleId = new Map(data.ruleBlocks.map((rule) => [rule.id, rule.sectionId]))
+    const entries: RulebookSearchSourceEntry[] = [
+        ...data.sections.map((section): RulebookSearchSourceEntry => ({
             id: section.id,
             kind: 'section',
             title: section.title,
             sectionId: section.id,
-            snippet: section.path.join(' › '),
+            snippetSource: section.path.join(' › '),
             printedPages: section.source.printedPages,
         })),
-        ...data.ruleBlocks.map((rule): RuleSearchResult => ({
+        ...data.ruleBlocks.map((rule): RulebookSearchSourceEntry => ({
             id: rule.id,
             kind: 'rule',
             title: rule.title,
             sectionId: rule.sectionId,
-            snippet: makeSnippet(rule.text ?? rule.summary ?? '', query),
+            snippetSource: rule.text ?? rule.summary ?? '',
             printedPages: Array.from(
                 { length: rule.printedPageEnd - rule.printedPageStart + 1 },
                 (_, index) => rule.printedPageStart + index,
             ),
         })),
-        ...data.procedures.map((procedure): RuleSearchResult => ({
+        ...data.procedures.map((procedure): RulebookSearchSourceEntry => ({
             id: procedure.id,
             kind: 'procedure',
             title: procedure.title,
-            sectionId: procedure.ruleBlockId
-                ? data.ruleBlocks.find((rule) => rule.id === procedure.ruleBlockId)?.sectionId
-                : undefined,
-            snippet: procedure.steps.map((step) => step.title).join(' · '),
+            sectionId: procedure.ruleBlockId ? sectionIdByRuleId.get(procedure.ruleBlockId) : undefined,
+            snippetSource: procedure.steps.map((step) => step.title).join(' · '),
             printedPages: procedure.source.printedPages,
         })),
-        ...data.actions.map((action): RuleSearchResult => ({
+        ...data.actions.map((action): RulebookSearchSourceEntry => ({
             id: action.id,
             kind: 'action',
             title: action.name,
-            sectionId: action.ruleBlockId
-                ? data.ruleBlocks.find((rule) => rule.id === action.ruleBlockId)?.sectionId
-                : undefined,
-            snippet: `${action.phase} · ${action.category.replaceAll('_', ' ')}`,
+            sectionId: action.ruleBlockId ? sectionIdByRuleId.get(action.ruleBlockId) : undefined,
+            snippetSource: `${action.phase} · ${action.category.replaceAll('_', ' ')}`,
             printedPages: action.printedPages,
         })),
-        ...data.tokens.map((token): RuleSearchResult => ({
+        ...data.tokens.map((token): RulebookSearchSourceEntry => ({
             id: token.id,
             kind: 'token',
             title: token.name,
-            sectionId: token.ruleBlockIds[0]
-                ? data.ruleBlocks.find((rule) => rule.id === token.ruleBlockIds[0])?.sectionId
-                : undefined,
-            snippet: makeSnippet(token.text, query),
+            sectionId: token.ruleBlockIds[0] ? sectionIdByRuleId.get(token.ruleBlockIds[0]) : undefined,
+            snippetSource: token.text,
         })),
         ...[...data.terrain.environmentalFeatures, ...data.terrain.terrainFeatures, ...data.terrain.markers].map(
-            (item): RuleSearchResult => ({
+            (item): RulebookSearchSourceEntry => ({
                 id: item.id,
                 kind: 'terrain',
                 title: item.name,
                 sectionId:
-                    'ruleBlockId' in item && item.ruleBlockId
-                        ? data.ruleBlocks.find((rule) => rule.id === item.ruleBlockId)?.sectionId
-                        : undefined,
-                snippet: makeSnippet(('text' in item ? item.text : item.definition) ?? '', query),
+                    'ruleBlockId' in item && item.ruleBlockId ? sectionIdByRuleId.get(item.ruleBlockId) : undefined,
+                snippetSource: ('text' in item ? item.text : item.definition) ?? '',
                 printedPages: item.source.printedPages,
             }),
         ),
-        ...data.encounters.map((encounter): RuleSearchResult => ({
+        ...data.encounters.map((encounter): RulebookSearchSourceEntry => ({
             id: encounter.id,
             kind: 'encounter',
             title: encounter.name,
-            snippet: makeSnippet(
-                [
-                    encounter.narrative,
-                    encounter.playArea,
-                    ...encounter.additionalRules.flatMap((rule) => [rule.name, rule.text]),
-                    ...encounter.objectives.flatMap((objective) => [objective.name, objective.text]),
-                ].join(' '),
-                query,
-            ),
+            snippetSource: [
+                encounter.narrative,
+                encounter.playArea,
+                ...encounter.additionalRules.flatMap((rule) => [rule.name, rule.text]),
+                ...encounter.objectives.flatMap((objective) => [objective.name, objective.text]),
+            ].join(' '),
             printedPages: encounter.source.printedPages,
         })),
     ]
 
-    return results
-        .filter((result) => resultMatches(result, query))
+    return entries.map((entry) => ({
+        ...entry,
+        normalizedTitle: normalizeSearchText(entry.title),
+        normalizedText: normalizeSearchText(`${entry.title} ${entry.snippetSource}`),
+    }))
+}
+
+export function searchRulebook(index: RulebookSearchIndex, query: string): RuleSearchResult[] {
+    const normalizedQuery = normalizeSearchText(query)
+    if (!normalizedQuery) return []
+
+    return index
+        .filter((entry) => entry.normalizedText.includes(normalizedQuery))
         .sort((left, right) => {
-            const leftTitleMatch = findNormalizedMatch(left.title, query)
-            const rightTitleMatch = findNormalizedMatch(right.title, query)
+            const leftTitleMatch = left.normalizedTitle.includes(normalizedQuery)
+            const rightTitleMatch = right.normalizedTitle.includes(normalizedQuery)
             if (Boolean(leftTitleMatch) !== Boolean(rightTitleMatch)) return leftTitleMatch ? -1 : 1
             return left.title.localeCompare(right.title)
         })
         .slice(0, 30)
+        .map((entry) => ({
+            id: entry.id,
+            kind: entry.kind,
+            title: entry.title,
+            sectionId: entry.sectionId,
+            snippet: makeSnippet(entry.snippetSource, query),
+            printedPages: entry.printedPages,
+        }))
 }
 
 export function getRulebookHref(sectionId?: string, ruleId?: string, view: RulebookView = 'sections'): string {

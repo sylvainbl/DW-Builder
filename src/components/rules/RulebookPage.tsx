@@ -1,8 +1,9 @@
 import { BookOpen, ChevronRight, Menu, Search, X } from 'lucide-react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
     buildRulebookIndexes,
+    buildRulebookSearchIndex,
     getRulebookHref,
     getViewForSearchResult,
     loadRulebookData,
@@ -151,6 +152,47 @@ function SearchResults({ query, results, onSelect }: SearchResultsProps) {
     )
 }
 
+interface RulebookSearchProps {
+    data: RulebookData
+    onSelect: (result: RuleSearchResult) => void
+}
+
+function RulebookSearch({ data, onSelect }: RulebookSearchProps) {
+    const [query, setQuery] = useState('')
+    const [focused, setFocused] = useState(false)
+    const deferredQuery = useDeferredValue(query)
+    const searchIndex = useMemo(() => buildRulebookSearchIndex(data), [data])
+    const results = useMemo(() => searchRulebook(searchIndex, deferredQuery), [deferredQuery, searchIndex])
+
+    const selectResult = (result: RuleSearchResult) => {
+        onSelect(result)
+        setQuery('')
+        setFocused(false)
+    }
+
+    return (
+        <div className="relative order-2 min-w-0 flex-1 lg:order-3 lg:max-w-sm">
+            <Search
+                size={16}
+                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+            />
+            <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                placeholder="Search rules, actions, terrain…"
+                aria-label="Search the rulebook"
+                className="h-9 w-full rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] pl-9 pr-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--gold)] focus:ring-2 focus:ring-[rgb(var(--gold-rgb)/0.18)]"
+            />
+            {focused && query.trim() && deferredQuery.trim() ? (
+                <SearchResults query={deferredQuery} results={results} onSelect={selectResult} />
+            ) : null}
+        </div>
+    )
+}
+
 interface ReferenceRailProps {
     data: RulebookData
     indexes: RulebookIndexes
@@ -273,8 +315,6 @@ export default function RulebookPage() {
     const [data, setData] = useState<RulebookData | null>(null)
     const [error, setError] = useState<string | null>(null)
     const [loadAttempt, setLoadAttempt] = useState(0)
-    const [searchQuery, setSearchQuery] = useState('')
-    const [searchFocused, setSearchFocused] = useState(false)
     const [mobileNavigationOpen, setMobileNavigationOpen] = useState(false)
     const [activeVisual, setActiveVisual] = useState<CuratedVisual | null>(null)
     const [visualTrigger, setVisualTrigger] = useState<HTMLElement | null>(null)
@@ -282,7 +322,6 @@ export default function RulebookPage() {
     const mobileNavigationButtonRef = useRef<HTMLButtonElement>(null)
     const view = parseView(location.search)
     const indexes = useMemo(() => (data ? buildRulebookIndexes(data) : null), [data])
-    const searchResults = useMemo(() => (data ? searchRulebook(data, searchQuery) : []), [data, searchQuery])
 
     useEffect(() => {
         let active = true
@@ -396,8 +435,6 @@ export default function RulebookPage() {
     const selectSearchResult = (result: RuleSearchResult) => {
         const resultView = getViewForSearchResult(result)
         void navigate(getRulebookHref(result.sectionId ?? selectedSection.id, result.id, resultView))
-        setSearchQuery('')
-        setSearchFocused(false)
         setMobileNavigationOpen(false)
     }
     const openVisual = (visual: CuratedVisual) => {
@@ -450,25 +487,7 @@ export default function RulebookPage() {
                         ))}
                     </div>
 
-                    <div className="relative order-2 min-w-0 flex-1 lg:order-3 lg:max-w-sm">
-                        <Search
-                            size={16}
-                            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
-                        />
-                        <input
-                            type="search"
-                            value={searchQuery}
-                            onChange={(event) => setSearchQuery(event.target.value)}
-                            onFocus={() => setSearchFocused(true)}
-                            onBlur={() => setSearchFocused(false)}
-                            placeholder="Search rules, actions, terrain…"
-                            aria-label="Search the rulebook"
-                            className="h-9 w-full rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] pl-9 pr-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--gold)] focus:ring-2 focus:ring-[rgb(var(--gold-rgb)/0.18)]"
-                        />
-                        {searchFocused && searchQuery.trim() ? (
-                            <SearchResults query={searchQuery} results={searchResults} onSelect={selectSearchResult} />
-                        ) : null}
-                    </div>
+                    <RulebookSearch data={data} onSelect={selectSearchResult} />
                 </div>
 
                 <div

@@ -2146,7 +2146,7 @@
     },
     {
       "sourcePrintedPage": 107,
-      "label": "the existing Stack of Kometa Interceptors,            Mission",
+      "label": "Attack Run Mission",
       "targetPrintedPage": 111,
       "targetSectionId": "resolving-srs-missions",
       "id": "page-reference-120",
@@ -2164,7 +2164,7 @@
     },
     {
       "sourcePrintedPage": 107,
-      "label": "each type is allocated to the unit, but the           Attempt",
+      "label": "Interception Attempt",
       "targetPrintedPage": 112,
       "targetSectionId": "resolving-srs-missions",
       "id": "page-reference-121",
@@ -2290,7 +2290,7 @@
     },
     {
       "sourcePrintedPage": 109,
-      "label": "MISSING TARGETS                                      14 Withdraws",
+      "label": "Withdraws",
       "targetPrintedPage": 67,
       "targetSectionId": "withdrawal-step",
       "id": "page-reference-128",
@@ -3676,7 +3676,7 @@
     },
     {
       "sourcePrintedPage": 152,
-      "label": ") Roll the Dice Pool(s)",
+      "label": "Roll the Dice Pool(s)",
       "targetPrintedPage": 46,
       "targetSectionId": "rolling-dice",
       "id": "page-reference-205",
@@ -3694,7 +3694,7 @@
     },
     {
       "sourcePrintedPage": 152,
-      "label": ") Resolve Exploding Strikes",
+      "label": "Resolve Exploding Strikes",
       "targetPrintedPage": 46,
       "targetSectionId": "rolling-dice",
       "id": "page-reference-206",
@@ -3712,7 +3712,7 @@
     },
     {
       "sourcePrintedPage": 152,
-      "label": ") Resolve Re-Rolls",
+      "label": "Resolve Re-Rolls",
       "targetPrintedPage": 47,
       "targetSectionId": "rolling-dice",
       "id": "page-reference-207",
@@ -3730,7 +3730,7 @@
     },
     {
       "sourcePrintedPage": 152,
-      "label": ") Count Hits",
+      "label": "Count Hits",
       "targetPrintedPage": 48,
       "targetSectionId": "rolling-dice",
       "id": "page-reference-208",
@@ -3748,7 +3748,7 @@
     },
     {
       "sourcePrintedPage": 152,
-      "label": ") Resolve Outcomes",
+      "label": "Resolve Outcomes",
       "targetPrintedPage": 49,
       "targetSectionId": "rolling-dice",
       "id": "page-reference-209",

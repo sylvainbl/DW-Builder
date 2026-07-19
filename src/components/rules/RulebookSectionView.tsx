@@ -9,6 +9,7 @@ import {
     resolveSectionRuleBlocks,
 } from '../../rulebook/data'
 import type { RulebookIndexes } from '../../rulebook/data'
+import { RULEBOOK_INDEX_GROUPS } from '../../rulebook/index'
 import type { CuratedVisual, RuleBlock, RulebookData, RulebookSection } from '../../rulebook/types'
 import { CuratedVisualFigure, RuleTableView, RuleText } from './RulebookPrimitives'
 
@@ -52,6 +53,47 @@ function CopyLinkIcon({ relativeUrl, label }: CopyLinkIconProps) {
         >
             {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
+    )
+}
+
+function RulebookIndex() {
+    return (
+        <div className="mt-5 columns-1 gap-x-8 md:columns-2" aria-label="Rulebook index">
+            {RULEBOOK_INDEX_GROUPS.map((group) => (
+                <section key={group.letter} className="mb-5 [break-inside:auto]">
+                    <h3 className="mb-2 border-b-4 border-[var(--gold)] pb-1 text-sm font-bold text-[var(--accent-foreground)] [break-after:avoid]">
+                        {group.letter}
+                    </h3>
+                    <ul className="space-y-0.5">
+                        {group.entries.map((entry, index) => (
+                            <li
+                                key={`${entry.label}-${entry.pages}-${index}`}
+                                className={`flex items-end gap-1 text-[13px] leading-5 [break-inside:avoid] ${
+                                    entry.depth === 2 ? 'pl-6' : entry.depth === 1 ? 'pl-3' : ''
+                                }`}
+                            >
+                                <span
+                                    className={
+                                        entry.depth === 0
+                                            ? 'font-semibold text-[var(--text)]'
+                                            : 'text-[var(--muted-foreground)] italic'
+                                    }
+                                >
+                                    {entry.label}
+                                </span>
+                                <span
+                                    aria-hidden="true"
+                                    className="mb-[5px] min-w-3 flex-1 border-b border-dotted border-[var(--muted)]"
+                                />
+                                <span className="shrink-0 tabular-nums text-[var(--muted-foreground)]">
+                                    {entry.pages}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            ))}
+        </div>
     )
 }
 
@@ -102,7 +144,11 @@ function RuleBlockCard({
                 </div>
             ) : null}
 
-            {rule.text ? <RuleText text={rule.text} className={`${hasHeading ? 'mt-5' : ''} max-w-[72ch]`} /> : null}
+            {rule.id === 'rule.chapter.index' ? (
+                <RulebookIndex />
+            ) : rule.text ? (
+                <RuleText text={rule.text} className={`${hasHeading ? 'mt-5' : ''} max-w-[72ch]`} />
+            ) : null}
 
             {rule.notes.map((note) => (
                 <aside
@@ -216,7 +262,7 @@ export default function RulebookSectionView({ section, data, indexes, onOpenVisu
     }
 
     return (
-        <div className="mx-auto max-w-4xl">
+        <div className={`mx-auto ${section.id === 'index' ? 'max-w-6xl' : 'max-w-4xl'}`}>
             <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-1 text-xs text-[var(--muted)]">
                 {breadcrumbSections.map((item, index) => (
                     <span key={item.id} className="inline-flex items-center gap-1">

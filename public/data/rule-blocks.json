@@ -10660,9 +10660,9 @@
       "type": "chapter",
       "contentMode": "container",
       "sectionId": "common-encounters",
-      "printedPageStart": 139,
+      "printedPageStart": 138,
       "printedPageEnd": 139,
-      "pdfPageStart": 141,
+      "pdfPageStart": 140,
       "pdfPageEnd": 141,
       "anchor": {
         "page": 140,
@@ -10671,9 +10671,11 @@
       "source": {
         "documentId": "dw-rulebook-4.00",
         "printedPages": [
+          138,
           139
         ],
         "pdfPages": [
+          140,
           141
         ],
         "anchor": {

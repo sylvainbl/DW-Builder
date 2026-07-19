@@ -16,6 +16,7 @@ import tokensDocument from '../../public/data/tokens.json' with { type: 'json' }
 import visualsDocument from '../../public/data/visuals.json' with { type: 'json' }
 import {
     buildRulebookIndexes,
+    buildRulebookSearchIndex,
     flattenNavigation,
     formatIdentifier,
     getProcedureStepText,
@@ -27,6 +28,7 @@ import {
     resolveSectionRuleBlocks,
     searchRulebook,
 } from './data.ts'
+import { RULEBOOK_INDEX_GROUPS } from './index.ts'
 import type { RulebookData } from './types.ts'
 
 const data: RulebookData = {
@@ -137,9 +139,29 @@ test('navigation and gameplay modules only reference canonical entities that exi
             assert.ok(indexes.procedureById.has(action.procedureId), `${action.id} procedure must resolve`)
     }
     for (const reference of data.pageReferenceLinks) {
-        assert.ok(indexes.sectionById.has(reference.targetSectionId), `${reference.id} section target must resolve`)
-        if (reference.targetRuleBlockId)
-            assert.ok(indexes.ruleById.has(reference.targetRuleBlockId), `${reference.id} rule target must resolve`)
+        const targetSection = indexes.sectionById.get(reference.targetSectionId)
+        assert.ok(targetSection, `${reference.id} section target must resolve`)
+        assert.ok(
+            targetSection.source.printedPages.includes(reference.targetPrintedPage),
+            `${reference.id} printed page must belong to its target section`,
+        )
+        assert.equal(reference.label, reference.label.trim(), `${reference.id} label must not have outer whitespace`)
+        assert.doesNotMatch(reference.label, /^\W/, `${reference.id} label must not start with stray punctuation`)
+        assert.doesNotMatch(reference.label, /\s{2,}|MISSING TARGETS/, `${reference.id} label must be clean`)
+        assert.equal(
+            [...reference.label].filter((character) => character === '(').length,
+            [...reference.label].filter((character) => character === ')').length,
+            `${reference.id} label parentheses must be balanced`,
+        )
+        if (reference.targetRuleBlockId) {
+            const targetRule = indexes.ruleById.get(reference.targetRuleBlockId)
+            assert.ok(targetRule, `${reference.id} rule target must resolve`)
+            assert.ok(
+                reference.targetPrintedPage >= targetRule.printedPageStart &&
+                    reference.targetPrintedPage <= targetRule.printedPageEnd,
+                `${reference.id} printed page must belong to its target rule`,
+            )
+        }
     }
     for (const visual of data.visuals) {
         for (const id of visual.relatedRuleIds ?? [])
@@ -208,6 +230,30 @@ test('each section keeps its own content while the explicit hierarchy stays inta
     )
 })
 
+test('the curated index preserves every printed entry without OCR column interleaving', () => {
+    const entries = RULEBOOK_INDEX_GROUPS.flatMap((group) => group.entries)
+
+    assert.equal(entries.length, 413)
+    assert.deepEqual(
+        RULEBOOK_INDEX_GROUPS.map((group) => group.letter),
+        ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W'],
+    )
+    assert.ok(entries.some((entry) => entry.label === 'Action Dice' && entry.pages === '44'))
+    assert.ok(entries.some((entry) => entry.label === 'Action Roll Chart' && entry.pages === '46'))
+    assert.ok(entries.some((entry) => entry.label === 'Wreck marker' && entry.pages === '121'))
+
+    for (const entry of entries) {
+        assert.doesNotMatch(entry.label, /\.{2,}/, `${entry.label} must not retain an OCR dot leader`)
+        for (const pageRange of entry.pages.split(', ')) {
+            const pages = pageRange.split('–').map(Number)
+            assert.ok(
+                pages.every((page) => page >= 1 && page <= 155),
+                `${entry.label} must reference printed pages`,
+            )
+        }
+    }
+})
+
 test('all 34 official visuals are exposed and every referenced asset is present', () => {
     const indexes = buildRulebookIndexes(data)
     const restoredVisualIds = [
@@ -246,9 +292,12 @@ test('all 34 official visuals are exposed and every referenced asset is present'
 })
 
 test('search finds canonical rules by title and body while normalizing apostrophes and diacritics', () => {
-    assert.ok(searchRulebook(data, 'Hampered Visibility').some((result) => result.id === 'rule.hampered-visibility'))
+    const searchIndex = buildRulebookSearchIndex(data)
     assert.ok(
-        searchRulebook(data, 'adds 2 Bonus Dice to the Resistance Roll').some(
+        searchRulebook(searchIndex, 'Hampered Visibility').some((result) => result.id === 'rule.hampered-visibility'),
+    )
+    assert.ok(
+        searchRulebook(searchIndex, 'adds 2 Bonus Dice to the Resistance Roll').some(
             (result) => result.id === 'rule.hampered-visibility',
         ),
     )
