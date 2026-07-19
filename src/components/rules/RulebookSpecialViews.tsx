@@ -88,11 +88,13 @@ function InlineRuleContent({
     fallbackText,
     preferFallback = false,
     headingLevel = 3,
+    showRuleNotes = true,
 }: {
     rule: RuleBlock | null
     fallbackText?: string
     preferFallback?: boolean
     headingLevel?: 3 | 4 | 5
+    showRuleNotes?: boolean
 }) {
     const text = preferFallback ? (fallbackText ?? rule?.text) : (rule?.text ?? fallbackText)
     if (!text) return null
@@ -100,15 +102,19 @@ function InlineRuleContent({
     return (
         <>
             <RuleText text={text} headingLevel={headingLevel} />
-            {rule?.notes.map((note) => (
-                <aside
-                    key={note.id}
-                    className="mt-4 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] p-3"
-                >
-                    {note.title ? <h4 className="mb-1 text-sm font-bold text-[var(--text)]">{note.title}</h4> : null}
-                    <RuleText text={note.text} className="text-[var(--muted)]" headingLevel={5} />
-                </aside>
-            ))}
+            {showRuleNotes
+                ? rule?.notes.map((note) => (
+                      <aside
+                          key={note.id}
+                          className="mt-4 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] p-3"
+                      >
+                          {note.title ? (
+                              <h4 className="mb-1 text-sm font-bold text-[var(--text)]">{note.title}</h4>
+                          ) : null}
+                          <RuleText text={note.text} className="text-[var(--muted)]" headingLevel={5} />
+                      </aside>
+                  ))
+                : null}
         </>
     )
 }
@@ -117,10 +123,12 @@ function ProcedureStepDetails({
     step,
     procedure,
     indexes,
+    showRuleNotes = true,
 }: {
     step: RuleProcedureStep
     procedure: RuleProcedure
     indexes: RulebookIndexes
+    showRuleNotes?: boolean
 }) {
     const rule = step.ruleBlockId ? (indexes.ruleById.get(step.ruleBlockId) ?? null) : null
     const text = getProcedureStepText(step, procedure, indexes)
@@ -148,6 +156,7 @@ function ProcedureStepDetails({
                         fallbackText={text ?? undefined}
                         preferFallback
                         headingLevel={4}
+                        showRuleNotes={showRuleNotes}
                     />
                 </div>
             </details>
@@ -291,6 +300,9 @@ export function ActionsView({ data, indexes }: SpecialViewProps) {
                                                                     step={step}
                                                                     procedure={procedure}
                                                                     indexes={indexes}
+                                                                    showRuleNotes={
+                                                                        step.ruleBlockId !== 'rule.5-inflict-damage'
+                                                                    }
                                                                 />
                                                             ))}
                                                         </ol>

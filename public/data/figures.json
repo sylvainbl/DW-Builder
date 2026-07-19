@@ -14602,7 +14602,7 @@
             290.9,
             566.86
           ],
-          "text": "An Underwater unit 5 can make a Maintenance action, but Breach and Structural Failure Effects cannot be removed as a result.",
+          "text": "An Underwater unit can make a Maintenance action, but Breach and Structural Failure Effects cannot be removed as a result.",
           "rawText": "An Underwater Underwater unit unit 5 can make a Maintenance action, but Breach and Structural Failure Effects cannot be removed as a result.",
           "extractionConfidence": "medium"
         }
