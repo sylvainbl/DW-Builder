@@ -46,26 +46,26 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
 
     return (
         <main className="min-h-full bg-[var(--panel)]">
-            <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-                <div className="overflow-hidden rounded-2xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm">
-                    <div className="border-b border-[var(--panel-border)] bg-[linear-gradient(135deg,var(--navy),var(--navy-light))] px-5 py-6 text-white sm:px-7 sm:py-7">
-                        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mx-auto w-full max-w-7xl px-3 py-4 sm:px-6 sm:py-8 lg:px-8">
+                <div className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-[var(--detail-row)] shadow-sm sm:rounded-2xl">
+                    <div className="border-b border-[var(--panel-border)] bg-[linear-gradient(135deg,var(--navy),var(--navy-light))] px-4 py-5 text-white sm:px-7 sm:py-7">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
                             <div>
-                                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--gold)]">
+                                <div className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--gold)] sm:text-[10px]">
                                     Fleet command
                                 </div>
-                                <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
+                                <h1 className="mt-1 text-xl font-semibold tracking-tight sm:text-3xl">
                                     Your army lists
                                 </h1>
-                                <p className="mt-2 max-w-xl text-sm leading-6 text-white/70">
+                                <p className="mt-1.5 max-w-xl text-[13px] leading-5 text-white/70 sm:mt-2 sm:text-sm sm:leading-6">
                                     Create a fleet, reopen a saved build, or load one from a file.
                                 </p>
                             </div>
-                            <div className="flex flex-col gap-2 min-[420px]:flex-row">
+                            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-row">
                                 <button
                                     type="button"
                                     onClick={() => setShowForm(true)}
-                                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--gold)] px-4 py-2.5 text-sm font-semibold text-[var(--navy)] shadow-sm transition hover:brightness-105"
+                                    className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[var(--gold)] px-3 py-2 text-[13px] font-semibold text-[var(--navy)] shadow-sm transition hover:brightness-105 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
                                 >
                                     <Plus size={16} />
                                     New list
@@ -73,7 +73,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                 <button
                                     type="button"
                                     onClick={() => fileInputRef.current?.click()}
-                                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20"
+                                    className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-[13px] font-semibold text-white transition hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
                                 >
                                     <FolderOpen size={16} />
                                     Load list
@@ -95,7 +95,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                         }}
                     />
 
-                    <div className="p-4 sm:p-6">
+                    <div className="p-3 sm:p-6">
                         {showForm ? (
                             <form
                                 className="mb-6 rounded-xl border border-[var(--panel-border)] bg-[var(--panel)] p-4 sm:p-5"
@@ -183,7 +183,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                 </button>
                             </div>
                         ) : (
-                            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                            <div className="grid gap-2.5 sm:gap-3 md:grid-cols-2 xl:grid-cols-3">
                                 {savedLists.map((list) => {
                                     const active = currentList?.id === list.id
                                     const total = list.units.reduce((sum, unit) => sum + unit.totalPoints, 0)
@@ -191,7 +191,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                     return (
                                         <article
                                             key={list.id}
-                                            className={`group relative flex min-h-40 cursor-pointer flex-col rounded-xl border p-4 transition ${active ? 'border-[var(--gold)] bg-[var(--gold-light)] shadow-sm' : 'border-[var(--panel-border)] bg-[var(--detail-row)] hover:-translate-y-0.5 hover:border-[rgb(var(--navy-rgb)/0.35)] hover:shadow-md'}`}
+                                            className={`group relative flex min-h-32 cursor-pointer flex-col rounded-xl border p-3 transition sm:min-h-40 sm:p-4 ${active ? 'border-[var(--gold)] bg-[var(--gold-light)] shadow-sm' : 'border-[var(--panel-border)] bg-[var(--detail-row)] hover:-translate-y-0.5 hover:border-[rgb(var(--navy-rgb)/0.35)] hover:shadow-md'}`}
                                         >
                                             <button
                                                 type="button"
@@ -203,7 +203,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                                 <div className="flex items-start justify-between gap-3">
                                                     <div className="min-w-0 flex-1 text-left">
                                                         <div className="flex items-center gap-2">
-                                                            <h3 className="truncate text-base font-semibold text-[var(--text)]">
+                                                            <h3 className="truncate text-sm font-semibold text-[var(--text)] sm:text-base">
                                                                 {list.name}
                                                             </h3>
                                                             {active ? (
@@ -212,7 +212,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                                                 </span>
                                                             ) : null}
                                                         </div>
-                                                        <p className="mt-1 text-xs text-[var(--muted)]">
+                                                        <p className="mt-1 text-[11px] text-[var(--muted)] sm:text-xs">
                                                             {factionNames.get(list.faction_id) ?? list.faction_id} ·{' '}
                                                             {list.units.length}{' '}
                                                             {list.units.length === 1 ? 'unit' : 'units'}
@@ -231,16 +231,16 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                                         <X size={15} />
                                                     </button>
                                                 </div>
-                                                <div className="mt-auto flex items-end justify-between gap-3 pt-6">
+                                                <div className="mt-auto flex items-end justify-between gap-3 pt-4 sm:pt-6">
                                                     <div>
-                                                        <div className="text-lg font-semibold tabular-nums text-[var(--accent-foreground)]">
+                                                        <div className="text-base font-semibold tabular-nums text-[var(--accent-foreground)] sm:text-lg">
                                                             {total.toLocaleString('fr-FR')} pts
                                                         </div>
                                                         <div className="text-xs font-medium text-[var(--muted)]">
                                                             {totalVpr.toLocaleString('fr-FR')} VPR
                                                         </div>
                                                     </div>
-                                                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] px-3 py-2 text-xs font-semibold text-[var(--accent-foreground)] transition group-hover:border-[var(--gold)]">
+                                                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--panel-border)] bg-[var(--detail-row)] px-2.5 py-1.5 text-[11px] font-semibold text-[var(--accent-foreground)] transition group-hover:border-[var(--gold)] sm:px-3 sm:py-2 sm:text-xs">
                                                         Build
                                                         <ArrowRight size={14} />
                                                     </span>

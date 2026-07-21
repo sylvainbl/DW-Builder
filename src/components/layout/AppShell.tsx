@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type UIEvent } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAppStore } from '../../store'
 import ListsPanel from '../lists/ListsPanel'
@@ -33,6 +33,7 @@ export default function AppShell() {
         return factionId || unitId ? 'units' : 'lists'
     })
     const [unitPickerTarget, setUnitPickerTarget] = useState<UnitPickerTarget | null>(null)
+    const [showMobileFooter, setShowMobileFooter] = useState(false)
     const detailPaneRef = useRef<HTMLDivElement>(null)
     const hasDetailSelection = Boolean(
         selectedUnitId || selectedListInstanceId || selectedBattlefleetInstanceId || selectedListGlossary,
@@ -63,18 +64,28 @@ export default function AppShell() {
         detailPaneRef.current?.scrollTo({ top: 0 })
     }, [selectedUnitId, selectedListInstanceId, selectedBattlefleetInstanceId, selectedListGlossary])
 
+    const handleScrollCapture = (event: UIEvent<HTMLElement>) => {
+        if (!(event.target instanceof HTMLElement)) return
+        const scrollContainer = event.target
+        const remainingScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight - scrollContainer.scrollTop
+        setShowMobileFooter(scrollContainer.scrollHeight > scrollContainer.clientHeight && remainingScroll <= 2)
+    }
+
     const showLists = () => {
+        setShowMobileFooter(false)
         setUnitPickerTarget(null)
         setActiveView('lists')
         if (location.pathname.startsWith('/rules')) void navigate('/')
     }
 
     const enterBuilder = () => {
+        setShowMobileFooter(false)
         setUnitPickerTarget(null)
         setActiveView('builder')
     }
 
     const showUnits = () => {
+        setShowMobileFooter(false)
         setUnitPickerTarget(null)
         closeList()
         setActiveView('units')
@@ -82,17 +93,27 @@ export default function AppShell() {
     }
 
     const showRules = () => {
+        setShowMobileFooter(false)
         setUnitPickerTarget(null)
         setActiveView('rules')
         void navigate('/rules')
     }
 
     const showMobileList = () => {
+        setShowMobileFooter(false)
         setSelectedUnitId(null)
     }
 
+    const handleUnitPickerTargetChange = (target: UnitPickerTarget | null) => {
+        setShowMobileFooter(false)
+        setUnitPickerTarget(target)
+    }
+
     return (
-        <div className="flex h-dvh flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]">
+        <div
+            className="flex h-dvh flex-col overflow-hidden bg-[var(--panel)] text-[var(--text)]"
+            onScrollCapture={handleScrollCapture}
+        >
             <AppHeader
                 activeView={currentView}
                 onShowLists={showLists}
@@ -119,7 +140,9 @@ export default function AppShell() {
             ) : (
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                     {currentView === 'builder' ? (
-                        <div className="flex min-h-11 flex-none items-center gap-3 border-b border-[var(--panel-border)] bg-[var(--panel)] px-3 sm:px-4">
+                        <div
+                            className={`${unitPickerTarget ? 'hidden md:flex' : 'flex'} min-h-11 flex-none items-center gap-3 border-b border-[var(--panel-border)] bg-[var(--panel)] px-3 sm:px-4`}
+                        >
                             <button
                                 type="button"
                                 onClick={showLists}
@@ -146,7 +169,7 @@ export default function AppShell() {
                             <div className="min-w-0 flex-1">
                                 <UnitListColumn
                                     unitPickerTarget={currentView === 'builder' ? unitPickerTarget : null}
-                                    onUnitPickerTargetChange={setUnitPickerTarget}
+                                    onUnitPickerTargetChange={handleUnitPickerTargetChange}
                                 />
                             </div>
                         </div>
@@ -176,7 +199,9 @@ export default function AppShell() {
                 </div>
             )}
 
-            <footer className="flex-none border-t border-[var(--gold)] bg-[var(--navy)] px-4 py-1.5 text-center text-[10px] font-medium text-white sm:py-2 sm:text-xs">
+            <footer
+                className={`${unitPickerTarget || !showMobileFooter ? 'hidden md:block' : 'block'} flex-none border-t border-[var(--gold)] bg-[var(--navy)] px-4 py-1.5 text-center text-[10px] font-medium text-white sm:py-2 sm:text-xs`}
+            >
                 All rights belong to{' '}
                 <a
                     href="https://www.dystopianwars.com/"

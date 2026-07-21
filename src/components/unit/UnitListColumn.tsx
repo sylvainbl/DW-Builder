@@ -1,4 +1,4 @@
-import { AlertTriangle, X } from 'lucide-react'
+import { AlertTriangle, ChevronDown, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { Unit } from '../../types/index'
@@ -76,6 +76,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose,
         addTargetBattlefleetInstanceId ?? null,
     )
     const [sourceMode, setSourceMode] = useState<'force' | 'mercenary' | 'both'>('both')
+    const [mobileWarningsExpanded, setMobileWarningsExpanded] = useState(false)
     const [selectedDomains, setSelectedDomains] = useState<string[]>([])
     const [selectedKeywordState, setSelectedKeywordState] = useState<{ listId: string | null; values: string[] }>({
         listId: null,
@@ -300,16 +301,39 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose,
                 </div>
             ) : null}
             {selectedBattlefleetIssues.length > 0 ? (
-                <div className="flex-none space-y-1 border-b border-rose-200 bg-rose-50 px-3 py-2 text-[11px] text-rose-800">
-                    {selectedBattlefleetIssues.slice(0, 4).map((issue, index) => (
-                        <div key={`${issue.message}-${index}`} className="flex gap-1.5">
-                            <AlertTriangle className="mt-0.5 flex-none" size={12} />
-                            <span>{issue.message}</span>
-                        </div>
-                    ))}
-                    {selectedBattlefleetIssues.length > 4 ? (
-                        <div className="pl-5 text-rose-700">+{selectedBattlefleetIssues.length - 4} more issues</div>
-                    ) : null}
+                <div className="flex-none border-b border-rose-200 bg-rose-50 text-rose-800">
+                    <button
+                        type="button"
+                        aria-expanded={mobileWarningsExpanded}
+                        onClick={() => setMobileWarningsExpanded((expanded) => !expanded)}
+                        className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left text-xs font-semibold md:hidden"
+                    >
+                        <span className="flex items-center gap-1.5">
+                            <AlertTriangle size={13} aria-hidden="true" />
+                            {selectedBattlefleetIssues.length}{' '}
+                            {selectedBattlefleetIssues.length === 1 ? 'warning' : 'warnings'}
+                        </span>
+                        <ChevronDown
+                            className={`transition-transform ${mobileWarningsExpanded ? 'rotate-180' : ''}`}
+                            size={15}
+                            aria-hidden="true"
+                        />
+                    </button>
+                    <div
+                        className={`${mobileWarningsExpanded ? 'block' : 'hidden'} space-y-1 px-3 pb-2 text-[11px] md:block md:py-2`}
+                    >
+                        {selectedBattlefleetIssues.slice(0, 4).map((issue, index) => (
+                            <div key={`${issue.message}-${index}`} className="flex gap-1.5">
+                                <AlertTriangle className="mt-0.5 flex-none" size={12} />
+                                <span>{issue.message}</span>
+                            </div>
+                        ))}
+                        {selectedBattlefleetIssues.length > 4 ? (
+                            <div className="pl-5 text-rose-700">
+                                +{selectedBattlefleetIssues.length - 4} more issues
+                            </div>
+                        ) : null}
+                    </div>
                 </div>
             ) : null}
             <FactionAndSearchHeader
