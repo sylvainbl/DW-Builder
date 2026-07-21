@@ -15,6 +15,33 @@ import UnitCard from './UnitCard'
 
 type SortMode = 'name' | 'points-asc' | 'points-desc' | 'type'
 
+const SORT_MODE_STORAGE_KEY = 'dw-builder-unit-sort-mode'
+
+function loadStoredSortMode(): SortMode {
+    try {
+        const storedSortMode = localStorage.getItem(SORT_MODE_STORAGE_KEY)
+        if (
+            storedSortMode === 'name' ||
+            storedSortMode === 'points-asc' ||
+            storedSortMode === 'points-desc' ||
+            storedSortMode === 'type'
+        ) {
+            return storedSortMode
+        }
+    } catch {
+        // Fall back to the default sort when storage is unavailable.
+    }
+    return 'name'
+}
+
+function saveSortMode(sortMode: SortMode): void {
+    try {
+        localStorage.setItem(SORT_MODE_STORAGE_KEY, sortMode)
+    } catch {
+        console.warn('Could not save unit sort mode to localStorage')
+    }
+}
+
 interface UnitCardListProps {
     addTargetBattlefleetInstanceId?: string | null
     addTargetLabel?: string
@@ -44,7 +71,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose,
     const battlefleetDefinitions = useAppStore((state) => state.battlefleetDefinitions)
     const currentList = useAppStore((state) => state.currentList)
     const addUnitToCurrentList = useAppStore((state) => state.addUnitToCurrentList)
-    const [sortMode, setSortMode] = useState<SortMode>('name')
+    const [sortMode, setSortMode] = useState<SortMode>(loadStoredSortMode)
     const [targetBattlefleetInstanceId, setTargetBattlefleetInstanceId] = useState<string | null>(
         addTargetBattlefleetInstanceId ?? null,
     )
@@ -222,6 +249,10 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose,
             }
         })
     }
+    const handleSortModeChange = (nextSortMode: SortMode) => {
+        setSortMode(nextSortMode)
+        saveSortMode(nextSortMode)
+    }
     return (
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
             {currentList && addTargetLabel ? (
@@ -284,7 +315,7 @@ function UnitCardList({ addTargetBattlefleetInstanceId, addTargetLabel, onClose,
             <FactionAndSearchHeader
                 compact={Boolean(currentList)}
                 sortMode={sortMode}
-                onSortModeChange={setSortMode}
+                onSortModeChange={handleSortModeChange}
                 visibleCount={filteredUnits.length}
                 filterUnits={eligibleSourceUnits}
                 sourceMode={effectiveSourceMode}
