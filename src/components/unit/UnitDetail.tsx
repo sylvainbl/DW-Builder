@@ -30,6 +30,7 @@ import {
     getAttachmentKeyword,
     getAttachmentModelLimitForUnit,
     getMinimumModelsForUnit,
+    hasAttachmentProperty,
     isAttachmentOption,
 } from '../../utils/attachments'
 import {
@@ -713,7 +714,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
             return [`${formatOptionName(option)} ×${qty}: +${points} pts`]
         }),
     ]
-    const canManageAttachments = Boolean(selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption)
+    const canManageAttachments = Boolean(
+        selectedEntry && !selectedEntryParent && !selectedEntryGeneratedByOption && !hasAttachmentProperty(unit),
+    )
     const hasNormalAttachment = Boolean(
         selectedEntry?.attachedUnits?.some((attachment) => !attachment.generatedByOption),
     )

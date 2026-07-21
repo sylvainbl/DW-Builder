@@ -1,6 +1,6 @@
 import type { NamedValue, OptionUpgrade, Unit, UnitConfig } from '../types/index'
-import { isAttachmentOption } from './attachments'
-import { isUnitLevelOption } from './optionConfig'
+import { isAttachmentOption } from './attachments.ts'
+import { isUnitLevelOption } from './optionConfig.ts'
 
 export const SYSTEM_GENERATOR_WEAPON_INDEX = -1
 

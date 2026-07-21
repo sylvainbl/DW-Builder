@@ -175,7 +175,7 @@
           "qualities": []
         },
         {
-          "name": "Heavy ESCF Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -203,25 +203,11 @@
         "tag": "ESCORT"
       },
       {
-        "description": "Replace a Heavy Hardpoint on any number of models with one of the following: a Generator Hardpoint, a Chrono Generator (+20 pts), or a Null-Clone Generator (+20 pts)",
+        "description": "Replace one Heavy Hardpoint on any number of models with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR_OR_CHRONO_NULL_CLONE",
-        "generator_replaces_weapon": true,
-        "choices": [
-          {
-            "name": "Generator Hardpoint",
-            "cost_per_unit": null
-          },
-          {
-            "name": "Chrono Generator",
-            "cost_per_unit": 20
-          },
-          {
-            "name": "Null-Clone Generator",
-            "cost_per_unit": 20
-          }
-        ]
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
       },
       {
         "description": "Add 2 Merian Automata Frigates as an Attachment",
@@ -255,8 +241,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 2
   },
@@ -555,8 +541,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -581,7 +567,7 @@
       "MAS": 5,
       "SPD": "3\"-7\"",
       "TRN": 3,
-      "DEF": 11,
+      "DEF": 9,
       "ARM": 5,
       "HUL": 10,
       "ACT": 3,
@@ -678,8 +664,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -975,8 +961,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -1016,6 +1002,10 @@
       },
       {
         "name": "Physeter Support Hub",
+        "value": null
+      },
+      {
+        "name": "Reclamator Swarm",
         "value": null
       }
     ],
@@ -1194,8 +1184,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "short_range_squadrons": []
@@ -1429,8 +1419,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -1494,8 +1484,8 @@
         "name": "Particle Beamer",
         "arc": "FPSA",
         "firepower": {
-          "C": 6,
-          "S": 5,
+          "C": 8,
+          "S": 6,
           "E": null
         },
         "qualities": [
@@ -1510,8 +1500,8 @@
         "name": "Particle Beamer",
         "arc": "FPSA",
         "firepower": {
-          "C": 6,
-          "S": 5,
+          "C": 8,
+          "S": 6,
           "E": null
         },
         "qualities": [
@@ -1529,8 +1519,8 @@
           "name": "Pulse Emitter",
           "arc": null,
           "firepower": {
-            "C": 8,
-            "S": 2,
+            "C": 10,
+            "S": 3,
             "E": null
           },
           "qualities": [
@@ -1544,14 +1534,14 @@
           "name": "Caloric Oscillator",
           "arc": null,
           "firepower": {
-            "C": 5,
+            "C": 7,
             "S": null,
             "E": null
           },
           "qualities": [
             {
               "name": "Torrent",
-              "value": 2
+              "value": 3
             },
             {
               "name": "Disruption",
@@ -1563,14 +1553,14 @@
           "name": "Sturginium Agitator",
           "arc": null,
           "firepower": {
-            "C": 1,
-            "S": 3,
+            "C": 3,
+            "S": 5,
             "E": null
           },
           "qualities": [
             {
               "name": "Agitation",
-              "value": 5
+              "value": 8
             },
             {
               "name": "Structural Failure",
@@ -1583,8 +1573,8 @@
           "arc": null,
           "firepower": {
             "C": 4,
-            "S": 2,
-            "E": 1
+            "S": 4,
+            "E": 2
           },
           "qualities": [
             {
@@ -1650,8 +1640,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
@@ -1746,18 +1736,18 @@
         "name": "Heavy Particle Cannon",
         "arc": "FPSA",
         "firepower": {
-          "C": 5,
-          "S": 8,
-          "E": 4
+          "C": 7,
+          "S": 12,
+          "E": 6
         },
         "qualities": [
           {
             "name": "Blast",
-            "value": 3
+            "value": 5
           },
           {
             "name": "Precise",
-            "value": 1
+            "value": 3
           },
           {
             "name": "Sympathetic Detonation",
@@ -1806,7 +1796,7 @@
           "arc": null,
           "firepower": {
             "C": null,
-            "S": 7,
+            "S": 5,
             "E": 5
           },
           "qualities": [
@@ -1933,7 +1923,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Gun Battery",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "firepower": {
             "C": 4,
@@ -1948,7 +1938,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -2007,8 +1997,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -2246,8 +2236,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
@@ -2469,11 +2459,11 @@
           ]
         },
         {
-          "name": "Sturginium Agitator",
+          "name": "Sturginium Atomiser",
           "arc": null,
           "firepower": {
-            "C": 3,
-            "S": 5,
+            "C": 5,
+            "S": 7,
             "E": null
           },
           "qualities": [
@@ -2559,8 +2549,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
@@ -2595,7 +2585,7 @@
     "stats": {
       "MAS": 7,
       "SPD": "0\"-6\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 12,
       "ARM": 5,
       "HUL": 13,
@@ -2799,8 +2789,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "short_range_squadrons": [
@@ -3046,8 +3036,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -3125,21 +3115,6 @@
         ]
       },
       {
-        "name": "Advanced Aetheric Lance",
-        "arc": "PSA",
-        "firepower": {
-          "C": 4,
-          "S": 4,
-          "E": null
-        },
-        "qualities": [
-          {
-            "name": "Precise",
-            "value": 1
-          }
-        ]
-      },
-      {
         "name": "Heavy Particle Cannon",
         "arc": "F",
         "firepower": {
@@ -3162,6 +3137,21 @@
           }
         ],
         "slot": "S"
+      },
+      {
+        "name": "Particle Beamer",
+        "arc": "PSA",
+        "firepower": {
+          "C": 6,
+          "S": 5,
+          "E": null
+        },
+        "qualities": [
+          {
+            "name": "Precise",
+            "value": 1
+          }
+        ]
       },
       {
         "name": "Particle Beamer",
@@ -3314,7 +3304,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Gun Battery",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "firepower": {
             "C": 4,
@@ -3329,7 +3319,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -3351,25 +3341,21 @@
     },
     "options_and_upgrades": [
       {
-        "description": "Replace a Heavy Hardpoint on any number of models with one of the following: a Generator Hardpoint, a Chrono Generator (+20 pts), or a Null-Clone Generator (+20 pts)",
+        "description": "Replace one Heavy Hardpoint on any number of models with a Generator Hardpoint",
         "cost_per_unit": null,
         "max": 1,
-        "tag": "GENERATOR_OR_CHRONO_NULL_CLONE",
-        "generator_replaces_weapon": true,
-        "choices": [
-          {
-            "name": "Generator Hardpoint",
-            "cost_per_unit": null
-          },
-          {
-            "name": "Chrono Generator",
-            "cost_per_unit": 20
-          },
-          {
-            "name": "Null-Clone Generator",
-            "cost_per_unit": 20
-          }
-        ]
+        "tag": "GENERATOR",
+        "generator_replaces_weapon": true
+      },
+      {
+        "description": "Add 2 Merian Automata Frigates as an Attachment",
+        "cost_per_unit": 80,
+        "max": 1,
+        "tag": "ATTACHMENT_MERIAN",
+        "attachment_unit_ids": [
+          "enlightened_merian"
+        ],
+        "mutually_exclusive_group": "COPERNICUS_ATTACHMENT"
       },
       {
         "description": "Add 1 Origen Lathe Ship as an Attachment",
@@ -3393,8 +3379,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 2
   },
@@ -3406,7 +3392,7 @@
     "faction": "Enlightened",
     "role": "Line",
     "point_cost_per_model": 110,
-    "vpr": 3,
+    "vpr": 2,
     "models": "1-3",
     "tags": [
       "Enlightened",
@@ -3575,7 +3561,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Gun Battery",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "firepower": {
             "C": 4,
@@ -3590,7 +3576,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -3640,8 +3626,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -3670,7 +3656,7 @@
       "HUL": 8,
       "ACT": 3,
       "BRD": null,
-      "REP": 2,
+      "REP": 3,
       "CRW": 7
     },
     "properties": [
@@ -3894,8 +3880,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -3918,7 +3904,7 @@
     "stats": {
       "MAS": 4,
       "SPD": "0\"-6\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 8,
       "ARM": 3,
       "HUL": 9,
@@ -4047,7 +4033,7 @@
               "value": 2
             },
             {
-              "name": "Sky strike",
+              "name": "Skystrike",
               "value": 1
             }
           ]
@@ -4063,7 +4049,7 @@
           "qualities": [
             {
               "name": "Agitation",
-              "value": 8
+              "value": 5
             },
             {
               "name": "Structural Failure",
@@ -4102,8 +4088,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 2
   },
@@ -4126,12 +4112,12 @@
     "stats": {
       "MAS": 4,
       "SPD": "0\"-7\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 8,
       "ARM": 3,
       "HUL": 9,
       "ACT": 2,
-      "BRD": 4,
+      "BRD": 3,
       "REP": 3,
       "CRW": 8
     },
@@ -4202,8 +4188,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 2
   },
@@ -4289,8 +4275,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 6
   },
@@ -4309,12 +4295,13 @@
       "Underwater",
       "Patrol",
       "Submarine",
-      "Automata"
+      "Automata",
+      "Colossus"
     ],
     "stats": {
       "MAS": 3,
       "SPD": "2\"-6\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 5,
       "ARM": 4,
       "HUL": 8,
@@ -4418,8 +4405,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -4438,12 +4425,13 @@
       "Underwater",
       "Patrol",
       "Submarine",
-      "Automata"
+      "Automata",
+      "Colossus"
     ],
     "stats": {
       "MAS": 3,
       "SPD": "2\"-6\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 5,
       "ARM": 4,
       "HUL": 8,
@@ -4499,7 +4487,7 @@
           },
           {
             "name": "Arc",
-            "value": 2
+            "value": 1
           },
           {
             "name": "Piercing",
@@ -4508,8 +4496,8 @@
         ]
       },
       {
-        "name": "Ceus Shockmaw",
-        "arc": "F",
+        "name": "Coeus Shockmaw",
+        "arc": "FPS",
         "firepower": {
           "C": 11,
           "S": null,
@@ -4534,8 +4522,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -4722,7 +4710,7 @@
           ]
         },
         {
-          "name": "ESCF Heavy Gun Battery",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "firepower": {
             "C": 3,
@@ -4737,7 +4725,7 @@
           ]
         },
         {
-          "name": "ESCF Heavy Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -4780,8 +4768,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 6,
     "attachment": {
@@ -4806,8 +4794,7 @@
       "ESCF",
       "Surface",
       "Support",
-      "Ship",
-      "Carrier"
+      "Ship"
     ],
     "stats": {
       "MAS": 3,
@@ -4988,7 +4975,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Gun Battery",
+          "name": "Heavy Gun Battery",
           "arc": null,
           "firepower": {
             "C": 4,
@@ -5003,7 +4990,7 @@
           ]
         },
         {
-          "name": "Heavy ESCF Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
           "firepower": {
             "C": null,
@@ -5068,8 +5055,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -5093,7 +5080,7 @@
     "stats": {
       "MAS": 3,
       "SPD": null,
-      "TRN": null,
+      "TRN": "-",
       "DEF": 4,
       "ARM": 3,
       "HUL": 7,
@@ -5152,6 +5139,93 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Particle Beamer",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Precise",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Pulse Emitter",
+          "arc": null,
+          "firepower": {
+            "C": 8,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Caloric Oscillator",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Torrent",
+              "value": 2
+            },
+            {
+              "name": "Disruption",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Sturginium Agitator",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Agitation",
+              "value": 5
+            },
+            {
+              "name": "Structural Failure",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Molecular Disharmoniser",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 2,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Synergy",
+              "value": null
+            }
+          ]
         }
       ]
     },
@@ -5176,8 +5250,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -5210,7 +5284,7 @@
     "stats": {
       "MAS": 5,
       "SPD": null,
-      "TRN": null,
+      "TRN": "-",
       "DEF": 5,
       "ARM": 4,
       "HUL": 12,
@@ -5287,6 +5361,93 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Particle Beamer",
+          "arc": null,
+          "firepower": {
+            "C": 6,
+            "S": 5,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Precise",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Pulse Emitter",
+          "arc": null,
+          "firepower": {
+            "C": 8,
+            "S": 2,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Indiscriminate",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Caloric Oscillator",
+          "arc": null,
+          "firepower": {
+            "C": 5,
+            "S": null,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Torrent",
+              "value": 2
+            },
+            {
+              "name": "Disruption",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "Sturginium Agitator",
+          "arc": null,
+          "firepower": {
+            "C": 1,
+            "S": 3,
+            "E": null
+          },
+          "qualities": [
+            {
+              "name": "Agitation",
+              "value": 5
+            },
+            {
+              "name": "Structural Failure",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "name": "Molecular Disharmoniser",
+          "arc": null,
+          "firepower": {
+            "C": 4,
+            "S": 2,
+            "E": 1
+          },
+          "qualities": [
+            {
+              "name": "Arc",
+              "value": 1
+            },
+            {
+              "name": "Synergy",
+              "value": null
+            }
+          ]
         }
       ]
     },
@@ -5328,8 +5489,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -5382,7 +5543,7 @@
         "arc": "FPS",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5397,7 +5558,7 @@
         "arc": "PSA",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5461,8 +5622,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -5499,7 +5660,7 @@
       {
         "name": "Attachment",
         "value": null,
-        "detail": "Enlightened"
+        "detail": "Enlightened Ship"
       }
     ],
     "systems": [
@@ -5522,7 +5683,7 @@
         "arc": "PSA",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5543,8 +5704,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "attachment": {
@@ -5689,8 +5850,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3,
     "short_range_squadrons": [
@@ -5773,7 +5934,7 @@
         "arc": "FPSA",
         "firepower": {
           "C": null,
-          "S": 7,
+          "S": 6,
           "E": 7
         },
         "qualities": [
@@ -5796,7 +5957,7 @@
         "arc": "FPSA",
         "firepower": {
           "C": null,
-          "S": 7,
+          "S": 6,
           "E": 7
         },
         "qualities": [
@@ -5884,8 +6045,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 2
   },
@@ -5948,7 +6109,7 @@
         "arc": "PSA",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -5989,8 +6150,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3,
     "short_range_squadrons": [
@@ -6053,7 +6214,7 @@
       {
         "name": "Attachment",
         "value": null,
-        "detail": "Enlightened"
+        "detail": "Enlightened Ship"
       },
       {
         "name": "Inspirational",
@@ -6080,7 +6241,7 @@
         "arc": "FPS",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -6095,7 +6256,7 @@
         "arc": "PSA",
         "firepower": {
           "C": 4,
-          "S": 3,
+          "S": 4,
           "E": null
         },
         "qualities": [
@@ -6116,8 +6277,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1,
     "attachment": {
@@ -6143,7 +6304,8 @@
       "Underwater",
       "Scout",
       "Submarine",
-      "Automata"
+      "Automata",
+      "Colossus"
     ],
     "stats": {
       "MAS": 3,
@@ -6215,8 +6377,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -6302,8 +6464,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 5
   },
@@ -6416,8 +6578,8 @@
       "max_models": 2
     },
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 4
   },
@@ -6441,7 +6603,7 @@
     "stats": {
       "MAS": 2,
       "SPD": "0\"-8\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 6,
       "ARM": 3,
       "HUL": 6,
@@ -6513,7 +6675,7 @@
           "name": "Caloric Oscillator",
           "arc": null,
           "firepower": {
-            "C": 5,
+            "C": 3,
             "S": null,
             "E": null
           },
@@ -6581,8 +6743,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 4
   },
@@ -6640,8 +6802,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 6
   },
@@ -6658,7 +6820,6 @@
     "tags": [
       "Enlightened",
       "Airborne",
-      "Support",
       "Scout",
       "Saucer",
       "Carrier"
@@ -6666,7 +6827,7 @@
     "stats": {
       "MAS": 2,
       "SPD": "0\"-8\"",
-      "TRN": "*",
+      "TRN": "-",
       "DEF": 6,
       "ARM": 3,
       "HUL": 6,
@@ -6715,8 +6876,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 2,
     "max": 4,
     "short_range_squadrons": [
@@ -6897,8 +7058,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -6921,7 +7082,7 @@
     ],
     "stats": {
       "MAS": 4,
-      "SPD": "2-7\"",
+      "SPD": "2\"-7\"",
       "TRN": 1,
       "DEF": 3,
       "ARM": 3,
@@ -7045,8 +7206,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   },
@@ -7070,7 +7231,7 @@
     ],
     "stats": {
       "MAS": 1,
-      "SPD": "1-6\"",
+      "SPD": "1\"-6\"",
       "TRN": 4,
       "DEF": 2,
       "ARM": 2,
@@ -7115,8 +7276,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -7148,7 +7309,7 @@
     "stats": {
       "MAS": 3,
       "SPD": null,
-      "TRN": null,
+      "TRN": "-",
       "DEF": 3,
       "ARM": 3,
       "HUL": 7,
@@ -7213,8 +7374,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 3
   },
@@ -7237,7 +7398,7 @@
     ],
     "stats": {
       "MAS": 3,
-      "SPD": "2-7\"",
+      "SPD": "2\"-7\"",
       "TRN": 2,
       "DEF": 2,
       "ARM": 3,
@@ -7357,8 +7518,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta",
-    "date": "2026-07-07",
+    "version": "4.01 Beta 2",
+    "date": "2026-07-10",
     "min": 1,
     "max": 1
   }

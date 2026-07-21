@@ -555,7 +555,7 @@
       "text": "At the end of the Deployment step, this Admiral gains 6 Physeter Construct tokens. They can then allocate these tokens between the units in their Force, with a maximum of 3 tokens per unit."
     },
     {
-      "name": "Hellion Assassin Constructs",
+      "name": "Hellion Algol Constructs",
       "point_cost": 20,
       "required_role": "Flagship",
       "category": "Constructed by the Forge",
@@ -601,7 +601,7 @@
       "point_cost": 25,
       "required_role": "Flagship",
       "category": "Constructed by the Forge",
-      "text": "Whenever a model from this Force with the Boarding Parties (X) property ends its Activation within Proximity of an enemy model that has at least 1 Damage, this Admiral can remove 1 Critical Damage Effect from that model."
+      "text": "This Admiral can remove 1 Critical Damage Effect from a model from this Force with the Boarding Parties (X) property whenever it ends its Activation within Proximity of an enemy model that has at least 1 Damage."
     },
     {
       "name": "To Keep the Science Secret…",

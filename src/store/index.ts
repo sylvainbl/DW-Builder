@@ -795,15 +795,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
         if (!unit || !isUnitSelectable(unit)) return
         const parent = findArmyUnit(state.currentList.units, parentInstanceId)
         if (!parent) return
+        if (findParentOfAttachment(state.currentList.units, parentInstanceId)) return
         const parentUnit = state.units.find((item) => item.id === parent.unitId)
         const parentModelConfig = parent.models[0]?.config ?? parent.config
         const parentTags = parentUnit ? getSelectedTags(parentUnit, parentModelConfig, parent.config) : []
-        if (!parentUnit || !canAttachToParent(unit, parentUnit, { parentTags })) return
+        const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
+        const attachmentTags = getSelectedTags(unit, config, config)
+        if (!parentUnit || !canAttachToParent(unit, parentUnit, { attachmentTags, parentTags })) return
         if ((parent.attachedUnits ?? []).some((attachment) => !attachment.generatedByOption)) return
         const usedModels = countAttachedModels(parent.attachedUnits ?? [], unitId)
         const remainingModels = getAttachmentModelLimitForUnit(unit) - usedModels
         if (remainingModels < getMinimumModels(unit)) return
-        const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
         const attachment = makeArmyUnit(unit, config, parent.battlefleetInstanceId ?? null, state.currentList)
         attachment.models = attachment.models.slice(0, remainingModels)
         attachment.totalPoints = computeArmyUnitTotal(attachment, state.units, state.currentList)

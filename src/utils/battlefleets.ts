@@ -9,7 +9,8 @@ import type {
     BattlefleetRequirement,
     Unit,
 } from '../types/index'
-import { getEffectiveGeneratorSelections, getSelectedTags } from './optionRuleEffects'
+import { getEffectiveGeneratorSelections, getSelectedTags } from './optionRuleEffects.ts'
+import { getAttachmentEligibilityFailure, getAttachmentKeyword, hasAttachmentProperty } from './attachments.ts'
 
 function normalizeTrait(value: string): string {
     return value.trim().toLowerCase()
@@ -262,10 +263,26 @@ function validateDuplicateClasses(
 ): BattlefleetIssue[] {
     const issues: BattlefleetIssue[] = []
     const mainstayClasses = getMainstayClasses(definition, entries)
-    const classCounts = new Map<string, { label: string; count: number }>()
+    const classCounts = new Map<string, { label: string; standalone: number; attachments: number }>()
     const exemptBarbudosFlagshipIds = new Set(['alliance_francisco', 'alliance_salvador'])
     let barbudosFlagshipExemptionUsed = false
     let ukrainianAkulaFlagshipExemptionUsed = false
+
+    const countEntry = (entry: ArmyUnit, field: 'standalone' | 'attachments') => {
+        const unit = findUnit(units, entry)
+        if (!unit) return
+        const key = normalizeTrait(unit.name)
+        const current = classCounts.get(key) ?? { label: unit.name, standalone: 0, attachments: 0 }
+        classCounts.set(key, { ...current, [field]: current[field] + 1 })
+    }
+
+    const countAttachments = (parent: ArmyUnit) => {
+        for (const attachment of parent.attachedUnits ?? []) {
+            if (attachment.generatedByOption) continue
+            countEntry(attachment, 'attachments')
+            countAttachments(attachment)
+        }
+    }
 
     for (const entry of entries) {
         const unit = findUnit(units, entry)
@@ -286,32 +303,119 @@ function validateDuplicateClasses(
             ukrainianAkulaFlagshipExemptionUsed = true
             continue
         }
-        const key = normalizeTrait(unit.name)
-        const current = classCounts.get(key) ?? { label: unit.name, count: 0 }
-        classCounts.set(key, { ...current, count: current.count + 1 })
+        countEntry(entry, 'standalone')
     }
+    entries.forEach(countAttachments)
 
-    for (const [className, { label, count }] of classCounts) {
-        const dragonWrathTianlongLimit =
+    for (const [className, { label, standalone, attachments }] of classCounts) {
+        const isDragonWrathTianlong =
             definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE) && className === normalizeTrait('Tianlong')
-                ? 2
-                : null
-        const limit = dragonWrathTianlongLimit ?? (mainstayClasses.has(className) ? 2 : 1)
-        if (count > limit) {
-            const limitText =
-                dragonWrathTianlongLimit != null
-                    ? "Dragon's Wrath allows up to two Tianlong units"
-                    : mainstayClasses.has(className)
-                      ? 'mainstay classes are limited to two'
-                      : 'duplicate classes are limited to one'
+        if (isDragonWrathTianlong) {
+            if (standalone + attachments > 2) {
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    message: `${battlefleet.name} has ${standalone} standalone and ${attachments} Attachment ${label} units; Dragon's Wrath allows up to two Tianlong units per Battlefleet.`,
+                })
+            }
+            continue
+        }
+
+        const limit = mainstayClasses.has(className) ? 2 : 1
+        if (standalone > limit || attachments > limit) {
+            const limitText = mainstayClasses.has(className)
+                ? 'Mainstay Classes allow at most two standalone units and two Attachments'
+                : 'Duplicate Classes allow at most one standalone unit and one Attachment'
             issues.push({
                 severity: 'error',
                 battlefleetInstanceId: battlefleet.instanceId,
-                message: `${battlefleet.name} has ${count} ${label} units; ${limitText} per Battlefleet.`,
+                message: `${battlefleet.name} has ${standalone} standalone and ${attachments} Attachment ${label} units; ${limitText} per Battlefleet.`,
             })
         }
     }
 
+    return issues
+}
+
+function attachmentFailureMessage(
+    failure: NonNullable<ReturnType<typeof getAttachmentEligibilityFailure>>,
+    attachment: Unit,
+    parent: Unit,
+): string {
+    switch (failure) {
+        case 'different-faction':
+            return `${attachment.name} and its Parent Unit ${parent.name} must come from the same ORBAT.`
+        case 'same-unit':
+            return `${attachment.name} cannot be attached to another ${parent.name} unit.`
+        case 'parent-is-attachment':
+            return `${parent.name} has the Attachment (${getAttachmentKeyword(parent) ?? 'X'}) property and cannot be a Parent Unit.`
+        case 'positional-trait':
+            return `${attachment.name} must have the same Positional Trait as its Parent Unit ${parent.name}.`
+        case 'parent-option':
+            return `${parent.name} does not have an option allowing ${attachment.name} as an Attachment.`
+        case 'parent-traits':
+            return `${parent.name} does not have the Trait(s) required by ${attachment.name}'s Attachment (${getAttachmentKeyword(attachment) ?? 'X'}) property.`
+    }
+}
+
+function validateAttachmentRelations(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const issues: BattlefleetIssue[] = []
+
+    const visit = (parentEntry: ArmyUnit, parentIsAttachment: boolean) => {
+        const parent = findUnit(units, parentEntry)
+        const attachments = (parentEntry.attachedUnits ?? []).filter((attachment) => !attachment.generatedByOption)
+        if (!parent || attachments.length === 0) return
+
+        if (parentIsAttachment || hasAttachmentProperty(parent)) {
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: parentEntry.instanceId,
+                message: parentIsAttachment
+                    ? `${parent.name} is fielded as an Attachment and cannot be a Parent Unit.`
+                    : `${parent.name} has the Attachment (${getAttachmentKeyword(parent) ?? 'X'}) property and cannot be a Parent Unit.`,
+            })
+        }
+        if (attachments.length > 1) {
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: parentEntry.instanceId,
+                message: `${parent.name} has ${attachments.length} Attachments; a Parent Unit can only have one.`,
+            })
+        }
+
+        const parentTags = getSelectedTags(
+            parent,
+            parentEntry.models[0]?.config ?? parentEntry.config,
+            parentEntry.config,
+        )
+        for (const attachmentEntry of attachments) {
+            const attachment = findUnit(units, attachmentEntry)
+            if (!attachment) continue
+            const attachmentTags = getSelectedTags(
+                attachment,
+                attachmentEntry.models[0]?.config ?? attachmentEntry.config,
+                attachmentEntry.config,
+            )
+            const failure = getAttachmentEligibilityFailure(attachment, parent, { attachmentTags, parentTags })
+            if (failure && failure !== 'parent-is-attachment') {
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    unitInstanceId: attachmentEntry.instanceId,
+                    message: attachmentFailureMessage(failure, attachment, parent),
+                })
+            }
+            visit(attachmentEntry, true)
+        }
+    }
+
+    entries.forEach((entry) => visit(entry, false))
     return issues
 }
 
@@ -874,6 +978,7 @@ function validateBattlefleet(
     }
 
     issues.push(...validateFlagshipLimit(definition, battlefleet, entries, units))
+    issues.push(...validateAttachmentRelations(battlefleet, entries, units))
     issues.push(...validateDuplicateClasses(definition, battlefleet, entries, units))
     issues.push(...validateSpecialRules(definition, battlefleet, entries, units))
 

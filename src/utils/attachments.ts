@@ -29,6 +29,10 @@ export function getAttachmentKeyword(unit: Unit): string | null {
     )
 }
 
+export function hasAttachmentProperty(unit: Unit): boolean {
+    return unit.properties.some((property) => property.name === 'Attachment') || unit.attachment != null
+}
+
 export function getAttachmentModelLimitForUnit(unit: Unit): number {
     if (unit.attachment?.max_models != null) return unit.attachment.max_models
     if (getAttachmentKeyword(unit)) return getMinimumModelsForUnit(unit)
@@ -43,7 +47,9 @@ export function getPositionalTraits(tags: string[]): string[] {
 }
 
 function getUnitTraits(unit: Unit, tags: string[] = unit.tags): string[] {
-    return [unit.name, unit.sub_name, unit.role, ...tags].map((trait) => trait.toLowerCase())
+    return [unit.name, unit.sub_name, unit.role, ...tags]
+        .filter((trait): trait is string => typeof trait === 'string' && trait.trim().length > 0)
+        .map((trait) => trait.toLowerCase())
 }
 
 type AttachmentRequirement = string[]
@@ -104,23 +110,38 @@ function hasMatchingPositionalTrait(attachmentTags: string[], parentTags: string
     return attachmentPositions.some((trait) => parentPositions.includes(trait))
 }
 
+export type AttachmentEligibilityFailure =
+    'different-faction' | 'same-unit' | 'parent-is-attachment' | 'positional-trait' | 'parent-option' | 'parent-traits'
+
+export function getAttachmentEligibilityFailure(
+    attachment: Unit,
+    parent: Unit,
+    tags: { attachmentTags?: string[]; parentTags?: string[] } = {},
+): AttachmentEligibilityFailure | null {
+    if (attachment.faction_id !== parent.faction_id) return 'different-faction'
+    if (attachment.id === parent.id) return 'same-unit'
+    if (hasAttachmentProperty(parent)) return 'parent-is-attachment'
+    const attachmentTags = tags.attachmentTags ?? attachment.tags
+    const parentTags = tags.parentTags ?? parent.tags
+    if (!hasMatchingPositionalTrait(attachmentTags, parentTags)) return 'positional-trait'
+    const parentAttachmentTargetIds = getParentAttachmentTargetIds(parent)
+    if (parentAttachmentTargetIds.size > 0 && !parentAttachmentTargetIds.has(attachment.id)) return 'parent-option'
+    const parentTraits = getUnitTraits(parent, parentTags)
+    const explicitEligibility = parentMatchesExplicitEligibility(attachment, parent, parentTraits)
+    if (explicitEligibility != null) return explicitEligibility ? null : 'parent-traits'
+    const requirements = getAttachmentRequirements(attachment)
+    if (requirements.length === 0) return 'parent-traits'
+    return requirements.every((requirement) =>
+        requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait)),
+    )
+        ? null
+        : 'parent-traits'
+}
+
 export function canAttachToParent(
     attachment: Unit,
     parent: Unit,
     tags: { attachmentTags?: string[]; parentTags?: string[] } = {},
 ): boolean {
-    if (attachment.faction_id !== parent.faction_id || attachment.id === parent.id) return false
-    const attachmentTags = tags.attachmentTags ?? attachment.tags
-    const parentTags = tags.parentTags ?? parent.tags
-    if (!hasMatchingPositionalTrait(attachmentTags, parentTags)) return false
-    const parentAttachmentTargetIds = getParentAttachmentTargetIds(parent)
-    if (parentAttachmentTargetIds.size > 0 && !parentAttachmentTargetIds.has(attachment.id)) return false
-    const parentTraits = getUnitTraits(parent, parentTags)
-    const explicitEligibility = parentMatchesExplicitEligibility(attachment, parent, parentTraits)
-    if (explicitEligibility != null) return explicitEligibility
-    const requirements = getAttachmentRequirements(attachment)
-    if (requirements.length === 0) return false
-    return requirements.every((requirement) =>
-        requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait)),
-    )
+    return getAttachmentEligibilityFailure(attachment, parent, tags) == null
 }
