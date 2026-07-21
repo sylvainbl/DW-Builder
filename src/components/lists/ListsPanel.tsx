@@ -34,7 +34,7 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
             const data: unknown = JSON.parse(await file.text())
             const importedList = parseImportedList(data, units)
             if (!importedList) {
-                window.alert('This file is not a valid Dystopian Wars list.')
+                window.alert('This file is not a valid DW list.')
                 return
             }
             importList(importedList)

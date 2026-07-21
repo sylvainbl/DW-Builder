@@ -84,7 +84,7 @@ export function downloadList(list: ArmyList, units: Unit[]) {
         list.name
             .trim()
             .replace(/[^\p{L}\p{N}._-]+/gu, '_')
-            .replace(/^_+|_+$/g, '') || 'dystopian-wars-list'
+            .replace(/^_+|_+$/g, '') || 'dw-list'
     }.json`
     link.style.display = 'none'
     document.body.append(link)
