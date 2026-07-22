@@ -19,6 +19,7 @@ import {
     isCrownFaction,
 } from '../../utils/guardianPool'
 import { computeArmyUnitVpr, computeEntriesVpr } from '../../utils/pointsCalc'
+import { previewPrintableList } from '../../utils/printList'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -589,9 +590,8 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                 : [...ids, battlefleetInstanceId],
         )
     }
-    const previewPrint = async () => {
+    const previewPrint = () => {
         try {
-            const { previewPrintableList } = await import('../../utils/printList')
             previewPrintableList(currentList, units, glossary, battlefleetDefinitions, fleetDoctrines)
         } catch {
             window.alert('Could not open the print preview.')
