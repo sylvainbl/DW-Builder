@@ -101,7 +101,7 @@ function UnitRow({
     const generated = Boolean(entry.generatedByOption)
 
     return (
-        <div className={`w-full rounded-lg border p-2 text-left transition ${rowClasses}`}>
+        <div className={`rounded-lg border text-left transition ${nested ? 'p-1.5' : 'w-full p-2'} ${rowClasses}`}>
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
                     <button type="button" onClick={onSelect} className="block w-full text-left">
@@ -643,33 +643,45 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                             ) : null}
                         </div>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex flex-col items-end gap-1.5 self-stretch">
+                        <div className="flex items-center gap-1">
+                            <button
+                                type="button"
+                                title="Download"
+                                aria-label="Download list"
+                                onClick={() => downloadList(currentList, units)}
+                                className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                            >
+                                <Download size={14} />
+                            </button>
+                            <button
+                                type="button"
+                                title="Preview printable PDF"
+                                aria-label="Preview printable PDF"
+                                onClick={() => void previewPrint()}
+                                className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                            >
+                                <Printer size={14} />
+                            </button>
+                            <button
+                                type="button"
+                                title="Close"
+                                aria-label="Close list"
+                                onClick={closeList}
+                                className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                            >
+                                <X size={14} />
+                            </button>
+                        </div>
                         <button
                             type="button"
-                            title="Download"
-                            aria-label="Download list"
-                            onClick={() => downloadList(currentList, units)}
-                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
+                            onClick={selectListGlossary}
+                            title={`${listGlossaryCount} ${listGlossaryCount === 1 ? 'rule' : 'rules'} used by this list`}
+                            aria-label={`Glossary, ${listGlossaryCount} ${listGlossaryCount === 1 ? 'rule' : 'rules'} used by this list`}
+                            className={`flex flex-1 items-center gap-1.5 rounded border px-2 py-1 text-[11px] font-semibold transition ${selectedListGlossary ? 'border-[var(--navy)] bg-[var(--navy)] text-white ring-2 ring-[var(--gold)]/40' : 'border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50'}`}
                         >
-                            <Download size={14} />
-                        </button>
-                        <button
-                            type="button"
-                            title="Preview printable PDF"
-                            aria-label="Preview printable PDF"
-                            onClick={() => void previewPrint()}
-                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
-                        >
-                            <Printer size={14} />
-                        </button>
-                        <button
-                            type="button"
-                            title="Close"
-                            aria-label="Close list"
-                            onClick={closeList}
-                            className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
-                        >
-                            <X size={14} />
+                            <BookOpenText size={14} />
+                            <span>Glossary</span>
                         </button>
                     </div>
                 </div>
@@ -828,37 +840,6 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                     </>
                 )}
             </div>
-
-            <button
-                type="button"
-                onClick={selectListGlossary}
-                className={`mt-3 flex w-full items-center justify-between gap-3 rounded-lg border p-2.5 text-left shadow-sm transition ${selectedListGlossary ? 'border-[var(--navy)] bg-[var(--navy)] text-white ring-2 ring-[var(--gold)]/40' : 'border-neutral-200 bg-white hover:border-neutral-300 hover:bg-neutral-50'}`}
-            >
-                <span className="flex min-w-0 items-center gap-2">
-                    <span
-                        className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-[var(--detail-panel)] text-[var(--navy)]'}`}
-                    >
-                        <BookOpenText size={15} />
-                    </span>
-                    <span className="min-w-0">
-                        <span
-                            className={`block text-[13px] font-semibold ${selectedListGlossary ? 'text-white' : 'text-neutral-900'}`}
-                        >
-                            Glossary
-                        </span>
-                        <span
-                            className={`block text-[11px] ${selectedListGlossary ? 'text-white/70' : 'text-neutral-500'}`}
-                        >
-                            {listGlossaryCount} {listGlossaryCount === 1 ? 'rule' : 'rules'} used by this list
-                        </span>
-                    </span>
-                </span>
-                <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${selectedListGlossary ? 'bg-white/12 text-white' : 'bg-neutral-100 text-[var(--navy)]'}`}
-                >
-                    View
-                </span>
-            </button>
         </div>
     )
 }
