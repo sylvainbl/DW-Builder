@@ -1,4 +1,4 @@
-import { Minus, Pencil, Plus } from 'lucide-react'
+import { CopyPlus, Minus, Pencil, Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import { getGeneratorsForFaction } from '../../store/selectors'
@@ -426,7 +426,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
     const selectModel = useAppStore((state) => state.selectModel)
     const addAttachmentToListUnit = useAppStore((state) => state.addAttachmentToListUnit)
     const removeUnitFromList = useAppStore((state) => state.removeUnitFromList)
-    const addModelToListUnit = useAppStore((state) => state.addModelToListUnit)
+    const duplicateSelectedModel = useAppStore((state) => state.duplicateSelectedModel)
     const removeModelFromListUnit = useAppStore((state) => state.removeModelFromListUnit)
     const renameListUnit = useAppStore((state) => state.renameListUnit)
     const renameModel = useAppStore((state) => state.renameModel)
@@ -624,7 +624,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
           ? getAttachmentModelLimitForUnit(unit) - siblingAttachmentModels
           : normalMaxModels
     const canAddModel = Boolean(
-        selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels,
+        selectedEntry && selectedModel && !selectedEntryGeneratedByOption && selectedEntry.models.length < maxModels,
     )
     const canRemoveModel = Boolean(
         selectedEntry && !selectedEntryGeneratedByOption && selectedEntry.models.length > minModels,
@@ -916,12 +916,14 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                         </span>
                                         <button
                                             type="button"
-                                            className="h-6 w-6 rounded-full border border-white/40 bg-white text-sm text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
-                                            onClick={() => addModelToListUnit(selectedEntry.instanceId)}
+                                            className="inline-flex h-6 items-center gap-1 rounded-full border border-white/40 bg-white px-2 text-[11px] font-semibold text-[var(--navy)] shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
+                                            onClick={() => duplicateSelectedModel(selectedEntry.instanceId)}
                                             disabled={!canAddModel}
-                                            title="Add model"
+                                            title="Duplicate selected model"
+                                            aria-label="Duplicate selected model"
                                         >
-                                            +
+                                            <CopyPlus size={13} />
+                                            Duplicate
                                         </button>
                                     </div>
                                 </div>

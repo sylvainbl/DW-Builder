@@ -20,6 +20,7 @@ import { getSelectedTags } from '../utils/optionRuleEffects'
 import { canSelectGeneratorInSlot, withWeaponGeneratorSelection } from '../utils/generatorRules'
 import { normalizeSavedListsIndependently } from '../utils/listNormalization'
 import { renameArmyListState } from '../utils/listNames'
+import { duplicateArmyModel } from '../utils/modelHelpers'
 import { normalizeGeneratorBackedOptionConfig } from '../utils/optionConfig'
 import { normalizeLegacyFactionId, normalizeLegacyUnitId } from '../utils/storageMigration'
 import { isUnitSelectable } from '../utils/unitHelpers'
@@ -87,7 +88,7 @@ interface AppStore {
     renameModel: (instanceId: string, modelId: string, customName: string) => void
     selectListUnit: (instanceId: string) => void
     selectModel: (modelId: string) => void
-    addModelToListUnit: (instanceId: string) => void
+    duplicateSelectedModel: (instanceId: string) => void
     removeModelFromListUnit: (instanceId: string, modelId: string) => void
 
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
@@ -992,12 +993,13 @@ export const useAppStore = create<AppStore>((set, get) => ({
         if (!model) return
         set({ selectedModelId: modelId, activeUnitConfig: cloneConfig(model.config) })
     },
-    addModelToListUnit: (instanceId) => {
+    duplicateSelectedModel: (instanceId) => {
         const state = get()
         if (!state.currentList) return
         const entry = findArmyUnit(state.currentList.units, instanceId)
         const unit = entry ? state.units.find((item) => item.id === entry.unitId) : null
-        if (!entry || !unit) return
+        const selectedModel = entry?.models.find((model) => model.modelId === state.selectedModelId)
+        if (!entry || !unit || !selectedModel) return
         const parent = findParentOfAttachment(state.currentList.units, instanceId)
         const siblingModels = parent
             ? (parent.attachedUnits ?? [])
@@ -1006,7 +1008,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
             : 0
         const maxModels = parent ? getAttachmentModelLimitForUnit(unit) - siblingModels : getMaximumModels(unit)
         if (entry.models.length >= maxModels) return
-        const newModel = makeModel()
+        const newModel = duplicateArmyModel(selectedModel, uuid())
         const currentList = syncListGeneratedOptionAttachments(
             {
                 ...state.currentList,
