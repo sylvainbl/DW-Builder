@@ -17,8 +17,10 @@ import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/b
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
 import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
 import { getSelectedTags } from '../utils/optionRuleEffects'
-import { canSelectGeneratorInSlot } from '../utils/generatorRules'
+import { canSelectGeneratorInSlot, withWeaponGeneratorSelection } from '../utils/generatorRules'
 import { normalizeSavedListsIndependently } from '../utils/listNormalization'
+import { renameArmyListState } from '../utils/listNames'
+import { normalizeGeneratorBackedOptionConfig } from '../utils/optionConfig'
 import { normalizeLegacyFactionId, normalizeLegacyUnitId } from '../utils/storageMigration'
 import { isUnitSelectable } from '../utils/unitHelpers'
 import { uuid } from '../utils/uuid'
@@ -295,15 +297,24 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
         options?: { tag: string; quantity: number }[]
         generator?: Generator | null
     }
-    const config = normalizeConfig(
-        entry.config ?? {
-            hardpointSelections: {},
-            generatorSelection: legacy.generator
-                ? { weaponIndex: 0, generatorName: legacy.generator.name, generatorCost: legacy.generator.point_cost }
-                : null,
-            fleetDoctrineSelection: null,
-            optionQuantities: Object.fromEntries((legacy.options ?? []).map((option) => [option.tag, option.quantity])),
-        },
+    const config = normalizeGeneratorBackedOptionConfig(
+        unit,
+        normalizeConfig(
+            entry.config ?? {
+                hardpointSelections: {},
+                generatorSelection: legacy.generator
+                    ? {
+                          weaponIndex: 0,
+                          generatorName: legacy.generator.name,
+                          generatorCost: legacy.generator.point_cost,
+                      }
+                    : null,
+                fleetDoctrineSelection: null,
+                optionQuantities: Object.fromEntries(
+                    (legacy.options ?? []).map((option) => [option.tag, option.quantity]),
+                ),
+            },
+        ),
     )
     const legacyModels = (entry as ArmyUnit & { models?: ArmyModel[] }).models
     const models =
@@ -312,7 +323,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
                   .map((model) => ({
                       modelId: model.modelId ?? uuid(),
                       customName: model.customName?.trim() || undefined,
-                      config: normalizeConfig(model.config),
+                      config: normalizeGeneratorBackedOptionConfig(unit, normalizeConfig(model.config)),
                   }))
                   .slice(0, getMaximumModels(unit))
             : makeModels(unit, config)
@@ -719,19 +730,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
     renameList: (listId, newName) => {
         const trimmed = newName.trim()
         if (!trimmed) return
-        set((state) => {
-            const now = new Date().toISOString()
-            const currentList =
-                state.currentList?.id === listId
-                    ? { ...state.currentList, name: trimmed, updatedAt: now }
-                    : state.currentList
-            return {
-                currentList,
-                savedLists: state.savedLists.map((list) =>
-                    list.id === listId ? { ...(currentList ?? list), name: trimmed, updatedAt: now } : list,
-                ),
-            }
-        })
+        set((state) => renameArmyListState(state, listId, trimmed, new Date().toISOString()))
         get().persistLists()
     },
     persistLists: () => {
@@ -1105,14 +1104,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
     },
     setGeneratorSelection: (selection) => {
         set((state) => {
-            const hardpointSelections = { ...state.activeUnitConfig.hardpointSelections }
-            if (selection) delete hardpointSelections[selection.weaponIndex]
-            const newConfig = {
-                ...state.activeUnitConfig,
-                generatorSelection: selection,
-                generatorSelections: undefined,
-                hardpointSelections,
-            }
+            const newConfig = withWeaponGeneratorSelection(state.activeUnitConfig, selection)
             return {
                 activeUnitConfig: newConfig,
                 currentList:

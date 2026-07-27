@@ -1,4 +1,4 @@
-import { ArrowRight, FolderOpen, Plus, X } from 'lucide-react'
+import { ArrowRight, FolderOpen, Pencil, Plus, X } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../../store'
 import { parseImportedList } from '../../utils/localStorage'
@@ -16,10 +16,13 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
     const openList = useAppStore((state) => state.openList)
     const deleteList = useAppStore((state) => state.deleteList)
     const importList = useAppStore((state) => state.importList)
+    const renameList = useAppStore((state) => state.renameList)
     const units = useAppStore((state) => state.units)
     const [showForm, setShowForm] = useState(false)
     const [name, setName] = useState('')
     const [factionId, setFactionId] = useState('')
+    const [editingListId, setEditingListId] = useState<string | null>(null)
+    const [draftName, setDraftName] = useState('')
     const fileInputRef = useRef<HTMLInputElement | null>(null)
 
     const factionNames = useMemo(() => new Map(factions.map((faction) => [faction.id, faction.name])), [factions])
@@ -27,6 +30,11 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
     const handleOpenList = (listId: string) => {
         openList(listId)
         onEnterBuilder()
+    }
+
+    const commitListName = (listId: string) => {
+        renameList(listId, draftName)
+        setEditingListId(null)
     }
 
     const importFile = async (file: File) => {
@@ -203,9 +211,28 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                                 <div className="flex items-start justify-between gap-3">
                                                     <div className="min-w-0 flex-1 text-left">
                                                         <div className="flex items-center gap-2">
-                                                            <h3 className="truncate text-sm font-semibold text-[var(--text)] sm:text-base">
-                                                                {list.name}
-                                                            </h3>
+                                                            {editingListId === list.id ? (
+                                                                <input
+                                                                    value={draftName}
+                                                                    autoFocus
+                                                                    aria-label={`New name for ${list.name}`}
+                                                                    onChange={(event) =>
+                                                                        setDraftName(event.target.value)
+                                                                    }
+                                                                    onBlur={() => commitListName(list.id)}
+                                                                    onKeyDown={(event) => {
+                                                                        if (event.key === 'Enter')
+                                                                            commitListName(list.id)
+                                                                        if (event.key === 'Escape')
+                                                                            setEditingListId(null)
+                                                                    }}
+                                                                    className="pointer-events-auto min-w-0 flex-1 rounded-md border border-[var(--gold)] bg-white px-2 py-1 text-sm font-semibold text-[var(--text)] outline-none"
+                                                                />
+                                                            ) : (
+                                                                <h3 className="truncate text-sm font-semibold text-[var(--text)] sm:text-base">
+                                                                    {list.name}
+                                                                </h3>
+                                                            )}
                                                             {active ? (
                                                                 <span className="flex-none rounded-full bg-[var(--navy)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
                                                                     Open
@@ -218,18 +245,32 @@ export default function ListsPanel({ onEnterBuilder }: ListsPanelProps) {
                                                             {list.units.length === 1 ? 'unit' : 'units'}
                                                         </p>
                                                     </div>
-                                                    <button
-                                                        type="button"
-                                                        title={`Delete ${list.name}`}
-                                                        aria-label={`Delete ${list.name}`}
-                                                        onClick={() => {
-                                                            if (window.confirm(`Delete "${list.name}"?`))
-                                                                deleteList(list.id)
-                                                        }}
-                                                        className="pointer-events-auto rounded-md p-1.5 text-[var(--muted)] transition hover:bg-rose-50 hover:text-rose-600"
-                                                    >
-                                                        <X size={15} />
-                                                    </button>
+                                                    <div className="pointer-events-auto flex items-center">
+                                                        <button
+                                                            type="button"
+                                                            title={`Rename ${list.name}`}
+                                                            aria-label={`Rename ${list.name}`}
+                                                            onClick={() => {
+                                                                setDraftName(list.name)
+                                                                setEditingListId(list.id)
+                                                            }}
+                                                            className="rounded-md p-1.5 text-[var(--muted)] transition hover:bg-[var(--panel)] hover:text-[var(--text)]"
+                                                        >
+                                                            <Pencil size={14} />
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            title={`Delete ${list.name}`}
+                                                            aria-label={`Delete ${list.name}`}
+                                                            onClick={() => {
+                                                                if (window.confirm(`Delete "${list.name}"?`))
+                                                                    deleteList(list.id)
+                                                            }}
+                                                            className="rounded-md p-1.5 text-[var(--muted)] transition hover:bg-rose-50 hover:text-rose-600"
+                                                        >
+                                                            <X size={15} />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div className="mt-auto flex items-end justify-between gap-3 pt-4 sm:pt-6">
                                                     <div>

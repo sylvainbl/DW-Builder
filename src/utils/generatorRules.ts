@@ -20,3 +20,18 @@ export function getGeneratorChoicesForSlot(
 ): Generator[] {
     return choices.filter((generator) => canSelectGeneratorInSlot(selections, slotIndex, generator.name))
 }
+
+export function withWeaponGeneratorSelection(
+    config: UnitConfig,
+    selection: UnitConfig['generatorSelection'],
+): UnitConfig {
+    const hardpointSelections = { ...config.hardpointSelections }
+    if (selection) delete hardpointSelections[selection.weaponIndex]
+
+    return {
+        ...config,
+        generatorSelection: selection,
+        generatorSelections: undefined,
+        hardpointSelections,
+    }
+}

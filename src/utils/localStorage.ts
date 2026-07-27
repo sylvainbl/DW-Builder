@@ -1,5 +1,6 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
 import { computeArmyUnitTotal, updateArmyUnitTotals } from './pointsCalc.ts'
+import { normalizeGeneratorBackedOptionConfig } from './optionConfig.ts'
 import { normalizeLegacyFactionId, normalizeLegacyUnitId, selectStoredListsValue } from './storageMigration.ts'
 import { uuid } from './uuid.ts'
 
@@ -99,13 +100,13 @@ function isUnitConfig(value: unknown): value is UnitConfig {
     )
 }
 
-function normalizeUnitConfig(config: UnitConfig): UnitConfig {
-    return {
+function normalizeUnitConfig(config: UnitConfig, unit: Unit): UnitConfig {
+    return normalizeGeneratorBackedOptionConfig(unit, {
         ...structuredClone(emptyUnitConfig),
         ...config,
         generatorSelections: config.generatorSelections,
         fleetDoctrineSelection: config.fleetDoctrineSelection ?? null,
-    }
+    })
 }
 
 function minimumModels(unit: Unit): number {
@@ -130,14 +131,14 @@ function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): Ar
                                 typeof model.customName === 'string' && model.customName.trim().length > 0
                                     ? model.customName.trim()
                                     : undefined,
-                            config: normalizeUnitConfig(model.config),
+                            config: normalizeUnitConfig(model.config, unit),
                         },
                     ]
                   : [],
           )
         : []
     const normalized = (
-        importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: normalizeUnitConfig(config) }]
+        importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: normalizeUnitConfig(config, unit) }]
     ).slice(0, maximumModels(unit))
     while (normalized.length < minimumModels(unit)) {
         normalized.push({ modelId: uuid(), config: structuredClone(emptyUnitConfig) })
@@ -192,7 +193,7 @@ function normalizeImportedEntry(entry: unknown, units: Unit[]): ArmyUnit[] {
                 ? entry.customName.trim()
                 : undefined,
         battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
-        config: normalizeUnitConfig(entry.config),
+        config: normalizeUnitConfig(entry.config, unit),
         models: makeImportedModels(unit, entry.config, entry.models),
         totalPoints: 0,
         attachedUnits: Array.isArray(entry.attachedUnits)
@@ -250,7 +251,7 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
                     ? entry.customName.trim()
                     : undefined,
             battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
-            config: normalizeUnitConfig(entry.config),
+            config: normalizeUnitConfig(entry.config, unit),
             models: makeImportedModels(unit, entry.config, entry.models),
             totalPoints: 0,
         }

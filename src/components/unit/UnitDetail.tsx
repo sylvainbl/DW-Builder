@@ -17,6 +17,8 @@ import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import {
     formatOptionName,
     getEffectiveGeneratorSelections,
+    getGeneratorSystemsForSelection,
+    getSelectedGeneratorSystems,
     getSelectedOptionRuleEffects,
     getSelectedRemovedWeaponNames,
     getSelectedTags,
@@ -24,6 +26,14 @@ import {
     mergeNamedValues,
     SYSTEM_GENERATOR_WEAPON_INDEX,
 } from '../../utils/optionRuleEffects'
+import {
+    getOptionChoiceNames,
+    getOptionChoices,
+    isGeneratorHardpointsListChoice,
+    optionAllowsWeapon,
+    optionChoiceCost,
+    optionChoiceName,
+} from '../../utils/optionConfig'
 import { getVisibleSrsSquadrons } from '../../utils/srs'
 import {
     canAttachToParent,
@@ -114,40 +124,8 @@ function filterRestrictedGenerators(generators: Generator[], restrictedGenerator
     return generators.filter((generator) => !restrictedGeneratorNames.has(generator.name))
 }
 
-function getOptionChoices(option: OptionUpgrade): unknown[] {
-    if (Array.isArray(option.choices)) return option.choices
-    if (typeof option.choices === 'string') return [option.choices]
-    return []
-}
-
 function getGeneratorChoiceNames(options: OptionUpgrade[]): Set<string> {
-    return new Set(
-        options.flatMap((option) =>
-            getOptionChoices(option).filter((choice): choice is string => typeof choice === 'string'),
-        ),
-    )
-}
-
-function generatorChoiceName(choice: unknown): string | null {
-    if (typeof choice === 'string') return choice
-    if (choice && typeof choice === 'object' && 'name' in choice && typeof choice.name === 'string') return choice.name
-    return null
-}
-
-function generatorChoiceCost(choice: unknown): number | null {
-    if (choice && typeof choice === 'object' && 'cost_per_unit' in choice && typeof choice.cost_per_unit === 'number') {
-        return choice.cost_per_unit
-    }
-    return null
-}
-
-function isGeneratorHardpointsListChoice(name: string): boolean {
-    const normalizedName = name.toLowerCase()
-    return (
-        normalizedName.includes('generator hardpoints list') ||
-        normalizedName === 'generator hardpoint' ||
-        normalizedName === 'generator hardpoints'
-    )
+    return new Set(options.flatMap(getOptionChoiceNames))
 }
 
 function addGeneratorChoice(choices: Generator[], generator: Generator) {
@@ -167,10 +145,10 @@ function getOptionGeneratorChoices(
     const choices: Generator[] = []
 
     for (const choice of getOptionChoices(option)) {
-        const name = generatorChoiceName(choice)
+        const name = optionChoiceName(choice)
         if (!name) continue
 
-        const cost = generatorChoiceCost(choice)
+        const cost = optionChoiceCost(choice)
         if (isGeneratorHardpointsListChoice(name)) {
             for (const generator of factionGenerators) {
                 addGeneratorChoice(choices, {
@@ -195,11 +173,12 @@ function getOptionGeneratorChoices(
 function getGeneratorChoices(
     unit: Unit,
     factionGenerators: Generator[],
-    slot: string | undefined,
+    weapon: Weapon,
     extraMagmaCastCost: number | null = null,
 ): Generator[] {
+    const slot = weapon.slot
     const weaponGeneratorOptions = unit.options_and_upgrades.filter(
-        (option) => option.generator_replaces_weapon !== false,
+        (option) => option.generator_replaces_weapon !== false && optionAllowsWeapon(option, weapon),
     )
     const optionTags = new Set(weaponGeneratorOptions.map((option) => option.tag))
     const restrictedGeneratorNames = getRestrictedGeneratorNames(unit)
@@ -227,29 +206,23 @@ function getGeneratorChoices(
     if (!magmaCastOption && extraMagmaCastCost != null && slot === 'H') {
         fixedChoices.push({ name: 'Magma Cast Generator', point_cost: extraMagmaCastCost })
     }
-    if (freeGeneratorOption && slot === 'H') {
-        return [
-            ...filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames).map((generator) => ({
-                ...generator,
-                point_cost: 0,
-            })),
-            ...filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames),
-        ]
-    }
     const explicitChoices = weaponGeneratorOptions.flatMap((option) =>
         getOptionGeneratorChoices(option, factionGenerators, false),
     )
-    if (explicitChoices.length > 0 && slot === 'H') {
-        return filterRestrictedGenerators([...explicitChoices, ...fixedChoices], restrictedGeneratorNames)
-    }
-    if (magmaCastOption && optionTags.has('GENERATOR') && slot === 'H') {
-        return filterRestrictedGenerators([...factionGenerators, ...fixedChoices], restrictedGeneratorNames)
-    }
-    if (fixedChoices.length > 0) return filterRestrictedGenerators(fixedChoices, restrictedGeneratorNames)
+    const choices: Generator[] = []
 
-    return optionTags.has('GENERATOR') && slot === 'H'
-        ? filterRestrictedGenerators(factionGenerators, restrictedGeneratorNames)
-        : []
+    if (optionTags.has('GENERATOR') && slot === 'H') {
+        for (const generator of factionGenerators) {
+            addGeneratorChoice(choices, {
+                ...generator,
+                point_cost: freeGeneratorOption ? 0 : generator.point_cost,
+            })
+        }
+    }
+    for (const generator of explicitChoices) addGeneratorChoice(choices, generator)
+    for (const generator of fixedChoices) addGeneratorChoice(choices, generator)
+
+    return filterRestrictedGenerators(choices, restrictedGeneratorNames)
 }
 
 function getSystemGeneratorOptionForSlot(
@@ -584,7 +557,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         ? getArmyUnitFactionSpecialRules(unit, selectedEntry)
         : getFactionSpecialRules(
               unit,
-              generatorSelections.map((selection) => selection.generatorName),
+              getSelectedGeneratorSystems(unit, activeUnitConfig).map((system) => system.name),
               optionRuleEffects.removedSystems,
           )
     const battlefleetAddedTags = getBattlefleetAddedTags(currentList, battlefleetDefinitions, units, selectedEntry)
@@ -611,7 +584,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
     )
     const displayedSystems = mergeNamedValues(
         unit.systems.filter((system) => !optionRuleEffects.removedSystems.has(system.name)),
-        generatorSelections.map((selection) => ({ name: selection.generatorName, value: null })),
+        getSelectedGeneratorSystems(unit, activeUnitConfig, selectedEntry?.config),
         optionRuleEffects.systems,
         factionSpecialRules,
         battlefleetAddedSystems,
@@ -1215,7 +1188,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                 const isGeneratorSlot = weaponGeneratorSelection?.weaponIndex === index
                                 const generatorChoices =
                                     canTakeGenerator && !weapon.hardpoint_locked
-                                        ? getGeneratorChoices(unit, factionGenerators, weapon.slot, extraMagmaCastCost)
+                                        ? getGeneratorChoices(unit, factionGenerators, weapon, extraMagmaCastCost)
                                         : []
                                 const canShowGeneratorSection =
                                     generatorChoices.length > 0 &&
@@ -1248,13 +1221,19 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                             <td className="px-2 py-2 text-neutral-600">—</td>
                                             <td className="rounded-r-lg px-2 py-2 text-neutral-600">
                                                 <div className="flex flex-wrap gap-1">
-                                                    <span className="unit-detail-chip">
-                                                        <RuleWord
-                                                            category="systems"
-                                                            name={weaponGeneratorSelection.generatorName}
-                                                            showValue={false}
-                                                        />
-                                                    </span>
+                                                    {getGeneratorSystemsForSelection(
+                                                        unit,
+                                                        weaponGeneratorSelection,
+                                                    ).map((system) => (
+                                                        <span key={system.name} className="unit-detail-chip">
+                                                            <RuleWord
+                                                                category="systems"
+                                                                name={system.name}
+                                                                value={system.value}
+                                                                showValue={false}
+                                                            />
+                                                        </span>
+                                                    ))}
                                                     <span className="unit-detail-chip unit-detail-chip-cost">
                                                         Generator
                                                     </span>

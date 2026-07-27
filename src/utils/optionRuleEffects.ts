@@ -1,6 +1,6 @@
 import type { NamedValue, OptionUpgrade, Unit, UnitConfig } from '../types/index'
 import { isAttachmentOption } from './attachments.ts'
-import { isUnitLevelOption } from './optionConfig.ts'
+import { getOptionChoiceNames, isGeneratorHardpointsListChoice, isUnitLevelOption } from './optionConfig.ts'
 
 export const SYSTEM_GENERATOR_WEAPON_INDEX = -1
 
@@ -49,14 +49,23 @@ function getConfiguredGeneratorSelections(modelConfig: UnitConfig): NonNullable<
     return modelConfig.generatorSelections ?? (modelConfig.generatorSelection ? [modelConfig.generatorSelection] : [])
 }
 
-function isSystemGeneratorSelected(option: OptionUpgrade, modelConfig: UnitConfig): boolean {
-    return option.generator_replaces_weapon === false && getConfiguredGeneratorSelections(modelConfig).length > 0
+function isGeneratorOptionSelected(option: OptionUpgrade, modelConfig: UnitConfig): boolean {
+    if (option.generator_replaces_weapon === undefined) return false
+    const selections = getConfiguredGeneratorSelections(modelConfig)
+    const choiceNames = getOptionChoiceNames(option)
+    const acceptsAnyGenerator =
+        option.generator_replaces_weapon === false &&
+        (choiceNames.length === 0 || choiceNames.some(isGeneratorHardpointsListChoice))
+    return (
+        (acceptsAnyGenerator && selections.length > 0) ||
+        selections.some((selection) => choiceNames.includes(selection.generatorName))
+    )
 }
 
 function isOptionSelected(option: OptionUpgrade, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): boolean {
     return (
         (optionConfig(option, modelConfig, unitConfig).optionQuantities[option.tag] ?? 0) > 0 ||
-        isSystemGeneratorSelected(option, modelConfig)
+        isGeneratorOptionSelected(option, modelConfig)
     )
 }
 
@@ -156,6 +165,29 @@ export function getEffectiveGeneratorSelections(
             ? []
             : [effectiveSelection]
     })
+}
+
+export function getGeneratorSystemsForSelection(
+    unit: Unit,
+    selection: NonNullable<UnitConfig['generatorSelection']>,
+): NamedValue[] {
+    const grantingOption = unit.options_and_upgrades.find(
+        (option) =>
+            option.generator_replaces_weapon !== undefined &&
+            getOptionChoiceNames(option).includes(selection.generatorName) &&
+            (option.adds_systems?.length ?? 0) > 0,
+    )
+    return grantingOption?.adds_systems ?? [{ name: selection.generatorName, value: null }]
+}
+
+export function getSelectedGeneratorSystems(
+    unit: Unit,
+    modelConfig: UnitConfig,
+    unitConfig?: UnitConfig | null,
+): NamedValue[] {
+    return getEffectiveGeneratorSelections(unit, modelConfig, unitConfig).flatMap((selection) =>
+        getGeneratorSystemsForSelection(unit, selection),
+    )
 }
 
 export function getSelectedTags(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): string[] {

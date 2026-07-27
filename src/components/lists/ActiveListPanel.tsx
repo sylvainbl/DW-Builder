@@ -1,4 +1,15 @@
-import { AlertTriangle, BookOpenText, ChevronDown, ChevronRight, Download, Minus, Plus, Printer, X } from 'lucide-react'
+import {
+    AlertTriangle,
+    BookOpenText,
+    ChevronDown,
+    ChevronRight,
+    Download,
+    Minus,
+    Pencil,
+    Plus,
+    Printer,
+    X,
+} from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
 import type { ArmyBattlefleet, ArmyUnit, BattlefleetDefinition, BattlefleetIssue, Unit } from '../../types/index'
@@ -616,16 +627,23 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 className="w-full rounded border border-blue-200 px-2 py-1 text-sm font-semibold outline-none"
                             />
                         ) : (
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setDraftName(currentList.name)
-                                    setEditingName(true)
-                                }}
-                                className="max-w-full truncate text-left text-sm font-semibold text-neutral-900 hover:underline"
-                            >
-                                {currentList.name}
-                            </button>
+                            <div className="flex min-w-0 items-center gap-1.5">
+                                <div className="truncate text-sm font-semibold text-neutral-900">
+                                    {currentList.name}
+                                </div>
+                                <button
+                                    type="button"
+                                    title={`Rename ${currentList.name}`}
+                                    aria-label={`Rename ${currentList.name}`}
+                                    onClick={() => {
+                                        setDraftName(currentList.name)
+                                        setEditingName(true)
+                                    }}
+                                    className="flex h-6 w-6 flex-none items-center justify-center rounded-md text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-900"
+                                >
+                                    <Pencil size={12} />
+                                </button>
+                            </div>
                         )}
                         <div className="mt-1 text-[11px] text-neutral-500">{factionName}</div>
                         <div className="mt-2 inline-flex flex-wrap items-center gap-1">

@@ -1,5 +1,5 @@
 import type { ArmyUnit, NamedValue, Unit, UnitConfig } from '../types/index'
-import { getEffectiveGeneratorSelections, getSelectedOptionRuleEffects } from './optionRuleEffects'
+import { getSelectedGeneratorSystems, getSelectedOptionRuleEffects } from './optionRuleEffects'
 
 type SystemRuleTrigger = {
     factionId: string
@@ -48,7 +48,7 @@ function getModelSystemNames(unit: Unit, modelConfig: UnitConfig, unitConfig?: U
     const effects = getSelectedOptionRuleEffects(unit, modelConfig, unitConfig)
     return new Set([
         ...unit.systems.filter((system) => !effects.removedSystems.has(system.name)).map((system) => system.name),
-        ...getEffectiveGeneratorSelections(unit, modelConfig, unitConfig).map((selection) => selection.generatorName),
+        ...getSelectedGeneratorSystems(unit, modelConfig, unitConfig).map((system) => system.name),
         ...effects.systems.map((system) => system.name),
     ])
 }

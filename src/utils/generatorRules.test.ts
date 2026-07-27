@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import type { UnitConfig } from '../types/index'
-import { canSelectGeneratorInSlot, getGeneratorChoicesForSlot } from './generatorRules.ts'
+import { canSelectGeneratorInSlot, getGeneratorChoicesForSlot, withWeaponGeneratorSelection } from './generatorRules.ts'
 import generators from '../../public/data/generators.json' with { type: 'json' }
 
 const selections: NonNullable<UnitConfig['generatorSelections']> = [
@@ -31,6 +31,31 @@ test('the current ordinary generator remains available in its own slot', () => {
         choices.map((generator) => generator.name),
         ['Atomic Generator', 'Fury Generator'],
     )
+})
+
+test('selecting another weapon generator replaces the first selection for the model', () => {
+    const baseConfig: UnitConfig = {
+        hardpointSelections: {},
+        generatorSelection: null,
+        fleetDoctrineSelection: null,
+        optionQuantities: {},
+    }
+    const firstSelection: NonNullable<UnitConfig['generatorSelection']> = {
+        weaponIndex: 0,
+        generatorName: 'Solex Generator',
+        generatorCost: 10,
+    }
+    const secondSelection: NonNullable<UnitConfig['generatorSelection']> = {
+        weaponIndex: 1,
+        generatorName: 'Francisco Solex Generator',
+        generatorCost: 20,
+    }
+
+    const withFirstGenerator = withWeaponGeneratorSelection(baseConfig, firstSelection)
+    const withFranciscoGenerator = withWeaponGeneratorSelection(withFirstGenerator, secondSelection)
+
+    assert.deepEqual(withFranciscoGenerator.generatorSelection, secondSelection)
+    assert.equal(withFranciscoGenerator.generatorSelections, undefined)
 })
 
 test('each Entropic Generator offers the three weapon profiles required by its rule', () => {

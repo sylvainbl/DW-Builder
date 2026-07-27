@@ -5178,11 +5178,28 @@
         "tag": "GENERATOR"
       },
       {
-        "description": "Upgrade the model with a Francisco Solex Generator",
-        "cost_per_unit": 20,
-        "max": 3,
+        "description": "Replace the FPSA Heavy Hardpoint weapon with a Francisco Solex Generator; gains Generator Ship and Solex Generator",
+        "cost_per_unit": null,
+        "max": 1,
         "tag": "FRANCISCO_SOLEX_GENERATOR",
+        "applies_per_model": true,
+        "generator_replaces_weapon": true,
+        "generator_weapon_match": {
+          "name": "Heavy Gun Battery",
+          "arc": "FPSA",
+          "slot": "H"
+        },
+        "choices": [
+          {
+            "name": "Francisco Solex Generator",
+            "cost_per_unit": 20
+          }
+        ],
         "adds_systems": [
+          {
+            "name": "Generator Ship",
+            "value": null
+          },
           {
             "name": "Solex Generator",
             "value": null

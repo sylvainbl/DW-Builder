@@ -12,6 +12,7 @@ import { getBattlefleetAddedProperties, getBattlefleetAddedSystems } from './bat
 import { getArmyUnitFactionSpecialRules } from './factionSpecialRules'
 import {
     getEffectiveGeneratorSelections,
+    getSelectedGeneratorSystems,
     getSelectedOptionRuleEffects,
     getSelectedRemovedWeaponNames,
     mergeNamedValues,
@@ -86,9 +87,7 @@ function addEntryRules(
         addSrsProperties(ruleNames, unit, effectiveProperties)
 
         const generatorSelections = getEffectiveGeneratorSelections(unit, config, entry.config)
-        for (const generatorSelection of generatorSelections) {
-            ruleNames.systems.add(generatorSelection.generatorName)
-        }
+        addNamedValues(ruleNames.systems, getSelectedGeneratorSystems(unit, config, entry.config))
 
         const removedWeaponNames = getSelectedRemovedWeaponNames(unit, config, entry.config)
         unit.weapons.forEach((weapon, weaponIndex) => {

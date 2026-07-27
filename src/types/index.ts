@@ -40,6 +40,12 @@ export interface Weapon {
     qualities: NamedValue[]
 }
 
+export interface WeaponMatch {
+    name: string
+    arc?: string
+    slot?: string
+}
+
 export interface ShortRangeSquadron {
     name: string
     attack: number
@@ -59,6 +65,7 @@ export interface OptionUpgrade {
     mandatory?: boolean
     applies_per_model?: boolean
     generator_replaces_weapon?: boolean
+    generator_weapon_match?: WeaponMatch
     restrictions?: string[]
     adds_tags?: string[]
     removes_tags?: string[]

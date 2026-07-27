@@ -25,6 +25,7 @@ import { isAttachmentOption } from './attachments'
 import {
     formatOptionName,
     getEffectiveGeneratorSelections,
+    getSelectedGeneratorSystems,
     getSelectedOptionRuleEffects,
     getSelectedRemovedWeaponNames,
     mergeNamedValues,
@@ -142,11 +143,8 @@ function collectRulesForModel(
     ruleMap: Map<string, RuleReference>,
 ): void {
     const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entryConfig)
-    for (const generatorSelection of generatorSelections) {
-        addRule(ruleMap, 'systems', {
-            name: generatorSelection.generatorName,
-            value: null,
-        })
+    for (const system of getSelectedGeneratorSystems(unit, model.config, entryConfig)) {
+        addRule(ruleMap, 'systems', system)
     }
 
     const removedWeaponNames = getSelectedRemovedWeaponNames(unit, model.config, entryConfig)
@@ -221,11 +219,7 @@ function displayedProperties(unit: Unit, entry: ArmyUnit, units: Unit[], context
 
 function displayedSystems(unit: Unit, entry: ArmyUnit, units: Unit[], context?: PrintContext): NamedValue[] {
     const selectedGeneratorSystems = entry.models.flatMap((model) => {
-        const generatorSelections = getEffectiveGeneratorSelections(unit, model.config, entry.config)
-        return generatorSelections.map((generatorSelection) => ({
-            name: generatorSelection.generatorName,
-            value: null,
-        }))
+        return getSelectedGeneratorSystems(unit, model.config, entry.config)
     })
     const effects = selectedModelRuleEffects(unit, entry)
     return mergeNamedValues(
