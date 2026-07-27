@@ -1,4 +1,4 @@
-export interface RulebookIndexEntry {
+interface RulebookIndexEntry {
     label: string
     pages: string
     depth: 0 | 1 | 2

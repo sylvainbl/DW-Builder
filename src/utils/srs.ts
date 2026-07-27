@@ -27,7 +27,7 @@ function normalizeSrsTypeName(value: string): string {
     return normalized
 }
 
-export function getSrsTypeNames(unit: Unit, properties: NamedValue[] = unit.properties): string[] {
+function getSrsTypeNames(unit: Unit, properties: NamedValue[] = unit.properties): string[] {
     return properties
         .filter((property) => property.name === 'SRS' || property.name === 'Flight Deck')
         .flatMap(

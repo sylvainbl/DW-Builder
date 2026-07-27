@@ -331,7 +331,7 @@ export function findNormalizedMatch(text: string, query: string): TextMatch | nu
     }
 }
 
-export interface RuleTextListItem {
+interface RuleTextListItem {
     marker: string
     title: string
     paragraphs: string[]

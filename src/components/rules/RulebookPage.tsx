@@ -1,6 +1,6 @@
 import { BookOpen, ChevronRight, Menu, Search, X } from 'lucide-react'
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router'
 import {
     buildRulebookIndexes,
     buildRulebookSearchIndex,

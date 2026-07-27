@@ -1,6 +1,6 @@
 import type { FleetDoctrine, Unit } from '../types/index'
 
-export function unitCanTakeFleetDoctrine(unit: Unit): boolean {
+function unitCanTakeFleetDoctrine(unit: Unit): boolean {
     return unit.role === 'Flagship' || unit.tags.includes('Flagship')
 }
 

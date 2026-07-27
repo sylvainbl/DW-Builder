@@ -10,7 +10,7 @@ export function getMinimumModelsForUnit(unit: Unit): number {
     return Math.max(1, unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
 }
 
-export function getMaximumModelsForUnit(unit: Unit): number {
+function getMaximumModelsForUnit(unit: Unit): number {
     return Math.max(
         getMinimumModelsForUnit(unit),
         unit.max ?? (typeof unit.models === 'number' ? unit.models : getMinimumModelsForUnit(unit)),
@@ -39,7 +39,7 @@ export function getAttachmentModelLimitForUnit(unit: Unit): number {
     return getMaximumModelsForUnit(unit)
 }
 
-export function getPositionalTraits(tags: string[]): string[] {
+function getPositionalTraits(tags: string[]): string[] {
     return tags
         .map((tag) => tag.toLowerCase())
         .filter((tag) => POSITIONAL_TRAITS.has(tag))

@@ -1,4 +1,4 @@
-export const roleTagOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
+const roleTagOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
 
 export function getRoleSortRank(role: string): number {
     const index = roleTagOrder.indexOf(role)

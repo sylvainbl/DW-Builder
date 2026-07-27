@@ -19,6 +19,7 @@ import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/atta
 import { getSelectedTags } from '../utils/optionRuleEffects'
 import { canSelectGeneratorInSlot } from '../utils/generatorRules'
 import { normalizeSavedListsIndependently } from '../utils/listNormalization'
+import { normalizeLegacyFactionId, normalizeLegacyUnitId } from '../utils/storageMigration'
 import { isUnitSelectable } from '../utils/unitHelpers'
 import { uuid } from '../utils/uuid'
 
@@ -97,23 +98,6 @@ interface AppStore {
 
 function cloneConfig(config: UnitConfig): UnitConfig {
     return structuredClone(config)
-}
-
-function normalizeFactionId(id: string): string {
-    if (id === 'Alliance') return 'alliance'
-    if (id === 'Crown') return 'crown'
-    if (id === 'Imperium') return 'imperium'
-    if (id === 'Empire') return 'empire'
-    if (id === 'Enlighted' || id === 'enlighted' || id === 'Enlightened') return 'enlightened'
-    return id
-}
-
-function normalizeUnitId(id: string): string {
-    if (id.startsWith('Alliance_')) return `alliance_${id.slice('Alliance_'.length)}`
-    if (id.startsWith('Crown_')) return `crown_${id.slice('Crown_'.length)}`
-    if (id.startsWith('Imperium_')) return `imperium_${id.slice('Imperium_'.length)}`
-    if (id.startsWith('Empire_')) return `empire_${id.slice('Empire_'.length)}`
-    return id
 }
 
 function normalizeConfig(config: Partial<UnitConfig> | null | undefined): UnitConfig {
@@ -303,7 +287,7 @@ function countAttachedModels(entries: ArmyUnit[], unitId: string): number {
 }
 
 function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
-    const unitId = normalizeUnitId(entry.unitId)
+    const unitId = normalizeLegacyUnitId(entry.unitId)
     const unit = units.find((item) => item.id === unitId)
     if (!unit) return null
     const legacy = entry as ArmyUnit & {
@@ -359,7 +343,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
 }
 
 function normalizeBattlefleets(list: ArmyList, definitions: BattlefleetDefinition[]): ArmyBattlefleet[] {
-    const factionId = normalizeFactionId(list.faction_id)
+    const factionId = normalizeLegacyFactionId(list.faction_id)
     const validDefinitionIds = new Set(
         definitions
             .filter((definition) => isBattlefleetAvailableForFaction(definition, factionId))
@@ -408,7 +392,7 @@ async function fetchBuilderData<T>(path: string): Promise<T> {
 
 function normalizeLists(lists: ArmyList[], units: Unit[], definitions: BattlefleetDefinition[]): ArmyList[] {
     return normalizeSavedListsIndependently(
-        lists.map((list) => ({ ...list, faction_id: normalizeFactionId(list.faction_id) })),
+        lists.map((list) => ({ ...list, faction_id: normalizeLegacyFactionId(list.faction_id) })),
         (list) => {
             const normalizedList = {
                 ...list,

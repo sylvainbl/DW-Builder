@@ -1,7 +1,7 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
-import { computeArmyUnitTotal, updateArmyUnitTotals } from './pointsCalc'
-import { selectStoredListsValue } from './storageMigration'
-import { uuid } from './uuid'
+import { computeArmyUnitTotal, updateArmyUnitTotals } from './pointsCalc.ts'
+import { normalizeLegacyFactionId, normalizeLegacyUnitId, selectStoredListsValue } from './storageMigration.ts'
+import { uuid } from './uuid.ts'
 
 const STORAGE_KEY = 'dw-builder-lists-v1'
 const LEGACY_STORAGE_KEY = 'dw-builder-lists'
@@ -10,23 +10,6 @@ const emptyUnitConfig: UnitConfig = {
     generatorSelection: null,
     fleetDoctrineSelection: null,
     optionQuantities: {},
-}
-
-function normalizeFactionId(id: string): string {
-    if (id === 'Alliance') return 'alliance'
-    if (id === 'Crown') return 'crown'
-    if (id === 'Imperium') return 'imperium'
-    if (id === 'Empire') return 'empire'
-    if (id === 'Enlighted' || id === 'enlighted' || id === 'Enlightened') return 'enlightened'
-    return id
-}
-
-function normalizeUnitId(id: string): string {
-    if (id.startsWith('Alliance_')) return `alliance_${id.slice('Alliance_'.length)}`
-    if (id.startsWith('Crown_')) return `crown_${id.slice('Crown_'.length)}`
-    if (id.startsWith('Imperium_')) return `imperium_${id.slice('Imperium_'.length)}`
-    if (id.startsWith('Empire_')) return `empire_${id.slice('Empire_'.length)}`
-    return id
 }
 
 function safeParseLists(raw: string | null): ArmyList[] {
@@ -40,9 +23,14 @@ function safeParseLists(raw: string | null): ArmyList[] {
 }
 
 export function loadListsFromStorage(): ArmyList[] {
-    return safeParseLists(
-        selectStoredListsValue(localStorage.getItem(STORAGE_KEY), localStorage.getItem(LEGACY_STORAGE_KEY)),
-    )
+    try {
+        return safeParseLists(
+            selectStoredListsValue(localStorage.getItem(STORAGE_KEY), localStorage.getItem(LEGACY_STORAGE_KEY)),
+        )
+    } catch {
+        console.warn('Could not load lists from localStorage')
+        return []
+    }
 }
 
 export function saveListsToStorage(lists: ArmyList[]): void {
@@ -190,10 +178,12 @@ function normalizeImportedBattlefleets(value: unknown): ArmyBattlefleet[] {
     })
 }
 
-function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
-    const unitId = normalizeUnitId(entry.unitId)
+function normalizeImportedEntry(entry: unknown, units: Unit[]): ArmyUnit[] {
+    if (!isObject(entry) || typeof entry.unitId !== 'string' || !isUnitConfig(entry.config)) return []
+
+    const unitId = normalizeLegacyUnitId(entry.unitId)
     const unit = units.find((item) => item.id === unitId)
-    if (!unit || !isUnitConfig(entry.config)) return []
+    if (!unit) return []
     const normalized: ArmyUnit = {
         instanceId: uuid(),
         unitId,
@@ -205,7 +195,9 @@ function normalizeImportedEntry(entry: ArmyUnit, units: Unit[]): ArmyUnit[] {
         config: normalizeUnitConfig(entry.config),
         models: makeImportedModels(unit, entry.config, entry.models),
         totalPoints: 0,
-        attachedUnits: (entry.attachedUnits ?? []).flatMap((attachment) => normalizeImportedEntry(attachment, units)),
+        attachedUnits: Array.isArray(entry.attachedUnits)
+            ? entry.attachedUnits.flatMap((attachment) => normalizeImportedEntry(attachment, units))
+            : [],
     }
     normalized.totalPoints = computeArmyUnitTotal(normalized, units)
     return [normalized]
@@ -218,7 +210,7 @@ function normalizeImportedList(list: ArmyList, units: Unit[]): ArmyList {
     const normalizedList = {
         id: uuid(),
         name: list.name || 'Imported list',
-        faction_id: normalizeFactionId(list.faction_id),
+        faction_id: normalizeLegacyFactionId(list.faction_id),
         battlefleets,
         units: entries,
         createdAt: now,
@@ -244,7 +236,7 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
     }
 
     const now = new Date().toISOString()
-    const factionId = normalizeFactionId(data.faction)
+    const factionId = normalizeLegacyFactionId(data.faction)
     const battlefleets = normalizeImportedBattlefleets(data.battlefleets)
     const entries: ArmyUnit[] = data.units.flatMap((entry) => {
         if (!isObject(entry) || typeof entry.name !== 'string' || !isUnitConfig(entry.config)) return []

@@ -1,6 +1,6 @@
 import type { Generator, UnitConfig } from '../types/index'
 
-export const REPEATABLE_GENERATOR_NAMES = new Set(['Entropic Generator'])
+const REPEATABLE_GENERATOR_NAMES = new Set(['Entropic Generator'])
 
 export function canSelectGeneratorInSlot(
     selections: NonNullable<UnitConfig['generatorSelections']>,

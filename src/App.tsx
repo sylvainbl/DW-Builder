@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 import { useAppStore } from './store'
 import AppShell from './components/layout/AppShell'
-import './index.css'
 import './theme.css'
 
 function App() {

@@ -52,9 +52,7 @@ function saveSecretTheme(active: boolean): void {
 }
 
 export default function AppHeader({ activeView, onShowLists, onShowRules, onShowUnits }: AppHeaderProps) {
-    const [builderName, setBuilderName] = useState(() =>
-        loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DW Builder',
-    )
+    const [builderName, setBuilderName] = useState(() => (loadStoredSecretTheme() ? 'ZIGOUBUILDER' : 'DW Builder'))
     const [theme, setTheme] = useState<Theme>(() => (loadStoredSecretTheme() ? 'turquoise-orange' : loadStoredTheme()))
     const [turquoiseThemeUnlocked, setTurquoiseThemeUnlocked] = useState(loadStoredSecretTheme)
     const [settingsOpen, setSettingsOpen] = useState(false)

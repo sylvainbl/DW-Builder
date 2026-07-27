@@ -21,7 +21,7 @@ export interface RulebookManifest {
     modules: RulebookManifestModules
 }
 
-export interface RuleSource {
+interface RuleSource {
     documentId: string
     printedPages: number[]
     pdfPages: number[]
@@ -56,7 +56,7 @@ export interface RulebookSection {
     tableIds: string[]
 }
 
-export interface RuleNote {
+interface RuleNote {
     id: string
     type: string
     title: string | null
@@ -80,7 +80,7 @@ export interface RuleBlock {
 export type RuleTableValue = string | number | boolean | null | undefined
 export type RuleStructuredValue = RuleTableValue | string[]
 
-export interface RuleTableColumn {
+interface RuleTableColumn {
     id: string
     title: string
     type: string
@@ -137,7 +137,7 @@ export interface RuleToken {
     tracking?: Record<string, RuleStructuredValue>
 }
 
-export interface CriticalDamageEffect {
+interface CriticalDamageEffect {
     id: string
     name: string
     source: RuleSource
@@ -145,7 +145,7 @@ export interface CriticalDamageEffect {
     structuredEffect: Record<string, RuleStructuredValue>
 }
 
-export interface TerrainSharedRule {
+interface TerrainSharedRule {
     id: string
     name: string
     ruleBlockId: string
@@ -202,12 +202,12 @@ export interface TerrainMarker {
     onTrigger?: Record<string, RuleStructuredValue>
 }
 
-export interface EncounterDiagram {
+interface EncounterDiagram {
     visualId: string
     assetReference: string
 }
 
-export interface EncounterObjective {
+interface EncounterObjective {
     id: string
     tier: string
     role: string
@@ -216,7 +216,7 @@ export interface EncounterObjective {
     text: string
 }
 
-export interface EncounterAdditionalRule {
+interface EncounterAdditionalRule {
     id: string
     name: string
     text: string
@@ -259,7 +259,7 @@ export interface CuratedVisual {
     relatedEncounterIds?: string[]
 }
 
-export interface PageReferenceLink {
+interface PageReferenceLink {
     id: string
     sourcePrintedPage: number
     label: string
@@ -268,7 +268,7 @@ export interface PageReferenceLink {
     targetRuleBlockId?: string
 }
 
-export interface SemanticLink {
+interface SemanticLink {
     id: string
     from: string
     to: string
@@ -298,7 +298,7 @@ export interface RulebookData {
     visuals: CuratedVisual[]
 }
 
-export type RuleSearchResultKind = 'section' | 'rule' | 'procedure' | 'action' | 'token' | 'terrain' | 'encounter'
+type RuleSearchResultKind = 'section' | 'rule' | 'procedure' | 'action' | 'token' | 'terrain' | 'encounter'
 
 export interface RuleSearchResult {
     id: string

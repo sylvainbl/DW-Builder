@@ -24,7 +24,7 @@ export function formatOptionName(option: Pick<OptionUpgrade, 'tag'> & { display_
     )
 }
 
-export function emptyOptionRuleEffects(): OptionRuleEffects {
+function emptyOptionRuleEffects(): OptionRuleEffects {
     return {
         properties: [],
         systems: [],
@@ -113,7 +113,7 @@ export function getSelectedRemovedWeaponNames(
     return removedWeapons
 }
 
-export function isWeaponRemovedBySelectedOptions(
+function isWeaponRemovedBySelectedOptions(
     unit: Unit,
     weaponIndex: number,
     modelConfig: UnitConfig,
@@ -123,7 +123,7 @@ export function isWeaponRemovedBySelectedOptions(
     return Boolean(weapon && getSelectedRemovedWeaponNames(unit, modelConfig, unitConfig).has(weapon.name))
 }
 
-export function unitUsesSystemGeneratorMount(unit: Unit): boolean {
+function unitUsesSystemGeneratorMount(unit: Unit): boolean {
     return unit.options_and_upgrades.some((option) => option.generator_replaces_weapon === false)
 }
 

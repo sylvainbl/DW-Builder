@@ -1,6 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { lazy, Suspense, useEffect, useRef, useState, type UIEvent } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router'
 import { useAppStore } from '../../store'
 import ListsPanel from '../lists/ListsPanel'
 import UnitDetail from '../unit/UnitDetail'

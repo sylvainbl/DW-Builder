@@ -1,5 +1,5 @@
 import { BookOpen, ChevronDown, ChevronRight, Compass, Map as MapIcon, ShieldCheck, ShipWheel } from 'lucide-react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { formatIdentifier, getProcedureStepText, getRulebookHref } from '../../rulebook/data'
 import type { RulebookIndexes } from '../../rulebook/data'
 import type {

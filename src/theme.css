@@ -105,10 +105,6 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
-.unit-detail-line {
-    border-color: rgb(var(--navy-rgb) / 0.12);
-}
-
 .unit-detail-rule-row {
     display: inline-flex;
     max-width: 100%;

@@ -1,9 +1,9 @@
 import type { ArmyList, ArmyUnit, OptionUpgrade, Unit, UnitConfig } from '../types/index'
-import { isAttachmentOption } from './attachments'
-import { isUnitLevelOption } from './optionConfig'
-import { getEffectiveGeneratorSelections } from './optionRuleEffects'
+import { isAttachmentOption } from './attachments.ts'
+import { isUnitLevelOption } from './optionConfig.ts'
+import { getEffectiveGeneratorSelections } from './optionRuleEffects.ts'
 
-export { isUnitLevelOption } from './optionConfig'
+export { isUnitLevelOption } from './optionConfig.ts'
 
 const CHITA_SWARM_BATTLEFLEET_ID = 'empire-chita-swarm'
 const CHITA_SWARM_FIRST_ESCORT_COST = 5

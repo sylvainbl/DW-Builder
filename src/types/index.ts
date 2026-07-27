@@ -25,7 +25,7 @@ export interface NamedValue {
     detail?: string
 }
 
-export interface Firepower {
+interface Firepower {
     C: number | null
     S: number | null
     E: number | null
@@ -91,7 +91,7 @@ export interface FleetDoctrine {
 }
 
 export type BattlefleetType = 'main' | 'specialist'
-export type BattlefleetIssueSeverity = 'error' | 'warning'
+type BattlefleetIssueSeverity = 'error' | 'warning'
 
 export interface BattlefleetRequirement {
     all?: string[]
@@ -107,12 +107,12 @@ export interface BattlefleetElement {
     requirements: BattlefleetRequirement[]
 }
 
-export interface BattlefleetAdditionalMainstay {
+interface BattlefleetAdditionalMainstay {
     flagshipUnitIds: string[]
     classNames: string[]
 }
 
-export interface BattlefleetBonus {
+interface BattlefleetBonus {
     name: string
     text: string
 }
