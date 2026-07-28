@@ -634,10 +634,7 @@
       "mainText": "THE PLAY AREA\n\nThe area in which the game takes place is called the Play Area. This is a rectangular area, measuring at least 36” x 48”. The exact dimensions are not set, but each Engagement Scale has a recommended Play Area size.\n\nEDGES AND DEPLOYMENT ZONES\n\nThe four edges of the Play Area act as boundaries during play. Models cannot move past these edges, although sometimes models can move on from them (for example, when arriving from Reserve 2).\n\nTwo opposite edges of the Play Area are Controlled Edges, one belonging to each Admiral. The other two edges are Neutral Edges.\n\nAt the start of a game, each Admiral will deploy their Force in their Deployment Zone. The exact dimensions of an Admiral’s Deployment Zone are detailed in the chosen Encounter, but it usually extends out into the Play Area from their Edge.\n\nFirst Admiral’s Edge\n\nFirst Admiral’s Deployment Zone\n\nNeutral Edge\n\nSecond Admiral’s Deployment Zone\n\nSecond Admiral’s Edge",
       "mainTextHash": "f3f5ba85bac24ad98eb5b71f27836784bc3ef607bbce64856203be34733653f4",
       "figurePageId": "figure-page-017",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.play-area-edges-and-deployment-zones"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 18,
@@ -690,9 +687,6 @@
       "pageReferenceIds": [
         "page-reference-004",
         "page-reference-005"
-      ],
-      "curatedVisualIds": [
-        "visual.quadrants-and-halves"
       ]
     },
     {
@@ -967,10 +961,7 @@
       "mainText": "MEASURING DISTANCES\n\nAll distances in Dystopian Wars are measured in inches (“). Any vertical distances are ignored; in effect, the Play Area is treated as a flat horizontal plane. Admirals are free to measure distances at any time, and without restriction.\n\nWhen measuring a distance between two models, Markers or Terrain Features 1, measure between the closest points of each - including the base, if the model has one.\n\nIf a rule requires a model to be “within” a certain distance of a specific point, only the closest part of the model needs to be within this distance. However, if a rule requires a model to be “entirely within” a certain distance, every part of the model must be within this distance.\n\nATTACK RANGES\n\nWhen a unit makes an Attack action 2, it is important to know how far the Target Model is from each model that is Participating in the attack, as the effectiveness of a model’s weapons will often vary depending on the distance to the target.\n\nDistances are divided into three Range Bands: Close, Standard and Extreme. Measure the distance between the Target Model and each Participating model to determine the Range Band.\n\nUP TO 10”\n\n10” - 30”\n\nMORE THAN 30”\n\nCLOSE RANGE\n\nSTANDARD RANGE\n\nEXTREME RANGE\n\nIf the distance to the Target Model falls exactly between two Range Bands (i.e. it is exactly 10” or 30” away), the active Admiral can choose which one applies.)\n\nGE\n\nAN E R\n\nEM\n\nTR (EX\n\n''+",
       "mainTextHash": "24bc765118f94da7d7979b8bda90bc0e9c91b1b67c5b43a760ab0a852cbefbd5",
       "figurePageId": "figure-page-024",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.range-bands"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 25,
@@ -1023,9 +1014,6 @@
       "pageReferenceIds": [
         "page-reference-012",
         "page-reference-013"
-      ],
-      "curatedVisualIds": [
-        "visual.proximity"
       ]
     },
     {
@@ -1691,10 +1679,7 @@
       "mainText": "OBSCURED TARGETS\n\nOnce it has been established that the target is Visible, the opposing Admiral then checks to see whether the active model’s Visibility is Obscured.\n\nVisibility is Obscured if it is not possible to trace a straight line from the Centre Point of the active model to every part of the Target model without passing through at least one other model or Terrain Feature. These other models or Terrain Features are Obscuring the active model’s Visibility.\n\nWhen a model is Participating in an Attack action, and its Visibility is Obscured, the opposing Admiral adds Bonus Dice to their Resistance Pool 6 equal to the Mass of the largest Obscuring model or Terrain Feature, making the attack less effective. The opposing Admiral does this for every Participating model whose Visibility is Obscured.\n\nLooking at the second example, overleaf (fig. B), the Rurik is Visible to the Hypatia, but its Visibility is Obscured by the Kutsov. As the Kutsov has a Mass of 3, the opposing player would add 3 dice to their Resistance Roll.\n\nIn the third example on (fig. C), the Rurik Freighters are obscuring the Hypatia’s Visibility. Even though there are two of them, only the single largest model is used to determine how many dice are added to the Resistance Pool; Fig. each D Frigate has a Mass of 1, so 1 die is added.\n\nIn the example below (fig. D), a unit of three Rurik Frigates is attacking the lone Merian Automata Frigate. One Rurik has clear Visibility, as a line can be traced from its Centre Point to every point of the Merian without passing through any other models. However, each of the other two Ruriks have their Visibility Obscured by a Kutsov Cruiser (Mass 3). This adds a total of 6 dice to the Resistance Pool - 3 for each Rurik whose Visibility is Obscured.",
       "mainTextHash": "c04ed26909af39b3ed3c2179037ee9471f0bf84891649ce46b765fa437195bac",
       "figurePageId": "figure-page-041",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.visibility-multiple-participants"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 42,
@@ -1749,9 +1734,6 @@
       "pageReferenceIds": [
         "page-reference-024",
         "page-reference-025"
-      ],
-      "curatedVisualIds": [
-        "visual.moving-models"
       ]
     },
     {
@@ -2085,10 +2067,7 @@
       "mainText": "For example, the Active Admiral has made the Action Roll, scoring 2 Exploding Strikes (fig. A). This lets them roll 2 additional Action Dice.\n\nRolling the dice, they score a Heavy Counter and another Exploding Strike (fig. B). This grants one additional die, so they roll it, scoring a Heavy Strike (fig. C). As there are no new Exploding Strikes, no more dice are rolled.\n\n3) RESOLVE RE-ROLLS\n\nrules that allow dice in either pool to be Re-rolled (such as Properties 2 or Valour Effects) are resolved now. Dice cannot be Re-rolled at any other stage in the Action Roll, unless specifically stated otherwise.\n\nContinuing the previous example, the active Admiral plays the Fortune Smiles Valour Effect, which allows them to re-roll all Blanks in the Action Roll.\n\nThey pick up both dice that scored a Blank result (fig. D), and re-roll them - scoring an Exploding Strike and a Heavy Counter (Fig. E)\n\nNote that, as the Resolve Exploding Dice step has already passed, the Exploding Strike does not grant an additional die.",
       "mainTextHash": "486dd92dd3b3c7c51096aee4d0bac45ceeb3c5fffbb098934798ed4d9edf234a",
       "figurePageId": "figure-page-049",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.exploding-strikes-and-rerolls"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 50,
@@ -2123,10 +2102,7 @@
       "mainText": "4) COUNT HITS\n\nactive Admiral removes all Blanks and all Counters from the Action Roll, and tallies their Hits. They score 1 Hit for each Standard Strike, and 2 Hits for each Heavy or Exploding Strike.\n\nthere is a Resistance Roll then each Standard Counter negates 1 Hit, and each Heavy Counter negates 2 Hits. The active Admiral removes dice from the Action Roll to reflect this.\n\nIf necessary, a Heavy or Exploding Strike can be replaced with a Standard Strike to remove a single Hit from the roll - at this point, the icons on the dice do not matter, only the number of Hits scored.",
       "mainTextHash": "f14fc99415db63d0f739a1b847b034ce7c8761f0299dfe4a4cf6f968734bf04b",
       "figurePageId": "figure-page-050",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.counting-hits-and-counters"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 51,
@@ -2161,10 +2137,7 @@
       "mainText": "5) RESOLVE OUTCOMES\n\nactive Admiral groups the dice in the Action Roll, so that each group contains a number of Hits equal to the Success Threshold (as shown on the Action Roll Chart). As in the previous step, only the number of Hits in the roll matters, so a Heavy or Exploding Strike can be replaced with a pair of Standard Strikes if this makes the Hits easier to group.\n\ncomplete group scores a Success. Any Hits left over are disregarded without effect.\n\nAction Roll is resolved according to the rules that called for the roll, with the number of Successes affecting the outcome in some way.\n\nThe Success Threshold for this Action Roll is 4, and the Action Roll contains 2 Exploding Strikes, 2 Heavy Strikes and 3 Standard Strikes (fig. I).\n\nThe active Admiral groups the dice so that there are 4 Hits in each group (fig. J). There are two complete groups, so the Action Roll has scored 2 Successes. The ungrouped dice (a Standard Strike and a Heavy Strike) are disregarded.\n\nFig.",
       "mainTextHash": "4105bd292530ee4ed72a733cdebfe6c40e298e4f1273b608f507c6aaa5919409",
       "figurePageId": "figure-page-051",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.grouping-hits-into-successes"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 52,
@@ -2402,9 +2375,6 @@
         "page-reference-038",
         "page-reference-039",
         "page-reference-040"
-      ],
-      "curatedVisualIds": [
-        "visual.damage-tokens"
       ]
     },
     {
@@ -2503,9 +2473,6 @@
         "page-reference-041",
         "page-reference-042",
         "page-reference-043"
-      ],
-      "curatedVisualIds": [
-        "visual.disorder-tokens"
       ]
     },
     {
@@ -3807,10 +3774,7 @@
       "mainText": "5. Disengage\n\ntarget model moves 1” directly backwards. If it comes into contact with another model or Terrain Feature 6, it stops moving, but no Collision is resolved.\n\nIn this example, a Union Admiral has moved their Defiant Destroyer into contact with a Kutsov Cruiser (fig. A). The Admiral declares a Ram, and passes a Crew Check for the Defiant.\n\nBoth models gain a level of Disorder. Then, the Admiral gathers their Action Pool. The Defiant has a Hull rating of 6, so they start with six Action Dice. It moved 8” before coming into contact with the Kutsov, so it gains the full five Bonus Dice.\n\nThe Admiral rolls the eleven dice, resolving Exploding Strikes and re-rolls as normal. The result is 8 Hits - two Standard Strikes, a Heavy Strike and two Exploding Strikes (fig. B).\n\nThe Resolve Outcomes step is resolved separately for each model. The Kutsov has a Mass of 3, so the dice in the pool are arranged into two Groups of 3 Hits each (with 2 hits left over). This means the Kutsov suffers 2 Damage (fig. C). The Defiant has a Mass of 2, so the dice are rearranged into three Groups of 2 Hits each (with no dice left over). This means the Defiant suffers 4 Damage (fig. D).\n\nFinally, the Kutsov is moved 1” backwards (fig. E).\n\nCONSEQUENCES OF RAMMING\n\nIf a model attempts a Ram during its Movement Step, it cannot Participate 8 in any Actions in the subsequent Action Step - even if the Crew Check fails and the Ram is resolved as a Collision.",
       "mainTextHash": "92f0625a4d3ead697549e18613ed81d0e38b412884fc999aeaf556588d2dd3d2",
       "figurePageId": "figure-page-085",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.ramming-worked-example"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 86,
@@ -4010,10 +3974,7 @@
       "mainText": "DESTROYED MODELS\n\nSome rules cause a model to be Destroyed. When a model is Destroyed, it is immediately removed from play, whether it is Battle- Ready or Crippled.\n\nDestroying a Battle-Ready model counts as Crippling it for the purposes of any rules that trigger when a model is Crippled. For example, if a Battle-Ready model is Destroyed, the opposing Admiral immediately scores Victory Points equal to its Victory Points Rating 6.\n\nCRITICAL DAMAGE\n\nModels can suffer Critical Damage in a number of ways, including suffering Damage when they are already Crippled.\n\nWhen a model suffers Critical Damage, the opposing Admiral rolls a Critical Damage Die, and the resulting Critical Damage Effect is inflicted on the model. Track this by placing a matching Critical Damage token in contact with the model.\n\nIf a model suffers more than one Critical Damage Effect at the same time, the opposing Admiral rolls a number of dice equal to the amount of Critical Damage suffered, all at the same time.\n\nIf a rule states that a model suffers a specific Critical Damage Effect, no dice roll is required - the named Effect is simply inflicted on the model.\n\nDESIGNERS’ NOTE\n\nSTACKING EFFECTS\n\nA model can have more than one instance of the same Critical Damage Effect at the same time. Most Critical Damage Effects are worse when a model has more than one - for example, three Breach Effects will deal 3 Damage in the Consolidation Step. However, some impose the same penalty no matter how many instances a model might have. Having three System Failure Effects is still considerably worse than having one, as it will take longer to repair. Multiple instances of the same Effect also count as separate Effects for the purposes of determining whether a Crippled model suffers a Catastrophic Explosion 7.\n\nTo prevent clutter, Critical Damage tokens are double-sided. The reverse (marked “x ” can be used to indicate 2 instances of the same Critical Damage Effect.\n\nIn this example, the Kutsov Cruiser currently has a Hazard effect and 2 Shredded Defences effects. For a total of 3 Critical Damage Effects.",
       "mainTextHash": "9f6928d3d222453d617a3cec4a2136ae16bf44294aff0bc2b6b3a7c2a2a607de",
       "figurePageId": "figure-page-089",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.critical-damage-token-icons"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 90,
@@ -4376,10 +4337,7 @@
       "mainText": "(If the previous Initial Target was Destroyed, the new Initial Target should be chosen before it is removed from play.) The normal rules for choosing a Target, nominating Participating models, and declaring Contributing weapons still apply.\n\nIn total, the Attack action can be resolved up to X times. If weapons with different Torrent (X) values are contributing to the Action, the lowest X value among them is used.\n\nThis sequence of repeated Attack actions is called a Torrent, and only counts as a single Action for the purposes of the unit’s Action Limit. A weapon can Contribute to multiple Actions within a single Torrent.\n\nA model cannot gain more than 1 Disorder 13 due to the Under Fire 14 rule from a single Torrent, even if it is chosen as the Initial Target more than once.\n\nIn this example,a unit of three Lovelace Cruisers each has a single weapon with a Firepower rating of 4 / 0 / 0 and the Torrent (3) quality.\n\nThe Admiral chooses the lead Boyar Frigate (B1) as the first Initial Target, and declares that all three Torrent weapons will Contribute for a total of 12 Action Dice. After inflicting Damage, they continue the Torrent by choosing another Initial Target. They could choose Boyars B1, B2 or B3, but not B4 as it is more than 4” away from B1. They decide to target B2. Again, all three Torrent weapons can Contribute, so they make another Action Roll with 12 dice.\n\nFor their third and final target, they can choose any one of the Boyar Frigates, as B1, B3 and B4 are all within 4” of B3. They decide to target B4. However, Lovelace L3 is more than 10” away from B4 so the Action Roll is made using only 8 dice.\n\nNote that even though they have resolved the Attack action three times, they have still only spent one of their Actions for this Action Step.\n\nAerial Admiral Viktor Blomqvist",
       "mainTextHash": "3802dc39f50b6f5cf4554d32b4db7f9c34f7cbe5246e26e4fd0bd1d9ec87868c",
       "figurePageId": "figure-page-095",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.aerial-weapon-target-sequence"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 96,
@@ -4577,10 +4535,7 @@
       "mainText": "5. RESOLVE ADDITIONAL TARGETS\n\nThe Admiral repeats stages 2 to 4 as many times as they wish. Each enemy model can only be chosen to be the Target once per Broadside action.\n\nIn this example, a unit of Kutsov Cruisers is making a Broadside action. The active Admiral chooses Sigimer Destroyer S1 as the first Target, and determines which of the Kutsovs’ batteries will Contribute. All of them have the same Positional Trait (Surface) as the Sigimer, but it is in Kutsov K4 Fore arc, so K4 cannot Contribute. The Kutsovs have a Broadside rating of 2, so the Broadside roll is made on six dice (two each for K1, K2 and K3).\n\nAfter the roll has been resolved, the Admiral chooses Sigimer S2 as their second Target. This time, K1 is more than 4” away, and K2’s Visibility is Obscured, so only K3’s batteries can Contribute. The Broadside Roll is made on two dice.\n\nSigimer S3 is more than 4” away from any of the Kutsovs, so cannot be chosen as a Target.",
       "mainTextHash": "ad9ad6f951408209c6397c14466dcb4b36b3fef1a95c2bcb48865100740ff169",
       "figurePageId": "figure-page-099",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.broadside-additional-targets"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 100,
@@ -4797,10 +4752,7 @@
       "mainText": "ESCORTS\n\nA Force is often accompanied by small defensive vessels, from patrol boats, to hovercraft, to defensive balloons and even more esoteric craft. These are all represented in play by Escort tokens, which can be added to units during Force Selection 3.\n\nThe following rules apply to any unit that has one or more Escort tokens.\n\nDEFENSIVE FIRE\n\nWhen a model is targeted by an Attack action 4, Boarding action 5 or Attack Run mission 6, each Escort token allocated to the model’s unit adds 1 Bonus Die to the Resistance Pool 7.\n\nHEROIC SACRIFICE\n\nInstead of adding 1 Action Die to a Resistance Pool, an Admiral can discard the Escort token to add 3 Action Dice.\n\nCOLLATERAL DAMAGE\n\nIf a model suffers a Catastrophic Explosion 8, the opposing Admiral rolls a die for each Escort token accompanying its unit. On a Strike, the Escort token is removed from play.\n\nWhen the last model in a unit is Destroyed 9 or Withdraws 10, all of its Escort tokens are immediately removed from play.",
       "mainTextHash": "8cd76d286a205fbe9aeb8c98de188c42c8a8a20e33389244d875646c40271af1",
       "figurePageId": "figure-page-104",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.escort-tokens"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 105,
@@ -4853,9 +4805,6 @@
       "pageReferenceIds": [
         "page-reference-116",
         "page-reference-117"
-      ],
-      "curatedVisualIds": [
-        "visual.raiding-parties"
       ]
     },
     {
@@ -5350,10 +5299,7 @@
       "mainText": "INTERCEPTING MIXED STACKS\n\nIf an Interception Attempt is resolved against an SRS Stack composed of two or more different types of SRS token, the Resolve Outcomes step of the Action Roll is carried out a little differently than normal.\n\nFirst, the active Admiral selects one type of squadron from their Stack. The opposing Admiral groups the Hits according to that squadron type’s Resilience rating. In this way, the active Admiral can attempt to screen a high Attack squadron with a high Resilience squadron. For each Success, one token of the chosen type is discarded.\n\nIf, after every token of this squadron type is removed, there are still Hits remaining in the Action Roll, the active Admiral chooses another squadron type from the Stack. The process is repeated using that squadron type’s Resilience rating until either there are no Hits left in the Action Roll scoring Successes or there are no SRS tokens left in the Stack.\n\nIn this example, the Enlightened Admiral’s Scythe Drone Stack is resolving an Interception Attempt against their Commonwealth opponent’s Stack of 5 Kometa Interceptor Squadrons (Resilience 3) and 2 Sz pada Swordwing Squadrons (Resilience 4). The Enlightened Admiral’s Action Roll has scored 15 Hits (fig. E).\n\nThe Commonwealth Admiral decides to nominate the Sz pada Swordwings first. Their opponent creates two groups of 4 Hits each, and both Sz pada Swordwings are discarded (fig. F). Only the Kometa Squadrons remain, so the remaining 7 Hits are grouped according to their Resilience rating of 3. This creates two groups, so 2 Kometa Squadrons are discarded (fig. G).\n\nBeneath a swarm of Scythe Fighters, an Icarus Aeronautic Fabricator leads the forces of the Enlightened from their Antarctic bases, powered by alien technologies and the advanced sciences of the Custodians.",
       "mainTextHash": "8d64e3bb927129648c5b1f461a533ad336348dec7c8a42b80b8cbb7bdc8b14dc",
       "figurePageId": "figure-page-115",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.interception-worked-example"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 116,
@@ -5749,10 +5695,7 @@
       "mainText": "MARKERS\n\nThe Admirals may be instructed by the rules for an Encounter to add certain Markers to the Play Area. Their Force might also contain units whose Properties allow them to add additional Markers.\n\nUnless otherwise stated, Markers do not have a Mass rating, and do not Block 4 or Obscure Visibility 5. Models cannot Collide 6 with a Marker but may interact with them in other ways.\n\nEach type of Marker has its own additional rules:\n\nSTRATEGIC OBJECTIVE MARKERS\n\nA Strategic Objective marker represents something in the play area that is of strategic importance to one or both Admirals.\n\nStrategic Objective Markers can be Controlled by an Admiral, which usually results in that Admiral scoring Victory Points 7 in the End Phase.\n\nAn Admiral is Controlling a Strategic Objective marker if they have at least one Scoring Model 8 in contact with it, and there are no enemy Scoring Models in contact with it.\n\nStrategic Objective Markers have a number on one side. The number is only relevant when specifically noted in an Encounter’s 9 rules.\n\nMINEFIELD MARKERS\n\nA Minefield marker represents an area that has been littered with proximity-triggered explosives.\n\nA Minefield marker is Triggered if a Surface or Underwater model moves into contact with it. When a Minefield Marker is Triggered, each model within its Proximity immediately gains a level of Disorder 10. The closest model to the marker (usually the moving model) is then subject to a Minefield Detonation. The opposing Admiral rolls a number of Action Dice equal to the model’s Mass rating. The model suffers 1 Damage for each Standard Strike rolled, and 2 Damage for each Heavy Strike or Exploding Strike. The model then continues its move if applicable.\n\nA Minefield marker is removed after it is Triggered, or if a rule states that it is Cleared.\n\nWRECK MARKERS\n\nA Wreck marker represents an area of tangled wreckage, which can pose a threat to vessels that move through it.\n\nIf a Surface model moves into contact with a Wreck marker during its Movement Step 11, the active Admiral rolls a Critical Damage Die 12 at the end of its move. If the result is a Breach or Navigation Lock, that Effect is immediately inflicted on the moving model and the Wreck marker removed from play. On any other result, there is no effect.",
       "mainTextHash": "8e80c34896f74cb6a793d9b9dd2d4d057251c66fc05efd4d3fd1e57583c35179",
       "figurePageId": "figure-page-123",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.marker-types"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 124,
@@ -6283,10 +6226,7 @@
       "mainText": "c. Place Terrain Features The First Admiral chooses a Terrain Feature 1 to place. The Admirals agree on its Mass, and its type.\n\nThe First Admiral then places it into the Play Area, following these guidelines:\n\n• A Terrain Feature cannot be placed in either Admiral’s Deployment Zone 3, unless specified by the Encounter.\n\n• A Terrain Feature cannot be placed within 2” of another Terrain Feature.\n\n• A Terrain Feature cannot be placed in an area if this would bring the total Mass of Terrain in that area to more than 12.\n\nThe Second Admiral then does the same, the two Admirals continuing to take turns placing Terrain.\n\nd. Finish Placing Terrain Once each Terrain Area 4 contains at least one Terrain Feature, either Admiral can choose to Pass instead of placing a piece of Terrain. The other Admiral may then place one final piece of Terrain, completing Terrain setup. This will eventually become necessary, even if neither Admiral chooses it, as there will be no room left for additional Terrain Features.\n\nEXAMPLE TERRAIN AREAS\n\nThe following image shows some examples of how much Terrain should appear in a Terrain Area.\n\nDEPLOYMENT ZONE",
       "mainTextHash": "f3e0a75e05da1f6caf032746b2274bdb39d82c648666d99ccdf859517e0ec69c",
       "figurePageId": "figure-page-136",
-      "pageReferenceIds": [],
-      "curatedVisualIds": [
-        "visual.terrain-placement-example"
-      ]
+      "pageReferenceIds": []
     },
     {
       "pdfPage": 137,
@@ -6390,9 +6330,6 @@
       "figurePageId": "figure-page-138",
       "pageReferenceIds": [
         "page-reference-154"
-      ],
-      "curatedVisualIds": [
-        "visual.deployment-order-example"
       ]
     },
     {
@@ -6741,9 +6678,6 @@
         "page-reference-170",
         "page-reference-171",
         "page-reference-172"
-      ],
-      "curatedVisualIds": [
-        "visual.encounter-salvage-rights-map"
       ]
     },
     {
@@ -7034,9 +6968,6 @@
         "page-reference-189",
         "page-reference-190",
         "page-reference-191"
-      ],
-      "curatedVisualIds": [
-        "visual.encounter-blockade-run-map"
       ]
     },
     {
@@ -7278,9 +7209,6 @@
         "page-reference-201",
         "page-reference-202",
         "page-reference-203"
-      ],
-      "curatedVisualIds": [
-        "visual.encounter-recon-duty-map"
       ]
     },
     {

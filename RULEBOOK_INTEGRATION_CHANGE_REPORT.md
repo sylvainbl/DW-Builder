@@ -13,7 +13,7 @@ L’intégration du livre de règles Dystopian Wars 4.00 a été corrigée sur q
 3. structure de lecture et rendu typographique ;
 4. tests de non-régression et accessibilité.
 
-Le jeu de données passe de la version `2.1.0` à `2.2.0`. Les 34 visuels officiels sont maintenant exposés, les défauts textuels confirmés ont été corrigés dans les modules canoniques, et les pages de règles ne chargent plus récursivement des chapitres entiers.
+Le jeu de données passe de la version `2.1.0` à `2.3.0`. Les visuels officiels ont été audités individuellement et seuls les 10 schémas nécessaires à la compréhension sont exposés. Les défauts textuels confirmés ont été corrigés dans les modules canoniques, et les pages de règles ne chargent plus récursivement des chapitres entiers.
 
 ## 2. Source et contrôles préalables
 
@@ -110,19 +110,11 @@ Les nombres de jeu réels ont été conservés. Des tests ciblés protègent not
 
 ## 5. Illustrations
 
-### Visuels rétablis
+### Audit de nécessité
 
-Cinq visuels officiels présents dans les assets mais absents de `visuals.json` ont été rétablis :
+Les 34 captures candidates ont été examinées individuellement avec leur règle associée. Les captures décoratives, les exemples déjà entièrement décrits par le texte, les références de jetons évidentes et les cadrages insuffisamment explicites ont été retirés.
 
-| Page imprimée | Visuel                                |
-| ------------- | ------------------------------------- |
-| 40            | `visual.moving-models`                |
-| 97            | `visual.broadside-additional-targets` |
-| 102           | `visual.escort-tokens`                |
-| 103           | `visual.raiding-parties`              |
-| 136           | `visual.deployment-order-example`     |
-
-Le manifeste et le rapport de validation déclarent maintenant 34 visuels, au lieu de 29.
+Dix schémas sont conservés : arcs, cohérence d’unité, visibilité, gabarit de virage, faces de dés, piles SRS, proximité du terrain et trois cartes de déploiement distinctes. Une seule carte standard est mutualisée entre Meeting Engagement, Salvage Rights, Blockade Run et Recon Duty.
 
 ### Cadrages nettoyés
 
@@ -221,7 +213,8 @@ Invariants couverts :
 - résolution de toutes les références ;
 - indépendance des pages de section ;
 - déduplication des règles ;
-- présence des 34 visuels ;
+- présence exclusive des 10 visuels nécessaires ;
+- mutualisation de la carte de déploiement standard ;
 - existence de chaque fichier WebP ;
 - concordance des dimensions JSON/fichier ;
 - concordance des SHA-256 JSON/fichier ;

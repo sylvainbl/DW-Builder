@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "datasetVersion": "2.2.0",
+  "datasetVersion": "2.3.0",
   "id": "dw-rulebook-4.00",
   "title": "Dystopian Wars - The Rules",
   "version": "4.00",
@@ -74,9 +74,9 @@
     "figurePages": 157,
     "figureImageBlocks": 735,
     "figureCaptions": 743,
-    "curatedVisuals": 34,
+    "curatedVisuals": 10,
     "fullPageRenders": 0,
-    "visualAssetFiles": 34
+    "visualAssetFiles": 10
   },
   "compatibility": {
     "stableIdsPreserved": true,

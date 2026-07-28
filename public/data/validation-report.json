@@ -188,7 +188,7 @@
       "category": "validation",
       "description": "Replaced the overly broad passed status with explicit structural checks and documented limitations."
     },
-    "Replaced 159 full-page renders with 34 curated rule visuals and encounter maps; every source crop marked as required for understanding is exposed by visuals.json."
+    "Reduced the application-facing catalogue from 34 crops to 10 essential diagrams and encounter maps after an individual necessity review."
   ],
   "warnings": [
     {
@@ -242,11 +242,11 @@
     "criticalPagesCrossChecked": 88,
     "scope": "Critical rules, tables, encounters and known low-agreement pages; not a claim of manual word-by-word review of every page."
   },
-  "datasetVersion": "2.2.0",
+  "datasetVersion": "2.3.0",
   "assetValidation": {
     "fullPageRendersIncluded": false,
-    "curatedVisualCount": 34,
-    "curatedAssetFilesFound": 34,
+    "curatedVisualCount": 10,
+    "curatedAssetFilesFound": 10,
     "allCuratedAssetsReadable": true,
     "allVisualIdsUnique": true,
     "allAssetsHaveAltText": true,

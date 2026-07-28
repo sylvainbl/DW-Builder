@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 import actionsDocument from '../../public/data/actions.json' with { type: 'json' }
 import encountersDocument from '../../public/data/encounters.json' with { type: 'json' }
@@ -254,21 +254,33 @@ test('the curated index preserves every printed entry without OCR column interle
     }
 })
 
-test('all 34 official visuals are exposed and every referenced asset is present', () => {
+test('only essential rulebook visuals are exposed and every referenced asset is present', () => {
     const indexes = buildRulebookIndexes(data)
-    const restoredVisualIds = [
-        'visual.moving-models',
-        'visual.broadside-additional-targets',
-        'visual.escort-tokens',
-        'visual.raiding-parties',
-        'visual.deployment-order-example',
+    const essentialVisualIds = [
+        'visual.coming-about-and-turning-template',
+        'visual.dice-faces',
+        'visual.encounter-archipelago-map',
+        'visual.encounter-meeting-engagement-map',
+        'visual.encounter-oil-fields-map',
+        'visual.model-centre-point-and-arcs',
+        'visual.srs-stack-examples',
+        'visual.treacherous-water-and-terrain-proximity',
+        'visual.unit-coherency-examples',
+        'visual.visibility-blocked-and-clear',
     ]
 
-    assert.equal(data.visuals.length, 34)
-    assert.equal(manifestDocument.counts.curatedVisuals, 34)
-    for (const visualId of restoredVisualIds) {
-        assert.ok(indexes.visualById.has(visualId), `${visualId} must remain exposed to the reader`)
-    }
+    assert.deepEqual(
+        [...indexes.visualById.keys()].sort(),
+        essentialVisualIds,
+        'decorative or text-redundant screenshots must not return to the reader-facing catalogue',
+    )
+    assert.equal(manifestDocument.counts.curatedVisuals, essentialVisualIds.length)
+    assert.equal(manifestDocument.counts.visualAssetFiles, essentialVisualIds.length)
+    assert.deepEqual(
+        readdirSync(new URL('../../public/data/assets/rules/', import.meta.url)).sort(),
+        data.visuals.map((visual) => visual.assetReference.split('/').at(-1)!).sort(),
+        'the asset directory must not retain screenshots that are absent from the essential catalogue',
+    )
     for (const encounter of data.encounters) {
         const visual = indexes.visualById.get(encounter.deployment.diagram.visualId)
         assert.ok(visual, `${encounter.name} must use a visual from visuals.json`)
@@ -434,7 +446,7 @@ test('verified high-impact rules retain the complete wording and numerical value
         actionRoll.text ?? '',
         /For example, the active Admiral has made the Action Roll, scoring 2 Exploding Strikes/,
     )
-    assert.match(actionRoll.text ?? '', /The Action Roll \(fig\. F\) shows a total of 17 Hits/)
+    assert.match(actionRoll.text ?? '', /The Action Roll shows a total of 17 Hits/)
     assert.match(actionRoll.text ?? '', /the Action Roll has scored 2 Successes/)
     assert.match(makeAttackRoll.text ?? '', /makes a Resistance Roll:/)
     assert.match(disorder.text ?? '', /level of Disorder it has:/)

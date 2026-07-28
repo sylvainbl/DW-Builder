@@ -2889,10 +2889,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.play-area-edges-and-deployment-zones"
-      ]
+      }
     },
     {
       "id": "figure-page-018",
@@ -2944,10 +2941,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.quadrants-and-halves"
-      ]
+      }
     },
     {
       "id": "figure-page-019",
@@ -3734,10 +3728,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.range-bands"
-      ]
+      }
     },
     {
       "id": "figure-page-025",
@@ -3826,10 +3817,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.proximity"
-      ]
+      }
     },
     {
       "id": "figure-page-026",
@@ -6765,10 +6753,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.visibility-multiple-participants"
-      ]
+      }
     },
     {
       "id": "figure-page-042",
@@ -6967,10 +6952,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.moving-models"
-      ]
+      }
     },
     {
       "id": "figure-page-043",
@@ -7945,10 +7927,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.exploding-strikes-and-rerolls"
-      ]
+      }
     },
     {
       "id": "figure-page-050",
@@ -8136,10 +8115,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.counting-hits-and-counters"
-      ]
+      }
     },
     {
       "id": "figure-page-051",
@@ -8279,10 +8255,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.grouping-hits-into-successes"
-      ]
+      }
     },
     {
       "id": "figure-page-052",
@@ -9022,10 +8995,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.damage-tokens"
-      ]
+      }
     },
     {
       "id": "figure-page-057",
@@ -9331,10 +9301,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.disorder-tokens"
-      ]
+      }
     },
     {
       "id": "figure-page-059",
@@ -12822,10 +12789,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.ramming-worked-example"
-      ]
+      }
     },
     {
       "id": "figure-page-086",
@@ -13504,10 +13468,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.critical-damage-token-icons"
-      ]
+      }
     },
     {
       "id": "figure-page-090",
@@ -14451,10 +14412,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.aerial-weapon-target-sequence"
-      ]
+      }
     },
     {
       "id": "figure-page-096",
@@ -14847,10 +14805,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.broadside-additional-targets"
-      ]
+      }
     },
     {
       "id": "figure-page-100",
@@ -15369,10 +15324,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.escort-tokens"
-      ]
+      }
     },
     {
       "id": "figure-page-105",
@@ -15539,10 +15491,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.raiding-parties"
-      ]
+      }
     },
     {
       "id": "figure-page-106",
@@ -16672,10 +16621,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.interception-worked-example"
-      ]
+      }
     },
     {
       "id": "figure-page-116",
@@ -17497,10 +17443,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.marker-types"
-      ]
+      }
     },
     {
       "id": "figure-page-124",
@@ -19228,10 +19171,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.terrain-placement-example"
-      ]
+      }
     },
     {
       "id": "figure-page-137",
@@ -19350,10 +19290,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.deployment-order-example"
-      ]
+      }
     },
     {
       "id": "figure-page-139",
@@ -19826,10 +19763,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.encounter-salvage-rights-map"
-      ]
+      }
     },
     {
       "id": "figure-page-145",
@@ -20324,10 +20258,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.encounter-blockade-run-map"
-      ]
+      }
     },
     {
       "id": "figure-page-149",
@@ -20604,10 +20535,7 @@
         "geometry": "extracted",
         "captionText": "normalized",
         "status": "indexed"
-      },
-      "curatedVisualIds": [
-        "visual.encounter-recon-duty-map"
-      ]
+      }
     },
     {
       "id": "figure-page-153",

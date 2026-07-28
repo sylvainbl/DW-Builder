@@ -115,8 +115,8 @@
       "deployment": {
         "description": null,
         "diagram": {
-          "visualId": "visual.encounter-salvage-rights-map",
-          "assetReference": "assets/rules/encounter-salvage-rights-map.webp"
+          "visualId": "visual.encounter-meeting-engagement-map",
+          "assetReference": "assets/rules/encounter-meeting-engagement-map.webp"
         }
       },
       "additionalRules": [
@@ -335,8 +335,8 @@
       "deployment": {
         "description": "At the start of the Deploy Fleets step, the First Admiral chooses whether they will be the Attacker or the Defender.\nInstead of the First Admiral choosing a Controlled Edge and deploying the first unit, the Defender does both.",
         "diagram": {
-          "visualId": "visual.encounter-blockade-run-map",
-          "assetReference": "assets/rules/encounter-blockade-run-map.webp"
+          "visualId": "visual.encounter-meeting-engagement-map",
+          "assetReference": "assets/rules/encounter-meeting-engagement-map.webp"
         }
       },
       "additionalRules": [
@@ -561,8 +561,8 @@
       "deployment": {
         "description": null,
         "diagram": {
-          "visualId": "visual.encounter-recon-duty-map",
-          "assetReference": "assets/rules/encounter-recon-duty-map.webp"
+          "visualId": "visual.encounter-meeting-engagement-map",
+          "assetReference": "assets/rules/encounter-meeting-engagement-map.webp"
         }
       },
       "additionalRules": [
