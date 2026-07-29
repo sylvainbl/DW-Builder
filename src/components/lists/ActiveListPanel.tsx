@@ -1,8 +1,10 @@
 import {
     AlertTriangle,
     BookOpenText,
+    Check,
     ChevronDown,
     ChevronRight,
+    Copy,
     Download,
     Minus,
     Pencil,
@@ -31,6 +33,7 @@ import {
 } from '../../utils/guardianPool'
 import { computeArmyUnitVpr, computeEntriesVpr } from '../../utils/pointsCalc'
 import { previewPrintableList } from '../../utils/printList'
+import { buildShareableListSummary } from '../../utils/shareList'
 
 interface UnitRowProps {
     entry: ArmyUnit
@@ -495,6 +498,7 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
     const [editingName, setEditingName] = useState(false)
     const [draftName, setDraftName] = useState('')
     const [collapsedBattlefleetIds, setCollapsedBattlefleetIds] = useState<string[]>([])
+    const [summaryCopied, setSummaryCopied] = useState(false)
 
     const factionName = useMemo(() => {
         if (!currentList) return ''
@@ -608,6 +612,17 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
             window.alert('Could not open the print preview.')
         }
     }
+    const copySummary = async () => {
+        const summary = buildShareableListSummary(currentList, units, battlefleetDefinitions, factionName)
+
+        try {
+            await navigator.clipboard.writeText(summary)
+            setSummaryCopied(true)
+            window.setTimeout(() => setSummaryCopied(false), 1600)
+        } catch {
+            window.prompt('Copy list summary:', summary)
+        }
+    }
 
     return (
         <div className="border-b border-neutral-200 bg-neutral-100 p-3">
@@ -680,6 +695,19 @@ export default function ActiveListPanel({ onOpenUnitPicker }: ActiveListPanelPro
                                 className="rounded border border-neutral-200 bg-white p-1.5 text-neutral-600 hover:bg-neutral-50"
                             >
                                 <Printer size={14} />
+                            </button>
+                            <button
+                                type="button"
+                                title={summaryCopied ? 'List summary copied' : 'Copy list summary'}
+                                aria-label={summaryCopied ? 'List summary copied' : 'Copy list summary'}
+                                onClick={() => void copySummary()}
+                                className={`rounded border p-1.5 transition ${
+                                    summaryCopied
+                                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                                        : 'border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50'
+                                }`}
+                            >
+                                {summaryCopied ? <Check size={14} /> : <Copy size={14} />}
                             </button>
                             <button
                                 type="button"
