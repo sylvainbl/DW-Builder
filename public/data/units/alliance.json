@@ -220,8 +220,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -491,8 +491,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_auxilia",
@@ -645,8 +645,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 4,
     "attachment": {
@@ -718,8 +718,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 2,
     "max": 6,
     "id": "alliance_cestus",
@@ -997,8 +997,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_charlemagne",
@@ -1236,8 +1236,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_chasseur",
@@ -1446,8 +1446,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_chevalier",
@@ -1683,8 +1683,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_columbia",
@@ -1725,6 +1725,14 @@
       {
         "name": "Inspirational",
         "value": 7
+      },
+      {
+        "name": "Reinforced Waterline",
+        "value": null
+      },
+      {
+        "name": "Stoic",
+        "value": null
       },
       {
         "name": "Strategic Asset",
@@ -1804,7 +1812,7 @@
       },
       {
         "name": "Focused Heat Lance",
-        "arc": "PSA",
+        "arc": "FPS",
         "slot": "H",
         "firepower": {
           "C": 8,
@@ -1907,8 +1915,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 2,
     "id": "alliance_concordat",
@@ -2202,8 +2210,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_couronne",
@@ -2350,8 +2358,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 2,
     "max": 6,
     "attachment": {
@@ -2453,8 +2461,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_elvas",
@@ -2631,8 +2639,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_europa",
@@ -2778,8 +2786,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 2,
     "id": "alliance_francisco",
@@ -3034,8 +3042,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -3285,8 +3293,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_gascony",
@@ -3521,8 +3529,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 4,
     "id": "alliance_gettysburg",
@@ -3721,8 +3729,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_gladius",
@@ -3975,8 +3983,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_gotham",
@@ -4045,8 +4053,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -4194,8 +4202,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 2,
     "max": 4,
     "attachment": {
@@ -4362,8 +4370,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_jupiter",
@@ -4678,8 +4686,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_la-republique",
@@ -4714,6 +4722,10 @@
       "CRW": 8
     },
     "properties": [
+      {
+        "name": "Mine Layer",
+        "value": 1
+      },
       {
         "name": "Reinforced Waterline",
         "value": null
@@ -4955,8 +4967,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_loire",
@@ -5208,8 +5220,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_lyon",
@@ -5497,8 +5509,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_magenta",
@@ -5711,8 +5723,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_mars",
@@ -5927,8 +5939,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_marseille",
@@ -6169,8 +6181,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_minerva",
@@ -6457,8 +6469,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_oriflamme",
@@ -6654,8 +6666,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_pereira",
@@ -6861,8 +6873,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_picardy",
@@ -7057,8 +7069,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_pilum",
@@ -7201,8 +7213,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_providence",
@@ -7338,8 +7350,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_pugio",
@@ -7429,8 +7441,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 2,
     "max": 4,
     "id": "alliance_sagitta",
@@ -7764,8 +7776,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_saint-michel",
@@ -7979,22 +7991,6 @@
             "E": null
           },
           "qualities": []
-        },
-        {
-          "name": "Light Rocket Battery",
-          "arc": null,
-          "slot": null,
-          "firepower": {
-            "C": null,
-            "S": 4,
-            "E": null
-          },
-          "qualities": [
-            {
-              "name": "Barrage",
-              "value": null
-            }
-          ]
         }
       ]
     },
@@ -8007,8 +8003,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 2,
     "id": "alliance_salvador",
@@ -8294,8 +8290,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 4,
     "id": "alliance_saratoga",
@@ -8471,8 +8467,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_scorpio",
@@ -8568,8 +8564,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 4,
     "id": "alliance_sirene",
@@ -8840,8 +8836,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_spatha",
@@ -8853,7 +8849,7 @@
     "faction": "Alliance",
     "role": "Patrol",
     "point_cost_per_model": 25,
-    "vpr": 2,
+    "vpr": 1,
     "models": "2-6",
     "tags": [
       "Alliance",
@@ -8916,8 +8912,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 2,
     "max": 6,
     "attachment": {
@@ -9122,8 +9118,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_sumter",
@@ -9296,8 +9292,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_titan",
@@ -9466,8 +9462,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -9485,7 +9481,7 @@
     "faction": "Alliance",
     "role": "Flagship",
     "point_cost_per_model": 320,
-    "vpr": 11,
+    "vpr": 10,
     "models": 1,
     "tags": [
       "Alliance",
@@ -9746,8 +9742,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_vauban",
@@ -9771,7 +9767,7 @@
       "Flagship"
     ],
     "stats": {
-      "MAS": 4,
+      "MAS": 5,
       "SPD": "2\"-6\"",
       "TRN": 2,
       "DEF": 7,
@@ -10029,8 +10025,8 @@
       }
     ],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 1,
     "id": "alliance_virginia",
@@ -10061,7 +10057,7 @@
       "ARM": 4,
       "HUL": 9,
       "ACT": 1,
-      "BRD": 3,
+      "BRD": null,
       "REP": 3,
       "CRW": 8
     },
@@ -10229,8 +10225,8 @@
     },
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
     "max": 3,
     "id": "alliance_voliere",
@@ -10243,7 +10239,7 @@
     "role": "Logistical",
     "point_cost_per_model": 75,
     "vpr": 2,
-    "models": 1,
+    "models": "1-3",
     "tags": [
       "Alliance",
       "Italian",
@@ -10318,10 +10314,10 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "",
-    "version": "4.01 Beta 2",
-    "date": "2026-06-22",
+    "version": "4.01",
+    "date": "2026-08-06",
     "min": 1,
-    "max": 1,
+    "max": 3,
     "id": "alliance_vulcan",
     "faction_id": "alliance",
     "attachment": {
