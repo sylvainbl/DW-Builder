@@ -81,6 +81,7 @@
     ],
     "mainstayClassNames": [
       "Kutsov",
+      "Norilsk",
       "Rurik"
     ],
     "additionalMainstays": [
@@ -90,14 +91,6 @@
         ],
         "classNames": [
           "Dragunov"
-        ]
-      },
-      {
-        "flagshipUnitIds": [
-          "commonwealth_mozhayski"
-        ],
-        "classNames": [
-          "Morozko"
         ]
       },
       {
@@ -113,23 +106,24 @@
       "commonwealth-main-airborne-underwater-limit"
     ],
     "specialRuleText": [
-      "This Battlefleet can include at most one **Airborne** unit and/or one **Underwater** unit. Its **Flagship** and **Attachments** do not count toward this limit. If it contains a **Polish-Lithuanian Flagship**, **Polish-Lithuanian Airborne** units also do not count toward this limit."
+      "At most one Airborne unit, excluding Flagships and Attachments. With a Polish-Lithuanian Airborne Flagship, up to four Polish-Lithuanian Airborne units may be included, excluding the Flagship.",
+      "At most one Underwater unit, excluding Flagships and Attachments."
     ],
     "battlefleetBonus": {
       "name": "Acceptable Losses",
-      "text": "When a **Commonwealth** model in this Force is **Crippled**, its Admiral may declare it an Acceptable Loss while its unit still has at least two other Battle-Ready models, not counting Attachments. If they do, the opposing Admiral scores no Victory Points for Crippling it, but every model in that unit gains 1 Disorder."
+      "text": "When a Commonwealth model in this Force is Crippled, its Admiral can declare this to be an Acceptable Loss as long as its unit still contains at least 1 Battle-Ready model (excluding attachments), and there are no models in the unit with 3 levels of Disorder. The unit makes a Group Crew Check. If this test is passed, the opposing Admiral does not score any Victory Points for Crippling the model."
     }
   },
   {
     "id": "commonwealth-ukrainian-haydamak",
     "faction_id": "commonwealth",
-    "name": "Ukrainian Haydamak Battlefleet",
+    "name": "Haydamak Battlefleet",
     "type": "specialist",
     "elements": [
       {
         "id": "ukrainian-flagship",
-        "name": "0-1 Ukrainian Flagship",
-        "min": 0,
+        "name": "1 Ukrainian Flagship",
+        "min": 1,
         "max": 1,
         "requirements": [
           {
@@ -147,13 +141,14 @@
       },
       {
         "id": "ukrainian-line",
-        "name": "1-2 Ukrainian Line",
+        "name": "1-2 Ukrainian Underwater Line",
         "min": 1,
         "max": 2,
         "requirements": [
           {
             "all": [
               "Ukrainian",
+              "Underwater",
               "Line"
             ]
           }
@@ -161,13 +156,14 @@
       },
       {
         "id": "ukrainian-patrol",
-        "name": "1-2 Ukrainian Patrol",
+        "name": "1-2 Ukrainian Underwater Patrol",
         "min": 1,
         "max": 2,
         "requirements": [
           {
             "all": [
               "Ukrainian",
+              "Underwater",
               "Patrol"
             ]
           }
@@ -175,13 +171,14 @@
       },
       {
         "id": "ukrainian-support",
-        "name": "0-2 Ukrainian Support",
+        "name": "0-2 Ukrainian Underwater Support",
         "min": 0,
         "max": 2,
         "requirements": [
           {
             "all": [
               "Ukrainian",
+              "Underwater",
               "Support"
             ]
           }
@@ -201,7 +198,7 @@
     ],
     "battlefleetBonus": {
       "name": "Zaporozhian Spirit",
-      "text": "When a **Ukrainian Underwater** unit in this Force makes an Attack action with one or more **Submerged** weapons contributing, its Admiral may discard a Victory & Valour Card before rolling. If they do, the Action Roll is unaffected by Disorder."
+      "text": "When a Ukrainian unit in this Force makes an Attack action, its Admiral can discard a Victory & Valour Card before any dice are rolled. If they do so, the Action Roll is unaffected by Disorder."
     }
   },
   {
@@ -212,8 +209,8 @@
     "elements": [
       {
         "id": "airborne-flagship",
-        "name": "0-1 Commonwealth Airborne Flagship",
-        "min": 0,
+        "name": "1 Commonwealth Airborne Flagship",
+        "min": 1,
         "max": 1,
         "requirements": [
           {
@@ -294,7 +291,7 @@
     ],
     "battlefleetBonus": {
       "name": "Terrors from Above",
-      "text": "At the start of their turn, this Admiral may choose a **Commonwealth Airborne** unit with the Incoming status and enact a Special Valour Effect. If successful, the unit loses Incoming and activates immediately; if unsuccessful, it does not activate and another unit activates instead."
+      "text": "At the start of their turn, this Battlefleet's Admiral may select a Commonwealth Airborne unit in their Force with the Incoming status and enact a Special Valour Effect. If successful, the unit loses Incoming and immediately activates, even if other units in this Force without Incoming have not yet Activated this Round. If unsuccessful, the unit does not Activate; the Admiral instead activates another unit in their Force that does not have Incoming."
     }
   },
   {
@@ -302,7 +299,6 @@
     "faction_id": "commonwealth",
     "name": "Black Wolf Hunting Pack",
     "type": "main",
-    "legendary": true,
     "mercenary": true,
     "elements": [
       {
@@ -312,59 +308,51 @@
         "max": 2,
         "requirements": [
           {
-            "all": [
-              "Black Wolf"
+            "unitIds": [
+              "commonwealth_anastasia",
+              "commonwealth_death_bringer"
             ]
           }
         ]
       },
       {
         "id": "russian-ukrainian-line",
-        "name": "1-4 Russian / Ukrainian Line",
+        "name": "1-4 Commonwealth Line",
         "min": 1,
         "max": 4,
         "requirements": [
           {
             "all": [
+              "Commonwealth",
               "Line"
-            ],
-            "any": [
-              "Russian",
-              "Ukrainian"
             ]
           }
         ]
       },
       {
         "id": "russian-ukrainian-patrol",
-        "name": "1-3 Russian / Ukrainian Patrol",
+        "name": "1-3 Commonwealth Patrol",
         "min": 1,
         "max": 3,
         "requirements": [
           {
             "all": [
+              "Commonwealth",
               "Patrol"
-            ],
-            "any": [
-              "Russian",
-              "Ukrainian"
             ]
           }
         ]
       },
       {
         "id": "russian-ukrainian-support",
-        "name": "0-3 Russian / Ukrainian Support",
+        "name": "0-3 Commonwealth Support",
         "min": 0,
         "max": 3,
         "requirements": [
           {
             "all": [
+              "Commonwealth",
               "Support"
-            ],
-            "any": [
-              "Russian",
-              "Ukrainian"
             ]
           }
         ]
@@ -377,11 +365,13 @@
     ],
     "specialRules": [
       "black-wolf-underwater-half",
-      "black-wolf-flagship-no-doctrine"
+      "black-wolf-flagship-no-doctrine",
+      "commonwealth-no-airborne"
     ],
     "specialRuleText": [
-      "At least half of the units in this Battlefleet must be **Underwater** units.",
-      "A Fleet Doctrine cannot be purchased for this Battlefleet’s **Flagship**. All units in this Battlefleet gain the **Black Wolf** trait if they do not already have it. **Piranya Hunter Submarine** units replace Attachment (Ukrainian) with Attachment (Black Wolf)."
+      "The Flagships must be Anastasia and/or Death Bringer. Neither can purchase a Fleet Doctrine.",
+      "At least half of the units in this Battlefleet must be Underwater. This Battlefleet cannot contain any Airborne units.",
+      "All units in this Battlefleet gain the Black Wolf trait if they do not already have it."
     ],
     "battlefleetBonus": {
       "name": "Wolves upon the Fold",
@@ -395,6 +385,215 @@
         ]
       }
     ]
+  },
+  {
+    "id": "commonwealth-orlan-belokhvost",
+    "faction_id": "commonwealth",
+    "name": "Orlan-Belokhvost Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "orlan-flagship",
+        "name": "1 Flagship Ekranoplan / Mobile Stronghold",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Flagship"
+            ],
+            "any": [
+              "Ekranoplan",
+              "Mobile Stronghold"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "orlan-line-scout",
+        "name": "1-4 Commonwealth Line / Scout",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth"
+            ],
+            "any": [
+              "Line",
+              "Scout"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "orlan-patrol-support",
+        "name": "1-4 Commonwealth Patrol / Support",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth"
+            ],
+            "any": [
+              "Patrol",
+              "Support"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Dragunov",
+      "Stoletov"
+    ],
+    "specialRules": [
+      "commonwealth-orlan-restrictions"
+    ],
+    "specialRuleText": [
+      "At least half of the units must have Ekranoplan or Hovercraft; exclude the Flagship and Attachments from this calculation.",
+      "Up to four Hovercraft units. No Polish-Lithuanian Airborne units."
+    ],
+    "battlefleetBonus": {
+      "name": "The White Death",
+      "text": "When this Force's Admiral activates a Commonwealth unit that has at least one model with the Depleted status, they can enact a Special Valour Effect. If successful, all models in this unit with Depleted lose this status."
+    }
+  },
+  {
+    "id": "commonwealth-icemaker",
+    "faction_id": "commonwealth",
+    "name": "Icemaker Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "icemaker-flagship",
+        "name": "1-2 Russian Flagship",
+        "min": 1,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Russian",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "icemaker-line",
+        "name": "1-3 Russian Line",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Russian",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "icemaker-patrol-support",
+        "name": "1-3 Russian Patrol / Support",
+        "min": 1,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Russian"
+            ],
+            "any": [
+              "Patrol",
+              "Support"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "icemaker-scout",
+        "name": "0-2 Russian Scout",
+        "min": 0,
+        "max": 2,
+        "requirements": [
+          {
+            "all": [
+              "Russian",
+              "Scout"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Borodino",
+      "Norilsk",
+      "Oleg"
+    ],
+    "specialRules": [
+      "commonwealth-icemaker-restrictions"
+    ],
+    "specialRuleText": [
+      "Up to two Flagship units. The second Flagship cannot purchase a Fleet Doctrine.",
+      "At most one Airborne unit, excluding Flagships and Attachments.",
+      "Every applicable model in a unit with a Cryo Generator upgrade option must purchase that upgrade."
+    ],
+    "battlefleetBonus": {
+      "name": "Advanced Cryo-Capacitors",
+      "text": "When this Battlefleet's Admiral declares that one of their units will make a Cryogenic Blast special action, they may discard a Victory & Valour Card. If they do so, this Action costs 0 Action Points. It still counts as a Special Action, so Participating models cannot Participate in another Cryogenic Blast during the same Activation."
+    }
+  },
+  {
+    "id": "commonwealth-svyatogor-colossi",
+    "faction_id": "commonwealth",
+    "name": "Svyatogor Colossi Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "svyatogor-colossus",
+        "name": "1-4 Commonwealth Colossus",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Colossus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "svyatogor-light-vessel",
+        "name": "1-4 Commonwealth Light Vessel",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Commonwealth",
+              "Light Vessel"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Kostroma",
+      "Marena",
+      "Boyar"
+    ],
+    "specialRules": [
+      "commonwealth-no-airborne"
+    ],
+    "specialRuleText": [
+      "This Battlefleet cannot contain any Airborne units."
+    ],
+    "battlefleetBonus": {
+      "name": "The Giant's Breath",
+      "text": "When making an Attack action in which at least one Participating Commonwealth Light Vessel model is within 6\" of at least one friendly Commonwealth Colossus unit, any Blanks and Standard Counters in the Action Roll can be re-rolled. Attachments cannot trigger this Bonus."
+    }
   },
   {
     "id": "alliance-main",

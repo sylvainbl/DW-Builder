@@ -1,8 +1,15 @@
 import type { ArmyBattlefleet, ArmyList, ArmyModel, ArmyUnit, Unit, UnitConfig } from '../types/index'
 import { computeArmyUnitTotal, updateArmyUnitTotals } from './pointsCalc.ts'
 import { normalizeGeneratorBackedOptionConfig } from './optionConfig.ts'
-import { normalizeLegacyFactionId, normalizeLegacyUnitId, selectStoredListsValue } from './storageMigration.ts'
+import {
+    clearOrbatModelMines,
+    migrateOrbatConfig,
+    normalizeLegacyFactionId,
+    normalizeLegacyUnitId,
+    selectStoredListsValue,
+} from './storageMigration.ts'
 import { uuid } from './uuid.ts'
+import { getMinimumModelsForAttachment } from './attachments.ts'
 
 const STORAGE_KEY = 'dw-builder-lists-v1'
 const LEGACY_STORAGE_KEY = 'dw-builder-lists'
@@ -120,7 +127,13 @@ function maximumModels(unit: Unit): number {
     )
 }
 
-function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): ArmyModel[] {
+function makeImportedModels(
+    unit: Unit,
+    config: UnitConfig,
+    models: unknown,
+    originalUnitId: string,
+    asAttachment = false,
+): ArmyModel[] {
     const importedModels = Array.isArray(models)
         ? models.flatMap((model) =>
               isObject(model) && isUnitConfig(model.config)
@@ -131,16 +144,24 @@ function makeImportedModels(unit: Unit, config: UnitConfig, models: unknown): Ar
                                 typeof model.customName === 'string' && model.customName.trim().length > 0
                                     ? model.customName.trim()
                                     : undefined,
-                            config: normalizeUnitConfig(model.config, unit),
+                            config: migrateOrbatConfig(originalUnitId, normalizeUnitConfig(model.config, unit)),
                         },
                     ]
                   : [],
           )
         : []
     const normalized = (
-        importedModels.length > 0 ? importedModels : [{ modelId: uuid(), config: normalizeUnitConfig(config, unit) }]
+        importedModels.length > 0
+            ? importedModels
+            : [
+                  {
+                      modelId: uuid(),
+                      config: migrateOrbatConfig(originalUnitId, normalizeUnitConfig(config, unit)),
+                  },
+              ]
     ).slice(0, maximumModels(unit))
-    while (normalized.length < minimumModels(unit)) {
+    const minimum = asAttachment ? getMinimumModelsForAttachment(unit) : minimumModels(unit)
+    while (normalized.length < minimum) {
         normalized.push({ modelId: uuid(), config: structuredClone(emptyUnitConfig) })
     }
     return normalized
@@ -179,7 +200,7 @@ function normalizeImportedBattlefleets(value: unknown): ArmyBattlefleet[] {
     })
 }
 
-function normalizeImportedEntry(entry: unknown, units: Unit[]): ArmyUnit[] {
+function normalizeImportedEntry(entry: unknown, units: Unit[], asAttachment = false): ArmyUnit[] {
     if (!isObject(entry) || typeof entry.unitId !== 'string' || !isUnitConfig(entry.config)) return []
 
     const unitId = normalizeLegacyUnitId(entry.unitId)
@@ -193,13 +214,28 @@ function normalizeImportedEntry(entry: unknown, units: Unit[]): ArmyUnit[] {
                 ? entry.customName.trim()
                 : undefined,
         battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
-        config: normalizeUnitConfig(entry.config, unit),
-        models: makeImportedModels(unit, entry.config, entry.models),
+        config: migrateOrbatConfig(entry.unitId, normalizeUnitConfig(entry.config, unit)),
+        models: makeImportedModels(
+            unit,
+            entry.config,
+            entry.models,
+            entry.unitId,
+            asAttachment && !entry.generatedByOption,
+        ),
         totalPoints: 0,
         attachedUnits: Array.isArray(entry.attachedUnits)
-            ? entry.attachedUnits.flatMap((attachment) => normalizeImportedEntry(attachment, units))
+            ? entry.attachedUnits.flatMap((attachment) => normalizeImportedEntry(attachment, units, true))
             : [],
     }
+    normalized.config = migrateOrbatConfig(
+        entry.unitId,
+        normalized.config,
+        normalized.models.map((model) => model.config),
+    )
+    normalized.models = normalized.models.map((model) => ({
+        ...model,
+        config: clearOrbatModelMines(normalized.unitId, model.config),
+    }))
     normalized.totalPoints = computeArmyUnitTotal(normalized, units)
     return [normalized]
 }
@@ -252,7 +288,7 @@ export function parseImportedList(data: unknown, units: Unit[]): ArmyList | null
                     : undefined,
             battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
             config: normalizeUnitConfig(entry.config, unit),
-            models: makeImportedModels(unit, entry.config, entry.models),
+            models: makeImportedModels(unit, entry.config, entry.models, unit.id),
             totalPoints: 0,
         }
         normalized.totalPoints = computeArmyUnitTotal(normalized, units)

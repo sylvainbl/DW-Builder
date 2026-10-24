@@ -1,7 +1,15 @@
 import type { OptionUpgrade, Unit, UnitConfig, Weapon, WeaponMatch } from '../types/index'
 
 export function isUnitLevelOption(tag: string): boolean {
-    return tag === 'ESCORT' || tag === 'JAPANESE_SUBCLASS' || tag === 'EARTHSHAKER_CONSTRUCTION'
+    return (
+        tag === 'ESCORT' ||
+        tag === 'JAPANESE_SUBCLASS' ||
+        tag === 'EARTHSHAKER_CONSTRUCTION' ||
+        tag === 'COMMONWEALTH_DEFENSIVE_MINES' ||
+        tag === 'CROWN_DEFENSIVE_MINES' ||
+        tag.startsWith('COMMONWEALTH_SUBFACTION_') ||
+        tag.startsWith('CROWN_SUBFACTION_')
+    )
 }
 
 export function optionChoiceName(choice: unknown): string | null {

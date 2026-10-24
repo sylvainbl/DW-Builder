@@ -286,8 +286,8 @@
       }
     ],
     "lore": "These huge vessels are the most powerful employed by the East India Trading Company. Operating under letters of marque from Her Majesty, Queen Victoria, these vessels trawl the Dominions of the Crown and beyond, the wellpaid and highly motivated EITC Marines and Chowkidar Privateers stationed aboard ever alert for opportunities to swell the royal coffers.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -430,8 +430,8 @@
     },
     "options_and_upgrades": [],
     "lore": "Armed with a Taranis naval mortar, capable of levelling a defensive platform or coastal fortification at a distance of fifteen miles, the Agincourt is frequently deployed to danger spots as a deterrent. Few in the Caribbean will ever forget the Wednesday War of 1874, in which several thousand rioters and suspected SUSA agitators seized control of government buildings in Saint Vincent and the Grenadines. Unbeknownst to the would-be Marxist revolutionaries, a squadron of Agincourts was en route to Barbados from Saint Lucia at the time, and the short-lived uprising was crushed under a barrage of heavy mortar fire before the island's governor got word of it with her morning post.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -447,8 +447,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Line",
       "Ship"
@@ -600,17 +599,67 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ],
+        "removes_properties": [
+          "Attachment"
+        ],
+        "adds_properties": [
+          {
+            "name": "Attachment",
+            "value": null,
+            "detail": "British Flagship"
+          }
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ],
+        "removes_properties": [
+          "Attachment"
+        ],
+        "adds_properties": [
+          {
+            "name": "Attachment",
+            "value": null,
+            "detail": "Canadian Flagship"
+          }
+        ]
       }
     ],
     "lore": "Tried and tested in hundreds of engagements, the Albion-class cruiser exemplifies the Crown's reliance on tradition, a design so consistently reliable that crews consider her the workhorse of the waves. While the hull has remained relatively unchanged for more than fifty years, the Albion has received a regular schedule of upgrades, integrating newer instruments to keep these venerable vessels relevant and capable in this Dystopian Age. It is rare indeed to see a Crown battlefleet without at least one squadron of Albion Cruisers at its core. SUBFACTION TRAIT Recently Davie Shipyard has started turning out Canadian-built Albions. Squadrons of these \"Vancouver Cruisers\", as they are When adding this unit to a Force, choose one locally known, are increasingly appearing in Canadian fleets. Subfaction Trait: either British or Canadian. It can only They are especially popular with aggressive captains, who have be fielded as an Attachment to a Parent Unit with the long envied the ability of their British counterparts to effectively chosen trait. engage the enemy at extremely close range.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "British Flagship",
-        "Canadian Flagship"
+        "Subfaction",
+        "Flagship"
       ],
       "max_models": 1,
       "eligibility": {
@@ -805,8 +854,8 @@
     },
     "options_and_upgrades": [],
     "lore": "The Athelstan flak cruiser launches 3.5x22.5\" fragmentation canisters that, upon detonation, produce a cloud of metallic shrapnel capable of shredding fast moving aerial targets. Commonly employed to defend British flagships against enemy airships, they are also used more offensively, clearing the skies of enemy air cover to give Defiance squadrons a clear run at their targets. Of course, pageantry is everything, especially amongst the Crown's navy, and officers who have served aboard an Athelstan are permitted adorn their dress uniform sleeves with an oyster shell patch, in honour of the ships and crew who sailed up the River Thames in June 1869, launching fireworks from their flak cannons to mark the Queen's Pearl Jubilee.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -1018,8 +1067,8 @@
       }
     ],
     "lore": "Suspended on galvanic rotors, these Skyfortresses are only made possible by the engineers at Bletchley Park and the wootz- steel sturginium alloys used in their construction. Her Majesty's amusement was shown when the Avalon-class, the Victoria, flew over Horse Guards Parade, causing the cavalry to rear up and dislodge their riders into the rain-soaked ground. The Admirals of revival powers find the looming silhouette of an Avalon far less amusing however, heralding as it does the deployment of wave after wave of deadly Defiance Fighter squadrons and an entire brigade of jetpack-equipped Spitfire Rocketeers.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -1035,8 +1084,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Patrol",
       "Ship"
@@ -1176,11 +1224,41 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
       }
     ],
     "lore": "The Bedivere was the last design of Sir William Symington, the renowned Scottish inventor and grandfather of British steamship engineering. These stalwart monitors, with their shallow draught, prow torpedoes, and heavy gun battery became the design emulated by the other Great Powers of the world, including the Italian Pilum monitor, the Union's Reliant, and even the Japanese Kanagawa. Or so Sir William's heirs, and the owners of his soon-to-be-lapsed patents, often claim. Bedivere crews are often tasked with keeping a weather eye on or below the horizon, especially when more specialised maritime patrol units are unavailable. SUBFACTION TRAIT Since Davie Shipyard added the venerable Albion chassis to its production roster, the Gulf of St Lawrence has been regularly When adding this unit to a Force, choose one patrolled by squadrons of Bediveres, stubbornly referred to by Subfaction Trait: either British or Canadian. their Canadian crews as Ontario-class Monitors.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -1403,8 +1481,8 @@
       }
     ],
     "lore": "Designed and built at Davie Shipyard as a part of the Three Armadas Review, the Bonaventure-class represents the Royal Canadian Navy's vision of a line cruiser specifically suited to its geostrategic needs. Envisioned as a strike cruiser, the Bonaventure usually boasts multiple rocket batteries as a direct counter to their expansionist southern neighbour's powerful air force. In the decades since, the class has seen fierce fighting in the Arctic, Atlantic and Pacific theatres, in particular against the air-fleets of the Honorable Eclipse Mercenary Company. The Union of Federated States denies any involvement in these incursions, and it is the hope of Ottawa's military planners that repeated demonstrations of naval readiness from the likes of the Bonaventure will keep the Great Power at arm's length. For in private, many wonder if this a fight the Crown could win…",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -1598,8 +1676,8 @@
       }
     ],
     "lore": "The Britannia-class heavy battleship is a testament to the might of the Crown and a symbol of power in defence of her Dominions. These heavily armoured vessels are able to shrug off sustained bombardments, while their own heavy gun batteries dispense an extraordinary amount of firepower in kind. There is nothing revolutionary about the Britannia, but for many in the Royal Navy, this is a virtue, not a fault, and the class is a common posting for officers who enjoy the patronage of the conservative Knight Party in Westminster. So storied are these patrician vessels, so long the honour roll of their victories, that often the mere rumour of a Britannia's presence will quash uprisings and drive would-be pirates to prey on less well-protected waters",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -1615,8 +1693,7 @@
     "models": "2-6",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Patrol",
       "Ship",
@@ -1735,10 +1812,41 @@
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      }
+    ],
     "lore": "Much like the knights of Arthurian myth from which these vessels draw their name, crews of Caliburn Frigates are renowned for their fearlessness, using their light gun batteries to harry larger vessels and draw their fire from more valuable assets. Though attrition rates are unusually high, in terms of both ships and sailors, they battle valiantly in Her Majesty's name. For the past decade, Halifax Shipyard has operated under special commission from the Prince of Wales to produce Frigates and Destroyers for the Crown. The original plan was for these ships to be built to strict specifications set by the master shipwrights of Liverpool and Southampton docks, but it quickly became apparent that some concessions would need to be made to account SUBFACTION TRAIT for the tools and materials available to Canada's docks. Shelburne Frigates may look a little different from their English-built When adding this unit to a Force, choose one cousins, but as long as they fit the specifications for Caliburn- Subfaction Trait: either British or Canadian. class vessels, so shall they remain in the Admiralty's logbooks.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 2,
     "max": 6
   },
@@ -1934,8 +2042,8 @@
       }
     ],
     "lore": "These huge support vessels are formidable warships in their own right. As well-armed as any battleship in the Crown navy, the Camelot-class comes into its own at the heart of a battlefleet. With its chain of Guardian Generators set to surge mode, a Camelot can extend a fortified energy barrier across an entire armada, shielding allies from incoming fire rendering such a force impervious to all but the most determined attacks.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -2068,40 +2176,35 @@
         "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
-        "tag": "ESCORT"
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
       },
       {
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES",
+        "tag": "CROWN_DEFENSIVE_MINES",
         "adds_properties": [
           {
             "name": "Auxiliary Mine Layer",
             "value": 3
           }
-        ]
+        ],
+        "display_name": "Defensive Mines"
       }
     ],
     "lore": "First employed in Cape Comorin, securing the Palk Straits for the use of the East India Trading Company and the short-lived British North Borneo Company after the removal of the Dutch, Ceylon Guardian Platforms are now stationed all over the world. DEFENSIVE MINES They are used to support and safeguard defensive lines, and to provide safe harbours far from Crown territory, their Guardian This unit can be upgraded with Defensive Mines. If so, Generators projecting powerful defensive screens to shield Her it gains the Auxiliary Mine Layer (3) property. Majesty's forces as they carry out Her will.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Heavy Platform"
+        "Platform"
       ],
-      "max_models": 1,
-      "eligibility": {
-        "anyOf": [
-          {
-            "parentUnitIds": [
-              "crown_heavy_platform"
-            ]
-          }
-        ]
-      }
+      "max_models": 1
     }
   },
   {
@@ -2245,8 +2348,8 @@
       }
     ],
     "lore": "Wherever battle lines are drawn, the sight of a Chanuraclass repair ship is a reassuring one. These vessels are the unsung heroes of the Raj fleet, acting as mobile repair docks and bastions of hope amidst the chaos of war. However great the sacrifice that Her Majesty demands of her sailors, the presence of a Chanura is ample proof that it is seen, and not unappreciated.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1,
     "attachment": {
@@ -2402,40 +2505,35 @@
         "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
-        "tag": "ESCORT"
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
       },
       {
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES",
+        "tag": "CROWN_DEFENSIVE_MINES",
         "adds_properties": [
           {
             "name": "Auxiliary Mine Layer",
             "value": 3
           }
-        ]
+        ],
+        "display_name": "Defensive Mines"
       }
     ],
     "lore": "To safeguard Her Majesty's economic interests and strategic influence, the Crown deploys Ross-class battle platforms. These well-armed bastions serve as unyielding sentinels on the high seas, often standing guard over unarmed supply and logistics platforms, or adding fire support to the larger Dublin-class war DEFENSIVE MINES platforms. Deterring threats to vital shipping lanes, the presence of a Ross battle platform bolsters the Crown's claims on contested This unit can be upgraded with Defensive Mines. If so, territories, a powerful symbol of unwavering commitment to Her it gains the Auxiliary Mine Layer (3) property. sovereignty",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
       "parent_traits": [
-        "Heavy Platform"
+        "Platform"
       ],
-      "max_models": 1,
-      "eligibility": {
-        "anyOf": [
-          {
-            "parentUnitIds": [
-              "crown_heavy_platform"
-            ]
-          }
-        ]
-      }
+      "max_models": 1
     }
   },
   {
@@ -2573,8 +2671,8 @@
       }
     ],
     "lore": "As Her Majesty sets her sights on arresting the Crown's declining fortunes by expanding its influence even further across the vast Indo-Pacific, the dependable Devaki-class monitor has proven to be an invaluable asset. Lighter than the better known Bedivere, these vessels are often found in the company of larger warships, shepherding the naval assets of the Indian Raj through treacherous coastal waters before dispatching well-armed sepoys to secure vital harbours.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -2759,8 +2857,8 @@
       }
     ],
     "lore": "Having already collaborated on the ubiquitous Titan-class mass conveyer, shipping giants Norddeutscher Hamburg and White Wolf adapted their wildly successful design to create what OLYMPIA LEVANT DRIVE would become the largest civilian vessel ever built: the Europa. The inaugural showcase, the Callisto, was outfitted as a liner This model can be upgraded with an Olympia Levant for passengers of the highest class. Furnished with comfort and Drive. If so, its Surface trait is replaced with Airborne, exclusivity in mind, her proprietary repulsor generators are and it gains the Low Altitude property. said to be the quietest publicly available, with majestic views guaranteed. Nevertheless, as with much in this Dystopian Age, military contracts have proven to be the companies' most TROOP TRANSPORT BAY profitable joint venture. Their fleets of Europa-class container ships, sailing under a variety of neutral or small nation flags, are This model can be upgraded with a Troop Transport in consistently high demand amongst Great Powers looking to Bay. If so, it gains the /Ground Assault (3)/ property. avoid tariffs and circumvent blockades.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -2776,8 +2874,7 @@
     "models": "2-4",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Patrol",
       "Ship"
@@ -2905,15 +3002,66 @@
         "cost_per_unit": 0,
         "max": 1,
         "tag": "GUARDIAN_GENERATOR"
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ],
+        "removes_properties": [
+          "Attachment"
+        ],
+        "adds_properties": [
+          {
+            "name": "Attachment",
+            "value": null,
+            "detail": "British, Carrier"
+          }
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ],
+        "removes_properties": [
+          "Attachment"
+        ],
+        "adds_properties": [
+          {
+            "name": "Attachment",
+            "value": null,
+            "detail": "Canadian, Carrier"
+          }
+        ]
       }
     ],
     "lore": "The scourge of pirates and raiders, the Excalibur-class heavy destroyer is exceptionally well armed for its tonnage. They are most commonly employed as capital ship hunterkillers, tasked with eliminating enemy flagships and large carriers. Favoured by Crown admirals in coastal conflicts, and in the increased efforts to push into the iceberg-ridden territories of Antarctica, the SUBFACTION TRAIT small profile of these destroyers allows them to make full use of any available cover before unleashing their paired BBiinnkkoo- When adding this unit to a Force, choose one pattern gun batteries at close range. Subfaction Trait: either British or Canadian. It can only be fielded as an Attachment to a Parent Unit with the When Halifax Shipyard began building Excalibur destroyers, chosen trait. local military minds refitted their aft gun batteries with Guardian Generators. Word of this unauthorised adaptation soon spread back to England, and Her Majesty's Royal Navy promptly dispatched Commodore Remington Perry to ensure compliance with proper standards. As fate would have it, his visit coincided with a brazen Union assault on Halifax Shipyard itself. A glittering defensive curtain highlighte",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 2,
     "max": 4,
     "attachment": {
       "parent_traits": [
+        "Subfaction",
         "Carrier"
       ],
       "max_models": 2
@@ -3184,8 +3332,8 @@
       }
     ],
     "lore": "HMIS Ganges and her sister ship, HMIS Udaygiri, were launched from the Surat shipyards in 1858 as part of the \"TThhrreeee AArrmmaaddaa\" reforms of Prime Minister Henry John Temple. The brief experiment with a devolved government did not last long, however, with the disastrous implementation of home rule to Ireland causing the collapse of the Rook administration. The new class of Indian warships proved a more enduring success story. Much to the gratitude of successive Knight governments in London. With its shallower draught, the Ganges-class could navigate the turbulent waters of the east-Indian coast, their first captains quickly developing the tactic of pinning enemy ships against the coastline before overwhelming the stricken crews with waves of Spitfire Rocketeers.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -3331,8 +3479,8 @@
     },
     "options_and_upgrades": [],
     "lore": "First developed in Australia, the Gharial-class hovercraft was designed for patrolling coastal inlets and river deltas and for skipping between the countless small islands of Fiji, Tonga, the Solomons, and beyond. Initially trialled as a cost-cutting measure by the then governor, lighter craft being cheaper to build and operate than huge patrol ships, the Gharial Hovercraft soon became an integral feature of Australia's coastal defence. Their great speed and manoeuvrability, over both land and sea, allow for both rapid redeployments and surprise attacks. It is not uncommon for Gharial pilots to speed directly from one engagement to the next, stopping only at a Belfast supply platform or a Hermes Freighter to refuel and rearm. Marines serving aboard Gharial squadrons can expect to earn rapid promotion-those who survive their initial tour, at least-for they invariably see as much action in a week as their counterparts will in a month. Despite its effectiveness being well proven, the Gharial has yet to fully win over the famously hidebound procurement officers of the Crown. Officials in the neighbouring Dominion of India have certainly taken note, however, and Gharial Hovercrafts have",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -3627,8 +3775,8 @@
       }
     ],
     "lore": "When HMS Gloriana was launched in 1851, she was the pinnacle of British naval engineering. Even today, these imposing vessels have the firepower to rout entire battlefleets, their 11\" thick belt armour and armoured citadel proof against even the advanced gunnery of the Dystopian Age. Countless pretenders have risen in the Gloriana's image, under the colours of the other Great Powers, but none have come close to surpassing her in glory.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -3639,7 +3787,7 @@
     "sub_name": "Cruiser",
     "faction": "Crown",
     "role": "Patrol",
-    "point_cost_per_model": null,
+    "point_cost_per_model": 105,
     "vpr": 4,
     "models": "1-3",
     "tags": [
@@ -3751,14 +3899,13 @@
       }
     ],
     "hardpoint_options": {
-      "L": [
+      "H": [
         {
-          "name": "Light Rocket Battery",
+          "name": "Heavy Rocket Battery",
           "arc": null,
-          "slot": null,
           "firepower": {
             "C": null,
-            "S": 4,
+            "S": 6,
             "E": null
           },
           "qualities": [
@@ -3769,13 +3916,12 @@
           ]
         },
         {
-          "name": "Light Swift Torpedo Turret",
+          "name": "Heavy Swift Torpedo Turret",
           "arc": null,
-          "slot": null,
           "firepower": {
-            "C": 3,
-            "S": 3,
-            "E": 3
+            "C": 4,
+            "S": 4,
+            "E": 4
           },
           "qualities": [
             {
@@ -3791,13 +3937,45 @@
               "value": null
             }
           ]
+        },
+        {
+          "name": "Majestic Cannons",
+          "arc": null,
+          "firepower": {
+            "C": null,
+            "S": 5,
+            "E": 3
+          },
+          "qualities": [
+            {
+              "name": "Devastating",
+              "value": 1
+            }
+          ]
         }
       ]
     },
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Replace one Heavy Hardpoint with a Generator Hardpoint",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR"
+      },
+      {
+        "description": "Add 1 Devaki Monitor or 1 Chanura Repairship as an Attachment",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "ATTACHMENT",
+        "attachment_unit_ids": [
+          "crown_devaki",
+          "crown_chanura"
+        ]
+      }
+    ],
     "lore": "Falling somewhere between a light cruiser and a monitor, the Godavari-class excels in coastal action. Its shallow draught and minimal design are echoes of a bygone age. However, with the Bay of Bengal plagued by pirate fleets and riven by Great Power rivalry, these vessels see frequent action. A focus on shipbuilding fundamentals makes maintaining a large fleet both practical and economical, with Godavari spending less time in drydock than their British or Canadian counterparts. As a result, these ships are a vital strategic link in the defence of the Realm.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -3902,8 +4080,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "The Grail-class bombardment cruiser represents the Crown's first foray into guided ordnance. Launching Canberra-pattern gyro-bombs, small unmanned aircraft that receive continuously updated telemetry from the advanced fire control suite of their parent ship, Grail cruisers can steer their ordnance towards hidden targets, ensuring a fatally explosive impact.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 2
   },
@@ -4037,8 +4215,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Striking where Her Majesty's enemies least expect before sinking beneath the ocean waves, the Guinevere-class strike submarine is part silent hunter, part gunship. Armed with a battery of Cymbeline missiles, in addition to fore and aft torpedoes, its versatility beneath the waves is nigh unmatched. In recognition of their front-line role, these vessels are protected by Ardwick-pattern submersible Guardian Generators, more commonly seen on the larger Protecteur-class carriers.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -4201,8 +4379,8 @@
     },
     "options_and_upgrades": [],
     "lore": "Built around Arthur McCurdy's augmented shield generator technology, the Halifax shield cruiser is designed to project greater protection over critical elements of Canadian battlefleets. Such vessels increase the survivability and effectiveness of Crown ships several-fold and are thus often the first to take fire in any engagement. Their armour offers only so much protection and, as such, most commissions aboard a Halifax are voluntary. There is rarely any shortage of takers, however, for a tour aboard a Halifax stands as a permanent record of an officer's courage.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -4356,13 +4534,14 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES",
+        "tag": "CROWN_DEFENSIVE_MINES",
         "adds_properties": [
           {
             "name": "Auxiliary Mine Layer",
             "value": 3
           }
-        ]
+        ],
+        "display_name": "Defensive Mines"
       },
       {
         "description": "Add 1 Ceylon Guardian Platform or 1 Defence Platform as an Attachment",
@@ -4373,11 +4552,18 @@
           "crown_ceylon",
           "crown_defence_platform"
         ]
+      },
+      {
+        "description": "Add one Generator from the Generator Hardpoints list without replacing a weapon.",
+        "cost_per_unit": null,
+        "max": 1,
+        "tag": "GENERATOR_ADDON",
+        "generator_replaces_weapon": false
       }
     ],
     "lore": "First deployed in the Irish Sea, after the brief outbreak in hostilities between England and Ireland in 1867, Dublin-class war platforms are static positions from which the Crown exerts DEFENSIVE MINES its territorial claims. When outfitted with Majestic-pattern heavy naval guns, these platforms provide the ability to bombard This unit can be upgraded with Defensive Mines. If so, ground and naval targets from over fifteen miles away, a it gains the Auxiliary Mine Layer (3) property. thunderous demonstrator of the Crown's seafairing might.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -4454,12 +4640,15 @@
         "description": "Add up to 2 Escort tokens to the unit",
         "cost_per_unit": 10,
         "max": 2,
-        "tag": "ESCORT"
+        "tag": "ESCORT",
+        "restrictions": [
+          "Not available when fielded as an Attachment."
+        ]
       }
     ],
     "lore": "The packhorse of the open water, thousands of Hermes supply freighters ferry goods across oceans, seas, and along coastlines every day. There are so many of them, sailing under the ensign of every Power, great and small, that some sailors consigned to platforms far out at sea have taken up the hobby of \"spotting\" them. They fill notebooks with names, locations, loadouts and even colour schemes. Occasionally, intelligence officers have been known to use such information for more illicit purposes, though few would ever admit to it.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3,
     "attachment": {
@@ -4477,7 +4666,7 @@
     "faction": "Crown",
     "role": "Flagship",
     "point_cost_per_model": 335,
-    "vpr": 1,
+    "vpr": 11,
     "models": "1",
     "tags": [
       "Crown",
@@ -4678,8 +4867,8 @@
       }
     ],
     "lore": "The flagship of the Canadian Atlantic Defence Fleet, the Camelot-class HMCS Tilloch Galt first gained renown against the Imperium in the Battle of Labrador, in 1873. With a fleet from Reykjavik sailing on Disko Island, the Tilloch Galt held the Davis Strait for six days, her heavy armour and Guardian Shields successfully denying Kaiser Friedrich a permanent foothold in Greenland. The Tilloch Galt again saw notable action during the infamous Ghosts of Midwinter campaign of 1876. The sudden outbreak of hostilities between the Great Powers saw her rushed out of dock without a functioning aft Guardian generator. Despite ADDITIONAL GUARDIAN GENERATOR this, her resourceful crew managed to acquire a Leithal gun battery from the crippled Bonaventure cruiser, HMCS Owen HMCS Tilloch Galt can replace one of its Heavy Sound, to install in its place. After commendable service against Hardpoints with an additional Guardian Generator, the Commonwealth navy, it remains there to this day as a good increasing its Guardian Generator system from (6) to (8). luck charm.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -4695,8 +4884,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Support",
       "Ship",
@@ -4840,11 +5028,41 @@
         "attachment_unit_ids": [
           "crown_excalibur"
         ]
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
       }
     ],
     "lore": "It is common to see Hotspur captains driving their ships ahead of the rest of the fleet, using their ships' powerful engines to achieve the best possible launch position, ensuring that as many of their DDeefifiaannccee Fighters as possible can reach their target and make it back in one piece. British-built Hotspurs are popular postings for Irish naval ratings where their easy camaraderie and courage under duress make for superb ground crews. Meanwhile, their Canadian-built counterparts-dubbed Hudson-class Carriers by local crews-are SUBFACTION TRAIT renowned for the showy aerobatic performances favoured by their fighter pilots. This is lauded as a mark of skill and teamwork When adding this unit to a Force, choose one by their countrymen, and derided as perilously brash by their Subfaction Trait: either British or Canadian. more conservative British counterparts.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -4860,8 +5078,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Support",
       "Ship"
@@ -4957,10 +5174,41 @@
       }
     ],
     "hardpoint_options": {},
-    "options_and_upgrades": [],
+    "options_and_upgrades": [
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      }
+    ],
     "lore": "Named after the mother of legendary monarch, King Arthur, this groundbreaking construction combines the McCurdy Guardian Array of the Canadian Halifax-class cruiser with the CCaannbbeerrrraa- pattern gyro-bomb system of the Grail. Intended as a support cruiser, this vessel remains safely behind the lines of battle, boosting the defensive aegis of the fleet's Guardian Generators, while launching precision anti-air munitions from a position of safety. Admirals and commodores appreciate the multi- purpose nature of this new design-although rumours persist that the blueprints had been gathering dust in the Bletchley Park Promethean Complex for decades-with some even appearing to speak in favour of Rook-led positions in gentlemen's clubs across the Crown and Her Dominion. Owing to the Igraine's very recent unveiling, Davie Shipyard SUBFACTION TRAIT has produced a handful of their variant Mackenzie Support Cruisers. As a result, they have so far been a rare sight in Canadian When adding this unit to a Force, choose one fleets, but Staff Captain Aurelie Courchesne has promised her Subfaction Trait: either British or Canadian. superiors that this will not be the case for long.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -5148,8 +5396,8 @@
       }
     ],
     "lore": "Deployed in large numbers by Her Majesty's Navy to protect British trade routes to the Raj, the Indus-class line cruiser is ideally suited for operating within a convoy system alongside Titan-class conveyors and other armed merchantmen. Its shallow draught allows it to escort vulnerable shipping into dangerous coastal waters, and even river channels, while a full complement of Royal Indian Marines is enough to deter all but the most desperate of pirates.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 4
   },
@@ -5267,8 +5515,8 @@
       }
     ],
     "lore": "Based on the SSaaxxoonn-class scout rotor, the Inuit is a common sight along the Arctic trade lanes, exploiting the rotorcraft's range and speed to provide Guardian Generator coverage to merchantmen in distress, wherever Her Majesty's ensign flies. Indeed, the Inuit is often mistaken for its sister craft, but this is often the last mistake its spotter makes. Its Unaaq Heavy Torpedos are filled with a fibrous gel that will snarl up any rudder or propeller it hits, rendering the Inuit's target a sitting duck for follow-up attacks.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 2,
     "max": 4
   },
@@ -5357,8 +5605,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "The primary asset of the Isolde is not its powerful torpedoes, but its ability to dive deeper than other submersibles of a similar class. Specially adapted quarters protect both crew and instruments against sudden changes in pressure, allowing an Isolde to sink deep and surface fast. The sudden arrival of an Isolde squadron is usually enough to buy their well-oiled torpedo crews at least one free salvo. If a nearby Trident Generator, on an accompanying Lady Ragnell Heavy Submarine perhaps, has flagged an enemy, then the result can be devastating. The number of Isolde submarines in service, their positions, movements, and even their crew rosters is a closely guarded secret, known only to a select few in Sir Mycroft's Circus.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -5469,8 +5717,8 @@
       }
     ],
     "lore": "Excelling at longer ranges, the usual strategy of Lady Ragnell submarines is to surface far behind the line of battle and snipe at enemy shipping from afar. Its standard Majestic gun batteries are perfect for such extreme range engagements. Should an enemy attempt to get the Lady Rangell into range of their own batteries, the submarine will simply slip beneath the waves, withdraw to a safe distance, and begin again. TRIDENT GENERATOR More recently, engineers in Nova Scotia had the idea of replacing the Majestic battery with a Trident Generator. This Models in this unit can replace their Majestic Cannons provides the perfect accompaniment to a squadron of Isolde with a Trident Generator. Each model that does so Torpedo Submarines, flagging enemy vessels and ensuring that gains the Trident Generator system. the Isolde's grateful gunners score a direct hit with every salvo.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -5486,8 +5734,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Line",
       "Ship"
@@ -5691,11 +5938,41 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
       }
     ],
     "lore": "Created as a heavyweight companion to the ever-reliable Albion, the Lancelot sacrifices a measure of speed for superior guns and thicker armour, making it one of the most powerful ships of the line in the Crown Navy. Command of a Lancelot is usually the first rung of an illustrious career for the most well-bred-and often, well-connected-of Crown captains. Merchant captains plying the eastern Mediterranean occasionally report being shadowed by squadrons of Lancelots flying the colours of the mysterious Order of St John. What they are doing there, and why the Sultanate, Imperium, and Latin Alliance tolerate their presence in their waters, few can say. When the first Canadian Lancelot was in the final stages of construction at Davie Shipyards, Staff Captain Aurelie Courchesne offered her workers the rare opportunity to suggest a name for this local variant. The ballot box outside her office was soon overflowing with slips of paper, to the extent that SUBFACTION TRAIT Courchesne felt she could not make the final choice herself. A hotly-contested poll found junior draughtsman Guillaume When adding this unit to a Force, choose one Roy's suggestion to be the favourite, and the New Brunswi",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -5812,8 +6089,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Since their first deployment on Grail Bombardment Cruisers, the Canberra-pattern ggyyrroo--bboommbb-a rare example of technical innovation in the deeply conservative Crown-has caused quite the stir in polite society. In spite of its many outspoken critics, it was only a matter of time before the weapon was implemented on a submersible vessel, combining its long- range self-guided armaments with modern stealth warfare. The Laudine Bombardment Submarines has since proven its worth a hundred times over. Able to dive below the surface of the water for hours at a time, it remains unseen while awaiting the perfect moment to surface and strike. Off the western coast of British Columbia, a Union Captain by the name of Isiah Grace made the fateful decision to test the defences of Calvert Island and the-seemingly- lightly defended waters of Queen Charlotte Sound. This proved to be a fatal mistake for Captain Grace as his vessel, a Frontier Platform Transport named the USS Serendipity, was surrounded at range by Laudine Bombardment Submarines who opened fire as soon as Captain Grace made the first shot against the only defence he could see: a small squadron of Caliburn Frigates. Union naval c",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -5924,8 +6201,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "The Morgana-class submarine mounts a Hawley & Barley \"Vengeance\" Keel Saw. Capable of cutting through solid steel, the dorsal chainsaw can eviscerate even the mightiest of capital ships, leaving them breached and floundering before the unsuspecting foe even realises the danger is there. It takes a rare sort of person to willingly ram their pressurised steel box into a heavily armoured enemy ship, and Morgana crews are often hand-picked from the most devil-may-care and borderline unhinged of the Royal Navy's submariners.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -6113,8 +6390,8 @@
       }
     ],
     "lore": "The combination of long-range Majestic Cannons and Swift Torpedo Turrets allows the Nagaraja-class to engage with distant threats before they have the chance to come into range themselves. Even the vessel's secondary weapon systems - enhanced with Vikrant rangefinders and loaded with Palliser shells - are designed for long-range engagements, making the Nagaraja a threat from the moment it is first sighted over the horizon.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -6189,36 +6466,26 @@
         ]
       },
       {
-        "name": "Heavy Rocket Battery",
+        "name": "Heavy Gun Battery",
         "arc": "FPS",
         "slot": "H",
         "firepower": {
-          "C": null,
-          "S": 6,
+          "C": 4,
+          "S": 7,
           "E": null
         },
-        "qualities": [
-          {
-            "name": "Barrage",
-            "value": null
-          }
-        ]
+        "qualities": []
       },
       {
-        "name": "Heavy Rocket Battery",
+        "name": "Heavy Gun Battery",
         "arc": "FPS",
         "slot": "H",
         "firepower": {
-          "C": null,
-          "S": 6,
+          "C": 4,
+          "S": 7,
           "E": null
         },
-        "qualities": [
-          {
-            "name": "Barrage",
-            "value": null
-          }
-        ]
+        "qualities": []
       }
     ],
     "hardpoint_options": {
@@ -6291,13 +6558,23 @@
       {
         "description": "Upgrade any number of models with a Yukon Minelayer",
         "cost_per_unit": 15,
-        "max": 3,
-        "tag": "YUKON_MINELAYER"
+        "max": 1,
+        "tag": "YUKON_MINELAYER",
+        "adds_properties": [
+          {
+            "name": "Mine Layer",
+            "value": 2
+          },
+          {
+            "name": "Minesweeper",
+            "value": null
+          }
+        ]
       }
     ],
     "lore": "The mainstay of the British Canadian fleet, these impressive warships are the stalwart frontline in the Crown's defence against YUKON MINELAYER the Union's expansionist ambitions. To aid the protection of local waters, and strategic sea lanes such as Baffin Bay and Any model can be upgraded with a Yukon Minelayer. the Northwest Passage, they are often outfitted with Yukon If so, it gains the Mine Layer (2) and Minesweeper Minelayers, sent ahead of the main fleets to leave welcoming properties. gifts for anyone foolish enough to brave the Canadian coastline.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -6372,8 +6649,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Often, the threats to Canadian territorial waters will be deterred, degraded, or destroyed wholesale by Orca Hunter Submarines long before they engage more visible elements of the Crown battlefleets. They are the silent pack hunters of the North Atlantic, a torpedo from the depths sending uncounted vessels to the ocean's bottom. Such a lesson was dearly learned in 1874 by the Union admiral Buchanen \"the Cannon\" Whistler, after an attempted assault on Deception Bay saw half his fleet torn apart from beneath the frozen surface of the Hudson Strait.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 2,
     "max": 6
   },
@@ -6639,8 +6916,8 @@
       }
     ],
     "lore": "Commanded by enterprising trade-captains of the East India Trading Company, the Palashi-class Indiamen are built at the Mazgaon shipyards in Bombay. Part heavily-armed merchant vessel, part dedicated warship, these vessels are enormously popular amongst commercial expeditions, and it is not uncommon to see trade convoys escorted by several of these powerful ships. Even when employed in war, the Palashi Indiaman's capacious cargo holds are seldom empty, ensuring the Crown fleet is well supplied and able to remain at sea for as long as its mission requires.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -6656,8 +6933,7 @@
     "models": "1-3",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Patrol",
       "Ship"
@@ -6851,11 +7127,41 @@
         "cost_per_unit": null,
         "max": 1,
         "tag": "GENERATOR"
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
       }
     ],
     "lore": "Squadrons of Picton light patrol cruisers have served the Crown decisively in hundreds of engagements, their crews' expertise in search-and-destroy operations making them rightly feared by enemy commodores. The Battle for Bermuda, during the Caribbean Hurricane of 1867, was one such example of their prowess, the decisive siege of Hamilton Harbour being settled not by the brave redcoats in the capital's streets, but twenty miles to the north, with the sinking of the battlecarrier USS John Jay by the Picton-class HMS Royalist and her sisters. Robbed of air support at a critical moment, the Union Minutemen became easy pickings for the Crown's aircraft and artillery. When a photograph of a Picton squadron was published on the front page of the Times, with the caption: \"Canada's newest SUBFACTION TRAIT squadron of Alberta Fast Cruisers\", editor John Thadeus Delane found himself swiftly summoned to a private audience with When adding this unit to a Force, choose one Commodore Julia St John of the admiralty. His subsequent Subfaction Trait: either British or Canadian. retirement was, one should presume, entirely unrelated.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -7002,8 +7308,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Demonstrating to the world that the Crown can still, when it puts its mind to it, innovate on new technologies, the Protecteur- class was the brainchild of the Canadian engineer Frank Andrew Fleming, working out of the Davie Shipyard in Lauzon, Quebec. Huge submersible strike carriers exploiting recent developments in underwater warfare, the Protecteur uniquely combines the capacity of a large support carrier with the stealth and strike capabilities of an attack submersible. This combination was not well-received in London, where the usual coterie of armchair admirals quickly dubbed it \"Fleming's Folly\". While surfacing, they argued, the vessel would be too vulnerable to enemy fire, and it could hardly perform its duty as a carrier while underwater. Such flashy colonial nonsense! The Canadians scoffed at this leaden-footed skepticism, relishing the challenge, and Protecteur crews soon became famed for their impeccably-drilled coordination. It is not uncommon for a crash dive to begin even as the last aircraft's wheels are leaving the surface, the deck officer throwing a final salute from a closing hatch before disappearing from sight.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -7174,8 +7480,8 @@
       }
     ],
     "lore": "Tough and reliable airships, the Prydain has served the Crown for two decades, replacing the earlier Glaisher-class war balloons after the debacle at Mboto Gorge. Outfitted with Leithal heavy gun batteries fore and aft, these enormous airborne vessels are held aloft upon four great whirring propellers, each the size of a small frigate. Crown battlefleets escorted into battle by these craft are often advised to wear ear mufflers, for the sound of their approach can be truly deafening. Despite their venerable design, the Prydain boasts a fine pedigree, and is still more than a match for the latest aeronautic vessels of the other Great Powers.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -7191,8 +7497,7 @@
     "models": "1-2",
     "tags": [
       "Crown",
-      "British",
-      "Canadian",
+      "Subfaction",
       "Surface",
       "Flagship",
       "Ship"
@@ -7413,11 +7718,41 @@
           "crown_albion",
           "crown_athelstan"
         ]
+      },
+      {
+        "description": "Choose British as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_BRITISH",
+        "display_name": "British",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "British"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
+      },
+      {
+        "description": "Choose Canadian as the mandatory subfaction for this unit.",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "CROWN_SUBFACTION_CANADIAN",
+        "display_name": "Canadian",
+        "exclusive_group": "CROWN_SUBFACTION",
+        "mandatory": true,
+        "adds_tags": [
+          "Canadian"
+        ],
+        "removes_tags": [
+          "Subfaction"
+        ]
       }
     ],
     "lore": "A relic from the golden age of Pax Britannia, when the Royal Navy patrolled every ocean of the world and required smaller flagships to oversee its farthest-flung territories, the Sabre- class nevertheless makes for a serviceable command ship for the modern-day Crown. Now, as then, Sabres usually operate in pairs, making a virtue of their smaller size to direct naval operations over a wider geographical area than a single vessel could manage alone. Even so, they are more commonly found engaging the largest enemy ships, their captains ever keen to demonstrate that the worth of an officer cannot be measured by the size of their command. Quebec's Davie Shipyard has recently secured permission to produce local variants of vessels based on the Albion chassis, including the Sabre. The Crown Admiralty refuses to accept the Ottawa Command Cruiser as a distinct subclass, arguing that \"a scattering of cosmetic differences does not prevent it from SUBFACTION TRAIT clearly being a Sabre-class vessel.\" This has not prevented proud Canadian crews from using their own nomenclature, prompting When adding this unit to a Force, choose one no small amount of confusion and eye-rolling among the clerks ",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 2
   },
@@ -7520,8 +7855,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "From the windswept southern islands of New Zealand to the frozen seas of Canada's Northwest Passage, squadrons of Saxons patrol every inch of Her Majesty's coastlines. Their pilots claim, with some justification, that nowhere is more than sixty minutes from one of their nimble scout rotors. Whenever an enemy patrol is sighted in Crown waters, however far from civilisation it might be, a flight of Saxons will invariably be the first armed units on the scene. Courageous to a fault, Saxon crews are known as the \"Sixty-Minuters\" for their rapid response times and average life expectancy.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 2,
     "max": 6
   },
@@ -7625,8 +7960,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "Ranging ahead of Crown battlelines, the crews of Secaceclass fast destroyers are adept at clearing the skies of aerial threats. The airships and rotors of the other Great Powers usually pre- empt the arrival of a Secace squadron by abandoning the area beforehand, but the captain of a Secace will balk at nothing in giving chase, up to and including any other ships that happen to be in their way. Few crews can navigate the waves as dexterously as they, and the tales of their Boys Own exploits are guilty pleasures amongst the dispatch operators in Whitehall.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 4
   },
@@ -7637,7 +7972,7 @@
     "sub_name": "Belfast Class",
     "faction": "Crown",
     "role": "Logistical",
-    "point_cost_per_model": null,
+    "point_cost_per_model": 65,
     "vpr": 2,
     "models": "1-3",
     "tags": [
@@ -7704,18 +8039,35 @@
         "description": "Add Defensive Mines to the unit; gains Auxiliary Mine Layer (3)",
         "cost_per_unit": 20,
         "max": 1,
-        "tag": "DEFENSIVE_MINES",
+        "tag": "CROWN_DEFENSIVE_MINES",
         "adds_properties": [
           {
             "name": "Auxiliary Mine Layer",
             "value": 3
           }
+        ],
+        "display_name": "Defensive Mines"
+      },
+      {
+        "description": "Add up to 2 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 2,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Add 1 Ceylon Guardian Platform or 1 Defence Platform as an Attachment",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "ATTACHMENT",
+        "attachment_unit_ids": [
+          "crown_ceylon",
+          "crown_defence_platform"
         ]
       }
     ],
     "lore": "The Belfast-class offshore support platform is one of the Royal Navy's greatest strategic assets. Dotted about the world's seas DEFENSIVE MINES and oceans, their ability to provide support and repair facilities extends the reach and operational range of Her Majesty's navy, This unit can be upgraded with Defensive Mines. If so, allowing Her fleets to venture further, and project the Crown's it gains the Auxiliary Mine Layer (3) property. influence to every corner of the globe.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   },
@@ -7727,7 +8079,7 @@
     "faction": "Crown",
     "role": "Flagship",
     "point_cost_per_model": 140,
-    "vpr": 18,
+    "vpr": 6,
     "models": "3",
     "tags": [
       "Crown",
@@ -7940,8 +8292,8 @@
       }
     ],
     "lore": "A relic from the golden age of Pax Britannia, when the Royal Navy patrolled every ocean of the world and required smaller flagships to oversee its farthest-flung territories, the Sabre- class nevertheless makes for a serviceable command ship for the modern-day Crown. Now, as then, Sabres usually operate in pairs, making a virtue of their smaller size to direct naval operations over a wider geographical area than a single vessel could manage alone. Even so, they are more commonly found engaging the largest enemy ships, their captains ever keen to demonstrate that the worth of an officer cannot be measured by the size of their command. Quebec's Davie Shipyard has recently secured permission to produce local variants of vessels based on the Albion chassis, including the Sabre. The Crown Admiralty refuses to accept the Ottawa Command Cruiser as a distinct subclass, arguing that \"a scattering of cosmetic differences does not prevent it from SUBFACTION TRAIT clearly being a Sabre-class vessel.\" This has not prevented proud Canadian crews from using their own nomenclature, prompting When adding this unit to a Force, choose one no small amount of confusion and eye-rolling among the clerks ",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 3,
     "max": 3
   },
@@ -8059,8 +8411,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "A prototype variant of the Morgana-class assault submarine, famously stolen by the swashbuckling privateer, Captain Rani Nimue, before the vessel had a chance to enter official service. Rani's loyal and eclectic crew have since adventured all around the globe, searching for legendary artefacts and treasures. Regrettably, Captain Nimue has been known to sail on behalf of any Great Power that can entice her interest and meet her fee. Despite this, pragmatic politicians of the Crown will frequently strike deals to bring this extraordinary craft into the well-paying service of Her Majesty",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -8234,8 +8586,8 @@
       }
     ],
     "lore": "Reliable workhorses of the Royal Flying Corps, squadrons of Tintagel battle rotors patrol every corner of the globe. Prow- mounted ultrasound emitters allow a Tintagel to pick out suspicious vessels under any weather conditions, and wherever they might try to hide. In crowded aft hangars, squads of aerial commandos, each trained in search and seizure, stand by Cavall attack skimmers, ready to launch at a moment's notice. The governments of the other Great Powers may complain about the regular loss of shipping, but those with a right to be in Crown waters have nothing to fear.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 4,
     "attachment": {
@@ -8261,7 +8613,7 @@
     "sub_name": "Mass Conveyor",
     "faction": "Crown",
     "role": "Logistical",
-    "point_cost_per_model": null,
+    "point_cost_per_model": 70,
     "vpr": 0,
     "models": "1",
     "tags": [
@@ -8380,11 +8732,44 @@
             "value": 2
           }
         ]
+      },
+      {
+        "description": "Add up to 3 Escort tokens to the unit",
+        "cost_per_unit": 10,
+        "max": 3,
+        "tag": "ESCORT"
+      },
+      {
+        "description": "Upgrade with an Olympia Levant Drive; replace Surface with Airborne and gain Low Altitude",
+        "cost_per_unit": 15,
+        "max": 1,
+        "tag": "OLYMPIA_LEVANT_DRIVE",
+        "adds_tags": [
+          "Airborne"
+        ],
+        "removes_tags": [
+          "Surface"
+        ],
+        "adds_properties": [
+          {
+            "name": "Low Altitude",
+            "value": null
+          }
+        ]
+      },
+      {
+        "description": "Add 1 Hermes Supply Freighter as an Attachment",
+        "cost_per_unit": 0,
+        "max": 1,
+        "tag": "ATTACHMENT",
+        "attachment_unit_ids": [
+          "crown_hermes"
+        ]
       }
     ],
     "lore": "OLYMPIA LEVANT DRIVE This model can be upgraded with an Olympia Levant Drive. If so, its Surface trait is replaced with Airborne, and it gains the Low Altitude property. A joint effort by shipping companies Norddeutscher Hamburg and White Wolf produced the Titan-class container ship, TROOP TRANSPORT BAY designed to be the ultimate oceangoing vessel for speed, size, and affordability. Today, the Titan is ubiquitous, ferrying war This model can be upgraded with a Troop Transport materiel and troops for nation states, mercenary companies, and Bay. If so, it gains the /Ground Assault (2)/ property. the Great Powers alike.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -8575,8 +8960,8 @@
       }
     ],
     "lore": "Built on the robust Newfoundland hull and outfitted with superior communications systems to support fleet operations, the Toronto-class command cruiser has a vital role in coordinating Canada's defences. With the senior ranks of its gunnery crews drawn exclusively from the Edmonton Rocketry School, and McGill Anti-Air Systems integrated into the main bridge, the Toronto-class is not only well armed for its tonnage, but devastatingly accurate as well.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 2
   },
@@ -8745,8 +9130,8 @@
       }
     ],
     "lore": "With two parallel flight decks, giving its runways a combined length greater than that of the Royal Mall, a Victory-class heavy carrier can darken the skies with wave after wave of Defiance fighters, defending Crown assets from enemy bombers or strafing high value targets with rapid firing Vickers Machine Guns. The considerable firepower of the Victory's fighter wings is bolstered by three Congreve Mark VII Rocket Turrets, giving these vessels considerable versatility in battle.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 1
   },
@@ -8860,8 +9245,8 @@
     "hardpoint_options": {},
     "options_and_upgrades": [],
     "lore": "While sea power will always be the Crown's first love and preeminent concern, the growing importance of anti-aircraft capabilities has slowly begun to impress itself even on the arch- traditionalists of the Royal Navy. This is nowhere truer than amongst the admiralty of the Royal Canadian Navy. Faced with the looming threat of the Union's immense dirigible airfleet, and regular probing sorties from the America-based Honorable Eclipse Company, Admiral Dominic Éloi Lacroix, of Quebec's Davie Shipyards, designed a new class of submarine. Mounting a stripped back version of the Athelstan's fragmentation ripple cannonade, the Vivienne can range far ahead of conventional flak units, lying in wait until the moment to intervene arrives. Water sluices down their armoured flanks as devastating flak batteries open fire, shredding unsuspecting aircraft and short-range fighters before sinking back beneath the waves, burning wreckage pattering across the sea in their wake. Such has been their effectiveness in the North Atlantic that construction was swiftly taken off Lacroix's hands and relocated to the Crown's principle shipyard in Barrow-in-Furness. Quebec's loss was to be the Crown's gain.",
-    "version": "4.02a",
-    "date": "2026-06-26",
+    "version": "4.02c",
+    "date": "2026-10-09",
     "min": 1,
     "max": 3
   }

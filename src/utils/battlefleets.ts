@@ -10,7 +10,13 @@ import type {
     Unit,
 } from '../types/index'
 import { getEffectiveGeneratorSelections, getSelectedTags } from './optionRuleEffects.ts'
-import { getAttachmentEligibilityFailure, getAttachmentKeyword, hasAttachmentProperty } from './attachments.ts'
+import {
+    getAttachmentEligibilityFailure,
+    getAttachmentKeyword,
+    getAttachmentModelLimitForUnit,
+    getMinimumModelsForAttachment,
+    hasAttachmentProperty,
+} from './attachments.ts'
 
 function normalizeTrait(value: string): string {
     return value.trim().toLowerCase()
@@ -397,6 +403,16 @@ function validateAttachmentRelations(
         for (const attachmentEntry of attachments) {
             const attachment = findUnit(units, attachmentEntry)
             if (!attachment) continue
+            const minimumModels = getMinimumModelsForAttachment(attachment)
+            const maximumModels = getAttachmentModelLimitForUnit(attachment)
+            if (attachmentEntry.models.length < minimumModels || attachmentEntry.models.length > maximumModels) {
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    unitInstanceId: attachmentEntry.instanceId,
+                    message: `${attachment.name} has ${attachmentEntry.models.length} models as an Attachment; allowed ${minimumModels === maximumModels ? minimumModels : `${minimumModels}-${maximumModels}`}.`,
+                })
+            }
             const attachmentTags = getSelectedTags(
                 attachment,
                 attachmentEntry.models[0]?.config ?? attachmentEntry.config,
@@ -437,7 +453,11 @@ function validateFlagshipLimit(
         entries.some((entry) => entry.unitId === CROWN_ADVENTURER_UNIT_ID)
             ? Math.min(1, entries.filter((entry) => entry.unitId === CROWN_PALASHI_UNIT_ID).length)
             : 0
-    const flagshipCount = rawFlagshipCount - exemptTianlongCount - exemptEastIndiaPalashiCount
+    const allowsSecondFlagship = definition.specialRules?.some((rule) =>
+        ['commonwealth-icemaker-restrictions', 'black-wolf-flagship-no-doctrine'].includes(rule),
+    )
+    const flagshipCount =
+        rawFlagshipCount - exemptTianlongCount - exemptEastIndiaPalashiCount - (allowsSecondFlagship ? 1 : 0)
 
     if (flagshipCount <= 1) return []
 
@@ -457,30 +477,31 @@ function validateCommonwealthMainSpecial(
 ): BattlefleetIssue[] {
     const hasPolishLithuanianFlagship = entries.some((entry) => {
         const unit = findUnit(units, entry)
-        return unit ? hasTrait(unit, 'Polish-Lithuanian') && hasTrait(unit, 'Flagship') : false
+        return unit ? ['Polish-Lithuanian', 'Airborne', 'Flagship'].every((tag) => hasTrait(unit, tag, entry)) : false
     })
-
     const countedEntries = entries.filter((entry) => {
         const unit = findUnit(units, entry)
-        if (!unit || hasTrait(unit, 'Flagship')) return false
-        return !(hasPolishLithuanianFlagship && hasTrait(unit, 'Polish-Lithuanian') && hasTrait(unit, 'Airborne'))
+        return unit && !hasTrait(unit, 'Flagship', entry)
     })
-
-    const airborneCount = countedEntries.filter((entry) => {
+    const airborne = countedEntries.filter((entry) => {
         const unit = findUnit(units, entry)
-        return unit ? hasTrait(unit, 'Airborne') : false
-    }).length
+        return unit && hasTrait(unit, 'Airborne', entry)
+    })
+    const polishAirborne = airborne.filter((entry) => hasTrait(findUnit(units, entry)!, 'Polish-Lithuanian', entry))
     const underwaterCount = countedEntries.filter((entry) => {
         const unit = findUnit(units, entry)
-        return unit ? hasTrait(unit, 'Underwater') : false
+        return unit && hasTrait(unit, 'Underwater', entry)
     }).length
-
     const issues: BattlefleetIssue[] = []
-    if (airborneCount > 1) {
+    if (
+        hasPolishLithuanianFlagship
+            ? polishAirborne.length > 4 || airborne.length - polishAirborne.length > 1
+            : airborne.length > 1
+    ) {
         issues.push({
             severity: 'error',
             battlefleetInstanceId: battlefleet.instanceId,
-            message: `${battlefleet.name} can include at most one Airborne unit, excluding its Flagship and eligible Polish-Lithuanian Airborne units.`,
+            message: `${battlefleet.name} exceeds its Airborne limit (one unit, or up to four Polish-Lithuanian Airborne units with a Polish-Lithuanian Airborne Flagship; Flagships and Attachments are excluded).`,
         })
     }
     if (underwaterCount > 1) {
@@ -867,6 +888,92 @@ function validateEmpireKagutsuchiMagmaFlagship(
     })
 }
 
+function validateSubfactionSelections(
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    return flattenUnits(entries).flatMap((entry) => {
+        const unit = findUnit(units, entry)
+        if (
+            !unit ||
+            !unit.options_and_upgrades.some(
+                (option) => option.mandatory && option.exclusive_group?.endsWith('_SUBFACTION'),
+            )
+        )
+            return []
+        const selected = unit.options_and_upgrades.filter(
+            (option) =>
+                option.mandatory &&
+                option.exclusive_group?.endsWith('_SUBFACTION') &&
+                (entry.config.optionQuantities[option.tag] ?? 0) > 0,
+        )
+        return selected.length === 1
+            ? []
+            : [
+                  {
+                      severity: 'error' as const,
+                      battlefleetInstanceId: battlefleet.instanceId,
+                      unitInstanceId: entry.instanceId,
+                      message: `${unit.name} must choose exactly one ${unit.faction} subfaction for the entire unit.`,
+                  },
+              ]
+    })
+}
+
+function validateCommonwealthSpecialist(
+    rule: string,
+    battlefleet: ArmyBattlefleet,
+    entries: ArmyUnit[],
+    units: Unit[],
+): BattlefleetIssue[] {
+    const issues: BattlefleetIssue[] = []
+    const has = (entry: ArmyUnit, tag: string) => {
+        const unit = findUnit(units, entry)
+        return unit ? hasTrait(unit, tag, entry) : false
+    }
+    const report = (message: string, entry?: ArmyUnit) =>
+        issues.push({
+            severity: 'error',
+            battlefleetInstanceId: battlefleet.instanceId,
+            ...(entry ? { unitInstanceId: entry.instanceId } : {}),
+            message: `${battlefleet.name}: ${message}`,
+        })
+    if (rule === 'commonwealth-no-airborne') {
+        for (const entry of flattenUnits(entries)) {
+            if (has(entry, 'Airborne')) report('cannot contain Airborne units, including Attachments.', entry)
+        }
+    }
+    if (rule === 'commonwealth-orlan-restrictions') {
+        const counted = entries.filter((entry) => !has(entry, 'Flagship'))
+        const qualifying = counted.filter((entry) => has(entry, 'Ekranoplan') || has(entry, 'Hovercraft'))
+        if (qualifying.length < Math.ceil(counted.length / 2))
+            report('at least half of non-Flagship, non-Attachment units must be Ekranoplan or Hovercraft.')
+        if (flattenUnits(entries).filter((entry) => has(entry, 'Hovercraft')).length > 4)
+            report('can contain at most four Hovercraft units.')
+        for (const entry of flattenUnits(entries)) {
+            if (has(entry, 'Polish-Lithuanian') && has(entry, 'Airborne'))
+                report('cannot contain Polish-Lithuanian Airborne units.', entry)
+        }
+    }
+    if (rule === 'commonwealth-icemaker-restrictions') {
+        const flagships = entries.filter((entry) => has(entry, 'Flagship'))
+        for (const entry of flagships.slice(1)) {
+            if (entry.config.fleetDoctrineSelection)
+                report('the second Flagship cannot purchase a Fleet Doctrine.', entry)
+        }
+        if (entries.filter((entry) => !has(entry, 'Flagship') && has(entry, 'Airborne')).length > 1)
+            report('can contain at most one Airborne unit, excluding Flagships and Attachments.')
+        for (const entry of flattenUnits(entries)) {
+            const unit = findUnit(units, entry)
+            const cryo = unit?.options_and_upgrades.find((option) => option.tag === 'CRYO_GENERATOR')
+            if (cryo && entry.models.some((model) => (model.config.optionQuantities[cryo.tag] ?? 0) < 1))
+                report('every applicable model must purchase its Cryo Generator upgrade.', entry)
+        }
+    }
+    return issues
+}
+
 function validateSpecialRules(
     definition: BattlefleetDefinition,
     battlefleet: ArmyBattlefleet,
@@ -875,15 +982,27 @@ function validateSpecialRules(
 ): BattlefleetIssue[] {
     const issues: BattlefleetIssue[] = []
     for (const rule of definition.specialRules ?? []) {
+        if (
+            [
+                'commonwealth-no-airborne',
+                'commonwealth-orlan-restrictions',
+                'commonwealth-icemaker-restrictions',
+            ].includes(rule)
+        ) {
+            issues.push(...validateCommonwealthSpecialist(rule, battlefleet, entries, units))
+        }
         if (rule === 'commonwealth-main-airborne-underwater-limit') {
             issues.push(...validateCommonwealthMainSpecial(battlefleet, entries, units))
         }
         if (rule === 'alliance-main-airborne-underwater-limit' || rule === 'airborne-underwater-limit') {
             issues.push(...validateAirborneUnderwaterLimit(battlefleet, entries, units))
         }
-        if (rule === 'black-wolf-underwater-half' || rule === 'black-wolf-flagship-no-doctrine') {
+        if (
+            rule === 'black-wolf-underwater-half' ||
+            (rule === 'black-wolf-flagship-no-doctrine' &&
+                !definition.specialRules?.includes('black-wolf-underwater-half'))
+        ) {
             issues.push(...validateBlackWolfSpecial(battlefleet, entries, units))
-            break
         }
         if (rule === 'east-india-palashi-line') {
             issues.push(...validateEastIndiaPrivateersSpecial(battlefleet, entries, units))
@@ -979,6 +1098,7 @@ function validateBattlefleet(
 
     issues.push(...validateFlagshipLimit(definition, battlefleet, entries, units))
     issues.push(...validateAttachmentRelations(battlefleet, entries, units))
+    issues.push(...validateSubfactionSelections(battlefleet, entries, units))
     issues.push(...validateDuplicateClasses(definition, battlefleet, entries, units))
     issues.push(...validateSpecialRules(definition, battlefleet, entries, units))
 

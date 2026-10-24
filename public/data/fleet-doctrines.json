@@ -1,25 +1,50 @@
 {
   "commonwealth": [
     {
+      "name": "Hammer Sweep",
+      "point_cost": 10,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Polish-Lithuanian"
+      ],
+      "text": "This Doctrine can only be purchased for a Polish-Lithuanian Flagship unit. When a Polish-Lithuanian Surface unit in this Force Activates, its Admiral may discard a Victory & Valour Card from their hand. If they do so, this unit gains Daredevil Crew for the duration of the Activation."
+    },
+    {
+      "name": "Strategic Reserves",
+      "point_cost": 10,
+      "required_role": "Flagship",
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
+    },
+    {
+      "name": "Cryoshock",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Russian",
+        "Surface"
+      ],
+      "text": "This Doctrine can only be purchased for a Russian Surface Flagship unit. When a Commonwealth unit in this Force makes a Cryogenic Blast special action, its Admiral may, after the dice pool has been rolled, declare that they will Overclock the Generators. If they do so, they may immediately re-roll any Blank results. At the end of the Action, any models that contributed to this action gain 1 Disorder."
+    },
+    {
       "name": "Forward Patrol",
       "point_cost": 15,
       "required_role": "Flagship",
       "text": "Being the first to survey an area of battle can often be the difference between winning and losing. All the more important to those for whom losing means death.\n\nAt the start of their turn in the **Make a Special Deployment Action** step of Deployment, this Admiral can nominate one of their units in the Play Area that is not **Immobile.**\n\nThat unit gains the **Vanguard (5”)** property.\n\nThe Admiral can only use this Doctrine once per game."
     },
     {
-      "name": "Evasive Manoeuvres",
-      "point_cost": 20,
+      "name": "Daring Feint",
+      "point_cost": 15,
       "required_role": "Flagship",
       "required_tags": [
         "Polish-Lithuanian"
       ],
-      "text": "Like the cavalry of old, the sleek airships of the Polish-Lithuanian airfleets wheel and dash with incredible dexterity, their graceful swoops and dives allowing them to evade the worst of enemy fire.\n\nThis Doctrine can only be purchased for a **Polish-Lithuanian Flagship** unit.\n\nImmediately after making the **Resistance Roll** for an **Attack** action that targets a **Polish-Lithuanian** model in their Force, this Battlefleet's Admiral may attempt to enact a **Special Valour Effect** with that model.\n\nIf successful, any **Exploding Strikes** in the Resistance Roll are immediately Converted into **Heavy Counters.**"
+      "text": "This Doctrine can only be purchased for a Polish-Lithuanian Flagship unit. Once per Round, after making a Resistance Roll for an Attack action that targets a Polish-Lithuanian Airborne model, this Admiral may attempt to enact a Special Valour Effect. If successful, any Exploding Strikes in the Resistance Roll are immediately Converted into Heavy Counters."
     },
     {
-      "name": "Strategic Reserves",
+      "name": "Gunnery Sharpshooters",
       "point_cost": 20,
       "required_role": "Flagship",
-      "text": "No plan survives contact with the enemy. A wily Admiral will usually have more than one.\n\nWhenever this Admiral makes a **Reserve Roll** for a unit in their Force, they can roll one additional **Action Die.**"
+      "text": "The most skilled railgunner crews in the Commonwealth can aim their batteries with terrifying accuracy.\n\nCan only be purchased for a **Commonwealth Flagship** unit.\n\nIf a unit in this Fleet makes an **Attack** action to which at least one weapon with the **Rail** quality **Contributes,** and the Initial Target suffers at least **1 Damage,** the active Admiral can enact a **Special Valour Effect.**\n\nIf the effect is successfully enacted, the Initial Target suffers **1 Critical Damage.**"
     },
     {
       "name": "Chain of Command",
@@ -34,35 +59,13 @@
       "text": "Some are good. Others are simply lucky. The good know what they would rather be.\n\nOnce per game, when the opposing Admiral attempts to enact a **Valour Effect,** this Admiral can use this Doctrine instead of attempting to **Deny** the effect.\n\nThe opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
     },
     {
-      "name": "Do Or Die",
-      "point_cost": 30,
-      "required_role": "Flagship",
-      "text": "Even in this Dystopian Age, there are those who lead by example, men and women who can wrest victory from defeat by force of charisma alone. The lowliest of sailors would stand by the guns of their sinking ships, and sail through fire, for such an Admiral.\n\nOnce per Round, before this Admiral makes a **Crew Check** for a model, they can use this Doctrine to grant a **+1 Modifier** to that model's **Crew** rating, for the purposes of this test only.\n\nIn the case of a **Group Crew Check,** this Modifier applies to all models in the unit."
-    },
-    {
       "name": "Hetman of the Sea",
       "point_cost": 30,
       "required_role": "Flagship",
       "required_tags": [
         "Ukrainian"
       ],
-      "text": "Though seldom the holders of high rank in the White Navy, the captains of Akula Grand Submarines often serve as the unofficial leaders of roving Ukrainian wolfpacks.\n\nThis Doctrine can only be purchased for a **Ukrainian Flagship** unit.\n\nAt the start of a **Ukrainian Underwater Capital** unit's Activation, its Admiral may attempt to enact a **Special Valour Effect.** If successful, the unit gains a **Valour Effect** token. Until the start of this unit's next Activation, all **Ukrainian Underwater** units in this Force within **10”** of this unit are immune to the effects of **Blow the Tanks.** At the start of its next Activation, discard the Valour Effect token."
-    },
-    {
-      "name": "Icemakers",
-      "point_cost": 40,
-      "required_role": "Flagship",
-      "required_tags": [
-        "Russian",
-        "Surface"
-      ],
-      "text": "Pioneered by the ironically-named Icebreaker squadrons of the Arctic fleet, the practice of overclocking a vessel's cryogenic generator has been adopted by Commonwealth admirals stationed across the world's oceans.\n\nThis Doctrine can only be purchased for a **Russian Surface Flagship** unit.\n\nWhen a **Commonwealth** unit in this Force makes a **Cryogenic Blast** special action, but before any dice are rolled, its Admiral may declare that they will **Overclock the Generators.** If they do so, any **Standard Strikes** in the subsequent **Cryogenic Blast Roll** also count as **Successes** for the duration of this Action. At the end of the Action, any models that contributed to this action gain **1 Disorder.**"
-    },
-    {
-      "name": "Gunnery Sharpshooters",
-      "point_cost": 40,
-      "required_role": "Flagship",
-      "text": "The most skilled railgunner crews in the Commonwealth can aim their batteries with terrifying accuracy.\n\nCan only be purchased for a **Commonwealth Flagship** unit.\n\nIf a unit in this Fleet makes an **Attack** action to which at least one weapon with the **Rail** quality **Contributes,** and the Initial Target suffers at least **1 Damage,** the active Admiral can enact a **Special Valour Effect.**\n\nIf the effect is successfully enacted, the Initial Target suffers **1 Critical Damage.**"
+      "text": "This Doctrine can only be purchased for a Ukrainian Flagship unit. At the start of an Akula Grand Submarine unit's Activation, its Admiral may attempt to enact a Special Valour Effect. If successful, the unit gains a Valour Effect token. Until the start of this unit's next Activation, all friendly Ukrainian units within 10\" increase their Crew rating by 2, to a maximum of 12. At the start of its next Activation, discard the Valour Effect token."
     }
   ],
   "alliance": [
@@ -153,7 +156,7 @@
       "name": "Forward Patrol",
       "point_cost": 15,
       "required_role": "Flagship",
-      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once per game."
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one of their units in the Play Area that is not Immobile. That unit gains Vanguard (5”)."
     },
     {
       "name": "Strategic Reserves",
@@ -216,7 +219,7 @@
       "required_tags": [
         "Carrier"
       ],
-      "text": "Can only be purchased for a Crown Flagship Carrier unit. Once per round, before resolving an Attack Run mission with a Defiance SRS stack, this Admiral may attempt to enact a Special Valour Effect. If successful, the SRS Squadron may perform a Peregrine Dive and no Interception Attempt may be made against this Attack Run."
+      "text": "Can only be purchased for a Crown Flagship Carrier unit. Once per round, before resolving an Attack Run mission with a Defiance SRS stack, this Admiral may attempt to enact a Special Valour Effect. If successful, the SRS Squadron may perform a Peregrine Dive and no Interception Attempt may be made against this Attack Run. If the Special Valour Effect fails, the Admiral may proceed with the Attack Run and any associated Interception Attempt as normal, or choose not to Resolve an Attack Run Mission at this time and proceed with their unit's Activation."
     }
   ],
   "imperium": [

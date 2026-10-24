@@ -39,6 +39,10 @@ export function getAttachmentModelLimitForUnit(unit: Unit): number {
     return getMaximumModelsForUnit(unit)
 }
 
+export function getMinimumModelsForAttachment(unit: Unit): number {
+    return Math.min(getMinimumModelsForUnit(unit), getAttachmentModelLimitForUnit(unit))
+}
+
 function getPositionalTraits(tags: string[]): string[] {
     return tags
         .map((tag) => tag.toLowerCase())
@@ -127,10 +131,25 @@ export function getAttachmentEligibilityFailure(
     const parentAttachmentTargetIds = getParentAttachmentTargetIds(parent)
     if (parentAttachmentTargetIds.size > 0 && !parentAttachmentTargetIds.has(attachment.id)) return 'parent-option'
     const parentTraits = getUnitTraits(parent, parentTags)
+    if (attachment.attachment?.parent_traits.includes('Subfaction')) {
+        const subfactions = attachment.options_and_upgrades
+            .filter((option) => option.mandatory && option.exclusive_group?.endsWith('_SUBFACTION'))
+            .flatMap((option) => option.adds_tags ?? [])
+        const subfaction = attachmentTags.find((tag) => subfactions.includes(tag))
+        if (
+            subfaction
+                ? !parentTags.includes(subfaction)
+                : tags.attachmentTags !== undefined || !parentTags.some((tag) => subfactions.includes(tag))
+        )
+            return 'parent-traits'
+    }
     const explicitEligibility = parentMatchesExplicitEligibility(attachment, parent, parentTraits)
     if (explicitEligibility != null) return explicitEligibility ? null : 'parent-traits'
-    const requirements = getAttachmentRequirements(attachment)
-    if (requirements.length === 0) return 'parent-traits'
+    const requirements = getAttachmentRequirements(attachment).filter(
+        (requirement) => !requirement.includes('Subfaction'),
+    )
+    if (requirements.length === 0)
+        return attachment.attachment?.parent_traits.includes('Subfaction') ? null : 'parent-traits'
     return requirements.every((requirement) =>
         requirement.some((requiredTrait) => parentMatchesTrait(parentTraits, requiredTrait)),
     )

@@ -15,14 +15,19 @@ import type {
 import { loadListsFromStorage, saveListsToStorage } from '../utils/localStorage'
 import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/battlefleets'
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
-import { canAttachToParent, getAttachmentModelLimitForUnit } from '../utils/attachments'
+import { canAttachToParent, getAttachmentModelLimitForUnit, getMinimumModelsForAttachment } from '../utils/attachments'
 import { getSelectedTags } from '../utils/optionRuleEffects'
 import { canSelectGeneratorInSlot, withWeaponGeneratorSelection } from '../utils/generatorRules'
 import { normalizeSavedListsIndependently } from '../utils/listNormalization'
 import { renameArmyListState } from '../utils/listNames'
 import { duplicateArmyModel } from '../utils/modelHelpers'
 import { normalizeGeneratorBackedOptionConfig } from '../utils/optionConfig'
-import { normalizeLegacyFactionId, normalizeLegacyUnitId } from '../utils/storageMigration'
+import {
+    clearOrbatModelMines,
+    migrateOrbatConfig,
+    normalizeLegacyFactionId,
+    normalizeLegacyUnitId,
+} from '../utils/storageMigration'
 import { isUnitSelectable } from '../utils/unitHelpers'
 import { uuid } from '../utils/uuid'
 
@@ -172,7 +177,12 @@ function makeArmyUnit(
         instanceId: uuid(),
         unitId: unit.id,
         battlefleetInstanceId,
-        config: cloneConfig(emptyUnitConfig),
+        config: {
+            ...cloneConfig(emptyUnitConfig),
+            optionQuantities: Object.fromEntries(
+                Object.entries(config.optionQuantities).filter(([tag]) => isUnitLevelOption(tag)),
+            ),
+        },
         models: makeModels(unit, config),
         totalPoints: 0,
     }
@@ -289,7 +299,7 @@ function countAttachedModels(entries: ArmyUnit[], unitId: string): number {
     return entries.reduce((sum, entry) => sum + (entry.unitId === unitId ? entry.models.length : 0), 0)
 }
 
-function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
+function normalizeArmyUnit(entry: ArmyUnit, units: Unit[], asAttachment = false): ArmyUnit | null {
     const unitId = normalizeLegacyUnitId(entry.unitId)
     const unit = units.find((item) => item.id === unitId)
     if (!unit) return null
@@ -298,25 +308,30 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
         options?: { tag: string; quantity: number }[]
         generator?: Generator | null
     }
-    const config = normalizeGeneratorBackedOptionConfig(
-        unit,
-        normalizeConfig(
-            entry.config ?? {
-                hardpointSelections: {},
-                generatorSelection: legacy.generator
-                    ? {
-                          weaponIndex: 0,
-                          generatorName: legacy.generator.name,
-                          generatorCost: legacy.generator.point_cost,
-                      }
-                    : null,
-                fleetDoctrineSelection: null,
-                optionQuantities: Object.fromEntries(
-                    (legacy.options ?? []).map((option) => [option.tag, option.quantity]),
-                ),
-            },
+    const config = migrateOrbatConfig(
+        entry.unitId,
+        normalizeGeneratorBackedOptionConfig(
+            unit,
+            normalizeConfig(
+                entry.config ?? {
+                    hardpointSelections: {},
+                    generatorSelection: legacy.generator
+                        ? {
+                              weaponIndex: 0,
+                              generatorName: legacy.generator.name,
+                              generatorCost: legacy.generator.point_cost,
+                          }
+                        : null,
+                    fleetDoctrineSelection: null,
+                    optionQuantities: Object.fromEntries(
+                        (legacy.options ?? []).map((option) => [option.tag, option.quantity]),
+                    ),
+                },
+            ),
         ),
     )
+    const minimumModels =
+        asAttachment && !entry.generatedByOption ? getMinimumModelsForAttachment(unit) : getMinimumModels(unit)
     const legacyModels = (entry as ArmyUnit & { models?: ArmyModel[] }).models
     const models =
         Array.isArray(legacyModels) && legacyModels.length > 0
@@ -324,22 +339,29 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[]): ArmyUnit | null {
                   .map((model) => ({
                       modelId: model.modelId ?? uuid(),
                       customName: model.customName?.trim() || undefined,
-                      config: normalizeGeneratorBackedOptionConfig(unit, normalizeConfig(model.config)),
+                      config: migrateOrbatConfig(
+                          entry.unitId,
+                          normalizeGeneratorBackedOptionConfig(unit, normalizeConfig(model.config)),
+                      ),
                   }))
                   .slice(0, getMaximumModels(unit))
-            : makeModels(unit, config)
-    while (models.length < getMinimumModels(unit)) {
+            : makeModels(unit, config).slice(0, minimumModels)
+    while (models.length < minimumModels) {
         models.push(makeModel())
     }
     const normalized: ArmyUnit = {
         instanceId: entry.instanceId,
         unitId,
         customName: entry.customName?.trim() || undefined,
-        config: cloneConfig(config),
-        models,
+        config: migrateOrbatConfig(
+            entry.unitId,
+            config,
+            models.map((model) => model.config),
+        ),
+        models: models.map((model) => ({ ...model, config: clearOrbatModelMines(entry.unitId, model.config) })),
         totalPoints: 0,
         attachedUnits: entry.attachedUnits?.flatMap((attachment) => {
-            const normalizedAttachment = normalizeArmyUnit(attachment, units)
+            const normalizedAttachment = normalizeArmyUnit(attachment, units, true)
             return normalizedAttachment ? [normalizedAttachment] : []
         }),
         battlefleetInstanceId: typeof entry.battlefleetInstanceId === 'string' ? entry.battlefleetInstanceId : null,
@@ -783,13 +805,26 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const parentUnit = state.units.find((item) => item.id === parent.unitId)
         const parentModelConfig = parent.models[0]?.config ?? parent.config
         const parentTags = parentUnit ? getSelectedTags(parentUnit, parentModelConfig, parent.config) : []
-        const config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
+        let config = unitId === state.selectedUnitId ? state.activeUnitConfig : emptyUnitConfig
+        if (unit.attachment?.parent_traits.includes('Subfaction')) {
+            const option = unit.options_and_upgrades.find(
+                (candidate) =>
+                    candidate.mandatory &&
+                    candidate.exclusive_group?.endsWith('_SUBFACTION') &&
+                    candidate.adds_tags?.some((tag) => parentTags.includes(tag)),
+            )
+            if (!option) return
+            config = {
+                ...config,
+                optionQuantities: updateOptionQuantitiesForSelection(unit, config, option.tag, 1),
+            }
+        }
         const attachmentTags = getSelectedTags(unit, config, config)
         if (!parentUnit || !canAttachToParent(unit, parentUnit, { attachmentTags, parentTags })) return
         if ((parent.attachedUnits ?? []).some((attachment) => !attachment.generatedByOption)) return
         const usedModels = countAttachedModels(parent.attachedUnits ?? [], unitId)
         const remainingModels = getAttachmentModelLimitForUnit(unit) - usedModels
-        if (remainingModels < getMinimumModels(unit)) return
+        if (remainingModels < getMinimumModelsForAttachment(unit)) return
         const attachment = makeArmyUnit(unit, config, parent.battlefleetInstanceId ?? null, state.currentList)
         attachment.models = attachment.models.slice(0, remainingModels)
         attachment.totalPoints = computeArmyUnitTotal(attachment, state.units, state.currentList)
@@ -1039,7 +1074,9 @@ export const useAppStore = create<AppStore>((set, get) => ({
         const entry = findArmyUnit(state.currentList.units, instanceId)
         const unit = entry ? state.units.find((item) => item.id === entry.unitId) : null
         if (!entry || !unit) return
-        const minModels = getMinimumModels(unit)
+        const minModels = findParentOfAttachment(state.currentList.units, instanceId)
+            ? getMinimumModelsForAttachment(unit)
+            : getMinimumModels(unit)
         if (entry.models.length <= minModels) return
         const nextModels = entry.models.filter((model) => model.modelId !== modelId)
         const selectedModel = nextModels[0] ?? null

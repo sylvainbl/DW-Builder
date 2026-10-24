@@ -39,7 +39,7 @@ import {
     canAttachToParent,
     getAttachmentKeyword,
     getAttachmentModelLimitForUnit,
-    getMinimumModelsForUnit,
+    getMinimumModelsForAttachment,
     hasAttachmentProperty,
     isAttachmentOption,
 } from '../../utils/attachments'
@@ -520,9 +520,10 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         selectedEntryBattlefleetEntries,
         selectedEntry,
     )
+    const doctrineTags = getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
     const effectiveDoctrineUnit = promotedAkulaFlagship
-        ? { ...unit, role: 'Flagship', tags: unit.tags.includes('Flagship') ? unit.tags : [...unit.tags, 'Flagship'] }
-        : unit
+        ? { ...unit, role: 'Flagship', tags: [...new Set([...doctrineTags, 'Flagship'])] }
+        : { ...unit, tags: doctrineTags }
     const availableFleetDoctrines = getAvailableFleetDoctrines(effectiveDoctrineUnit, fleetDoctrines)
     const isKagutsuchiEntry = selectedEntryBattlefleet?.definitionId === KAGUTSUCHI_BATTLEFLEET_ID
     const extraMagmaCastCost =
@@ -605,7 +606,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
             ? computeArmyUnitGuardianSurge(selectedEntry, units)
             : computeModelGuardianSurge(unit, activeUnitConfig)
         : 0
-    const minModels = unit.min ?? (typeof unit.models === 'number' ? unit.models : 1)
+    const minModels = selectedEntryParent
+        ? getMinimumModelsForAttachment(unit)
+        : (unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
     const detailModelCount = selectedEntry?.models.length ?? minModels
     const totalVpr = selectedEntry ? computeArmyUnitVpr(selectedEntry, units) : detailModelCount * unit.vpr
     const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
@@ -718,7 +721,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                           remainingModels,
                           eligible,
                           canAdd:
-                              eligible && !hasNormalAttachment && remainingModels >= getMinimumModelsForUnit(candidate),
+                              eligible &&
+                              !hasNormalAttachment &&
+                              remainingModels >= getMinimumModelsForAttachment(candidate),
                       }
                   })
                   .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
@@ -730,7 +735,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                   .map((candidate) => ({
                       unit: candidate,
                       keyword: getAttachmentKeyword(candidate) ?? 'Attachment',
-                      minModels: getMinimumModelsForUnit(candidate),
+                      minModels: getMinimumModelsForAttachment(candidate),
                       maxModels: getAttachmentModelLimitForUnit(candidate),
                   }))
                   .sort((left, right) => left.unit.name.localeCompare(right.unit.name))
