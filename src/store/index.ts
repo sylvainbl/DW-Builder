@@ -17,7 +17,7 @@ import { isBattlefleetAvailableForFaction, isMercenaryInForce } from '../utils/b
 import { computeArmyUnitTotal, isUnitLevelOption, updateArmyUnitTotals, updateListUnit } from '../utils/pointsCalc'
 import { canAttachToParent, getAttachmentModelLimitForUnit, getMinimumModelsForAttachment } from '../utils/attachments'
 import { getSelectedTags } from '../utils/optionRuleEffects'
-import { canSelectGeneratorInSlot, withWeaponGeneratorSelection } from '../utils/generatorRules'
+import { canSelectGeneratorInSlot, withUnitWeaponGeneratorSelection } from '../utils/generatorRules'
 import { normalizeSavedListsIndependently } from '../utils/listNormalization'
 import { renameArmyListState } from '../utils/listNames'
 import { duplicateArmyModel } from '../utils/modelHelpers'
@@ -97,7 +97,7 @@ interface AppStore {
     removeModelFromListUnit: (instanceId: string, modelId: string) => void
 
     setHardpointSelection: (weaponIndex: number, weaponName: string) => void
-    setGeneratorSelection: (selection: UnitConfig['generatorSelection']) => void
+    setGeneratorSelection: (selection: UnitConfig['generatorSelection'], removedWeaponIndex?: number) => void
     setSystemGeneratorSelection: (slotIndex: number, selection: UnitConfig['generatorSelection']) => void
     setGeneratorMountedWeapon: (selectionIndex: number, weaponName: string) => void
     setFleetDoctrineSelection: (selection: UnitConfig['fleetDoctrineSelection']) => void
@@ -164,7 +164,12 @@ function makeModel(config: UnitConfig = emptyUnitConfig): ArmyModel {
 
 function makeModels(unit: Unit, firstConfig: UnitConfig = emptyUnitConfig): ArmyModel[] {
     const modelCount = getMinimumModels(unit)
-    return Array.from({ length: modelCount }, (_, index) => makeModel(index === 0 ? firstConfig : emptyUnitConfig))
+    return Array.from({ length: modelCount }, (_, index) =>
+        makeModel({
+            ...(index === 0 ? firstConfig : emptyUnitConfig),
+            ...(unit.faction_id === 'imperium' ? { orbatVersion: unit.version } : {}),
+        }),
+    )
 }
 
 function makeArmyUnit(
@@ -179,6 +184,7 @@ function makeArmyUnit(
         battlefleetInstanceId,
         config: {
             ...cloneConfig(emptyUnitConfig),
+            ...(unit.faction_id === 'imperium' ? { orbatVersion: unit.version } : {}),
             optionQuantities: Object.fromEntries(
                 Object.entries(config.optionQuantities).filter(([tag]) => isUnitLevelOption(tag)),
             ),
@@ -344,7 +350,7 @@ function normalizeArmyUnit(entry: ArmyUnit, units: Unit[], asAttachment = false)
                           normalizeGeneratorBackedOptionConfig(unit, normalizeConfig(model.config)),
                       ),
                   }))
-                  .slice(0, getMaximumModels(unit))
+                  .slice(0, unit.faction_id === 'imperium' ? undefined : getMaximumModels(unit))
             : makeModels(unit, config).slice(0, minimumModels)
     while (models.length < minimumModels) {
         models.push(makeModel())
@@ -1111,8 +1117,10 @@ export const useAppStore = create<AppStore>((set, get) => ({
 
     setHardpointSelection: (weaponIndex, weaponName) => {
         set((state) => {
+            const unit = state.units.find((unit) => unit.id === state.selectedUnitId)
             const newConfig = {
                 ...state.activeUnitConfig,
+                ...(unit?.faction_id === 'imperium' ? { orbatVersion: unit.version } : {}),
                 hardpointSelections: {
                     ...state.activeUnitConfig.hardpointSelections,
                     [weaponIndex]: weaponName,
@@ -1141,9 +1149,15 @@ export const useAppStore = create<AppStore>((set, get) => ({
         })
         get().persistLists()
     },
-    setGeneratorSelection: (selection) => {
+    setGeneratorSelection: (selection, removedWeaponIndex) => {
         set((state) => {
-            const newConfig = withWeaponGeneratorSelection(state.activeUnitConfig, selection)
+            const unit = state.units.find((unit) => unit.id === state.selectedUnitId)
+            const newConfig = withUnitWeaponGeneratorSelection(
+                unit,
+                state.activeUnitConfig,
+                selection,
+                removedWeaponIndex,
+            )
             return {
                 activeUnitConfig: newConfig,
                 currentList:

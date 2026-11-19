@@ -159,7 +159,7 @@ function makeImportedModels(
                       config: migrateOrbatConfig(originalUnitId, normalizeUnitConfig(config, unit)),
                   },
               ]
-    ).slice(0, maximumModels(unit))
+    ).slice(0, unit.faction_id === 'imperium' ? undefined : maximumModels(unit))
     const minimum = asAttachment ? getMinimumModelsForAttachment(unit) : minimumModels(unit)
     while (normalized.length < minimum) {
         normalized.push({ modelId: uuid(), config: structuredClone(emptyUnitConfig) })

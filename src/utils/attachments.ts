@@ -1,4 +1,16 @@
-import type { OptionUpgrade, Unit } from '../types/index'
+import type { ArmyUnit, BattlefleetEffect, OptionUpgrade, Unit } from '../types/index'
+
+export function getAttachmentParentEffects(
+    entry: ArmyUnit | null | undefined,
+    units: Unit[],
+    parentTags: string[],
+): BattlefleetEffect[] {
+    if (!entry || !parentTags.includes('Flagship')) return []
+    return (entry.attachedUnits ?? []).flatMap((attached) => {
+        const effects = units.find((unit) => unit.id === attached.unitId)?.attachment?.parent_effects
+        return effects ? [{ scope: 'battlefleet' as const, ...effects }] : []
+    })
+}
 
 const POSITIONAL_TRAITS = new Set(['surface', 'airborne', 'airship', 'rotorcraft', 'underwater'])
 const POSITIONAL_TRAIT_ALIASES: Record<string, string> = {

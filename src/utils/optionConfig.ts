@@ -7,6 +7,9 @@ export function isUnitLevelOption(tag: string): boolean {
         tag === 'EARTHSHAKER_CONSTRUCTION' ||
         tag === 'COMMONWEALTH_DEFENSIVE_MINES' ||
         tag === 'CROWN_DEFENSIVE_MINES' ||
+        tag === 'IMPERIUM_DEFENSIVE_MINES' ||
+        tag === 'IMPERIUM_FLAGSHIP_VARIANT' ||
+        tag.startsWith('IMPERIUM_SUBFACTION_') ||
         tag.startsWith('COMMONWEALTH_SUBFACTION_') ||
         tag.startsWith('CROWN_SUBFACTION_')
     )

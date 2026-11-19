@@ -64,6 +64,11 @@ export interface OptionUpgrade {
     exclusive_group?: string
     mandatory?: boolean
     applies_per_model?: boolean
+    max_models?: number
+    separate_class?: boolean
+    all_models?: boolean
+    sets_stats?: Partial<Stat>
+    requires_options?: string[]
     generator_replaces_weapon?: boolean
     generator_weapon_match?: WeaponMatch
     restrictions?: string[]
@@ -183,10 +188,12 @@ export interface Unit {
             }[]
         }
         note?: string
+        parent_effects?: Pick<BattlefleetEffect, 'addTags' | 'addProperties'>
     }
 }
 
 export interface UnitConfig {
+    orbatVersion?: string
     hardpointSelections: Record<number, string>
     generatorSelection: {
         weaponIndex: number

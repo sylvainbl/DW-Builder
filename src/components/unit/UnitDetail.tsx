@@ -1,3 +1,4 @@
+import { getWeaponGeneratorLimit } from '../../utils/generatorRules'
 import { CopyPlus, Minus, Pencil, Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../store'
@@ -16,6 +17,8 @@ import { getArmyUnitFactionSpecialRules, getFactionSpecialRules } from '../../ut
 import { getAvailableFleetDoctrines } from '../../utils/fleetDoctrines'
 import {
     formatOptionName,
+    getConfiguredModelLimit,
+    getConfiguredUnit,
     getEffectiveGeneratorSelections,
     getGeneratorSystemsForSelection,
     getSelectedGeneratorSystems,
@@ -503,7 +506,8 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         )
     }
 
-    const statEntries = STAT_KEYS.map((key) => [key, unit.stats[key]] as const)
+    const configuredUnit = getConfiguredUnit(unit, activeUnitConfig, selectedEntry?.config)
+    const statEntries = STAT_KEYS.map((key) => [key, configuredUnit.stats[key]] as const)
     const factionGenerators = getGeneratorsForFaction(generators, unit.faction_id)
     const selectedEntryBattlefleet =
         currentList?.battlefleets?.find(
@@ -520,10 +524,13 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         selectedEntryBattlefleetEntries,
         selectedEntry,
     )
-    const doctrineTags = getSelectedTags(unit, activeUnitConfig, selectedEntry?.config)
+    const doctrineTags = [
+        ...getSelectedTags(unit, activeUnitConfig, selectedEntry?.config),
+        ...getBattlefleetAddedTags(currentList, battlefleetDefinitions, units, selectedEntry),
+    ]
     const effectiveDoctrineUnit = promotedAkulaFlagship
         ? { ...unit, role: 'Flagship', tags: [...new Set([...doctrineTags, 'Flagship'])] }
-        : { ...unit, tags: doctrineTags }
+        : { ...configuredUnit, tags: doctrineTags }
     const availableFleetDoctrines = getAvailableFleetDoctrines(effectiveDoctrineUnit, fleetDoctrines)
     const isKagutsuchiEntry = selectedEntryBattlefleet?.definitionId === KAGUTSUCHI_BATTLEFLEET_ID
     const extraMagmaCastCost =
@@ -538,8 +545,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
             : null
     const canTakeGenerator = hasNativeGeneratorAccess || usesSystemGeneratorMount || extraMagmaCastCost != null
     const generatorSelections = getEffectiveGeneratorSelections(unit, activeUnitConfig, selectedEntry?.config)
-    const weaponGeneratorSelection =
-        generatorSelections.find((selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX) ?? null
+    const weaponGeneratorSelections = generatorSelections.filter(
+        (selection) => selection.weaponIndex !== SYSTEM_GENERATOR_WEAPON_INDEX,
+    )
     const selectedSystemGenerators = generatorSelections.filter(
         (selection) => selection.weaponIndex === SYSTEM_GENERATOR_WEAPON_INDEX,
     )
@@ -611,7 +619,10 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
         : (unit.min ?? (typeof unit.models === 'number' ? unit.models : 1))
     const detailModelCount = selectedEntry?.models.length ?? minModels
     const totalVpr = selectedEntry ? computeArmyUnitVpr(selectedEntry, units) : detailModelCount * unit.vpr
-    const normalMaxModels = unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels)
+    const normalMaxModels = Math.min(
+        unit.max ?? (typeof unit.models === 'number' ? unit.models : minModels),
+        getConfiguredModelLimit(unit, activeUnitConfig, selectedEntry?.config),
+    )
     const siblingAttachmentModels =
         selectedEntryParent && selectedEntry
             ? (selectedEntryParent.attachedUnits ?? [])
@@ -1192,14 +1203,34 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                 const isOpen = openHardpointKey === weaponKey
                                 const displayArc = weapon.arc ?? displayWeapon.arc ?? '—'
                                 const radioName = `slot-${selectedModelId ?? 'preview'}-${index}`
-                                const isGeneratorSlot = weaponGeneratorSelection?.weaponIndex === index
+                                const weaponGeneratorSelection =
+                                    weaponGeneratorSelections.find((selection) => selection.weaponIndex === index) ??
+                                    null
+                                const isGeneratorSlot = weaponGeneratorSelection != null
                                 const generatorChoices =
                                     canTakeGenerator && !weapon.hardpoint_locked
-                                        ? getGeneratorChoices(unit, factionGenerators, weapon, extraMagmaCastCost)
+                                        ? getGeneratorChoices(
+                                              unit,
+                                              factionGenerators,
+                                              weapon,
+                                              extraMagmaCastCost,
+                                          ).filter(
+                                              (choice) =>
+                                                  !weaponGeneratorSelections.some(
+                                                      (selection) =>
+                                                          selection.weaponIndex !== index &&
+                                                          selection.generatorName === choice.name,
+                                                  ),
+                                          )
                                         : []
                                 const canShowGeneratorSection =
                                     generatorChoices.length > 0 &&
-                                    (weaponGeneratorSelection == null || weaponGeneratorSelection.weaponIndex === index)
+                                    (weaponGeneratorSelections.filter(
+                                        (selection) =>
+                                            unit.faction_id !== 'imperium' ||
+                                            unit.weapons[selection.weaponIndex]?.slot === weapon.slot,
+                                    ).length < getWeaponGeneratorLimit(unit, index) ||
+                                        isGeneratorSlot)
                                 const showGeneratorRow = Boolean(weapon.slot) && isGeneratorSlot
 
                                 if (showGeneratorRow && weaponGeneratorSelection) {
@@ -1216,7 +1247,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                     <button
                                                         type="button"
                                                         className="text-[10px] font-medium text-neutral-500 underline-offset-2 hover:underline"
-                                                        onClick={() => setGeneratorSelection(null)}
+                                                        onClick={() => setGeneratorSelection(null, index)}
                                                     >
                                                         ×
                                                     </button>
@@ -1285,7 +1316,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                                     if (
                                                                         weaponGeneratorSelection?.weaponIndex === index
                                                                     ) {
-                                                                        setGeneratorSelection(null)
+                                                                        setGeneratorSelection(null, index)
                                                                     }
                                                                 }}
                                                             />
@@ -1312,7 +1343,7 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                                                                     weaponGeneratorSelection?.weaponIndex ===
                                                                                     index
                                                                                 ) {
-                                                                                    setGeneratorSelection(null)
+                                                                                    setGeneratorSelection(null, index)
                                                                                 }
                                                                             }}
                                                                         />
@@ -1499,7 +1530,9 @@ export default function UnitDetail({ addTarget = null, showReadOnlyAttachments =
                                     const config = unitLevel && selectedEntry ? selectedEntry.config : activeUnitConfig
                                     const qty = config.optionQuantities[option.tag] ?? 0
                                     const max = unitLevel ? option.max : (option.max ?? 1)
-                                    const canIncrease = max == null || qty < max
+                                    const canIncrease =
+                                        (max == null || qty < max) &&
+                                        (option.max_models == null || detailModelCount <= option.max_models)
                                     const optionPoints = computeOptionPoints(
                                         option,
                                         qty,

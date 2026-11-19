@@ -138,12 +138,32 @@ function updateEntry(
     modelId?: string,
 ): ArmyUnit {
     if (entry.instanceId === instanceId) {
+        const unit = allUnits.find((unit) => unit.id === entry.unitId)
+        const sharedOptions = unit?.options_and_upgrades.filter((option) => option.all_models) ?? []
         const updated = {
             ...entry,
             config: modelId ? entry.config : structuredClone(newConfig),
             models: modelId
                 ? entry.models.map((model) =>
-                      model.modelId === modelId ? { ...model, config: structuredClone(newConfig) } : model,
+                      model.modelId === modelId
+                          ? { ...model, config: structuredClone(newConfig) }
+                          : sharedOptions.length
+                            ? {
+                                  ...model,
+                                  config: {
+                                      ...model.config,
+                                      optionQuantities: {
+                                          ...model.config.optionQuantities,
+                                          ...Object.fromEntries(
+                                              sharedOptions.map((option) => [
+                                                  option.tag,
+                                                  newConfig.optionQuantities[option.tag] ?? 0,
+                                              ]),
+                                          ),
+                                      },
+                                  },
+                              }
+                            : model,
                   )
                 : entry.models,
         }

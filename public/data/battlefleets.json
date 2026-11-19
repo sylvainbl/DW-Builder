@@ -1726,10 +1726,18 @@
       }
     ],
     "mainstayClassNames": [
-      "Blucher",
+      "Blücher",
       "Arminius"
     ],
     "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "imperium_asgard_rotor_tethership"
+        ],
+        "classNames": [
+          "Valkyrie"
+        ]
+      },
       {
         "flagshipUnitIds": [
           "imperium_heidelberg_logistics_battlecruiser_primar_configuration",
@@ -1741,10 +1749,27 @@
       },
       {
         "flagshipUnitIds": [
-          "imperium_ice_maiden_dreadnought_super_carrier"
+          "imperium_kaiser_heavy_battleship"
+        ],
+        "classNames": [
+          "Sigimer"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "imperium_konig_generator_ship",
+          "imperium_konig_generator_ship_sekundar_configuration"
         ],
         "classNames": [
           "Volsung"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "imperium_maximilian_aerial_linebreaker"
+        ],
+        "classNames": [
+          "Munich"
         ]
       },
       {
@@ -1754,18 +1779,124 @@
         "classNames": [
           "Konrad"
         ]
+      },
+      {
+        "flagshipUnitIds": [
+          "imperium_ragnarok_heavy_reaver"
+        ],
+        "classNames": [
+          "Jötunn"
+        ]
       }
     ],
     "specialRules": [
-      "airborne-underwater-limit"
+      "imperium-main-limits"
     ],
     "specialRuleText": [
-      "This Battlefleet can include at most one **Airborne** unit and/or one **Underwater** unit. Its **Flagship** and **Attachments** do not count toward this limit."
+      "At most two Airborne units and one Underwater unit, excluding Flagships and Attachments."
     ],
     "battlefleetBonus": {
-      "name": "Inductorium",
-      "text": "When an **Imperium** unit declares an Attack action, it may attempt a Special Valour Effect after declaring contributing weapons. If successful, the Attack gains Blast (X), where X equals the number of contributing weapons with Arc (X) and/or Voltaic (X). Each Action Roll made against a Secondary Target gains 1 Bonus Die for each System Failure the model has."
+      "name": "Auftragstaktik",
+      "text": "Once per Round, when nominating Participating models for an Attack or Boarding action, this Admiral may nominate one additional model from another friendly unit with the same Positional Trait. It cannot be a Flagship. All Participating models must be Imperium and within 15” of the Initial Target. After the Action, make a Group Crew Check for all Participating models: each gains 2 Disorder if failed, otherwise 1. If the active unit Discharges Capacitors, do not convert strikes for the extra model’s Voltaic weapons. Its own unit keeps its Charge token."
     }
+  },
+  {
+    "id": "imperium-ulfhednar",
+    "faction_id": "imperium",
+    "name": "Úlfhéðnar Reaver Battlefleet",
+    "type": "main",
+    "elements": [
+      {
+        "id": "ulf-flagship",
+        "name": "1 Scandinavian Flagship",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Scandinavian",
+              "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ulf-line",
+        "name": "1–4 Scandinavian Line",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Scandinavian",
+              "Line"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ulf-patrol",
+        "name": "1–4 Scandinavian Patrol",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Scandinavian",
+              "Patrol"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ulf-other",
+        "name": "0–3 Scandinavian Units",
+        "min": 0,
+        "max": 3,
+        "requirements": [
+          {
+            "all": [
+              "Scandinavian"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [
+      "Fenrir",
+      "Hoth",
+      "Odin"
+    ],
+    "battlefleetBonus": {
+      "name": "Wolves of the Sea",
+      "text": "Crippled Scandinavian models in this Force can Participate in an Action even if the required Group Crew Check fails. The Check must still be taken and its card discarded. When Limping, these models reduce Maximum Speed by 2” instead of halving movement."
+    },
+    "additionalMainstays": [
+      {
+        "flagshipUnitIds": [
+          "imperium_asgard_rotor_tethership"
+        ],
+        "classNames": [
+          "Valkyrie"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "imperium_ragnarok_heavy_reaver"
+        ],
+        "classNames": [
+          "Thor"
+        ]
+      },
+      {
+        "flagshipUnitIds": [
+          "imperium_valhalla_fast_dreadnought"
+        ],
+        "classNames": [
+          "Angrboða"
+        ]
+      }
+    ]
   },
   {
     "id": "imperium-iron-skies",
@@ -1775,7 +1906,7 @@
     "elements": [
       {
         "id": "iron-flagship",
-        "name": "1 Imperium Airborne Flagship",
+        "name": "1 Imperium Airship Flagship",
         "min": 1,
         "max": 1,
         "requirements": [
@@ -1789,74 +1920,130 @@
         ]
       },
       {
-        "id": "iron-line",
-        "name": "1-2 Imperium Airborne Line",
-        "min": 1,
-        "max": 2,
+        "id": "iron-other",
+        "name": "2–6 Imperium Airship",
+        "min": 2,
+        "max": 6,
         "requirements": [
           {
             "all": [
               "Imperium",
-              "Airborne",
-              "Line"
+              "Airborne"
+            ]
+          }
+        ]
+      }
+    ],
+    "mainstayClassNames": [],
+    "battlefleetBonus": {
+      "name": "Strategic Vantage",
+      "text": "When determining Initiative at the start of the game, draw two Victory & Valour Cards, look at both, and put one back on top of the deck. Reveal the other to determine which Admiral may choose the Initiative. If tied, repeat until one player reveals the highest Value. In subsequent Ready Phases, when this Admiral chooses to Hold Their Nerve, draw two Bonus Cards instead of one."
+    },
+    "specialRules": [
+      "imperium-iron-skies-limits"
+    ],
+    "specialRuleText": [
+      "Each Class may be included up to three times, ignoring Duplicate Classes. Up to three Flagship units are allowed, ignoring Flagship Limits."
+    ]
+  },
+  {
+    "id": "imperium-ice-maiden",
+    "faction_id": "imperium",
+    "name": "Ice Maiden Battlefleet",
+    "type": "specialist",
+    "elements": [
+      {
+        "id": "ice-flagship",
+        "name": "1 Ice Maiden",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "unitIds": [
+              "imperium_ice_maiden_dreadnought_super_carrier"
             ]
           }
         ]
       },
       {
-        "id": "iron-patrol",
-        "name": "1-2 Imperium Airborne Patrol",
+        "id": "ice-patrol",
+        "name": "1–3 Imperium Patrol",
         "min": 1,
-        "max": 2,
+        "max": 3,
         "requirements": [
           {
             "all": [
               "Imperium",
-              "Airborne",
               "Patrol"
             ]
           }
         ]
       },
       {
-        "id": "iron-support",
-        "name": "0-2 Imperium Airborne Support",
+        "id": "ice-support",
+        "name": "0–2 Imperium Support",
         "min": 0,
         "max": 2,
         "requirements": [
           {
             "all": [
               "Imperium",
-              "Airborne",
               "Support"
             ]
           }
         ]
       }
     ],
-    "additionalMainstays": [
+    "mainstayClassNames": [],
+    "battlefleetBonus": {
+      "name": "Enduring Symbol",
+      "text": "Whenever the Battle-Ready Ice Maiden in this Battlefleet takes the Maintenance action, remove 1 Damage from it."
+    }
+  },
+  {
+    "id": "imperium-hunen",
+    "faction_id": "imperium",
+    "name": "Hünen Battlefleet",
+    "type": "specialist",
+    "elements": [
       {
-        "flagshipUnitIds": [
-          "imperium_maximilian_aerial_linebreaker"
-        ],
-        "classNames": [
-          "Nuremberg",
-          "Munich"
+        "id": "hunen-flagship",
+        "name": "1 Flagship Colossus",
+        "min": 1,
+        "max": 1,
+        "requirements": [
+          {
+            "all": [
+              "Imperium",
+              "Flagship",
+              "Colossus"
+            ]
+          }
         ]
       },
       {
-        "flagshipUnitIds": [
-          "imperium_zeppelin_aerial_dreadnought"
-        ],
-        "classNames": [
-          "Kriegsturm",
-          "Jaeger"
+        "id": "hunen-colossi",
+        "name": "1–4 Imperium Colossus",
+        "min": 1,
+        "max": 4,
+        "requirements": [
+          {
+            "all": [
+              "Imperium",
+              "Colossus"
+            ]
+          }
         ]
       }
     ],
+    "mainstayClassNames": [
+      "Einherjar",
+      "Hochmeister",
+      "Metzger"
+    ],
     "battlefleetBonus": {
-      "name": "Strategic Vantage",
-      "text": "When determining Initiative at the start of the game, this Admiral may draw two Victory & Valour Cards and select the higher Value. When determining Initiative in later Ready Phases, if this Admiral chooses to Hold Their Nerve, they draw two Bonus Cards instead of one."
+      "name": "Vitruvian Strike",
+      "text": "Colossus models in this Force may Participate in Attack actions after Resolving a Ram. Only Assault weapons can Contribute to this Action. Other Actions remain prevented as normal."
     }
   },
   {
@@ -1876,20 +2063,14 @@
               "Teutonic",
               "Flagship"
             ]
-          },
-          {
-            "unitIds": [
-              "imperium_konig_generator_ship",
-              "imperium_hochmeister_vitruvian_colossus"
-            ]
           }
         ]
       },
       {
         "id": "teutonic-line-patrol",
-        "name": "1-3 Teutonic Line / Patrol",
-        "min": 1,
-        "max": 3,
+        "name": "2–4 Teutonic Line / Patrol",
+        "min": 2,
+        "max": 4,
         "requirements": [
           {
             "all": [
@@ -1903,95 +2084,95 @@
         ]
       },
       {
-        "id": "teutonic-support-scout",
-        "name": "0-3 Teutonic Support / Scout",
+        "id": "teutonic-other",
+        "name": "0–3 Teutonic Units",
         "min": 0,
         "max": 3,
         "requirements": [
           {
             "all": [
               "Teutonic"
-            ],
-            "any": [
-              "Support",
-              "Scout"
             ]
           }
         ]
       }
     ],
     "mainstayClassNames": [
+      "Arminius",
       "Volsung",
-      "Toten"
-    ],
-    "specialRules": [
-      "teutonic-flagship-konig-or-hochmeister"
-    ],
-    "specialRuleText": [
-      "This Battlefleet’s **Flagship** must be a **Konig Generator Ship** or **Hochmeister Vitruvian Colossus** with the Teutonic Command upgrade."
+      "Sigimer"
     ],
     "battlefleetBonus": {
-      "name": "Experimental Warfare",
-      "text": "Once per Round, when making a Repair Roll for a unit in this Force with the **Teutonic Construct** property, this Admiral may re-roll every die that is not showing an Exploding Strike."
-    }
+      "name": "Pact-Sworn Sailors",
+      "text": "All Teutonic units in this Force gain Stoic. Once per Round, a unit in this Force may Charge Capacitors even if it has already Discharged Capacitors in that activation. As an additional cost, discard a Victory & Valour Card."
+    },
+    "specialRules": [
+      "imperium-teutonic-limits"
+    ],
+    "specialRuleText": [
+      "A Flagship with an Attached Ferdinand gains Teutonic and satisfies the Flagship requirement. No Airborne units. At most two Underwater units, excluding the Flagship and Attachments."
+    ],
+    "effects": [
+      {
+        "scope": "force",
+        "requirements": [
+          {
+            "all": [
+              "Teutonic"
+            ]
+          }
+        ],
+        "addProperties": [
+          {
+            "name": "Stoic",
+            "value": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "imperium-scions-of-jutland",
     "faction_id": "imperium",
-    "name": "Scions of Jutland Mercenary Battlefleet",
+    "name": "Scions of Jutland Raiding Fleet",
     "type": "main",
-    "mercenary": true,
     "elements": [
       {
         "id": "scions-flagship",
-        "name": "1 Scandinavian / Scions of Jutland Flagship",
+        "name": "1 Scions of Jutland Flagship",
         "min": 1,
         "max": 1,
         "requirements": [
           {
             "all": [
+              "Scions of Jutland",
               "Flagship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "scions-line-patrol",
+        "name": "2–5 Scandinavian Line / Patrol",
+        "min": 2,
+        "max": 5,
+        "requirements": [
+          {
+            "all": [
+              "Scandinavian"
             ],
             "any": [
-              "Scandinavian",
-              "Scions of Jutland"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "scions-line",
-        "name": "1-2 Scandinavian Line",
-        "min": 1,
-        "max": 2,
-        "requirements": [
-          {
-            "all": [
-              "Scandinavian",
-              "Line"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "scions-patrol",
-        "name": "1-3 Scandinavian Patrol",
-        "min": 1,
-        "max": 3,
-        "requirements": [
-          {
-            "all": [
-              "Scandinavian",
+              "Line",
               "Patrol"
             ]
           }
         ]
       },
       {
-        "id": "scions-support-logistical",
-        "name": "0-2 Scandinavian Support / Logistical",
+        "id": "scions-support-scout",
+        "name": "0–4 Scandinavian Support / Scout",
         "min": 0,
-        "max": 2,
+        "max": 4,
         "requirements": [
           {
             "all": [
@@ -1999,20 +2180,6 @@
             ],
             "any": [
               "Support",
-              "Logistical"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "scions-scout",
-        "name": "0-2 Scandinavian Scout",
-        "min": 0,
-        "max": 2,
-        "requirements": [
-          {
-            "all": [
-              "Scandinavian",
               "Scout"
             ]
           }
@@ -2024,27 +2191,35 @@
       "Loki",
       "Gefjon"
     ],
+    "battlefleetBonus": {
+      "name": "Draugr",
+      "text": "Scions of Jutland models in this Force suffer Disorder as if they had one fewer level. When one Rallies and loses one or more Disorder, its Admiral may choose an enemy model within 8” of it; that enemy gains 1 Disorder."
+    },
+    "legendary": true,
+    "mercenary": true,
     "specialRules": [
-      "scions-flagship-no-doctrine"
+      "scions-flagship-no-doctrine",
+      "imperium-scions-no-ferdinand"
     ],
     "specialRuleText": [
-      "A Fleet Doctrine cannot be purchased for this Battlefleet’s **Flagship**. All units in this Battlefleet gain the **Scions of Jutland** trait if they do not already have it, and gain the Stoic property."
+      "The Flagship cannot purchase a Fleet Doctrine or take a Ferdinand Attachment. All non-Flagship units in this Battlefleet gain Scions of Jutland."
     ],
-    "battlefleetBonus": {
-      "name": "Pack Hunters",
-      "text": "When making an Attack or Boarding action, a **Scions of Jutland** unit in this Force may re-roll Blanks or Counters in the Action Roll, up to the number of Negative Effect tokens on the Initial Target."
-    },
     "effects": [
       {
         "scope": "battlefleet",
+        "requirements": [
+          {
+            "any": [
+              "Line",
+              "Patrol",
+              "Support",
+              "Scout",
+              "Logistical"
+            ]
+          }
+        ],
         "addTags": [
           "Scions of Jutland"
-        ],
-        "addProperties": [
-          {
-            "name": "Stoic",
-            "value": null
-          }
         ]
       }
     ]

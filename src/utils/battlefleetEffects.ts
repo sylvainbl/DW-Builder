@@ -7,17 +7,19 @@ import type {
     NamedValue,
     Unit,
 } from '../types/index'
-import { getSelectedTags, mergeNamedValues } from './optionRuleEffects'
+import { getConfiguredUnit, getSelectedTags, mergeNamedValues } from './optionRuleEffects.ts'
+import { getAttachmentParentEffects } from './attachments.ts'
 
 function normalizeTrait(value: string): string {
     return value.trim().toLowerCase()
 }
 
 function getUnitTraits(unit: Unit, entry?: ArmyUnit): Set<string> {
-    const tags = entry ? getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config) : unit.tags
+    const configured = entry ? getConfiguredUnit(unit, entry.models[0]?.config ?? entry.config, entry.config) : unit
+    const tags = configured.tags
     const factionTraits = unit.faction_id === 'union' ? [] : [unit.faction_id, unit.faction]
     return new Set(
-        [...factionTraits, unit.name, unit.sub_name, unit.role, ...tags]
+        [...factionTraits, unit.name, unit.sub_name, configured.role, ...tags]
             .filter((trait): trait is string => typeof trait === 'string' && trait.trim().length > 0)
             .map(normalizeTrait),
     )
@@ -59,14 +61,23 @@ function getBattlefleetEffectsForEntry(
     if (!unit) return []
     const definitionById = new Map(definitions.map((definition) => [definition.id, definition]))
 
-    return (list.battlefleets ?? []).flatMap((battlefleet) => {
-        const definition = definitionById.get(battlefleet.definitionId)
-        return (definition?.effects ?? []).filter(
-            (effect) =>
-                isEntryInBattlefleetScope(effect, entry, battlefleet.instanceId) &&
-                effectAppliesToEntry(effect, unit, entry),
-        )
-    })
+    const parentEffects = getAttachmentParentEffects(
+        entry,
+        units,
+        getSelectedTags(unit, entry.models[0]?.config ?? entry.config, entry.config),
+    )
+    const effectiveUnit = { ...unit, tags: [...unit.tags, ...parentEffects.flatMap((effect) => effect.addTags ?? [])] }
+    return [
+        ...parentEffects,
+        ...(list.battlefleets ?? []).flatMap((battlefleet) => {
+            const definition = definitionById.get(battlefleet.definitionId)
+            return (definition?.effects ?? []).filter(
+                (effect) =>
+                    isEntryInBattlefleetScope(effect, entry, battlefleet.instanceId) &&
+                    effectAppliesToEntry(effect, effectiveUnit, entry),
+            )
+        }),
+    ]
 }
 
 export function getBattlefleetAddedTags(

@@ -9,9 +9,15 @@ import type {
     BattlefleetRequirement,
     Unit,
 } from '../types/index'
-import { getEffectiveGeneratorSelections, getSelectedTags } from './optionRuleEffects.ts'
+import {
+    getConfiguredModelLimit,
+    getConfiguredUnit,
+    getEffectiveGeneratorSelections,
+    getSelectedTags,
+} from './optionRuleEffects.ts'
 import {
     getAttachmentEligibilityFailure,
+    getAttachmentParentEffects,
     getAttachmentKeyword,
     getAttachmentModelLimitForUnit,
     getMinimumModelsForAttachment,
@@ -34,6 +40,12 @@ function getUnitTraits(unit: Unit, entry?: ArmyUnit): Set<string> {
 
 function getPotentialUnitTraits(unit: Unit): Set<string> {
     const tags = [...unit.tags]
+    if (
+        unit.options_and_upgrades.some((option) =>
+            option.attachment_unit_ids?.includes('imperium_ferdinand_advanced_cruiser'),
+        )
+    )
+        tags.push('Teutonic')
     for (const option of unit.options_and_upgrades) {
         for (const tag of option.adds_tags ?? []) {
             if (!tags.includes(tag)) tags.push(tag)
@@ -119,7 +131,11 @@ function flattenUnits(entries: ArmyUnit[]): ArmyUnit[] {
 }
 
 function findUnit(units: Unit[], entry: ArmyUnit): Unit | null {
-    return units.find((unit) => unit.id === entry.unitId) ?? null
+    const base = units.find((unit) => unit.id === entry.unitId)
+    if (!base) return null
+    const unit = getConfiguredUnit(base, entry.models[0]?.config ?? entry.config, entry.config)
+    const effects = getAttachmentParentEffects(entry, units, unit.tags)
+    return { ...unit, tags: [...new Set([...unit.tags, ...effects.flatMap((effect) => effect.addTags ?? [])])] }
 }
 
 const battlefleetRoleOrder = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical']
@@ -191,10 +207,14 @@ export function getBattlefleetForceType(
     return isMercenaryInForce(definition, forceFactionId) ? 'specialist' : definition.type
 }
 
-function getMainstayClasses(definition: BattlefleetDefinition, entries: ArmyUnit[]): Set<string> {
+function getMainstayClasses(definition: BattlefleetDefinition, entries: ArmyUnit[], units: Unit[]): Set<string> {
     const classNames = new Set((definition.mainstayClassNames ?? []).map(normalizeTrait))
     for (const additional of definition.additionalMainstays ?? []) {
-        const hasFlagship = entries.some((entry) => additional.flagshipUnitIds.includes(entry.unitId))
+        const hasFlagship = entries.some(
+            (entry) =>
+                additional.flagshipUnitIds.includes(entry.unitId) &&
+                (definition.faction_id !== 'imperium' || findUnit(units, entry)?.tags.includes('Flagship')),
+        )
         if (hasFlagship) {
             additional.classNames.forEach((className) => classNames.add(normalizeTrait(className)))
         }
@@ -268,8 +288,11 @@ function validateDuplicateClasses(
     units: Unit[],
 ): BattlefleetIssue[] {
     const issues: BattlefleetIssue[] = []
-    const mainstayClasses = getMainstayClasses(definition, entries)
-    const classCounts = new Map<string, { label: string; standalone: number; attachments: number }>()
+    const mainstayClasses = getMainstayClasses(definition, entries, units)
+    const classCounts = new Map<
+        string,
+        { label: string; standalone: number; attachments: number; ubiquitous: boolean }
+    >()
     const exemptBarbudosFlagshipIds = new Set(['alliance_francisco', 'alliance_salvador'])
     let barbudosFlagshipExemptionUsed = false
     let ukrainianAkulaFlagshipExemptionUsed = false
@@ -277,8 +300,20 @@ function validateDuplicateClasses(
     const countEntry = (entry: ArmyUnit, field: 'standalone' | 'attachments') => {
         const unit = findUnit(units, entry)
         if (!unit) return
-        const key = normalizeTrait(unit.name)
-        const current = classCounts.get(key) ?? { label: unit.name, standalone: 0, attachments: 0 }
+        const separateClass = unit.options_and_upgrades.some(
+            (option) =>
+                option.separate_class &&
+                (entry.config.optionQuantities[option.tag] ??
+                    entry.models[0]?.config.optionQuantities[option.tag] ??
+                    0) > 0,
+        )
+        const key = normalizeTrait(unit.name) + (separateClass ? ':flagship' : '')
+        const current = classCounts.get(key) ?? {
+            label: unit.name,
+            standalone: 0,
+            attachments: 0,
+            ubiquitous: unit.properties.some((property) => property.name === 'Ubiquitous'),
+        }
         classCounts.set(key, { ...current, [field]: current[field] + 1 })
     }
 
@@ -313,7 +348,7 @@ function validateDuplicateClasses(
     }
     entries.forEach(countAttachments)
 
-    for (const [className, { label, standalone, attachments }] of classCounts) {
+    for (const [className, { label, standalone, attachments, ubiquitous }] of classCounts) {
         const isDragonWrathTianlong =
             definition.specialRules?.includes(EMPIRE_DRAGONS_WRATH_RULE) && className === normalizeTrait('Tianlong')
         if (isDragonWrathTianlong) {
@@ -327,11 +362,17 @@ function validateDuplicateClasses(
             continue
         }
 
-        const limit = mainstayClasses.has(className) ? 2 : 1
-        if (standalone > limit || attachments > limit) {
-            const limitText = mainstayClasses.has(className)
-                ? 'Mainstay Classes allow at most two standalone units and two Attachments'
-                : 'Duplicate Classes allow at most one standalone unit and one Attachment'
+        const ironSkies = definition.specialRules?.includes('imperium-iron-skies-limits')
+        const limit = ironSkies ? 3 : (mainstayClasses.has(className) ? 2 : 1) + (ubiquitous ? 1 : 0)
+        if (ironSkies ? standalone + attachments > limit : standalone > limit || attachments > limit) {
+            const limitText =
+                ubiquitous && !ironSkies
+                    ? `Ubiquitous allows at most ${limit} standalone units and ${limit} Attachments`
+                    : ironSkies
+                      ? 'Iron Skies allows at most three units of each Class'
+                      : mainstayClasses.has(className)
+                        ? 'Mainstay Classes allow at most two standalone units and two Attachments'
+                        : 'Duplicate Classes allow at most one standalone unit and one Attachment'
             issues.push({
                 severity: 'error',
                 battlefleetInstanceId: battlefleet.instanceId,
@@ -459,13 +500,14 @@ function validateFlagshipLimit(
     const flagshipCount =
         rawFlagshipCount - exemptTianlongCount - exemptEastIndiaPalashiCount - (allowsSecondFlagship ? 1 : 0)
 
-    if (flagshipCount <= 1) return []
+    const limit = definition.specialRules?.includes('imperium-iron-skies-limits') ? 3 : 1
+    if (flagshipCount <= limit) return []
 
     return [
         {
             severity: 'error',
             battlefleetInstanceId: battlefleet.instanceId,
-            message: `${battlefleet.name} has ${flagshipCount} Flagship units; a Battlefleet can contain only one.`,
+            message: `${battlefleet.name} has ${flagshipCount} Flagship units; this Battlefleet can contain only ${limit === 1 ? 'one' : 'three'}.`,
         },
     ]
 }
@@ -679,7 +721,7 @@ function validateUnionMainstayExemptAirborneUnderwaterLimit(
     maxAirborne: number,
     maxUnderwater: number,
 ): BattlefleetIssue[] {
-    const mainstayClasses = getMainstayClasses(definition, entries)
+    const mainstayClasses = getMainstayClasses(definition, entries, units)
     const countedEntries = entries.filter((entry) => {
         const unit = findUnit(units, entry)
         if (!unit || hasTrait(unit, 'Flagship')) return false
@@ -981,7 +1023,145 @@ function validateSpecialRules(
     units: Unit[],
 ): BattlefleetIssue[] {
     const issues: BattlefleetIssue[] = []
+    for (const entry of flattenUnits(entries)) {
+        const unit = findUnit(units, entry)
+        if (!unit || unit.faction_id !== 'imperium') continue
+        const modelConfig = entry.models[0]?.config ?? entry.config
+        const limit = getConfiguredModelLimit(unit, modelConfig, entry.config)
+        if (entry.models.length > limit)
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${unit.name} has ${entry.models.length} models; this configuration allows at most ${limit}.`,
+            })
+        const selected = (tag: string) =>
+            (entry.config.optionQuantities[tag] ?? modelConfig.optionQuantities[tag] ?? 0) > 0
+        if (
+            entry.models.some((model) =>
+                Object.entries(model.config.hardpointSelections).some(([index, name]) => {
+                    const weapon = unit.weapons[Number(index)]
+                    return (
+                        !weapon ||
+                        (weapon.name !== name &&
+                            !(
+                                weapon.slot &&
+                                unit.hardpoint_options[weapon.slot]?.some((option) => option.name === name)
+                            ))
+                    )
+                }),
+            )
+        )
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${unit.name} has a saved weapon choice that is no longer available in this configuration. Review its Hardpoints.`,
+            })
+        for (const option of unit.options_and_upgrades.filter(
+            (option) => option.mandatory && option.generator_replaces_weapon === false,
+        )) {
+            if (
+                entry.models.some(
+                    (model) =>
+                        getEffectiveGeneratorSelections(unit, model.config, entry.config).length !==
+                        option.system_generator_slots,
+                )
+            )
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    unitInstanceId: entry.instanceId,
+                    message: `${unit.name} must select ${option.system_generator_slots} different generators per model.`,
+                })
+        }
+        if (entry.attachedUnits && entry.attachedUnits.length > 0) {
+            for (const attached of entry.attachedUnits)
+                if (
+                    (attached.config.optionQuantities.ESCORT ?? 0) > 0 &&
+                    [
+                        'imperium_ferdinand_advanced_cruiser',
+                        'imperium_schaumburg_escort_cruiser',
+                        'imperium_offshore_defence_platform',
+                        'imperium_hermes_supply_freighter',
+                    ].includes(attached.unitId)
+                )
+                    issues.push({
+                        severity: 'error',
+                        battlefleetInstanceId: battlefleet.instanceId,
+                        unitInstanceId: attached.instanceId,
+                        message: 'This unit cannot purchase Escort tokens while fielded as an Attachment.',
+                    })
+        }
+        if (entry.config.fleetDoctrineSelection?.doctrineName === 'Wolves of the Sea')
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: 'Wolves of the Sea is now the Úlfhéðnar Battlefleet bonus. Select a current Fleet Doctrine.',
+            })
+        if (
+            unit.options_and_upgrades.some(
+                (option) =>
+                    option.all_models &&
+                    entry.models.some((model) => (model.config.optionQuantities[option.tag] ?? 0) > 0) &&
+                    !entry.models.every((model) => (model.config.optionQuantities[option.tag] ?? 0) > 0),
+            )
+        )
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${unit.name}: Blitzen Bombers must be purchased for every model in the unit.`,
+            })
+        for (const attachment of entry.attachedUnits ?? []) {
+            const option = unit.options_and_upgrades.find((option) =>
+                option.attachment_unit_ids?.includes(attachment.unitId),
+            )
+            if (option?.requires_options?.some((tag) => !selected(tag)))
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    unitInstanceId: entry.instanceId,
+                    message: `${unit.name} requires Admiral’s Flag to take this Attachment.`,
+                })
+        }
+        if (
+            unit.tags.includes('Merchantman') &&
+            selected('OLYMPIA_LEVANT_DRIVE') &&
+            entry.attachedUnits?.some((attached) => attached.unitId === 'imperium_hermes_supply_freighter')
+        )
+            issues.push({
+                severity: 'error',
+                battlefleetInstanceId: battlefleet.instanceId,
+                unitInstanceId: entry.instanceId,
+                message: `${unit.name} cannot combine Olympia Levant Drive with a Hermes Attachment.`,
+            })
+    }
     for (const rule of definition.specialRules ?? []) {
+        if (rule === 'imperium-main-limits') issues.push(...validateEmpireMainLimit(battlefleet, entries, units))
+        if (rule === 'imperium-teutonic-limits') {
+            const counted = entries.map((entry) => findUnit(units, entry)).filter((unit): unit is Unit => unit != null)
+            if (
+                counted.some((unit) => hasTrait(unit, 'Airborne')) ||
+                counted.filter((unit) => !hasTrait(unit, 'Flagship') && hasTrait(unit, 'Underwater')).length > 2
+            )
+                issues.push({
+                    severity: 'error',
+                    battlefleetInstanceId: battlefleet.instanceId,
+                    message: `${battlefleet.name} allows no Airborne units and at most two non-Flagship Underwater units (Attachments excluded).`,
+                })
+        }
+        if (rule === 'imperium-scions-no-ferdinand') {
+            for (const entry of entries)
+                if (entry.attachedUnits?.some((attached) => attached.unitId === 'imperium_ferdinand_advanced_cruiser'))
+                    issues.push({
+                        severity: 'error',
+                        battlefleetInstanceId: battlefleet.instanceId,
+                        unitInstanceId: entry.instanceId,
+                        message: `${battlefleet.name} Flagships cannot take a Ferdinand Attachment.`,
+                    })
+        }
         if (
             [
                 'commonwealth-no-airborne',

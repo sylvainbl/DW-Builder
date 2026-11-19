@@ -24,6 +24,7 @@ import { getAvailableFleetDoctrines } from './fleetDoctrines'
 import { isAttachmentOption } from './attachments'
 import {
     formatOptionName,
+    getConfiguredUnit,
     getEffectiveGeneratorSelections,
     getSelectedGeneratorSystems,
     getSelectedOptionRuleEffects,
@@ -450,7 +451,10 @@ function renderEntry(
     nested = false,
     context?: PrintContext,
 ): string {
-    const unit = units.find((item) => item.id === entry.unitId)
+    const baseUnit = units.find((item) => item.id === entry.unitId)
+    const unit = baseUnit
+        ? getConfiguredUnit(baseUnit, entry.models[0]?.config ?? entry.config, entry.config)
+        : undefined
     if (!unit) {
         return `
             <article class="unit-card ${nested ? 'attachment' : ''}">

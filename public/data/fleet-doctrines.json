@@ -224,70 +224,88 @@
   ],
   "imperium": [
     {
+      "name": "Forward Patrol",
+      "point_cost": 15,
+      "required_role": "Flagship",
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral may nominate one unit in the Play Area that is not Immobile. It gains Vanguard (5”). This Doctrine can be used only once."
+    },
+    {
       "name": "In Treue Fest",
       "point_cost": 15,
       "required_role": "Flagship",
       "required_tags": [
         "Bavarian"
       ],
-      "text": "This Doctrine can only be purchased for a Bavarian Flagship unit. When Activating a Bavarian unit, this Force's Admiral may attempt to enact a Special Valour Effect with that unit. If successful, mark the unit with a Valour Effect token. Until its next Activation, each model in the unit gains Boosted Propulsion (+2”) and Ablative Armour (2); existing values are cumulative."
+      "text": "Whenever a Bavarian Airborne model in this Force is targeted by an Attack action, its Admiral may make a Crew Check for it. If successful, it gains Evasive until the end of the activation."
     },
     {
-      "name": "Forward Patrol",
+      "name": "Teutonic Discipline",
       "point_cost": 15,
       "required_role": "Flagship",
-      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, this Admiral can nominate one unit in the Play Area that is not Immobile. That unit gains Vanguard (5”). The Admiral can only use this Doctrine once per game."
-    },
-    {
-      "name": "Flotilla of Iron",
-      "point_cost": 20,
-      "required_role": "Flagship",
       "required_tags": [
-        "Prussian"
+        "Teutonic"
       ],
-      "text": "This Doctrine can only be purchased for a Prussian Flagship unit. Prussian Flagship models gain +1 Crew. Prussian models within 7” of a friendly Prussian Flagship with the same Positional Trait also gain +1 Crew."
+      "text": "Once per Round, when activating a unit containing only Teutonic models, this Admiral may secretly look at the top Victory & Valour Deck card, then return it to the top or put it at the bottom."
     },
     {
       "name": "Modular Configuration",
       "point_cost": 20,
       "required_role": "Flagship",
       "required_tags": [
-        "Prussian"
+        "Imperium"
       ],
-      "text": "A unit in this Force containing at least one Prussian model may, at the start of its Action Step, discard a Victory & Valour card to Reconfigure its weapons. Every Prussian model in the unit can exchange a single Light or Heavy Hardpoint Weapon for a different weapon option that could have been selected for that Hardpoint during Force Selection. Generator Hardpoints cannot be swapped in or out. Until the end of the Action Step, the unit has -1 Action Limit."
+      "text": "At the start of their turn in the Make a Special Deployment Action step of Deployment, nominate one unit in the Play Area containing at least one Modular model. Each Modular model may exchange any Light or Heavy Hardpoint Weapons for other options available for those Hardpoints during Force Selection. Generator Hardpoints cannot be swapped in or out."
     },
     {
       "name": "Strategic Reserves",
       "point_cost": 20,
       "required_role": "Flagship",
-      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, they can roll one additional Action Die."
-    },
-    {
-      "name": "Chain of Command",
-      "point_cost": 25,
-      "required_role": "Flagship",
-      "text": "Once per Round, during the Resolve Re-rolls step of an Action Roll this Admiral is making for a unit in their force, they can enact a Special Valour Effect with that unit. The unit must either be a Flagship, or be within 10” of a friendly Flagship. If successful, the Admiral can re-roll any number of dice in the pool."
+      "text": "Whenever this Admiral makes a Reserve Roll for a unit in their Force, roll one additional Action Die."
     },
     {
       "name": "Devil's Own Luck",
       "point_cost": 25,
       "required_role": "Flagship",
-      "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, this Admiral can use this Doctrine instead of attempting to Deny the effect. The opposing Admiral reveals their Valour Card. If it has a Value of 8 or less, it is discarded without being enacted."
+      "text": "Once per game, when the opposing Admiral attempts to enact a Valour Effect, use this Doctrine instead of attempting to Deny it. The opponent reveals their Victory & Valour Card. On a Value of 8 or less, discard it without enacting it."
+    },
+    {
+      "name": "Peerless Discipline",
+      "point_cost": 25,
+      "required_role": "Flagship",
+      "text": "Once per Round, during Resolve Re-rolls of an Action Roll for a unit in this Force, discard a Victory & Valour Card to re-roll any number of dice in the pool. The unit must be a Flagship or within 10” of a friendly Flagship."
     },
     {
       "name": "Do Or Die",
       "point_cost": 30,
       "required_role": "Flagship",
-      "text": "Once per Round, before this Admiral makes a Crew Check for a model, they can use this Doctrine to grant a +2 Modifier to that model's Crew rating for this test only. In a Group Crew Check, this Modifier applies to all models in the unit."
+      "text": "Once per Round, before making a Crew Check for a model, grant +2 Crew for this test. For a Group Crew Check, apply the Modifier to all models in the unit."
     },
     {
-      "name": "Wolves of the Sea",
+      "name": "Inductorium",
+      "point_cost": 30,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Imperium"
+      ],
+      "text": "Once per Round, during Inflict Damage of an Attack by a unit in this Force with at least one success and a Contributing Arc (X) and/or Voltaic (X) weapon, declare Inductorium. Choose a point on the Initial Target. Every other model, friendly or enemy, within 3” of that point and sharing a Positional Trait with the Initial Target suffers 1 Damage and 1 Disorder."
+    },
+    {
+      "name": "Flotilla of Iron",
+      "point_cost": 35,
+      "required_role": "Flagship",
+      "required_tags": [
+        "Prussian"
+      ],
+      "text": "All Prussian models in this Force gain +1 Crew."
+    },
+    {
+      "name": "Skeggöld! Skálmöld! Skildir ro Klofnir!",
       "point_cost": 35,
       "required_role": "Flagship",
       "required_tags": [
         "Scandinavian"
       ],
-      "text": "This Doctrine can only be purchased for a Scandinavian Flagship unit. Crippled Scandinavian models in this Battlefleet's Force can always Participate in an Action, even if their Admiral fails the required Group Crew Check. The Check must still be taken."
+      "text": "During Deploy Forces, Scandinavian models in this Force may be Deployed anywhere on the table as long as they are wholly within 4” of their own Deployment Zone."
     }
   ],
   "empire": [

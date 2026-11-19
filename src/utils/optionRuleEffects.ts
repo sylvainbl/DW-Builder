@@ -209,6 +209,25 @@ export function getSelectedTags(unit: Unit, modelConfig: UnitConfig, unitConfig?
     return tags
 }
 
+export function getConfiguredUnit(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): Unit {
+    const tags = getSelectedTags(unit, modelConfig, unitConfig)
+    const stats = { ...unit.stats }
+    for (const option of unit.options_and_upgrades) {
+        if (isOptionSelected(option, modelConfig, unitConfig)) Object.assign(stats, option.sets_stats)
+    }
+    const role = ['Flagship', 'Line', 'Patrol', 'Support', 'Scout', 'Logistical'].find((tag) => tags.includes(tag))
+    return { ...unit, tags, stats, role: role ?? unit.role }
+}
+
+export function getConfiguredModelLimit(unit: Unit, modelConfig: UnitConfig, unitConfig?: UnitConfig | null): number {
+    return Math.min(
+        unit.max ?? Number.MAX_SAFE_INTEGER,
+        ...unit.options_and_upgrades
+            .filter((option) => option.max_models != null && isOptionSelected(option, modelConfig, unitConfig))
+            .map((option) => option.max_models!),
+    )
+}
+
 export function mergeNamedValues(...groups: NamedValue[][]): NamedValue[] {
     const seen = new Set<string>()
     const merged: NamedValue[] = []
